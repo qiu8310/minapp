@@ -1,0 +1,64 @@
+// https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html
+
+export namespace wx {
+  type IWxGetWeRunDataObject = {
+    /**
+     * 接口调用成功的回调函数
+     */
+    success?: (res: {
+      /**
+       * 调用结果
+       */
+      errMsg: string
+
+      /**
+       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       *
+       * **encryptedData：**
+       *
+       * encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       *
+       *   属性                       |  类型          |  说明             
+       * -----------------------------|----------------|-------------------
+       *   stepInfoList               |  ObjectArray   |用户过去三十天的微信运动步数
+       *   stepInfoList[].timestamp   |  Number        |时间戳，表示数据对应的时间
+       *   stepInfoList[].step        |  Number        |  微信运动步数     
+       */
+      encryptedData: string
+
+      /**
+       * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       */
+      iv: string
+    }) => any
+
+    /**
+     * 接口调用失败的回调函数
+     */
+    fail?: (err: any) => any
+
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    complete?: () => any
+  }
+  /**
+   * @since 1.2.0
+   *
+   * 获取用户过去三十天微信运动步数，需要先调用 [wx.login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject) 接口。
+   *
+   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.werun
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.getWeRunData({
+   *         success(res) {
+   *             const encryptedData = res.encryptedData
+   *         }
+   *     })
+   *     ```
+   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html#wxgetwerundataobject
+   */
+  function getWeRunData(OBJECT: IWxGetWeRunDataObject): void
+}

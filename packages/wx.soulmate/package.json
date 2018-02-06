@@ -1,0 +1,11 @@
+{
+  "name": "wx.soulmate",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {},
+  "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
+  "license": "MIT",
+  "devDependencies": {
+  }
+}

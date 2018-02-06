@@ -1,0 +1,92 @@
+// https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html
+
+export namespace wx {
+  /**
+   * 监听加速度数据，频率：5次/秒，接口调用后会自动开始监听，可使用 `wx.stopAccelerometer` 停止监听。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.onAccelerometerChange(function(res) {
+   *       console.log(res.x)
+   *       console.log(res.y)
+   *       console.log(res.z)
+   *     })
+   *     ```
+   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxonaccelerometerchangecallback
+   */
+  function onAccelerometerChange(CALLBACK: ((res: {
+    /**
+     * X 轴
+     */
+    x: number
+
+    /**
+     * Y 轴
+     */
+    y: number
+
+    /**
+     * Z 轴
+     */
+    z: number
+  }) => any)): void
+  type IWxStartAccelerometerObject = {
+    /**
+     * 接口调用成功的回调函数
+     */
+    success?: (res: any) => any
+
+    /**
+     * 接口调用失败的回调函数
+     */
+    fail?: (err: any) => any
+
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    complete?: () => any
+  }
+  /**
+   * @since 1.1.0
+   *
+   * 开始监听加速度数据。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.startAccelerometer()
+   *     ```
+   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstartaccelerometerobject
+   */
+  function startAccelerometer(OBJECT: IWxStartAccelerometerObject): void
+  type IWxStopAccelerometerObject = {
+    /**
+     * 接口调用成功的回调函数
+     */
+    success?: (res: any) => any
+
+    /**
+     * 接口调用失败的回调函数
+     */
+    fail?: (err: any) => any
+
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    complete?: () => any
+  }
+  /**
+   * @since 1.1.0
+   *
+   * 停止监听加速度数据。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.stopAccelerometer()
+   *     ```
+   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstopaccelerometerobject
+   */
+  function stopAccelerometer(OBJECT: IWxStopAccelerometerObject): void
+}

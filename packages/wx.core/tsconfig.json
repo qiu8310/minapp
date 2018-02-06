@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": false,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": false,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "noLib": false,
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "outDir": "dist"
+  },
+  "include": [
+    "src",
+    "typing"
+  ],
+  "exclude": [
+    "src/wxp/"
+  ]
+}

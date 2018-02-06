@@ -1,0 +1,9 @@
+
+
+# <type>(<scope>): <subject>
+#
+# Git Commit Message Guides: http://chris.beams.io/posts/git-commit/
+#
+# Type keywrods:      feat, fix, docs, style, refactor, perf, test, chore, revert
+# Changelog keywrods: Added, Changed, Breaks, Deprecated, Removed, Fixed, Security
+#

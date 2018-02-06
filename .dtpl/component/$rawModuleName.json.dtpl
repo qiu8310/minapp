@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../node_modules/wx.core/schema/component.json",
+  "component": true,
+  "usingComponents": {}
+}

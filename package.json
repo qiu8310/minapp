@@ -1,0 +1,11 @@
+{
+	"scripts": {
+		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/"
+	},
+	"devDependencies": {
+		"lerna": "^2.7.1",
+		"ts-node": "~4.1.0",
+		"types-dot-template": "~0.2.5",
+		"typescript": "~2.7.0"
+	}
+}

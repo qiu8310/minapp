@@ -1,0 +1,7 @@
+import {Template, TemplateModify} from '../Template'
+
+export default class extends Template {
+  modify($root: Cheerio): TemplateModify[] {
+    return []
+  }
+}

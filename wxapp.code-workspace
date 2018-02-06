@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "packages/wx.core"
+		},
+		{
+			"path": "packages/wx.zone"
+		}
+	],
+	"settings": {
+		"jsDocCompletion.enabled": false,
+		"jest.enableCodeLens": false,
+		"jest.autoEnable": false,
+		"files.exclude": {
+			"**/dist": false,
+			"**/packages": true,
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true
+		},
+		"typescript.tsdk": "wxapp/node_modules/typescript/lib"
+	}
+}

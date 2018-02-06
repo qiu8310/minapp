@@ -1,0 +1,6 @@
+export * from './Arg'
+export * from './Definition'
+export * from './Func'
+export * from './Klass'
+export * from './Type'
+export {Struct} from './_'

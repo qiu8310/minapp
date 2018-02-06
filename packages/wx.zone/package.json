@@ -1,0 +1,18 @@
+{
+  "name": "wx.zone",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "wx build",
+    "build:watch": "wx watch"
+  },
+  "dependencies": {
+    "tslib": "~1.9.0",
+    "wx.core": "^0.0.0"
+  },
+  "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
+  "license": "MIT",
+  "devDependencies": {
+  }
+}
