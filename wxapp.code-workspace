@@ -4,16 +4,19 @@
 			"path": "."
 		},
 		{
-			"path": "packages/wx.core"
+			"path": "packages/wxapp-core"
 		},
 		{
-			"path": "packages/wx.zone"
+			"path": "packages/wxapp-compiler"
+		},
+		{
+			"path": "packages/wxapp-zone"
 		}
 	],
 	"settings": {
+		"dot-template-vscode.debug": false,
+		"dot-template-vscode.watchFilesGolbPattern": "**/src/**",
 		"jsDocCompletion.enabled": false,
-		"jest.enableCodeLens": false,
-		"jest.autoEnable": false,
 		"files.exclude": {
 			"**/dist": false,
 			"**/packages": true,

@@ -1,4 +1,4 @@
 packages/*/dist
 packages/*/node_modules
 node_modules/
-packages/wx.core/gen/.cache
+packages/wxapp-core/gen/.cache

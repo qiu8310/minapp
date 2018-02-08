@@ -1,4 +1,8 @@
 {
+	"name": "--wxapp--",
+	"version": "0.0.0",
+	"private": true,
+	"license": "MIT",
 	"scripts": {
 		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/"
 	},
