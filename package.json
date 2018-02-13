@@ -7,6 +7,7 @@
 		"wg": "dist/cli/generator.js"
 	},
 	"scripts": {
+		"generate": "node dist/cli/generator.js && node dist/cli/generator.js -p",
 		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/",
 		"build": "remove-all dist/ && tsc",
 		"watch": "remove-all dist/ && tsc -w"

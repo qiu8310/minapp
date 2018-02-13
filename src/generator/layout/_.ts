@@ -11,3 +11,8 @@ export const PROMISABLE: {
   FUNCS: [],
   KLASS: {}
 }
+
+export function setPromisable(res: any = {}) {
+  PROMISABLE.FUNCS = res.FUNCS
+  PROMISABLE.KLASS = res.KLASS
+}

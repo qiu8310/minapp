@@ -6,7 +6,7 @@ import * as async from 'async'
 import * as path from 'path'
 import * as fs from 'fs-extra'
 import {matchAll, warn, EOL} from '../generator/base'
-import {Node, rootNode, CnavasContext, PROMISABLE} from '../generator/layout/'
+import {Node, rootNode, CnavasContext, PROMISABLE, setPromisable} from '../generator/layout/'
 import {Generator} from '../generator/Generator'
 
 const BASE_URL = 'https://mp.weixin.qq.com/debug/wxadoc/dev/api/'
@@ -37,6 +37,10 @@ cli({
   let total = rootNode.leafNodes.length
   if (total !== last) warn(`文档数量更新了 ${total - last} 页！`)
 
+  if (res.promise) {
+    process.env.PROMISE = '1'
+    setPromisable(require('../promiable.json'))
+  }
   if (res.info) process.env.INFO = '1'
   if (res._.length === 1) process.env.WRITE_PARSED_HTML = '1'
 
@@ -70,9 +74,10 @@ cli({
         }
         if (!res._.length && !res.canvas && !res.noCanvas) {
           if (res.promise) {
+            fs.writeFileSync(path.join(GEN_DIR, 'promiable.ts'), `/* tslint:disable */${EOL}export const PROMIABLE: {FUNCS: string[], KLASS: {[name: string]: string[]}} = ${JSON.stringify(PROMISABLE, null, 2)}${EOL}`)
             fs.writeFileSync(path.join(GEN_DIR, 'wxp.d.ts'), `// Generated at ${new Date().toLocaleDateString()}${EOL}export namespace wxp {${EOL}${tss.join(EOL)}${EOL}${CnavasContext.toTSString(1, true)}${EOL}}${EOL}`)
           } else {
-            fs.writeFileSync(path.join(GEN_DIR, 'promiable.ts'), `/* tslint:disable */${EOL}export const PROMIABLE: {FUNCS: string[], KLASS: {[name: string]: string[]}} = ${JSON.stringify(PROMISABLE)}${EOL}`)
+            fs.writeFileSync(path.join(ROOT_DIR, 'dist', 'promiable.json'), JSON.stringify(PROMISABLE, null, 2))
             fs.writeFileSync(path.join(GEN_DIR, 'wx.d.ts'), `// Generated at ${new Date().toLocaleDateString()}${EOL}declare namespace wx {${EOL}${tss.join(EOL)}${EOL}${CnavasContext.toTSString(1)}${EOL}}${EOL}`)
           }
         }
