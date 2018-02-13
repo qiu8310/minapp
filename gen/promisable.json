@@ -1,5 +1,4 @@
-/* tslint:disable */
-export const PROMIABLE: {FUNCS: string[], KLASS: {[name: string]: string[]}} = {
+{
   "FUNCS": [
     "request",
     "uploadFile",

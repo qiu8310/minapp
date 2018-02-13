@@ -2,11 +2,11 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": false,
-    "removeComments": true,
+    "declaration": true,
+    "removeComments": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
-    "importHelpers": true,
+    "importHelpers": false,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "noImplicitThis": true,
@@ -24,10 +24,8 @@
     "outDir": "dist"
   },
   "include": [
-    "src",
-    "typing"
+    "src"
   ],
   "exclude": [
-    "src/wxp/"
   ]
 }

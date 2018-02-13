@@ -2,69 +2,19 @@
   "name": "wx.core",
   "version": "0.0.0",
   "description": "微信小程序 API 的 typescript 版本",
-  "main": "dist/wxp/index.js",
-  "typings": "dist/wxp/index.d.ts",
-  "bin": {
-    "wg": "dist/cli/generator.js"
-  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "build:wxp": "tsc -p src/wxp/ && cp src/wxp/*.d.ts dist/wxp/",
-    "build": "rm -rf dist && tsc && npm run build:wpy",
-    "build:watch": "tsc -w"
-  },
-  "jest": {
-    "roots": [
-      "src"
-    ],
-    "mapCoverage": false,
-    "collectCoverage": false,
-    "coverageReporters": [
-      "text",
-      "html"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/__tests__/helper/"
-    ],
-    "coverageDirectory": "./coverage",
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json"
-    ]
+    "__init__": "node scripts/init.js",
+    "build": "remove-all dist && tsc && npm run __init__"
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "devDependencies": {
-    "@types/async": "^2.0.47",
-    "@types/cheerio": "^0.22.7",
-    "@types/chokidar": "^1.7.4",
     "@types/fs-extra": "^5.0.0",
-    "@types/jest": "^22.1.1",
-    "@types/json5": "^0.0.29",
-    "@types/lodash": "^4.14.95",
-    "@types/request-promise": "^4.1.40",
-    "async": "^2.6.0",
-    "cheerio": "^1.0.0-rc.2",
-    "chokidar": "^2.0.0",
     "fs-extra": "^5.0.0",
-    "jest": "^22.1.4",
-    "json5": "^0.5.1",
-    "lodash": "^4.17.4",
-    "mora-scripts": "^1.6.19",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "require-resolve": "^0.0.2",
-    "ts-jest": "^22.0.2",
+    "mora-scripts": "^1.6.20",
     "ts-lint": "~4.5.1",
-    "tslib": "^1.9.0",
-    "turndown": "^4.0.1",
-    "typescript": "2.7.1"
+    "typescript": "~2.7.1"
   }
 }

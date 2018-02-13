@@ -1,15 +1,14 @@
-/// <reference path="../../typing/wx.d.ts" />
+/// <reference path="../typing/wx.d.ts" />
 
 import './polyfill'
 
-import {PROMIABLE} from './promiable'
-
+const PROMISABLE: {FUNCS: string[], KLASS: {[name: string]: string[]}} = {FUNCS: [], KLASS: {}}
 const wxp: any = {}
 
 Object.getOwnPropertyNames(wx).forEach(key => {
   let desc = Object.getOwnPropertyDescriptor(wx, key)
   if (desc) {
-    if (PROMIABLE.FUNCS.indexOf(key) >= 0) {
+    if (PROMISABLE.FUNCS.indexOf(key) >= 0) {
       Object.defineProperty(wxp, key, {
         configurable: desc.configurable,
         enumerable: desc.enumerable,

@@ -3,15 +3,47 @@
 	"version": "0.0.0",
 	"private": true,
 	"license": "MIT",
+	"data": {
+		"wx": "gen/wx.d.ts",
+		"wxp": "gen/wxp.d.ts",
+		"promisable": "gen/promisable.json"
+	},
 	"bin": {
 		"wg": "dist/cli/generator.js"
 	},
 	"scripts": {
+		"test": "jest",
 		"generate": "node dist/cli/generator.js && node dist/cli/generator.js -p",
 		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/",
 		"build": "remove-all dist/ && tsc",
-		"watch": "remove-all dist/ && tsc -w"
+		"build:watch": "remove-all dist/ && tsc -w"
 	},
+	"jest": {
+    "roots": [
+      "src"
+    ],
+    "mapCoverage": false,
+    "collectCoverage": false,
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/helper/"
+    ],
+    "coverageDirectory": "./coverage",
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  },
 	"dependencies": {
 		"async": "^2.6.0",
 		"cheerio": "^1.0.0-rc.2",
