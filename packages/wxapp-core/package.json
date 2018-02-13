@@ -5,7 +5,6 @@
   "main": "dist/wxp/index.js",
   "typings": "dist/wxp/index.d.ts",
   "bin": {
-    "wx": "dist/cli/compiler.js",
     "wg": "dist/cli/generator.js"
   },
   "scripts": {

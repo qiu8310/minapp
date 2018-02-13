@@ -1,4 +1,4 @@
-packages/*/dist
+dist
 packages/*/node_modules
 node_modules/
 gen/.cache

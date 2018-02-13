@@ -163,6 +163,13 @@ export namespace wx {
     windowHeight: any
 
     /**
+     * 状态栏的高度
+     *
+     * @since 1.9.0
+     */
+    statusBarHeight: any
+
+    /**
      * 微信设置的语言
      */
     language: any

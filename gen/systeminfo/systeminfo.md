@@ -61,6 +61,7 @@
   screenHeight      |  屏幕高度                               |  1.1.0   
   windowWidth       |  可使用窗口宽度                         |          
   windowHeight      |  可使用窗口高度                         |          
+  statusBarHeight   |  状态栏的高度                           |  1.9.0   
   language          |  微信设置的语言                         |          
   version           |  微信版本号                             |          
   system            |  操作系统版本                           |          

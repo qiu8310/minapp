@@ -64,8 +64,3 @@
         console.log(res.errMsg)
         console.log(res.errCode)
     })
-    
-
-#### Bug & Tip
-
-1.  `tip`：一个小程序内最多只能存在 5 个 innerAudio 实例**

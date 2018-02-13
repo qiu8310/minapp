@@ -16,10 +16,6 @@ export namespace wx {
    *   10004     | 格式错误
    *   -1        | 未知错误
    *
-   * **Bug & Tip：**
-   *
-   * 1.  `tip`：一个小程序内最多只能存在 5 个 innerAudio 实例**
-   *
    * **示例代码：**
    *
    *     ```javascript

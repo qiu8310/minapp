@@ -125,7 +125,7 @@ session_key 是对用户数据进行[加密签名](https://mp.weixin.qq.com/debu
 
 ### 登录时序图
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/login.png?t=201822)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/login.png?t=201828)
 
 #### Bug & Tip
 

@@ -3,8 +3,12 @@
 	"version": "0.0.0",
 	"private": true,
 	"license": "MIT",
+	"bin": {
+		"wg": "dist/cli/generator.js"
+	},
 	"scripts": {
-		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/"
+		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/",
+		"build": "remove-all dist/ && tsc"
 	},
 	"dependencies": {
 		"async": "^2.6.0",

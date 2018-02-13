@@ -2,7 +2,7 @@
 
 ### 访问分析
 
-获取小程序访问分析数据，数据说明参见[访问分析](https://mp.weixin.qq.com/debug/wxadoc/analysis/regular/?t=201822#%E8%AE%BF%E9%97%AE%E5%88%86%E6%9E%90)
+获取小程序访问分析数据，数据说明参见[访问分析](https://mp.weixin.qq.com/debug/wxadoc/analysis/regular/?t=201828#%E8%AE%BF%E9%97%AE%E5%88%86%E6%9E%90)
 
 #### 访问趋势
 

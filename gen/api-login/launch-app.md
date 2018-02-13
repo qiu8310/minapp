@@ -18,19 +18,12 @@ launchApp(OBJECT)
 *   当小程序从 1089（微信聊天主界面下拉）或 1090（长按小程序右上角菜单唤出最近使用历史）的场景打开时，该状态不变，即保持上一次打开小程序时该状态的值。
 *   当小程序从非 1036/1089/1090 的场景打开，该状态置为 false。
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=201822)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=201828)
 
 使用方法
 ----
 
 需要将 `<button>` 组件 `open-type` 的值设置为 `launchApp`。如果需要在打开 APP 时向 APP 传递参数，可以设置 `app-parameter` 为要传递的参数。通过 `binderror` 可以监听打开 APP 的错误事件。
-
-APP 获取参数
---------
-
-APP 是通过 OpenSDK 拉起的。App 侧需要处理 ShowMessageFromWX.req 的微信回调，iOS 还需要将 appID 添加到 app 工程所属的 plist 文件 URL types 字段中。关于如何接入 OpenSDK，iOS 请参考 [iOS 接入指南](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=1417694084&token=&lang=zh_CN) ，Android 请参考 [Android 接入指南](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=1417751808&token=&lang=zh_CN) 。
-
-组件传入的 `app-parameter` 参数，会直接传给 APP。关于如何获取参数，iOS 可以参考 [iOS SDK Sample Demo 源码](https://open.weixin.qq.com/zh_CN/htmledition/res/dev/download/sdk/WeChatSDK_sample_iOS_1.4.2.1.zip)，Android 可以参考 [Android SDK Sample Demo 源码](https://open.weixin.qq.com/zh_CN/htmledition/res/dev/download/sdk/WeChatSDK_sample_Android.zip)。
 
 例子
 --
