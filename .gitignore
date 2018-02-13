@@ -1,4 +1,6 @@
+*.log
 dist
+gen/.cache
+vendor
 packages/*/node_modules
 node_modules/
-gen/.cache

@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/wxapp-core/schema/component.json",
+  "$schema": "http://lcdn.static.lotlot.com/component-bfcfdc4b.json",
   "component": true,
   "usingComponents": {}
 }
