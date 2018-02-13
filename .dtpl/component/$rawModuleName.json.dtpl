@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/wx.core/schema/component.json",
+  "$schema": "../../../node_modules/wxapp-core/schema/component.json",
   "component": true,
   "usingComponents": {}
 }

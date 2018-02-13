@@ -1,18 +1,20 @@
 {
-  "name": "wx.zone",
+  "name": "wxapp-zone",
   "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "wx build",
-    "build:watch": "wx watch"
-  },
-  "dependencies": {
-    "tslib": "~1.9.0",
-    "wx.core": "^0.0.0"
+    "build": "wc",
+    "build:watch": "wc -w"
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
+  "dependencies": {
+    "tslib": "~1.9.0",
+    "wxapp-core": "^0.0.0"
+  },
   "devDependencies": {
+    "ts-lint": "~4.5.1",
+    "typescript": "~2.7.1"
   }
 }

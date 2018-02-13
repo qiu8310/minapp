@@ -1,9 +1,9 @@
-import wxp from 'wx.core'
+import wxp from 'wxapp-core'
 
 App({
   async onLaunch() {
     // 展示本地存储能力
-    var logs = wxp.getStorageSync('logs') || []
+    let logs = wxp.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wxp.setStorageSync('logs', logs)
 

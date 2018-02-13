@@ -1,4 +1,0 @@
-<!--logs.wxml-->
-<view class="container">
-  <text class="test">test</text>
-</view>
