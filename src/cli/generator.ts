@@ -69,10 +69,10 @@ cli({
         }
         if (!res._.length && !res.canvas && !res.noCanvas) {
           if (res.promise) {
-            fs.writeFileSync(path.join(ROOT_DIR, 'src', 'wxp', 'wxp.d.ts'), `// Generated at ${new Date().toLocaleDateString()}${EOL}export namespace wxp {${EOL}${tss.join(EOL)}${EOL}${CnavasContext.toTSString(1, true)}${EOL}}${EOL}`)
+            fs.writeFileSync(path.join(GEN_DIR, 'wxp.d.ts'), `// Generated at ${new Date().toLocaleDateString()}${EOL}export namespace wxp {${EOL}${tss.join(EOL)}${EOL}${CnavasContext.toTSString(1, true)}${EOL}}${EOL}`)
           } else {
-            fs.writeFileSync(path.join(ROOT_DIR, 'src', 'wxp', 'promiable.ts'), `/* tslint:disable */${EOL}export const PROMIABLE: {FUNCS: string[], KLASS: {[name: string]: string[]}} = ${JSON.stringify(PROMISABLE)}${EOL}`)
-            fs.writeFileSync(path.join(ROOT_DIR, 'typing', 'wx.d.ts'), `// Generated at ${new Date().toLocaleDateString()}${EOL}declare namespace wx {${EOL}${tss.join(EOL)}${EOL}${CnavasContext.toTSString(1)}${EOL}}${EOL}`)
+            fs.writeFileSync(path.join(GEN_DIR, 'promiable.ts'), `/* tslint:disable */${EOL}export const PROMIABLE: {FUNCS: string[], KLASS: {[name: string]: string[]}} = ${JSON.stringify(PROMISABLE)}${EOL}`)
+            fs.writeFileSync(path.join(GEN_DIR, 'wx.d.ts'), `// Generated at ${new Date().toLocaleDateString()}${EOL}declare namespace wx {${EOL}${tss.join(EOL)}${EOL}${CnavasContext.toTSString(1)}${EOL}}${EOL}`)
           }
         }
       }

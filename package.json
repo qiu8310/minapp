@@ -6,7 +6,27 @@
 	"scripts": {
 		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/"
 	},
+	"dependencies": {
+		"async": "^2.6.0",
+		"cheerio": "^1.0.0-rc.2",
+		"fs-extra": "^5.0.0",
+		"lodash": "^4.17.4",
+		"mora-scripts": "^1.6.19",
+		"request": "^2.83.0",
+		"request-promise": "^4.2.2",
+		"tslib": "^1.9.0",
+		"turndown": "^4.0.1"
+	},
 	"devDependencies": {
+		"@types/async": "^2.0.47",
+		"@types/cheerio": "^0.22.7",
+		"@types/fs-extra": "^5.0.0",
+		"@types/jest": "^22.1.1",
+		"@types/lodash": "^4.14.95",
+		"@types/request-promise": "^4.1.40",
+		"jest": "^22.1.4",
+		"ts-jest": "^22.0.2",
+		"ts-lint": "~4.5.1",
 		"lerna": "^2.7.1",
 		"ts-node": "~4.1.0",
 		"types-dot-template": "~0.2.5",
