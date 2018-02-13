@@ -8,7 +8,8 @@
 	},
 	"scripts": {
 		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/",
-		"build": "remove-all dist/ && tsc"
+		"build": "remove-all dist/ && tsc",
+		"watch": "remove-all dist/ && tsc -w"
 	},
 	"dependencies": {
 		"async": "^2.6.0",

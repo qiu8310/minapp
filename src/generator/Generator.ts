@@ -82,7 +82,7 @@ export class Generator {
     let {$root} = this
 
     // 查看生成结果
-    // fs.writeFileSync('/tmp/ts.html', this.$root.html())
+    if (process.env.WRITE_PARSED_HTML) fs.writeFileSync('/tmp/ts.html', this.$root.html())
 
     let page = new Page(this, $root, promise)
     let ts = page.toTSString(1)

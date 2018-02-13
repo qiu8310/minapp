@@ -3,8 +3,7 @@
 WXML节点信息API
 ===========
 
-wx.createSelectorQuery()
-------------------------
+### wx.createSelectorQuery()
 
 > 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
 
@@ -25,7 +24,7 @@ wx.createSelectorQuery()
     })
     
 
-### selectorQuery
+#### selectorQuery
 
 **selectorQuery 对象的方法列表：**
 
@@ -37,7 +36,7 @@ wx.createSelectorQuery()
   selectViewport   |                     |参考下面详细介绍
   exec             |  [callback]         |参考下面详细介绍
 
-### selectorQuery.in(component)
+#### selectorQuery.in(component)
 
 > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
 
@@ -55,7 +54,7 @@ wx.createSelectorQuery()
     })
     
 
-### selectorQuery.select(selector)
+#### selectorQuery.select(selector)
 
 在当前页面下选择第一个匹配选择器`selector`的节点，返回一个`NodesRef`对象实例，可以用于获取节点信息。
 
@@ -68,15 +67,15 @@ wx.createSelectorQuery()
 *   跨自定义组件的后代选择器：`.the-ancestor >>> .the-descendant`
 *   多选择器的并集：`#a-node, .some-other-nodes`
 
-### selectorQuery.selectAll(selector)
+#### selectorQuery.selectAll(selector)
 
 在当前页面下选择匹配选择器`selector`的节点，返回一个`NodesRef`对象实例。 与`selectorQuery.selectNode(selector)`不同的是，它选择所有匹配选择器的节点。
 
-### selectorQuery.selectViewport()
+#### selectorQuery.selectViewport()
 
 选择显示区域，可用于获取显示区域的尺寸、滚动位置等信息，返回一个`NodesRef`对象实例。
 
-### nodesRef.boundingClientRect(\[callback\])
+#### nodesRef.boundingClientRect(\[callback\])
 
 添加节点的布局位置的查询请求，相对于显示区域，以像素为单位。其功能类似于DOM的getBoundingClientRect。返回值是nodesRef对应的selectorQuery。
 
@@ -114,7 +113,7 @@ wx.createSelectorQuery()
     })
     
 
-### nodesRef.scrollOffset(\[callback\])
+#### nodesRef.scrollOffset(\[callback\])
 
 添加节点的滚动位置查询请求，以像素为单位。节点必须是`scroll-view`或者viewport。返回值是nodesRef对应的selectorQuery。
 
@@ -134,7 +133,7 @@ wx.createSelectorQuery()
     })
     
 
-### nodesRef.fields(fields, \[callback\])
+#### nodesRef.fields(fields, \[callback\])
 
 获取节点的相关信息，需要获取的字段在`fields`中指定。返回值是nodesRef对应的selectorQuery。可指定获取的字段包括：
 
@@ -169,6 +168,6 @@ wx.createSelectorQuery()
     })
     
 
-### selectorQuery.exec(\[callback\])
+#### selectorQuery.exec(\[callback\])
 
 执行所有的请求，请求结果按请求次序构成数组，在callback的第一个参数中返回。

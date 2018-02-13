@@ -38,6 +38,7 @@ cli({
   if (total !== last) warn(`文档数量更新了 ${total - last} 页！`)
 
   if (res.info) process.env.INFO = '1'
+  if (res._.length === 1) process.env.WRITE_PARSED_HTML = '1'
 
   async.reduce(
     res._.length
