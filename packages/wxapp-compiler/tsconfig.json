@@ -15,21 +15,18 @@
     "noImplicitAny": true,
     "strict": true,
     "strictNullChecks": true,
+    "strictPropertyInitialization": true,
     "noLib": false,
-    // 参考微信小程序公众平台的 "E6S支持情况 / 客户端ES6 API支持情况"
-    // https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/details.html#%E5%AE%A2%E6%88%B7%E7%AB%AFes6-api-%E6%94%AF%E6%8C%81%E6%83%85%E5%86%B5
     "lib": [
       "dom",
-      "es5",
-      "es2015.core",
-      "es2015.symbol",
-      "es2015.collection",
-      "es2015.promise"
-    ]
+      "es6"
+    ],
+    "outDir": "dist"
   },
   "include": [
     "src"
   ],
   "exclude": [
+    "**/__*"
   ]
 }

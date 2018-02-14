@@ -1,4 +1,19 @@
 
+## 使用
+
+### 使用 typescript
+
+### 使用 javascript
+
+- babel-runtime(可选安装)
+
+
+
+
+
+
+
+
 ## 参考
 
 [awesome](https://github.com/opendigg/awesome-github-wechat-weapp)
@@ -16,6 +31,9 @@
 - [一款轻巧的渐进式微信小程序框架](https://github.com/tinajs/tina)
 - https://github.com/egoist/poi
 - https://github.com/parcel-bundler/parcel
+- https://github.com/rollup/rollup
+- https://github.com/webpack/webpack
+
 
 ### 解析工具：
 

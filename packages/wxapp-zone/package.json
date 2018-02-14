@@ -4,8 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "wc",
-    "build:watch": "wc -w"
+    "clear": "rm -rf dist",
+    "build": "npm run clear && wc build",
+    "build:watch": "npm run clear && wc watch"
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
