@@ -4,9 +4,9 @@
 	"private": true,
 	"license": "MIT",
 	"data": {
-		"wx": "gen/wx.d.ts",
-		"wxp": "gen/wxp.d.ts",
-		"promisable": "gen/promisable.json"
+		"wx": "gen/api/wx.d.ts",
+		"wxp": "gen/api/wxp.d.ts",
+		"promisable": "gen/api/promisable.json"
 	},
 	"bin": {
 		"wg": "dist/cli/generator.js"

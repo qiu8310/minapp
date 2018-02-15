@@ -1,6 +1,6 @@
 *.log
 dist
-gen/.cache
+.cache
 vendor
 packages/*/node_modules
 node_modules/

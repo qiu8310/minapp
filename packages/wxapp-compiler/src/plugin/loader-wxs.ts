@@ -4,7 +4,7 @@ import {Loader, replace} from './inc/'
 const REQUIRE_REGEXP = /require\((['"])([^'"]*)\1\)/g
 
 @Loader.decorate
-export default class WxjsLoader extends Loader {
+export default class WxsLoader extends Loader {
   async run(content: string) {
     let {fromFile, compiler: {entryName}} = this
 
@@ -16,9 +16,9 @@ export default class WxjsLoader extends Loader {
     let emitContent = await replace(content, REQUIRE_REGEXP, async ([raw, quote, key]) => {
       let absFile = await this.tryResolve(key)
 
-      if (!absFile) {
+      if (!absFile) { // 有可能是注释中的 require，不做任何处理
         this.emitWarning(`解析不了 ${fromFile} 中引用的文件 ${key}`)
-        return raw // 有可能是注释中的 require，不做任何处理
+        return raw
       }
 
       requires.push(absFile) // 使用绝对路径，避免重复 resolve

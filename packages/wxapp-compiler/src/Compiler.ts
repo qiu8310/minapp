@@ -48,7 +48,7 @@ export class Compiler {
       throw new Error(`当前项目中没有 package.json 文件，无法编译`)
     }
 
-    this.entryName = 'wxapp-entry' + formatDate('-mm-dd-') + Math.random().toString(16).substr(2, 6) + '.js'
+    this.entryName = 'wxapp-entry' + formatDate('-yyyy-mm-dd-') + Math.random().toString(16).substr(2, 6) + '.js'
     this.entryPath = path.join(os.tmpdir(), this.entryName)
 
     this.build()
@@ -77,9 +77,9 @@ export class Compiler {
           {test: /\.json$/, use: loader.json},
 
           // 脚本
-          {test: /\.ts$/, include: this.srcDir, use: [loader.wxjs, loader.ts]},
-          {test: /\.js$/, include: this.srcDir, use: [loader.wxjs, {loader: loader.babel, options: babelrc(this)}]},
-          {test: /.js$/, exclude: this.srcDir, use: [loader.wxjs]},
+          {test: /\.ts$/, include: this.srcDir, use: [loader.wxs, loader.ts]},
+          {test: /\.js$/, include: this.srcDir, use: [loader.wxs, {loader: loader.babel, options: babelrc(this)}]},
+          {test: /.js$/, exclude: this.srcDir, use: [loader.wxs]},
 
           // 模板
           {test: /\.wxml$/, use: loader.wxml},

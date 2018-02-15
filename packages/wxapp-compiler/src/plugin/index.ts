@@ -5,7 +5,7 @@ export interface Loader {
   json: string
   wxml: string
   wxss: string
-  wxjs: string
+  wxs: string
   file: string
 
   babel: string
