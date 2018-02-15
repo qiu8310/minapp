@@ -5,11 +5,29 @@ import * as fs from 'fs-extra'
 import {findup} from 'mora-scripts/libs/fs'
 import {formatDate} from 'mora-scripts/libs/lang'
 import {injectDataToCompiler} from './hack-webpack'
-import {loader} from './loader'
+import {loader} from './plugin'
 import {babelrc} from './config/babelrc'
 
 export interface CompilerOptions {
   watch?: boolean
+  /**
+   * autoprefixer 的配置选项
+   *
+   * - false: 表示禁用
+   * - true: 表示使用默认值
+   * - 否则使用指定的配置
+   */
+  autoprefixer?: boolean | {[key: string]: any}
+
+  /**
+   * 插件 babel-plugin-transform-runtime 的配置选项，
+   * 需要先在本地安装 babel-runtime
+   *
+   * - false: 表示禁用
+   * - true: 表示使用默认值
+   * - 否则使用指定的配置
+   */
+  babelRuntime?: boolean | {[key: string]: any}
 }
 
 export class Compiler {
@@ -78,8 +96,7 @@ export class Compiler {
     }
 
     let wp = webpack(options)
-    let {srcDir, distDir, modulesDir, entryName} = this
-    injectDataToCompiler(wp, {srcDir, distDir, modulesDir, entryName})
+    injectDataToCompiler(wp, this)
     wp.run((err, stats) => {
       this.afterBuild()
       if (err) console.log(err.message, err.stack)

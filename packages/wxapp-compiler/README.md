@@ -1,6 +1,8 @@
 
 ## 使用
 
+- 所有 srcDir 中的 json 文件支持注释（参考 json5）
+
 ### 使用 typescript
 
 ### 使用 javascript
@@ -9,7 +11,9 @@
 
 
 
+## TODO
 
+- [ ] postcss-assets 强化(使用 sharp)
 
 
 

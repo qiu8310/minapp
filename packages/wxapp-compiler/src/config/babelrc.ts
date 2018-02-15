@@ -22,10 +22,13 @@ const defaultPlugins: Array<string | any[]> = []
 
 export function babelrc(compiler: Compiler) {
   let plugins = [...defaultPlugins]
+  let {babelRuntime: config} = compiler.options
 
   // 检查 babel-runtime 是否有安装在本地
   let moduleName = [`${babel}-runtime`].find(k => fs.existsSync(path.join(compiler.modulesDir, k)))
-  if (moduleName) plugins.push(['transform-runtime', {moduleName, polyfill: false}])
+  if (moduleName && config !== false) {
+    plugins.push(['transform-runtime', !config || config === true ? {moduleName, polyfill: false} : config])
+  }
 
   return {
     presets: defaultPresets.map(p => require.resolve(`${babel}preset-${p}`)),

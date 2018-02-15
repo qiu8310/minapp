@@ -14,13 +14,21 @@ export interface Loader {
   less: string
 }
 
-const loaderSuffix = '-loader.js'
-export const loader: Loader = fs.readdirSync(__dirname).reduce((res, name) => {
-  if (name.endsWith(loaderSuffix)) res[name.substr(0, name.length - loaderSuffix.length)] = path.resolve(__dirname, name)
-  return res
-}, {
+const files = fs.readdirSync(__dirname)
+const suffix = /\.\w+$/
+
+export const loader: Loader = reduce('loader-', {
   ts: require.resolve('awesome-typescript-loader'),
   babel: require.resolve('babel-loader'),
   sass: require.resolve('sass-loader'),
   less: require.resolve('less-loader'),
-} as any)
+})
+
+function reduce(prefix: string, initial: any = {}) {
+  return files.reduce((res, name) => {
+    if (name.startsWith(prefix)) {
+      res[name.substr(prefix.length).replace(suffix, '')] = path.resolve(__dirname, name)
+    }
+    return res
+  }, initial)
+}
