@@ -12,8 +12,8 @@ export default function(s: _.Source): _.IDtplConfig {
         matches: () => s.isDirectory && /^pages?$/.test(s.basicData.dirName)
       },
       {
-        name: './file/gen-tel.ts.dtpl',
-        matches: () => s.basicData.dirPath.indexOf('/gen-tpl/') >= 0
+        name: './file/modify-api.ts.dtpl',
+        matches: () => s.basicData.dirPath.indexOf('/modify/api/') >= 0
       }
     ],
     globalData: {}

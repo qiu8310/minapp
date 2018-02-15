@@ -1,7 +1,7 @@
-import {Template, TemplateModify} from '../Template'
+import {ApiModifier, TemplateMeta} from '../..'
 
-export default class extends Template {
-  modify($root: Cheerio): TemplateModify[] {
+export default class extends ApiModifier {
+  modify($root: Cheerio): TemplateMeta[] {
     // h3 换成 h4
     $root.find('h3').toArray().forEach(h3 => {
       let $el = this.$(h3)

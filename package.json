@@ -4,12 +4,13 @@
 	"private": true,
 	"license": "MIT",
 	"data": {
+		"tpl": "gen/tpl/data.json",
 		"wx": "gen/api/wx.d.ts",
 		"wxp": "gen/api/wxp.d.ts",
 		"promisable": "gen/api/promisable.json"
 	},
 	"bin": {
-		"wg": "dist/cli/generator.js"
+		"wg": "dist/cli/cmd.js"
 	},
 	"scripts": {
 		"test": "jest",

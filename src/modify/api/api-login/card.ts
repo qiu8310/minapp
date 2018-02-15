@@ -1,7 +1,7 @@
-import {Template, TemplateModify} from '../Template'
+import {ApiModifier, TemplateMeta} from '../..'
 
-export default class extends Template {
-  modify(): TemplateModify[] {
+export default class extends ApiModifier {
+  modify(): TemplateMeta[] {
     return [
       {type: 'ignoreHeadWarn', index: 2, col: 3, from: '是否参与签名'},
       {type: 'merge', fromIndex: 1, toIndex: 0, prefixes: ['cardList[].'], splice: [2, 0, '是']},

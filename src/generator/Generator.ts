@@ -2,7 +2,7 @@ import * as cheerio from 'cheerio'
 import * as path from 'path'
 import * as url from 'url'
 import * as fs from 'fs-extra'
-import {Template, TEMPLATE_ASSERT_ERROR, TemplateFunctionMeta} from '../gen-tpl/Template'
+import {Modifier, MODIFIER_ASSERT_ERROR, FunctionCodeMeta} from '../modify'
 import {Node, Page} from './layout/'
 import {markdownTable, EOL, markdown, normalizeTableRows, isSectionHead, RETURN_SECTION_TITLES, WX_FUNC_REGEXP} from './base/'
 
@@ -10,7 +10,7 @@ export class Generator {
   basename: string
   $root: Cheerio
   $: CheerioStatic
-  tpl: Template
+  modifier: Modifier
 
   constructor(public node: Node, public nodeUrl: string, nodeSource: string, public genDir: string) {
     this.basename = path.join(this.node.topNode.normilizedFile, this.node.normilizedFile)
@@ -20,17 +20,17 @@ export class Generator {
     console.log(`parsing: ${this.basename} ${nodeUrl}`)
 
     try {
-      let tplFile = path.resolve(__dirname, '../gen-tpl/', this.basename + '.js')
-      this.tpl = new (require(tplFile).default)(this)
+      let modifyFile = path.resolve(__dirname, '../modify/api/', this.basename + '.js')
+      this.modifier = new (require(modifyFile).default)(this)
     } catch (e) {
-      this.tpl = new Template(this)
+      this.modifier = new Modifier(this)
     }
 
     this.normalize()
   }
 
-  getTplMeta(name: string): TemplateFunctionMeta {
-    return this.tpl.meta[name] || {}
+  getFuncModifyMeta(name: string): FunctionCodeMeta {
+    return this.modifier.meta.func[name] || {}
   }
 
   /**
@@ -127,9 +127,9 @@ export class Generator {
     })
 
     try {
-      this.tpl.normalize(this.$root)
+      this.modifier.normalize(this.$root)
     } catch (e) {
-      if (e.message !== TEMPLATE_ASSERT_ERROR) throw e
+      if (e.message !== MODIFIER_ASSERT_ERROR) throw e
     }
   }
 
@@ -227,6 +227,6 @@ export class Generator {
 
     if ($top) $root.append($top)
 
-    this.tpl.normalizeAfterLevelify($root)
+    this.modifier.normalizeAfterLevelify($root)
   }
 }

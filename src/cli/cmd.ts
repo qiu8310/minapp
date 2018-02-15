@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as cli from 'mora-scripts/libs/tty/cli'
 
-import api from './api'
+import apiCmd from './cmd-api'
 
 cli({
   usage: 'wxgen [options] [...files]',
@@ -19,7 +19,7 @@ cli({
       'i | info': '<boolean> 显示 info 信息',
       'm | markdown': '<boolean> 生成 markdown',
     },
-    cmd: api
+    cmd: apiCmd
   }
 })
 .parse(function(res) { this.help() })

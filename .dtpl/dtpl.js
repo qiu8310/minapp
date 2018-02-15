@@ -12,8 +12,8 @@ function default_1(s) {
                 matches: function () { return s.isDirectory && /^pages?$/.test(s.basicData.dirName); }
             },
             {
-                name: './file/gen-tel.ts.dtpl',
-                matches: function () { return s.basicData.dirPath.indexOf('/gen-tpl/') >= 0; }
+                name: './file/modify-api.ts.dtpl',
+                matches: function () { return s.basicData.dirPath.indexOf('/modify/api/') >= 0; }
             }
         ],
         globalData: {}

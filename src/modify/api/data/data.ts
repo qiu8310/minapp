@@ -1,8 +1,8 @@
-import {Template, TemplateModify} from '../Template'
+import {ApiModifier, TemplateMeta} from '../..'
 
-export default class extends Template {
+export default class extends ApiModifier {
 
-  modify(): TemplateModify[] {
+  modify(): TemplateMeta[] {
     return []
   }
 

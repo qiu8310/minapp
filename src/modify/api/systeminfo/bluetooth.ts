@@ -1,7 +1,7 @@
-import {Template, TemplateModify} from '../Template'
+import {ApiModifier, TemplateMeta} from '../..'
 
-export default class extends Template {
-  modify(): TemplateModify[] {
+export default class extends ApiModifier {
+  modify(): TemplateMeta[] {
     return [
       {type: 'merge', fromIndex: 11, toIndex: 10, prefixes: ['devices[].']},
       {type: 'merge', fromIndex: 13, toIndex: 12, prefixes: ['devices[].']},

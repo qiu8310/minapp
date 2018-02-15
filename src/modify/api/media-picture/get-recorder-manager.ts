@@ -1,6 +1,6 @@
-import {Template} from '../Template'
+import {ApiModifier} from '../..'
 
-export default class extends Template {
+export default class extends ApiModifier {
   normalize($root: Cheerio) {
     super.normalize($root)
     let $target = $root.find('table').eq(2).prev()

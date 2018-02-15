@@ -1,0 +1,7 @@
+import {ApiModifier, TemplateMeta} from '../..'
+
+export default class extends ApiModifier {
+  modify($root: Cheerio): TemplateMeta[] {
+    return []
+  }
+}

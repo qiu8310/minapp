@@ -1,6 +1,6 @@
-import {Template} from '../Template'
+import {ApiModifier} from '../..'
 
-export default class extends Template {
+export default class extends ApiModifier {
   modify($root: Cheerio) {
     $root.find('h2').each((i, el) => {
       let $el = this.$(el)

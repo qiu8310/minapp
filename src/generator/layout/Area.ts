@@ -1,4 +1,4 @@
-import {Generator, Func, Klass, CnavasContext, info, warn, Definition, Arg, Type, ObjectType, WX_FUNC_REGEXP, EOL, FunctionType, TemplateFunctionMeta} from './_'
+import {Generator, Func, Klass, CnavasContext, info, warn, Definition, Arg, Type, ObjectType, WX_FUNC_REGEXP, EOL, FunctionType, FunctionCodeMeta} from './_'
 import {Section} from './Section'
 import {Page} from './Page'
 
@@ -59,8 +59,8 @@ export class ApiArea extends Area {
   klass?: Klass
   func: Func
 
-  get meta(): TemplateFunctionMeta {
-    return this.g.getTplMeta(this.name)
+  get meta(): FunctionCodeMeta {
+    return this.g.getFuncModifyMeta(this.name)
   }
 
   constructor(g: Generator, page: Page, $area: Cheerio) {
