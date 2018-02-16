@@ -1,6 +1,6 @@
-import {Generator} from '../generator/Generator'
-import * as config from '../generator/base/config'
-import {info, warn, error} from '../generator/base/'
+import {Generator} from '../../generator/Generator'
+import * as config from '../../generator/base/config'
+import {info, warn, error} from '../../generator/base/'
 
 export const MODIFIER_ASSERT_ERROR = 'MODIFIER_ASSERT_ERROR'
 
@@ -36,6 +36,11 @@ export class Modifier {
    */
   get meta(): CodeMeta {
     return {
+      componentNoAttrs: [
+        'movable-area',
+        'cover-view',
+        'picker-view-column',
+      ],
       func: {
         getStorageSync: {returns: 'any | undefined'},
         connectSocket: {returns: 'SocketTask'},

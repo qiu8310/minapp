@@ -1,4 +1,4 @@
-// Generated at 2018-2-13
+// Generated at 2018-2-16
 declare namespace wx {
   type IWxRequestObject = {
     /**

@@ -4,23 +4,26 @@ import * as url from 'url'
 import * as fs from 'fs-extra'
 import {Modifier, MODIFIER_ASSERT_ERROR, FunctionCodeMeta} from '../modify'
 import {Node, Page} from './layout/'
-import {markdownTable, EOL, markdown, normalizeTableRows, isSectionHead, RETURN_SECTION_TITLES, WX_FUNC_REGEXP} from './base/'
+import {markdownTable, EOL, markdown, normalizeTableRows, isSectionHead, RETURN_SECTION_TITLES, WX_FUNC_REGEXP, SINCE_TEST_REGEXP} from './base/'
+import {COLLECT} from '../cli/collect'
 
 export class Generator {
+  COLLECT: COLLECT = COLLECT
   basename: string
   $root: Cheerio
   $: CheerioStatic
   modifier: Modifier
 
-  constructor(public node: Node, public nodeUrl: string, nodeSource: string, public genDir: string) {
+  constructor(public key: string, public node: Node, public nodeUrl: string, nodeSource: string, public genDir: string) {
     this.basename = path.join(this.node.topNode.normilizedFile, this.node.normilizedFile)
     this.$ = cheerio.load(nodeSource)
     this.$root = this.$('.markdown-section')
 
     console.log(`parsing: ${this.basename} ${nodeUrl}`)
+    if (this.$root.length !== 1) throw new Error(`文件没有文档区，无法解析`)
 
     try {
-      let modifyFile = path.resolve(__dirname, '../modify/api/', this.basename + '.js')
+      let modifyFile = path.resolve(__dirname, `../modify/${key}/`, this.basename + '.js')
       this.modifier = new (require(modifyFile).default)(this)
     } catch (e) {
       this.modifier = new Modifier(this)
@@ -72,21 +75,23 @@ export class Generator {
 
   async exec(isMakeMarkdown: boolean, promise: boolean) {
     if (isMakeMarkdown) return this.makeMarkdown()
-    else return this.makeTS(promise)
+    else if (this.key === 'api') return this.makeTS(promise)
+    else return this.makeJSON()
+  }
+
+  private makeJSON() {
+    this.levelify('h4')
+    let page = new Page(this, this.$root, false)
+    return page.toJSONString()
   }
 
   private makeTS(promise: boolean) {
     if (this.node.isCanvas) this.levelify('h1')
     else this.levelify('h3')
 
-    let {$root} = this
-
-    // 查看生成结果
-    if (process.env.WRITE_PARSED_HTML) fs.writeFileSync('/tmp/ts.html', this.$root.html())
-
-    let page = new Page(this, $root, promise)
+    let page = new Page(this, this.$root, promise)
     let ts = page.toTSString(1)
-    if (ts) ts = ts.replace(/> 基础库 ([\d\.]+) 开始支持，低版本需做\[兼容处理\]\(.*?\)/g, (raw, since) => '@since ' + since)
+    if (ts) ts = ts.replace(SINCE_TEST_REGEXP, (raw, since) => '@since ' + since)
     if (promise) return ts // promise 不需要生成单个文件
 
     if (ts) {
@@ -228,5 +233,10 @@ export class Generator {
     if ($top) $root.append($top)
 
     this.modifier.normalizeAfterLevelify($root)
+    this.writeDebugHtml()
+  }
+
+  private writeDebugHtml() {
+    if (process.env.WRITE_DEBUG_HTML) fs.writeFileSync('/tmp/ts.html', this.$root.html())
   }
 }

@@ -1,0 +1,7 @@
+import {TplModifier, TemplateMeta} from '../..'
+
+export default class extends TplModifier {
+  modify($root: Cheerio): TemplateMeta[] {
+    return []
+  }
+}

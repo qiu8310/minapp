@@ -1,5 +1,5 @@
 import {Modifier} from './Modifier'
-import {isSectionHead} from '../generator/base/'
+import {isSectionHead} from '../../generator/base/'
 import {TemplateMeta} from './interface'
 
 export class ApiModifier extends Modifier {
@@ -66,7 +66,7 @@ export class ApiModifier extends Modifier {
 
   // 给模板文件用的辅助性函数
   protected sectionTitle(title: string) {
-    return this.$(`<h4>${title}：</h4>`)
+    return this.$(`<h5>${title}：</h5>`)
   }
 
   protected levelifiedSection(title: string, elements: Cheerio) {

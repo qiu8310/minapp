@@ -14,6 +14,10 @@ function default_1(s) {
             {
                 name: './file/modify-api.ts.dtpl',
                 matches: function () { return s.basicData.dirPath.indexOf('/modify/api/') >= 0; }
+            },
+            {
+                name: './file/modify-tpl.ts.dtpl',
+                matches: function () { return s.basicData.dirPath.indexOf('/modify/tpl/') >= 0; }
             }
         ],
         globalData: {}

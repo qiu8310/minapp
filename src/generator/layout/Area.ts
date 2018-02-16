@@ -1,4 +1,4 @@
-import {Generator, Func, Klass, CnavasContext, info, warn, Definition, Arg, Type, ObjectType, WX_FUNC_REGEXP, EOL, FunctionType, FunctionCodeMeta} from './_'
+import {Generator, Func, Klass, info, warn, Definition, Arg, Type, ObjectType, WX_FUNC_REGEXP, EOL, FunctionType, FunctionCodeMeta} from './_'
 import {Section} from './Section'
 import {Page} from './Page'
 
@@ -229,9 +229,10 @@ export class RestArea extends Area {
   klass?: Klass
   constructor(g: Generator, page: Page, $area: Cheerio) {
     super(g, page, $area)
-    if (g.node.normilizedFile === 'socket-task') {
-      let zone = new AreaZone(g, this, $area)
-      this.klass = this.parseKlass('SocketTask', zone)
+    if (g.key === 'tpl') {
+      this.parseTpl()
+    } else if (g.node.normilizedFile === 'socket-task') {
+      this.klass = this.parseKlass('SocketTask', new AreaZone(g, this, $area))
     } else if (g.node.isCanvas) {
       let name = this.title === 'restore' ? 'restore' : /^canvasContext\.(\w+)$/.test(this.title) ? RegExp.$1 : ''
       if (!name) {
@@ -269,11 +270,11 @@ export class RestArea extends Area {
             } else {
               let newdef = def.clone();
               (newdef.type as FunctionType).args = args
-              CnavasContext.definitions.push(newdef)
+              this.g.COLLECT.API.CnavasContext.definitions.push(newdef)
             }
           })
         }
-        CnavasContext.definitions.push(def)
+        this.g.COLLECT.API.CnavasContext.definitions.push(def)
       }
     } else {
       info(`no process ${this}`)
@@ -283,6 +284,21 @@ export class RestArea extends Area {
   toTSString(tabCount: number, promise: boolean) {
     if (this.klass) return this.klass.toTSString(tabCount, promise)
     return ''
+  }
+
+  toJSONString() {
+    return ''
+  }
+
+  private parseTpl() {
+    let {componentNoAttrs} = this.g.modifier.meta
+
+    let name = this.title
+    let $desc = this.$area.children('.desc')
+    let sec = new Section(this.g, this, $desc)
+    if (!sec.table && componentNoAttrs.indexOf(name) < 0) {
+      warn(`${name} 没有 table`)
+    }
   }
 
   private parseKlass(klassName: string, zone: AreaZone) {

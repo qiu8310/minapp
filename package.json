@@ -9,12 +9,9 @@
 		"wxp": "gen/api/wxp.d.ts",
 		"promisable": "gen/api/promisable.json"
 	},
-	"bin": {
-		"wg": "dist/cli/cmd.js"
-	},
 	"scripts": {
 		"test": "jest",
-		"generate": "node dist/cli/generator.js && node dist/cli/generator.js -p",
+		"generate": "node dist/cli/cmd.js api && node dist/cli/cmd.js api -p && git diff gen/**",
 		"dtpl": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/",
 		"build": "remove-all dist/ && tsc",
 		"build:watch": "remove-all dist/ && tsc -w"

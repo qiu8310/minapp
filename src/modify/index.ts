@@ -1,3 +1,4 @@
-export * from './interface'
-export * from './Modifier'
-export * from './ModifierApi'
+export * from './inc/interface'
+export * from './inc/Modifier'
+export * from './inc/ModifierApi'
+export * from './inc/ModifierTpl'

@@ -49,5 +49,8 @@ export interface FunctionCodeMeta {
 }
 
 export interface CodeMeta {
+  /** 要修改的函数 */
   func: {[fnKey: string]: FunctionCodeMeta}
+  /** 这里面的组件没有任何属性 */
+  componentNoAttrs: string[]
 }

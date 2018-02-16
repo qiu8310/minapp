@@ -1,5 +1,5 @@
 {
-  "dot-template.debug": false,
+  "dot-template-vscode.debug": false,
   "files.exclude": {
     "*.code-workspace": true,
     "**/packages": true,

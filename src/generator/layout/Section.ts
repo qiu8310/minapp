@@ -22,13 +22,12 @@ export class Section {
   }
 
   constructor(public g: Generator, public area: Area, public $section: Cheerio) {
-    this.title = $section.data('title')
+    this.title = $section.data('title') || ''
 
     // 标题中的 key 是找到 section 与 section 之间的关系的关键
     if (/(\w+)/.test(this.title)) this.key = RegExp.$1
 
     let $table = $section.find('table')
-
     if ($table.length > 1) {
       warn(`${this} 不应该含有多于两个 table`)
     } else if ($table.length === 1) {
