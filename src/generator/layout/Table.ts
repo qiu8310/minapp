@@ -97,6 +97,12 @@ export class Table {
       }
     })
 
+    // 去掉 since 中的链接
+    if (def.since && /^\[([\d\.]+)\]/.test(def.since)) def.since = RegExp.$1
+    try {
+      if (def.defaultValue) def.defaultValue = JSON.parse(def.defaultValue) + ''
+    } catch (e) {}
+
     if (originalHead[0] === '方法' || args || type.name === 'function') {
       type = new FunctionType(args || [], new Type('any'))
     }

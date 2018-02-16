@@ -4,7 +4,8 @@
 	"private": true,
 	"license": "MIT",
 	"data": {
-		"tpl": "gen/tpl/data.json",
+		"components": "gen/tpl/components.json",
+		"detailComponents": "gen/tpl/components-with-examples.json",
 		"wx": "gen/api/wx.d.ts",
 		"wxp": "gen/api/wxp.d.ts",
 		"promisable": "gen/api/promisable.json"

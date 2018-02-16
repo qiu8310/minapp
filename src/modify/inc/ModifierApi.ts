@@ -8,6 +8,8 @@ export class ApiModifier extends Modifier {
   }
 
   normalize($root: Cheerio) {
+    super.normalize($root)
+
     let modifies = this.modify($root) || []
     if (!modifies.length) return
 
@@ -60,6 +62,11 @@ export class ApiModifier extends Modifier {
         let $table = $(tables[m.index])
         this.assert($table.find('thead th').eq(m.col).text() === m.from)
         $table.addClass('ignoreHeadWarn')
+      } else if (m.type === 'tableTitleUpdate') {
+        let $head = $(tables[m.index]).prev()
+        this.assert($head.text() === m.from, `表格的标题不等于 ${m.from}`)
+        if (/^(strong|h\d)$/.test($head.get(0).tagName)) $head.text(m.to)
+        else $head.html(`<strong>${m.to}</strong>`)
       }
     }
   }

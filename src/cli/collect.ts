@@ -1,4 +1,4 @@
-import {Klass} from '../generator/struct'
+import {Klass, Component} from '../generator/struct'
 
 export interface COLLECT {
   API: {
@@ -9,7 +9,7 @@ export interface COLLECT {
     }
   },
   TPL: {
-
+    COMPONENTS: Component[]
   }
 }
 
@@ -21,5 +21,7 @@ export const COLLECT: COLLECT = {
       KLASS: {}
     }
   },
-  TPL: {}
+  TPL: {
+    COMPONENTS: []
+  }
 }

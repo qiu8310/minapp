@@ -1,5 +1,6 @@
 import {Struct, base} from './_'
 import {Type, ObjectType, FunctionType} from './Type'
+import {ComponentAttrValue} from './Component'
 
 export interface DefinitionOptions {
   desc: string[]
@@ -57,6 +58,11 @@ export class Definition extends Struct {
 
   /** 其它字段 */
   extras: Array<{key: string, value: string}> = []
+
+  /** 为兼容 Component 而写的，主要用在命令 tpl 中，在命令 api 中还没用到  */
+  enum: ComponentAttrValue[] = []
+  /** 为兼容 Component 而写的，主要用在命令 tpl 中，在命令 api 中还没用到 */
+  subDefinitions: Array<{equal: string, definitions: Definition[]}> = []
 
   constructor(public name: string, public type: Type, opts?: DefinitionOptions) {
     super()

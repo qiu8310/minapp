@@ -1,15 +1,21 @@
 import {Generator, EOL} from './_'
-import {ApiArea, RestArea} from './Area'
+import {ApiArea, RestArea, ComponentArea} from './Area'
 
 export class Page {
   apis: ApiArea[]
-  rests: RestArea[]
+  comps: ComponentArea[] = []
+  rests: RestArea[] = []
 
   constructor(public g: Generator, public $root: Cheerio, public promise: boolean) {
     this.apis = $root.children('.api').toArray().map(el => new ApiArea(g, this, g.$(el)))
-    this.rests = $root.children('.rest').toArray().map(el => new RestArea(g, this, g.$(el)))
+    let rests = $root.children('.rest').toArray()
 
-    if (this.g.key === 'api') this.initPromisable()
+    if (this.g.key === 'api') {
+      this.rests = rests.map(el => new RestArea(g, this, g.$(el)))
+      this.initPromisable()
+    } else {
+      this.comps = rests.map(el => new ComponentArea(g, this, g.$(el)))
+    }
   }
 
   initPromisable() {
@@ -41,7 +47,8 @@ export class Page {
   }
 
   toJSONString() {
-    return this.rests.map(r => r.toJSONString()).join(EOL)
+    this.g.COLLECT.TPL.COMPONENTS.push(...this.comps.map(c => c.component))
+    return ''
   }
 
   toString() {

@@ -16,11 +16,6 @@ export class Generator {
 
   constructor(public key: string, public node: Node, public nodeUrl: string, nodeSource: string, public genDir: string) {
     this.basename = path.join(this.node.topNode.normilizedFile, this.node.normilizedFile)
-    this.$ = cheerio.load(nodeSource)
-    this.$root = this.$('.markdown-section')
-
-    console.log(`parsing: ${this.basename} ${nodeUrl}`)
-    if (this.$root.length !== 1) throw new Error(`文件没有文档区，无法解析`)
 
     try {
       let modifyFile = path.resolve(__dirname, `../modify/${key}/`, this.basename + '.js')
@@ -29,6 +24,13 @@ export class Generator {
       this.modifier = new Modifier(this)
     }
 
+    this.$ = cheerio.load(this.modifier.normalizeHtml(nodeSource))
+    this.$root = this.$('.markdown-section')
+
+    console.log(`parsing: ${this.basename} ${nodeUrl}`)
+    if (this.$root.length !== 1) throw new Error(`文件没有文档区，无法解析`)
+
+    this.modifier.init(this.$, this.$root)
     this.normalize()
   }
 
@@ -48,18 +50,25 @@ export class Generator {
     if (tagName) $el = $el.find(tagName)
     return $el.toArray().map(el => {
       let $e = this.$(el)
-      // markdown('[]') => '\[\]' # 需要避免
-      return el.childNodes.length > 1 ? markdown($e.html() || '') : $e.text()
+      let ns = el.childNodes
+      // 如果文本当作 markdown 处理会出现异常
+      return ns.length === 1 && ns[0].type === 'text' ? $e.text() : markdown($e.html())
     })
   }
 
-  getTableData(element: CheerioElement | Cheerio) {
-    let $table = this.$(element)
+  getTableData(table: CheerioElement | Cheerio) {
+    let $table = this.$(table)
     let head = this.getTexts($table.find('thead th'))
     let body = $table.find('tbody tr').toArray().map(row => this.getTexts(row, 'td'))
 
     body = normalizeTableRows(body, head.length)
     return {head, body}
+  }
+
+  tableToDesc(table: CheerioElement | Cheerio, head?: string) {
+    let {body} = this.getTableData(table)
+    let desc = '{' + body.map(r => `${r[0]} => "${r[1]}"`).join('; ') + '}'
+    return (head ? head + ': ' : '') + desc
   }
 
   markdownElement(element: CheerioElement | Cheerio): string {

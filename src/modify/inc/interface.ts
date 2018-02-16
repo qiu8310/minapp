@@ -39,7 +39,15 @@ export interface TableIgnoreHeadWarnTemplateMeta {
   from: string
 }
 
-export declare type TemplateMeta = TableMergeTemplateMeta | TableUpdateTemplateMeta | TableIgnoreHeadWarnTemplateMeta
+/** 修改表格上方的标题 */
+export interface TableTitleUpdateTemplateMeta {
+  type: 'tableTitleUpdate'
+  index: number
+  from: string
+  to: string
+}
+
+export declare type TemplateMeta = TableMergeTemplateMeta | TableUpdateTemplateMeta | TableIgnoreHeadWarnTemplateMeta | TableTitleUpdateTemplateMeta
 
 
 // 这些 CodeMeta 是直接在 Generater 代码中使用的

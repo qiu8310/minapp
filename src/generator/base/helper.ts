@@ -7,7 +7,7 @@ import * as _ from 'lodash'
 import {TAB} from './config'
 
 const interMarkdown = new (require('turndown'))()
-const markdown = (html: string): string => interMarkdown.turndown(html)
+const markdown = (html: string | null | undefined): string => interMarkdown.turndown(html || '')
 
 export {EOL} from 'os'
 export {warn, error, assert, markdown}

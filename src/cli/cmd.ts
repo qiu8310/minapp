@@ -35,6 +35,8 @@ cli({
     desc: '解析微信小程序组件文档',
     options: {
       ...commonOpts,
+      's | start': '<string> 起点 文档 （包含）',
+      'e | end':   '<string> 结束点 文档（不包含）'
     },
     cmd: wrapCmd('tpl', tplCmd)
   }
@@ -78,13 +80,17 @@ function makeNodeReduceIterator(res: any, key: string) {
     let nodeSource = noCache ? (await rp(nodeUrl)) : fs.readFileSync(cacheFile).toString()
     if (noCache) fs.writeFileSync(cacheFile, nodeSource)
 
-    new Generator(key, node, nodeUrl, nodeSource, genDir)
-      .exec(res.markdown, res.promise)
-      .then((str) => {
-        if (!allResult) allResult = []
-        if (str) allResult.push(str)
-        done(undefined, allResult)
-      })
-      .catch((e: any) => done(e))
+    try { // new Generator 是同步的，其中可能报错
+      new Generator(key, node, nodeUrl, nodeSource, genDir)
+        .exec(res.markdown, res.promise)
+        .then((str) => {
+          if (!allResult) allResult = []
+          if (str) allResult.push(str)
+          done(undefined, allResult)
+        })
+        .catch((e: any) => done(e))
+    } catch (e) {
+      console.log(e)
+    }
   }
 }

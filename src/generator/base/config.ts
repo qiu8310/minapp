@@ -47,6 +47,8 @@ export const TYPE_MAP: {[key: string]: string} = {
   objectarray: 'ArrayObject',
   'object array': 'ArrayObject',
   'array object': 'ArrayObject',
+  '二维object array': 'ArrayObject',
+  '二维array': 'any[][]',
   object: 'Object',
   boolean: 'boolean',
   boolead: 'boolean',

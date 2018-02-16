@@ -1,4 +1,9 @@
-import {Generator, Func, Klass, info, warn, Definition, Arg, Type, ObjectType, WX_FUNC_REGEXP, EOL, FunctionType, FunctionCodeMeta} from './_'
+import {
+  Generator, Func, Klass, Definition, Arg, Type, ObjectType, FunctionType,
+  markdown, info, warn, FunctionCodeMeta, error,
+  WX_FUNC_REGEXP, EOL, TABLE_REST_FIELD_MAP,
+  Component, ComponentAttr, ComponentAttrValue, ComponentLink, ArrayObjectType
+} from './_'
 import {Section} from './Section'
 import {Page} from './Page'
 
@@ -19,16 +24,20 @@ export class Area {
     this.title = $area.data('title')
   }
 
+  each(selector: string, cb: (p: CheerioElement, $p: Cheerio) => void) {
+    this.$area.find(selector).toArray().forEach(p => cb(p, this.g.$(p)))
+  }
+
   toString() {
     return `<Area ${this.title}>`
   }
 
   getExamples() {
     let {$} = this.g
-    return this.$area.find('code[class^=lang]').toArray().map(el => {
+    return this.$area.find('pre code').toArray().map(el => {
       let $el = $(el)
       let code = $el.text()
-      let lang = $el.attr('class').replace(/^lang-/, '')
+      let lang = ($el.attr('class') || '').replace(/^lang-/, '')
 
       // 将 code 中的 /* */ 结构替换成 //
       code = code.replace(/\/\*([\s\S]*?)\*\//g, (raw, content: string) => {
@@ -225,13 +234,236 @@ export class ApiArea extends Area {
   }
 }
 
+export class ComponentArea extends Area {
+  component: Component
+  constructor(g: Generator, page: Page, $area: Cheerio) {
+    super(g, page, $area)
+
+    let name = this.title
+    let {componentNoAttrs} = this.g.modifier.meta
+
+    let c = this.component = new Component(name, this.g.nodeUrl)
+
+    let $desc = this.$area.children('.desc')
+    let sec = new Section(this.g, this, $desc)
+
+    if (componentNoAttrs.indexOf(name) < 0) {
+      if (!sec.table) warn(`${name} 没有 attrs table`)
+    } else {
+      if (sec.table) warn(`${name} 不需要 attrs table，但出现了 attrs table`)
+    }
+    if (sec.table) sec.table.$table.remove()
+
+    this.getTplInfo(sec)
+
+    if (sec.table) c.attrs = sec.definitions.map(def => ComponentAttr.fromDefinition(def))
+
+    // 要在 getTplInfo 之后再 markdown desc (getTplInfo 会处理掉额外的 dom)
+    error(`${name}:`)
+    // console.log(JSON.stringify(this.component.attrs, null, 2))
+    // console.log(this.component.attrs)
+    if (c.desc) console.log(c.desc.join(EOL + EOL))
+    if (c.since) console.log(`since: ${c.since}`)
+    if (c.authorize) console.log(`authorize: ${c.authorize.name}`)
+    if (c.relateApis.length) console.log(`relateApis: ${c.relateApis.map(a => a.name).join(', ')}`)
+    // if (c.notices.length) console.log(`notices:\n${c.notices.map(n => '  ' + n + EOL).join('')}`)
+    // if (c.bugs.length) console.log(`bugs:\n${c.bugs.map(n => '  ' + n + EOL).join('')}`)
+    // if (c.tips.length) console.log(`tips:\n${c.tips.map(n => '  ' + n + EOL).join('')}`)
+  }
+
+  /**
+   * 获取在代码下面的演示
+   * 需要在 getExamples 前先执行，否则可能被 getExamples 删除了
+   */
+  private getTplDemos() {
+    let demos: string[] = []
+    let isDemo = ($el: Cheerio) => $el.children().length === 1 && $el.children().eq(0).is('img')
+    this.each('pre', (pre, $pre) => {
+      let $next = $pre.next()
+      while (isDemo($next)) {
+        let t = $next
+        demos.push(t.find('img').attr('src'))
+        $next = $next.next()
+        t.remove()
+      }
+    })
+    return demos
+  }
+
+  private getTplInfo(descSec: Section) {
+    let {component} = this
+    let {$} = this.g
+
+    this.each('p', (p, $p) => {
+      // p 标签里只有 text 和 link 节点，并且两者都有，同时只能有一个 link
+      let nodes = p.childNodes
+      let text = ''
+      let link: ComponentLink | undefined
+
+      if (nodes.every(n => {
+        if (n.type === 'text') {
+          text += n.data
+        } else if (n.type === 'tag' && n.tagName === 'a' && !link) {
+          link = new ComponentLink(nodes[1].firstChild.data || '', nodes[1].attribs.href)
+          text += link.name
+        } else {
+          return false
+        }
+        return true
+      }) && text && link) {
+        let remove = true
+        if (nodes.length === 2 && /相关\s*api/i.test(text)) {
+          component.relateApis.push(link)
+        } else if (nodes.length === 2 && /基础库 ([\d\.]+) 开始支持，低版本需做/.test(text)) {
+          component.since = RegExp.$1
+        } else if (nodes.length === 3 && /需要用户授权\s*(scope.\w+)/.test(text)) {
+          component.authorize = new ComponentLink(RegExp.$1, link.link)
+        } else {
+          remove = false
+        }
+        if (remove) {
+          if (p.parentNode.childNodes.length === 1) $p.parent().remove()
+          else $p.remove()
+        }
+      }
+    })
+
+    component.demoImages = this.getTplDemos()
+    component.examples = this.getExamples() // 会毁灭 dom，需要在 getTplDemos 后执行
+
+    let reg1 = /^\*?\*?注[意\d]?\*?\*?\s*[:：]\s*/
+    let reg2 = /^(?:`?(\w+)`?\s*[:：]\s*|\*\*(Tip|Bug)s?\s*[:：]\*\*)/i
+
+    // let prefixRegexp = /^(?:`?(\w+)`?|\*\*注[意\d]?\*\*|注[意\d]?)\s*[:：]\s*/i
+    let fetchTipBugNotice = ($el: Cheerio, forceType?: 'tip' | 'bug' | 'notice' | null) => {
+      let text = markdown($el.html()).trim()
+      let stripText = text.startsWith('**') && text.endsWith('**')
+        ? text.substr(2, text.length - 4)
+        : text
+
+      let key: string = forceType || 'notice'
+      if (reg1.test(stripText)) {
+        key = 'notice'
+        stripText = stripText.replace(reg1, '')
+      } else if (reg2.test(stripText)) {
+        key = (RegExp.$1 || RegExp.$2).toLowerCase()
+        stripText = stripText.replace(reg2, '')
+      }
+
+      if (forceType || stripText !== text) {
+        if (key === 'tip') component.tips.push(stripText)
+        else if (key === 'bug') component.bugs.push(stripText)
+        else if (key === 'notice') component.notices.push(stripText)
+        else warn(`${text} 不属于 notice、tip 和 bug 字段`)
+        $el.remove()
+        return true
+      }
+      return false
+    }
+
+    this.each('.desc, .section', (s, $s) => {
+      let stitle = $s.data('title') || '__desc__'
+      if (/^\s*(?:(Bugs?\s*&)?\s*Tips?|(注意))\s*$/i.test(stitle)) {
+        // Bugs & Tips 下的内容可能没有写 tip 或 bug 前缀，所以优先使用 tip
+        let forceType: any = RegExp.$2 ? 'notice' : 'tip'
+        $s.find('li').toArray().forEach(li => fetchTipBugNotice($(li), forceType))
+        $s.remove()
+      } else {
+        $s.children().toArray().forEach(c => {
+          let $c = $(c)
+          if ($c.is('p')) {
+            fetchTipBugNotice($c)
+          } else if ($c.is('ul, ol')) {
+            $c.children('li').toArray().forEach(p => fetchTipBugNotice($(p)))
+          } else if ($c.is('blockquote')) {
+            // blockquote 中的 p 当作 notice (since 已经提取出去了)
+            $c.children('p').toArray().forEach(p => fetchTipBugNotice($(p), 'notice'))
+          }
+        })
+
+        if (stitle !== '__desc__') {
+          let sec = new Section(this.g, this, $s)
+          this.parseTplTable(descSec, sec)
+          component.desc.push(...sec.desc())
+        } else {
+          let d = ($s.html() || '').trim()
+          if (d) component.desc.push(markdown(d))
+        }
+      }
+
+      if ($s.children().length === 0) $s.remove()
+    })
+  }
+
+  private parseTplTable(desc: Section, sec: Section) {
+    let $table = sec.$section.find('table') // 只会有一个 table
+    if (desc.hasDefinitions && $table.length) {
+      let def: Definition | undefined
+
+      let defValue: string | undefined
+      if (/(\w+)\s*=\s*(\w+)/.test(sec.title) && RegExp.$1 === sec.key) {
+        defValue = RegExp.$2
+      }
+
+      if (sec.key) {
+        desc.definitions.some(a => {
+          if (a.name === sec.key) {
+            def = a
+          } else if (a.type instanceof ObjectType) {
+            def = a.type.definitions.find(d => d.name === sec.key)
+          }
+          if (!def) {
+            a.subDefinitions.forEach(s => def = s.definitions.find(d => d.name === sec.key))
+          }
+          return !!def
+        })
+      }
+
+      if (!def) {
+        warn(`带表格的区块 ${sec} 没有关联任何属性，无法处理`)
+      } else if (sec.hasDefinitions) {
+        if (defValue) {
+          def.subDefinitions.push({equal: defValue, definitions: sec.definitions})
+        } else {
+          def.type = def.type.name.indexOf('Array') >= 0
+            ? new ArrayObjectType(sec.definitions)
+            : new ObjectType(sec.definitions)
+        }
+      } else if (sec.title.indexOf('有效值') >= 0) {
+        // @ts-ignore
+        def.enum = this.parseTableToEnum($table.eq(0))
+      } else if (sec.title.indexOf('__描述__') >= 0) {
+        let prefix = (sec.title.split('__描述__')[1] || '').trim()
+        def.desc.push(this.g.tableToDesc($table, prefix))
+      }
+      sec.$section.empty()
+    } else if (!desc.hasDefinitions && $table.length) {
+      warn(`${this} 没有任何属性，无法处理带表格的 ${sec}`)
+    } else {
+      warn(`无法解析的 ${sec}`)
+    }
+    sec.$section.find('table').remove()
+  }
+
+  private parseTableToEnum($table: Cheerio): ComponentAttrValue[] {
+    let {head, body} = this.g.getTableData($table)
+    let keys = [...head.slice(1).map(h => TABLE_REST_FIELD_MAP[h])]
+    if (keys.some(k => ['desc', 'since'].indexOf(k) < 0)) {
+      warn(`table 无法解析成 ComponentAttrValue, ${head.join(', ')}`)
+    }
+    return body.map(row => {
+      let av = new ComponentAttrValue(row[0])
+      row.slice(1).forEach((v, i) => (av as any)[keys[i]] = v)
+      return av
+    })
+  }
+}
+
 export class RestArea extends Area {
   klass?: Klass
   constructor(g: Generator, page: Page, $area: Cheerio) {
     super(g, page, $area)
-    if (g.key === 'tpl') {
-      this.parseTpl()
-    } else if (g.node.normilizedFile === 'socket-task') {
+    if (g.node.normilizedFile === 'socket-task') {
       this.klass = this.parseKlass('SocketTask', new AreaZone(g, this, $area))
     } else if (g.node.isCanvas) {
       let name = this.title === 'restore' ? 'restore' : /^canvasContext\.(\w+)$/.test(this.title) ? RegExp.$1 : ''
@@ -284,21 +516,6 @@ export class RestArea extends Area {
   toTSString(tabCount: number, promise: boolean) {
     if (this.klass) return this.klass.toTSString(tabCount, promise)
     return ''
-  }
-
-  toJSONString() {
-    return ''
-  }
-
-  private parseTpl() {
-    let {componentNoAttrs} = this.g.modifier.meta
-
-    let name = this.title
-    let $desc = this.$area.children('.desc')
-    let sec = new Section(this.g, this, $desc)
-    if (!sec.table && componentNoAttrs.indexOf(name) < 0) {
-      warn(`${name} 没有 table`)
-    }
   }
 
   private parseKlass(klassName: string, zone: AreaZone) {
