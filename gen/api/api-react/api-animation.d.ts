@@ -24,7 +24,7 @@ export namespace wx {
      *   step-start    |动画第一帧就跳至结束状态直到结束
      *   step-end      |动画一直保持开始状态，最后一帧跳到结束状态
      *
-     * @default "linear"
+     * @default linear
      */
     timingFunction?: string
 
@@ -38,7 +38,7 @@ export namespace wx {
     /**
      * 设置transform-origin
      *
-     * @default "50% 50% 0"
+     * @default 50% 50% 0
      */
     transformOrigin?: string
   }

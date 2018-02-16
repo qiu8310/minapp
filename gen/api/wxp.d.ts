@@ -1,4 +1,4 @@
-// Generated at 2018-2-16
+// Generated at 2018-2-17
 export namespace wxp {
   type IWxRequestObject = {
     /**
@@ -5608,7 +5608,7 @@ export namespace wxp {
      *   step-start    |动画第一帧就跳至结束状态直到结束
      *   step-end      |动画一直保持开始状态，最后一帧跳到结束状态
      *
-     * @default "linear"
+     * @default linear
      */
     timingFunction?: string
 
@@ -5622,7 +5622,7 @@ export namespace wxp {
     /**
      * 设置transform-origin
      *
-     * @default "50% 50% 0"
+     * @default 50% 50% 0
      */
     transformOrigin?: string
   }
@@ -7362,9 +7362,9 @@ export namespace wxp {
      *
      * **参数：**
      *
-     *   参数    |  类型    |  定义              
-     * ----------|----------|--------------------
-     *   color   |  Color   |  Gradient Object   
+     *   参数    |  类型                                                                       |  定义              
+     * ----------|-----------------------------------------------------------------------------|--------------------
+     *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
      *
      * **例子：**
      *
@@ -7386,9 +7386,9 @@ export namespace wxp {
      *
      * **参数：**
      *
-     *   参数    |  类型    |  定义              
-     * ----------|----------|--------------------
-     *   color   |  Color   |  Gradient Object   
+     *   参数    |  类型                                                                       |  定义              
+     * ----------|-----------------------------------------------------------------------------|--------------------
+     *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
      *
      * **例子：**
      *
@@ -7410,12 +7410,12 @@ export namespace wxp {
      *
      * **参数：**
      *
-     *   参数      |  类型     |  范围    |  定义              
-     * ------------|-----------|----------|--------------------
-     *   offsetX   |  Number   |          |阴影相对于形状在水平方向的偏移
-     *   offsetY   |  Number   |          |阴影相对于形状在竖直方向的偏移
-     *   blur      |  Number   |  0~100   |阴影的模糊级别，数值越大越模糊
-     *   color     |  Color    |          |  阴影的颜色        
+     *   参数      |  类型                                                                       |  范围    |  定义              
+     * ------------|-----------------------------------------------------------------------------|----------|--------------------
+     *   offsetX   |  Number                                                                     |          |阴影相对于形状在水平方向的偏移
+     *   offsetY   |  Number                                                                     |          |阴影相对于形状在竖直方向的偏移
+     *   blur      |  Number                                                                     |  0~100   |阴影的模糊级别，数值越大越模糊
+     *   color     |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |          |  阴影的颜色        
      *
      * **例子：**
      *
@@ -7509,10 +7509,10 @@ export namespace wxp {
      *
      * **参数：**
      *
-     *   参数    |  类型          |  定义              
-     * ----------|----------------|--------------------
-     *   stop    |  Number(0-1)   |表示渐变点在起点和终点中的位置
-     *   color   |  Color         |  渐变点的颜色      
+     *   参数    |  类型                                                                       |  定义              
+     * ----------|-----------------------------------------------------------------------------|--------------------
+     *   stop    |  Number(0-1)                                                                |表示渐变点在起点和终点中的位置
+     *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  渐变点的颜色      
      *
      * **示例代码：**
      *

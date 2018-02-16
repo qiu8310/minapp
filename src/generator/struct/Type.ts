@@ -37,6 +37,7 @@ export class FunctionType extends Type {
   toTSString(tabCount: number, isKlassMethod?: boolean) {
     return `(${joinArgs(this.args, tabCount)})${isKlassMethod ? ':' : ' =>'} ${this.returns.toTSString(tabCount)}`
   }
+
   clone() {
     return new FunctionType(cloneStructs(this.args), this.returns.clone())
   }

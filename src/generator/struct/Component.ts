@@ -141,12 +141,11 @@ function toJSON(target: any, excludes: string[] = [], deep: boolean = false) {
   return Object.keys(target).reduce((memo, key) => {
     if (excludes.indexOf(key) >= 0) return memo
     let val = target[key]
+    if (val === '' || typeof val === 'function') return memo // 忽略空字符串和函数
     if (!val) {
       memo[key] = val
-    } else if (Array.isArray(val)) {
-      memo[key] = val.map(v => toJSON(v, deep ? excludes : [], deep))
-    } else if (typeof val === 'function') {
-      if (key === 'toJSON') memo[key] = target.toJSON()
+    } else if (Array.isArray(val)) { // 空数组忽略
+      if (val.length) memo[key] = val.map(v => toJSON(v, deep ? excludes : [], deep))
     } else if (typeof val === 'object') {
       memo[key] = toJSON(val, deep ? excludes : [], deep)
     } else {

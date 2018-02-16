@@ -253,7 +253,6 @@ export class ComponentArea extends Area {
       if (sec.table) warn(`${name} 不需要 attrs table，但出现了 attrs table`)
     }
     if (sec.table) sec.table.$table.remove()
-
     this.getTplInfo(sec)
 
     if (sec.table) c.attrs = sec.definitions.map(def => ComponentAttr.fromDefinition(def))
@@ -430,7 +429,6 @@ export class ComponentArea extends Area {
             : new ObjectType(sec.definitions)
         }
       } else if (sec.title.indexOf('有效值') >= 0) {
-        // @ts-ignore
         def.enum = this.parseTableToEnum($table.eq(0))
       } else if (sec.title.indexOf('__描述__') >= 0) {
         let prefix = (sec.title.split('__描述__')[1] || '').trim()

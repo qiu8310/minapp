@@ -53,6 +53,7 @@ export class Table {
     let type = new Type('any')
     let args: Arg[] | undefined
     let extraPrefix = 'extra:'
+    let linkRegExp = /^\[(.+)\]\(.*\)$/
 
     parsedHead.forEach((key, i) => {
       let val: string = row[i] || '' // 有的 table 中的 tbody.tr 中的 td 数量和 thead 中的 th 数量不一样
@@ -62,6 +63,7 @@ export class Table {
         // 如 data.data.poi_list[i].poi_id => data.data.poi_list.[i].poi_id
         name = val.replace(/(\[\w*\])/, '.$1')
       } else if (key === 'type') {
+        if (linkRegExp.test(val)) val = RegExp.$1
         type.name = val.toLowerCase().split(/\s*\/\s*/).map(t => {
           // 文档 https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/add-color-stop.html 中
           // 有个 type = "Number(0-1)" 的字段
@@ -97,8 +99,6 @@ export class Table {
       }
     })
 
-    // 去掉 since 中的链接
-    if (def.since && /^\[([\d\.]+)\]/.test(def.since)) def.since = RegExp.$1
     try {
       if (def.defaultValue) def.defaultValue = JSON.parse(def.defaultValue) + ''
     } catch (e) {}

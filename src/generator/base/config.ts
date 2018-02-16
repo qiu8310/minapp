@@ -1,5 +1,7 @@
 /* tslint:disable:object-literal-key-quotes */
-export const SINCE_TEST_REGEXP = /> 基础库 ([\d\.]+) 开始支持，低版本需做\[兼容处理\]\(.*?\)/g
+export const SINCE_TEST_GLOBAL_REGEXP = /> 基础库 ([\d\.]+) 开始支持，低版本需做\[兼容处理\]\(.*?\)/g
+export const SINCE_LINK_REGEXP = /\[([\d\.]+)\]\(https[^\)]*开始支持，低版本需做兼容处理[^\)]*\)/
+
 export const WX_FUNC_REGEXP = /^wx\.(\w+)(?:\((.*?)\))?$/
 export const TAB = '  '
 export const PROMISABLE_KEYS = ['success', 'complete', 'fail']

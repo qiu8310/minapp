@@ -24,7 +24,7 @@ export default async function(res: any, nodeIterator: any) {
   async.reduce(nodes, [] as string[], nodeIterator,
     (err, tss: any) => {
       if (err) return console.log(err)
-      if (rootNode.leafNodes.length !== EXPECT) return
+      if (nodes.length !== EXPECT) return
       let cps = COLLECT.TPL.COMPONENTS
       fs.writeFileSync(OUTPUT.DETAIL_COMPONENTS, JSON.stringify(cps.map(c => c.toJSON())))
       fs.writeFileSync(OUTPUT.COMPONENTS, JSON.stringify(cps.map(c => c.toJSON(['examples'])), null, 2))

@@ -5,9 +5,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "hover-class",
         "type": {
           "name": "string"
@@ -15,13 +12,9 @@
         "desc": [
           "指定按下去的样式类。当 `hover-class=\"none\"` 时，没有点击态效果"
         ],
-        "since": "",
         "defaultValue": "none"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "hover-stop-propagation",
         "type": {
           "name": "boolean"
@@ -33,9 +26,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "hover-start-time",
         "type": {
           "name": "number"
@@ -43,13 +33,9 @@
         "desc": [
           "按住后多久出现点击态，单位毫秒"
         ],
-        "since": "",
         "defaultValue": "50"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "hover-stay-time",
         "type": {
           "name": "number"
@@ -57,16 +43,12 @@
         "desc": [
           "手指松开后点击态保留时间，单位毫秒"
         ],
-        "since": "",
         "defaultValue": "400"
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "如果需要使用滚动视图，请使用 [scroll-view](https://mp.weixin.qq.com/debug/wxadoc/dev/component/scroll-view.html)"
     ],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/view.png?t=201828"
     ],
@@ -79,9 +61,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "scroll-x",
         "type": {
           "name": "boolean"
@@ -92,9 +71,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "scroll-y",
         "type": {
           "name": "boolean"
@@ -105,9 +81,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "upper-threshold",
         "type": {
           "name": "number"
@@ -118,9 +91,6 @@
         "defaultValue": "50"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "lower-threshold",
         "type": {
           "name": "number"
@@ -131,48 +101,33 @@
         "defaultValue": "50"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "scroll-top",
         "type": {
           "name": "number"
         },
         "desc": [
           "设置竖向滚动条位置"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "scroll-left",
         "type": {
           "name": "number"
         },
         "desc": [
           "设置横向滚动条位置"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "scroll-into-view",
         "type": {
           "name": "string"
         },
         "desc": [
           "值应为某子元素id（id不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "scroll-with-animation",
         "type": {
           "name": "boolean"
@@ -183,9 +138,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "enable-back-to-top",
         "type": {
           "name": "boolean"
@@ -196,66 +148,48 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindscrolltoupper",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "滚动到顶部/左边，会触发 scrolltoupper 事件"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindscrolltolower",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "滚动到底部/右边，会触发 scrolltolower 事件"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindscroll",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "滚动时触发，event.detail = {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY}"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "请勿在 `scroll-view` 中使用 `textarea`、`map`、`canvas`、`video` 组件",
       "`scroll-into-view` 的优先级高于 `scroll-top`",
       "在滚动 `scroll-view` 时会阻止页面回弹，所以在 `scroll-view` 中滚动，是无法触发 `onPullDownRefresh`",
       "若要使用下拉刷新，请使用页面的滚动，而不是 `scroll-view` ，这样也能通过点击顶部状态栏回到页面顶部"
     ],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/scroll-view.png?t=201828"
     ],
@@ -268,9 +202,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "indicator-dots",
         "type": {
           "name": "boolean"
@@ -278,13 +209,9 @@
         "desc": [
           "是否显示面板指示点"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "indicator-color",
         "type": {
           "name": "string"
@@ -296,9 +223,6 @@
         "defaultValue": "rgba(0, 0, 0, .3)"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "indicator-active-color",
         "type": {
           "name": "string"
@@ -310,9 +234,6 @@
         "defaultValue": "#000000"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "autoplay",
         "type": {
           "name": "boolean"
@@ -320,13 +241,9 @@
         "desc": [
           "是否自动切换"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "current",
         "type": {
           "name": "number"
@@ -334,13 +251,9 @@
         "desc": [
           "当前所在滑块的 index"
         ],
-        "since": "",
         "defaultValue": "0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "current-item-id",
         "type": {
           "name": "string"
@@ -348,13 +261,9 @@
         "desc": [
           "当前所在滑块的 item-id ，不能与 current 被同时指定"
         ],
-        "since": "1.9.0",
-        "defaultValue": ""
+        "since": "1.9.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "interval",
         "type": {
           "name": "number"
@@ -362,13 +271,9 @@
         "desc": [
           "自动切换时间间隔"
         ],
-        "since": "",
         "defaultValue": "5000"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "duration",
         "type": {
           "name": "number"
@@ -376,13 +281,9 @@
         "desc": [
           "滑动动画时长"
         ],
-        "since": "",
         "defaultValue": "500"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "circular",
         "type": {
           "name": "boolean"
@@ -390,13 +291,9 @@
         "desc": [
           "是否采用衔接滑动"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "vertical",
         "type": {
           "name": "boolean"
@@ -404,13 +301,9 @@
         "desc": [
           "滑动方向是否为纵向"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "previous-margin",
         "type": {
           "name": "string"
@@ -422,9 +315,6 @@
         "defaultValue": "0px"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "next-margin",
         "type": {
           "name": "string"
@@ -436,9 +326,6 @@
         "defaultValue": "0px"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "display-multiple-items",
         "type": {
           "name": "number"
@@ -450,9 +337,6 @@
         "defaultValue": "1"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "skip-hidden-item-layout",
         "type": {
           "name": "boolean"
@@ -464,31 +348,21 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "current 改变时会触发 change 事件，event.detail = {current: current, source: source}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindanimationfinish",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -496,17 +370,12 @@
         "desc": [
           "动画结束时会触发 animationfinish 事件，event.detail 同上"
         ],
-        "since": "1.9.0",
-        "defaultValue": ""
+        "since": "1.9.0"
       }
     ],
-    "relateApis": [],
     "notices": [
       "其中只可放置`<swiper-item/>`组件，否则会导致未定义的行为。"
     ],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "swiper",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/swiper.html"
   },
@@ -516,9 +385,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "item-id",
         "type": {
           "name": "string"
@@ -526,17 +392,12 @@
         "desc": [
           "该 swiper-item 的标识符"
         ],
-        "since": "1.9.0",
-        "defaultValue": ""
+        "since": "1.9.0"
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "如果在 `bindchange` 的事件回调函数中使用 `setData` 改变 `current` 值，则有可能导致 `setData` 被不停地调用，因而通常情况下请在改变 `current` 值前检测 `source` 字段来判断是否是由于用户触摸引起。"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "swiper-item",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/swiper.html"
   },
@@ -544,14 +405,9 @@
     "desc": [
       "`movable-view` 的可移动区域"
     ],
-    "attrs": [],
-    "relateApis": [],
     "notices": [
       "movable-area 必须设置width和height属性，不设置默认为10px"
     ],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "movable-area",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/movable-view.html",
     "since": "1.2.0"
@@ -562,9 +418,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "direction",
         "type": {
           "name": "string"
@@ -575,9 +428,6 @@
         "defaultValue": "none"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "inertia",
         "type": {
           "name": "boolean"
@@ -588,9 +438,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "out-of-bounds",
         "type": {
           "name": "boolean"
@@ -601,35 +448,24 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "x",
         "type": {
           "name": "number"
         },
         "desc": [
           "定义x轴方向的偏移，如果x的值不在可移动范围内，会自动移动到可移动范围；改变x的值会触发动画"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "y",
         "type": {
           "name": "number"
         },
         "desc": [
           "定义y轴方向的偏移，如果y的值不在可移动范围内，会自动移动到可移动范围；改变y的值会触发动画"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "damping",
         "type": {
           "name": "number"
@@ -640,9 +476,6 @@
         "defaultValue": "20"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "friction",
         "type": {
           "name": "number"
@@ -653,16 +486,12 @@
         "defaultValue": "2"
       }
     ],
-    "relateApis": [],
     "notices": [
       "movable-view 必须设置width和height属性，不设置默认为10px",
       "movable-view 默认为绝对定位，top和left属性为0px",
       "当movable-view小于movable-area时，movable-view的移动范围是在movable-area内；当movable-view大于movable-area时，movable-view的移动范围必须包含movable-area（x轴方向和y轴方向分开考虑）",
       "movable-view必须在`<movable-area/>`组件中，并且必须是直接子节点，否则不能移动。"
     ],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "movable-view",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/movable-view.html",
     "since": "1.2.0"
@@ -671,12 +500,6 @@
     "desc": [
       "覆盖在原生组件之上的文本视图，可覆盖的原生组件包括`map`、`video`、`canvas`、`camera`，只支持嵌套`cover-view`、`cover-image`。"
     ],
-    "attrs": [],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "cover-view",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/cover-view.html",
     "since": "1.4.0"
@@ -687,21 +510,15 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "src",
         "type": {
           "name": "string"
         },
         "desc": [
           "图标路径，支持临时路径、网络地址（1.6.0起支持）。暂不支持base64格式。"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "基础库 1.6.0 起支持css transition动画，`transition-property`只支持`transform (translateX, translateY)`与`opacity`。",
       "基础库 1.6.0 起支持css opacity。",
@@ -712,8 +529,6 @@
       "建议子节点不要溢出父节点",
       "默认设置的样式有：`white-space: nowrap;` `line-height: 1.2;` `display: block;`"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "cover-image",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/cover-view.html",
     "since": "1.4.0"
@@ -724,22 +539,15 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "type",
         "type": {
           "name": "string"
         },
         "desc": [
           "icon的类型，有效值：success, success_no_circle, info, warn, waiting, cancel, download, search, clear"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "size",
         "type": {
           "name": "number"
@@ -750,23 +558,15 @@
         "defaultValue": "23"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "color",
         "type": {
           "name": "string"
         },
         "desc": [
           "icon的颜色，同css的color"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/icon.png?t=201828"
     ],
@@ -779,9 +579,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "selectable",
         "type": {
           "name": "boolean"
@@ -807,8 +604,6 @@
             "desc": "根据字体设置的空格大小"
           }
         ],
-        "extras": [],
-        "subAttrs": [],
         "name": "space",
         "type": {
           "name": "string"
@@ -820,9 +615,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "decode",
         "type": {
           "name": "boolean"
@@ -834,15 +626,12 @@
         "defaultValue": "false"
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "decode可以解析的有 `&nbsp;` `&lt;` `&gt;` `&amp;` `&apos;` `&ensp;` `&emsp;`",
       "各个操作系统的空格标准并不一致。",
       "`<text/>` 组件内只支持 `<text/>` 嵌套。",
       "除了文本节点以外的其他节点都无法长按选中。"
     ],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/text.png?t=201828"
     ],
@@ -855,9 +644,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "nodes",
         "type": {
           "name": "any[] | string"
@@ -865,11 +651,9 @@
         "desc": [
           "节点列表 / HTML String"
         ],
-        "since": "1.4.0",
-        "defaultValue": ""
+        "since": "1.4.0"
       }
     ],
-    "relateApis": [],
     "notices": [
       "nodes 属性推荐使用 Array 类型，由于组件会将 String 类型转换为 Array 类型，因而性能会有所下降"
     ],
@@ -882,8 +666,6 @@
       "img 标签仅支持网络图片。",
       "如果在自定义组件中使用 `rich-text` 组件，那么仅自定义组件的 wxss 样式对 `rich-text` 中的 class 生效。"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "rich-text",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/rich-text.html",
     "since": "1.4.0"
@@ -894,9 +676,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "percent",
         "type": {
           "name": "number"
@@ -904,13 +683,9 @@
         "desc": [
           "百分比0~100"
         ],
-        "since": "",
         "defaultValue": "无"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "show-info",
         "type": {
           "name": "boolean"
@@ -918,13 +693,9 @@
         "desc": [
           "在进度条右侧显示百分比"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "stroke-width",
         "type": {
           "name": "number"
@@ -932,13 +703,9 @@
         "desc": [
           "进度条线的宽度，单位px"
         ],
-        "since": "",
         "defaultValue": "6"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "color",
         "type": {
           "name": "string"
@@ -946,41 +713,27 @@
         "desc": [
           "进度条颜色 （请使用 activeColor）"
         ],
-        "since": "",
         "defaultValue": "#09BB07"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "activeColor",
         "type": {
           "name": "string"
         },
         "desc": [
           "已选择的进度条的颜色"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "backgroundColor",
         "type": {
           "name": "string"
         },
         "desc": [
           "未选择的进度条的颜色"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "active",
         "type": {
           "name": "boolean"
@@ -988,13 +741,9 @@
         "desc": [
           "进度条从左往右的动画"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "active-mode",
         "type": {
           "name": "string"
@@ -1006,10 +755,6 @@
         "defaultValue": "backwards"
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/progress.png?t=201828"
     ],
@@ -1024,21 +769,17 @@
       {
         "enum": [
           {
-            "value": "default",
-            "desc": ""
+            "value": "default"
           },
           {
-            "value": "mini",
-            "desc": ""
+            "value": "mini"
           }
         ],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "size",
         "type": {
           "name": "string"
@@ -1046,31 +787,25 @@
         "desc": [
           "按钮的大小"
         ],
-        "since": "",
         "defaultValue": "default"
       },
       {
         "enum": [
           {
-            "value": "primary",
-            "desc": ""
+            "value": "primary"
           },
           {
-            "value": "default",
-            "desc": ""
+            "value": "default"
           },
           {
-            "value": "warn",
-            "desc": ""
+            "value": "warn"
           }
         ],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "type",
         "type": {
           "name": "string"
@@ -1078,18 +813,14 @@
         "desc": [
           "按钮的样式类型"
         ],
-        "since": "",
         "defaultValue": "default"
       },
       {
-        "enum": [],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "plain",
         "type": {
           "name": "boolean"
@@ -1097,18 +828,14 @@
         "desc": [
           "按钮是否镂空，背景色透明"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "disabled",
         "type": {
           "name": "boolean"
@@ -1116,18 +843,14 @@
         "desc": [
           "是否禁用"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "loading",
         "type": {
           "name": "boolean"
@@ -1135,7 +858,6 @@
         "desc": [
           "名称前是否带 loading 图标"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
@@ -1151,56 +873,50 @@
         ],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "form-type",
         "type": {
           "name": "string"
         },
         "desc": [
           "用于 `<form/>` 组件，点击分别会触发 `<form/>` 组件的 submit/reset 事件"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
         "enum": [
           {
             "value": "contact",
             "desc": "打开客服会话",
-            "since": "[1.1.0](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.1.0 开始支持，低版本需做兼容处理。\")"
+            "since": "1.1.0"
           },
           {
             "value": "share",
             "desc": "触发用户转发，使用前建议先阅读[使用指引](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#使用指引)",
-            "since": "[1.2.0](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.2.0 开始支持，低版本需做兼容处理。\")"
+            "since": "1.2.0"
           },
           {
             "value": "getUserInfo",
             "desc": "获取用户信息，可以从bindgetuserinfo回调中获取到用户信息",
-            "since": "[1.3.0](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.3.0 开始支持，低版本需做兼容处理。\")"
+            "since": "1.3.0"
           },
           {
             "value": "getPhoneNumber",
             "desc": "获取用户手机号，可以从bindgetphonenumber回调中获取到用户信息，[具体说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getPhoneNumber.html)",
-            "since": "[1.2.0](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.2.0 开始支持，低版本需做兼容处理。\")"
+            "since": "1.2.0"
           },
           {
             "value": "launchApp",
             "desc": "打开APP，可以通过app-parameter属性设定向APP传的参数[具体说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/launchApp.html)",
-            "since": "[1.9.5](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.5 开始支持，低版本需做兼容处理。\")"
+            "since": "1.9.5"
           }
         ],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "open-type",
         "type": {
           "name": "string"
@@ -1208,18 +924,15 @@
         "desc": [
           "微信开放能力"
         ],
-        "since": "1.1.0",
-        "defaultValue": ""
+        "since": "1.1.0"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"launchApp\""
           }
         ],
-        "subAttrs": [],
         "name": "app-parameter",
         "type": {
           "name": "string"
@@ -1227,18 +940,14 @@
         "desc": [
           "打开 APP 时，向 APP 传递的参数"
         ],
-        "since": "1.9.5",
-        "defaultValue": ""
+        "since": "1.9.5"
       },
       {
-        "enum": [],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "hover-class",
         "type": {
           "name": "string"
@@ -1246,18 +955,14 @@
         "desc": [
           "指定按钮按下去的样式类。当 `hover-class=\"none\"` 时，没有点击态效果"
         ],
-        "since": "",
         "defaultValue": "button-hover"
       },
       {
-        "enum": [],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "hover-stop-propagation",
         "type": {
           "name": "boolean"
@@ -1269,14 +974,11 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "hover-start-time",
         "type": {
           "name": "number"
@@ -1284,18 +986,14 @@
         "desc": [
           "按住后多久出现点击态，单位毫秒"
         ],
-        "since": "",
         "defaultValue": "20"
       },
       {
-        "enum": [],
         "extras": [
           {
-            "key": "生效时机",
-            "value": ""
+            "key": "生效时机"
           }
         ],
-        "subAttrs": [],
         "name": "hover-stay-time",
         "type": {
           "name": "number"
@@ -1303,22 +1001,18 @@
         "desc": [
           "手指松开后点击态保留时间，单位毫秒"
         ],
-        "since": "",
         "defaultValue": "70"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"getUserInfo'"
           }
         ],
-        "subAttrs": [],
         "name": "bindgetuserinfo",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -1326,18 +1020,15 @@
         "desc": [
           "用户点击该按钮时，会返回获取到的用户信息，从返回参数的detail中获取到的值同[wx.getUserInfo](https://mp.weixin.qq.com/debug/wxadoc/dev/api/open.html#wxgetuserinfoobject)"
         ],
-        "since": "1.3.0",
-        "defaultValue": ""
+        "since": "1.3.0"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"getUserInfo\""
           }
         ],
-        "subAttrs": [],
         "name": "lang",
         "type": {
           "name": "string"
@@ -1349,14 +1040,12 @@
         "defaultValue": "en"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"contact\""
           }
         ],
-        "subAttrs": [],
         "name": "session-from",
         "type": {
           "name": "string"
@@ -1364,18 +1053,15 @@
         "desc": [
           "会话来源"
         ],
-        "since": "1.4.0",
-        "defaultValue": ""
+        "since": "1.4.0"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"contact\""
           }
         ],
-        "subAttrs": [],
         "name": "send-message-title",
         "type": {
           "name": "string"
@@ -1387,14 +1073,12 @@
         "defaultValue": "当前标题"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"contact\""
           }
         ],
-        "subAttrs": [],
         "name": "send-message-path",
         "type": {
           "name": "string"
@@ -1406,14 +1090,12 @@
         "defaultValue": "当前分享路径"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"contact\""
           }
         ],
-        "subAttrs": [],
         "name": "send-message-img",
         "type": {
           "name": "string"
@@ -1425,14 +1107,12 @@
         "defaultValue": "截图"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"contact\""
           }
         ],
-        "subAttrs": [],
         "name": "show-message-card",
         "type": {
           "name": "boolean"
@@ -1444,18 +1124,15 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"contact\""
           }
         ],
-        "subAttrs": [],
         "name": "bindcontact",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -1463,22 +1140,18 @@
         "desc": [
           "客服消息回调"
         ],
-        "since": "1.5.0",
-        "defaultValue": ""
+        "since": "1.5.0"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"getphonenumber\""
           }
         ],
-        "subAttrs": [],
         "name": "bindgetphonenumber",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -1486,22 +1159,18 @@
         "desc": [
           "获取用户手机号回调"
         ],
-        "since": "1.2.0",
-        "defaultValue": ""
+        "since": "1.2.0"
       },
       {
-        "enum": [],
         "extras": [
           {
             "key": "生效时机",
             "value": "open-type=\"launchApp\""
           }
         ],
-        "subAttrs": [],
         "name": "binderrror",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -1509,18 +1178,14 @@
         "desc": [
           "当使用开放能力时，发生错误的回调"
         ],
-        "since": "1.9.5",
-        "defaultValue": ""
+        "since": "1.9.5"
       }
     ],
-    "relateApis": [],
     "notices": [
       "`button-hover` 默认为`{background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}`",
       "`bindgetphonenumber` 从1.2.0 开始支持，但是在1.5.3以下版本中无法使用`wx.canIUse`进行检测，建议使用基础库版本进行判断。",
       "在`bindgetphonenumber` 等返回加密信息的回调中调用 `wx.login` 登录，可能会刷新登录态。此时服务器使用 code 换取的 sessionKey 不是加密时使用的 sessionKey，导致解密失败。建议开发者提前进行 `login`；或者在回调中先使用 `checkSession` 进行登录态检查，避免 `login` 刷新登录态。"
     ],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/button.png?t=201828"
     ],
@@ -1533,28 +1198,18 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "`<checkbox-group/>`中选中项发生改变是触发 change 事件，detail = {value:\\[选中的checkbox的value的数组\\]}"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "checkbox-group",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/checkbox.html"
   },
@@ -1564,22 +1219,15 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "value",
         "type": {
           "name": "string"
         },
         "desc": [
           "`<checkbox/>`标识，选中时触发`<checkbox-group/>`的 change 事件，并携带 `<checkbox/>` 的 value"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "disabled",
         "type": {
           "name": "boolean"
@@ -1590,9 +1238,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "checked",
         "type": {
           "name": "boolean"
@@ -1603,23 +1248,15 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "color",
         "type": {
           "name": "string"
         },
         "desc": [
           "checkbox的颜色，同css的color"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/checkbox.png?t=201828"
     ],
@@ -1632,57 +1269,39 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "report-submit",
         "type": {
           "name": "boolean"
         },
         "desc": [
           "是否返回 formId 用于发送[模板消息](https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html)"
-        ],
-        "since": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindsubmit",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "携带 form 中的数据触发 submit 事件，event.detail = {value : {'name': 'value'} , formId: ''}"
-        ],
-        "since": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindreset",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "表单重置时会触发 reset 事件"
-        ],
-        "since": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/form.png?t=201828"
     ],
@@ -1695,18 +1314,13 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "value",
         "type": {
           "name": "string"
         },
         "desc": [
           "输入框的初始内容"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
         "enum": [
@@ -1727,8 +1341,6 @@
             "desc": "带小数点的数字键盘"
           }
         ],
-        "extras": [],
-        "subAttrs": [],
         "name": "type",
         "type": {
           "name": "string"
@@ -1736,13 +1348,9 @@
         "desc": [
           "input 的类型"
         ],
-        "since": "",
         "defaultValue": "text"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "password",
         "type": {
           "name": "boolean"
@@ -1750,41 +1358,27 @@
         "desc": [
           "是否是密码类型"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "placeholder",
         "type": {
           "name": "string"
         },
         "desc": [
           "输入框为空时占位符"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "placeholder-style",
         "type": {
           "name": "string"
         },
         "desc": [
           "指定 placeholder 的样式"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "placeholder-class",
         "type": {
           "name": "string"
@@ -1792,13 +1386,9 @@
         "desc": [
           "指定 placeholder 的样式类"
         ],
-        "since": "",
         "defaultValue": "input-placeholder"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "disabled",
         "type": {
           "name": "boolean"
@@ -1806,13 +1396,9 @@
         "desc": [
           "是否禁用"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "maxlength",
         "type": {
           "name": "number"
@@ -1820,13 +1406,9 @@
         "desc": [
           "最大输入长度，设置为 -1 的时候不限制最大长度"
         ],
-        "since": "",
         "defaultValue": "140"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "cursor-spacing",
         "type": {
           "name": "number"
@@ -1834,13 +1416,9 @@
         "desc": [
           "指定光标与键盘的距离，单位 px 。取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离"
         ],
-        "since": "",
         "defaultValue": "0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "auto-focus",
         "type": {
           "name": "boolean"
@@ -1848,13 +1426,9 @@
         "desc": [
           "(即将废弃，请直接使用 focus )自动聚焦，拉起键盘"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "focus",
         "type": {
           "name": "boolean"
@@ -1862,7 +1436,6 @@
         "desc": [
           "获取焦点"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
@@ -1888,8 +1461,6 @@
             "desc": "右下角按钮为“完成”"
           }
         ],
-        "extras": [],
-        "subAttrs": [],
         "name": "confirm-type",
         "type": {
           "name": "string"
@@ -1901,9 +1472,6 @@
         "defaultValue": "done"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "confirm-hold",
         "type": {
           "name": "boolean"
@@ -1915,9 +1483,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "cursor",
         "type": {
           "name": "number"
@@ -1925,13 +1490,9 @@
         "desc": [
           "指定focus时的光标位置"
         ],
-        "since": "1.5.0",
-        "defaultValue": ""
+        "since": "1.5.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "selection-start",
         "type": {
           "name": "number"
@@ -1943,9 +1504,6 @@
         "defaultValue": "-1"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "selection-end",
         "type": {
           "name": "number"
@@ -1957,80 +1515,54 @@
         "defaultValue": "-1"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindinput",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当键盘输入时，触发input事件，event.detail = {value, cursor}，处理函数可以直接 return 一个字符串，将替换输入框的内容。"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindfocus",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "输入框聚焦时触发，event.detail = {value: value}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindblur",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "输入框失去焦点时触发，event.detail = {value: value}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindconfirm",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "点击完成按钮时触发，event.detail = {value: value}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "input 组件是一个 native 组件，字体是系统字体，所以无法设置 font-family；",
       "在 input 聚焦期间，避免使用 css 动画；"
@@ -2051,9 +1583,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "for",
         "type": {
           "name": "string"
@@ -2063,10 +1592,6 @@
         ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/label.png?t=201828"
     ],
@@ -2079,42 +1604,29 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
         "subAttrs": [
           {
             "equal": "selector",
             "attrs": [
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "range",
                 "type": {
                   "name": "any[] | ArrayObject"
                 },
                 "desc": [
                   "mode为 selector 或 multiSelector 时，range 有效"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "range-key",
                 "type": {
                   "name": "string"
                 },
                 "desc": [
                   "当 range 是一个 Object Array 时，通过 range-key 来指定 Object 中 key 的值作为选择器显示内容"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "value",
                 "type": {
                   "name": "number"
@@ -2125,26 +1637,18 @@
                 "defaultValue": "0"
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "bindchange",
                 "type": {
                   "name": "function",
-                  "args": [],
                   "returns": {
                     "name": "any"
                   }
                 },
                 "desc": [
                   "value 改变时触发 change 事件，event.detail = {value: value}"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "disabled",
                 "type": {
                   "name": "boolean"
@@ -2160,82 +1664,57 @@
             "equal": "multiSelector",
             "attrs": [
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "range",
                 "type": {
                   "name": "any[][] | ArrayObject"
                 },
                 "desc": [
                   "mode为 selector 或 multiSelector 时，range 有效。二维数组，长度表示多少列，数组的每项表示每列的数据，如`[[\"a\",\"b\"], [\"c\",\"d\"]]`"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "range-key",
                 "type": {
                   "name": "string"
                 },
                 "desc": [
                   "当 range 是一个 二维Object Array 时，通过 range-key 来指定 Object 中 key 的值作为选择器显示内容"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "value",
                 "type": {
                   "name": "any[]"
                 },
                 "desc": [
                   "value 每一项的值表示选择了 range 对应项中的第几个（下标从 0 开始）"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "bindchange",
                 "type": {
                   "name": "function",
-                  "args": [],
                   "returns": {
                     "name": "any"
                   }
                 },
                 "desc": [
                   "value 改变时触发 change 事件，event.detail = {value: value}"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "bindcolumnchange",
                 "type": {
                   "name": "function",
-                  "args": [],
                   "returns": {
                     "name": "any"
                   }
                 },
                 "desc": [
                   "某一列的值改变时触发 columnchange 事件，event.detail = {column: column, value: value}，column 的值表示改变了第几列（下标从0开始），value 的值表示变更值的下标"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "disabled",
                 "type": {
                   "name": "boolean"
@@ -2251,65 +1730,45 @@
             "equal": "time",
             "attrs": [
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "value",
                 "type": {
                   "name": "string"
                 },
                 "desc": [
                   "表示选中的时间，格式为\"hh:mm\""
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "start",
                 "type": {
                   "name": "string"
                 },
                 "desc": [
                   "表示有效时间范围的开始，字符串格式为\"hh:mm\""
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "end",
                 "type": {
                   "name": "string"
                 },
                 "desc": [
                   "表示有效时间范围的结束，字符串格式为\"hh:mm\""
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "bindchange",
                 "type": {
                   "name": "function",
-                  "args": [],
                   "returns": {
                     "name": "any"
                   }
                 },
                 "desc": [
                   "value 改变时触发 change 事件，event.detail = {value: value}"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "disabled",
                 "type": {
                   "name": "boolean"
@@ -2325,9 +1784,6 @@
             "equal": "date",
             "attrs": [
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "value",
                 "type": {
                   "name": "string"
@@ -2338,30 +1794,22 @@
                 "defaultValue": "0"
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "start",
                 "type": {
                   "name": "string"
                 },
                 "desc": [
                   "表示有效日期范围的开始，字符串格式为\"YYYY-MM-DD\""
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "end",
                 "type": {
                   "name": "string"
                 },
                 "desc": [
                   "表示有效日期范围的结束，字符串格式为\"YYYY-MM-DD\""
-                ],
-                "defaultValue": ""
+                ]
               },
               {
                 "enum": [
@@ -2378,8 +1826,6 @@
                     "desc": "选择器粒度为天"
                   }
                 ],
-                "extras": [],
-                "subAttrs": [],
                 "name": "fields",
                 "type": {
                   "name": "string"
@@ -2390,26 +1836,18 @@
                 "defaultValue": "day"
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "bindchange",
                 "type": {
                   "name": "function",
-                  "args": [],
                   "returns": {
                     "name": "any"
                   }
                 },
                 "desc": [
                   "value 改变时触发 change 事件，event.detail = {value: value}"
-                ],
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "disabled",
                 "type": {
                   "name": "boolean"
@@ -2425,23 +1863,15 @@
             "equal": "region",
             "attrs": [
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "value",
                 "type": {
                   "name": "any[]"
                 },
                 "desc": [
                   "表示选中的省市区，默认选中每一列的第一个值"
-                ],
-                "since": "",
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "custom-item",
                 "type": {
                   "name": "string"
@@ -2449,31 +1879,21 @@
                 "desc": [
                   "可为每一列的顶部添加一个自定义的项"
                 ],
-                "since": "1.5.0",
-                "defaultValue": ""
+                "since": "1.5.0"
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "bindchange",
                 "type": {
                   "name": "function",
-                  "args": [],
                   "returns": {
                     "name": "any"
                   }
                 },
                 "desc": [
                   "value 改变时触发 change 事件，event.detail = {value: value}"
-                ],
-                "since": "",
-                "defaultValue": ""
+                ]
               },
               {
-                "enum": [],
-                "extras": [],
-                "subAttrs": [],
                 "name": "disabled",
                 "type": {
                   "name": "boolean"
@@ -2481,7 +1901,6 @@
                 "desc": [
                   "是否禁用"
                 ],
-                "since": "",
                 "defaultValue": "false"
               }
             ]
@@ -2497,10 +1916,6 @@
         "defaultValue": "selector"
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/picker.png?t=201828"
     ],
@@ -2513,35 +1928,24 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "value",
         "type": {
           "name": "number[]"
         },
         "desc": [
           "数组中的数字依次表示 picker-view 内的 picker-view-colume 选择的第几项（下标从 0 开始），数字大于 picker-view-column 可选项长度时，选择最后一项。"
-        ],
-        "since": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "indicator-style",
         "type": {
           "name": "string"
         },
         "desc": [
           "设置选择器中间选中框的样式"
-        ],
-        "since": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "indicator-class",
         "type": {
           "name": "string"
@@ -2552,9 +1956,6 @@
         "since": "1.1.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "mask-style",
         "type": {
           "name": "string"
@@ -2565,9 +1966,6 @@
         "since": "1.5.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "mask-class",
         "type": {
           "name": "string"
@@ -2578,30 +1976,21 @@
         "since": "1.5.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当滚动选择，value 改变时触发 change 事件，event.detail = {value: value}；value为数组，表示 picker-view 内的 picker-view-column 当前选择的是第几项（下标从 0 开始）"
-        ],
-        "since": ""
+        ]
       }
     ],
-    "relateApis": [],
     "notices": [
       "其中只可放置`<picker-view-column/>`组件，其他节点不会显示。"
     ],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "picker-view",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/picker-view.html"
   },
@@ -2609,13 +1998,9 @@
     "desc": [
       "仅可放置于`<picker-view />`中，其孩子节点的高度会自动设置成与picker-view的选中框的高度一致"
     ],
-    "attrs": [],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "滚动时在iOS自带振动反馈，可在系统设置 -> 声音与触感 -> 系统触感反馈中关闭"
     ],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/picker_view.png?t=201828"
     ],
@@ -2628,28 +2013,18 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "`<radio-group/>` 中的选中项发生变化时触发 change 事件，event.detail = {value: 选中项radio的value}"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "radio-group",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/radio.html"
   },
@@ -2659,22 +2034,15 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "value",
         "type": {
           "name": "string"
         },
         "desc": [
           "`<radio/>` 标识。当该`<radio/>` 选中时，`<radio-group/>` 的 change 事件会携带`<radio/>`的value"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "checked",
         "type": {
           "name": "boolean"
@@ -2685,9 +2053,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "disabled",
         "type": {
           "name": "boolean"
@@ -2698,23 +2063,15 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "color",
         "type": {
           "name": "string"
         },
         "desc": [
           "radio的颜色，同css的color"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/radio.png?t=201828"
     ],
@@ -2727,9 +2084,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "min",
         "type": {
           "name": "number"
@@ -2737,13 +2091,9 @@
         "desc": [
           "最小值"
         ],
-        "since": "",
         "defaultValue": "0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "max",
         "type": {
           "name": "number"
@@ -2751,13 +2101,9 @@
         "desc": [
           "最大值"
         ],
-        "since": "",
         "defaultValue": "100"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "step",
         "type": {
           "name": "number"
@@ -2765,13 +2111,9 @@
         "desc": [
           "步长，取值必须大于 0，并且可被(max - min)整除"
         ],
-        "since": "",
         "defaultValue": "1"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "disabled",
         "type": {
           "name": "boolean"
@@ -2779,13 +2121,9 @@
         "desc": [
           "是否禁用"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "value",
         "type": {
           "name": "number"
@@ -2793,13 +2131,9 @@
         "desc": [
           "当前取值"
         ],
-        "since": "",
         "defaultValue": "0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "color",
         "type": {
           "name": "string"
@@ -2807,13 +2141,9 @@
         "desc": [
           "背景条的颜色（请使用 backgroundColor）"
         ],
-        "since": "",
         "defaultValue": "#e9e9e9"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "selected-color",
         "type": {
           "name": "string"
@@ -2821,13 +2151,9 @@
         "desc": [
           "已选择的颜色（请使用 activeColor）"
         ],
-        "since": "",
         "defaultValue": "#1aad19"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "activeColor",
         "type": {
           "name": "string"
@@ -2835,13 +2161,9 @@
         "desc": [
           "已选择的颜色"
         ],
-        "since": "",
         "defaultValue": "#1aad19"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "backgroundColor",
         "type": {
           "name": "string"
@@ -2849,13 +2171,9 @@
         "desc": [
           "背景条的颜色"
         ],
-        "since": "",
         "defaultValue": "#e9e9e9"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "block-size",
         "type": {
           "name": "number"
@@ -2867,9 +2185,6 @@
         "defaultValue": "28"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "block-color",
         "type": {
           "name": "string"
@@ -2881,9 +2196,6 @@
         "defaultValue": "#ffffff"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "show-value",
         "type": {
           "name": "boolean"
@@ -2891,35 +2203,24 @@
         "desc": [
           "是否显示当前 value"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "完成一次拖动后触发的事件，event.detail = {value: value}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindchanging",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -2927,14 +2228,9 @@
         "desc": [
           "拖动过程中触发的事件，event.detail = {value: value}"
         ],
-        "since": "1.7.0",
-        "defaultValue": ""
+        "since": "1.7.0"
       }
     ],
-    "relateApis": [],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/slider.png?t=201828"
     ],
@@ -2947,9 +2243,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "checked",
         "type": {
           "name": "boolean"
@@ -2960,9 +2253,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "type",
         "type": {
           "name": "string"
@@ -2973,42 +2263,30 @@
         "defaultValue": "switch"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "checked 改变时触发 change 事件，event.detail={ value:checked}"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "color",
         "type": {
           "name": "string"
         },
         "desc": [
           "switch 的颜色，同 css 的 color"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "switch类型切换时在iOS自带振动反馈，可在系统设置 -> 声音与触感 -> 系统触感反馈中关闭"
     ],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/switch.png?t=201828"
     ],
@@ -3021,51 +2299,33 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "value",
         "type": {
           "name": "string"
         },
         "desc": [
           "输入框的内容"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "placeholder",
         "type": {
           "name": "string"
         },
         "desc": [
           "输入框为空时占位符"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "placeholder-style",
         "type": {
           "name": "string"
         },
         "desc": [
           "指定 placeholder 的样式"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "placeholder-class",
         "type": {
           "name": "string"
@@ -3073,13 +2333,9 @@
         "desc": [
           "指定 placeholder 的样式类"
         ],
-        "since": "",
         "defaultValue": "textarea-placeholder"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "disabled",
         "type": {
           "name": "boolean"
@@ -3087,13 +2343,9 @@
         "desc": [
           "是否禁用"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "maxlength",
         "type": {
           "name": "number"
@@ -3101,13 +2353,9 @@
         "desc": [
           "最大输入长度，设置为 -1 的时候不限制最大长度"
         ],
-        "since": "",
         "defaultValue": "140"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "auto-focus",
         "type": {
           "name": "boolean"
@@ -3115,13 +2363,9 @@
         "desc": [
           "自动聚焦，拉起键盘。"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "focus",
         "type": {
           "name": "boolean"
@@ -3129,13 +2373,9 @@
         "desc": [
           "获取焦点"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "auto-height",
         "type": {
           "name": "boolean"
@@ -3143,13 +2383,9 @@
         "desc": [
           "是否自动增高，设置auto-height时，style.height不生效"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "fixed",
         "type": {
           "name": "boolean"
@@ -3157,13 +2393,9 @@
         "desc": [
           "如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "cursor-spacing",
         "type": {
           "name": "number"
@@ -3171,13 +2403,9 @@
         "desc": [
           "指定光标与键盘的距离，单位 px 。取 textarea 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离"
         ],
-        "since": "",
         "defaultValue": "0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "cursor",
         "type": {
           "name": "number"
@@ -3185,13 +2413,9 @@
         "desc": [
           "指定focus时的光标位置"
         ],
-        "since": "1.5.0",
-        "defaultValue": ""
+        "since": "1.5.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "show-confirm-bar",
         "type": {
           "name": "boolean"
@@ -3203,9 +2427,6 @@
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "selection-start",
         "type": {
           "name": "number"
@@ -3217,9 +2438,6 @@
         "defaultValue": "-1"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "selection-end",
         "type": {
           "name": "number"
@@ -3231,98 +2449,66 @@
         "defaultValue": "-1"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindfocus",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "输入框聚焦时触发，event.detail = {value: value}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindblur",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "输入框失去焦点时触发，event.detail = {value, cursor}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindlinechange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "输入框行数变化时调用，event.detail = {height: 0, heightRpx: 0, lineCount: 0}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindinput",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当键盘输入时，触发 input 事件，event.detail = {value, cursor}， **bindinput 处理函数的返回值并不会反映到 textarea 上**"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindconfirm",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "点击完成时， 触发 confirm 事件，event.detail = {value: value}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "`textarea` 的 `blur` 事件会晚于页面上的 `tap` 事件，如果需要在 `button` 的点击事件获取 `textarea`，可以使用 `form` 的 `bindsubmit`。",
       "不建议在多行文本上对用户的输入进行修改，所以 `textarea` 的 `bindinput` 处理函数并不会将返回值反映到 `textarea` 上。",
@@ -3333,7 +2519,6 @@
     "bugs": [
       "微信版本 `6.3.30`，`textarea` 在列表渲染时，新增加的 `textarea` 在自动聚焦时的位置计算错误。"
     ],
-    "demoImages": [],
     "name": "textarea",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/textarea.html"
   },
@@ -3343,49 +2528,39 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "url",
         "type": {
           "name": "string"
         },
         "desc": [
           "应用内的跳转链接"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
         "enum": [
           {
             "value": "navigate",
-            "desc": "对应 `wx.navigateTo` 的功能",
-            "since": ""
+            "desc": "对应 `wx.navigateTo` 的功能"
           },
           {
             "value": "redirect",
-            "desc": "对应 `wx.redirectTo` 的功能",
-            "since": ""
+            "desc": "对应 `wx.redirectTo` 的功能"
           },
           {
             "value": "switchTab",
-            "desc": "对应 `wx.switchTab` 的功能",
-            "since": ""
+            "desc": "对应 `wx.switchTab` 的功能"
           },
           {
             "value": "reLaunch",
             "desc": "对应 `wx.reLaunch` 的功能",
-            "since": "[1.1.0](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.1.0 开始支持，低版本需做兼容处理。\")"
+            "since": "1.1.0"
           },
           {
             "value": "navigateBack",
             "desc": "对应 `wx.navigateBack` 的功能",
-            "since": "[1.1.0](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.1.0 开始支持，低版本需做兼容处理。\")"
+            "since": "1.1.0"
           }
         ],
-        "extras": [],
-        "subAttrs": [],
         "name": "open-type",
         "type": {
           "name": "string"
@@ -3393,27 +2568,18 @@
         "desc": [
           "跳转方式"
         ],
-        "since": "",
         "defaultValue": "navigate"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "delta",
         "type": {
           "name": "number"
         },
         "desc": [
           "当 open-type 为 'navigateBack' 时有效，表示回退的层数"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "hover-class",
         "type": {
           "name": "string"
@@ -3421,13 +2587,9 @@
         "desc": [
           "指定点击时的样式类，当`hover-class=\"none\"`时，没有点击态效果"
         ],
-        "since": "",
         "defaultValue": "navigator-hover"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "hover-stop-propagation",
         "type": {
           "name": "boolean"
@@ -3439,9 +2601,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "hover-start-time",
         "type": {
           "name": "number"
@@ -3449,13 +2608,9 @@
         "desc": [
           "按住后多久出现点击态，单位毫秒"
         ],
-        "since": "",
         "defaultValue": "50"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "hover-stay-time",
         "type": {
           "name": "number"
@@ -3463,17 +2618,12 @@
         "desc": [
           "手指松开后点击态保留时间，单位毫秒"
         ],
-        "since": "",
         "defaultValue": "600"
       }
     ],
-    "relateApis": [],
     "notices": [
       "`navigator-hover` 默认为 `{background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}`, `<navigator/>` 的子节点背景色应为透明色"
     ],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "navigator",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/navigator.html"
   },
@@ -3483,35 +2633,24 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "id",
         "type": {
           "name": "string"
         },
         "desc": [
           "audio 组件的唯一标识符"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "src",
         "type": {
           "name": "string"
         },
         "desc": [
           "要播放音频的资源地址"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "loop",
         "type": {
           "name": "boolean"
@@ -3522,9 +2661,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "controls",
         "type": {
           "name": "boolean"
@@ -3535,22 +2671,15 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "poster",
         "type": {
           "name": "string"
         },
         "desc": [
           "默认控件上的音频封面的图片资源地址，如果 controls 属性值为 false 则设置 poster 无效"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "name",
         "type": {
           "name": "string"
@@ -3561,9 +2690,6 @@
         "defaultValue": "未知音频"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "author",
         "type": {
           "name": "string"
@@ -3574,13 +2700,9 @@
         "defaultValue": "未知作者"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "binderror",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -3588,76 +2710,55 @@
         "desc": [
           "当发生错误时触发 error 事件，detail = {errMsg: MediaError.code}",
           "MediaError.code: {1 => \"获取资源被用户禁止\"; 2 => \"网络错误\"; 3 => \"解码错误\"; 4 => \"不合适资源\"}"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindplay",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当开始/继续播放时触发play事件"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindpause",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当暂停播放时触发 pause 事件"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindtimeupdate",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当播放进度改变时触发 timeupdate 事件，detail = {currentTime, duration}"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindended",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当播放到末尾时触发 ended 事件"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
     "relateApis": [
@@ -3666,9 +2767,6 @@
         "link": "https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-audio.html"
       }
     ],
-    "notices": [],
-    "tips": [],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/audio.png?t=201828"
     ],
@@ -3681,18 +2779,13 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "src",
         "type": {
           "name": "string"
         },
         "desc": [
           "图片资源地址"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
         "enum": [
@@ -3749,8 +2842,6 @@
             "desc": "裁剪: 不缩放图片，只显示图片的右下边区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201828) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/12.png?t=201828)"
           }
         ],
-        "extras": [],
-        "subAttrs": [],
         "name": "mode",
         "type": {
           "name": "string"
@@ -3758,13 +2849,9 @@
         "desc": [
           "图片裁剪、缩放的模式"
         ],
-        "since": "",
         "defaultValue": "'scaleToFill'"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "lazy-load",
         "type": {
           "name": "boolean"
@@ -3776,49 +2863,33 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "binderror",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当错误发生时，发布到 AppService 的事件名，事件对象event.detail = {errMsg: 'something wrong'}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindload",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当图片载入完毕时，发布到 AppService 的事件名，事件对象event.detail = {height:'图片高度px', width:'图片宽度px'}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
     "notices": [
       "image组件默认宽度300px、高度225px"
     ],
-    "tips": [],
-    "bugs": [],
-    "demoImages": [],
     "name": "image",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/image.html"
   },
@@ -3828,23 +2899,15 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "src",
         "type": {
           "name": "string"
         },
         "desc": [
           "要播放视频的资源地址"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "initial-time",
         "type": {
           "name": "number"
@@ -3852,13 +2915,9 @@
         "desc": [
           "指定视频初始播放位置"
         ],
-        "since": "1.6.0",
-        "defaultValue": ""
+        "since": "1.6.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "duration",
         "type": {
           "name": "number"
@@ -3866,13 +2925,9 @@
         "desc": [
           "指定视频时长"
         ],
-        "since": "1.1.0",
-        "defaultValue": ""
+        "since": "1.1.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "controls",
         "type": {
           "name": "boolean"
@@ -3880,27 +2935,18 @@
         "desc": [
           "是否显示默认播放控件（播放/暂停按钮、播放进度、时间）"
         ],
-        "since": "",
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "danmu-list",
         "type": {
           "name": "ArrayObject"
         },
         "desc": [
           "弹幕列表"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "danmu-btn",
         "type": {
           "name": "boolean"
@@ -3908,13 +2954,9 @@
         "desc": [
           "是否显示弹幕按钮，只在初始化时有效，不能动态变更"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "enable-danmu",
         "type": {
           "name": "boolean"
@@ -3922,13 +2964,9 @@
         "desc": [
           "是否展示弹幕，只在初始化时有效，不能动态变更"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "autoplay",
         "type": {
           "name": "boolean"
@@ -3936,13 +2974,9 @@
         "desc": [
           "是否自动播放"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "loop",
         "type": {
           "name": "boolean"
@@ -3954,9 +2988,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "muted",
         "type": {
           "name": "boolean"
@@ -3968,9 +2999,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "page-gesture",
         "type": {
           "name": "boolean"
@@ -3982,9 +3010,6 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "direction",
         "type": {
           "name": "number"
@@ -3992,13 +3017,9 @@
         "desc": [
           "设置全屏时视频的方向，不指定则根据宽高比自动判断。有效值为 0（正常竖向）, 90（屏幕逆时针90度）, -90（屏幕顺时针90度）"
         ],
-        "since": "1.7.0",
-        "defaultValue": ""
+        "since": "1.7.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "show-progress",
         "type": {
           "name": "boolean"
@@ -4010,9 +3031,6 @@
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "show-fullscreen-btn",
         "type": {
           "name": "boolean"
@@ -4024,9 +3042,6 @@
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "show-play-btn",
         "type": {
           "name": "boolean"
@@ -4038,9 +3053,6 @@
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "show-center-play-btn",
         "type": {
           "name": "boolean"
@@ -4052,9 +3064,6 @@
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "enable-progress-gesture",
         "type": {
           "name": "boolean"
@@ -4066,9 +3075,6 @@
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "objectFit",
         "type": {
           "name": "string"
@@ -4076,103 +3082,69 @@
         "desc": [
           "当视频大小与 video 容器大小不一致时，视频的表现形式。contain：包含，fill：填充，cover：覆盖"
         ],
-        "since": "",
         "defaultValue": "contain"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "poster",
         "type": {
           "name": "string"
         },
         "desc": [
           "视频封面的图片网络资源地址，如果 controls 属性值为 false 则设置 poster 无效"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindplay",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当开始/继续播放时触发play事件"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindpause",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当暂停播放时触发 pause 事件"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindended",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当播放到末尾时触发 ended 事件"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindtimeupdate",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "播放进度变化时触发，event.detail = {currentTime, duration} 。触发频率 250ms 一次"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindfullscreenchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -4180,17 +3152,12 @@
         "desc": [
           "当视频进入和退出全屏是触发，event.detail = {fullScreen, direction}，direction取为 vertical 或 horizontal"
         ],
-        "since": "1.4.0",
-        "defaultValue": ""
+        "since": "1.4.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindwaiting",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -4198,17 +3165,12 @@
         "desc": [
           "视频出现缓冲时触发"
         ],
-        "since": "1.7.0",
-        "defaultValue": ""
+        "since": "1.7.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "binderror",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -4216,8 +3178,7 @@
         "desc": [
           "视频播放出错时触发"
         ],
-        "since": "1.7.0",
-        "defaultValue": ""
+        "since": "1.7.0"
       }
     ],
     "relateApis": [
@@ -4226,13 +3187,11 @@
         "link": "https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-video.html"
       }
     ],
-    "notices": [],
     "tips": [
       "`video` 组件是由客户端创建的原生组件，它的层级是最高的，不能通过 z-index 控制层级。",
       "请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `video` 组件。",
       "`css` 动画对 `video` 组件无效。"
     ],
-    "bugs": [],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/video.png?t=201828"
     ],
@@ -4245,9 +3204,6 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "device-position",
         "type": {
           "name": "string"
@@ -4258,9 +3214,6 @@
         "defaultValue": "back"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "flash",
         "type": {
           "name": "string"
@@ -4271,38 +3224,28 @@
         "defaultValue": "auto"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindstop",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "摄像头在非正常终止时触发，如退出后台等情况"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "binderror",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "用户不允许使用摄像头时触发"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
     "relateApis": [
@@ -4311,14 +3254,11 @@
         "link": "https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-camera.html"
       }
     ],
-    "notices": [],
     "tips": [
       "`camera` 组件是由客户端创建的原生组件，它的层级是最高的，不能通过 z-index 控制层级。可使用 `cover-view` `cover-image`覆盖在上面。",
       "同一页面只能插入一个 `camera` 组件。",
       "请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `camera` 组件。"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "camera",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/camera.html",
     "since": "1.6.0",
@@ -4333,23 +3273,15 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "src",
         "type": {
           "name": "string"
         },
         "desc": [
           "音视频地址。目前仅支持 flv, rtmp 格式"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "mode",
         "type": {
           "name": "string"
@@ -4357,13 +3289,9 @@
         "desc": [
           "live（直播），RTC（实时通话）"
         ],
-        "since": "",
         "defaultValue": "live"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "autoplay",
         "type": {
           "name": "boolean"
@@ -4371,13 +3299,9 @@
         "desc": [
           "自动播放"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "muted",
         "type": {
           "name": "boolean"
@@ -4385,13 +3309,9 @@
         "desc": [
           "是否静音"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "orientation",
         "type": {
           "name": "string"
@@ -4399,13 +3319,9 @@
         "desc": [
           "画面方向，可选值有 vertical，horizontal"
         ],
-        "since": "",
         "defaultValue": "vertical"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "object-fit",
         "type": {
           "name": "string"
@@ -4413,13 +3329,9 @@
         "desc": [
           "填充模式，可选值有 contain，fillCrop"
         ],
-        "since": "",
         "defaultValue": "contain"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "background-mute",
         "type": {
           "name": "boolean"
@@ -4427,13 +3339,9 @@
         "desc": [
           "进入后台时是否静音"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "min-cache",
         "type": {
           "name": "number"
@@ -4441,13 +3349,9 @@
         "desc": [
           "最小缓冲区，单位s"
         ],
-        "since": "",
         "defaultValue": "1"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "max-cache",
         "type": {
           "name": "number"
@@ -4455,17 +3359,12 @@
         "desc": [
           "最大缓冲区，单位s"
         ],
-        "since": "",
         "defaultValue": "3"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindstatechange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -4473,36 +3372,24 @@
         "desc": [
           "播放状态变化事件，detail = {code}",
           "code: {2001 => \"已经连接服务器\"; 2002 => \"已经连接服务器,开始拉流\"; 2003 => \"网络接收到首个视频数据包(IDR)\"; 2004 => \"视频播放开始\"; 2005 => \"视频播放进度\"; 2006 => \"视频播放结束\"; 2007 => \"视频播放Loading\"; 2008 => \"解码器启动\"; 2009 => \"视频分辨率改变\"; -2301 => \"网络断连，且经多次重连抢救无效，更多重试请自行重启播放\"; -2302 => \"获取加速拉流地址失败\"; 2101 => \"当前视频帧解码失败\"; 2102 => \"当前音频帧解码失败\"; 2103 => \"网络断连, 已启动自动重连\"; 2104 => \"网络来包不稳：可能是下行带宽不足，或由于主播端出流不均匀\"; 2105 => \"当前视频播放出现卡顿\"; 2106 => \"硬解启动失败，采用软解\"; 2107 => \"当前视频帧不连续，可能丢帧\"; 2108 => \"当前流硬解第一个I帧失败，SDK自动切软解\"; 3001 => \"RTMP -DNS解析失败\"; 3002 => \"RTMP服务器连接失败\"; 3003 => \"RTMP服务器握手失败\"; 3005 => \"RTMP 读/写失败\"}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindfullscreenchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "全屏变化事件，detail = {direction, fullScreen}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindnetstatus",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -4511,11 +3398,9 @@
           "网络状态通知，detail = {info}",
           "info: {videoBitrate => \"当前视频编/码器输出的比特率，单位 kbps\"; audioBitrate => \"当前音频编/码器输出的比特率，单位 kbps\"; videoFPS => \"当前视频帧率\"; videoGOP => \"当前视频 GOP,也就是每两个关键帧(I帧)间隔时长，单位 s\"; netSpeed => \"当前的发送/接收速度\"; netJitter => \"网络抖动情况，抖动越大，网络越不稳定\"; videoWidth => \"视频画面的宽度\"; videoHeight => \"视频画面的高度\"}"
         ],
-        "since": "1.9.0",
-        "defaultValue": ""
+        "since": "1.9.0"
       }
     ],
-    "relateApis": [],
     "notices": [
       "`<live-player />` 默认宽度300px、高度225px，可通过wxss设置宽高。",
       "开发者工具上暂不支持。",
@@ -4526,8 +3411,6 @@
       "请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `live-player` 组件。",
       "`css` 动画对 `live-player` 组件无效。"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "live-player",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/live-player.html",
     "since": "1.7.0"
@@ -4538,23 +3421,15 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "url",
         "type": {
           "name": "string"
         },
         "desc": [
           "推流地址。目前仅支持 flv, rtmp 格式"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "mode",
         "type": {
           "name": "string"
@@ -4562,13 +3437,9 @@
         "desc": [
           "SD（标清）, HD（高清）, FHD（超清）, RTC（实时通话）"
         ],
-        "since": "",
         "defaultValue": "RTC"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "autopush",
         "type": {
           "name": "boolean"
@@ -4576,13 +3447,9 @@
         "desc": [
           "自动推流"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "muted",
         "type": {
           "name": "boolean"
@@ -4590,13 +3457,9 @@
         "desc": [
           "是否静音"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "enable-camera",
         "type": {
           "name": "boolean"
@@ -4604,13 +3467,9 @@
         "desc": [
           "开启摄像头"
         ],
-        "since": "",
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "auto-focus",
         "type": {
           "name": "boolean"
@@ -4618,13 +3477,9 @@
         "desc": [
           "自动聚集"
         ],
-        "since": "",
         "defaultValue": "true"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "orientation",
         "type": {
           "name": "string"
@@ -4632,13 +3487,9 @@
         "desc": [
           "vertical，horizontal"
         ],
-        "since": "",
         "defaultValue": "vertical"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "beauty",
         "type": {
           "name": "number"
@@ -4646,13 +3497,9 @@
         "desc": [
           "美颜"
         ],
-        "since": "",
         "defaultValue": "0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "whiteness",
         "type": {
           "name": "number"
@@ -4660,13 +3507,9 @@
         "desc": [
           "美白"
         ],
-        "since": "",
         "defaultValue": "0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "aspect",
         "type": {
           "name": "string"
@@ -4674,13 +3517,9 @@
         "desc": [
           "宽高比，可选值有 3:4, 9:16"
         ],
-        "since": "",
         "defaultValue": "9:16"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "min-bitrate",
         "type": {
           "name": "number"
@@ -4688,13 +3527,9 @@
         "desc": [
           "最小码率"
         ],
-        "since": "",
         "defaultValue": "200"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "max-bitrate",
         "type": {
           "name": "number"
@@ -4702,41 +3537,27 @@
         "desc": [
           "最大码率"
         ],
-        "since": "",
         "defaultValue": "1000"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "waiting-image",
         "type": {
           "name": "string"
         },
         "desc": [
           "进入后台时推流的等待画面"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "waiting-image-md5",
         "type": {
           "name": "string"
         },
         "desc": [
           "等待画面资源的MD5值"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "background-mute",
         "type": {
           "name": "boolean"
@@ -4744,17 +3565,12 @@
         "desc": [
           "进入后台时是否静音"
         ],
-        "since": "",
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindstatechange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -4762,18 +3578,12 @@
         "desc": [
           "状态变化事件，detail = {code}",
           "code: {1001 => \"已经连接推流服务器\"; 1002 => \"已经与服务器握手完毕,开始推流\"; 1003 => \"打开摄像头成功\"; 1004 => \"录屏启动成功\"; 1005 => \"推流动态调整分辨率\"; 1006 => \"推流动态调整码率\"; 1007 => \"首帧画面采集完成\"; 1008 => \"编码器启动\"; -1301 => \"打开摄像头失败\"; -1302 => \"打开麦克风失败\"; -1303 => \"视频编码失败\"; -1304 => \"音频编码失败\"; -1305 => \"不支持的视频分辨率\"; -1306 => \"不支持的音频采样率\"; -1307 => \"网络断连，且经多次重连抢救无效，更多重试请自行重启推流\"; -1308 => \"开始录屏失败，可能是被用户拒绝\"; -1309 => \"录屏失败，不支持的Android系统版本，需要5.0以上的系统\"; -1310 => \"录屏被其他应用打断了\"; -1311 => \"Android Mic打开成功，但是录不到音频数据\"; -1312 => \"录屏动态切横竖屏失败\"; 1101 => \"网络状况不佳：上行带宽太小，上传数据受阻\"; 1102 => \"网络断连, 已启动自动重连\"; 1103 => \"硬编码启动失败,采用软编码\"; 1104 => \"视频编码失败\"; 1105 => \"新美颜软编码启动失败，采用老的软编码\"; 1106 => \"新美颜软编码启动失败，采用老的软编码\"; 3001 => \"RTMP -DNS解析失败\"; 3002 => \"RTMP服务器连接失败\"; 3003 => \"RTMP服务器握手失败\"; 3004 => \"RTMP服务器主动断开，请检查推流地址的合法性或防盗链有效期\"; 3005 => \"RTMP 读/写失败\"}"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindnetstatus",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -4782,11 +3592,9 @@
           "网络状态通知，detail = {info}",
           "info: {videoBitrate => \"当前视频编/码器输出的比特率，单位 kbps\"; audioBitrate => \"当前音频编/码器输出的比特率，单位 kbps\"; videoFPS => \"当前视频帧率\"; videoGOP => \"当前视频 GOP,也就是每两个关键帧(I帧)间隔时长，单位 s\"; netSpeed => \"当前的发送/接收速度\"; netJitter => \"网络抖动情况，抖动越大，网络越不稳定\"; videoWidth => \"视频画面的宽度\"; videoHeight => \"视频画面的高度\"}"
         ],
-        "since": "1.9.0",
-        "defaultValue": ""
+        "since": "1.9.0"
       }
     ],
-    "relateApis": [],
     "notices": [
       "`<live-player />` 默认宽度为100%、无默认高度，请通过wxss设置宽高。",
       "开发者工具上暂不支持。",
@@ -4797,8 +3605,6 @@
       "请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `live-pusher` 组件。",
       "`css` 动画对 `live-pusher` 组件无效。"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "live-pusher",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/live-pusher.html",
     "since": "1.7.0",
@@ -4813,37 +3619,24 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "longitude",
         "type": {
           "name": "number"
         },
         "desc": [
           "中心经度"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "latitude",
         "type": {
           "name": "number"
         },
         "desc": [
           "中心纬度"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "scale",
         "type": {
           "name": "number"
@@ -4851,13 +3644,9 @@
         "desc": [
           "缩放级别，取值范围为5-18"
         ],
-        "since": "",
         "defaultValue": "16"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "markers",
         "type": {
           "name": "Object",
@@ -4870,12 +3659,8 @@
               "desc": [
                 "标记点id"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "marker点击事件回调会返回此id。**建议为每个marker设置上Number类型id，保证更新marker时有更好的性能。**",
-              "since": ""
+              "notice": "marker点击事件回调会返回此id。**建议为每个marker设置上Number类型id，保证更新marker时有更好的性能。**"
             },
             {
               "name": "latitude",
@@ -4885,12 +3670,8 @@
               "desc": [
                 "纬度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": true,
-              "notice": "浮点数，范围 -90 ~ 90",
-              "since": ""
+              "notice": "浮点数，范围 -90 ~ 90"
             },
             {
               "name": "longitude",
@@ -4900,12 +3681,8 @@
               "desc": [
                 "经度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": true,
-              "notice": "浮点数，范围 -180 ~ 180",
-              "since": ""
+              "notice": "浮点数，范围 -180 ~ 180"
             },
             {
               "name": "title",
@@ -4915,12 +3692,7 @@
               "desc": [
                 "标注点名"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
-              "required": false,
-              "notice": "",
-              "since": ""
+              "required": false
             },
             {
               "name": "iconPath",
@@ -4930,12 +3702,8 @@
               "desc": [
                 "显示的图标"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": true,
-              "notice": "项目目录下的图片路径，支持相对路径写法，以'/'开头则表示相对小程序根目录；也支持临时路径",
-              "since": ""
+              "notice": "项目目录下的图片路径，支持相对路径写法，以'/'开头则表示相对小程序根目录；也支持临时路径"
             },
             {
               "name": "rotate",
@@ -4945,12 +3713,8 @@
               "desc": [
                 "旋转角度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "顺时针旋转的角度，范围 0 ~ 360，默认为 0",
-              "since": ""
+              "notice": "顺时针旋转的角度，范围 0 ~ 360，默认为 0"
             },
             {
               "name": "alpha",
@@ -4960,12 +3724,8 @@
               "desc": [
                 "标注的透明度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "默认1，无透明",
-              "since": ""
+              "notice": "默认1，无透明"
             },
             {
               "name": "width",
@@ -4975,12 +3735,8 @@
               "desc": [
                 "标注图标宽度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "默认为图片实际宽度",
-              "since": ""
+              "notice": "默认为图片实际宽度"
             },
             {
               "name": "height",
@@ -4990,12 +3746,8 @@
               "desc": [
                 "标注图标高度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "默认为图片实际高度",
-              "since": ""
+              "notice": "默认为图片实际高度"
             },
             {
               "name": "callout",
@@ -5010,9 +3762,6 @@
                     "desc": [
                       "文本"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5023,9 +3772,6 @@
                     "desc": [
                       "文本颜色"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5036,9 +3782,6 @@
                     "desc": [
                       "文字大小"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5049,9 +3792,6 @@
                     "desc": [
                       "callout边框圆角"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5062,9 +3802,6 @@
                     "desc": [
                       "背景色"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5075,9 +3812,6 @@
                     "desc": [
                       "文本边缘留白"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5088,9 +3822,6 @@
                     "desc": [
                       "'BYCLICK':点击显示; 'ALWAYS':常显"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5101,9 +3832,6 @@
                     "desc": [
                       "文本对齐方式。有效值: left, right, center"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.6.0"
                   }
                 ]
@@ -5111,9 +3839,6 @@
               "desc": [
                 "自定义标记点上方的气泡窗口"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "支持的属性见下表，可识别换行符。",
               "since": "1.2.0"
@@ -5131,9 +3856,6 @@
                     "desc": [
                       "文本"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5144,9 +3866,6 @@
                     "desc": [
                       "文本颜色"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5157,9 +3876,6 @@
                     "desc": [
                       "文字大小"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5170,9 +3886,6 @@
                     "desc": [
                       "label的坐标，原点是 marker 对应的经纬度"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5183,9 +3896,6 @@
                     "desc": [
                       "label的坐标，原点是 marker 对应的经纬度"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.2.0"
                   },
                   {
@@ -5196,9 +3906,6 @@
                     "desc": [
                       "边框宽度"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.6.0"
                   },
                   {
@@ -5209,9 +3916,6 @@
                     "desc": [
                       "边框颜色"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.6.0"
                   },
                   {
@@ -5222,9 +3926,6 @@
                     "desc": [
                       "边框圆角"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.6.0"
                   },
                   {
@@ -5235,9 +3936,6 @@
                     "desc": [
                       "背景色"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.6.0"
                   },
                   {
@@ -5248,9 +3946,6 @@
                     "desc": [
                       "文本边缘留白"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.6.0"
                   },
                   {
@@ -5261,9 +3956,6 @@
                     "desc": [
                       "文本对齐方式。有效值: left, right, center"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "since": "1.6.0"
                   }
                 ]
@@ -5271,9 +3963,6 @@
               "desc": [
                 "为标记点旁边增加标签"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "支持的属性见下表，可识别换行符。",
               "since": "1.2.0"
@@ -5286,9 +3975,6 @@
               "desc": [
                 "经纬度在标注图标的锚点，默认底边中点"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "{x, y}，x表示横向(0-1)，y表示竖向(0-1)。{x: .5, y: 1} 表示底边中点",
               "since": "1.2.0"
@@ -5297,28 +3983,18 @@
         },
         "desc": [
           "标记点"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "covers",
         "type": {
           "name": "any[]"
         },
         "desc": [
           "**即将移除，请使用 markers**"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "polyline",
         "type": {
           "name": "Object",
@@ -5331,12 +4007,8 @@
               "desc": [
                 "经纬度数组"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": true,
-              "notice": "[{latitude: 0, longitude: 0}]",
-              "since": ""
+              "notice": "[{latitude: 0, longitude: 0}]"
             },
             {
               "name": "color",
@@ -5346,12 +4018,8 @@
               "desc": [
                 "线的颜色"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "8位十六进制表示，后两位表示alpha值，如：#000000AA",
-              "since": ""
+              "notice": "8位十六进制表示，后两位表示alpha值，如：#000000AA"
             },
             {
               "name": "width",
@@ -5361,12 +4029,7 @@
               "desc": [
                 "线的宽度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
-              "required": false,
-              "notice": "",
-              "since": ""
+              "required": false
             },
             {
               "name": "dottedLine",
@@ -5376,12 +4039,8 @@
               "desc": [
                 "是否虚线"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "默认false",
-              "since": ""
+              "notice": "默认false"
             },
             {
               "name": "arrowLine",
@@ -5391,9 +4050,6 @@
               "desc": [
                 "带箭头的线"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "默认false，开发者工具暂不支持该属性",
               "since": "1.2.0"
@@ -5406,9 +4062,6 @@
               "desc": [
                 "更换箭头图标"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "在arrowLine为true时生效",
               "since": "1.6.0"
@@ -5421,11 +4074,7 @@
               "desc": [
                 "线的边框颜色"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "",
               "since": "1.2.0"
             },
             {
@@ -5436,25 +4085,16 @@
               "desc": [
                 "线的厚度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
-              "notice": "",
               "since": "1.2.0"
             }
           ]
         },
         "desc": [
           "路线"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "circles",
         "type": {
           "name": "Object",
@@ -5467,9 +4107,6 @@
               "desc": [
                 "纬度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": true,
               "notice": "浮点数，范围 -90 ~ 90"
             },
@@ -5481,9 +4118,6 @@
               "desc": [
                 "经度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": true,
               "notice": "浮点数，范围 -180 ~ 180"
             },
@@ -5495,9 +4129,6 @@
               "desc": [
                 "描边的颜色"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "8位十六进制表示，后两位表示alpha值，如：#000000AA"
             },
@@ -5509,9 +4140,6 @@
               "desc": [
                 "填充颜色"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "8位十六进制表示，后两位表示alpha值，如：#000000AA"
             },
@@ -5523,11 +4151,7 @@
               "desc": [
                 "半径"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
-              "required": true,
-              "notice": ""
+              "required": true
             },
             {
               "name": "strokeWidth",
@@ -5537,24 +4161,15 @@
               "desc": [
                 "描边的宽度"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
-              "required": false,
-              "notice": ""
+              "required": false
             }
           ]
         },
         "desc": [
           "圆"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "controls",
         "type": {
           "name": "Object",
@@ -5567,9 +4182,6 @@
               "desc": [
                 "控件id"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "在控件点击事件回调会返回此id"
             },
@@ -5586,9 +4198,6 @@
                     "desc": [
                       "距离地图的左边界多远"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "required": false,
                     "notice": "默认为0"
                   },
@@ -5600,9 +4209,6 @@
                     "desc": [
                       "距离地图的上边界多远"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "required": false,
                     "notice": "默认为0"
                   },
@@ -5614,9 +4220,6 @@
                     "desc": [
                       "控件宽度"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "required": false,
                     "notice": "默认为图片宽度"
                   },
@@ -5628,9 +4231,6 @@
                     "desc": [
                       "控件高度"
                     ],
-                    "extras": [],
-                    "enum": [],
-                    "subDefinitions": [],
                     "required": false,
                     "notice": "默认为图片高度"
                   }
@@ -5639,9 +4239,6 @@
               "desc": [
                 "控件在地图的位置"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": true,
               "notice": "控件相对地图位置"
             },
@@ -5653,9 +4250,6 @@
               "desc": [
                 "显示的图标"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": true,
               "notice": "项目目录下的图片路径，支持相对路径写法，以'/'开头则表示相对小程序根目录；也支持临时路径"
             },
@@ -5667,9 +4261,6 @@
               "desc": [
                 "是否可点击"
               ],
-              "extras": [],
-              "enum": [],
-              "subDefinitions": [],
               "required": false,
               "notice": "默认不可点击"
             }
@@ -5677,64 +4268,42 @@
         },
         "desc": [
           "控件"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "include-points",
         "type": {
           "name": "any[]"
         },
         "desc": [
           "缩放视野以包含所有给定的坐标点"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "show-location",
         "type": {
           "name": "boolean"
         },
         "desc": [
           "显示带有方向的当前定位点"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindmarkertap",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "点击标记点时触发"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindcallouttap",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -5742,71 +4311,48 @@
         "desc": [
           "点击标记点对应的气泡时触发"
         ],
-        "since": "1.2.0",
-        "defaultValue": ""
+        "since": "1.2.0"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindcontroltap",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "点击控件时触发"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindregionchange",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "视野发生变化时触发"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindtap",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "点击地图时触发"
-        ],
-        "since": "",
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindupdated",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
@@ -5814,8 +4360,7 @@
         "desc": [
           "在地图渲染更新完成时触发"
         ],
-        "since": "1.6.0",
-        "defaultValue": ""
+        "since": "1.6.0"
       }
     ],
     "relateApis": [
@@ -5833,8 +4378,6 @@
       "`css` 动画对 `map` 组件无效。",
       "`map` 组件使用的经纬度是火星坐标系，调用 `wx.getLocation` 接口需要指定 `type` 为 `gcj02`"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "map",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/map.html"
   },
@@ -5844,22 +4387,15 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "canvas-id",
         "type": {
           "name": "string"
         },
         "desc": [
           "canvas 组件的唯一标识符"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "disable-scroll",
         "type": {
           "name": "boolean"
@@ -5870,106 +4406,76 @@
         "defaultValue": "false"
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindtouchstart",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "手指触摸动作开始"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindtouchmove",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "手指触摸后移动"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindtouchend",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "手指触摸动作结束"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindtouchcancel",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "手指触摸动作被打断，如来电提醒，弹窗"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindlongtap",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "手指长按 500ms 之后触发，触发了长按事件后进行移动不会触发屏幕的滚动"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "binderror",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "当发生错误时触发 error 事件，detail = {errMsg: 'something wrong'}"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
     "relateApis": [
@@ -5978,7 +4484,6 @@
         "link": "https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/create-canvas-context.html"
       }
     ],
-    "notices": [],
     "tips": [
       "`canvas` 组件是由客户端创建的原生组件，它的层级是最高的，不能通过 z-index 控制层级。",
       "请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `canvas` 组件。",
@@ -5987,7 +4492,6 @@
     "bugs": [
       "避免设置过大的宽高，在安卓下会有crash的问题"
     ],
-    "demoImages": [],
     "name": "canvas",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html"
   },
@@ -6001,42 +4505,31 @@
           {
             "value": "groupName",
             "desc": "拉取群名称",
-            "since": "[1.4.0](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.4.0 开始支持，低版本需做兼容处理。\")"
+            "since": "1.4.0"
           }
         ],
-        "extras": [],
-        "subAttrs": [],
         "name": "type",
         "type": {
           "name": "string"
         },
         "desc": [
           "开放数据类型"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "open-gid",
         "type": {
           "name": "string"
         },
         "desc": [
           "当 type=\"groupName\" 时生效, 群id"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       " 只有当前用户在此群内才能拉取到群名称",
       " 关于open-gid的获取请查看 [转发](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxgetshareinfoobject)"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "open-data",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/open-data.html",
     "since": "1.4.0"
@@ -6047,38 +4540,27 @@
     ],
     "attrs": [
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "src",
         "type": {
           "name": "string"
         },
         "desc": [
           "webview 指向网页的链接。需登录[小程序管理后台](https://mp.weixin.qq.com/)配置域名白名单。"
-        ],
-        "defaultValue": ""
+        ]
       },
       {
-        "enum": [],
-        "extras": [],
-        "subAttrs": [],
         "name": "bindmessage",
         "type": {
           "name": "function",
-          "args": [],
           "returns": {
             "name": "any"
           }
         },
         "desc": [
           "网页向小程序 postMessage 时，会在特定时机（小程序后退、组件销毁、分享）触发并收到消息。e.detail = { data }"
-        ],
-        "defaultValue": ""
+        ]
       }
     ],
-    "relateApis": [],
-    "notices": [],
     "tips": [
       "网页内iframe的域名也需要配置到域名白名单。",
       "开发者工具上，可以在 `<web-view/>` 组件上通过右键 \\- 调试，打开 `<web-view/>` 组件的调试。",
@@ -6086,8 +4568,6 @@
       "`<web-view/>`网页与小程序之间不支持除JSSDK提供的接口之外的通信。",
       "在iOS中，若存在JSSDK接口调用无响应的情况，可在`<web-view/>`的src后面加个#wechat_redirect解决。"
     ],
-    "bugs": [],
-    "demoImages": [],
     "name": "web-view",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/web-view.html",
     "since": "1.6.4"

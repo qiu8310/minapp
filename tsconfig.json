@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": false,
+    "declaration": true,
+    "declarationDir": "dist/d", // 使用 componets.json 时可能需要 "declaration"
     "removeComments": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,

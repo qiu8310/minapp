@@ -4,7 +4,7 @@ import * as url from 'url'
 import * as fs from 'fs-extra'
 import {Modifier, MODIFIER_ASSERT_ERROR, FunctionCodeMeta} from '../modify'
 import {Node, Page} from './layout/'
-import {markdownTable, EOL, markdown, normalizeTableRows, isSectionHead, RETURN_SECTION_TITLES, WX_FUNC_REGEXP, SINCE_TEST_REGEXP} from './base/'
+import {markdownTable, EOL, markdown, normalizeTableRows, isSectionHead, RETURN_SECTION_TITLES, WX_FUNC_REGEXP, SINCE_TEST_GLOBAL_REGEXP, SINCE_LINK_REGEXP} from './base/'
 import {COLLECT} from '../cli/collect'
 
 export class Generator {
@@ -52,7 +52,13 @@ export class Generator {
       let $e = this.$(el)
       let ns = el.childNodes
       // 如果文本当作 markdown 处理会出现异常
-      return ns.length === 1 && ns[0].type === 'text' ? $e.text() : markdown($e.html())
+      let val = ns.length === 1 && ns[0].type === 'text' ? $e.text() : markdown($e.html())
+
+      // 去掉 since 中的链接
+      if (val.startsWith('[') && val.endsWith(')') && SINCE_LINK_REGEXP.test(val)) {
+        val = RegExp.$1
+      }
+      return val
     })
   }
 
@@ -100,7 +106,7 @@ export class Generator {
 
     let page = new Page(this, this.$root, promise)
     let ts = page.toTSString(1)
-    if (ts) ts = ts.replace(SINCE_TEST_REGEXP, (raw, since) => '@since ' + since)
+    if (ts) ts = ts.replace(SINCE_TEST_GLOBAL_REGEXP, (raw, since) => '@since ' + since)
     if (promise) return ts // promise 不需要生成单个文件
 
     if (ts) {
