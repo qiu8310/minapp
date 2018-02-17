@@ -1,5 +1,5 @@
 {
-  "name": "wxapp-compiler",
+  "name": "@minapp/compiler",
   "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",

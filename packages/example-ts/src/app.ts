@@ -1,4 +1,4 @@
-import wxp from 'wxapp-core'
+import wxp from '@minapp/core'
 
 App({
   async onLaunch() {

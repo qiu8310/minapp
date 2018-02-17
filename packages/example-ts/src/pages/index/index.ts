@@ -1,4 +1,4 @@
-import wxp from 'wxapp-core'
+import wxp from '@minapp/core'
 
 // 获取应用实例
 const app = getApp()

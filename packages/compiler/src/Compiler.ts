@@ -48,7 +48,7 @@ export class Compiler {
       throw new Error(`当前项目中没有 package.json 文件，无法编译`)
     }
 
-    this.entryName = 'wxapp-entry' + formatDate('-yyyy-mm-dd-') + Math.random().toString(16).substr(2, 6) + '.js'
+    this.entryName = 'minapp-entry' + formatDate('-yyyy-mm-dd-') + Math.random().toString(16).substr(2, 6) + '.js'
     this.entryPath = path.join(os.tmpdir(), this.entryName)
 
     this.build()

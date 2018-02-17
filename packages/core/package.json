@@ -1,5 +1,5 @@
 {
-  "name": "wxapp-core",
+  "name": "@minapp/core",
   "version": "0.0.0",
   "description": "微信小程序 API 的 typescript 版本",
   "main": "dist/index.js",

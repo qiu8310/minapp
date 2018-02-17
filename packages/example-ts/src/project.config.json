@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
 	"appid": "wxcbe3dcec68e268e3",
-	"projectname": "wxapp-zone",
+	"projectname": "@minapp/example-ts",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

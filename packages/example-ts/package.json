@@ -1,5 +1,5 @@
 {
-  "name": "wxapp-zone",
+  "name": "@minapp/example-ts",
   "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "tslib": "~1.9.0",
-    "wxapp-core": "^0.0.0"
+    "@minapp/core": "^0.0.0"
   },
   "devDependencies": {
     "ts-lint": "~4.5.1",
