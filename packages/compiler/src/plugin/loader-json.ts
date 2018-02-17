@@ -16,11 +16,17 @@ export default class JsonLoader extends Loader {
 
     // 根据 app.json 中的 pages 字段，查找其依赖的所有文件
     if (emitFile === 'app.json') {
-      json.pages.forEach((p: string) => {
+      let {pages = [], subPackages = []} = json
+
+      pages.forEach((p: string) => {
         let parts = p.split('/')
         let prefix = parts.pop() + '.'
         let dir = path.join(srcDir, parts.join('/'))
         searchDir(requires, dir, prefix)
+      })
+      load(requires, srcDir, pages)
+      subPackages.forEach((sp: {root: string, pages: string[]}) => {
+        load(requires, path.join(srcDir, sp.root), sp.pages)
       })
       searchDir(requires, srcDir, 'app.', 'project.config.json')
     }
@@ -29,6 +35,15 @@ export default class JsonLoader extends Loader {
     this.emit(emitFile, JSON.stringify(json, null, this.minimize ? 0 : 2))
     return this.toRequire(requires)
   }
+}
+
+function load(requires: string[], rootDir: string, pages: string[]) {
+  pages.forEach((p: string) => {
+    let parts = p.split('/')
+    let prefix = parts.pop() + '.'
+    let dir = path.join(rootDir, parts.join(path.sep))
+    searchDir(requires, dir, prefix)
+  })
 }
 
 function searchDir(requires: string[], dir: string, prefix: string, fullname?: string) {
