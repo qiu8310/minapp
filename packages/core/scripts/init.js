@@ -3,12 +3,12 @@ const fs = require('fs-extra')
 const warn = require('mora-scripts/libs/sys/warn')
 const info = require('mora-scripts/libs/sys/info')
 
-const MINAPP_ROOT = path.resolve('../../')
-const {data} = require(path.join(MINAPP_ROOT, 'package.json'))
+const GENERATOR_ROOT = path.resolve('../generator')
+const {data} = require(path.join(GENERATOR_ROOT, 'package.json'))
 
-const WX_FILE = path.resolve(MINAPP_ROOT, data.wx)
-const WXP_FILE = path.resolve(MINAPP_ROOT, data.wxp)
-const PROMISABLE_FILE = path.resolve(MINAPP_ROOT, data.promisable)
+const WX_FILE = path.resolve(GENERATOR_ROOT, data.wx)
+const WXP_FILE = path.resolve(GENERATOR_ROOT, data.wxp)
+const PROMISABLE_FILE = path.resolve(GENERATOR_ROOT, data.promisable)
 
 const DIST_DIR = path.resolve(__dirname, '../dist')
 

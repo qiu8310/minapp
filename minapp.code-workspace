@@ -4,6 +4,9 @@
 			"path": "."
 		},
 		{
+			"path": "packages/generator"
+		},
+		{
 			"path": "packages/core"
 		},
 		{
@@ -11,6 +14,9 @@
 		},
 		{
 			"path": "packages/example-ts"
+		},
+		{
+			"path": "packages/vscode"
 		}
 	],
 	"settings": {

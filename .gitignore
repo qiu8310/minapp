@@ -1,5 +1,6 @@
 *.log
 dist
 .cache
+.dtpl/dtpl.js
 vendor
 node_modules

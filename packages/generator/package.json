@@ -1,0 +1,67 @@
+{
+	"name": "@minapp/generator",
+	"version": "0.0.0",
+	"license": "MIT",
+	"data": {
+		"components": "gen/tpl/components.json",
+		"detailComponents": "gen/tpl/components-with-examples.json",
+		"wx": "gen/api/wx.d.ts",
+		"wxp": "gen/api/wxp.d.ts",
+		"promisable": "gen/api/promisable.json"
+	},
+	"scripts": {
+		"test": "jest",
+		"generate": "node dist/cli/cmd.js api && node dist/cli/cmd.js api -p && git diff gen/**",
+		"build": "remove-all dist/ && tsc",
+		"build:watch": "remove-all dist/ && tsc -w"
+	},
+	"jest": {
+    "roots": [
+      "src"
+    ],
+    "mapCoverage": false,
+    "collectCoverage": false,
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/helper/"
+    ],
+    "coverageDirectory": "./coverage",
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  },
+	"dependencies": {
+		"async": "^2.6.0",
+		"cheerio": "^1.0.0-rc.2",
+		"fs-extra": "^5.0.0",
+		"lodash": "^4.17.4",
+		"mora-scripts": "^1.6.19",
+		"request": "^2.83.0",
+		"request-promise": "^4.2.2",
+		"tslib": "^1.9.0",
+		"turndown": "^4.0.1"
+	},
+	"devDependencies": {
+		"@types/async": "^2.0.47",
+		"@types/cheerio": "^0.22.7",
+		"@types/fs-extra": "^5.0.0",
+		"@types/jest": "^22.1.1",
+		"@types/lodash": "^4.14.95",
+		"@types/request-promise": "^4.1.40",
+		"jest": "^22.1.4",
+		"ts-jest": "^22.0.2",
+		"ts-lint": "^4.5.1",
+		"typescript": "^2.7.0"
+	}
+}
