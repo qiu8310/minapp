@@ -4571,5 +4571,23 @@
     "name": "web-view",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/web-view.html",
     "since": "1.6.4"
+  },
+  {
+    "desc": [
+      "用于承载组件使用者提供的wxml结构"
+    ],
+    "attrs": [
+      {
+        "name": "name",
+        "type": {
+          "name": "string"
+        },
+        "desc": [
+          "区分不同的组件的 wxml"
+        ]
+      }
+    ],
+    "name": "slot",
+    "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/wxml-wxss.html#%E7%BB%84%E4%BB%B6wxml%E7%9A%84slot"
   }
 ]
