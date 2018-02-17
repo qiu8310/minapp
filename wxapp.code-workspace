@@ -4,13 +4,13 @@
 			"path": "."
 		},
 		{
-			"path": "packages/wxapp-core"
+			"path": "packages/core"
 		},
 		{
-			"path": "packages/wxapp-compiler"
+			"path": "packages/compiler"
 		},
 		{
-			"path": "packages/wxapp-zone"
+			"path": "packages/example-ts"
 		}
 	],
 	"settings": {
