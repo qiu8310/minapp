@@ -6,7 +6,6 @@ export interface Loader {
   wxml: string
   wxss: string
   wxs: string
-  file: string
 
   babel: string
   ts: string

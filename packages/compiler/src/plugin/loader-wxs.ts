@@ -21,11 +21,18 @@ export default class WxsLoader extends Loader {
         return raw
       }
 
+      if (this.isStaticFile(absFile)) {
+        return JSON.stringify(await this.loadStaticFile(absFile))
+      }
+
+      // 将文件记录起来，触发 webpack 继续解析此文件
       requires.push(absFile) // 使用绝对路径，避免重复 resolve
 
       if (this.isFileInSrcDir(absFile)) {
+        // 项目中的文件相互引用，路径不变
         return raw
       } else {
+        // 项目中的文件引用项目外的文件，要修改文件的引用路径
         return this.toRequire(this.resolveEmitFile(this.getEmitFile(absFile)))
       }
     }, 0)

@@ -9,9 +9,8 @@ const process: {
   [key: string]: (loader: Loader, args: string[], collect: string[]) => Promise<string>
 } = {
   url: async (loader, [imageFile], collect) => {
-    let emitFile = loader.getEmitFile(imageFile)
-    loader.emit(emitFile, await readFile(imageFile))
-    return `url(${loader.resolveEmitFile(emitFile)})`
+    let src = await loader.loadStaticFile(imageFile)
+    return `url(${src})`
   },
 
   data: async (loader, [imageFile]) => {

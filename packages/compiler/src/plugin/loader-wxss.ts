@@ -8,11 +8,7 @@ const autoprefixer = require('autoprefixer')
 @Loader.decorate
 export default class WxssLoader extends Loader {
   async run(content: string) {
-    let requires = await this.process(content, this.emitFile.replace(/\.\w+$/, '.wxss'))
-    return requires.map(r => `require("${r}")`).join('\n')
-  }
-
-  private async process(content: string, emitFile: string) {
+    let emitFile = this.emitFile.replace(/\.\w+$/, '.wxss')
     let requires: string[] = []
     let {autoprefixer: config} = this.compiler.options
 
@@ -35,6 +31,6 @@ export default class WxssLoader extends Loader {
     await postcss(plugins).process(content, {from: this.resourcePath})
       .then(r => this.emit(emitFile, r.css))
 
-    return requires
+    return '' // css 都可以用此 loader 处理完，没什么可以让 webpack 效劳的了
   }
 }

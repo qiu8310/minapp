@@ -1,9 +1,9 @@
 import * as webpack from 'webpack'
+import * as url from 'url'
 import {Compiler} from '../../Compiler'
 import {getDataFromLoaderContext} from '../../hack-webpack'
 import * as path from 'path'
-import {findup} from 'mora-scripts/libs/fs/'
-import {isWin} from 'mora-scripts/libs/sys/'
+import {findup, isWin, toPath, readFile, md5} from '../../util'
 
 export abstract class Loader {
   static decorate(LoaderClass: any) {
@@ -66,7 +66,7 @@ export abstract class Loader {
   toRequire(files: string | string[]): string {
     return Array.isArray(files)
       ? files.map(f => this.toRequire(f)).join('\n')
-      : `require("${this.toRelative(files)}");`
+      : `require("${toPath('/', this.toRelative(files))}");` // require 都要使用 / 路径
   }
 
   async resolve(request: string): Promise<string> {
@@ -76,6 +76,25 @@ export abstract class Loader {
   }
   async tryResolve(request: string): Promise<string | undefined> {
     try { return await this.resolve(request) } catch (e) { return }
+  }
+
+  isStaticFile(filepath: string) {
+    return this.compiler.isStaticFile(filepath)
+  }
+
+  /**
+   * 内部 loader，可在其它 loader 中使用
+   *
+   * **使用前先调用 isStaticFile 判断是不是静态资源**
+   */
+  async loadStaticFile(absFile: string) {
+    let content = await readFile(absFile)
+    let filename = md5(content) + path.extname(absFile)
+
+    let {staticDir, publicPath} = this.compiler.options
+    let emitFile = path.relative(this.distDir, path.join(staticDir, filename))
+    this.emit(emitFile, content)
+    return url.resolve(publicPath, filename)
   }
 
   // LoaderContext 中的属性

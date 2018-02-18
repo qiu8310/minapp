@@ -1,2 +1,2 @@
 export * from './Loader'
-export * from './util'
+export * from '../../util'

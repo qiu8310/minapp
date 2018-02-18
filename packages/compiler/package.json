@@ -28,24 +28,31 @@
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
     "fs-extra": "^5.0.0",
     "json5": "^0.5.1",
     "less": "^3.0.0",
     "less-loader": "^4.0.5",
     "loader-utils": "^1.1.0",
     "mime": "^2.2.0",
+    "mora-common": "^1.0.8",
     "mora-scripts": "^1.6.21",
     "node-sass": "^4.7.2",
     "postcss": "^6.0.17",
     "sass-loader": "^6.0.6",
     "tslib": "^1.9.0",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1",
+    "xml-parser": "^1.2.1"
   },
   "devDependencies": {
+    "@types/debug": "^0.0.30",
     "@types/fs-extra": "^5.0.0",
     "@types/json5": "^0.0.29",
     "@types/loader-utils": "^1.1.1",
     "@types/webpack": "^3.8.5",
+    "@types/xml-parser": "^1.2.29",
     "ts-lint": "~4.5.1",
     "typescript": "~2.7.1"
   }

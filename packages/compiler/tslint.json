@@ -5,6 +5,7 @@
     "quotemark": [true, "single", "jsx-single"],
     "semicolon": [true, "never"],
     "member-access": false,
+    "member-ordering": false,
     "new-parens": true,
     "no-arg": true,
     "no-bitwise": true,
