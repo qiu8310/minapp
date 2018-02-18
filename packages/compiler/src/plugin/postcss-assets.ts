@@ -10,7 +10,7 @@ const process: {
 } = {
   url: async (loader, [imageFile], collect) => {
     let emitFile = loader.getEmitFile(imageFile)
-    loader.emit(emitFile, await readFile(imageFile), null)
+    loader.emit(emitFile, await readFile(imageFile))
     return `url(${loader.resolveEmitFile(emitFile)})`
   },
 

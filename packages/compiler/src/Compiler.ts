@@ -97,11 +97,17 @@ export class Compiler {
 
     let wp = webpack(options)
     injectDataToCompiler(wp, this)
-    wp.run((err, stats) => {
+    let callback = (err: any, stats: webpack.Stats) => {
       this.afterBuild()
       if (err) console.log(err.message, err.stack)
       else console.log(stats.toString({colors: true}))
-    })
+    }
+
+    if (this.options.watch) {
+      wp.watch({}, callback)
+    } else {
+      wp.run(callback)
+    }
   }
 
   private beforeBuild() {
@@ -114,8 +120,10 @@ export class Compiler {
   }
 
   private afterBuild() {
-    fs.unlinkSync(this.entryPath)
-    fs.unlinkSync(path.join(this.distDir, this.entryName))
+    let rm = (file: string) => fs.existsSync(file) && fs.unlinkSync(file)
+
+    if (!this.options.watch) rm(this.entryPath)
+    rm(path.join(this.distDir, this.entryName))
   }
 }
 

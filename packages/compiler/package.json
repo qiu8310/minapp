@@ -9,7 +9,7 @@
     "build:watch": "npm run clear && tsc -w"
   },
   "bin": {
-    "wc": "dist/cli/compiler.js"
+    "minapp": "dist/cli/compiler.js"
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",

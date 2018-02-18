@@ -13,6 +13,7 @@ export abstract class Loader {
     } as any
   }
 
+  /** 内部的 Compiler，不是 webpack 的 Compiler，一般也不需要要 webpack 的 */
   compiler: Compiler
   srcDir: string
   distDir: string
@@ -91,7 +92,13 @@ export abstract class Loader {
    */
   addDependency(file: string) { this.lc.addDependency(file) }
   /** Emit a file. This is webpack-specific. */
-  emit(name: string, content: Buffer | string, sourceMap: any = null) { this.lc.emitFile(name, content, sourceMap)}
+  emit(name: string, content: Buffer | string, sourceMap: any = null) {
+    if (path.resolve(this.distDir, name).indexOf(this.distDir) !== 0) {
+      this.emitWarning(`无法生成 ${this.distDir} 目录外的文件：${name}`)
+    } else {
+      this.lc.emitFile(name, content, sourceMap)
+    }
+  }
   /** The options passed to the Compiler. */
   get options() { return this.lc.options }
   /** A boolean flag. It is set when in debug mode. */
