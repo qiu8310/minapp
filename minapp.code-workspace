@@ -4,19 +4,19 @@
 			"path": "."
 		},
 		{
-			"path": "packages/generator"
+			"path": "packages/minapp-generator"
 		},
 		{
-			"path": "packages/core"
+			"path": "packages/minapp-core"
 		},
 		{
-			"path": "packages/compiler"
+			"path": "packages/minapp-compiler"
 		},
 		{
-			"path": "packages/example-ts"
+			"path": "packages/minapp-example-ts"
 		},
 		{
-			"path": "packages/wxml-parser"
+			"path": "packages/minapp-wxml-parser"
 		}
 	],
 	"settings": {

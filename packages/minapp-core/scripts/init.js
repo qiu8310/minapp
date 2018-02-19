@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 const warn = require('mora-scripts/libs/sys/warn')
 const info = require('mora-scripts/libs/sys/info')
 
-const GENERATOR_ROOT = path.resolve('../generator')
+const GENERATOR_ROOT = path.resolve('../minapp-generator')
 const {data} = require(path.join(GENERATOR_ROOT, 'package.json'))
 
 const WX_FILE = path.resolve(GENERATOR_ROOT, data.wx)

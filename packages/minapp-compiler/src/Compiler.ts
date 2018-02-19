@@ -167,7 +167,7 @@ export class Compiler {
         modules: [this.srcDir, this.modulesDir],
       },
       stats: { // https://webpack.js.org/configuration/stats/#stats
-        ['all' as '']: false,
+        // ['all' as '']: false,
         modules: true,
         maxModules: 0,
         publicPath: true,
