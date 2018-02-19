@@ -1,4 +1,5 @@
-import {parse, Node} from '../parser'
+import {parse} from '../parser'
+import {Node} from '../structs'
 import * as path from 'path'
 import * as fs from 'fs'
 const fixture = (name: string) => path.resolve(__dirname, './fixtures/' + name)
@@ -108,7 +109,7 @@ describe('complex node', () => {
   })
 
   test('fixture b xml => json', () => {
-    expect(c(readFixture('a.xml'))).toEqual(JSON.parse(readFixture('a.json')))
+    expect(c(readFixture('b.xml'))).toEqual(JSON.parse(readFixture('b.json')))
   })
 
   test('fixture a xml => json => xml', () => {
@@ -119,6 +120,15 @@ describe('complex node', () => {
   test('fixture b xml => json => xml', () => {
     let xml = readFixture('b.xml')
     expect(parse(xml).toXML(2).trim()).toEqual(xml.trim())
+  })
+})
+
+describe('mustache in test', () => {
+  test('basic', () => {
+    expect(c('<div>{{index + 1}}. {{log}}</div>')).toEqual([{name: 'div', children: [{content: '{{index + 1}}. {{log}}'}]}])
+  })
+  test('include <', () => {
+    expect(c('<div>{{a<b ? 1 : 2}} a</div>')).toEqual([{name: 'div', children: [{content: '{{a<b ? 1 : 2}} a'}]}])
   })
 })
 

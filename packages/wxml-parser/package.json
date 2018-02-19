@@ -2,8 +2,8 @@
 	"name": "@minapp/wxml-parser",
 	"version": "0.0.0",
 	"license": "MIT",
-	"main": "dist/parser.ts",
-	"typings": "dist/parser.d.ts",
+	"main": "dist/index.js",
+	"typings": "dist/index.d.ts",
 	"scripts": {
 		"test": "jest",
 		"build": "remove-all dist/ && tsc",

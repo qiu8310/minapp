@@ -47,18 +47,32 @@ export function parse(xml: string) {
   }
 
   function text(): TextNode {
-    // 查找下一个 comment 或 tag开始节点 或 tag结束节点
-    let m = /(<!--|<\/?([\w-:.]+)\s*)/.exec(xml)
-    let content
+    let start = location
+    return new TextNode(getTextContent().trim(), start, location)
+  }
+
+  function getTextContent() {
+    // 查找 mustach 的起点 或 下一个 comment 或 tag开始节点 或 tag 结束节点
+    let m = match(/^([\s\S]*?)(?=\{\{|<!--|<\/?([\w-:.]+)\s*)/)
+    let content: string
     if (!m) {
       content = xml
+      match(content)
     } else {
-      content = xml.substring(0, m.index)
+      content = m[1]
+      if (is('{{')) {
+        m = match(/^\{\{(.*?\}\})/)
+        if (m) { // 一定会匹配成功，不用 else
+          content += m[0]
+        }
+        content += getTextContent()
+      } else {
+        // 下面是其它 Node 了，不处理
+      }
     }
-    content = content.replace(/\s*$/, '')
-    match(content)
-    return new TextNode(content, lastLocation, location)
+    return content
   }
+
 
   function comment(): CommentNode {
     debug('comment %j', xml)
@@ -178,5 +192,3 @@ export function parse(xml: string) {
     }
   }
 }
-
-export * from './structs'
