@@ -1,0 +1,50 @@
+{
+	"name": "@minapp/wxml-parser",
+	"version": "0.0.0",
+	"license": "MIT",
+	"main": "dist/parser.ts",
+	"typings": "dist/parser.d.ts",
+	"scripts": {
+		"test": "jest",
+		"build": "remove-all dist/ && tsc",
+		"build:watch": "remove-all dist/ && tsc -w"
+	},
+	"jest": {
+		"roots": [
+			"src"
+		],
+		"mapCoverage": true,
+		"collectCoverage": true,
+		"coverageReporters": [
+			"text",
+			"html"
+		],
+		"coveragePathIgnorePatterns": [
+			"/node_modules/",
+			"/__tests__/helper/"
+		],
+		"coverageDirectory": "./coverage",
+		"transform": {
+			"^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+		},
+		"testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"json"
+		]
+	},
+	"dependencies": {
+		"debug": "^3.1.0",
+		"tslib": "^1.9.0"
+	},
+	"devDependencies": {
+		"@types/jest": "^22.1.3",
+		"jest": "^22.1.4",
+		"mora-scripts": "^1.6.21",
+		"ts-jest": "^22.0.2",
+		"ts-lint": "^4.5.1",
+		"typescript": "^2.7.0"
+	}
+}
