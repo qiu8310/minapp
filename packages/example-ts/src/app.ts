@@ -16,7 +16,7 @@ App({
     if (setting.authSetting['scope.userInfo']) { // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
       // 可以将 getUserInfo 返回的对象发送给后台解码出 unionId
       let res = await wxp.getUserInfo()
-      console.log(res)
+      // console.log(res)
       this.globalData.userInfo = res.userInfo
 
       // // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -25,9 +25,9 @@ App({
       //   this.userInfoReadyCallback(res)
       // }
 
-      console.log('app')
-      console.log(this)
-      console.log(getApp())
+      // console.log('app')
+      // console.log(this)
+      // console.log(getApp())
     }
   },
 

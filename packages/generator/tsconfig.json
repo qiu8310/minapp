@@ -3,7 +3,6 @@
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
-    "declarationDir": "dist/d", // 使用 componets.json 时可能需要 "declaration"
     "removeComments": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
@@ -29,7 +28,6 @@
   ],
   "exclude": [
     "gen",
-    "packages",
     "node_modules"
   ]
 }

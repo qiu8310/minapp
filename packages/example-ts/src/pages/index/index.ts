@@ -17,7 +17,7 @@ Page({
   },
 
   async onLoad(options) {
-    console.log('page', this)
+    console.log('page', require('../../images/heart-active@3x.png'))
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

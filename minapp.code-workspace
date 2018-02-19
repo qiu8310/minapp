@@ -16,7 +16,7 @@
 			"path": "packages/example-ts"
 		},
 		{
-			"path": "packages/vscode"
+			"path": "packages/wxml-parser"
 		}
 	],
 	"settings": {

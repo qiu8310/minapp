@@ -16,34 +16,35 @@
 		"build:watch": "remove-all dist/ && tsc -w"
 	},
 	"jest": {
-    "roots": [
-      "src"
-    ],
-    "mapCoverage": false,
-    "collectCoverage": false,
-    "coverageReporters": [
-      "text",
-      "html"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/__tests__/helper/"
-    ],
-    "coverageDirectory": "./coverage",
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json"
-    ]
-  },
+		"roots": [
+			"src"
+		],
+		"mapCoverage": false,
+		"collectCoverage": false,
+		"coverageReporters": [
+			"text",
+			"html"
+		],
+		"coveragePathIgnorePatterns": [
+			"/node_modules/",
+			"/__tests__/helper/"
+		],
+		"coverageDirectory": "./coverage",
+		"transform": {
+			"^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+		},
+		"testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"json"
+		]
+	},
 	"dependencies": {
 		"async": "^2.6.0",
 		"cheerio": "^1.0.0-rc.2",
+		"debug": "^3.1.0",
 		"fs-extra": "^5.0.0",
 		"lodash": "^4.17.4",
 		"mora-scripts": "^1.6.19",

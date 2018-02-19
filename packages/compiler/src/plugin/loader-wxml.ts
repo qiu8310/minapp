@@ -1,20 +1,26 @@
 import {Loader, map} from './inc/'
-import {parse, Node, TagNode, TagNodeAttr} from './xml-parser'
+import * as parser from 'minapp-wxml-parser'
 import * as tracker from 'debug'
 const debug = tracker('minapp:loader:wxml')
 
 const PATH_REGEXP = /^\.\.?\/\w[\w-\/\.\$!@]*$/ // 匹配是否是文件路径（需要以 / 或 ./ 或 ../ 开头）
 const STYLE_URL_REGEXP = /url\(\s*['"]?([^"'\)]+)["']?\s*\)/g
-
 @Loader.decorate
 export default class WxmlLoader extends Loader {
   async run(content: string) {
     debug('FromFile: ' + this.fromFile)
     // debug('FromContent: ' + content)
 
-    // 行首有注释会导致解析失败，所以先把注释去掉
-    let node = parse(content.replace(/<!--[\s\S]*?-->/g, ''))
-    let assets = this.getNeedResolveAssets(node)
+    let xml: parser.Document
+    try {
+      xml = parser.parse(content)
+    } catch (e) {
+      parser.logParserError(content, e)
+      this.emitError(e)
+      return ''
+    }
+
+    let assets = this.getNeedResolveAssets(xml.nodes)
 
     if (assets.length) {
       debug('含有的静态资源：%o', assets.map(a => toString(a.node, a.attr)))
@@ -24,20 +30,21 @@ export default class WxmlLoader extends Loader {
       debug('没有任何静态资源')
     }
 
-    content = node.toHTML(this.minimize ? 0 : 2)
+    content = xml.toXML(this.minimize ? 0 : 2)
     debug('ToFile: %o', this.toFile)
     debug('ToContent: %o', content)
     this.emit(this.emitFile, content)
     return ''
   }
 
-  private getNeedResolveAssets(root: Node): Asset[] {
-    return root.iterateTagNode(node => {
-      let assets: Asset[] = []
+  private getNeedResolveAssets(nodes: parser.Node[]): Asset[] {
+    let assets: Asset[] = []
+
+    let handle = (node: parser.TagNode) => {
       node.attrs.forEach(attr => {
         let src = attr.value
         // 如果剩下的是个空字符串，去掉
-        if (!src) return
+        if (!src || typeof src !== 'string') return
 
         // 如果是以 \w+: 或 // 开头的文件 ，则忽略，如 http://xxx.com/jq.js, //xxx.com/jq.js, javascript:;
         if (/^(?:\w+:|\/\/)/.test(src)) return
@@ -56,8 +63,19 @@ export default class WxmlLoader extends Loader {
           if (PATH_REGEXP.test(src) && this.isStaticFile(src)) assets.push({node, attr, src})
         }
       })
-      return assets
-    })
+    }
+
+    let iterate = (ns: parser.Node[]) => {
+      ns.forEach(n => {
+        if (n.is(parser.Node.TYPE.TAG)) {
+          handle(n)
+          iterate(n.children)
+        }
+      })
+    }
+
+    iterate(nodes)
+    return assets
   }
 
   private async resolveAssets(assets: Asset[]) {
@@ -68,7 +86,7 @@ export default class WxmlLoader extends Loader {
           this.emitWarning(`${toString(node, attr)} 中的文件无法找到`)
         }
       } else {
-        if (this.isStaticFile(absFile)) {
+        if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
           attr.value = attr.value.replace(src, await this.loadStaticFile(absFile))
         }
       }
@@ -78,12 +96,12 @@ export default class WxmlLoader extends Loader {
 
 
 interface Asset {
-  node: TagNode
-  attr: TagNodeAttr
+  node: parser.TagNode
+  attr: parser.TagNodeAttr
   src: string
   required?: boolean
 }
 
-function toString(node: TagNode, attr: TagNodeAttr) {
-  return `<${node.name} ${attr.toHTML()}>`
+function toString(node: parser.TagNode, attr: parser.TagNodeAttr) {
+  return `<${node.name} ${attr.toXML()}>`
 }
