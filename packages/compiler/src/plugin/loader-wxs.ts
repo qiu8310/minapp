@@ -1,4 +1,4 @@
-import * as path from 'path'
+// import * as path from 'path'
 import {Loader, replace} from './inc/'
 
 const REQUIRE_REGEXP = /require\((['"])([^'"]*)\1\)/g
@@ -6,10 +6,10 @@ const REQUIRE_REGEXP = /require\((['"])([^'"]*)\1\)/g
 @Loader.decorate
 export default class WxsLoader extends Loader {
   async run(content: string) {
-    let {fromFile, compiler: {entryName}} = this
+    let {fromFile} = this
 
     // 入口文件，不做任何处理
-    if (path.basename(fromFile) === entryName) return content
+    // if (path.basename(fromFile) === entryName) return content
 
     let requires: string[] = []
     let emitFile = this.emitFile.replace(/\.\w+$/, '.js') // 转换成 js

@@ -9,7 +9,17 @@ export abstract class Loader {
   static decorate(LoaderClass: any) {
     return function(this: webpack.loader.LoaderContext, content: string, sourceMap?: string | Buffer) {
       let loader: Loader = new LoaderClass(this)
-      return loader.run(content, sourceMap)
+      try {
+        let prom = loader.run(content, sourceMap) as any
+        if (prom && typeof prom.catch === 'function') {
+          return prom.catch((e: any) => loader.emitError(e))
+        } else {
+          return prom
+        }
+      } catch (e) {
+        loader.emitError(e)
+        return ''
+      }
     } as any
   }
 

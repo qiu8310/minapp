@@ -1,10 +1,10 @@
 import * as webpack from 'webpack'
 import * as path from 'path'
 import * as url from 'url'
-import * as os from 'os'
+// import * as os from 'os'
 import * as fs from 'fs-extra'
 import {injectDataToCompiler} from './hack-webpack'
-import {findup, formatDate, trimPath, toFilePath} from './util'
+import {findup, trimPath, toFilePath, formatDate} from './util'
 import {loader} from './plugin'
 import {babelrc} from './config/babelrc'
 
@@ -94,7 +94,7 @@ export class Compiler {
 
   modulesDir: string
   entryName: string
-  entryPath: string
+  // entryPath: string
 
   options: CompilerOptions
 
@@ -111,7 +111,7 @@ export class Compiler {
     }
 
     this.entryName = 'minapp-entry' + formatDate('-yyyy-mm-dd-') + Math.random().toString(16).substr(2, 6) + '.js'
-    this.entryPath = path.join(os.tmpdir(), this.entryName)
+    // this.entryPath = path.join(os.tmpdir(), this.entryName)
 
     this.options = this.init(options)
     debug('options: %o', this.options)
@@ -151,12 +151,12 @@ export class Compiler {
   }
 
   build() {
-    fs.writeFileSync(this.entryPath, `require('${this.srcDir}/app.json')`)
+    // fs.writeFileSync(this.entryPath, `require('${this.srcDir}/app.json')`)
 
     const wpOpts: webpack.Configuration = {
       target: 'web',
       // devtool: 'source-map', // TODO: 内部 loader 支持 sourceMap
-      entry: this.entryPath,
+      entry: path.join(this.srcDir, 'app.json'),
       output: {
         path: this.distDir,
         filename: this.entryName
@@ -220,10 +220,10 @@ export class Compiler {
   }
 
   dispose() {
-    let rm = (file: string) => fs.existsSync(file) && fs.unlinkSync(file)
+    // let rm = (file: string) => fs.existsSync(file) && fs.unlinkSync(file)
 
-    if (!this.options.watch) rm(this.entryPath)
-    rm(path.join(this.distDir, this.entryName))
+    // if (!this.options.watch) rm(this.entryPath)
+    // rm(path.join(this.distDir, this.entryName))
   }
 }
 
