@@ -1,6 +1,6 @@
 {
-  "name": "@minapp/wxml-parser",
-  "description": "微信小程序框架",
+	"name": "minapp",
+	"description": "微信小程序框架",
 	"version": "0.0.0",
 	"license": "MIT",
 	"main": "dist/index.js",
@@ -37,10 +37,10 @@
 		]
 	},
 	"dependencies": {
-    "@minapp/core": "^0.0.0",
-    "mora-common": "^1.0.8",
-    "mora-scripts": "^1.6.21",
+		"@minapp/core": "^0.0.0",
 		"debug": "^3.1.0",
+		"mora-common": "^1.0.9",
+		"mora-scripts": "^1.6.21",
 		"tslib": "^1.9.0"
 	},
 	"devDependencies": {

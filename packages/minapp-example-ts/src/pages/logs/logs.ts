@@ -1,8 +1,8 @@
-import {formatTime} from '../../utils/util'
-import {page, P} from '../../utils/P'
+import * as formatDate from 'mora-scripts/libs/lang/formatDate'
+import {m, BasePage} from '../../bootstrap'
 
-@page()
-export class Log extends P<{logs: string[]}> {
+@m.pagify()
+export default class extends BasePage<{logs: string[]}> {
   data = {
     logs: ['test']
   }
@@ -10,7 +10,7 @@ export class Log extends P<{logs: string[]}> {
     console.log('onLoad running', this.app)
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map((log: string) => {
-        return formatTime(new Date(log))
+        return formatDate(new Date(log), 'yyyy-mm-dd HH:ii:ss')
       })
     })
   }

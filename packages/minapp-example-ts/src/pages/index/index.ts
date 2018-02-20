@@ -1,22 +1,23 @@
-import wxp from '@minapp/core'
+import {m, wxp, BasePage} from '../../bootstrap'
 
 // 获取应用实例
-const app = getApp()
+const app = getApp() as any
 
-Page({
-  data: {
+@m.pagify()
+export default class extends BasePage {
+  data = {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    // TODO: canIUse 返回值是 void
     canIUse: wxp.canIUse('button.open-type.getUserInfo')
-  },
+  }
 
-  // 事件处理函数
   bindViewTap() {
     wxp.navigateTo({url: '../logs/logs'})
-  },
+  }
 
-  async onLoad(options) {
+  async onLoad(options: any) {
     console.log('page', require('../../images/heart-active@3x.png'))
     if (app.globalData.userInfo) {
       this.setData({
@@ -32,14 +33,13 @@ Page({
           hasUserInfo: true
         })
       }
-
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       let {userInfo} = await wxp.getUserInfo()
       app.globalData.userInfo = userInfo
       this.setData({userInfo, hasUserInfo: true})
     }
-  },
+  }
 
   getUserInfo(e: any) {
     console.log(e)
@@ -49,4 +49,4 @@ Page({
       hasUserInfo: true
     })
   }
-})
+}

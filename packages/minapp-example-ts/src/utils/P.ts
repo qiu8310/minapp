@@ -1,6 +1,6 @@
 export function page(opts?: any) {
-  return function(PageClass: typeof P) {
-    let i = new PageClass()
+  return function(p: typeof P) {
+    let i = new p()
     let obj = {
       data: i.data,
       onLoad: i.onLoad

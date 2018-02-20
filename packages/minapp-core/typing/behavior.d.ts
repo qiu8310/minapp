@@ -1,3 +1,8 @@
-declare interface BehaviorInstance {
+interface Behavior {
+
 }
-declare function Behavior(param: ComponentParam): BehaviorInstance
+declare interface BehaviorConstructor {
+  new(): Behavior
+  (options: Component.Options): Behavior
+}
+declare var Behavior: BehaviorConstructor

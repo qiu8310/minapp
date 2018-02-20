@@ -1,6 +1,11 @@
-import wxp from '@minapp/core'
+import {m, wxp, GlobalData, BaseApp} from './bootstrap'
 
-App({
+@m.appify()
+export default class extends BaseApp {
+  globalData: GlobalData = {
+    userInfo: null
+  }
+
   async onLaunch() {
     // 展示本地存储能力
     let logs = wxp.getStorageSync('logs') || []
@@ -29,9 +34,6 @@ App({
       // console.log(this)
       // console.log(getApp())
     }
-  },
-
-  globalData: {
-    userInfo: null
   }
-})
+}
+

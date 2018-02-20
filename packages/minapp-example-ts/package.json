@@ -13,9 +13,12 @@
   "license": "MIT",
   "dependencies": {
     "@minapp/core": "^0.0.0",
+    "minapp": "^0.0.0",
     "tslib": "~1.9.0"
   },
   "devDependencies": {
+    "mora-common": "^1.0.9",
+    "mora-scripts": "^1.6.21",
     "ts-lint": "~4.5.1",
     "typescript": "~2.7.1"
   }

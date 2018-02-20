@@ -15,7 +15,7 @@
     "interface-name": [false],
     "no-var-requires": false,
     "no-debugger": false,
-
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"],
     "no-unused-variable": true,
     "no-unused-expression": true,
     "no-var-keyword": true,

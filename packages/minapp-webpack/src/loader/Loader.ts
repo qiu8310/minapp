@@ -3,9 +3,9 @@ import * as path from 'path'
 import {getProjectRoot, readFile, md5, toUrlPath, toRelative, STATIC_REGEXP} from '../util'
 
 export abstract class Loader {
-  static decorate(LoaderClass: any) {
+  static decorate(loaderConstructor: any) {
     return function(this: webpack.loader.LoaderContext, content: string, sourceMap?: string | Buffer) {
-      let loader: Loader = new LoaderClass(this)
+      let loader: Loader = new loaderConstructor(this)
       try {
         let prom = loader.run(content, sourceMap) as any
         if (prom && typeof prom.catch === 'function') {
