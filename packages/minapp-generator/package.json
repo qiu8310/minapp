@@ -1,5 +1,6 @@
 {
 	"name": "@minapp/generator",
+	"description": "微信官方文档解析器，同时生成解析后的结构化的文件",
 	"version": "0.0.0",
 	"license": "MIT",
 	"data": {
@@ -10,6 +11,7 @@
 		"promisable": "gen/api/promisable.json"
 	},
 	"scripts": {
+		"lint": "tslint src/**/*.ts",
 		"test": "jest",
 		"generate": "node dist/cli/cmd.js api && node dist/cli/cmd.js api -p && git diff gen/**",
 		"build": "remove-all dist/ && tsc",

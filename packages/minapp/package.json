@@ -1,12 +1,11 @@
 {
-	"name": "@minapp/webpack",
-	"description": "微信小程序相关的 webpack 插件 及 loader",
+  "name": "@minapp/wxml-parser",
+  "description": "微信小程序框架",
 	"version": "0.0.0",
 	"license": "MIT",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
-		"lint": "tslint src/**/*.ts",
 		"test": "jest",
 		"build": "remove-all dist/ && tsc",
 		"build:watch": "remove-all dist/ && tsc -w"
@@ -38,21 +37,15 @@
 		]
 	},
 	"dependencies": {
-		"@minapp/wxml-parser": "^0.0.0",
+    "@minapp/core": "^0.0.0",
+    "mora-common": "^1.0.8",
+    "mora-scripts": "^1.6.21",
 		"debug": "^3.1.0",
-		"json5": "^0.5.1",
-		"mora-common": "^1.0.8",
-		"mora-scripts": "^1.6.21",
-		"tslib": "^1.9.0",
-		"webpack-sources": "^1.1.0"
+		"tslib": "^1.9.0"
 	},
 	"devDependencies": {
-		"@types/debug": "^0.0.30",
 		"@types/jest": "^22.1.3",
-		"@types/json5": "^0.0.29",
-		"@types/webpack-sources": "^0.1.4",
 		"jest": "^22.1.4",
-		"postcss": "^6.0.19",
 		"ts-jest": "^22.0.2",
 		"ts-lint": "^4.5.1",
 		"typescript": "^2.7.0"

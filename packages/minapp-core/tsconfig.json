@@ -18,7 +18,6 @@
     "strictPropertyInitialization": true,
     "noLib": false,
     "lib": [
-      "dom",
       "es6"
     ],
     "outDir": "dist"

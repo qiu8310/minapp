@@ -1,9 +1,10 @@
 {
   "name": "@minapp/compiler",
   "version": "0.0.0",
-  "description": "",
+  "description": "微信小程序源代码编译器",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "build": "npm run clear && tsc",
     "build:watch": "npm run clear && tsc -w"

@@ -15,7 +15,7 @@ export default class WxsLoader extends Loader {
     let requires: string[] = []
 
     let emitFile = this.emitFile.replace(/\.\w+$/, '.js')
-    let emitContent = await replace(content, REQUIRE_REGEXP, async ([raw, quote, request]) => {
+    let emitContent = await replace(content, REQUIRE_REGEXP, async ([, , request]) => {
       if (this.isStaticFile(request)) {
         return JSON.stringify(await this.loadStaticFile(request))
       }

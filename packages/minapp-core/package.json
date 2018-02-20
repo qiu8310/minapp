@@ -1,10 +1,11 @@
 {
   "name": "@minapp/core",
   "version": "0.0.0",
-  "description": "微信小程序 API 的 typescript 版本",
+  "description": "微信小程序 api 的 typings，同时提供 promise 版",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "lint": "tslint src/**/*.ts",
     "__init__": "node scripts/init.js",
     "build": "remove-all dist && tsc && npm run __init__"
   },

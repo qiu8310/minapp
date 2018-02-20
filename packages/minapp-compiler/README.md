@@ -16,11 +16,6 @@
 - [ ] postcss-assets 强化(使用 sharp)
 - [ ] page 之间不能互相引用！（编译时报错）
 
-## BUG
-
-- [ ] 首次 watch 模式时会编译多次（参考 webpack 怎么做 watch 的）
-
-
 
 
 ## 参考

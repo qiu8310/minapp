@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "tslint src/**/*.ts",
     "clear": "rm -rf dist",
     "build": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js",
     "build:watch": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js -w"
