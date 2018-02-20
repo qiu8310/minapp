@@ -1,13 +1,18 @@
 import * as path from 'path'
 import * as fs from 'fs'
 import * as JSON5 from 'json5'
+import {Loader} from './Loader'
 
-import {Loader} from './inc/'
+import * as tracker from 'debug'
+const debug = tracker('minapp:wxml-loader')
 
 @Loader.decorate
 export default class JsonLoader extends Loader {
   run(content: string) {
-    let {srcDir, emitFile} = this
+    let {srcDir} = this
+    debug('FromFile: ' + this.fromFile)
+    debug('ToFile: %o', this.toFile)
+    // debug('FromContent: ' + content)
 
     let json = JSON5.parse(content)
     delete json.$schema // 删除 $schema 字段
@@ -15,7 +20,7 @@ export default class JsonLoader extends Loader {
     let requires: string[] = []
 
     // 根据 app.json 中的 pages 字段，查找其依赖的所有文件
-    if (emitFile === 'app.json') {
+    if (this.fromFile === this.entryFile) {
       let {pages = [], subPackages = []} = json
 
       pages.forEach((p: string) => {
@@ -32,8 +37,8 @@ export default class JsonLoader extends Loader {
     }
 
     // JSON5 的 stringify 生成的 json 不是标准的 json
-    this.emit(emitFile, JSON.stringify(json, null, this.minimize ? 0 : 2))
-    return this.toRequire(requires)
+    this.extract('.json', JSON.stringify(json, null, this.minimize ? 0 : 2))
+    return this.toRequire(requires, 'webpack')
   }
 }
 

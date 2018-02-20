@@ -4,3 +4,4 @@ src
 gen
 vendor
 coverage
+__tests__

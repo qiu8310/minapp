@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "clear": "rm -rf dist",
-    "build": "npm run clear && node ../compiler/dist/cli/compiler.js",
-    "build:watch": "npm run clear && node ../compiler/dist/cli/compiler.js -w"
+    "build": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js",
+    "build:watch": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js -w"
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",

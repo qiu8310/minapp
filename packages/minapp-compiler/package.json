@@ -14,7 +14,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/wxml-parser": "^0.0.0",
+    "@minapp/webpack": "^0.0.0",
     "autoprefixer": "^8.0.0",
     "awesome-typescript-loader": "^3.4.1",
     "babel-core": "^6.26.0",
@@ -30,13 +30,10 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "debug": "^3.1.0",
-    "express": "^4.16.2",
     "fs-extra": "^5.0.0",
     "json5": "^0.5.1",
     "less": "^3.0.0",
     "less-loader": "^4.0.5",
-    "loader-utils": "^1.1.0",
-    "mime": "^2.2.0",
     "mora-common": "^1.0.8",
     "mora-scripts": "^1.6.21",
     "node-sass": "^4.7.2",
@@ -45,7 +42,7 @@
     "tslib": "^1.9.0",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
-    "xml-parser": "^1.2.1"
+    "write-file-webpack-plugin": "^4.2.0"
   },
   "devDependencies": {
     "@types/debug": "^0.0.30",
@@ -53,6 +50,7 @@
     "@types/json5": "^0.0.29",
     "@types/loader-utils": "^1.1.1",
     "@types/webpack": "^3.8.5",
+    "@types/webpack-dev-server": "^2.9.3",
     "@types/xml-parser": "^1.2.29",
     "ts-lint": "~4.5.1",
     "typescript": "~2.7.1"

@@ -1,0 +1,59 @@
+{
+	"name": "@minapp/webpack",
+	"version": "0.0.0",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"typings": "dist/index.d.ts",
+	"scripts": {
+		"test": "jest",
+		"build": "remove-all dist/ && tsc",
+		"build:watch": "remove-all dist/ && tsc -w"
+	},
+	"jest": {
+		"roots": [
+			"src"
+		],
+		"mapCoverage": true,
+		"collectCoverage": true,
+		"coverageReporters": [
+			"text",
+			"html"
+		],
+		"coveragePathIgnorePatterns": [
+			"/node_modules/",
+			"/__tests__/helper/"
+		],
+		"coverageDirectory": "./coverage",
+		"transform": {
+			"^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+		},
+		"testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"json"
+		]
+	},
+	"dependencies": {
+		"@minapp/wxml-parser": "^0.0.0",
+		"debug": "^3.1.0",
+		"json5": "^0.5.1",
+		"loader-utils": "^1.1.0",
+		"mora-common": "^1.0.8",
+		"mora-scripts": "^1.6.21",
+		"tslib": "^1.9.0",
+		"webpack-sources": "^1.1.0"
+	},
+	"devDependencies": {
+		"@types/debug": "^0.0.30",
+		"@types/jest": "^22.1.3",
+		"@types/json5": "^0.0.29",
+		"@types/loader-utils": "^1.1.2",
+		"@types/webpack-sources": "^0.1.4",
+		"jest": "^22.1.4",
+		"ts-jest": "^22.0.2",
+		"ts-lint": "^4.5.1",
+		"typescript": "^2.7.0"
+	}
+}
