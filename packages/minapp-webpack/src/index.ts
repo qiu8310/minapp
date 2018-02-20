@@ -9,6 +9,9 @@ export const loader = {
   wxss: join(loaderDir, 'wxss-loader'),
 }
 
-import * as plugin from './plugin/'
+export * from './plugin/ExtractMinappCode'
 
-export {plugin}
+import {px2rpx} from './postcss/px2rpx'
+export const postcss = {
+  px2rpx
+}

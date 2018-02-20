@@ -1,7 +1,7 @@
 {
   "$schema": "http://lcdn.static.lotlot.com/app-8dcd77bc.json",
   "pages": [
-    "pages/test/test",
+    // "pages/test/test",
     "pages/index/index"
   ],
   "window": {

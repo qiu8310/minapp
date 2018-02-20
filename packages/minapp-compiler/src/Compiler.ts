@@ -13,15 +13,6 @@ export interface CompilerOptions {
   production?: boolean
 
   /**
-   * autoprefixer 的配置选项
-   *
-   * - false: 表示禁用
-   * - true: 表示使用默认值
-   * - 否则使用指定的配置
-   */
-  autoprefixer?: boolean | {[key: string]: any}
-
-  /**
    * 插件 babel-plugin-transform-runtime 的配置选项，
    * 需要先在本地安装 babel-runtime
    *
@@ -101,7 +92,7 @@ export class Compiler {
 
   /** 初始化默认配置 */
   private init(options: Partial<CompilerOptions> = {}) {
-    let {server, publicPath, staticDir = 'static', ...rest} = options
+    let {server, staticDir = 'static', ...rest} = options
     let defaultServer = {
       hot: false,
       host: isWin ? 'localhost' : '0.0.0.0',

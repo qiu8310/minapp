@@ -4,7 +4,7 @@ import {Compiler} from '../Compiler'
 import * as fs from 'fs-extra'
 import * as path from 'path'
 
-const babel = 'babel-' // v7.x 会改成 @babel/
+const PREFIX = 'babel-' // v7.x 会改成 @babel/
 
 const defaultPresets = [
   'env',
@@ -20,23 +20,26 @@ const defaultPresets = [
 
 const defaultPlugins: Array<string | any[]> = []
 
-export function babelrc(compiler: Compiler) {
+export function babel(loader: string, compiler: Compiler) {
   let plugins = [...defaultPlugins]
   let {babelRuntime: config} = compiler.options
 
   // 检查 babel-runtime 是否有安装在本地
-  let moduleName = [`${babel}-runtime`].find(k => fs.existsSync(path.join(compiler.modulesDir, k)))
+  let moduleName = [`${PREFIX}runtime`].find(k => fs.existsSync(path.join(compiler.modulesDir, k)))
   if (moduleName && config !== false) {
     plugins.push(['transform-runtime', !config || config === true ? {moduleName, polyfill: false} : config])
   }
 
   return {
-    presets: defaultPresets.map(p => require.resolve(`${babel}preset-${p}`)),
-    plugins: plugins.map(p => {
-      let name = Array.isArray(p) ? p[0] : p
-      let opts = Array.isArray(p) ? p[1] : {}
-      return [require.resolve(`${babel}plugin-${name}`), opts]
-    })
+    loader,
+    options: {
+      presets: defaultPresets.map(p => require.resolve(`${PREFIX}preset-${p}`)),
+      plugins: plugins.map(p => {
+        let name = Array.isArray(p) ? p[0] : p
+        let opts = Array.isArray(p) ? p[1] : {}
+        return [require.resolve(`${PREFIX}plugin-${name}`), opts]
+      })
+    }
   }
 }
 

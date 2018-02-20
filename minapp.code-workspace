@@ -10,16 +10,16 @@
 			"path": "packages/minapp-core"
 		},
 		{
-			"path": "packages/minapp-compiler"
-		},
-		{
-			"path": "packages/minapp-example-ts"
-		},
-		{
-			"path": "packages/minapp-wxml-parser"
-		},
-		{
-			"path": "packages/minapp-webpack"
+      "path": "packages/minapp-wxml-parser"
+    },
+    {
+      "path": "packages/minapp-webpack"
+    },
+    {
+      "path": "packages/minapp-compiler"
+    },
+    {
+      "path": "packages/minapp-example-ts"
 		}
 	],
 	"settings": {

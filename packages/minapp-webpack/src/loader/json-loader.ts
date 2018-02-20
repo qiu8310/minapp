@@ -4,7 +4,7 @@ import * as JSON5 from 'json5'
 import {Loader} from './Loader'
 
 import * as tracker from 'debug'
-const debug = tracker('minapp:wxml-loader')
+const debug = tracker('minapp:webpack:json-loader')
 
 @Loader.decorate
 export default class JsonLoader extends Loader {
