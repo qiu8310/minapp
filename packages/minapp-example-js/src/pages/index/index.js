@@ -1,21 +1,25 @@
-//index.js
-//获取应用实例
-const app = getApp()
+import m from 'minapp'
+const {wxp} = m
 
-Page({
-  data: {
+@m.pagify()
+export default class extends m.Page {
+  data = {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
+    canIUse: wxp.canIUse('button.open-type.getUserInfo')
+  }
+
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
+  bindTap() {
+    wxp.navigateTo({
       url: '../logs/logs'
     })
-  },
-  onLoad: function () {
+  }
+
+  async onLoad() {
+    let {app} = this
+    console.log('globalData in index page onLoad', app.globalData)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -32,23 +36,22 @@ Page({
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+      let res = await wxp.getUserInfo()
+      app.globalData.userInfo = res.userInfo
+      this.setData({
+        userInfo: res.userInfo,
+        hasUserInfo: true
       })
     }
-  },
-  getUserInfo: function(e) {
+  }
+
+  getUserInfo(e) {
     console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+    this.app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
   }
-})
+}
+

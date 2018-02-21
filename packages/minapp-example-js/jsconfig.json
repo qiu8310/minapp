@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "checkJs": true,
     "target": "es5",
     "module": "commonjs",
     "removeComments": true,
@@ -7,11 +8,9 @@
     "allowSyntheticDefaultImports": false,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "noImplicitThis": true,
+    // "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "strict": true,
+    // "noImplicitReturns": true,
     "strictNullChecks": true,
     "noLib": false,
     "rootDir": "src",

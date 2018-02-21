@@ -15,7 +15,6 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/core": "^0.0.1",
     "minapp": "^0.0.1",
     "tslib": "~1.9.0"
   },

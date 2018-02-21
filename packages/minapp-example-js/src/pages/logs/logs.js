@@ -1,6 +1,8 @@
 import m from 'minapp'
 import {formatTime} from 'utils/util'
 
+const {wxp} = m
+
 @m.pagify()
 export default class extends m.Page {
   data = {
