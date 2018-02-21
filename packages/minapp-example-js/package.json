@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "minapp js 示例项目",
   "main": "dist/index.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "dev": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js -s"
   },
   "publishConfig": {
-  	"access": "public"
-	},
+    "access": "public"
+  },
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "dependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@minapp/core",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "微信小程序 api 的 typings，同时提供 promise 版",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -10,8 +10,8 @@
     "build": "remove-all dist && tsc && npm run __init__"
   },
   "publishConfig": {
-  	"access": "public"
-	},
+    "access": "public"
+  },
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "devDependencies": {

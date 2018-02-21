@@ -1,6 +1,6 @@
 {
   "name": "@minapp/compiler",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "微信小程序源代码编译器",
   "main": "dist/index.js",
   "scripts": {
@@ -10,8 +10,8 @@
     "build:watch": "npm run clear && tsc -w"
   },
   "publishConfig": {
-  	"access": "public"
-	},
+    "access": "public"
+  },
   "bin": {
     "minapp": "dist/cli/compiler.js"
   },
