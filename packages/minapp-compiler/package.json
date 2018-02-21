@@ -9,6 +9,9 @@
     "build": "npm run clear && tsc",
     "build:watch": "npm run clear && tsc -w"
   },
+  "publishConfig": {
+  	"access": "public"
+	},
   "bin": {
     "minapp": "dist/cli/compiler.js"
   },

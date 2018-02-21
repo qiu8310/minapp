@@ -10,6 +10,9 @@
 		"build": "remove-all dist/ && tsc",
 		"build:watch": "remove-all dist/ && tsc -w"
 	},
+	"publishConfig": {
+  	"access": "public"
+	},
 	"jest": {
 		"roots": [
 			"src"

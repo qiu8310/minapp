@@ -9,6 +9,9 @@
     "__init__": "node scripts/init.js",
     "build": "remove-all dist && tsc && npm run __init__"
   },
+  "publishConfig": {
+  	"access": "public"
+	},
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "devDependencies": {

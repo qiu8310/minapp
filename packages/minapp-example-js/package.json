@@ -8,6 +8,9 @@
     "build": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js",
     "dev": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js -s"
   },
+  "publishConfig": {
+  	"access": "public"
+	},
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "dependencies": {
