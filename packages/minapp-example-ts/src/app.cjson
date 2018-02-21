@@ -13,7 +13,6 @@
     /*# INJECT_START {"key": "page", "append": true} #*/
     "pages/index/index",
     "pages/logs/logs",
-    "pages/test/test",
     /*# INJECT_END #*/
   ],
   "window": {

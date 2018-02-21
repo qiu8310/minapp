@@ -7,7 +7,6 @@ export default class extends BasePage<{logs: string[]}> {
     logs: ['test']
   }
   onLoad() {
-    console.log('onLoad running', this.app)
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map((log: string) => {
         return formatDate(new Date(log), 'yyyy-mm-dd HH:ii:ss')

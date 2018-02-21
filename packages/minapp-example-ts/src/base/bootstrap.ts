@@ -4,6 +4,8 @@ import {GlobalData} from './GlobalData'
 const PAGES = require('../app.cjson?pages') // 获取 app.cjson 中的 pages 字段
 
 export class BaseApp extends m.App<GlobalData> {
+  _userInfoReadyCallback?: any
+
   indexPage: string = PAGES[0]
   pagesMap: {
     /*
@@ -18,7 +20,6 @@ export class BaseApp extends m.App<GlobalData> {
     /*# INJECT_START {"key": "pagesMap", "append": true} #*/
     index: string
     logs: string
-    test: string
     /*# INJECT_END #*/
   } = getPagesMap()
 }
@@ -28,9 +29,6 @@ export class BasePage<D = any> extends m.Page<D, BaseApp> {}
 export const wxp = m.wxp
 export const pagify = m.pagify
 export const appify = m.appify
-
-// 不同风格的导出，满足各类人土
-export default {wxp, pagify, appify, Page: BasePage, App: BaseApp}
 
 function getPagesMap() {
   return PAGES.reduce((pagesMap: any, page: string) => {
