@@ -37,7 +37,7 @@
     "less": "^3.0.0",
     "less-loader": "^4.0.5",
     "mora-common": "^1.0.8",
-    "mora-scripts": "^1.6.21",
+    "mora-scripts": "^1.6.22",
     "node-sass": "^4.7.2",
     "postcss": "^6.0.17",
     "postcss-loader": "^2.1.0",

@@ -50,7 +50,7 @@ export function webpackConfig(compiler: Compiler) {
   if (server) {
     const WriteFile = require('write-file-webpack-plugin')
     // webpack 服务器默认不会将文件写在本地，需要此插件
-    plugins.push(new WriteFile({test: /\.(json|js|wxml|wxss)$/i}))
+    plugins.push(new WriteFile())
   }
 
   if (compiler.production) {
@@ -77,7 +77,9 @@ export function webpackConfig(compiler: Compiler) {
     },
     resolve: {
       extensions: ['.js', '.ts'],
+      // main 要放在前面， module 的代码含有 es6，除非给 node_modules 中的代码也加上 babel-loader
       mainFields: ['main', 'module', 'browser'],
+      // symlinks 和 getExternalLinkModules 可以不加
       symlinks: true,
       modules: [srcDir, modulesDir, ...getExternalLinkModules(modulesDir)],
     },

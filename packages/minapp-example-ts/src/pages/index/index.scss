@@ -13,7 +13,8 @@
 
 .userinfo-nickname {
   color: #aaa;
-  background-image: url("images/heart@3x.png");
+  // 使用了此需要启动的时候加上 --server 选项
+  // background-image: url("images/heart@3x.png");
 }
 
 .usermotto {
