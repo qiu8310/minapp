@@ -15,7 +15,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/webpack": "^0.0.0",
+    "@minapp/webpack-utils": "^0.0.0",
     "autoprefixer": "^8.0.0",
     "awesome-typescript-loader": "^3.4.1",
     "babel-core": "^6.26.0",

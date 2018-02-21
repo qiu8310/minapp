@@ -1,5 +1,5 @@
 {
-	"name": "@minapp/webpack",
+	"name": "@minapp/webpack-utils",
 	"description": "微信小程序相关的 webpack 插件 及 loader",
 	"version": "0.0.0",
 	"license": "MIT",

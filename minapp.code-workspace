@@ -16,7 +16,7 @@
       "path": "packages/minapp-wxml-parser"
     },
     {
-      "path": "packages/minapp-webpack"
+      "path": "packages/minapp-webpack-utils"
     },
     {
       "path": "packages/minapp-compiler"
