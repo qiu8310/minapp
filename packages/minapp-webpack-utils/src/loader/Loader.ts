@@ -172,6 +172,7 @@ export abstract class Loader {
     return toUrlPath(absFile) // require 都要使用 / 路径
   }
   toRequire(absfiles: string | string[], type: 'webpack' | 'extract', requireKey = 'require'): string {
+
     let fn = type === 'webpack'
       ? this.getWebpackRequirePath
       : this.getExtractRequirePath

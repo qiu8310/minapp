@@ -102,7 +102,6 @@ export class ApiArea extends Area {
     this.pushExamples(desc, examples)
     let id = this.$area.attr('id')
     if (id) desc.push(`@see ${this.g.nodeUrl}#${id}`)
-
     this.func = new Func('wx', name, args, this.klass && returns.name === 'void' ? new Type(this.klass.name) : returns, desc)
   }
 

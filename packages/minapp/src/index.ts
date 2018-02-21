@@ -1,11 +1,11 @@
 import wxp from '@minapp/core'
-import {MPage, pagify} from './class/Page'
-import {MApp, appify} from './class/App'
+import {BasePage, pagify} from './class/BasePage'
+import {BaseApp, appify} from './class/BaseApp'
 
 export default {
   wxp,
   appify,
-  App: MApp,
+  App: BaseApp,
   pagify,
-  Page: MPage
+  Page: BasePage
 }

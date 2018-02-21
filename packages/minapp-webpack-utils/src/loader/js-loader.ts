@@ -4,7 +4,7 @@ import * as JSON5 from 'json5'
 import {replace, readFile} from '../util'
 import * as DotProp from 'mora-scripts/libs/lang/DotProp'
 
-const debug = require('debug')('minapp:webpack:js-loader')
+const debug = require('debug')('minapp:webpack-utils:js-loader')
 
 const REQUIRE_REGEXP = /require\((['"])([^'"]*)\1\)/g
 
@@ -34,13 +34,9 @@ export default class WxsLoader extends Loader {
 
       requires.push(absFile) // 使用绝对路径，避免重复 resolve
 
-      if (this.isFileInSrcDir(absFile)) {
-        // 项目中的文件相互引用，路径不变
-        return `__minapp_require("${request}")`
-      } else {
-        // 项目中的文件引用项目外的文件，要修改文件的引用路径
-        return this.toRequire(absFile, 'extract', '__minapp_require')
-      }
+      // 修改文件路径成相对引用的形式，同时去除文件后缀（可能是 .ts 的后缀）
+      // 并使用 __minapp_require，而不是 require，避免被 webpack 解析
+      return this.toRequire(absFile.replace(/\.\w+$/, ''), 'extract', '__minapp_require')
     }, 0)
 
     return [

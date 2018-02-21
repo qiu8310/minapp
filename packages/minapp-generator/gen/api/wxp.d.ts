@@ -1,4 +1,4 @@
-// Generated at 2018-2-17
+// Generated at 2018-2-21
 export namespace wxp {
   type IWxRequestObject = {
     /**
@@ -3010,7 +3010,7 @@ export namespace wxp {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-caniuse.html#wxcaniusestring
    */
-  function canIUse(String: any): void
+  function canIUse(String: any): boolean
   type IWxGetNetworkTypeObject = {}
   /**
    * 获取网络类型。

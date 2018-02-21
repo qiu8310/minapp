@@ -1,7 +1,7 @@
 import * as formatDate from 'mora-scripts/libs/lang/formatDate'
-import {m, BasePage} from '../../bootstrap'
+import {pagify, BasePage} from 'base/bootstrap'
 
-@m.pagify()
+@pagify()
 export default class extends BasePage<{logs: string[]}> {
   data = {
     logs: ['test']

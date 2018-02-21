@@ -1,8 +1,7 @@
-import {m, wxp, GlobalData, BaseApp} from './bootstrap'
+import {GlobalData} from 'base/GlobalData'
+import {appify, wxp, BaseApp} from 'base/bootstrap'
 
-console.log(require('./app.cjson?pages'))
-
-@m.appify()
+@appify()
 export default class extends BaseApp {
   globalData: GlobalData = {
     userInfo: null

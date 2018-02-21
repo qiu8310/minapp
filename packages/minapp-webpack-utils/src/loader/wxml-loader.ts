@@ -1,5 +1,5 @@
 import * as parser from '@minapp/wxml-parser'
-const debug = require('debug')('minapp:webpack:wxml-loader')
+const debug = require('debug')('minapp:webpack-utils:wxml-loader')
 
 import {Loader} from './Loader'
 import {map, STYLE_RESOURCE_REGEXP} from '../util'

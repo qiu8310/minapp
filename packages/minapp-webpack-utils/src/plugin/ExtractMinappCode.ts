@@ -1,7 +1,7 @@
 import * as webpack from 'webpack'
 import * as sources from 'webpack-sources'
 
-const debug = require('debug')('minapp:webpack:ExtractMinappCode')
+const debug = require('debug')('minapp:webpack-utils:ExtractMinappCode')
 
 const EXTRACT_REGEXP = /__minapp_emit_start\(['"]([^)]+)['"]\);?([\s\S]*?);?__minapp_emit_end\(\)/g
 const REPLACE_REGEXP = /__minapp_require/g

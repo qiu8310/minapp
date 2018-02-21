@@ -3,19 +3,19 @@
 	"description": "微信官方文档解析器，同时生成解析后的结构化的文件",
 	"version": "0.0.0",
 	"license": "MIT",
-	"data": {
-		"components": "gen/tpl/components.json",
-		"detailComponents": "gen/tpl/components-with-examples.json",
-		"wx": "gen/api/wx.d.ts",
-		"wxp": "gen/api/wxp.d.ts",
-		"promisable": "gen/api/promisable.json"
-	},
 	"scripts": {
 		"lint": "tslint src/**/*.ts",
 		"test": "jest",
 		"generate": "node dist/cli/cmd.js api && node dist/cli/cmd.js api -p && git diff gen/**",
 		"build": "remove-all dist/ && tsc",
 		"build:watch": "remove-all dist/ && tsc -w"
+	},
+	"data": {
+		"components": "gen/tpl/components.json",
+		"detailComponents": "gen/tpl/components-with-examples.json",
+		"wx": "gen/api/wx.d.ts",
+		"wxp": "gen/api/wxp.d.ts",
+		"promisable": "gen/api/promisable.json"
 	},
 	"jest": {
 		"roots": [

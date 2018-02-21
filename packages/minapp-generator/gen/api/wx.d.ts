@@ -1,4 +1,4 @@
-// Generated at 2018-2-17
+// Generated at 2018-2-21
 declare namespace wx {
   type IWxRequestObject = {
     /**
@@ -3545,7 +3545,7 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-caniuse.html#wxcaniusestring
    */
-  function canIUse(String: any): void
+  function canIUse(String: any): boolean
   type IWxGetNetworkTypeObject = {
     /**
      * 接口调用成功，返回网络类型 networkType

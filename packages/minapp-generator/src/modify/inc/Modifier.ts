@@ -58,6 +58,7 @@ export class Modifier {
         'picker-view-column',
       ],
       func: {
+        canIUse: {returns: 'boolean'},
         getStorageSync: {returns: 'any | undefined'},
         connectSocket: {returns: 'SocketTask'},
         createCanvasContext: {args: ['canvasId', '[componentInstance]'], returns: 'CanvasContext'}

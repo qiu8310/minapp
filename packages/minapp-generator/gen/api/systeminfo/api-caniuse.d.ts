@@ -32,5 +32,5 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-caniuse.html#wxcaniusestring
    */
-  function canIUse(String: any): void
+  function canIUse(String: any): boolean
 }

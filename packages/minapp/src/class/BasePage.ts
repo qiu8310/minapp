@@ -3,17 +3,17 @@ import {toObject} from 'mora-common/util/object'
 import {MBase} from './Base'
 
 export function pagify(opts?: any) {
-  return function(Klass: typeof MPage) {
+  return function(Klass: typeof BasePage) {
     Page(toObject(new Klass()))
   } as any
 }
 
-export interface MPage<D = any, A = any> extends Page, Page.BaseOptions {
+export interface BasePage<D = any, A = any> extends Page, Page.BaseOptions {
   setData(data: Partial<D>): any
 }
 
-export class MPage<D = any, A = any> extends MBase {
-  data: D = {} as any // 初始化一个空对象
+export class BasePage<D = any, A = any> extends MBase {
+  data: Readonly<D> = {} as any // 初始化一个空对象
 
   private _cacheApp?: A
   /**

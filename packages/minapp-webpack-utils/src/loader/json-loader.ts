@@ -4,7 +4,7 @@ import * as JSON5 from 'json5'
 import {Loader} from './Loader'
 import {map} from '../util'
 
-const debug = require('debug')('minapp:webpack:json-loader')
+const debug = require('debug')('minapp:webpack-utils:json-loader')
 
 @Loader.decorate
 export default class JsonLoader extends Loader {
@@ -48,10 +48,9 @@ export default class JsonLoader extends Loader {
 
 function searchDir(requires: string[], file: string, fullname?: string) {
   let dir = path.dirname(file)
-  let name = path.basename(file)
   let prefix = path.basename(file, path.extname(file))
 
   fs.readdirSync(dir)
-    .filter(n => n !== name && n.startsWith(prefix + '.') || fullname && fullname === n)
+    .filter(n => n.startsWith(prefix + '.') || fullname && fullname === n)
     .forEach(n => requires.push(path.join(dir, n)))
 }
