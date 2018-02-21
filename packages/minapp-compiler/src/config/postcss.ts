@@ -1,5 +1,5 @@
 const autoprefixer = require('autoprefixer')
-import {postcss as minapp} from '@minapp/webpack'
+import {postcss as minapp} from '@minapp/webpack-utils'
 
 export function postcss(loader: string) {
   return {

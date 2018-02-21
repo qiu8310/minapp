@@ -2,13 +2,13 @@ import * as path from 'path'
 import * as fs from 'fs'
 import * as JSON5 from 'json5'
 import {Loader} from './Loader'
+import {map} from '../util'
 
-import * as tracker from 'debug'
-const debug = tracker('minapp:webpack:json-loader')
+const debug = require('debug')('minapp:webpack:json-loader')
 
 @Loader.decorate
 export default class JsonLoader extends Loader {
-  run(content: string) {
+  async run(content: string) {
     let {srcDir} = this
     debug('FromFile: ' + this.fromFile)
     debug('ToFile: %o', this.toFile)
@@ -21,19 +21,23 @@ export default class JsonLoader extends Loader {
 
     // 根据 app.json 中的 pages 字段，查找其依赖的所有文件
     if (this.fromFile === this.entryFile) {
-      let {pages = [], subPackages = []} = json
+      // let {pages = [], subPackages = []} = json
 
-      pages.forEach((p: string) => {
-        let parts = p.split('/')
-        let prefix = parts.pop() + '.'
-        let dir = path.join(srcDir, parts.join('/'))
-        searchDir(requires, dir, prefix)
+      // 获取所有 pages 的绝对路径
+      let pages: string[] = (json.pages || []).map((p: string) => path.join(srcDir, p));
+      (json.subPackages || []).forEach((sp: {root: string, pages: string[]}) => {
+        pages.push(...(sp.pages || []).map(p => path.join(srcDir, sp.root, p)))
       })
-      load(requires, srcDir, pages)
-      subPackages.forEach((sp: {root: string, pages: string[]}) => {
-        load(requires, path.join(srcDir, sp.root), sp.pages)
-      })
-      searchDir(requires, srcDir, 'app.', 'project.config.json')
+
+      // 解析这些 pages 成对应的 js 文件，并查找同目录下的同名文件
+      debug('pages: %j', pages)
+      await map(pages, async (page) => {
+        let main = await this.resolve(page)
+        searchDir(requires, main)
+      }, 0)
+
+      // 搜索主目录下的同名文件
+      searchDir(requires, this.fromFile, 'project.config.json')
     }
 
     // JSON5 的 stringify 生成的 json 不是标准的 json
@@ -42,17 +46,12 @@ export default class JsonLoader extends Loader {
   }
 }
 
-function load(requires: string[], rootDir: string, pages: string[]) {
-  pages.forEach((p: string) => {
-    let parts = p.split('/')
-    let prefix = parts.pop() + '.'
-    let dir = path.join(rootDir, parts.join(path.sep))
-    searchDir(requires, dir, prefix)
-  })
-}
+function searchDir(requires: string[], file: string, fullname?: string) {
+  let dir = path.dirname(file)
+  let name = path.basename(file)
+  let prefix = path.basename(file, path.extname(file))
 
-function searchDir(requires: string[], dir: string, prefix: string, fullname?: string) {
   fs.readdirSync(dir)
-    .filter(n => n.startsWith(prefix) || fullname && fullname === n)
+    .filter(n => n !== name && n.startsWith(prefix + '.') || fullname && fullname === n)
     .forEach(n => requires.push(path.join(dir, n)))
 }

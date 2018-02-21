@@ -1,8 +1,10 @@
 // import * as path from 'path'
 import {Loader} from './Loader'
-import {replace} from '../util'
-import * as tracker from 'debug'
-const debug = tracker('minapp:webpack:js-loader')
+import * as JSON5 from 'json5'
+import {replace, readFile} from '../util'
+import * as DotProp from 'mora-scripts/libs/lang/DotProp'
+
+const debug = require('debug')('minapp:webpack:js-loader')
 
 const REQUIRE_REGEXP = /require\((['"])([^'"]*)\1\)/g
 
@@ -22,6 +24,14 @@ export default class WxsLoader extends Loader {
 
       // 将文件记录起来，触发 webpack 继续解析此文件
       let absFile = await this.resolve(request)
+
+      // 如果是 require json 文件，解析 json 的内容
+      if (this.isJsonFile(request)) {
+        let [file, query] = absFile.split('?')
+        let json = JSON5.parse((await readFile(file)).toString())
+        return JSON.stringify(query ? DotProp.get(json, query) : json)
+      }
+
       requires.push(absFile) // 使用绝对路径，避免重复 resolve
 
       if (this.isFileInSrcDir(absFile)) {

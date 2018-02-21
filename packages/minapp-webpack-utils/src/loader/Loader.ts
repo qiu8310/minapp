@@ -1,6 +1,6 @@
 import * as webpack from 'webpack'
 import * as path from 'path'
-import {getProjectRoot, readFile, md5, toUrlPath, toRelative, STATIC_REGEXP} from '../util'
+import {getProjectRoot, readFile, md5, toUrlPath, toRelative, STATIC_REGEXP, JSON_REGEXP} from '../util'
 
 export abstract class Loader {
   static decorate(loaderConstructor: any) {
@@ -55,8 +55,8 @@ export abstract class Loader {
 
     let {entry, output = {}} = options
 
-    if (typeof entry !== 'string' || /^app\.c?json$/.test(entry)) {
-      throw new Error(`webpack 配置 options.entry 必须是小程序入口文件 app.json 或 app.cjson 的路径`)
+    if (typeof entry !== 'string' || /^app\.(cjson|json|jsonc)$/i.test(entry)) {
+      throw new Error(`webpack 配置 options.entry 必须是小程序入口文件 app.json 的路径`)
     }
 
     this.entryFile = path.resolve(entry)
@@ -110,18 +110,24 @@ export abstract class Loader {
   }
 
   private getStaticOptions() {
+    let opts = (this.lc as any).minapp || {}
+
     return {
       test: STATIC_REGEXP,
       output: path.join(this.distDir, 'static'),
-      filename: '[name:8]-[hash:10].[ext]',
-      ...((this.lc as any).minappStatic || {})
+      filename: '[name:0]-[hash:10].[ext]',
+      ...(opts.static || {})
     }
+  }
+
+  isJsonFile(request: string): boolean {
+    return JSON_REGEXP.test(request.split(/[#\?]/).shift() as string)
   }
 
   isStaticFile(request: string): boolean {
     let {test} = this.getStaticOptions()
     if (typeof test === 'function') return test(request)
-    return test.test(request)
+    return test.test(request.split(/[#\?]/).shift() as string)
   }
   async loadStaticFile(request: string): Promise<string> {
     let absFile = await this.resolve(request)
@@ -137,7 +143,9 @@ export abstract class Loader {
       else if (key === 'ext') key = ext.replace(/^\./, '')
       else if (key === 'hash') key = md5(content)
       else return raw
-      return truncate ? key.substr(0, parseInt(truncate, 10)) : key
+      return !truncate ? key
+        : truncate === '0' ? key.split(/[-_@]/).shift()
+        : key.substr(0, parseInt(truncate, 10))
     })
 
     let file = path.relative(this.distDir, path.join(output, filename))

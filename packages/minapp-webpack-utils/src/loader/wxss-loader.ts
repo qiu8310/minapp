@@ -1,8 +1,7 @@
 // import * as loaderUtils from 'loader-utils'
 import {Loader} from './Loader'
 import {replace, STYLE_RESOURCE_REGEXP} from '../util'
-import * as tracker from 'debug'
-const debug = tracker('minapp:webpack:wxss-loader')
+const debug = require('debug')('minapp:webpack:wxss-loader')
 
 @Loader.decorate
 export default class WxssLoader extends Loader {
