@@ -1,10 +1,9 @@
 {
-  "name": "@minapp/example-ts",
+  "name": "@minapp/example-js",
   "version": "0.0.0",
-  "description": "minapp ts 示例项目",
+  "description": "minapp js 示例项目",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "build": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js",
     "dev": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js -s"
@@ -13,12 +12,10 @@
   "license": "MIT",
   "dependencies": {
     "@minapp/core": "^0.0.1",
-    "minapp": "^0.0.1",
-    "tslib": "~1.9.0"
+    "babel-runtime": "^6.24.0",
+    "minapp": "^0.0.1"
   },
   "devDependencies": {
-    "mora-scripts": "^1.6.21",
-    "ts-lint": "~4.5.1",
-    "typescript": "~2.7.1"
+    "mora-scripts": "^1.6.21"
   }
 }

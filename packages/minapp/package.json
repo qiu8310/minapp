@@ -37,9 +37,9 @@
 		]
 	},
 	"dependencies": {
-		"@minapp/core": "^0.0.0",
+		"@minapp/core": "^0.0.1",
 		"debug": "^3.1.0",
-		"mora-common": "^1.0.9",
+		"mora-common": "^1.0.10",
 		"mora-scripts": "^1.6.21",
 		"tslib": "^1.9.0"
 	},

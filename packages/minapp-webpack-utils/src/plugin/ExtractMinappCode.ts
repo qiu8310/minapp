@@ -3,7 +3,7 @@ import * as sources from 'webpack-sources'
 
 const debug = require('debug')('minapp:webpack-utils:ExtractMinappCode')
 
-const EXTRACT_REGEXP = /__minapp_emit_start\(['"]([^)]+)['"]\);?([\s\S]*?);?__minapp_emit_end\(\)/g
+const EXTRACT_REGEXP = /\{([^\{]*)__minapp__\(['"]([^'"]+)['"]\s*,\s*function\s*\(\s*\)\s*\{([\s\S]*?)\}\)[,;]*__minapp_end__\(\)[,;]*/g
 const REPLACE_REGEXP = /__minapp_require/g
 
 export class ExtractMinappCode {
@@ -18,8 +18,8 @@ export class ExtractMinappCode {
       let source: any = compilation.assets[filename]
       let content = source.source() as string
 
-      content.replace(EXTRACT_REGEXP, (r, emitFile, emitContent) => {
-        emitContent = emitContent.replace(REPLACE_REGEXP, 'require')
+      content.replace(EXTRACT_REGEXP, (r, prefix, emitFile, emitContent) => {
+        emitContent = prefix.trim() + emitContent.replace(REPLACE_REGEXP, 'require')
         debug('提取文件 %j', emitFile)
         debug(emitContent)
         compilation.assets[emitFile] = new sources.RawSource(emitContent)

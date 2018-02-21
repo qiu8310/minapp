@@ -38,7 +38,7 @@
 		]
 	},
 	"dependencies": {
-		"@minapp/wxml-parser": "^0.0.0",
+		"@minapp/wxml-parser": "^0.0.1",
 		"debug": "^3.1.0",
 		"json5": "^0.5.1",
 		"mora-common": "^1.0.8",

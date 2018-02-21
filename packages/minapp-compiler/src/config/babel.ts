@@ -14,11 +14,11 @@ const defaultPresets = [
   'latest',
   'stage-0',
   'stage-1',
-  'stage-2',
-  'stage-3',
 ]
 
-const defaultPlugins: Array<string | any[]> = []
+const defaultPlugins: Array<string | any[]> = [
+  'transform-decorators-legacy'
+]
 
 export function babel(loader: string, compiler: Compiler) {
   let plugins = [...defaultPlugins]

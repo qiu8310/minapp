@@ -1,6 +1,6 @@
 import wxp from '@minapp/core'
 
-export abstract class MBase {
+export abstract class Base {
   /**
    * 获取全局对象 wx 的 promise 版本
    *

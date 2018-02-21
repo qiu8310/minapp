@@ -36,14 +36,13 @@ export default class WxsLoader extends Loader {
 
       // 修改文件路径成相对引用的形式，同时去除文件后缀（可能是 .ts 的后缀）
       // 并使用 __minapp_require，而不是 require，避免被 webpack 解析
-      return this.toRequire(absFile.replace(/\.\w+$/, ''), 'extract', '__minapp_require')
+      return this.toRequire(absFile.replace(/\.\w+$/, ''), 'extract', '', '__minapp_require')
     }, 0)
 
     return [
-      `__minapp_emit_start("${emitFile}");`,
-      emitContent,
-      ';__minapp_emit_end()',
-      `\n${this.toRequire(requires, 'webpack')}`
+      `__minapp__("${emitFile}", function() { ${emitContent} });`,
+      '__minapp_end__();',
+      `${this.toRequire(requires, 'webpack')}`
     ].join('')
   }
 }

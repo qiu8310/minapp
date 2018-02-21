@@ -55,6 +55,8 @@ export function webpackConfig(compiler: Compiler) {
 
   if (compiler.production) {
     plugins.push(new webpack.optimize.UglifyJsPlugin({
+      // NOTICE: 一定不能去掉 module 和 exports，否则压缩后代码可能失效
+      mangle: { except: ['module', 'exports'] },
       sourceMap: false // TODO: 内部 loader 支持 sourceMap
     }))
   }
@@ -64,7 +66,7 @@ export function webpackConfig(compiler: Compiler) {
   }
 
   const wpOpts: webpack.Configuration = {
-    target: 'web',
+    target: 'node',
     // devtool: 'source-map', // TODO: 内部 loader 支持 sourceMap
     entry: path.join(srcDir, appJson),
     output: {
@@ -76,7 +78,8 @@ export function webpackConfig(compiler: Compiler) {
     resolve: {
       extensions: ['.js', '.ts'],
       mainFields: ['main', 'module', 'browser'],
-      modules: [srcDir, modulesDir],
+      symlinks: true,
+      modules: [srcDir, modulesDir, ...getExternalLinkModules(modulesDir)],
     },
     stats: { // https://webpack.js.org/configuration/stats/#stats
       // ['all' as '']: false,
@@ -117,4 +120,20 @@ export function webpackConfig(compiler: Compiler) {
   }
 
   return wpOpts
+}
+
+// node_modules 下可能会有 link 文件， webpack resolve 不了
+// 需要把 link 项目的 node_modules 也加入 resolve 列表
+function getExternalLinkModules(modulesDir: string) {
+  let pkg = require(path.resolve(modulesDir, '..', 'package.json'))
+  let modules: string[] = Object.keys(pkg.dependencies)
+  let folders: string[] = []
+  modules.forEach(m => {
+    let folder = path.join(modulesDir, m)
+    let stat = fs.lstatSync(folder)
+    if (stat.isSymbolicLink()) {
+      folders.push(path.resolve(folder, fs.readlinkSync(folder), 'node_modules'))
+    }
+  })
+  return folders
 }
