@@ -85,25 +85,29 @@ describe('Arg', () => {
 
 describe('Func', () => {
   test('basic', () => {
-    ts(new Func('wx', 'bb', [aStr], tVoid, []), 0, `function bb(str: string): void`)
+    ts(new Func('wx', 'bb', [aStr], tVoid, []), 0, `function bb(str: string): void\n`)
   })
   test('extract arg', () => {
-    ts(new Func('wx', 'bb', [aObj], tVoid, []), 2, `    type IWxBbObj = {
-      /**
-       * str
-       */
-      str?: string
+    ts(new Func('wx', 'bb', [aObj], tVoid, []), 2, `    namespace bb {
+      type Param = {
+        /**
+         * str
+         */
+        str?: string
+      }
     }
-    function bb(obj: IWxBbObj): void`)
+    function bb(obj: bb.Param): void\n`)
   })
   test('extract return', () => {
-    ts(new Func('wx', 'bb', [], tObj, []), 2, `    type IWxBbReturn = {
-      /**
-       * str
-       */
-      str?: string
+    ts(new Func('wx', 'bb', [], tObj, []), 2, `    namespace bb {
+      type Return = {
+        /**
+         * str
+         */
+        str?: string
+      }
     }
-    function bb(): IWxBbReturn`)
+    function bb(): bb.Return\n`)
   })
 })
 

@@ -9,101 +9,168 @@ export namespace wx {
    */
   function createLivePusherContext(): LivePusherContext
 
+  namespace LivePusherContext {
+    namespace start {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace stop {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace pause {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace resume {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace switchCamera {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+  }
   class LivePusherContext {
     /**
      * 播放推流
      */
-    start(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    start(OBJECT: LivePusherContext.start.Param): any
     /**
      * 停止推流
      */
-    stop(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    stop(OBJECT: LivePusherContext.stop.Param): any
     /**
      * 暂停推流
      */
-    pause(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    pause(OBJECT: LivePusherContext.pause.Param): any
     /**
      * 恢复推流
      */
-    resume(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    resume(OBJECT: LivePusherContext.resume.Param): any
     /**
      * 切换前后摄像头
      */
-    switchCamera(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    switchCamera(OBJECT: LivePusherContext.switchCamera.Param): any
   }
 }

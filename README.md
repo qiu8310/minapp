@@ -4,7 +4,7 @@
 * [x] 抓取官方文档，生成结构化的数据 <已由 [@minapp/generator][minapp-generator] 完成>
   - [x] [根据官方API文档](https://mp.weixin.qq.com/debug/wxadoc/dev/api/) 生成 wx api 数据
   - [x] [根据官方组件文档](https://mp.weixin.qq.com/debug/wxadoc/dev/component/)生成组件数据
-  - [ ] 将生成的 typescripts 中的对象定义扁平化，不要出现对象中嵌套对象（方便在用户项目中引用）
+  - [x] 将生成的 typescripts 中的对象定义扁平化，不要出现对象中嵌套对象（方便在用户项目中引用）
 * [x] 生成一个用户可以直接使用的 wx api 模块 <已由 [@minapp/core][minapp-core] 完成>
   - [x] 提供原生回调版本的 api
   - [x] 提供 promise 版本的 api

@@ -1,7 +1,7 @@
 import {Struct, cloneStructs, base, joinDesc} from './_'
 import {Definition} from './Definition'
 import {FunctionType, ObjectType, Type} from './Type'
-import {extractNS, canTypeExtract} from './helper'
+import {extractNS, canTypeExtract, extractNSFuncToNamespace} from './helper'
 
 const {EOL, TAB, klassCase} = base
 
@@ -19,7 +19,13 @@ export class Klass extends Struct {
 
     let rows: string[] = []
     let defines = this.definitions.map(d => {
-      if (canTypeExtract(d.type)) {
+      if (d.type instanceof FunctionType) {
+        let rtn = extractNSFuncToNamespace(this.name, d.name, d.type.args, d.type.returns, tabCount, false)
+        rows.push(...rtn.rows)
+        let fn = new FunctionType([], new Type(rtn.rtns))
+        fn.toTSString = () => `(${rtn.args}): ${rtn.rtns}`
+        d = new Definition(d.name, fn, d)
+      } else if (canTypeExtract(d.type)) {
         let name = klassCase(d.name)
         let refName = this.name + '.' + name
         rows.push(...extractNS(name, d.desc, d.type))

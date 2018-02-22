@@ -30,6 +30,8 @@ function replaceIndexJs() {
 
 // 复制 wxp.d.ts 文件到 dist 目录中
 function copyWxp() {
+  fs.copyFileSync(WX_FILE, path.join(DIST_DIR, '../typing/wx.d.ts'))
+  info(`${WX_FILE} 复制成功`)
   fs.copyFileSync(WXP_FILE, path.join(DIST_DIR, 'wxp.d.ts'))
   info(`${WXP_FILE} 复制成功`)
 }

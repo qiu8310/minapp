@@ -725,6 +725,94 @@ declare namespace wx {
    */
   function onSocketClose(CALLBACK: any): void
 
+  namespace SocketTask {
+    namespace send {
+      type Param = {
+        /**
+         * 需要发送的内容
+         */
+        data?: string | ArrayBuffer
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace close {
+      type Param = {
+        /**
+         * 一个数字值表示关闭连接的状态号，表示连接被关闭的原因。如果这个参数没有被指定，默认的取值是1000 （表示正常连接关闭）
+         */
+        code?: number
+        /**
+         * 一个可读的字符串，表示连接被关闭的原因。这个字符串必须是不长于123字节的UTF-8 文本（不是字符）
+         */
+        reason?: string
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace onError {
+      type Param = (res: ParamParam) => any
+      type ParamParam = {
+        /**
+         * 错误信息
+         */
+        errMsg?: string
+      }
+    }
+    namespace onMessage {
+      type Param = (res: ParamParam) => any
+      type ParamParam = {
+        /**
+         * 服务器返回的消息
+         */
+        data?: string | ArrayBuffer
+      }
+    }
+  }
   /**
    * @since 1.7.0
    *
@@ -737,59 +825,14 @@ declare namespace wx {
      *
      * 通过 WebSocket 连接发送数据。
      */
-    send(OBJECT: {
-      /**
-       * 需要发送的内容
-       */
-      data: string | ArrayBuffer
-
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): void
+    send(OBJECT: SocketTask.send.Param): void
     /**
      *
      * **SocketTask.close(OBJECT)：**
      *
      * 关闭 WebSocket 连接。
      */
-    close(OBJECT: {
-      /**
-       * 一个数字值表示关闭连接的状态号，表示连接被关闭的原因。如果这个参数没有被指定，默认的取值是1000 （表示正常连接关闭）
-       */
-      code?: number
-
-      /**
-       * 一个可读的字符串，表示连接被关闭的原因。这个字符串必须是不长于123字节的UTF-8 文本（不是字符）
-       */
-      reason?: string
-
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): void
+    close(OBJECT: SocketTask.close.Param): void
     /**
      *
      * **SocketTask.onOpen(CALLBACK)：**
@@ -810,24 +853,14 @@ declare namespace wx {
      *
      * 监听 WebSocket 错误。
      */
-    onError(CALLBACK: ((res: {
-      /**
-       * 错误信息
-       */
-      errMsg: string
-    }) => any)): void
+    onError(CALLBACK: SocketTask.onError.Param): void
     /**
      *
      * **SocketTask.onMessage(CALLBACK)：**
      *
      * 监听WebSocket接受到服务器的消息事件。
      */
-    onMessage(CALLBACK: ((res: {
-      /**
-       * 服务器返回的消息
-       */
-      data: string | ArrayBuffer
-    }) => any)): void
+    onMessage(CALLBACK: SocketTask.onMessage.Param): void
   }
   namespace chooseImage {
     type Param = {
@@ -1221,41 +1254,72 @@ declare namespace wx {
    */
   function getRecorderManager(): RecorderManager
 
+  namespace RecorderManager {
+    namespace start {
+      type Param = {
+        /**
+         * 指定录音的时长，单位 ms ，如果传入了合法的 duration ，在到达指定的 duration 后会自动停止录音，最大值 600000（10 分钟）,默认值 60000（1 分钟）
+         */
+        duration?: number
+        /**
+         * 采样率，有效值 8000/16000/44100
+         */
+        sampleRate?: number
+        /**
+         * 录音通道数，有效值 1/2
+         */
+        numberOfChannels?: number
+        /**
+         * 编码码率，有效值见下表格
+         */
+        encodeBitRate?: number
+        /**
+         * 音频格式，有效值 aac/mp3
+         */
+        format?: string
+        /**
+         * 指定帧大小，单位 KB。传入 frameSize 后，每录制指定帧大小的内容后，会回调录制的文件内容，不指定则不会回调。暂仅支持 mp3 格式。
+         */
+        frameSize?: number
+      }
+    }
+    namespace onStop {
+      type Param = (res: ParamParam) => any
+      type ParamParam = {
+        /**
+         * 录音文件的临时路径
+         */
+        tempFilePath?: string
+      }
+    }
+    namespace onFrameRecorded {
+      type Param = (res: ParamParam) => any
+      type ParamParam = {
+        /**
+         * 录音分片结果数据
+         */
+        frameBuffer?: ArrayBuffer
+        /**
+         * 当前帧是否正常录音结束前的最后一帧
+         */
+        isLastFrame?: boolean
+      }
+    }
+    namespace onError {
+      type Param = (res: ParamParam) => any
+      type ParamParam = {
+        /**
+         * 错误信息
+         */
+        errMsg?: string
+      }
+    }
+  }
   class RecorderManager {
     /**
      * 开始录音
      */
-    start(options: {
-      /**
-       * 指定录音的时长，单位 ms ，如果传入了合法的 duration ，在到达指定的 duration 后会自动停止录音，最大值 600000（10 分钟）,默认值 60000（1 分钟）
-       */
-      duration?: number
-
-      /**
-       * 采样率，有效值 8000/16000/44100
-       */
-      sampleRate?: number
-
-      /**
-       * 录音通道数，有效值 1/2
-       */
-      numberOfChannels?: number
-
-      /**
-       * 编码码率，有效值见下表格
-       */
-      encodeBitRate?: number
-
-      /**
-       * 音频格式，有效值 aac/mp3
-       */
-      format?: string
-
-      /**
-       * 指定帧大小，单位 KB。传入 frameSize 后，每录制指定帧大小的内容后，会回调录制的文件内容，不指定则不会回调。暂仅支持 mp3 格式。
-       */
-      frameSize?: number
-    }): any
+    start(options: RecorderManager.start.Param): any
     /**
      * 暂停录音
      */
@@ -1279,35 +1343,15 @@ declare namespace wx {
     /**
      * 录音停止事件，会回调文件地址
      */
-    onStop(callback: ((res: {
-      /**
-       * 录音文件的临时路径
-       */
-      tempFilePath: string
-    }) => any)): any
+    onStop(callback: RecorderManager.onStop.Param): any
     /**
      * 已录制完指定帧大小的文件，会回调录音分片结果数据。如果设置了 frameSize ，则会回调此事件
      */
-    onFrameRecorded(callback: ((res: {
-      /**
-       * 录音分片结果数据
-       */
-      frameBuffer: ArrayBuffer
-
-      /**
-       * 当前帧是否正常录音结束前的最后一帧
-       */
-      isLastFrame: boolean
-    }) => any)): any
+    onFrameRecorded(callback: RecorderManager.onFrameRecorded.Param): any
     /**
      * 录音错误事件, 会回调错误信息
      */
-    onError(callback: ((res: {
-      /**
-       * 错误信息
-       */
-      errMsg: string
-    }) => any)): any
+    onError(callback: RecorderManager.onError.Param): any
   }
   namespace playVoice {
     type Param = {
@@ -2249,74 +2293,117 @@ declare namespace wx {
    */
   function createCameraContext(instance?: any): CameraContext
 
+  namespace CameraContext {
+    namespace takePhoto {
+      type Param = {
+        /**
+         * 成像质量，值为high, normal, low，默认normal
+         */
+        quality?: string
+        /**
+         * 接口调用成功的回调函数 ，res = { tempImagePath }
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数 ，res = { tempImagePath }
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace startRecord {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+        /**
+         * 超过30s或页面onHide时会结束录像，res = { tempThumbPath, tempVideoPath }
+         */
+        timeoutCallback?: ParamPropTimeoutCallback
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+      /**
+       * 超过30s或页面onHide时会结束录像，res = { tempThumbPath, tempVideoPath }
+       */
+      type ParamPropTimeoutCallback = () => any
+    }
+    namespace stopRecord {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数 ，res = { tempThumbPath, tempVideoPath }
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数 ，res = { tempThumbPath, tempVideoPath }
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+  }
   class CameraContext {
     /**
      * 拍照，可指定质量，成功则返回图片
      */
-    takePhoto(OBJECT: {
-      /**
-       * 成像质量，值为high, normal, low，默认normal
-       */
-      quality?: string
-
-      /**
-       * 接口调用成功的回调函数 ，res = { tempImagePath }
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    takePhoto(OBJECT: CameraContext.takePhoto.Param): any
     /**
      * 开始录像
      */
-    startRecord(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-
-      /**
-       * 超过30s或页面onHide时会结束录像，res = { tempThumbPath, tempVideoPath }
-       */
-      timeoutCallback?: () => any
-    }): any
+    startRecord(OBJECT: CameraContext.startRecord.Param): any
     /**
      * 结束录像，成功则返回封面与视频
      */
-    stopRecord(OBJECT: {
-      /**
-       * 接口调用成功的回调函数 ，res = { tempThumbPath, tempVideoPath }
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    stopRecord(OBJECT: CameraContext.stopRecord.Param): any
   }
   /**
    * @since 1.7.0
@@ -2326,107 +2413,173 @@ declare namespace wx {
    */
   function createLivePlayerContext(domId: any, instance?: any): LivePlayerContext
 
+  namespace LivePlayerContext {
+    namespace play {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace stop {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace mute {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace requestFullScreen {
+      type Param = {
+        /**
+         * 有效值为 0（正常竖向）, 90（屏幕逆时针90度）, -90（屏幕顺时针90度）
+         */
+        direction?: number
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace exitFullScreen {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+  }
   class LivePlayerContext {
     /**
      * 播放
      */
-    play(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    play(OBJECT: LivePlayerContext.play.Param): any
     /**
      * 停止
      */
-    stop(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    stop(OBJECT: LivePlayerContext.stop.Param): any
     /**
      * 静音
      */
-    mute(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    mute(OBJECT: LivePlayerContext.mute.Param): any
     /**
      * 进入全屏
      */
-    requestFullScreen(OBJECT: {
-      /**
-       * 有效值为 0（正常竖向）, 90（屏幕逆时针90度）, -90（屏幕顺时针90度）
-       */
-      direction?: number
-
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    requestFullScreen(OBJECT: LivePlayerContext.requestFullScreen.Param): any
     /**
      * 退出全屏
      */
-    exitFullScreen(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    exitFullScreen(OBJECT: LivePlayerContext.exitFullScreen.Param): any
   }
   /**
    * @since 1.7.0
@@ -2436,102 +2589,169 @@ declare namespace wx {
    */
   function createLivePusherContext(): LivePusherContext
 
+  namespace LivePusherContext {
+    namespace start {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace stop {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace pause {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace resume {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace switchCamera {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+  }
   class LivePusherContext {
     /**
      * 播放推流
      */
-    start(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    start(OBJECT: LivePusherContext.start.Param): any
     /**
      * 停止推流
      */
-    stop(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    stop(OBJECT: LivePusherContext.stop.Param): any
     /**
      * 暂停推流
      */
-    pause(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    pause(OBJECT: LivePusherContext.pause.Param): any
     /**
      * 恢复推流
      */
-    resume(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    resume(OBJECT: LivePusherContext.resume.Param): any
     /**
      * 切换前后摄像头
      */
-    switchCamera(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    switchCamera(OBJECT: LivePusherContext.switchCamera.Param): any
   }
   namespace saveFile {
     type Param = {
@@ -3546,26 +3766,149 @@ declare namespace wx {
    */
   function createMapContext(mapId: any, instance?: any): MapContext
 
+  namespace MapContext {
+    namespace getCenterLocation {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数 ，res = { longitude: "经度", latitude: "纬度"}
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数 ，res = { longitude: "经度", latitude: "纬度"}
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace translateMarker {
+      type Param = {
+        /**
+         * 指定marker
+         */
+        markerId?: number
+        /**
+         * 指定marker移动到的目标点
+         */
+        destination?: any
+        /**
+         * 移动过程中是否自动旋转marker
+         */
+        autoRotate?: boolean
+        /**
+         * marker的旋转角度
+         */
+        rotate?: number
+        /**
+         * 动画持续时长，默认值1000ms，平移与旋转分别计算
+         */
+        duration?: number
+        /**
+         * 动画结束回调函数
+         */
+        animationEnd?: ParamPropAnimationEnd
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+      }
+      /**
+       * 动画结束回调函数
+       */
+      type ParamPropAnimationEnd = () => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = () => any
+    }
+    namespace includePoints {
+      type Param = {
+        /**
+         * 要显示在可视区域内的坐标点列表，[{latitude, longitude}]
+         */
+        points?: any[]
+        /**
+         * 坐标点形成的矩形边缘到地图边缘的距离，单位像素。格式为[上,右,下,左]，安卓上只能识别数组第一项，上下左右的padding一致。开发者工具暂不支持padding参数。
+         */
+        padding?: any[]
+      }
+    }
+    namespace getRegion {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数，res = {southwest, northeast}，西南角与东北角的经纬度
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数，res = {southwest, northeast}，西南角与东北角的经纬度
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace getScale {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数，res = {scale}
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数，res = {scale}
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+  }
   class MapContext {
     /**
      * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject)
      */
-    getCenterLocation(OBJECT: {
-      /**
-       * 接口调用成功的回调函数 ，res = { longitude: "经度", latitude: "纬度"}
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    getCenterLocation(OBJECT: MapContext.getCenterLocation.Param): any
     /**
      * 将地图中心移动到当前定位点，需要配合map组件的show-location使用
      */
@@ -3575,100 +3918,25 @@ declare namespace wx {
      *
      * @since 1.2.0
      */
-    translateMarker(OBJECT: {
-      /**
-       * 指定marker
-       */
-      markerId: number
-
-      /**
-       * 指定marker移动到的目标点
-       */
-      destination: any
-
-      /**
-       * 移动过程中是否自动旋转marker
-       */
-      autoRotate: boolean
-
-      /**
-       * marker的旋转角度
-       */
-      rotate: number
-
-      /**
-       * 动画持续时长，默认值1000ms，平移与旋转分别计算
-       */
-      duration?: number
-
-      /**
-       * 动画结束回调函数
-       */
-      animationEnd?: () => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: () => any
-    }): any
+    translateMarker(OBJECT: MapContext.translateMarker.Param): any
     /**
      * 缩放视野展示所有经纬度
      *
      * @since 1.2.0
      */
-    includePoints(OBJECT: {
-      /**
-       * 要显示在可视区域内的坐标点列表，[{latitude, longitude}]
-       */
-      points: any[]
-
-      /**
-       * 坐标点形成的矩形边缘到地图边缘的距离，单位像素。格式为[上,右,下,左]，安卓上只能识别数组第一项，上下左右的padding一致。开发者工具暂不支持padding参数。
-       */
-      padding?: any[]
-    }): any
+    includePoints(OBJECT: MapContext.includePoints.Param): any
     /**
      * 获取当前地图的视野范围
      *
      * @since 1.4.0
      */
-    getRegion(OBJECT: {
-      /**
-       * 接口调用成功的回调函数，res = {southwest, northeast}，西南角与东北角的经纬度
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    getRegion(OBJECT: MapContext.getRegion.Param): any
     /**
      * 获取当前地图的缩放级别
      *
      * @since 1.4.0
      */
-    getScale(OBJECT: {
-      /**
-       * 接口调用成功的回调函数，res = {scale}
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    getScale(OBJECT: MapContext.getScale.Param): any
   }
   namespace getSystemInfo {
     type Param = {
@@ -10660,6 +10928,11 @@ declare namespace wx {
    */
   function setEnableDebug(OBJECT: setEnableDebug.Param): void
 
+  namespace CanvasContext {
+    namespace draw {
+      type Param1 = () => any
+    }
+  }
   class CanvasContext {
     /**
      *
@@ -12078,6 +12351,6 @@ declare namespace wx {
      *     ctx.draw(true)
      *     ```
      */
-    draw(reserve?: boolean, callback?: (() => any)): void
+    draw(reserve?: boolean, callback?: CanvasContext.draw.Param1): void
   }
 }

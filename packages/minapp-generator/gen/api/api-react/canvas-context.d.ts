@@ -1,3 +1,8 @@
+export namespace CanvasContext {
+  namespace draw {
+    type Param1 = () => any
+  }
+}
 export class CanvasContext {
   /**
    *
@@ -9,9 +14,9 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数    |  类型                                                                       |  定义              
+   *   参数    |  类型                                                                       |  定义
    * ----------|-----------------------------------------------------------------------------|--------------------
-   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
+   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object
    *
    * **例子：**
    *
@@ -33,9 +38,9 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数    |  类型                                                                       |  定义              
+   *   参数    |  类型                                                                       |  定义
    * ----------|-----------------------------------------------------------------------------|--------------------
-   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
+   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object
    *
    * **例子：**
    *
@@ -57,12 +62,12 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数      |  类型                                                                       |  范围    |  定义              
+   *   参数      |  类型                                                                       |  范围    |  定义
    * ------------|-----------------------------------------------------------------------------|----------|--------------------
    *   offsetX   |  Number                                                                     |          |阴影相对于形状在水平方向的偏移
    *   offsetY   |  Number                                                                     |          |阴影相对于形状在竖直方向的偏移
    *   blur      |  Number                                                                     |  0~100   |阴影的模糊级别，数值越大越模糊
-   *   color     |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |          |  阴影的颜色        
+   *   color     |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |          |  阴影的颜色
    *
    * **例子：**
    *
@@ -85,7 +90,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数 |  类型     |  定义     
+   *   参数 |  类型     |  定义
    * -------|-----------|-----------
    *   x0   |  Number   |起点的x坐标
    *   y0   |  Number   |起点的y坐标
@@ -121,11 +126,11 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数 |  类型     |  定义     
+   *   参数 |  类型     |  定义
    * -------|-----------|-----------
    *   x    |  Number   |圆心的x坐标
    *   y    |  Number   |圆心的y坐标
-   *   r    |  Number   |  圆的半径 
+   *   r    |  Number   |  圆的半径
    *
    * **例子：**
    *
@@ -156,10 +161,10 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数    |  类型                                                                       |  定义              
+   *   参数    |  类型                                                                       |  定义
    * ----------|-----------------------------------------------------------------------------|--------------------
    *   stop    |  Number(0-1)                                                                |表示渐变点在起点和终点中的位置
-   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  渐变点的颜色      
+   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  渐变点的颜色
    *
    * **示例代码：**
    *
@@ -191,7 +196,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数        |  类型     |  说明           
+   *   参数        |  类型     |  说明
    * --------------|-----------|-----------------
    *   lineWidth   |  Number   |线条的宽度(单位是px)
    *
@@ -234,7 +239,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数      |  类型     |  范围                      |  说明        
+   *   参数      |  类型     |  范围                      |  说明
    * ------------|-----------|----------------------------|--------------
    *   lineCap   |  String   |  'butt'、'round'、'square' |线条的结束端点样式
    *
@@ -280,7 +285,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数       |  类型     |  范围                      |  说明        
+   *   参数       |  类型     |  范围                      |  说明
    * -------------|-----------|----------------------------|--------------
    *   lineJoin   |  String   |  'bevel'、'round'、'miter' |线条的结束交点样式
    *
@@ -331,10 +336,10 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数      |  类型     |  说明                         
+   *   参数      |  类型     |  说明
    * ------------|-----------|-------------------------------
    *   pattern   |  Array    |一组描述交替绘制线段和间距（坐标空间单位）长度的数字
-   *   offset    |  Number   |  虚线偏移量                   
+   *   offset    |  Number   |  虚线偏移量
    *
    * **例子：**
    *
@@ -360,7 +365,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数         |  类型     |  说明     
+   *   参数         |  类型     |  说明
    * ---------------|-----------|-----------
    *   miterLimit   |  Number   |最大斜接长度
    *
@@ -418,12 +423,12 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数     |  类型     |  说明          
+   *   参数     |  类型     |  说明
    * -----------|-----------|----------------
    *   x        |  Number   |矩形路径左上角的x坐标
    *   y        |  Number   |矩形路径左上角的y坐标
-   *   width    |  Number   | 矩形路径的宽度 
-   *   height   |  Number   | 矩形路径的高度 
+   *   width    |  Number   | 矩形路径的宽度
+   *   height   |  Number   | 矩形路径的高度
    *
    * **例子：**
    *
@@ -446,12 +451,12 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数     |  类型     |  说明          
+   *   参数     |  类型     |  说明
    * -----------|-----------|----------------
    *   x        |  Number   |矩形路径左上角的x坐标
    *   y        |  Number   |矩形路径左上角的y坐标
-   *   width    |  Number   | 矩形路径的宽度 
-   *   height   |  Number   | 矩形路径的高度 
+   *   width    |  Number   | 矩形路径的宽度
+   *   height   |  Number   | 矩形路径的高度
    *
    * **例子：**
    *
@@ -473,12 +478,12 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数     |  类型     |  范围 |  说明          
+   *   参数     |  类型     |  范围 |  说明
    * -----------|-----------|-------|----------------
    *   x        |  Number   |       |矩形路径左上角的x坐标
    *   y        |  Number   |       |矩形路径左上角的y坐标
-   *   width    |  Number   |       | 矩形路径的宽度 
-   *   height   |  Number   |       | 矩形路径的高度 
+   *   width    |  Number   |       | 矩形路径的宽度
+   *   height   |  Number   |       | 矩形路径的高度
    *
    * **例子：**
    *
@@ -494,12 +499,12 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数     |  类型     |  说明          
+   *   参数     |  类型     |  说明
    * -----------|-----------|----------------
    *   x        |  Number   |矩形区域左上角的x坐标
    *   y        |  Number   |矩形区域左上角的y坐标
-   *   width    |  Number   | 矩形区域的宽度 
-   *   height   |  Number   | 矩形区域的高度 
+   *   width    |  Number   | 矩形区域的宽度
+   *   height   |  Number   | 矩形区域的高度
    *
    * **定义：**
    *
@@ -705,7 +710,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数 |  类型     |  说明       
+   *   参数 |  类型     |  说明
    * -------|-----------|-------------
    *   x    |  Number   |目标位置的x坐标
    *   y    |  Number   |目标位置的y坐标
@@ -734,7 +739,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数 |  类型     |  说明       
+   *   参数 |  类型     |  说明
    * -------|-----------|-------------
    *   x    |  Number   |目标位置的x坐标
    *   y    |  Number   |目标位置的y坐标
@@ -763,13 +768,13 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数               |  类型      |  说明                                 
+   *   参数               |  类型      |  说明
    * ---------------------|------------|---------------------------------------
-   *   x                  |  Number    |  圆的x坐标                            
-   *   y                  |  Number    |  圆的y坐标                            
-   *   r                  |  Number    |  圆的半径                             
-   *   sAngle             |  Number    |  起始弧度，单位弧度（在3点钟方向）    
-   *   eAngle             |  Number    |  终止弧度                             
+   *   x                  |  Number    |  圆的x坐标
+   *   y                  |  Number    |  圆的y坐标
+   *   r                  |  Number    |  圆的半径
+   *   sAngle             |  Number    |  起始弧度，单位弧度（在3点钟方向）
+   *   eAngle             |  Number    |  终止弧度
    *   counterclockwise   |  Boolean   |可选。指定弧度的方向是逆时针还是顺时针。默认是false，即顺时针。
    *
    * **例子：**
@@ -833,14 +838,14 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数   |  类型     |  说明              
+   *   参数   |  类型     |  说明
    * ---------|-----------|--------------------
    *   cp1x   |  Number   |第一个贝塞尔控制点的 x 坐标
    *   cp1y   |  Number   |第一个贝塞尔控制点的 y 坐标
    *   cp2x   |  Number   |第二个贝塞尔控制点的 x 坐标
    *   cp2y   |  Number   |第二个贝塞尔控制点的 y 坐标
-   *   x      |  Number   |  结束点的 x 坐标   
-   *   y      |  Number   |  结束点的 y 坐标   
+   *   x      |  Number   |  结束点的 x 坐标
+   *   y      |  Number   |  结束点的 y 坐标
    *
    * **例子：**
    *
@@ -900,12 +905,12 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数  |  类型     |  说明         
+   *   参数  |  类型     |  说明
    * --------|-----------|---------------
    *   cpx   |  Number   |贝塞尔控制点的x坐标
    *   cpy   |  Number   |贝塞尔控制点的y坐标
-   *   x     |  Number   | 结束点的x坐标 
-   *   y     |  Number   | 结束点的y坐标 
+   *   x     |  Number   | 结束点的x坐标
+   *   y     |  Number   | 结束点的y坐标
    *
    * **例子：**
    *
@@ -958,7 +963,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数          |  类型     |  说明                                      
+   *   参数          |  类型     |  说明
    * ----------------|-----------|--------------------------------------------
    *   scaleWidth    |  Number   |横坐标缩放的倍数 (1 = 100%，0.5 = 50%，2 = 200%)
    *   scaleHeight   |  Number   |纵坐标轴缩放的倍数 (1 = 100%，0.5 = 50%，2 = 200%)
@@ -986,7 +991,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数     |  类型     |  说明                                               
+   *   参数     |  类型     |  说明
    * -----------|-----------|-----------------------------------------------------
    *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
    *
@@ -1015,7 +1020,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数 |  类型     |  说明      
+   *   参数 |  类型     |  说明
    * -------|-----------|------------
    *   x    |  Number   |水平坐标平移量
    *   y    |  Number   |竖直坐标平移量
@@ -1070,7 +1075,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数       |  类型     |  说明    
+   *   参数       |  类型     |  说明
    * -------------|-----------|----------
    *   fontSize   |  Number   |字体的字号
    *
@@ -1100,7 +1105,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数   |  类型     |  说明            
+   *   参数   |  类型     |  说明
    * ---------|-----------|------------------
    *   text   |  String   |在画布上输出的文本
    *   x      |  Number   |绘制文本的左上角x坐标位置
@@ -1128,7 +1133,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数    |  类型     |  定义                          
+   *   参数    |  类型     |  定义
    * ----------|-----------|--------------------------------
    *   align   |  String   |可选值 'left'、'center'、'right'
    *
@@ -1165,7 +1170,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数           |  类型     |  定义                                   
+   *   参数           |  类型     |  定义
    * -----------------|-----------|-----------------------------------------
    *   textBaseline   |  String   |可选值 'top'、'bottom'、'middle'、'normal'
    *
@@ -1205,17 +1210,17 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数            |  类型     |  说明                         
+   *   参数            |  类型     |  说明
    * ------------------|-----------|-------------------------------
-   *   imageResource   |  String   |  所要绘制的图片资源           
+   *   imageResource   |  String   |  所要绘制的图片资源
    *   dx              |  Number   |图像的左上角在目标canvas上 X 轴的位置
    *   dy              |  Number   |图像的左上角在目标canvas上 Y 轴的位置
    *   dWidth          |  Number   |在目标画布上绘制图像的宽度，允许对绘制的图像进行缩放
    *   dHeigt          |  Number   |在目标画布上绘制图像的高度，允许对绘制的图像进行缩放
    *   sx              |  Number   |源图像的矩形选择框的左上角 X 坐标
    *   sy              |  Number   |源图像的矩形选择框的左上角 Y 坐标
-   *   sWidth          |  Number   |  源图像的矩形选择框的高度     
-   *   sHeight         |  Number   |  源图像的矩形选择框的高度     
+   *   sWidth          |  Number   |  源图像的矩形选择框的高度
+   *   sHeight         |  Number   |  源图像的矩形选择框的高度
    *
    * **有三个版本的写法：**
    *
@@ -1245,17 +1250,17 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数            |  类型     |  说明                         
+   *   参数            |  类型     |  说明
    * ------------------|-----------|-------------------------------
-   *   imageResource   |  String   |  所要绘制的图片资源           
+   *   imageResource   |  String   |  所要绘制的图片资源
    *   dx              |  Number   |图像的左上角在目标canvas上 X 轴的位置
    *   dy              |  Number   |图像的左上角在目标canvas上 Y 轴的位置
    *   dWidth          |  Number   |在目标画布上绘制图像的宽度，允许对绘制的图像进行缩放
    *   dHeigt          |  Number   |在目标画布上绘制图像的高度，允许对绘制的图像进行缩放
    *   sx              |  Number   |源图像的矩形选择框的左上角 X 坐标
    *   sy              |  Number   |源图像的矩形选择框的左上角 Y 坐标
-   *   sWidth          |  Number   |  源图像的矩形选择框的高度     
-   *   sHeight         |  Number   |  源图像的矩形选择框的高度     
+   *   sWidth          |  Number   |  源图像的矩形选择框的高度
+   *   sHeight         |  Number   |  源图像的矩形选择框的高度
    *
    * **有三个版本的写法：**
    *
@@ -1285,17 +1290,17 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数            |  类型     |  说明                         
+   *   参数            |  类型     |  说明
    * ------------------|-----------|-------------------------------
-   *   imageResource   |  String   |  所要绘制的图片资源           
+   *   imageResource   |  String   |  所要绘制的图片资源
    *   dx              |  Number   |图像的左上角在目标canvas上 X 轴的位置
    *   dy              |  Number   |图像的左上角在目标canvas上 Y 轴的位置
    *   dWidth          |  Number   |在目标画布上绘制图像的宽度，允许对绘制的图像进行缩放
    *   dHeigt          |  Number   |在目标画布上绘制图像的高度，允许对绘制的图像进行缩放
    *   sx              |  Number   |源图像的矩形选择框的左上角 X 坐标
    *   sy              |  Number   |源图像的矩形选择框的左上角 Y 坐标
-   *   sWidth          |  Number   |  源图像的矩形选择框的高度     
-   *   sHeight         |  Number   |  源图像的矩形选择框的高度     
+   *   sWidth          |  Number   |  源图像的矩形选择框的高度
+   *   sHeight         |  Number   |  源图像的矩形选择框的高度
    *
    * **有三个版本的写法：**
    *
@@ -1325,7 +1330,7 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数    |  类型     |  范围  |  说明                     
+   *   参数    |  类型     |  范围  |  说明
    * ----------|-----------|--------|---------------------------
    *   alpha   |  Number   |  0~1   |透明度，0 表示完全透明，1 表示完全不透明
    *
@@ -1365,7 +1370,7 @@ export class CanvasContext {
    *     const ctx = wx.createCanvasContext('myCanvas')
    *
    *     // save the default fill style
-   *     ctx.save() 
+   *     ctx.save()
    *     ctx.setFillStyle('red')
    *     ctx.fillRect(10, 10, 150, 100)
    *
@@ -1387,10 +1392,10 @@ export class CanvasContext {
    *
    * **参数：**
    *
-   *   参数       |  类型       |  说明                                                                                                                                       | 最低版本 
+   *   参数       |  类型       |  说明                                                                                                                                       | 最低版本
    * -------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------|----------
-   *   reserve    |  Boolean    |非必填。本次绘制是否接着上一次绘制，即reserve参数为false，则在本次调用drawCanvas绘制之前native层应先清空画布再继续绘制；若reserver参数为true，则保留当前画布上的内容，本次调用drawCanvas绘制的内容覆盖在上面，默认 false|          
-   *   callback   |  Function   |  绘制完成后回调                                                                                                                             |  1.7.0   
+   *   reserve    |  Boolean    |非必填。本次绘制是否接着上一次绘制，即reserve参数为false，则在本次调用drawCanvas绘制之前native层应先清空画布再继续绘制；若reserver参数为true，则保留当前画布上的内容，本次调用drawCanvas绘制的内容覆盖在上面，默认 false|
+   *   callback   |  Function   |  绘制完成后回调                                                                                                                             |  1.7.0
    *
    * **例子：**
    *
@@ -1416,5 +1421,5 @@ export class CanvasContext {
    *     ctx.draw(true)
    *     ```
    */
-  draw(reserve?: boolean, callback?: (() => any)): void
+  draw(reserve?: boolean, callback?: CanvasContext.draw.Param1): void
 }

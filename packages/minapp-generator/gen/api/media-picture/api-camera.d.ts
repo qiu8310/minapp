@@ -9,73 +9,116 @@ export namespace wx {
    */
   function createCameraContext(instance?: any): CameraContext
 
+  namespace CameraContext {
+    namespace takePhoto {
+      type Param = {
+        /**
+         * 成像质量，值为high, normal, low，默认normal
+         */
+        quality?: string
+        /**
+         * 接口调用成功的回调函数 ，res = { tempImagePath }
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数 ，res = { tempImagePath }
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace startRecord {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+        /**
+         * 超过30s或页面onHide时会结束录像，res = { tempThumbPath, tempVideoPath }
+         */
+        timeoutCallback?: ParamPropTimeoutCallback
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+      /**
+       * 超过30s或页面onHide时会结束录像，res = { tempThumbPath, tempVideoPath }
+       */
+      type ParamPropTimeoutCallback = () => any
+    }
+    namespace stopRecord {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数 ，res = { tempThumbPath, tempVideoPath }
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数 ，res = { tempThumbPath, tempVideoPath }
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+  }
   class CameraContext {
     /**
      * 拍照，可指定质量，成功则返回图片
      */
-    takePhoto(OBJECT: {
-      /**
-       * 成像质量，值为high, normal, low，默认normal
-       */
-      quality?: string
-
-      /**
-       * 接口调用成功的回调函数 ，res = { tempImagePath }
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    takePhoto(OBJECT: CameraContext.takePhoto.Param): any
     /**
      * 开始录像
      */
-    startRecord(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-
-      /**
-       * 超过30s或页面onHide时会结束录像，res = { tempThumbPath, tempVideoPath }
-       */
-      timeoutCallback?: () => any
-    }): any
+    startRecord(OBJECT: CameraContext.startRecord.Param): any
     /**
      * 结束录像，成功则返回封面与视频
      */
-    stopRecord(OBJECT: {
-      /**
-       * 接口调用成功的回调函数 ，res = { tempThumbPath, tempVideoPath }
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    stopRecord(OBJECT: CameraContext.stopRecord.Param): any
   }
 }

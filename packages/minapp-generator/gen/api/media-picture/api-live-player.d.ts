@@ -9,106 +9,172 @@ export namespace wx {
    */
   function createLivePlayerContext(domId: any, instance?: any): LivePlayerContext
 
+  namespace LivePlayerContext {
+    namespace play {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace stop {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace mute {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace requestFullScreen {
+      type Param = {
+        /**
+         * 有效值为 0（正常竖向）, 90（屏幕逆时针90度）, -90（屏幕顺时针90度）
+         */
+        direction?: number
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace exitFullScreen {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+  }
   class LivePlayerContext {
     /**
      * 播放
      */
-    play(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    play(OBJECT: LivePlayerContext.play.Param): any
     /**
      * 停止
      */
-    stop(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    stop(OBJECT: LivePlayerContext.stop.Param): any
     /**
      * 静音
      */
-    mute(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    mute(OBJECT: LivePlayerContext.mute.Param): any
     /**
      * 进入全屏
      */
-    requestFullScreen(OBJECT: {
-      /**
-       * 有效值为 0（正常竖向）, 90（屏幕逆时针90度）, -90（屏幕顺时针90度）
-       */
-      direction?: number
-
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    requestFullScreen(OBJECT: LivePlayerContext.requestFullScreen.Param): any
     /**
      * 退出全屏
      */
-    exitFullScreen(OBJECT: {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: (res: any) => any
-
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: (err: any) => any
-
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: () => any
-    }): any
+    exitFullScreen(OBJECT: LivePlayerContext.exitFullScreen.Param): any
   }
 }
