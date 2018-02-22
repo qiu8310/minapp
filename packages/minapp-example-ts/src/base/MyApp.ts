@@ -1,13 +1,11 @@
-import m from 'minapp'
-import {GlobalData} from './GlobalData'
+import m from '@minapp/mobx'
+import {MyStore} from './MyStore'
 
 const PAGES = require('../app.cjson?pages') // 获取 app.cjson 中的 pages 字段
 
-export class BaseApp extends m.App<GlobalData> {
-  _userInfoReadyCallback?: any
-
+export class MyApp extends m.App<MyStore> {
   indexPage: string = PAGES[0]
-  pagesMap: {
+  page: {
     /*
       ！注意：INJECT_START 到 INJECT_END 之间的文件是自动注入的，请不要随意修改
 
@@ -24,11 +22,6 @@ export class BaseApp extends m.App<GlobalData> {
   } = getPagesMap()
 }
 
-export class BasePage<D = any> extends m.Page<D, BaseApp> {}
-
-export const wxp = m.wxp
-export const pagify = m.pagify
-export const appify = m.appify
 
 function getPagesMap() {
   return PAGES.reduce((pagesMap: any, page: string) => {

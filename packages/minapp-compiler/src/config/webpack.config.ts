@@ -26,6 +26,10 @@ export function webpackConfig(compiler: Compiler) {
   if (!appJson) throw new Error(`${srcDir} 下面没有 app.json 文件，无法编译`)
 
   let plugins: any[] = [
+    new webpack.DefinePlugin({
+      __ENV__: JSON.stringify(compiler.production ? 'production' : (process.env.NODE_ENV || 'development'))
+    }),
+
     // 传给所有 loader 的选项
     new webpack.LoaderOptionsPlugin({
       minimize: compiler.production,
@@ -66,7 +70,7 @@ export function webpackConfig(compiler: Compiler) {
   }
 
   const wpOpts: webpack.Configuration = {
-    target: 'node',
+    target: 'web',
     // devtool: 'source-map', // TODO: 内部 loader 支持 sourceMap
     entry: path.join(srcDir, appJson),
     output: {

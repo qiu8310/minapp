@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.24.0",
-    "minapp": "^0.0.1"
+    "@minapp/mobx": "^0.0.1"
   },
   "devDependencies": {
     "mora-scripts": "^1.6.21"

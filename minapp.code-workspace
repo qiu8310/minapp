@@ -10,7 +10,7 @@
 			"path": "packages/minapp-core"
 		},
 		{
-			"path": "packages/minapp"
+			"path": "packages/minapp-mobx"
 		},
 		{
 			"path": "packages/minapp-wxml-parser"

@@ -26,7 +26,7 @@ export class ExtractMinappCode {
         return ''
       })
 
-      delete compilation.assets[filename]
+      // delete compilation.assets[filename]
       return done()
     })
   }

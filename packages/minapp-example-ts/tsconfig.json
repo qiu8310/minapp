@@ -30,7 +30,8 @@
     ]
   },
   "include": [
-    "src"
+    "src",
+    "globals.d.ts",
   ],
   "exclude": [
   ]
