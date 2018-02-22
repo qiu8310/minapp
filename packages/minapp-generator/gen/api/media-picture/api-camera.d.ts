@@ -8,6 +8,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-camera.html#wxcreatecameracontextthis
    */
   function createCameraContext(instance?: any): CameraContext
+
   class CameraContext {
     /**
      * 拍照，可指定质量，成功则返回图片

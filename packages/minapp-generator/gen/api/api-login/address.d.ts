@@ -1,66 +1,71 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/address.html
 
 export namespace wx {
-  type IWxChooseAddressObject = {
+  namespace chooseAddress {
+    type Param = {
+      /**
+       * 返回用户选择的收货地址信息
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 返回用户选择的收货地址信息
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 收货人姓名
        */
-      userName: string
-
+      userName?: string
       /**
        * 邮编
        */
-      postalCode: string
-
+      postalCode?: string
       /**
        * 国标收货地址第一级地址
        */
-      provinceName: string
-
+      provinceName?: string
       /**
        * 国标收货地址第二级地址
        */
-      cityName: string
-
+      cityName?: string
       /**
        * 国标收货地址第三级地址
        */
-      countyName: string
-
+      countyName?: string
       /**
        * 详细收货地址信息
        */
-      detailInfo: string
-
+      detailInfo?: string
       /**
        * 收货地址国家码
        */
-      nationalCode: string
-
+      nationalCode?: string
       /**
        * 收货人手机号码
        */
-      telNumber: string
-    }) => any
-
+      telNumber?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -87,5 +92,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/address.html#wxchooseaddressobject
    */
-  function chooseAddress(OBJECT: IWxChooseAddressObject): void
+  function chooseAddress(OBJECT: chooseAddress.Param): void
+
 }

@@ -77,7 +77,7 @@ export class Definition extends Struct {
     if (this.type instanceof ObjectType) this.type.setDefaultRequired()
   }
 
-  toTSString(tabCount: number, fromKlass?: boolean) {
+  get doc() {
     let doc: string[] = [...(this.desc.length ? this.desc : [this.name]), '']
     let originalLen = doc.length
 
@@ -93,6 +93,11 @@ export class Definition extends Struct {
     doc = doc.map(d => ` *${d ? ' ' + d : ''}`)
     doc.unshift('/**')
     doc.push(' */')
+    return doc
+  }
+
+  toTSString(tabCount: number, fromKlass?: boolean) {
+    let {doc} = this
     if (fromKlass && this.type instanceof FunctionType) {
       doc.push(`${this.name}${this.type.toTSString(tabCount, true)}`)
     } else {

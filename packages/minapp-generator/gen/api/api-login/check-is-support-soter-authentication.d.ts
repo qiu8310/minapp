@@ -1,11 +1,26 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSupportSoterAuthentication.html
 
 export namespace wx {
-  type IWxCheckIsSupportSoterAuthenticationObject = {
+  namespace checkIsSupportSoterAuthentication {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 该设备支持的可被SOTER识别的生物识别方式
        *
@@ -17,23 +32,20 @@ export namespace wx {
        *   facial        |人脸识别（暂未支持）
        *   speech        |声纹识别（暂未支持）
        */
-      supportMode: string[]
-
+      supportMode?: string[]
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.5.0
@@ -53,5 +65,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSupportSoterAuthentication.html#wxcheckissupportsoterauthenticationobject
    */
-  function checkIsSupportSoterAuthentication(OBJECT: IWxCheckIsSupportSoterAuthenticationObject): void
+  function checkIsSupportSoterAuthentication(OBJECT: checkIsSupportSoterAuthentication.Param): void
+
 }

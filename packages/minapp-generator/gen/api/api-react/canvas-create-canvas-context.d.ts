@@ -11,4 +11,5 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/create-canvas-context.html#wxcreatecanvascontextcanvasid-this
    */
   function createCanvasContext(canvasId: string, componentInstance: any): CanvasContext
+
 }

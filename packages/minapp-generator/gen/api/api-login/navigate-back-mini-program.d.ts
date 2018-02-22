@@ -1,31 +1,43 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateBackMiniProgram.html
 
 export namespace wx {
-  type IWxNavigateBackMiniProgramObject = {
-    /**
-     * 需要返回给上一个小程序的数据，上一个小程序可在 `App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
-     */
-    extraData?: any
-
+  namespace navigateBackMiniProgram {
+    type Param = {
+      /**
+       * 需要返回给上一个小程序的数据，上一个小程序可在 `App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
+       */
+      extraData?: any
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.3.0
@@ -48,5 +60,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateBackMiniProgram.html#wxnavigatebackminiprogramobject
    */
-  function navigateBackMiniProgram(OBJECT: IWxNavigateBackMiniProgramObject): void
+  function navigateBackMiniProgram(OBJECT: navigateBackMiniProgram.Param): void
+
 }

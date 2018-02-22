@@ -1,46 +1,45 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html
 
 export namespace wx {
-  type IWxCreateAnimationObject = {
-    /**
-     * 动画持续时间，单位ms
-     *
-     * @default 400
-     */
-    duration?: number
-
-    /**
-     * 定义动画的效果
-     *
-     * **timingFunction 有效值：**
-     *
-     *   值            |  说明                    
-     * ----------------|--------------------------
-     *   linear        |动画从头到尾的速度是相同的
-     *   ease          |动画以低速开始，然后加快，在结束前变慢
-     *   ease-in       |  动画以低速开始          
-     *   ease-in-out   |  动画以低速开始和结束    
-     *   ease-out      |  动画以低速结束          
-     *   step-start    |动画第一帧就跳至结束状态直到结束
-     *   step-end      |动画一直保持开始状态，最后一帧跳到结束状态
-     *
-     * @default linear
-     */
-    timingFunction?: string
-
-    /**
-     * 动画延迟时间，单位 ms
-     *
-     * @default 0
-     */
-    delay?: number
-
-    /**
-     * 设置transform-origin
-     *
-     * @default 50% 50% 0
-     */
-    transformOrigin?: string
+  namespace createAnimation {
+    type Param = {
+      /**
+       * 动画持续时间，单位ms
+       *
+       * @default 400
+       */
+      duration?: number
+      /**
+       * 定义动画的效果
+       *
+       * **timingFunction 有效值：**
+       *
+       *   值            |  说明                    
+       * ----------------|--------------------------
+       *   linear        |动画从头到尾的速度是相同的
+       *   ease          |动画以低速开始，然后加快，在结束前变慢
+       *   ease-in       |  动画以低速开始          
+       *   ease-in-out   |  动画以低速开始和结束    
+       *   ease-out      |  动画以低速结束          
+       *   step-start    |动画第一帧就跳至结束状态直到结束
+       *   step-end      |动画一直保持开始状态，最后一帧跳到结束状态
+       *
+       * @default linear
+       */
+      timingFunction?: string
+      /**
+       * 动画延迟时间，单位 ms
+       *
+       * @default 0
+       */
+      delay?: number
+      /**
+       * 设置transform-origin
+       *
+       * @default 50% 50% 0
+       */
+      transformOrigin?: string
+    }
   }
   /**
    * 创建一个动画实例[animation](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html#animation)。调用实例的方法来描述动画。最后通过动画实例的`export`方法导出动画数据传递给组件的`animation`属性。
@@ -59,7 +58,8 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html#wxcreateanimationobject
    */
-  function createAnimation(OBJECT: IWxCreateAnimationObject): Animation
+  function createAnimation(OBJECT: createAnimation.Param): Animation
+
   class Animation {
     /**
      * 透明度，参数范围 0~1

@@ -1,55 +1,63 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/scancode.html
 
 export namespace wx {
-  type IWxScanCodeObject = {
-    /**
-     * 是否只能从相机扫码，不允许从相册选择图片
-     *
-     * @since 1.2.0
-     */
-    onlyFromCamera?: boolean
-
-    /**
-     * 扫码类型，参数类型是数组，二维码是'qrCode'，一维码是'barCode'，DataMatrix是‘datamatrix’，pdf417是‘pdf417’。
-     *
-     * @since 1.7.0
-     */
-    scanType?: any[]
-
+  namespace scanCode {
+    type Param = {
+      /**
+       * 是否只能从相机扫码，不允许从相册选择图片
+       *
+       * @since 1.2.0
+       */
+      onlyFromCamera?: boolean
+      /**
+       * 扫码类型，参数类型是数组，二维码是'qrCode'，一维码是'barCode'，DataMatrix是‘datamatrix’，pdf417是‘pdf417’。
+       *
+       * @since 1.7.0
+       */
+      scanType?: any[]
+      /**
+       * 接口调用成功的回调函数，返回内容详见返回参数说明。
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 所扫码的内容
        */
-      result: any
-
+      result?: any
       /**
        * 所扫码的类型
        */
-      scanType: any
-
+      scanType?: any
       /**
        * 所扫码的字符集
        */
-      charSet: any
-
+      charSet?: any
       /**
        * 当所扫的码为当前小程序的合法二维码时，会返回此字段，内容为二维码携带的 path
        */
-      path: any
-    }) => any
-
+      path?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 调起客户端扫码界面，扫码成功后返回对应的结果
@@ -74,5 +82,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/scancode.html#wxscancodeobject
    */
-  function scanCode(OBJECT: IWxScanCodeObject): void
+  function scanCode(OBJECT: scanCode.Param): void
+
 }

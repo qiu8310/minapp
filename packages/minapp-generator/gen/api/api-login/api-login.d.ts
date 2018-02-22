@@ -1,31 +1,43 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html
 
 export namespace wx {
-  type IWxLoginObject = {
+  namespace login {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 用户登录凭证（有效期五分钟）。开发者需要在开发者服务器后台调用 api，使用 code 换取 openid 和 session_key 等信息
        */
-      code: string
-    }) => any
-
+      code?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 调用接口获取**登录凭证（code）**进而换取用户登录态信息，包括用户的**唯一标识（openid）** 及本次登录的 **会话密钥（session_key）**等。**用户数据的加解密通讯**需要依赖会话密钥完成。
@@ -58,22 +70,35 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject
    */
-  function login(OBJECT: IWxLoginObject): void
-  type IWxCheckSessionObject = {
+  function login(OBJECT: login.Param): void
+
+  namespace checkSession {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数，登录态未过期
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数，登录态已过期
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，登录态未过期
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数，登录态已过期
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 通过上述接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用wx.checkSession接口**检测当前用户登录态是否有效**。登录态过期后开发者可以再调用wx.login获取新的用户登录态。
@@ -102,5 +127,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxchecksessionobject
    */
-  function checkSession(OBJECT: IWxCheckSessionObject): void
+  function checkSession(OBJECT: checkSession.Param): void
+
 }

@@ -1,26 +1,37 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html
 
 export namespace wx {
-  type IWxSetTopBarTextObject = {
-    /**
-     * 置顶栏文字内容
-     */
-    text: string
-
+  namespace setTopBarText {
+    type Param = {
+      /**
+       * 置顶栏文字内容
+       */
+      text?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.4.3
@@ -36,27 +47,39 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxsettopbartextobject
    */
-  function setTopBarText(OBJECT: IWxSetTopBarTextObject): void
-  type IWxSetNavigationBarTitleObject = {
-    /**
-     * 页面标题
-     */
-    title: string
+  function setTopBarText(OBJECT: setTopBarText.Param): void
 
+  namespace setNavigationBarTitle {
+    type Param = {
+      /**
+       * 页面标题
+       */
+      title?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 动态设置当前页面的标题。
@@ -70,15 +93,18 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxsetnavigationbartitleobject
    */
-  function setNavigationBarTitle(OBJECT: IWxSetNavigationBarTitleObject): void
+  function setNavigationBarTitle(OBJECT: setNavigationBarTitle.Param): void
+
   /**
    * 在当前页面显示导航条加载动画。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxshownavigationbarloading
    */
   function showNavigationBarLoading(): void
+
   /**
    * 隐藏导航条加载动画。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxhidenavigationbarloading
    */
   function hideNavigationBarLoading(): void
+
 }

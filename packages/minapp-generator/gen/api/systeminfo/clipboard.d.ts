@@ -1,26 +1,37 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html
 
 export namespace wx {
-  type IWxSetClipboardDataObject = {
-    /**
-     * 需要设置的内容
-     */
-    data: string
-
+  namespace setClipboardData {
+    type Param = {
+      /**
+       * 需要设置的内容
+       */
+      data?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -43,27 +54,41 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html#wxsetclipboarddataobject
    */
-  function setClipboardData(OBJECT: IWxSetClipboardDataObject): void
-  type IWxGetClipboardDataObject = {
+  function setClipboardData(OBJECT: setClipboardData.Param): void
+
+  namespace getClipboardData {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 剪贴板的内容
        */
-      data: string
-    }) => any
-
+      data?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -81,5 +106,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html#wxgetclipboarddataobject
    */
-  function getClipboardData(OBJECT: IWxGetClipboardDataObject): void
+  function getClipboardData(OBJECT: getClipboardData.Param): void
+
 }

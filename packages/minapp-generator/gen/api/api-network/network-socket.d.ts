@@ -1,43 +1,51 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html
 
 export namespace wx {
-  type IWxConnectSocketObject = {
-    /**
-     * 开发者服务器接口地址，必须是 wss 协议，且域名必须是后台配置的合法域名
-     */
-    url: string
-
-    /**
-     * HTTP Header , header 中不能设置 Referer
-     */
-    header?: any
-
-    /**
-     * 默认是GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-     */
-    method?: string
-
-    /**
-     * 子协议数组
-     *
-     * @since 1.4.0
-     */
-    protocols?: string[]
-
+  namespace connectSocket {
+    type Param = {
+      /**
+       * 开发者服务器接口地址，必须是 wss 协议，且域名必须是后台配置的合法域名
+       */
+      url?: string
+      /**
+       * HTTP Header , header 中不能设置 Referer
+       */
+      header?: any
+      /**
+       * 默认是GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+       */
+      method?: string
+      /**
+       * 子协议数组
+       *
+       * @since 1.4.0
+       */
+      protocols?: string[]
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 创建一个 [WebSocket](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket) 连接。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
@@ -62,7 +70,8 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxconnectsocketobject
    */
-  function connectSocket(OBJECT: IWxConnectSocketObject): SocketTask
+  function connectSocket(OBJECT: connectSocket.Param): SocketTask
+
   /**
    * 监听WebSocket连接打开事件。
    *
@@ -79,6 +88,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketopencallback
    */
   function onSocketOpen(CALLBACK: any): void
+
   /**
    * 监听WebSocket错误。
    *
@@ -98,26 +108,38 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketerrorcallback
    */
   function onSocketError(CALLBACK: any): void
-  type IWxSendSocketMessageObject = {
-    /**
-     * 需要发送的内容
-     */
-    data: string | ArrayBuffer
 
+  namespace sendSocketMessage {
+    type Param = {
+      /**
+       * 需要发送的内容
+       */
+      data?: string | ArrayBuffer
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 通过 WebSocket 连接发送数据，需要先 [wx.connectSocket](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxconnectsocketobject)，并在 [wx.onSocketOpen](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketopencallback) 回调之后才能发送。
@@ -151,7 +173,17 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxsendsocketmessageobject
    */
-  function sendSocketMessage(OBJECT: IWxSendSocketMessageObject): void
+  function sendSocketMessage(OBJECT: sendSocketMessage.Param): void
+
+  namespace onSocketMessage {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 服务器返回的消息
+       */
+      data?: string | ArrayBuffer
+    }
+  }
   /**
    * 监听WebSocket接受到服务器的消息事件。
    *
@@ -168,47 +200,54 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketmessagecallback
    */
-  function onSocketMessage(CALLBACK: ((res: {
-    /**
-     * 服务器返回的消息
-     */
-    data: string | ArrayBuffer
-  }) => any)): void
-  type IWxCloseSocketObject = {
-    /**
-     * 一个数字值表示关闭连接的状态号，表示连接被关闭的原因。如果这个参数没有被指定，默认的取值是1000 （表示正常连接关闭）
-     *
-     * @since 1.4.0
-     */
-    code?: number
+  function onSocketMessage(CALLBACK: onSocketMessage.Param): void
 
-    /**
-     * 一个可读的字符串，表示连接被关闭的原因。这个字符串必须是不长于123字节的UTF-8 文本（不是字符）
-     *
-     * @since 1.4.0
-     */
-    reason?: string
-
+  namespace closeSocket {
+    type Param = {
+      /**
+       * 一个数字值表示关闭连接的状态号，表示连接被关闭的原因。如果这个参数没有被指定，默认的取值是1000 （表示正常连接关闭）
+       *
+       * @since 1.4.0
+       */
+      code?: number
+      /**
+       * 一个可读的字符串，表示连接被关闭的原因。这个字符串必须是不长于123字节的UTF-8 文本（不是字符）
+       *
+       * @since 1.4.0
+       */
+      reason?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 关闭 WebSocket 连接。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxclosesocketobject
    */
-  function closeSocket(OBJECT: IWxCloseSocketObject): void
+  function closeSocket(OBJECT: closeSocket.Param): void
+
   /**
    * 监听WebSocket关闭。
    *
@@ -243,4 +282,5 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketclosecallback
    */
   function onSocketClose(CALLBACK: any): void
+
 }

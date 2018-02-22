@@ -8,6 +8,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-player.html#wxcreateliveplayercontextdomid-this
    */
   function createLivePlayerContext(domId: any, instance?: any): LivePlayerContext
+
   class LivePlayerContext {
     /**
      * 播放

@@ -1,6 +1,7 @@
 import {Struct, cloneStructs, base, joinDesc} from './_'
 import {Arg} from './Arg'
 import {Type, ObjectType} from './Type'
+import {extractNS, canTypeExtract} from './helper'
 
 const {klassCase, TAB, EOL} = base
 
@@ -9,7 +10,55 @@ export class Func extends Struct {
     super()
   }
 
+  private extractArgsAndRtnsToNamespace(tabCount: number, promise?: boolean) {
+    let rows: string[] = []
+    let shouldAppendIndex = this.args.length > 1
+    let args = this.args.map((a, i) => {
+      if (canTypeExtract(a.type)) {
+        let name = 'Param' + (shouldAppendIndex ? i : '')
+        rows.push(...extractNS(name, [], a.type))
+
+        let optional = a.optional
+        if (promise && !optional && a.type instanceof ObjectType) {
+          // type 可能变成一个空对象，promise 条件下空对象后就变成 optional（promise 会自动注入一个对象）
+          optional = !a.type.definitions.length || a.type.definitions.every(d => !d.required)
+        }
+        return `${a.name}${optional ? '?' : ''}: ${this.name}.${name}`
+      } else {
+        return a.toTSString(tabCount)
+      }
+    }).join(', ')
+
+    let rtns: string
+    if (canTypeExtract(this.returns)) {
+      rows.push(...extractNS('Return', [], this.returns))
+      rtns = `${this.name}.Return`
+    } else {
+      rtns = this.returns.toTSString(0)
+    }
+
+    if (rows.length) {
+      rows = rows.map(r => TAB + r)
+      rows.unshift(`namespace ${this.name} {`)
+      rows.push(`}`)
+    }
+    return {
+      rows,
+      args,
+      rtns
+    }
+  }
+
   toTSString(tabCount: number, promise?: boolean) {
+    if (promise && !this.promisable) promise = false
+    let {rows, args, rtns} = this.extractArgsAndRtnsToNamespace(tabCount)
+
+    let prefix = TAB.repeat(tabCount)
+    let fn = `${prefix}function ${this.name}(${args}): ${rtns}`
+    return [...rows.map(r => prefix + r), joinDesc(this.desc, tabCount) + fn + EOL].join(EOL)
+  }
+
+  oldToTSString(tabCount: number, promise?: boolean) {
     if (promise && !this.promisable) promise = false
 
     let returns: string | undefined
@@ -19,8 +68,9 @@ export class Func extends Struct {
     let argstr = this.args.map((a, i) => {
       if (a.type instanceof ObjectType) {
         let interfaceName = klassCase(prefix, a.name) + (appendIndex ? 'Param' + i : '')
+        // 如果是 promise，需要从第一个 Arg 中抽取出返回值
         returns = extractObjectType(declares, interfaceName, a.type, tabCount, promise)
-        // type 可能变成一个空对象，promise 条件下空对象后就变成 optional（promise 会自动注入一个对象）
+        // TODO:（下面两行比较重要）type 可能变成一个空对象，promise 条件下空对象后就变成 optional（promise 会自动注入一个对象）
         let optional = a.optional
         if (promise && !optional) optional = !a.type.definitions.length || a.type.definitions.every(d => !d.required)
 
@@ -40,6 +90,7 @@ export class Func extends Struct {
     }
 
     declares.push(`${joinDesc(this.desc, tabCount)}${TAB.repeat(tabCount)}function ${this.name}(${argstr}): ${returns}`)
+    console.log(declares.join(EOL))
     return declares.join(EOL)
   }
 
@@ -70,4 +121,3 @@ function extractObjectType(declares: string[], interfaceName: string, type: Obje
   declares.push(`${spaces}type ${interfaceName} = ${type.toTSString(tabCount)}`)
   return promised
 }
-

@@ -1,74 +1,79 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html
 
 export namespace wx {
-  type IWxGetLocationObject = {
-    /**
-     * 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于`wx.openLocation`的坐标
-     */
-    type?: string
-
-    /**
-     * 传入 true 会返回高度信息，由于获取高度需要较高精确度，会减慢接口返回速度
-     *
-     * @since 1.6.0
-     */
-    altitude?: boolean
-
+  namespace getLocation {
+    type Param = {
+      /**
+       * 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于`wx.openLocation`的坐标
+       */
+      type?: string
+      /**
+       * 传入 true 会返回高度信息，由于获取高度需要较高精确度，会减慢接口返回速度
+       *
+       * @since 1.6.0
+       */
+      altitude?: boolean
+      /**
+       * 接口调用成功的回调函数，返回内容详见返回参数说明。
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 纬度，浮点数，范围为-90~90，负数表示南纬
        */
-      latitude: any
-
+      latitude?: any
       /**
        * 经度，浮点数，范围为-180~180，负数表示西经
        */
-      longitude: any
-
+      longitude?: any
       /**
        * 速度，浮点数，单位m/s
        */
-      speed: any
-
+      speed?: any
       /**
        * 位置的精确度
        */
-      accuracy: any
-
+      accuracy?: any
       /**
        * 高度，单位 m
        *
        * @since 1.2.0
        */
-      altitude: any
-
+      altitude?: any
       /**
        * 垂直精度，单位 m（Android 无法获取，返回 0）
        *
        * @since 1.2.0
        */
-      verticalAccuracy: any
-
+      verticalAccuracy?: any
       /**
        * 水平精度，单位 m
        *
        * @since 1.2.0
        */
-      horizontalAccuracy: any
-    }) => any
-
+      horizontalAccuracy?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取当前的地理位置、速度。当用户离开小程序后，此接口无法调用；当用户点击“显示在聊天顶部”时，此接口可继续调用。
@@ -88,42 +93,53 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxgetlocationobject
    */
-  function getLocation(OBJECT: IWxGetLocationObject): void
-  type IWxChooseLocationObject = {
+  function getLocation(OBJECT: getLocation.Param): void
+
+  namespace chooseLocation {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数，返回内容详见返回参数说明。
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 位置名称
        */
-      name: any
-
+      name?: any
       /**
        * 详细地址
        */
-      address: any
-
+      address?: any
       /**
        * 纬度，浮点数，范围为-90~90，负数表示南纬
        */
-      latitude: any
-
+      latitude?: any
       /**
        * 经度，浮点数，范围为-180~180，负数表示西经
        */
-      longitude: any
-    }) => any
-
+      longitude?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 打开地图选择位置。
@@ -131,47 +147,55 @@ export namespace wx {
    * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userLocation
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxchooselocationobject
    */
-  function chooseLocation(OBJECT: IWxChooseLocationObject): void
-  type IWxOpenLocationObject = {
-    /**
-     * 纬度，范围为-90~90，负数表示南纬
-     */
-    latitude: number
+  function chooseLocation(OBJECT: chooseLocation.Param): void
 
-    /**
-     * 经度，范围为-180~180，负数表示西经
-     */
-    longitude: number
-
-    /**
-     * 缩放比例，范围5~18，默认为18
-     */
-    scale?: number
-
-    /**
-     * 位置名
-     */
-    name?: string
-
-    /**
-     * 地址的详细说明
-     */
-    address?: string
-
+  namespace openLocation {
+    type Param = {
+      /**
+       * 纬度，范围为-90~90，负数表示南纬
+       */
+      latitude?: number
+      /**
+       * 经度，范围为-180~180，负数表示西经
+       */
+      longitude?: number
+      /**
+       * 缩放比例，范围5~18，默认为18
+       */
+      scale?: number
+      /**
+       * 位置名
+       */
+      name?: string
+      /**
+       * 地址的详细说明
+       */
+      address?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * ​使用微信内置地图查看位置。
@@ -200,5 +224,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject
    */
-  function openLocation(OBJECT: IWxOpenLocationObject): void
+  function openLocation(OBJECT: openLocation.Param): void
+
 }

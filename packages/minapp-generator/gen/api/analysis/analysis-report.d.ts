@@ -15,4 +15,5 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis-report.html#wxreportanalyticseventname-data
    */
   function reportAnalytics(eventName: string, data: any): void
+
 }

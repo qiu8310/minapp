@@ -150,6 +150,7 @@ export namespace wx {
    *     ```
    */
   function createSelectorQuery(): SelectorQuery
+
   class SelectorQuery {
     /**
      * 参考下面详细介绍

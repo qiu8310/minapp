@@ -1,48 +1,57 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html
 
 export namespace wx {
-  type IWxRequestObject = {
-    /**
-     * 开发者服务器接口地址
-     */
-    url: string
-
-    /**
-     * 请求的参数
-     */
-    data?: any | string | ArrayBuffer
-
-    /**
-     * 设置请求的 header，header 中不能设置 Referer。
-     */
-    header?: any
-
-    /**
-     * （需大写）有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-     *
-     * @default GET
-     */
-    method?: string
-
-    /**
-     * 如果设为json，会尝试对返回的数据做一次 JSON.parse
-     *
-     * @default json
-     */
-    dataType?: string
-
-    /**
-     * 设置响应的数据类型。合法值：text、arraybuffer
-     *
-     * @default text
-     * @since 1.7.0
-     */
-    responseType?: string
-
+  namespace request {
+    type Param = {
+      /**
+       * 开发者服务器接口地址
+       */
+      url?: string
+      /**
+       * 请求的参数
+       */
+      data?: any | string | ArrayBuffer
+      /**
+       * 设置请求的 header，header 中不能设置 Referer。
+       */
+      header?: any
+      /**
+       * （需大写）有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+       *
+       * @default GET
+       */
+      method?: string
+      /**
+       * 如果设为json，会尝试对返回的数据做一次 JSON.parse
+       *
+       * @default json
+       */
+      dataType?: string
+      /**
+       * 设置响应的数据类型。合法值：text、arraybuffer
+       *
+       * @default text
+       * @since 1.7.0
+       */
+      responseType?: string
+      /**
+       * 收到开发者服务成功返回的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 收到开发者服务成功返回的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 开发者服务器返回的数据
        *
@@ -54,38 +63,38 @@ export namespace wx {
        * *   对于 `POST` 方法且 `header['content-type']` 为 `application/json` 的数据，会对数据进行 JSON 序列化
        * *   对于 `POST` 方法且 `header['content-type']` 为 `application/x-www-form-urlencoded` 的数据，会将数据转换成 query string （encodeURIComponent(k)=encodeURIComponent(v)&encodeURIComponent(k)=encodeURIComponent(v)...）
        */
-      data: any | string | ArrayBuffer
-
+      data?: any | string | ArrayBuffer
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode: number
-
+      statusCode?: number
       /**
        * 开发者服务器返回的 HTTP Response Header
        *
        * @since 1.2.0
        */
-      header: any
-    }) => any
-
+      header?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
-  }
-  type IWxRequestReturn = {
+    type ParamPropComplete = () => any
+    type Return = {
+      /**
+       * 中断请求任务
+       *
+       * @since 1.4.0
+       */
+      abort?: ReturnPropAbort
+    }
     /**
      * 中断请求任务
-     *
-     * @since 1.4.0
      */
-    abort: () => any
+    type ReturnPropAbort = () => any
   }
   /**
    * 发起网络请求。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
@@ -141,5 +150,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html#wxrequestobject
    */
-  function request(OBJECT: IWxRequestObject): IWxRequestReturn
+  function request(OBJECT: request.Param): request.Return
+
 }

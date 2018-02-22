@@ -33,6 +33,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html#wxcreateinneraudiocontext
    */
   function createInnerAudioContext(): InnerAudioContext
+
   class InnerAudioContext {
     /**
      * 音频的数据链接，用于直接播放。

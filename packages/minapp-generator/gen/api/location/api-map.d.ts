@@ -71,6 +71,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-map.html#wxcreatemapcontextmapid-this
    */
   function createMapContext(mapId: any, instance?: any): MapContext
+
   class MapContext {
     /**
      * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject)

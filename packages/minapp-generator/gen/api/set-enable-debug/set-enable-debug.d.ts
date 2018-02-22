@@ -1,31 +1,43 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/setEnableDebug.html
 
 export namespace wx {
-  type IWxSetEnableDebugObject = {
-    /**
-     * 是否打开调试
-     */
-    enableDebug: boolean
-
+  namespace setEnableDebug {
+    type Param = {
+      /**
+       * 是否打开调试
+       */
+      enableDebug?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.4.0
@@ -47,5 +59,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setEnableDebug.html#wxsetenabledebugobject
    */
-  function setEnableDebug(OBJECT: IWxSetEnableDebugObject): void
+  function setEnableDebug(OBJECT: setEnableDebug.Param): void
+
 }

@@ -1,33 +1,43 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html
 
 export namespace wx {
-  type IWxPlayVoiceObject = {
-    /**
-     * 需要播放的语音文件的文件路径
-     */
-    filePath: string
-
-    /**
-     * 指定录音时长，到达指定的录音时长后会自动停止录音，单位：秒，默认值：60
-     *
-     * @since 1.6.0
-     */
-    duration?: number
-
+  namespace playVoice {
+    type Param = {
+      /**
+       * 需要播放的语音文件的文件路径
+       */
+      filePath?: string
+      /**
+       * 指定录音时长，到达指定的录音时长后会自动停止录音，单位：秒，默认值：60
+       *
+       * @since 1.6.0
+       */
+      duration?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html) 接口**
@@ -50,7 +60,8 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxplayvoiceobject
    */
-  function playVoice(OBJECT: IWxPlayVoiceObject): void
+  function playVoice(OBJECT: playVoice.Param): void
+
   /**
    * 暂停正在播放的语音。再次调用wx.playVoice播放同一个文件时，会从暂停处开始播放。如果想从头开始播放，需要先调用 wx.stopVoice。
    *
@@ -74,6 +85,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxpausevoice
    */
   function pauseVoice(): void
+
   /**
    * 结束播放语音。
    *
@@ -96,4 +108,5 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxstopvoice
    */
   function stopVoice(): void
+
 }

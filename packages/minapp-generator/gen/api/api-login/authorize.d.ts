@@ -1,31 +1,43 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize.html
 
 export namespace wx {
-  type IWxAuthorizeObject = {
-    /**
-     * 需要获取权限的scope，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
-     */
-    scope: string
-
+  namespace authorize {
+    type Param = {
+      /**
+       * 需要获取权限的scope，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+       */
+      scope?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -52,5 +64,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize.html#wxauthorizeobject
    */
-  function authorize(OBJECT: IWxAuthorizeObject): void
+  function authorize(OBJECT: authorize.Param): void
+
 }

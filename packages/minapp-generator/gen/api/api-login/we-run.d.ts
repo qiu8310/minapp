@@ -1,16 +1,30 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html
 
 export namespace wx {
-  type IWxGetWeRunDataObject = {
+  namespace getWeRunData {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        *
@@ -24,23 +38,20 @@ export namespace wx {
        *   stepInfoList[].timestamp   |  Number        |时间戳，表示数据对应的时间
        *   stepInfoList[].step        |  Number        |  微信运动步数     
        */
-      encryptedData: string
-
+      encryptedData?: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv: string
-    }) => any
-
+      iv?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -60,5 +71,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html#wxgetwerundataobject
    */
-  function getWeRunData(OBJECT: IWxGetWeRunDataObject): void
+  function getWeRunData(OBJECT: getWeRunData.Param): void
+
 }

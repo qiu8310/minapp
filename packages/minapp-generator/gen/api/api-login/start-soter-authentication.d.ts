@@ -1,36 +1,46 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/startSoterAuthentication.html
 
 export namespace wx {
-  type IWxStartSoterAuthenticationObject = {
-    /**
-     * 请求使用的可接受的生物认证方式
-     */
-    requestAuthModes: string[]
-
-    /**
-     * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键是别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
-     */
-    challenge: string
-
-    /**
-     * 验证描述，即识别过程中显示在界面上的对话框提示内容
-     */
-    authContent?: string
-
+  namespace startSoterAuthentication {
+    type Param = {
+      /**
+       * 请求使用的可接受的生物认证方式
+       */
+      requestAuthModes?: string[]
+      /**
+       * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键是别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
+       */
+      challenge?: string
+      /**
+       * 验证描述，即识别过程中显示在界面上的对话框提示内容
+       */
+      authContent?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误码
        */
-      errCode: number
-
+      errCode?: number
       /**
        * 生物认证方式
        */
-      authMode: string
-
+      authMode?: string
       /**
        * 在设备安全区域（TEE）内获得的本机安全信息（如TEE名称版本号等以及防重放参数）以及本次认证信息（仅Android支持，本次认证的指纹ID）（仅Android支持，本次认证的指纹ID）
        *
@@ -50,28 +60,24 @@ export namespace wx {
        *   cpu_id    |  机器唯一识别ID                                     
        *   uid       |  概念同Android系统定义uid，即应用程序编号           
        */
-      resultJSON: string
-
+      resultJSON?: string
       /**
        * 用SOTER安全密钥对result_json的签名(SHA256withRSA/PSS, saltlen=20)
        */
-      resultJSONSignature: string
-
+      resultJSONSignature?: string
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.5.0
@@ -115,5 +121,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/startSoterAuthentication.html#wxstartsoterauthenticationobject
    */
-  function startSoterAuthentication(OBJECT: IWxStartSoterAuthenticationObject): void
+  function startSoterAuthentication(OBJECT: startSoterAuthentication.Param): void
+
 }

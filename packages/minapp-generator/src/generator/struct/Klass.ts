@@ -1,8 +1,9 @@
 import {Struct, cloneStructs, base, joinDesc} from './_'
 import {Definition} from './Definition'
-import {FunctionType, ObjectType} from './Type'
+import {FunctionType, ObjectType, Type} from './Type'
+import {extractNS, canTypeExtract} from './helper'
 
-const {EOL, TAB} = base
+const {EOL, TAB, klassCase} = base
 
 export class Klass extends Struct {
   constructor(public name: string, public definitions: Definition[], public desc: string[]) {
@@ -13,6 +14,37 @@ export class Klass extends Struct {
    * @param promise  暂时不支持
    */
   toTSString(tabCount: number, promise?: boolean) {
+    this.definitions.forEach(d => d.setDefaultRequired())
+    let spaces = TAB.repeat(tabCount)
+
+    let rows: string[] = []
+    let defines = this.definitions.map(d => {
+      if (canTypeExtract(d.type)) {
+        let name = klassCase(d.name)
+        let refName = this.name + '.' + name
+        rows.push(...extractNS(name, d.desc, d.type))
+        d = new Definition(d.name, new Type(refName), d)
+      }
+      return d.toTSString(tabCount + 1, true)
+    })
+
+    if (rows.length) {
+      rows = rows.map(r => TAB + r)
+      rows.unshift(`namespace ${this.name} {`)
+      rows.push(`}`)
+    }
+
+    return rows.map(r => spaces + r + EOL).join('') + joinDesc(this.desc, tabCount) + [
+      `${spaces}class ${this.name} {`,
+      ...defines,
+      `${spaces}}`
+    ].join(EOL)
+  }
+
+  /**
+   * @param promise  暂时不支持
+   */
+  oldToTSString(tabCount: number, promise?: boolean) {
     this.definitions.forEach(d => d.setDefaultRequired())
     let spaces = TAB.repeat(tabCount)
 

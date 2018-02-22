@@ -1,86 +1,100 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html
 
 export namespace wx {
-  type IWxUploadFileObject = {
-    /**
-     * 开发者服务器 url
-     */
-    url: string
-
-    /**
-     * 要上传文件资源的路径
-     */
-    filePath: string
-
-    /**
-     * 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
-     */
-    name: string
-
-    /**
-     * HTTP 请求 Header, header 中不能设置 Referer
-     */
-    header?: any
-
-    /**
-     * HTTP 请求中其他额外的 form data
-     */
-    formData?: any
-
+  namespace uploadFile {
+    type Param = {
+      /**
+       * 开发者服务器 url
+       */
+      url?: string
+      /**
+       * 要上传文件资源的路径
+       */
+      filePath?: string
+      /**
+       * 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
+       */
+      name?: string
+      /**
+       * HTTP 请求 Header, header 中不能设置 Referer
+       */
+      header?: any
+      /**
+       * HTTP 请求中其他额外的 form data
+       */
+      formData?: any
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 开发者服务器返回的数据
        */
-      data: string
-
+      data?: string
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode: number
-    }) => any
-
+      statusCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
-  }
-  type IWxUploadFileReturn = {
+    type ParamPropComplete = () => any
+    type Return = {
+      /**
+       * 监听上传进度变化
+       *
+       * @since 1.4.0
+       */
+      onProgressUpdate?: ReturnPropOnProgressUpdate
+      /**
+       * 中断上传任务
+       *
+       * @since 1.4.0
+       */
+      abort?: ReturnPropAbort
+    }
     /**
      * 监听上传进度变化
-     *
-     * @since 1.4.0
      */
-    onProgressUpdate: (callback: ((res: {
+    type ReturnPropOnProgressUpdate = (callback: ReturnPropOnProgressUpdateParam) => any
+    type ReturnPropOnProgressUpdateParam = (res: ReturnPropOnProgressUpdateParamParam) => any
+    type ReturnPropOnProgressUpdateParamParam = {
       /**
        * 上传进度百分比
        */
-      progress: number
-
+      progress?: number
       /**
        * 已经上传的数据长度，单位 Bytes
        */
-      totalBytesSent: number
-
+      totalBytesSent?: number
       /**
        * 预期需要上传的数据总长度，单位 Bytes
        */
-      totalBytesExpectedToSend: number
-    }) => any)) => any
-
+      totalBytesExpectedToSend?: number
+    }
     /**
      * 中断上传任务
-     *
-     * @since 1.4.0
      */
-    abort: () => any
+    type ReturnPropAbort = () => any
   }
   /**
    * 将本地资源上传到开发者服务器，客户端发起一个 HTTPS POST 请求，其中 `content-type` 为 `multipart/form-data` 。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
@@ -141,72 +155,90 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxuploadfileobject
    */
-  function uploadFile(OBJECT: IWxUploadFileObject): IWxUploadFileReturn
-  type IWxDownloadFileObject = {
-    /**
-     * 下载资源的 url
-     */
-    url: string
+  function uploadFile(OBJECT: uploadFile.Param): uploadFile.Return
 
-    /**
-     * HTTP 请求 Header，header 中不能设置 Referer
-     */
-    header?: any
-
+  namespace downloadFile {
+    type Param = {
+      /**
+       * 下载资源的 url
+       */
+      url?: string
+      /**
+       * HTTP 请求 Header，header 中不能设置 Referer
+       */
+      header?: any
+      /**
+       * 下载成功后以 tempFilePath 的形式传给页面，res = {tempFilePath: '文件的临时路径'}
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 下载成功后以 tempFilePath 的形式传给页面，res = {tempFilePath: '文件的临时路径'}
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 临时文件路径，下载后的文件会存储到一个临时文件
        */
-      tempFilePath: string
-
+      tempFilePath?: string
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode: number
-    }) => any
-
+      statusCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
-  }
-  type IWxDownloadFileReturn = {
+    type ParamPropComplete = () => any
+    type Return = {
+      /**
+       * 监听下载进度变化
+       *
+       * @since 1.4.0
+       */
+      onProgressUpdate?: ReturnPropOnProgressUpdate
+      /**
+       * 中断下载任务
+       *
+       * @since 1.4.0
+       */
+      abort?: ReturnPropAbort
+    }
     /**
      * 监听下载进度变化
-     *
-     * @since 1.4.0
      */
-    onProgressUpdate: (callback: ((res: {
+    type ReturnPropOnProgressUpdate = (callback: ReturnPropOnProgressUpdateParam) => any
+    type ReturnPropOnProgressUpdateParam = (res: ReturnPropOnProgressUpdateParamParam) => any
+    type ReturnPropOnProgressUpdateParamParam = {
       /**
        * 下载进度百分比
        */
-      progress: number
-
+      progress?: number
       /**
        * 已经下载的数据长度，单位 Bytes
        */
-      totalBytesWritten: number
-
+      totalBytesWritten?: number
       /**
        * 预期需要下载的数据总长度，单位 Bytes
        */
-      totalBytesExpectedToWrite: number
-    }) => any)) => any
-
+      totalBytesExpectedToWrite?: number
+    }
     /**
      * 中断下载任务
-     *
-     * @since 1.4.0
      */
-    abort: () => any
+    type ReturnPropAbort = () => any
   }
   /**
    * 下载文件资源到本地，客户端直接发起一个 HTTP GET 请求，返回文件的本地临时路径。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
@@ -259,5 +291,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxdownloadfileobject
    */
-  function downloadFile(OBJECT: IWxDownloadFileObject): IWxDownloadFileReturn
+  function downloadFile(OBJECT: downloadFile.Param): downloadFile.Return
+
 }

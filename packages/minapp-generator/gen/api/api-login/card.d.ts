@@ -1,16 +1,34 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html
 
 export namespace wx {
-  type IWxAddCardObject = {
+  namespace addCard {
+    type Param = {
+      /**
+       * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
+       */
+      cardList?: ParamPropCardList
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
      */
-    cardList: Array<{
+    type ParamPropCardList = ParamPropCardListItem[]
+    type ParamPropCardListItem = {
       /**
        * 卡券 Id
        */
-      cardId: string
-
+      cardId?: string
       /**
        * 卡券的扩展参数
        *
@@ -28,48 +46,48 @@ export namespace wx {
        *
        * **注：cardExt 需进行 JSON 序列化为字符串传入**
        */
-      cardExt: string
-    }>
-
+      cardExt?: string
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
        */
-      cardList: Array<{
-        /**
-         * 加密 code，为用户领取到卡券的code加密后的字符串，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
-         */
-        code: string
-
-        /**
-         * 用户领取到卡券的Id
-         */
-        cardId: string
-
-        /**
-         * 用户领取到卡券的扩展参数，与调用时传入的参数相同
-         */
-        cardExt: string
-
-        /**
-         * 是否成功
-         */
-        isSuccess: boolean
-      }>
-    }) => any
-
+      cardList?: ParamPropSuccessParamPropCardList
+    }
+    /**
+     * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
+     */
+    type ParamPropSuccessParamPropCardList = ParamPropSuccessParamPropCardListItem[]
+    type ParamPropSuccessParamPropCardListItem = {
+      /**
+       * 加密 code，为用户领取到卡券的code加密后的字符串，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
+       */
+      code?: string
+      /**
+       * 用户领取到卡券的Id
+       */
+      cardId?: string
+      /**
+       * 用户领取到卡券的扩展参数，与调用时传入的参数相同
+       */
+      cardExt?: string
+      /**
+       * 是否成功
+       */
+      isSuccess?: boolean
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -104,37 +122,53 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxaddcardobject
    */
-  function addCard(OBJECT: IWxAddCardObject): void
-  type IWxOpenCardObject = {
+  function addCard(OBJECT: addCard.Param): void
+
+  namespace openCard {
+    type Param = {
+      /**
+       * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
+       */
+      cardList?: ParamPropCardList
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
      */
-    cardList: Array<{
+    type ParamPropCardList = ParamPropCardListItem[]
+    type ParamPropCardListItem = {
       /**
        * 需要打开的卡券 Id
        */
-      cardId: string
-
+      cardId?: string
       /**
        * 由 addCard 的返回对象中的加密 code 通过解密后得到，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
        */
-      code: string
-    }>
-
+      code?: string
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -165,5 +199,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxopencardobject
    */
-  function openCard(OBJECT: IWxOpenCardObject): void
+  function openCard(OBJECT: openCard.Param): void
+
 }

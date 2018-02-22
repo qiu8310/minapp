@@ -1,31 +1,43 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html
 
 export namespace wx {
-  type IWxGetHceStateObject = {
+  namespace getHCEState {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 错误码
        */
-      errCode: number
-    }) => any
-
+      errCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.7.0
@@ -43,37 +55,49 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxgethcestateobject
    */
-  function getHCEState(OBJECT: IWxGetHceStateObject): void
-  type IWxStartHceObject = {
-    /**
-     * 需要注册到系统的 AID 列表，每个 AID 为 String 类型
-     */
-    aid_list: any[]
+  function getHCEState(OBJECT: getHCEState.Param): void
 
+  namespace startHCE {
+    type Param = {
+      /**
+       * 需要注册到系统的 AID 列表，每个 AID 为 String 类型
+       */
+      aid_list?: any[]
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 错误码
        */
-      errCode: number
-    }) => any
-
+      errCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.7.0
@@ -92,32 +116,45 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxstarthceobject
    */
-  function startHCE(OBJECT: IWxStartHceObject): void
-  type IWxStopHceObject = {
+  function startHCE(OBJECT: startHCE.Param): void
+
+  namespace stopHCE {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 错误码
        */
-      errCode: number
-    }) => any
-
+      errCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.7.0
@@ -135,7 +172,25 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxstophceobject
    */
-  function stopHCE(OBJECT: IWxStopHceObject): void
+  function stopHCE(OBJECT: stopHCE.Param): void
+
+  namespace onHCEMessage {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 消息类型
+       */
+      messageType?: number
+      /**
+       * 客户端接收到 NFC 设备的指令，此参数当且仅当 `messageType=1` 时有效
+       */
+      data?: ArrayBuffer
+      /**
+       * 此参数当且仅当 `messageType=2` 时有效
+       */
+      reason?: number
+    }
+  }
   /**
    * @since 1.7.0
    *
@@ -145,37 +200,36 @@ export namespace wx {
    * *   2：消息为设备离场事件
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxonhcemessagecallback
    */
-  function onHCEMessage(CALLBACK: ((res: {
-    /**
-     * 消息类型
-     */
-    messageType: number
+  function onHCEMessage(CALLBACK: onHCEMessage.Param): void
 
-    /**
-     * 客户端接收到 NFC 设备的指令，此参数当且仅当 `messageType=1` 时有效
-     */
-    data: ArrayBuffer
-
-    /**
-     * 此参数当且仅当 `messageType=2` 时有效
-     */
-    reason: number
-  }) => any)): void
-  type IWxSendHceMessageObject = {
-    /**
-     * 二进制数据
-     */
-    data: ArrayBuffer
-
+  namespace sendHCEMessage {
+    type Param = {
+      /**
+       * 二进制数据
+       */
+      data?: ArrayBuffer
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 错误码
        *
@@ -194,18 +248,16 @@ export namespace wx {
        *   13005   |  返回的指令不合法         
        *   13006   |  注册 AID 失败            
        */
-      errCode: number
-    }) => any
-
+      errCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.7.0
@@ -231,5 +283,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxsendhcemessageobject
    */
-  function sendHCEMessage(OBJECT: IWxSendHceMessageObject): void
+  function sendHCEMessage(OBJECT: sendHCEMessage.Param): void
+
 }

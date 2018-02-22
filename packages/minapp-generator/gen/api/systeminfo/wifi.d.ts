@@ -1,21 +1,33 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html
 
 export namespace wx {
-  type IWxStartWifiObject = {
+  namespace startWifi {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -33,22 +45,35 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxstartwifiobject
    */
-  function startWifi(OBJECT: IWxStartWifiObject): void
-  type IWxStopWifiObject = {
+  function startWifi(OBJECT: startWifi.Param): void
+
+  namespace stopWifi {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -66,37 +91,47 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxstopwifiobject
    */
-  function stopWifi(OBJECT: IWxStopWifiObject): void
-  type IWxConnectWifiObject = {
-    /**
-     * Wi-Fi 设备ssid
-     */
-    SSID: string
+  function stopWifi(OBJECT: stopWifi.Param): void
 
-    /**
-     * Wi-Fi 设备bssid
-     */
-    BSSID: string
-
-    /**
-     * Wi-Fi 设备密码
-     */
-    password?: string
-
+  namespace connectWifi {
+    type Param = {
+      /**
+       * Wi-Fi 设备ssid
+       */
+      SSID?: string
+      /**
+       * Wi-Fi 设备bssid
+       */
+      BSSID?: string
+      /**
+       * Wi-Fi 设备密码
+       */
+      password?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -116,22 +151,35 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxconnectwifiobject
    */
-  function connectWifi(OBJECT: IWxConnectWifiObject): void
-  type IWxGetWifiListObject = {
+  function connectWifi(OBJECT: connectWifi.Param): void
+
+  namespace getWifiList {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -139,74 +187,96 @@ export namespace wx {
    * 请求获取 Wi-Fi 列表，在 `onGetWifiList` 注册的回调中返回 wifiList 数据。iOS 将跳转到系统的 Wi-Fi 界面，Android 不会跳转。 **iOS 11.0 及 iOS 11.1 两个版本因系统问题，该方法失效。但在 iOS 11.2 中已修复。**
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxgetwifilistobject
    */
-  function getWifiList(OBJECT: IWxGetWifiListObject): void
+  function getWifiList(OBJECT: getWifiList.Param): void
+
+  namespace onGetWifiList {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * Wi-Fi 列表数据
+       */
+      wifiList?: ParamParamPropWifiList
+    }
+    /**
+     * Wi-Fi 列表数据
+     */
+    type ParamParamPropWifiList = ParamParamPropWifiListItem[]
+    type ParamParamPropWifiListItem = {
+      /**
+       * Wi-Fi 的SSID
+       */
+      SSID?: string
+      /**
+       * Wi-Fi 的BSSID
+       */
+      BSSID?: string
+      /**
+       * Wi-Fi 是否安全
+       */
+      secure?: boolean
+      /**
+       * Wi-Fi 信号强度
+       */
+      signalStrength?: number
+    }
+  }
   /**
    * @since 1.6.0
    *
    * 监听在获取到 Wi-Fi 列表数据时的事件，在回调中将返回 wifiList。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxongetwifilistcallback
    */
-  function onGetWifiList(CALLBACK: ((res: {
-    /**
-     * Wi-Fi 列表数据
-     */
-    wifiList: Array<{
-      /**
-       * Wi-Fi 的SSID
-       */
-      SSID: string
+  function onGetWifiList(CALLBACK: onGetWifiList.Param): void
 
+  namespace setWifiList {
+    type Param = {
       /**
-       * Wi-Fi 的BSSID
+       * 提供预设的 Wi-Fi 信息列表
        */
-      BSSID: string
-
+      wifiList?: ParamPropWifiList
       /**
-       * Wi-Fi 是否安全
+       * 接口调用成功的回调函数
        */
-      secure: boolean
-
+      success?: ParamPropSuccess
       /**
-       * Wi-Fi 信号强度
+       * 接口调用失败的回调函数
        */
-      signalStrength: number
-    }>
-  }) => any)): void
-  type IWxSetWifiListObject = {
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 提供预设的 Wi-Fi 信息列表
      */
-    wifiList: Array<{
+    type ParamPropWifiList = ParamPropWifiListItem[]
+    type ParamPropWifiListItem = {
       /**
        * Wi-Fi 设备ssid
        */
-      SSID: string
-
+      SSID?: string
       /**
        * Wi-Fi 设备bssid
        */
-      BSSID: string
-
+      BSSID?: string
       /**
        * Wi-Fi 设备密码
        */
-      password: string
-    }>
-
+      password?: string
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -241,79 +311,100 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxsetwifilistobject
    */
-  function setWifiList(OBJECT: IWxSetWifiListObject): void
+  function setWifiList(OBJECT: setWifiList.Param): void
+
+  namespace onWifiConnected {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * Wi-Fi 信息
+       */
+      wifi?: ParamParamPropWifi
+    }
+    /**
+     * Wi-Fi 信息
+     */
+    type ParamParamPropWifi = {
+      /**
+       * Wi-Fi 的SSID
+       */
+      SSID?: string
+      /**
+       * Wi-Fi 的BSSID
+       */
+      BSSID?: string
+      /**
+       * Wi-Fi 是否安全
+       */
+      secure?: boolean
+      /**
+       * Wi-Fi 信号强度
+       */
+      signalStrength?: number
+    }
+  }
   /**
    * @since 1.6.0
    *
    * 监听连接上 Wi-Fi 的事件。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxonwificonnectedcallback
    */
-  function onWifiConnected(CALLBACK: ((res: {
-    /**
-     * Wi-Fi 信息
-     */
-    wifi: {
-      /**
-       * Wi-Fi 的SSID
-       */
-      SSID: string
+  function onWifiConnected(CALLBACK: onWifiConnected.Param): void
 
+  namespace getConnectedWifi {
+    type Param = {
       /**
-       * Wi-Fi 的BSSID
+       * 接口调用成功的回调函数
        */
-      BSSID: string
-
+      success?: ParamPropSuccess
       /**
-       * Wi-Fi 是否安全
+       * 接口调用失败的回调函数
        */
-      secure: boolean
-
+      fail?: ParamPropFail
       /**
-       * Wi-Fi 信号强度
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
        */
-      signalStrength: number
+      complete?: ParamPropComplete
     }
-  }) => any)): void
-  type IWxGetConnectedWifiObject = {
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * Wi-Fi 信息
        */
-      wifi: {
-        /**
-         * Wi-Fi 的SSID
-         */
-        SSID: string
-
-        /**
-         * Wi-Fi 的BSSID
-         */
-        BSSID: string
-
-        /**
-         * Wi-Fi 是否安全
-         */
-        secure: boolean
-
-        /**
-         * Wi-Fi 信号强度
-         */
-        signalStrength: number
-      }
-    }) => any
-
+      wifi?: ParamPropSuccessParamPropWifi
+    }
+    /**
+     * Wi-Fi 信息
+     */
+    type ParamPropSuccessParamPropWifi = {
+      /**
+       * Wi-Fi 的SSID
+       */
+      SSID?: string
+      /**
+       * Wi-Fi 的BSSID
+       */
+      BSSID?: string
+      /**
+       * Wi-Fi 是否安全
+       */
+      secure?: boolean
+      /**
+       * Wi-Fi 信号强度
+       */
+      signalStrength?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -341,5 +432,6 @@ export namespace wx {
    *   12011   |  weapp in background     |  应用在后台无法配置 Wi-Fi    
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxgetconnectedwifiobject
    */
-  function getConnectedWifi(OBJECT: IWxGetConnectedWifiObject): void
+  function getConnectedWifi(OBJECT: getConnectedWifi.Param): void
+
 }

@@ -16,4 +16,5 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/onUserCaptureScreen.html#wxonusercapturescreencallback
    */
   function onUserCaptureScreen(CALLBACK: any): void
+
 }

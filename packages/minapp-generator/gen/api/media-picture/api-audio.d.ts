@@ -53,6 +53,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-audio.html#wxcreateaudiocontextaudioid-this
    */
   function createAudioContext(audioId: any, instance?: any): AudioContext
+
   class AudioContext {
     /**
      * 音频的地址

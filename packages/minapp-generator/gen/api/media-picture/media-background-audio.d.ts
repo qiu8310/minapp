@@ -1,46 +1,55 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html
 
 export namespace wx {
-  type IWxGetBackgroundAudioPlayerStateObject = {
+  namespace getBackgroundAudioPlayerState {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 选定音频的长度（单位：s），只有在当前有音乐播放时返回
        */
-      duration: any
-
+      duration?: any
       /**
        * 选定音频的播放位置（单位：s），只有在当前有音乐播放时返回
        */
-      currentPosition: any
-
+      currentPosition?: any
       /**
        * 播放状态（2：没有音乐在播放，1：播放中，0：暂停中）
        */
-      status: any
-
+      status?: any
       /**
        * 音频的下载进度（整数，80 代表 80%），只有在当前有音乐播放时返回
        */
-      downloadPercent: any
-
+      downloadPercent?: any
       /**
        * 歌曲数据链接，只有在当前有音乐播放时返回
        */
-      dataUrl: any
-    }) => any
-
+      dataUrl?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * **注意：1.2.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getBackgroundAudioManager](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getBackgroundAudioManager.html) 接口**
@@ -62,37 +71,47 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxgetbackgroundaudioplayerstateobject
    */
-  function getBackgroundAudioPlayerState(OBJECT: IWxGetBackgroundAudioPlayerStateObject): void
-  type IWxPlayBackgroundAudioObject = {
-    /**
-     * 音乐链接，目前支持的格式有 m4a, aac, mp3, wav
-     */
-    dataUrl: string
+  function getBackgroundAudioPlayerState(OBJECT: getBackgroundAudioPlayerState.Param): void
 
-    /**
-     * 音乐标题
-     */
-    title?: string
-
-    /**
-     * 封面URL
-     */
-    coverImgUrl?: string
-
+  namespace playBackgroundAudio {
+    type Param = {
+      /**
+       * 音乐链接，目前支持的格式有 m4a, aac, mp3, wav
+       */
+      dataUrl?: string
+      /**
+       * 音乐标题
+       */
+      title?: string
+      /**
+       * 封面URL
+       */
+      coverImgUrl?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 使用后台播放器播放音乐，对于微信客户端来说，只能同时有一个后台音乐在播放。当用户离开小程序后，音乐将暂停播放；当用户点击“显示在聊天顶部”时，音乐不会暂停播放；当用户在其他小程序占用了音乐播放器，原有小程序内的音乐将停止播放。
@@ -108,7 +127,8 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxplaybackgroundaudioobject
    */
-  function playBackgroundAudio(OBJECT: IWxPlayBackgroundAudioObject): void
+  function playBackgroundAudio(OBJECT: playBackgroundAudio.Param): void
+
   /**
    * 暂停播放音乐。
    *
@@ -122,26 +142,38 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxpausebackgroundaudio
    */
   function pauseBackgroundAudio(): void
-  type IWxSeekBackgroundAudioObject = {
-    /**
-     * 音乐位置，单位：秒
-     */
-    position: number
 
+  namespace seekBackgroundAudio {
+    type Param = {
+      /**
+       * 音乐位置，单位：秒
+       */
+      position?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 控制音乐播放进度。
@@ -155,7 +187,8 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxseekbackgroundaudioobject
    */
-  function seekBackgroundAudio(OBJECT: IWxSeekBackgroundAudioObject): void
+  function seekBackgroundAudio(OBJECT: seekBackgroundAudio.Param): void
+
   /**
    * 停止播放音乐。
    *
@@ -169,16 +202,19 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxstopbackgroundaudio
    */
   function stopBackgroundAudio(): void
+
   /**
    * 监听音乐播放。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudioplaycallback
    */
   function onBackgroundAudioPlay(CALLBACK: any): void
+
   /**
    * 监听音乐暂停。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudiopausecallback
    */
   function onBackgroundAudioPause(CALLBACK: any): void
+
   /**
    * 监听音乐停止。
    *
@@ -188,4 +224,5 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudiostopcallback
    */
   function onBackgroundAudioStop(CALLBACK: any): void
+
 }

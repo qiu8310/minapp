@@ -1,21 +1,33 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html
 
 export namespace wx {
-  type IWxOpenBluetoothAdapterObject = {
+  namespace openBluetoothAdapter {
+    type Param = {
+      /**
+       * 成功则返回成功初始化信息
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回成功初始化信息
      */
-    success: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -39,22 +51,35 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxopenbluetoothadapterobject
    */
-  function openBluetoothAdapter(OBJECT: IWxOpenBluetoothAdapterObject): void
-  type IWxCloseBluetoothAdapterObject = {
+  function openBluetoothAdapter(OBJECT: openBluetoothAdapter.Param): void
+
+  namespace closeBluetoothAdapter {
+    type Param = {
+      /**
+       * 成功则返回成功关闭模块信息
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回成功关闭模块信息
      */
-    success: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -72,37 +97,49 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxclosebluetoothadapterobject
    */
-  function closeBluetoothAdapter(OBJECT: IWxCloseBluetoothAdapterObject): void
-  type IWxGetBluetoothAdapterStateObject = {
+  function closeBluetoothAdapter(OBJECT: closeBluetoothAdapter.Param): void
+
+  namespace getBluetoothAdapterState {
+    type Param = {
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 是否正在搜索设备
        */
-      discovering: boolean
-
+      discovering?: boolean
       /**
        * 蓝牙适配器是否可用
        */
-      available: boolean
-
+      available?: boolean
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -120,7 +157,21 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbluetoothadapterstateobject
    */
-  function getBluetoothAdapterState(OBJECT: IWxGetBluetoothAdapterStateObject): void
+  function getBluetoothAdapterState(OBJECT: getBluetoothAdapterState.Param): void
+
+  namespace onBluetoothAdapterStateChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 蓝牙适配器是否可用
+       */
+      available?: boolean
+      /**
+       * 蓝牙适配器是否处于搜索状态
+       */
+      discovering?: boolean
+    }
+  }
   /**
    * @since 1.1.0
    *
@@ -135,52 +186,53 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbluetoothadapterstatechangecallback
    */
-  function onBluetoothAdapterStateChange(CALLBACK: ((res: {
-    /**
-     * 蓝牙适配器是否可用
-     */
-    available: boolean
+  function onBluetoothAdapterStateChange(CALLBACK: onBluetoothAdapterStateChange.Param): void
 
-    /**
-     * 蓝牙适配器是否处于搜索状态
-     */
-    discovering: boolean
-  }) => any)): void
-  type IWxStartBluetoothDevicesDiscoveryObject = {
-    /**
-     * 蓝牙设备主 service 的 uuid 列表
-     */
-    services?: any[]
-
-    /**
-     * 是否允许重复上报同一设备， 如果允许重复上报，则onDeviceFound 方法会多次上报同一设备，但是 RSSI 值会有不同
-     */
-    allowDuplicatesKey?: boolean
-
-    /**
-     * 上报设备的间隔，默认为0，意思是找到新设备立即上报，否则根据传入的间隔上报
-     */
-    interval?: number
-
+  namespace startBluetoothDevicesDiscovery {
+    type Param = {
+      /**
+       * 蓝牙设备主 service 的 uuid 列表
+       */
+      services?: any[]
+      /**
+       * 是否允许重复上报同一设备， 如果允许重复上报，则onDeviceFound 方法会多次上报同一设备，但是 RSSI 值会有不同
+       */
+      allowDuplicatesKey?: boolean
+      /**
+       * 上报设备的间隔，默认为0，意思是找到新设备立即上报，否则根据传入的间隔上报
+       */
+      interval?: number
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -200,27 +252,41 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxstartbluetoothdevicesdiscoveryobject
    */
-  function startBluetoothDevicesDiscovery(OBJECT: IWxStartBluetoothDevicesDiscoveryObject): void
-  type IWxStopBluetoothDevicesDiscoveryObject = {
+  function startBluetoothDevicesDiscovery(OBJECT: startBluetoothDevicesDiscovery.Param): void
+
+  namespace stopBluetoothDevicesDiscovery {
+    type Param = {
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -238,67 +304,79 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxstopbluetoothdevicesdiscoveryobject
    */
-  function stopBluetoothDevicesDiscovery(OBJECT: IWxStopBluetoothDevicesDiscoveryObject): void
-  type IWxGetBluetoothDevicesObject = {
+  function stopBluetoothDevicesDiscovery(OBJECT: stopBluetoothDevicesDiscovery.Param): void
+
+  namespace getBluetoothDevices {
+    type Param = {
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * uuid 对应的的已连接设备列表
        */
-      devices: Array<{
-        /**
-         * 蓝牙设备名称，某些设备可能没有
-         */
-        name: string
-
-        /**
-         * 用于区分设备的 id
-         */
-        deviceId: string
-
-        /**
-         * 当前蓝牙设备的信号强度
-         */
-        RSSI: number
-
-        /**
-         * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
-         */
-        advertisData: ArrayBuffer
-
-        /**
-         * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
-         */
-        advertisServiceUUIDs: any[]
-
-        /**
-         * 当前蓝牙设备的广播数据段中的LocalName数据段
-         */
-        localName: string
-
-        /**
-         * 当前蓝牙设备的广播数据段中的ServiceData数据段
-         */
-        serviceData: ArrayBuffer
-      }>
-
+      devices?: ParamPropSuccessParamPropDevices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * uuid 对应的的已连接设备列表
+     */
+    type ParamPropSuccessParamPropDevices = ParamPropSuccessParamPropDevicesItem[]
+    type ParamPropSuccessParamPropDevicesItem = {
+      /**
+       * 蓝牙设备名称，某些设备可能没有
+       */
+      name?: string
+      /**
+       * 用于区分设备的 id
+       */
+      deviceId?: string
+      /**
+       * 当前蓝牙设备的信号强度
+       */
+      RSSI?: number
+      /**
+       * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
+       */
+      advertisData?: ArrayBuffer
+      /**
+       * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
+       */
+      advertisServiceUUIDs?: any[]
+      /**
+       * 当前蓝牙设备的广播数据段中的LocalName数据段
+       */
+      localName?: string
+      /**
+       * 当前蓝牙设备的广播数据段中的ServiceData数据段
+       */
+      serviceData?: ArrayBuffer
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -336,7 +414,51 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbluetoothdevicesobject
    */
-  function getBluetoothDevices(OBJECT: IWxGetBluetoothDevicesObject): void
+  function getBluetoothDevices(OBJECT: getBluetoothDevices.Param): void
+
+  namespace onBluetoothDeviceFound {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 新搜索到的设备列表
+       */
+      devices?: ParamParamPropDevices
+    }
+    /**
+     * 新搜索到的设备列表
+     */
+    type ParamParamPropDevices = ParamParamPropDevicesItem[]
+    type ParamParamPropDevicesItem = {
+      /**
+       * 蓝牙设备名称，某些设备可能没有
+       */
+      name?: string
+      /**
+       * 用于区分设备的 id
+       */
+      deviceId?: string
+      /**
+       * 当前蓝牙设备的信号强度
+       */
+      RSSI?: number
+      /**
+       * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
+       */
+      advertisData?: ArrayBuffer
+      /**
+       * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
+       */
+      advertisServiceUUIDs?: any[]
+      /**
+       * 当前蓝牙设备的广播数据段中的LocalName数据段
+       */
+      localName?: string
+      /**
+       * 当前蓝牙设备的广播数据段中的ServiceData数据段
+       */
+      serviceData?: ArrayBuffer
+    }
+  }
   /**
    * @since 1.1.0
    *
@@ -369,87 +491,63 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbluetoothdevicefoundcallback
    */
-  function onBluetoothDeviceFound(CALLBACK: ((res: {
-    /**
-     * 新搜索到的设备列表
-     */
-    devices: Array<{
-      /**
-       * 蓝牙设备名称，某些设备可能没有
-       */
-      name: string
+  function onBluetoothDeviceFound(CALLBACK: onBluetoothDeviceFound.Param): void
 
+  namespace getConnectedBluetoothDevices {
+    type Param = {
       /**
-       * 用于区分设备的 id
+       * 蓝牙设备主 service 的 uuid 列表
        */
-      deviceId: string
-
+      services?: any[]
       /**
-       * 当前蓝牙设备的信号强度
+       * 成功则返回本机蓝牙适配器状态
        */
-      RSSI: number
-
+      success?: ParamPropSuccess
       /**
-       * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
+       * 接口调用失败的回调函数
        */
-      advertisData: ArrayBuffer
-
+      fail?: ParamPropFail
       /**
-       * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
        */
-      advertisServiceUUIDs: any[]
-
-      /**
-       * 当前蓝牙设备的广播数据段中的LocalName数据段
-       */
-      localName: string
-
-      /**
-       * 当前蓝牙设备的广播数据段中的ServiceData数据段
-       */
-      serviceData: ArrayBuffer
-    }>
-  }) => any)): void
-  type IWxGetConnectedBluetoothDevicesObject = {
-    /**
-     * 蓝牙设备主 service 的 uuid 列表
-     */
-    services: any[]
-
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 搜索到的设备列表
        */
-      devices: Array<{
-        /**
-         * 蓝牙设备名称，某些设备可能没有
-         */
-        name: string
-
-        /**
-         * 用于区分设备的 id
-         */
-        deviceId: string
-      }>
-
+      devices?: ParamPropSuccessParamPropDevices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * 搜索到的设备列表
+     */
+    type ParamPropSuccessParamPropDevices = ParamPropSuccessParamPropDevicesItem[]
+    type ParamPropSuccessParamPropDevicesItem = {
+      /**
+       * 蓝牙设备名称，某些设备可能没有
+       */
+      name?: string
+      /**
+       * 用于区分设备的 id
+       */
+      deviceId?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -471,32 +569,45 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetconnectedbluetoothdevicesobject
    */
-  function getConnectedBluetoothDevices(OBJECT: IWxGetConnectedBluetoothDevicesObject): void
-  type IWxCreateBleConnectionObject = {
-    /**
-     * 蓝牙设备 id，参考 getDevices 接口
-     */
-    deviceId: string
+  function getConnectedBluetoothDevices(OBJECT: getConnectedBluetoothDevices.Param): void
 
+  namespace createBLEConnection {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 getDevices 接口
+       */
+      deviceId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -524,32 +635,45 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxcreatebleconnectionobject
    */
-  function createBLEConnection(OBJECT: IWxCreateBleConnectionObject): void
-  type IWxCloseBleConnectionObject = {
-    /**
-     * 蓝牙设备 id，参考 getDevices 接口
-     */
-    deviceId: string
+  function createBLEConnection(OBJECT: createBLEConnection.Param): void
 
+  namespace closeBLEConnection {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 getDevices 接口
+       */
+      deviceId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -568,7 +692,21 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxclosebleconnectionobject
    */
-  function closeBLEConnection(OBJECT: IWxCloseBleConnectionObject): void
+  function closeBLEConnection(OBJECT: closeBLEConnection.Param): void
+
+  namespace onBLEConnectionStateChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 连接目前的状态
+       */
+      connected?: boolean
+    }
+  }
   /**
    * @since 1.1.1
    *
@@ -584,57 +722,63 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbleconnectionstatechangecallback
    */
-  function onBLEConnectionStateChange(CALLBACK: ((res: {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function onBLEConnectionStateChange(CALLBACK: onBLEConnectionStateChange.Param): void
 
-    /**
-     * 连接目前的状态
-     */
-    connected: boolean
-  }) => any)): void
-  type IWxGetBleDeviceServicesObject = {
-    /**
-     * 蓝牙设备 id，参考 getDevices 接口
-     */
-    deviceId: string
-
+  namespace getBLEDeviceServices {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 getDevices 接口
+       */
+      deviceId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 设备服务列表
        */
-      services: Array<{
-        /**
-         * 蓝牙设备服务的 uuid
-         */
-        uuid: string
-
-        /**
-         * 该服务是否为主服务
-         */
-        isPrimary: boolean
-      }>
-
+      services?: ParamPropSuccessParamPropServices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * 设备服务列表
+     */
+    type ParamPropSuccessParamPropServices = ParamPropSuccessParamPropServicesItem[]
+    type ParamPropSuccessParamPropServicesItem = {
+      /**
+       * 蓝牙设备服务的 uuid
+       */
+      uuid?: string
+      /**
+       * 该服务是否为主服务
+       */
+      isPrimary?: boolean
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -658,72 +802,88 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbledeviceservicesobject
    */
-  function getBLEDeviceServices(OBJECT: IWxGetBleDeviceServicesObject): void
-  type IWxGetBleDeviceCharacteristicsObject = {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function getBLEDeviceServices(OBJECT: getBLEDeviceServices.Param): void
 
-    /**
-     * 蓝牙服务 uuid
-     */
-    serviceId: string
-
+  namespace getBLEDeviceCharacteristics {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 蓝牙服务 uuid
+       */
+      serviceId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 设备特征值列表
        */
-      characteristics: Array<{
-        /**
-         * 蓝牙设备特征值的 uuid
-         */
-        uuid: string
-
-        /**
-         * 该特征值支持的操作类型
-         */
-        properties: {
-          /**
-           * 该特征值是否支持 read 操作
-           */
-          read: boolean
-
-          /**
-           * 该特征值是否支持 write 操作
-           */
-          write: boolean
-
-          /**
-           * 该特征值是否支持 notify 操作
-           */
-          notify: boolean
-
-          /**
-           * 该特征值是否支持 indicate 操作
-           */
-          indicate: boolean
-        }
-      }>
-
+      characteristics?: ParamPropSuccessParamPropCharacteristics
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * 设备特征值列表
+     */
+    type ParamPropSuccessParamPropCharacteristics = ParamPropSuccessParamPropCharacteristicsItem[]
+    type ParamPropSuccessParamPropCharacteristicsItem = {
+      /**
+       * 蓝牙设备特征值的 uuid
+       */
+      uuid?: string
+      /**
+       * 该特征值支持的操作类型
+       */
+      properties?: ParamPropSuccessParamPropCharacteristicsItemPropProperties
+    }
+    /**
+     * 该特征值支持的操作类型
+     */
+    type ParamPropSuccessParamPropCharacteristicsItemPropProperties = {
+      /**
+       * 该特征值是否支持 read 操作
+       */
+      read?: boolean
+      /**
+       * 该特征值是否支持 write 操作
+       */
+      write?: boolean
+      /**
+       * 该特征值是否支持 notify 操作
+       */
+      notify?: boolean
+      /**
+       * 该特征值是否支持 indicate 操作
+       */
+      indicate?: boolean
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -750,47 +910,57 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbledevicecharacteristicsobject
    */
-  function getBLEDeviceCharacteristics(OBJECT: IWxGetBleDeviceCharacteristicsObject): void
-  type IWxReadBleCharacteristicValueObject = {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function getBLEDeviceCharacteristics(OBJECT: getBLEDeviceCharacteristics.Param): void
 
-    /**
-     * 蓝牙特征值对应服务的 uuid
-     */
-    serviceId: string
-
-    /**
-     * 蓝牙特征值的 uuid
-     */
-    characteristicId: string
-
+  namespace readBLECharacteristicValue {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 蓝牙特征值对应服务的 uuid
+       */
+      serviceId?: string
+      /**
+       * 蓝牙特征值的 uuid
+       */
+      characteristicId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误码
        */
-      errCode: number
-
+      errCode?: number
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -824,47 +994,57 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxreadblecharacteristicvalueobject
    */
-  function readBLECharacteristicValue(OBJECT: IWxReadBleCharacteristicValueObject): void
-  type IWxWriteBleCharacteristicValueObject = {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function readBLECharacteristicValue(OBJECT: readBLECharacteristicValue.Param): void
 
-    /**
-     * 蓝牙特征值对应服务的 uuid
-     */
-    serviceId: string
-
-    /**
-     * 蓝牙特征值的 uuid
-     */
-    characteristicId: string
-
-    /**
-     * 蓝牙设备特征值对应的二进制值
-     */
-    value: ArrayBuffer
-
+  namespace writeBLECharacteristicValue {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 蓝牙特征值对应服务的 uuid
+       */
+      serviceId?: string
+      /**
+       * 蓝牙特征值的 uuid
+       */
+      characteristicId?: string
+      /**
+       * 蓝牙设备特征值对应的二进制值
+       */
+      value?: ArrayBuffer
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -904,47 +1084,57 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxwriteblecharacteristicvalueobject
    */
-  function writeBLECharacteristicValue(OBJECT: IWxWriteBleCharacteristicValueObject): void
-  type IWxNotifyBleCharacteristicValueChangeObject = {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function writeBLECharacteristicValue(OBJECT: writeBLECharacteristicValue.Param): void
 
-    /**
-     * 蓝牙特征值对应服务的 uuid
-     */
-    serviceId: string
-
-    /**
-     * 蓝牙特征值的 uuid
-     */
-    characteristicId: string
-
-    /**
-     * true: 启用 notify; false: 停用 notify
-     */
-    state: boolean
-
+  namespace notifyBLECharacteristicValueChange {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 蓝牙特征值对应服务的 uuid
+       */
+      serviceId?: string
+      /**
+       * 蓝牙特征值的 uuid
+       */
+      characteristicId?: string
+      /**
+       * true: 启用 notify; false: 停用 notify
+       */
+      state?: boolean
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.1
@@ -976,7 +1166,29 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxnotifyblecharacteristicvaluechangeobject
    */
-  function notifyBLECharacteristicValueChange(OBJECT: IWxNotifyBleCharacteristicValueChangeObject): void
+  function notifyBLECharacteristicValueChange(OBJECT: notifyBLECharacteristicValueChange.Param): void
+
+  namespace onBLECharacteristicValueChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 特征值所属服务 uuid
+       */
+      serviceId?: string
+      /**
+       * 特征值 uuid
+       */
+      characteristicId?: string
+      /**
+       * 特征值最新的值 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
+       */
+      value?: ArrayBuffer
+    }
+  }
   /**
    * @since 1.1.0
    *
@@ -1002,25 +1214,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonblecharacteristicvaluechangecallback
    */
-  function onBLECharacteristicValueChange(CALLBACK: ((res: {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function onBLECharacteristicValueChange(CALLBACK: onBLECharacteristicValueChange.Param): void
 
-    /**
-     * 特征值所属服务 uuid
-     */
-    serviceId: string
-
-    /**
-     * 特征值 uuid
-     */
-    characteristicId: string
-
-    /**
-     * 特征值最新的值 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
-     */
-    value: ArrayBuffer
-  }) => any)): void
 }

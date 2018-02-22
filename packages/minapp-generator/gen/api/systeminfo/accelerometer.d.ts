@@ -1,6 +1,23 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html
 
 export namespace wx {
+  namespace onAccelerometerChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * X 轴
+       */
+      x?: number
+      /**
+       * Y 轴
+       */
+      y?: number
+      /**
+       * Z 轴
+       */
+      z?: number
+    }
+  }
   /**
    * 监听加速度数据，频率：5次/秒，接口调用后会自动开始监听，可使用 `wx.stopAccelerometer` 停止监听。
    *
@@ -15,37 +32,35 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxonaccelerometerchangecallback
    */
-  function onAccelerometerChange(CALLBACK: ((res: {
-    /**
-     * X 轴
-     */
-    x: number
+  function onAccelerometerChange(CALLBACK: onAccelerometerChange.Param): void
 
-    /**
-     * Y 轴
-     */
-    y: number
-
-    /**
-     * Z 轴
-     */
-    z: number
-  }) => any)): void
-  type IWxStartAccelerometerObject = {
+  namespace startAccelerometer {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -59,22 +74,35 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstartaccelerometerobject
    */
-  function startAccelerometer(OBJECT: IWxStartAccelerometerObject): void
-  type IWxStopAccelerometerObject = {
+  function startAccelerometer(OBJECT: startAccelerometer.Param): void
+
+  namespace stopAccelerometer {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -88,5 +116,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstopaccelerometerobject
    */
-  function stopAccelerometer(OBJECT: IWxStopAccelerometerObject): void
+  function stopAccelerometer(OBJECT: stopAccelerometer.Param): void
+
 }

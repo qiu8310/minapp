@@ -1,103 +1,103 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html
 
 export namespace wx {
-  type IWxGetSystemInfoObject = {
+  namespace getSystemInfo {
+    type Param = {
+      /**
+       * 接口调用成功的回调
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 手机品牌
        *
        * @since 1.5.0
        */
-      brand: any
-
+      brand?: any
       /**
        * 手机型号
        */
-      model: any
-
+      model?: any
       /**
        * 设备像素比
        */
-      pixelRatio: any
-
+      pixelRatio?: any
       /**
        * 屏幕宽度
        *
        * @since 1.1.0
        */
-      screenWidth: any
-
+      screenWidth?: any
       /**
        * 屏幕高度
        *
        * @since 1.1.0
        */
-      screenHeight: any
-
+      screenHeight?: any
       /**
        * 可使用窗口宽度
        */
-      windowWidth: any
-
+      windowWidth?: any
       /**
        * 可使用窗口高度
        */
-      windowHeight: any
-
+      windowHeight?: any
       /**
        * 状态栏的高度
        *
        * @since 1.9.0
        */
-      statusBarHeight: any
-
+      statusBarHeight?: any
       /**
        * 微信设置的语言
        */
-      language: any
-
+      language?: any
       /**
        * 微信版本号
        */
-      version: any
-
+      version?: any
       /**
        * 操作系统版本
        */
-      system: any
-
+      system?: any
       /**
        * 客户端平台
        */
-      platform: any
-
+      platform?: any
       /**
        * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
        *
        * @since 1.5.0
        */
-      fontSizeSetting: any
-
+      fontSizeSetting?: any
       /**
        * 客户端基础库版本
        *
        * @since 1.1.0
        */
-      SDKVersion: any
-    }) => any
-
+      SDKVersion?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取系统信息。
@@ -119,89 +119,79 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html#wxgetsysteminfoobject
    */
-  function getSystemInfo(OBJECT: IWxGetSystemInfoObject): void
-  type IWxGetSystemInfoSyncReturn = {
-    /**
-     * 手机品牌
-     *
-     * @since 1.5.0
-     */
-    brand: any
+  function getSystemInfo(OBJECT: getSystemInfo.Param): void
 
-    /**
-     * 手机型号
-     */
-    model: any
-
-    /**
-     * 设备像素比
-     */
-    pixelRatio: any
-
-    /**
-     * 屏幕宽度
-     *
-     * @since 1.1.0
-     */
-    screenWidth: any
-
-    /**
-     * 屏幕高度
-     *
-     * @since 1.1.0
-     */
-    screenHeight: any
-
-    /**
-     * 可使用窗口宽度
-     */
-    windowWidth: any
-
-    /**
-     * 可使用窗口高度
-     */
-    windowHeight: any
-
-    /**
-     * 状态栏的高度
-     *
-     * @since 1.9.0
-     */
-    statusBarHeight: any
-
-    /**
-     * 微信设置的语言
-     */
-    language: any
-
-    /**
-     * 微信版本号
-     */
-    version: any
-
-    /**
-     * 操作系统版本
-     */
-    system: any
-
-    /**
-     * 客户端平台
-     */
-    platform: any
-
-    /**
-     * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
-     *
-     * @since 1.5.0
-     */
-    fontSizeSetting: any
-
-    /**
-     * 客户端基础库版本
-     *
-     * @since 1.1.0
-     */
-    SDKVersion: any
+  namespace getSystemInfoSync {
+    type Return = {
+      /**
+       * 手机品牌
+       *
+       * @since 1.5.0
+       */
+      brand?: any
+      /**
+       * 手机型号
+       */
+      model?: any
+      /**
+       * 设备像素比
+       */
+      pixelRatio?: any
+      /**
+       * 屏幕宽度
+       *
+       * @since 1.1.0
+       */
+      screenWidth?: any
+      /**
+       * 屏幕高度
+       *
+       * @since 1.1.0
+       */
+      screenHeight?: any
+      /**
+       * 可使用窗口宽度
+       */
+      windowWidth?: any
+      /**
+       * 可使用窗口高度
+       */
+      windowHeight?: any
+      /**
+       * 状态栏的高度
+       *
+       * @since 1.9.0
+       */
+      statusBarHeight?: any
+      /**
+       * 微信设置的语言
+       */
+      language?: any
+      /**
+       * 微信版本号
+       */
+      version?: any
+      /**
+       * 操作系统版本
+       */
+      system?: any
+      /**
+       * 客户端平台
+       */
+      platform?: any
+      /**
+       * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
+       *
+       * @since 1.5.0
+       */
+      fontSizeSetting?: any
+      /**
+       * 客户端基础库版本
+       *
+       * @since 1.1.0
+       */
+      SDKVersion?: any
+    }
   }
   /**
    * 获取系统信息同步接口
@@ -224,5 +214,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html#wxgetsysteminfosync
    */
-  function getSystemInfoSync(): IWxGetSystemInfoSyncReturn
+  function getSystemInfoSync(): getSystemInfoSync.Return
+
 }

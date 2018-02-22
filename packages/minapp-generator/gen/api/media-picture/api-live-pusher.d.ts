@@ -8,6 +8,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-pusher.html#wxcreatelivepushercontext
    */
   function createLivePusherContext(): LivePusherContext
+
   class LivePusherContext {
     /**
      * 播放推流

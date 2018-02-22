@@ -1,46 +1,55 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateToMiniProgram.html
 
 export namespace wx {
-  type IWxNavigateToMiniProgramObject = {
-    /**
-     * 要打开的小程序 appId
-     */
-    appId: string
-
-    /**
-     * 打开的页面路径，如果为空则打开首页
-     */
-    path?: string
-
-    /**
-     * 需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch()`，`App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
-     */
-    extraData?: any
-
-    /**
-     * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。默认值 release
-     */
-    envVersion?: string
-
+  namespace navigateToMiniProgram {
+    type Param = {
+      /**
+       * 要打开的小程序 appId
+       */
+      appId?: string
+      /**
+       * 打开的页面路径，如果为空则打开首页
+       */
+      path?: string
+      /**
+       * 需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch()`，`App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
+       */
+      extraData?: any
+      /**
+       * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。默认值 release
+       */
+      envVersion?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.3.0
@@ -72,5 +81,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateToMiniProgram.html#wxnavigatetominiprogramobject
    */
-  function navigateToMiniProgram(OBJECT: IWxNavigateToMiniProgramObject): void
+  function navigateToMiniProgram(OBJECT: navigateToMiniProgram.Param): void
+
 }

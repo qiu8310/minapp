@@ -57,6 +57,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getRecorderManager.html#wxgetrecordermanager
    */
   function getRecorderManager(): RecorderManager
+
   class RecorderManager {
     /**
      * 开始录音

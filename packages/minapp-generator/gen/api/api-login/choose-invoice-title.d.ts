@@ -1,61 +1,67 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/chooseInvoiceTitle.html
 
 export namespace wx {
-  type IWxChooseInvoiceTitleObject = {
+  namespace chooseInvoiceTitle {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 抬头类型（0：单位，1：个人）
        */
-      type: string
-
+      type?: string
       /**
        * 抬头名称
        */
-      title: string
-
+      title?: string
       /**
        * 抬头税号
        */
-      taxNumber: string
-
+      taxNumber?: string
       /**
        * 单位地址
        */
-      companyAddress: string
-
+      companyAddress?: string
       /**
        * 手机号码
        */
-      telephone: string
-
+      telephone?: string
       /**
        * 银行名称
        */
-      bankName: string
-
+      bankName?: string
       /**
        * 银行账号
        */
-      bankAccount: string
-
+      bankAccount?: string
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.5.0
@@ -74,5 +80,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/chooseInvoiceTitle.html#wxchooseinvoicetitleobject
    */
-  function chooseInvoiceTitle(OBJECT: IWxChooseInvoiceTitleObject): void
+  function chooseInvoiceTitle(OBJECT: chooseInvoiceTitle.Param): void
+
 }

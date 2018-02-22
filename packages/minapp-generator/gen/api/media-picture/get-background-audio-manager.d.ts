@@ -30,6 +30,7 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getBackgroundAudioManager.html#wxgetbackgroundaudiomanager
    */
   function getBackgroundAudioManager(): BackgroundAudioManager
+
   class BackgroundAudioManager {
     /**
      * 当前音频的长度（单位：s），只有在当前有合法的 src 时返回

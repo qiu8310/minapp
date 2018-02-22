@@ -1,47 +1,56 @@
-// Generated at 2018-2-21
+// Generated at 2018-2-22
 declare namespace wx {
-  type IWxRequestObject = {
-    /**
-     * 开发者服务器接口地址
-     */
-    url: string
-
-    /**
-     * 请求的参数
-     */
-    data?: any | string | ArrayBuffer
-
-    /**
-     * 设置请求的 header，header 中不能设置 Referer。
-     */
-    header?: any
-
-    /**
-     * （需大写）有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-     *
-     * @default GET
-     */
-    method?: string
-
-    /**
-     * 如果设为json，会尝试对返回的数据做一次 JSON.parse
-     *
-     * @default json
-     */
-    dataType?: string
-
-    /**
-     * 设置响应的数据类型。合法值：text、arraybuffer
-     *
-     * @default text
-     * @since 1.7.0
-     */
-    responseType?: string
-
+  namespace request {
+    type Param = {
+      /**
+       * 开发者服务器接口地址
+       */
+      url?: string
+      /**
+       * 请求的参数
+       */
+      data?: any | string | ArrayBuffer
+      /**
+       * 设置请求的 header，header 中不能设置 Referer。
+       */
+      header?: any
+      /**
+       * （需大写）有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+       *
+       * @default GET
+       */
+      method?: string
+      /**
+       * 如果设为json，会尝试对返回的数据做一次 JSON.parse
+       *
+       * @default json
+       */
+      dataType?: string
+      /**
+       * 设置响应的数据类型。合法值：text、arraybuffer
+       *
+       * @default text
+       * @since 1.7.0
+       */
+      responseType?: string
+      /**
+       * 收到开发者服务成功返回的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 收到开发者服务成功返回的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 开发者服务器返回的数据
        *
@@ -53,38 +62,38 @@ declare namespace wx {
        * *   对于 `POST` 方法且 `header['content-type']` 为 `application/json` 的数据，会对数据进行 JSON 序列化
        * *   对于 `POST` 方法且 `header['content-type']` 为 `application/x-www-form-urlencoded` 的数据，会将数据转换成 query string （encodeURIComponent(k)=encodeURIComponent(v)&encodeURIComponent(k)=encodeURIComponent(v)...）
        */
-      data: any | string | ArrayBuffer
-
+      data?: any | string | ArrayBuffer
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode: number
-
+      statusCode?: number
       /**
        * 开发者服务器返回的 HTTP Response Header
        *
        * @since 1.2.0
        */
-      header: any
-    }) => any
-
+      header?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
-  }
-  type IWxRequestReturn = {
+    type ParamPropComplete = () => any
+    type Return = {
+      /**
+       * 中断请求任务
+       *
+       * @since 1.4.0
+       */
+      abort?: ReturnPropAbort
+    }
     /**
      * 中断请求任务
-     *
-     * @since 1.4.0
      */
-    abort: () => any
+    type ReturnPropAbort = () => any
   }
   /**
    * 发起网络请求。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
@@ -140,87 +149,102 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html#wxrequestobject
    */
-  function request(OBJECT: IWxRequestObject): IWxRequestReturn
-  type IWxUploadFileObject = {
-    /**
-     * 开发者服务器 url
-     */
-    url: string
+  function request(OBJECT: request.Param): request.Return
 
-    /**
-     * 要上传文件资源的路径
-     */
-    filePath: string
-
-    /**
-     * 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
-     */
-    name: string
-
-    /**
-     * HTTP 请求 Header, header 中不能设置 Referer
-     */
-    header?: any
-
-    /**
-     * HTTP 请求中其他额外的 form data
-     */
-    formData?: any
-
+  namespace uploadFile {
+    type Param = {
+      /**
+       * 开发者服务器 url
+       */
+      url?: string
+      /**
+       * 要上传文件资源的路径
+       */
+      filePath?: string
+      /**
+       * 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
+       */
+      name?: string
+      /**
+       * HTTP 请求 Header, header 中不能设置 Referer
+       */
+      header?: any
+      /**
+       * HTTP 请求中其他额外的 form data
+       */
+      formData?: any
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 开发者服务器返回的数据
        */
-      data: string
-
+      data?: string
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode: number
-    }) => any
-
+      statusCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
-  }
-  type IWxUploadFileReturn = {
+    type ParamPropComplete = () => any
+    type Return = {
+      /**
+       * 监听上传进度变化
+       *
+       * @since 1.4.0
+       */
+      onProgressUpdate?: ReturnPropOnProgressUpdate
+      /**
+       * 中断上传任务
+       *
+       * @since 1.4.0
+       */
+      abort?: ReturnPropAbort
+    }
     /**
      * 监听上传进度变化
-     *
-     * @since 1.4.0
      */
-    onProgressUpdate: (callback: ((res: {
+    type ReturnPropOnProgressUpdate = (callback: ReturnPropOnProgressUpdateParam) => any
+    type ReturnPropOnProgressUpdateParam = (res: ReturnPropOnProgressUpdateParamParam) => any
+    type ReturnPropOnProgressUpdateParamParam = {
       /**
        * 上传进度百分比
        */
-      progress: number
-
+      progress?: number
       /**
        * 已经上传的数据长度，单位 Bytes
        */
-      totalBytesSent: number
-
+      totalBytesSent?: number
       /**
        * 预期需要上传的数据总长度，单位 Bytes
        */
-      totalBytesExpectedToSend: number
-    }) => any)) => any
-
+      totalBytesExpectedToSend?: number
+    }
     /**
      * 中断上传任务
-     *
-     * @since 1.4.0
      */
-    abort: () => any
+    type ReturnPropAbort = () => any
   }
   /**
    * 将本地资源上传到开发者服务器，客户端发起一个 HTTPS POST 请求，其中 `content-type` 为 `multipart/form-data` 。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
@@ -281,72 +305,90 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxuploadfileobject
    */
-  function uploadFile(OBJECT: IWxUploadFileObject): IWxUploadFileReturn
-  type IWxDownloadFileObject = {
-    /**
-     * 下载资源的 url
-     */
-    url: string
+  function uploadFile(OBJECT: uploadFile.Param): uploadFile.Return
 
-    /**
-     * HTTP 请求 Header，header 中不能设置 Referer
-     */
-    header?: any
-
+  namespace downloadFile {
+    type Param = {
+      /**
+       * 下载资源的 url
+       */
+      url?: string
+      /**
+       * HTTP 请求 Header，header 中不能设置 Referer
+       */
+      header?: any
+      /**
+       * 下载成功后以 tempFilePath 的形式传给页面，res = {tempFilePath: '文件的临时路径'}
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 下载成功后以 tempFilePath 的形式传给页面，res = {tempFilePath: '文件的临时路径'}
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 临时文件路径，下载后的文件会存储到一个临时文件
        */
-      tempFilePath: string
-
+      tempFilePath?: string
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode: number
-    }) => any
-
+      statusCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
-  }
-  type IWxDownloadFileReturn = {
+    type ParamPropComplete = () => any
+    type Return = {
+      /**
+       * 监听下载进度变化
+       *
+       * @since 1.4.0
+       */
+      onProgressUpdate?: ReturnPropOnProgressUpdate
+      /**
+       * 中断下载任务
+       *
+       * @since 1.4.0
+       */
+      abort?: ReturnPropAbort
+    }
     /**
      * 监听下载进度变化
-     *
-     * @since 1.4.0
      */
-    onProgressUpdate: (callback: ((res: {
+    type ReturnPropOnProgressUpdate = (callback: ReturnPropOnProgressUpdateParam) => any
+    type ReturnPropOnProgressUpdateParam = (res: ReturnPropOnProgressUpdateParamParam) => any
+    type ReturnPropOnProgressUpdateParamParam = {
       /**
        * 下载进度百分比
        */
-      progress: number
-
+      progress?: number
       /**
        * 已经下载的数据长度，单位 Bytes
        */
-      totalBytesWritten: number
-
+      totalBytesWritten?: number
       /**
        * 预期需要下载的数据总长度，单位 Bytes
        */
-      totalBytesExpectedToWrite: number
-    }) => any)) => any
-
+      totalBytesExpectedToWrite?: number
+    }
     /**
      * 中断下载任务
-     *
-     * @since 1.4.0
      */
-    abort: () => any
+    type ReturnPropAbort = () => any
   }
   /**
    * 下载文件资源到本地，客户端直接发起一个 HTTP GET 请求，返回文件的本地临时路径。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
@@ -399,44 +441,53 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxdownloadfileobject
    */
-  function downloadFile(OBJECT: IWxDownloadFileObject): IWxDownloadFileReturn
-  type IWxConnectSocketObject = {
-    /**
-     * 开发者服务器接口地址，必须是 wss 协议，且域名必须是后台配置的合法域名
-     */
-    url: string
+  function downloadFile(OBJECT: downloadFile.Param): downloadFile.Return
 
-    /**
-     * HTTP Header , header 中不能设置 Referer
-     */
-    header?: any
-
-    /**
-     * 默认是GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-     */
-    method?: string
-
-    /**
-     * 子协议数组
-     *
-     * @since 1.4.0
-     */
-    protocols?: string[]
-
+  namespace connectSocket {
+    type Param = {
+      /**
+       * 开发者服务器接口地址，必须是 wss 协议，且域名必须是后台配置的合法域名
+       */
+      url?: string
+      /**
+       * HTTP Header , header 中不能设置 Referer
+       */
+      header?: any
+      /**
+       * 默认是GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+       */
+      method?: string
+      /**
+       * 子协议数组
+       *
+       * @since 1.4.0
+       */
+      protocols?: string[]
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 创建一个 [WebSocket](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket) 连接。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
@@ -461,7 +512,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxconnectsocketobject
    */
-  function connectSocket(OBJECT: IWxConnectSocketObject): SocketTask
+  function connectSocket(OBJECT: connectSocket.Param): SocketTask
+
   /**
    * 监听WebSocket连接打开事件。
    *
@@ -478,6 +530,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketopencallback
    */
   function onSocketOpen(CALLBACK: any): void
+
   /**
    * 监听WebSocket错误。
    *
@@ -497,26 +550,38 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketerrorcallback
    */
   function onSocketError(CALLBACK: any): void
-  type IWxSendSocketMessageObject = {
-    /**
-     * 需要发送的内容
-     */
-    data: string | ArrayBuffer
 
+  namespace sendSocketMessage {
+    type Param = {
+      /**
+       * 需要发送的内容
+       */
+      data?: string | ArrayBuffer
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 通过 WebSocket 连接发送数据，需要先 [wx.connectSocket](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxconnectsocketobject)，并在 [wx.onSocketOpen](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketopencallback) 回调之后才能发送。
@@ -550,7 +615,17 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxsendsocketmessageobject
    */
-  function sendSocketMessage(OBJECT: IWxSendSocketMessageObject): void
+  function sendSocketMessage(OBJECT: sendSocketMessage.Param): void
+
+  namespace onSocketMessage {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 服务器返回的消息
+       */
+      data?: string | ArrayBuffer
+    }
+  }
   /**
    * 监听WebSocket接受到服务器的消息事件。
    *
@@ -567,47 +642,54 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketmessagecallback
    */
-  function onSocketMessage(CALLBACK: ((res: {
-    /**
-     * 服务器返回的消息
-     */
-    data: string | ArrayBuffer
-  }) => any)): void
-  type IWxCloseSocketObject = {
-    /**
-     * 一个数字值表示关闭连接的状态号，表示连接被关闭的原因。如果这个参数没有被指定，默认的取值是1000 （表示正常连接关闭）
-     *
-     * @since 1.4.0
-     */
-    code?: number
+  function onSocketMessage(CALLBACK: onSocketMessage.Param): void
 
-    /**
-     * 一个可读的字符串，表示连接被关闭的原因。这个字符串必须是不长于123字节的UTF-8 文本（不是字符）
-     *
-     * @since 1.4.0
-     */
-    reason?: string
-
+  namespace closeSocket {
+    type Param = {
+      /**
+       * 一个数字值表示关闭连接的状态号，表示连接被关闭的原因。如果这个参数没有被指定，默认的取值是1000 （表示正常连接关闭）
+       *
+       * @since 1.4.0
+       */
+      code?: number
+      /**
+       * 一个可读的字符串，表示连接被关闭的原因。这个字符串必须是不长于123字节的UTF-8 文本（不是字符）
+       *
+       * @since 1.4.0
+       */
+      reason?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 关闭 WebSocket 连接。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxclosesocketobject
    */
-  function closeSocket(OBJECT: IWxCloseSocketObject): void
+  function closeSocket(OBJECT: closeSocket.Param): void
+
   /**
    * 监听WebSocket关闭。
    *
@@ -642,6 +724,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketclosecallback
    */
   function onSocketClose(CALLBACK: any): void
+
   /**
    * @since 1.7.0
    *
@@ -746,58 +829,71 @@ declare namespace wx {
       data: string | ArrayBuffer
     }) => any)): void
   }
-  type IWxChooseImageObject = {
-    /**
-     * 最多可以选择的图片张数，默认9
-     */
-    count?: number
-
-    /**
-     * original 原图，compressed 压缩图，默认二者都有
-     */
-    sizeType?: string[]
-
-    /**
-     * album 从相册选图，camera 使用相机，默认二者都有
-     */
-    sourceType?: string[]
-
+  namespace chooseImage {
+    type Param = {
+      /**
+       * 最多可以选择的图片张数，默认9
+       */
+      count?: number
+      /**
+       * original 原图，compressed 压缩图，默认二者都有
+       */
+      sizeType?: string[]
+      /**
+       * album 从相册选图，camera 使用相机，默认二者都有
+       */
+      sourceType?: string[]
+      /**
+       * 成功则返回图片的本地文件路径列表 tempFilePaths
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回图片的本地文件路径列表 tempFilePaths
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 图片的本地文件路径列表
        */
-      tempFilePaths: string[]
-
+      tempFilePaths?: string[]
       /**
        * 图片的本地文件列表，每一项是一个 File 对象
        *
        * @since 1.2.0
        */
-      tempFiles: Array<{
-        /**
-         * 本地文件路径
-         */
-        path: string
-
-        /**
-         * 本地文件大小，单位：B
-         */
-        size: number
-      }>
-    }) => any
-
+      tempFiles?: ParamPropSuccessParamPropTempFiles
+    }
+    /**
+     * 图片的本地文件列表，每一项是一个 File 对象
+     */
+    type ParamPropSuccessParamPropTempFiles = ParamPropSuccessParamPropTempFilesItem[]
+    type ParamPropSuccessParamPropTempFilesItem = {
+      /**
+       * 本地文件路径
+       */
+      path?: string
+      /**
+       * 本地文件大小，单位：B
+       */
+      size?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 从本地相册选择图片或使用相机拍照。
@@ -817,32 +913,43 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxchooseimageobject
    */
-  function chooseImage(OBJECT: IWxChooseImageObject): void
-  type IWxPreviewImageObject = {
-    /**
-     * 当前显示图片的链接，不填则默认为 urls 的第一张
-     */
-    current?: string
+  function chooseImage(OBJECT: chooseImage.Param): void
 
-    /**
-     * 需要预览的图片链接列表
-     */
-    urls: string[]
-
+  namespace previewImage {
+    type Param = {
+      /**
+       * 当前显示图片的链接，不填则默认为 urls 的第一张
+       */
+      current?: string
+      /**
+       * 需要预览的图片链接列表
+       */
+      urls?: string[]
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 预览图片。
@@ -857,42 +964,53 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxpreviewimageobject
    */
-  function previewImage(OBJECT: IWxPreviewImageObject): void
-  type IWxGetImageInfoObject = {
-    /**
-     * 图片的路径，可以是相对路径，临时文件路径，存储文件路径，网络图片路径
-     */
-    src: string
+  function previewImage(OBJECT: previewImage.Param): void
 
+  namespace getImageInfo {
+    type Param = {
+      /**
+       * 图片的路径，可以是相对路径，临时文件路径，存储文件路径，网络图片路径
+       */
+      src?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 图片宽度，单位px
        */
-      width: number
-
+      width?: number
       /**
        * 图片高度，单位px
        */
-      height: number
-
+      height?: number
       /**
        * 返回图片的本地路径
        */
-      path: string
-    }) => any
-
+      path?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取图片信息
@@ -922,32 +1040,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxgetimageinfoobject
    */
-  function getImageInfo(OBJECT: IWxGetImageInfoObject): void
-  type IWxSaveImageToPhotosAlbumObject = {
-    /**
-     * 图片文件路径，可以是临时文件路径也可以是永久文件路径，不支持网络图片路径
-     */
-    filePath: string
+  function getImageInfo(OBJECT: getImageInfo.Param): void
 
+  namespace saveImageToPhotosAlbum {
+    type Param = {
+      /**
+       * 图片文件路径，可以是临时文件路径也可以是永久文件路径，不支持网络图片路径
+       */
+      filePath?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -964,27 +1095,41 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxsaveimagetophotosalbumobject
    */
-  function saveImageToPhotosAlbum(OBJECT: IWxSaveImageToPhotosAlbumObject): void
-  type IWxStartRecordObject = {
+  function saveImageToPhotosAlbum(OBJECT: saveImageToPhotosAlbum.Param): void
+
+  namespace startRecord {
+    type Param = {
+      /**
+       * 录音成功后调用，返回录音文件的临时文件路径，res = {tempFilePath: '录音文件的临时路径'}
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 录音成功后调用，返回录音文件的临时文件路径，res = {tempFilePath: '录音文件的临时路径'}
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 录音文件的临时路径
        */
-      tempFilePath: any
-    }) => any
-
+      tempFilePath?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getRecorderManager](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getRecorderManager.html) 接口**
@@ -994,7 +1139,8 @@ declare namespace wx {
    * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.record
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-record.html#wxstartrecordobject
    */
-  function startRecord(OBJECT: IWxStartRecordObject): void
+  function startRecord(OBJECT: startRecord.Param): void
+
   /**
    * ​主动调用停止录音。
    *
@@ -1017,6 +1163,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-record.html#wxstoprecord
    */
   function stopRecord(): void
+
   /**
    * @since 1.6.0
    *
@@ -1073,6 +1220,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getRecorderManager.html#wxgetrecordermanager
    */
   function getRecorderManager(): RecorderManager
+
   class RecorderManager {
     /**
      * 开始录音
@@ -1161,33 +1309,43 @@ declare namespace wx {
       errMsg: string
     }) => any)): any
   }
-  type IWxPlayVoiceObject = {
-    /**
-     * 需要播放的语音文件的文件路径
-     */
-    filePath: string
-
-    /**
-     * 指定录音时长，到达指定的录音时长后会自动停止录音，单位：秒，默认值：60
-     *
-     * @since 1.6.0
-     */
-    duration?: number
-
+  namespace playVoice {
+    type Param = {
+      /**
+       * 需要播放的语音文件的文件路径
+       */
+      filePath?: string
+      /**
+       * 指定录音时长，到达指定的录音时长后会自动停止录音，单位：秒，默认值：60
+       *
+       * @since 1.6.0
+       */
+      duration?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html) 接口**
@@ -1210,7 +1368,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxplayvoiceobject
    */
-  function playVoice(OBJECT: IWxPlayVoiceObject): void
+  function playVoice(OBJECT: playVoice.Param): void
+
   /**
    * 暂停正在播放的语音。再次调用wx.playVoice播放同一个文件时，会从暂停处开始播放。如果想从头开始播放，需要先调用 wx.stopVoice。
    *
@@ -1234,6 +1393,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxpausevoice
    */
   function pauseVoice(): void
+
   /**
    * 结束播放语音。
    *
@@ -1256,46 +1416,56 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxstopvoice
    */
   function stopVoice(): void
-  type IWxGetBackgroundAudioPlayerStateObject = {
+
+  namespace getBackgroundAudioPlayerState {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 选定音频的长度（单位：s），只有在当前有音乐播放时返回
        */
-      duration: any
-
+      duration?: any
       /**
        * 选定音频的播放位置（单位：s），只有在当前有音乐播放时返回
        */
-      currentPosition: any
-
+      currentPosition?: any
       /**
        * 播放状态（2：没有音乐在播放，1：播放中，0：暂停中）
        */
-      status: any
-
+      status?: any
       /**
        * 音频的下载进度（整数，80 代表 80%），只有在当前有音乐播放时返回
        */
-      downloadPercent: any
-
+      downloadPercent?: any
       /**
        * 歌曲数据链接，只有在当前有音乐播放时返回
        */
-      dataUrl: any
-    }) => any
-
+      dataUrl?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * **注意：1.2.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getBackgroundAudioManager](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getBackgroundAudioManager.html) 接口**
@@ -1317,37 +1487,47 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxgetbackgroundaudioplayerstateobject
    */
-  function getBackgroundAudioPlayerState(OBJECT: IWxGetBackgroundAudioPlayerStateObject): void
-  type IWxPlayBackgroundAudioObject = {
-    /**
-     * 音乐链接，目前支持的格式有 m4a, aac, mp3, wav
-     */
-    dataUrl: string
+  function getBackgroundAudioPlayerState(OBJECT: getBackgroundAudioPlayerState.Param): void
 
-    /**
-     * 音乐标题
-     */
-    title?: string
-
-    /**
-     * 封面URL
-     */
-    coverImgUrl?: string
-
+  namespace playBackgroundAudio {
+    type Param = {
+      /**
+       * 音乐链接，目前支持的格式有 m4a, aac, mp3, wav
+       */
+      dataUrl?: string
+      /**
+       * 音乐标题
+       */
+      title?: string
+      /**
+       * 封面URL
+       */
+      coverImgUrl?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 使用后台播放器播放音乐，对于微信客户端来说，只能同时有一个后台音乐在播放。当用户离开小程序后，音乐将暂停播放；当用户点击“显示在聊天顶部”时，音乐不会暂停播放；当用户在其他小程序占用了音乐播放器，原有小程序内的音乐将停止播放。
@@ -1363,7 +1543,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxplaybackgroundaudioobject
    */
-  function playBackgroundAudio(OBJECT: IWxPlayBackgroundAudioObject): void
+  function playBackgroundAudio(OBJECT: playBackgroundAudio.Param): void
+
   /**
    * 暂停播放音乐。
    *
@@ -1377,26 +1558,38 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxpausebackgroundaudio
    */
   function pauseBackgroundAudio(): void
-  type IWxSeekBackgroundAudioObject = {
-    /**
-     * 音乐位置，单位：秒
-     */
-    position: number
 
+  namespace seekBackgroundAudio {
+    type Param = {
+      /**
+       * 音乐位置，单位：秒
+       */
+      position?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 控制音乐播放进度。
@@ -1410,7 +1603,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxseekbackgroundaudioobject
    */
-  function seekBackgroundAudio(OBJECT: IWxSeekBackgroundAudioObject): void
+  function seekBackgroundAudio(OBJECT: seekBackgroundAudio.Param): void
+
   /**
    * 停止播放音乐。
    *
@@ -1424,16 +1618,19 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxstopbackgroundaudio
    */
   function stopBackgroundAudio(): void
+
   /**
    * 监听音乐播放。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudioplaycallback
    */
   function onBackgroundAudioPlay(CALLBACK: any): void
+
   /**
    * 监听音乐暂停。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudiopausecallback
    */
   function onBackgroundAudioPause(CALLBACK: any): void
+
   /**
    * 监听音乐停止。
    *
@@ -1443,6 +1640,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudiostopcallback
    */
   function onBackgroundAudioStop(CALLBACK: any): void
+
   /**
    * @since 1.2.0
    *
@@ -1472,6 +1670,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getBackgroundAudioManager.html#wxgetbackgroundaudiomanager
    */
   function getBackgroundAudioManager(): BackgroundAudioManager
+
   class BackgroundAudioManager {
     /**
      * 当前音频的长度（单位：s），只有在当前有合法的 src 时返回
@@ -1634,6 +1833,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-audio.html#wxcreateaudiocontextaudioid-this
    */
   function createAudioContext(audioId: any, instance?: any): AudioContext
+
   class AudioContext {
     /**
      * 音频的地址
@@ -1684,6 +1884,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html#wxcreateinneraudiocontext
    */
   function createInnerAudioContext(): InnerAudioContext
+
   class InnerAudioContext {
     /**
      * 音频的数据链接，用于直接播放。
@@ -1790,65 +1991,73 @@ declare namespace wx {
      */
     onSeeked(callback: any): any
   }
-  type IWxChooseVideoObject = {
-    /**
-     * album 从相册选视频，camera 使用相机拍摄，默认为：['album', 'camera']
-     */
-    sourceType?: string[]
-
-    /**
-     * 是否压缩所选的视频源文件，默认值为true，需要压缩
-     *
-     * @since 1.6.0
-     */
-    compressed?: boolean
-
-    /**
-     * 拍摄视频最长拍摄时间，单位秒。最长支持 60 秒
-     */
-    maxDuration?: number
-
+  namespace chooseVideo {
+    type Param = {
+      /**
+       * album 从相册选视频，camera 使用相机拍摄，默认为：['album', 'camera']
+       */
+      sourceType?: string[]
+      /**
+       * 是否压缩所选的视频源文件，默认值为true，需要压缩
+       *
+       * @since 1.6.0
+       */
+      compressed?: boolean
+      /**
+       * 拍摄视频最长拍摄时间，单位秒。最长支持 60 秒
+       */
+      maxDuration?: number
+      /**
+       * 接口调用成功，返回视频文件的临时文件路径，详见返回参数说明
+       *
+       * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html)，在小程序下次启动时才能访问得到。**
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功，返回视频文件的临时文件路径，详见返回参数说明
      *
      * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html)，在小程序下次启动时才能访问得到。**
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 选定视频的临时文件路径
        */
-      tempFilePath: any
-
+      tempFilePath?: any
       /**
        * 选定视频的时间长度
        */
-      duration: any
-
+      duration?: any
       /**
        * 选定视频的数据量大小
        */
-      size: any
-
+      size?: any
       /**
        * 返回选定视频的长
        */
-      height: any
-
+      height?: any
       /**
        * 返回选定视频的宽
        */
-      width: any
-    }) => any
-
+      width?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 拍摄视频或从手机相册中选视频，返回视频的临时文件路径。
@@ -1883,32 +2092,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-video.html#wxchoosevideoobject
    */
-  function chooseVideo(OBJECT: IWxChooseVideoObject): void
-  type IWxSaveVideoToPhotosAlbumObject = {
-    /**
-     * 视频文件路径，可以是临时文件路径也可以是永久文件路径
-     */
-    filePath: string
+  function chooseVideo(OBJECT: chooseVideo.Param): void
 
+  namespace saveVideoToPhotosAlbum {
+    type Param = {
+      /**
+       * 视频文件路径，可以是临时文件路径也可以是永久文件路径
+       */
+      filePath?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -1929,7 +2151,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-video.html#wxsavevideotophotosalbumobject
    */
-  function saveVideoToPhotosAlbum(OBJECT: IWxSaveVideoToPhotosAlbumObject): void
+  function saveVideoToPhotosAlbum(OBJECT: saveVideoToPhotosAlbum.Param): void
+
   /**
    * 创建并返回 video 上下文 `videoContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<video/>` 组件
    *
@@ -1981,6 +2204,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-video.html#wxcreatevideocontextvideoid-this
    */
   function createVideoContext(videoId: any, instance?: any): VideoContext
+
   class VideoContext {
     /**
      * 播放
@@ -2024,6 +2248,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-camera.html#wxcreatecameracontextthis
    */
   function createCameraContext(instance?: any): CameraContext
+
   class CameraContext {
     /**
      * 拍照，可指定质量，成功则返回图片
@@ -2100,6 +2325,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-player.html#wxcreateliveplayercontextdomid-this
    */
   function createLivePlayerContext(domId: any, instance?: any): LivePlayerContext
+
   class LivePlayerContext {
     /**
      * 播放
@@ -2209,6 +2435,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-pusher.html#wxcreatelivepushercontext
    */
   function createLivePusherContext(): LivePusherContext
+
   class LivePusherContext {
     /**
      * 播放推流
@@ -2306,31 +2533,43 @@ declare namespace wx {
       complete?: () => any
     }): any
   }
-  type IWxSaveFileObject = {
-    /**
-     * 需要保存的文件的临时路径
-     */
-    tempFilePath: string
-
+  namespace saveFile {
+    type Param = {
+      /**
+       * 需要保存的文件的临时路径
+       */
+      tempFilePath?: string
+      /**
+       * 返回文件的保存路径，res = {savedFilePath: '文件的保存路径'}
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 返回文件的保存路径，res = {savedFilePath: '文件的保存路径'}
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 文件的保存路径
        */
-      savedFilePath: any
-    }) => any
-
+      savedFilePath?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 保存文件到本地。**注意：saveFile 会把临时文件移动，因此调用成功后传入的 tempFilePath 将不可用**
@@ -2356,47 +2595,63 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxsavefileobject
    */
-  function saveFile(OBJECT: IWxSaveFileObject): void
-  type IWxGetSavedFileListObject = {
+  function saveFile(OBJECT: saveFile.Param): void
+
+  namespace getSavedFileList {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数，返回结果见`success返回参数说明`
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回结果见`success返回参数说明`
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 接口调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 文件列表
        */
-      fileList: Array<{
-        /**
-         * 文件的本地路径
-         */
-        filePath: string
-
-        /**
-         * 文件的保存时的时间戳，从1970/01/01 08:00:00 到当前时间的秒数
-         */
-        createTime: number
-
-        /**
-         * 文件大小，单位B
-         */
-        size: number
-      }>
-    }) => any
-
+      fileList?: ParamPropSuccessParamPropFileList
+    }
+    /**
+     * 文件列表
+     */
+    type ParamPropSuccessParamPropFileList = ParamPropSuccessParamPropFileListItem[]
+    type ParamPropSuccessParamPropFileListItem = {
+      /**
+       * 文件的本地路径
+       */
+      filePath?: string
+      /**
+       * 文件的保存时的时间戳，从1970/01/01 08:00:00 到当前时间的秒数
+       */
+      createTime?: number
+      /**
+       * 文件大小，单位B
+       */
+      size?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取本地已保存的文件列表
@@ -2412,42 +2667,53 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxgetsavedfilelistobject
    */
-  function getSavedFileList(OBJECT: IWxGetSavedFileListObject): void
-  type IWxGetSavedFileInfoObject = {
-    /**
-     * 文件路径
-     */
-    filePath: string
+  function getSavedFileList(OBJECT: getSavedFileList.Param): void
 
+  namespace getSavedFileInfo {
+    type Param = {
+      /**
+       * 文件路径
+       */
+      filePath?: string
+      /**
+       * 接口调用成功的回调函数，返回结果见`success返回参数说明`
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回结果见`success返回参数说明`
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 接口调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 文件大小，单位B
        */
-      size: number
-
+      size?: number
       /**
        * 文件保存时的时间戳，从1970/01/01 08:00:00 到该时刻的秒数
        */
-      createTime: number
-    }) => any
-
+      createTime?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 [wx.getFileInfo](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getFileInfo.html) 接口。
@@ -2465,27 +2731,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxgetsavedfileinfoobject
    */
-  function getSavedFileInfo(OBJECT: IWxGetSavedFileInfoObject): void
-  type IWxRemoveSavedFileObject = {
-    /**
-     * 需要删除的文件路径
-     */
-    filePath: string
+  function getSavedFileInfo(OBJECT: getSavedFileInfo.Param): void
 
+  namespace removeSavedFile {
+    type Param = {
+      /**
+       * 需要删除的文件路径
+       */
+      filePath?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 删除本地存储的文件
@@ -2508,34 +2786,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxremovesavedfileobject
    */
-  function removeSavedFile(OBJECT: IWxRemoveSavedFileObject): void
-  type IWxOpenDocumentObject = {
-    /**
-     * 文件路径，可通过 downFile 获得
-     */
-    filePath: string
+  function removeSavedFile(OBJECT: removeSavedFile.Param): void
 
-    /**
-     * 文件类型，指定文件类型打开文件，有效值 doc, xls, ppt, pdf, docx, xlsx, pptx
-     *
-     * @since 1.4.0
-     */
-    fileType?: string
-
+  namespace openDocument {
+    type Param = {
+      /**
+       * 文件路径，可通过 downFile 获得
+       */
+      filePath?: string
+      /**
+       * 文件类型，指定文件类型打开文件，有效值 doc, xls, ppt, pdf, docx, xlsx, pptx
+       *
+       * @since 1.4.0
+       */
+      fileType?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 新开页面打开文档，支持格式：doc, xls, ppt, pdf, docx, xlsx, pptx
@@ -2558,47 +2847,57 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxopendocumentobject
    */
-  function openDocument(OBJECT: IWxOpenDocumentObject): void
-  type IWxGetFileInfoObject = {
-    /**
-     * 本地文件路径
-     */
-    filePath: string
+  function openDocument(OBJECT: openDocument.Param): void
 
-    /**
-     * 计算文件摘要的算法，默认值 md5，有效值：md5，sha1
-     */
-    digestAlgorithm?: string
-
+  namespace getFileInfo {
+    type Param = {
+      /**
+       * 本地文件路径
+       */
+      filePath?: string
+      /**
+       * 计算文件摘要的算法，默认值 md5，有效值：md5，sha1
+       */
+      digestAlgorithm?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 文件大小，单位：B
        */
-      size: number
-
+      size?: number
       /**
        * 按照传入的 digestAlgorithm 计算得出的的文件摘要
        */
-      digest: string
-
+      digest?: string
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.4.0
@@ -2617,32 +2916,43 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getFileInfo.html#wxgetfileinfoobject
    */
-  function getFileInfo(OBJECT: IWxGetFileInfoObject): void
-  type IWxSetStorageObject = {
-    /**
-     * 本地缓存中的指定的 key
-     */
-    key: string
+  function getFileInfo(OBJECT: getFileInfo.Param): void
 
-    /**
-     * 需要存储的内容
-     */
-    data: any | string
-
+  namespace setStorage {
+    type Param = {
+      /**
+       * 本地缓存中的指定的 key
+       */
+      key?: string
+      /**
+       * 需要存储的内容
+       */
+      data?: any | string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 将数据存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个异步接口。
@@ -2657,7 +2967,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxsetstorageobject
    */
-  function setStorage(OBJECT: IWxSetStorageObject): void
+  function setStorage(OBJECT: setStorage.Param): void
+
   /**
    * 将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
    *
@@ -2672,31 +2983,44 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxsetstoragesynckeydata
    */
   function setStorageSync(key: string, data: any | string): void
-  type IWxGetStorageObject = {
-    /**
-     * 本地缓存中的指定的 key
-     */
-    key: string
 
+  namespace getStorage {
+    type Param = {
+      /**
+       * 本地缓存中的指定的 key
+       */
+      key?: string
+      /**
+       * 接口调用的回调函数,res = {data: key对应的内容}
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用的回调函数,res = {data: key对应的内容}
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * key对应的内容
        */
-      data: string
-    }) => any
-
+      data?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 从本地缓存中异步获取指定 key 对应的内容。
@@ -2713,7 +3037,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageobject
    */
-  function getStorage(OBJECT: IWxGetStorageObject): void
+  function getStorage(OBJECT: getStorage.Param): void
+
   /**
    * 从本地缓存中同步获取指定 key 对应的内容。
    *
@@ -2732,36 +3057,48 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstoragesynckey
    */
   function getStorageSync(key: string): any | undefined
-  type IWxGetStorageInfoObject = {
+
+  namespace getStorageInfo {
+    type Param = {
+      /**
+       * 接口调用的回调函数，详见返回参数说明
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用的回调函数，详见返回参数说明
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 当前storage中所有的key
        */
-      keys: string[]
-
+      keys?: string[]
       /**
        * 当前占用的空间大小, 单位kb
        */
-      currentSize: number
-
+      currentSize?: number
       /**
        * 限制的空间大小，单位kb
        */
-      limitSize: number
-    }) => any
-
+      limitSize?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 异步获取当前storage的相关信息
@@ -2779,22 +3116,23 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageinfoobject
    */
-  function getStorageInfo(OBJECT: IWxGetStorageInfoObject): void
-  type IWxGetStorageInfoSyncReturn = {
-    /**
-     * 当前storage中所有的key
-     */
-    keys: string[]
+  function getStorageInfo(OBJECT: getStorageInfo.Param): void
 
-    /**
-     * 当前占用的空间大小, 单位kb
-     */
-    currentSize: number
-
-    /**
-     * 限制的空间大小，单位kb
-     */
-    limitSize: number
+  namespace getStorageInfoSync {
+    type Return = {
+      /**
+       * 当前storage中所有的key
+       */
+      keys?: string[]
+      /**
+       * 当前占用的空间大小, 单位kb
+       */
+      currentSize?: number
+      /**
+       * 限制的空间大小，单位kb
+       */
+      limitSize?: number
+    }
   }
   /**
    * 同步获取当前storage的相关信息
@@ -2813,27 +3151,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageinfosync
    */
-  function getStorageInfoSync(): IWxGetStorageInfoSyncReturn
-  type IWxRemoveStorageObject = {
-    /**
-     * 本地缓存中的指定的 key
-     */
-    key: string
+  function getStorageInfoSync(): getStorageInfoSync.Return
 
+  namespace removeStorage {
+    type Param = {
+      /**
+       * 本地缓存中的指定的 key
+       */
+      key?: string
+      /**
+       * 接口调用的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用的回调函数
      */
-    success: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 从本地缓存中异步移除指定 key 。
@@ -2850,7 +3200,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxremovestorageobject
    */
-  function removeStorage(OBJECT: IWxRemoveStorageObject): void
+  function removeStorage(OBJECT: removeStorage.Param): void
+
   /**
    * 从本地缓存中同步移除指定 key 。
    *
@@ -2866,6 +3217,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxremovestoragesynckey
    */
   function removeStorageSync(key: string): void
+
   /**
    * 清理本地数据缓存。
    *
@@ -2877,6 +3229,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxclearstorage
    */
   function clearStorage(): void
+
   /**
    * 同步清理本地数据缓存
    *
@@ -2896,74 +3249,80 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxclearstoragesync
    */
   function clearStorageSync(): void
-  type IWxGetLocationObject = {
-    /**
-     * 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于`wx.openLocation`的坐标
-     */
-    type?: string
 
-    /**
-     * 传入 true 会返回高度信息，由于获取高度需要较高精确度，会减慢接口返回速度
-     *
-     * @since 1.6.0
-     */
-    altitude?: boolean
-
+  namespace getLocation {
+    type Param = {
+      /**
+       * 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于`wx.openLocation`的坐标
+       */
+      type?: string
+      /**
+       * 传入 true 会返回高度信息，由于获取高度需要较高精确度，会减慢接口返回速度
+       *
+       * @since 1.6.0
+       */
+      altitude?: boolean
+      /**
+       * 接口调用成功的回调函数，返回内容详见返回参数说明。
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 纬度，浮点数，范围为-90~90，负数表示南纬
        */
-      latitude: any
-
+      latitude?: any
       /**
        * 经度，浮点数，范围为-180~180，负数表示西经
        */
-      longitude: any
-
+      longitude?: any
       /**
        * 速度，浮点数，单位m/s
        */
-      speed: any
-
+      speed?: any
       /**
        * 位置的精确度
        */
-      accuracy: any
-
+      accuracy?: any
       /**
        * 高度，单位 m
        *
        * @since 1.2.0
        */
-      altitude: any
-
+      altitude?: any
       /**
        * 垂直精度，单位 m（Android 无法获取，返回 0）
        *
        * @since 1.2.0
        */
-      verticalAccuracy: any
-
+      verticalAccuracy?: any
       /**
        * 水平精度，单位 m
        *
        * @since 1.2.0
        */
-      horizontalAccuracy: any
-    }) => any
-
+      horizontalAccuracy?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取当前的地理位置、速度。当用户离开小程序后，此接口无法调用；当用户点击“显示在聊天顶部”时，此接口可继续调用。
@@ -2983,42 +3342,53 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxgetlocationobject
    */
-  function getLocation(OBJECT: IWxGetLocationObject): void
-  type IWxChooseLocationObject = {
+  function getLocation(OBJECT: getLocation.Param): void
+
+  namespace chooseLocation {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数，返回内容详见返回参数说明。
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 位置名称
        */
-      name: any
-
+      name?: any
       /**
        * 详细地址
        */
-      address: any
-
+      address?: any
       /**
        * 纬度，浮点数，范围为-90~90，负数表示南纬
        */
-      latitude: any
-
+      latitude?: any
       /**
        * 经度，浮点数，范围为-180~180，负数表示西经
        */
-      longitude: any
-    }) => any
-
+      longitude?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 打开地图选择位置。
@@ -3026,47 +3396,55 @@ declare namespace wx {
    * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userLocation
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxchooselocationobject
    */
-  function chooseLocation(OBJECT: IWxChooseLocationObject): void
-  type IWxOpenLocationObject = {
-    /**
-     * 纬度，范围为-90~90，负数表示南纬
-     */
-    latitude: number
+  function chooseLocation(OBJECT: chooseLocation.Param): void
 
-    /**
-     * 经度，范围为-180~180，负数表示西经
-     */
-    longitude: number
-
-    /**
-     * 缩放比例，范围5~18，默认为18
-     */
-    scale?: number
-
-    /**
-     * 位置名
-     */
-    name?: string
-
-    /**
-     * 地址的详细说明
-     */
-    address?: string
-
+  namespace openLocation {
+    type Param = {
+      /**
+       * 纬度，范围为-90~90，负数表示南纬
+       */
+      latitude?: number
+      /**
+       * 经度，范围为-180~180，负数表示西经
+       */
+      longitude?: number
+      /**
+       * 缩放比例，范围5~18，默认为18
+       */
+      scale?: number
+      /**
+       * 位置名
+       */
+      name?: string
+      /**
+       * 地址的详细说明
+       */
+      address?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * ​使用微信内置地图查看位置。
@@ -3095,7 +3473,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject
    */
-  function openLocation(OBJECT: IWxOpenLocationObject): void
+  function openLocation(OBJECT: openLocation.Param): void
+
   /**
    * 创建并返回 map 上下文 `mapContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<map/>` 组件
    *
@@ -3166,6 +3545,7 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-map.html#wxcreatemapcontextmapid-this
    */
   function createMapContext(mapId: any, instance?: any): MapContext
+
   class MapContext {
     /**
      * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject)
@@ -3290,103 +3670,103 @@ declare namespace wx {
       complete?: () => any
     }): any
   }
-  type IWxGetSystemInfoObject = {
+  namespace getSystemInfo {
+    type Param = {
+      /**
+       * 接口调用成功的回调
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 手机品牌
        *
        * @since 1.5.0
        */
-      brand: any
-
+      brand?: any
       /**
        * 手机型号
        */
-      model: any
-
+      model?: any
       /**
        * 设备像素比
        */
-      pixelRatio: any
-
+      pixelRatio?: any
       /**
        * 屏幕宽度
        *
        * @since 1.1.0
        */
-      screenWidth: any
-
+      screenWidth?: any
       /**
        * 屏幕高度
        *
        * @since 1.1.0
        */
-      screenHeight: any
-
+      screenHeight?: any
       /**
        * 可使用窗口宽度
        */
-      windowWidth: any
-
+      windowWidth?: any
       /**
        * 可使用窗口高度
        */
-      windowHeight: any
-
+      windowHeight?: any
       /**
        * 状态栏的高度
        *
        * @since 1.9.0
        */
-      statusBarHeight: any
-
+      statusBarHeight?: any
       /**
        * 微信设置的语言
        */
-      language: any
-
+      language?: any
       /**
        * 微信版本号
        */
-      version: any
-
+      version?: any
       /**
        * 操作系统版本
        */
-      system: any
-
+      system?: any
       /**
        * 客户端平台
        */
-      platform: any
-
+      platform?: any
       /**
        * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
        *
        * @since 1.5.0
        */
-      fontSizeSetting: any
-
+      fontSizeSetting?: any
       /**
        * 客户端基础库版本
        *
        * @since 1.1.0
        */
-      SDKVersion: any
-    }) => any
-
+      SDKVersion?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取系统信息。
@@ -3408,89 +3788,79 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html#wxgetsysteminfoobject
    */
-  function getSystemInfo(OBJECT: IWxGetSystemInfoObject): void
-  type IWxGetSystemInfoSyncReturn = {
-    /**
-     * 手机品牌
-     *
-     * @since 1.5.0
-     */
-    brand: any
+  function getSystemInfo(OBJECT: getSystemInfo.Param): void
 
-    /**
-     * 手机型号
-     */
-    model: any
-
-    /**
-     * 设备像素比
-     */
-    pixelRatio: any
-
-    /**
-     * 屏幕宽度
-     *
-     * @since 1.1.0
-     */
-    screenWidth: any
-
-    /**
-     * 屏幕高度
-     *
-     * @since 1.1.0
-     */
-    screenHeight: any
-
-    /**
-     * 可使用窗口宽度
-     */
-    windowWidth: any
-
-    /**
-     * 可使用窗口高度
-     */
-    windowHeight: any
-
-    /**
-     * 状态栏的高度
-     *
-     * @since 1.9.0
-     */
-    statusBarHeight: any
-
-    /**
-     * 微信设置的语言
-     */
-    language: any
-
-    /**
-     * 微信版本号
-     */
-    version: any
-
-    /**
-     * 操作系统版本
-     */
-    system: any
-
-    /**
-     * 客户端平台
-     */
-    platform: any
-
-    /**
-     * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
-     *
-     * @since 1.5.0
-     */
-    fontSizeSetting: any
-
-    /**
-     * 客户端基础库版本
-     *
-     * @since 1.1.0
-     */
-    SDKVersion: any
+  namespace getSystemInfoSync {
+    type Return = {
+      /**
+       * 手机品牌
+       *
+       * @since 1.5.0
+       */
+      brand?: any
+      /**
+       * 手机型号
+       */
+      model?: any
+      /**
+       * 设备像素比
+       */
+      pixelRatio?: any
+      /**
+       * 屏幕宽度
+       *
+       * @since 1.1.0
+       */
+      screenWidth?: any
+      /**
+       * 屏幕高度
+       *
+       * @since 1.1.0
+       */
+      screenHeight?: any
+      /**
+       * 可使用窗口宽度
+       */
+      windowWidth?: any
+      /**
+       * 可使用窗口高度
+       */
+      windowHeight?: any
+      /**
+       * 状态栏的高度
+       *
+       * @since 1.9.0
+       */
+      statusBarHeight?: any
+      /**
+       * 微信设置的语言
+       */
+      language?: any
+      /**
+       * 微信版本号
+       */
+      version?: any
+      /**
+       * 操作系统版本
+       */
+      system?: any
+      /**
+       * 客户端平台
+       */
+      platform?: any
+      /**
+       * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
+       *
+       * @since 1.5.0
+       */
+      fontSizeSetting?: any
+      /**
+       * 客户端基础库版本
+       *
+       * @since 1.1.0
+       */
+      SDKVersion?: any
+    }
   }
   /**
    * 获取系统信息同步接口
@@ -3513,7 +3883,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html#wxgetsysteminfosync
    */
-  function getSystemInfoSync(): IWxGetSystemInfoSyncReturn
+  function getSystemInfoSync(): getSystemInfoSync.Return
+
   /**
    * 判断小程序的API，回调，参数，组件等是否在当前版本可用。
    *
@@ -3546,26 +3917,40 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-caniuse.html#wxcaniusestring
    */
   function canIUse(String: any): boolean
-  type IWxGetNetworkTypeObject = {
+
+  namespace getNetworkType {
+    type Param = {
+      /**
+       * 接口调用成功，返回网络类型 networkType
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功，返回网络类型 networkType
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 网络类型
        */
-      networkType: any
-    }) => any
-
+      networkType?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取网络类型。
@@ -3583,7 +3968,32 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxgetnetworktypeobject
    */
-  function getNetworkType(OBJECT: IWxGetNetworkTypeObject): void
+  function getNetworkType(OBJECT: getNetworkType.Param): void
+
+  namespace onNetworkStatusChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 当前是否有网络连接
+       */
+      isConnected?: boolean
+      /**
+       * 网络类型
+       *
+       * **networkType 有效值：**
+       *
+       *   值        |  说明               
+       * ------------|---------------------
+       *   wifi      |  wifi 网络          
+       *   2g        |  2g 网络            
+       *   3g        |  3g 网络            
+       *   4g        |  4g 网络            
+       *   none      |  无网络             
+       *   unknown   |Android下不常见的网络类型
+       */
+      networkType?: string
+    }
+  }
   /**
    * @since 1.1.0
    *
@@ -3599,48 +4009,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxonnetworkstatuschangecallback
    */
-  function onNetworkStatusChange(CALLBACK: ((res: {
-    /**
-     * 当前是否有网络连接
-     */
-    isConnected: boolean
+  function onNetworkStatusChange(CALLBACK: onNetworkStatusChange.Param): void
 
-    /**
-     * 网络类型
-     *
-     * **networkType 有效值：**
-     *
-     *   值        |  说明               
-     * ------------|---------------------
-     *   wifi      |  wifi 网络          
-     *   2g        |  2g 网络            
-     *   3g        |  3g 网络            
-     *   4g        |  4g 网络            
-     *   none      |  无网络             
-     *   unknown   |Android下不常见的网络类型
-     */
-    networkType: string
-  }) => any)): void
-  type IWxSetScreenBrightnessObject = {
-    /**
-     * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
-     */
-    value: number
-
+  namespace setScreenBrightness {
+    type Param = {
+      /**
+       * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
+       */
+      value?: number
+      /**
+       * 接口调用成功
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -3648,27 +4049,41 @@ declare namespace wx {
    * 设置屏幕亮度。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxsetscreenbrightnessobject
    */
-  function setScreenBrightness(OBJECT: IWxSetScreenBrightnessObject): void
-  type IWxGetScreenBrightnessObject = {
+  function setScreenBrightness(OBJECT: setScreenBrightness.Param): void
+
+  namespace getScreenBrightness {
+    type Param = {
+      /**
+       * 接口调用成功
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
        */
-      value: number
-    }) => any
-
+      value?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -3676,22 +4091,35 @@ declare namespace wx {
    * 获取屏幕亮度。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxgetscreenbrightnessobject
    */
-  function getScreenBrightness(OBJECT: IWxGetScreenBrightnessObject): void
-  type IWxVibrateLongObject = {
+  function getScreenBrightness(OBJECT: getScreenBrightness.Param): void
+
+  namespace vibrateLong {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -3699,22 +4127,35 @@ declare namespace wx {
    * 使手机发生较长时间的振动（400ms）
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxvibratelongobject
    */
-  function vibrateLong(OBJECT: IWxVibrateLongObject): void
-  type IWxVibrateShortObject = {
+  function vibrateLong(OBJECT: vibrateLong.Param): void
+
+  namespace vibrateShort {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -3727,7 +4168,25 @@ declare namespace wx {
    * 2.  `tip`: `getScreenBrightness` 接口若安卓系统设置中开启了自动调节亮度功能，则屏幕亮度会根据光线自动调整，该接口仅能获取自动调节亮度之前的值，而非实时的亮度值。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxvibrateshortobject
    */
-  function vibrateShort(OBJECT: IWxVibrateShortObject): void
+  function vibrateShort(OBJECT: vibrateShort.Param): void
+
+  namespace onAccelerometerChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * X 轴
+       */
+      x?: number
+      /**
+       * Y 轴
+       */
+      y?: number
+      /**
+       * Z 轴
+       */
+      z?: number
+    }
+  }
   /**
    * 监听加速度数据，频率：5次/秒，接口调用后会自动开始监听，可使用 `wx.stopAccelerometer` 停止监听。
    *
@@ -3742,37 +4201,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxonaccelerometerchangecallback
    */
-  function onAccelerometerChange(CALLBACK: ((res: {
-    /**
-     * X 轴
-     */
-    x: number
+  function onAccelerometerChange(CALLBACK: onAccelerometerChange.Param): void
 
-    /**
-     * Y 轴
-     */
-    y: number
-
-    /**
-     * Z 轴
-     */
-    z: number
-  }) => any)): void
-  type IWxStartAccelerometerObject = {
+  namespace startAccelerometer {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -3786,22 +4243,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstartaccelerometerobject
    */
-  function startAccelerometer(OBJECT: IWxStartAccelerometerObject): void
-  type IWxStopAccelerometerObject = {
+  function startAccelerometer(OBJECT: startAccelerometer.Param): void
+
+  namespace stopAccelerometer {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -3815,7 +4285,17 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstopaccelerometerobject
    */
-  function stopAccelerometer(OBJECT: IWxStopAccelerometerObject): void
+  function stopAccelerometer(OBJECT: stopAccelerometer.Param): void
+
+  namespace onCompassChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 面对的方向度数
+       */
+      direction?: number
+    }
+  }
   /**
    * 监听罗盘数据，频率：5次/秒，接口调用后会自动开始监听，可使用`wx.stopCompass`停止监听。
    *
@@ -3828,27 +4308,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxoncompasschangecallback
    */
-  function onCompassChange(CALLBACK: ((res: {
-    /**
-     * 面对的方向度数
-     */
-    direction: number
-  }) => any)): void
-  type IWxStartCompassObject = {
+  function onCompassChange(CALLBACK: onCompassChange.Param): void
+
+  namespace startCompass {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -3862,22 +4350,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxstartcompassobject
    */
-  function startCompass(OBJECT: IWxStartCompassObject): void
-  type IWxStopCompassObject = {
+  function startCompass(OBJECT: startCompass.Param): void
+
+  namespace stopCompass {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -3891,27 +4392,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxstopcompassobject
    */
-  function stopCompass(OBJECT: IWxStopCompassObject): void
-  type IWxMakePhoneCallObject = {
-    /**
-     * 需要拨打的电话号码
-     */
-    phoneNumber: string
+  function stopCompass(OBJECT: stopCompass.Param): void
 
+  namespace makePhoneCall {
+    type Param = {
+      /**
+       * 需要拨打的电话号码
+       */
+      phoneNumber?: string
+      /**
+       * 接口调用成功的回调
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    *
@@ -3924,56 +4437,65 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/phonecall.html#wxmakephonecallobject
    */
-  function makePhoneCall(OBJECT: IWxMakePhoneCallObject): void
-  type IWxScanCodeObject = {
-    /**
-     * 是否只能从相机扫码，不允许从相册选择图片
-     *
-     * @since 1.2.0
-     */
-    onlyFromCamera?: boolean
+  function makePhoneCall(OBJECT: makePhoneCall.Param): void
 
-    /**
-     * 扫码类型，参数类型是数组，二维码是'qrCode'，一维码是'barCode'，DataMatrix是‘datamatrix’，pdf417是‘pdf417’。
-     *
-     * @since 1.7.0
-     */
-    scanType?: any[]
-
+  namespace scanCode {
+    type Param = {
+      /**
+       * 是否只能从相机扫码，不允许从相册选择图片
+       *
+       * @since 1.2.0
+       */
+      onlyFromCamera?: boolean
+      /**
+       * 扫码类型，参数类型是数组，二维码是'qrCode'，一维码是'barCode'，DataMatrix是‘datamatrix’，pdf417是‘pdf417’。
+       *
+       * @since 1.7.0
+       */
+      scanType?: any[]
+      /**
+       * 接口调用成功的回调函数，返回内容详见返回参数说明。
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 所扫码的内容
        */
-      result: any
-
+      result?: any
       /**
        * 所扫码的类型
        */
-      scanType: any
-
+      scanType?: any
       /**
        * 所扫码的字符集
        */
-      charSet: any
-
+      charSet?: any
       /**
        * 当所扫的码为当前小程序的合法二维码时，会返回此字段，内容为二维码携带的 path
        */
-      path: any
-    }) => any
-
+      path?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 调起客户端扫码界面，扫码成功后返回对应的结果
@@ -3998,27 +4520,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/scancode.html#wxscancodeobject
    */
-  function scanCode(OBJECT: IWxScanCodeObject): void
-  type IWxSetClipboardDataObject = {
-    /**
-     * 需要设置的内容
-     */
-    data: string
+  function scanCode(OBJECT: scanCode.Param): void
 
+  namespace setClipboardData {
+    type Param = {
+      /**
+       * 需要设置的内容
+       */
+      data?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4041,27 +4575,41 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html#wxsetclipboarddataobject
    */
-  function setClipboardData(OBJECT: IWxSetClipboardDataObject): void
-  type IWxGetClipboardDataObject = {
+  function setClipboardData(OBJECT: setClipboardData.Param): void
+
+  namespace getClipboardData {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 剪贴板的内容
        */
-      data: string
-    }) => any
-
+      data?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4079,22 +4627,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html#wxgetclipboarddataobject
    */
-  function getClipboardData(OBJECT: IWxGetClipboardDataObject): void
-  type IWxOpenBluetoothAdapterObject = {
+  function getClipboardData(OBJECT: getClipboardData.Param): void
+
+  namespace openBluetoothAdapter {
+    type Param = {
+      /**
+       * 成功则返回成功初始化信息
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回成功初始化信息
      */
-    success: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4118,22 +4679,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxopenbluetoothadapterobject
    */
-  function openBluetoothAdapter(OBJECT: IWxOpenBluetoothAdapterObject): void
-  type IWxCloseBluetoothAdapterObject = {
+  function openBluetoothAdapter(OBJECT: openBluetoothAdapter.Param): void
+
+  namespace closeBluetoothAdapter {
+    type Param = {
+      /**
+       * 成功则返回成功关闭模块信息
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回成功关闭模块信息
      */
-    success: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4151,37 +4725,49 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxclosebluetoothadapterobject
    */
-  function closeBluetoothAdapter(OBJECT: IWxCloseBluetoothAdapterObject): void
-  type IWxGetBluetoothAdapterStateObject = {
+  function closeBluetoothAdapter(OBJECT: closeBluetoothAdapter.Param): void
+
+  namespace getBluetoothAdapterState {
+    type Param = {
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 是否正在搜索设备
        */
-      discovering: boolean
-
+      discovering?: boolean
       /**
        * 蓝牙适配器是否可用
        */
-      available: boolean
-
+      available?: boolean
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4199,7 +4785,21 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbluetoothadapterstateobject
    */
-  function getBluetoothAdapterState(OBJECT: IWxGetBluetoothAdapterStateObject): void
+  function getBluetoothAdapterState(OBJECT: getBluetoothAdapterState.Param): void
+
+  namespace onBluetoothAdapterStateChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 蓝牙适配器是否可用
+       */
+      available?: boolean
+      /**
+       * 蓝牙适配器是否处于搜索状态
+       */
+      discovering?: boolean
+    }
+  }
   /**
    * @since 1.1.0
    *
@@ -4214,52 +4814,53 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbluetoothadapterstatechangecallback
    */
-  function onBluetoothAdapterStateChange(CALLBACK: ((res: {
-    /**
-     * 蓝牙适配器是否可用
-     */
-    available: boolean
+  function onBluetoothAdapterStateChange(CALLBACK: onBluetoothAdapterStateChange.Param): void
 
-    /**
-     * 蓝牙适配器是否处于搜索状态
-     */
-    discovering: boolean
-  }) => any)): void
-  type IWxStartBluetoothDevicesDiscoveryObject = {
-    /**
-     * 蓝牙设备主 service 的 uuid 列表
-     */
-    services?: any[]
-
-    /**
-     * 是否允许重复上报同一设备， 如果允许重复上报，则onDeviceFound 方法会多次上报同一设备，但是 RSSI 值会有不同
-     */
-    allowDuplicatesKey?: boolean
-
-    /**
-     * 上报设备的间隔，默认为0，意思是找到新设备立即上报，否则根据传入的间隔上报
-     */
-    interval?: number
-
+  namespace startBluetoothDevicesDiscovery {
+    type Param = {
+      /**
+       * 蓝牙设备主 service 的 uuid 列表
+       */
+      services?: any[]
+      /**
+       * 是否允许重复上报同一设备， 如果允许重复上报，则onDeviceFound 方法会多次上报同一设备，但是 RSSI 值会有不同
+       */
+      allowDuplicatesKey?: boolean
+      /**
+       * 上报设备的间隔，默认为0，意思是找到新设备立即上报，否则根据传入的间隔上报
+       */
+      interval?: number
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4279,27 +4880,41 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxstartbluetoothdevicesdiscoveryobject
    */
-  function startBluetoothDevicesDiscovery(OBJECT: IWxStartBluetoothDevicesDiscoveryObject): void
-  type IWxStopBluetoothDevicesDiscoveryObject = {
+  function startBluetoothDevicesDiscovery(OBJECT: startBluetoothDevicesDiscovery.Param): void
+
+  namespace stopBluetoothDevicesDiscovery {
+    type Param = {
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4317,67 +4932,79 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxstopbluetoothdevicesdiscoveryobject
    */
-  function stopBluetoothDevicesDiscovery(OBJECT: IWxStopBluetoothDevicesDiscoveryObject): void
-  type IWxGetBluetoothDevicesObject = {
+  function stopBluetoothDevicesDiscovery(OBJECT: stopBluetoothDevicesDiscovery.Param): void
+
+  namespace getBluetoothDevices {
+    type Param = {
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * uuid 对应的的已连接设备列表
        */
-      devices: Array<{
-        /**
-         * 蓝牙设备名称，某些设备可能没有
-         */
-        name: string
-
-        /**
-         * 用于区分设备的 id
-         */
-        deviceId: string
-
-        /**
-         * 当前蓝牙设备的信号强度
-         */
-        RSSI: number
-
-        /**
-         * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
-         */
-        advertisData: ArrayBuffer
-
-        /**
-         * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
-         */
-        advertisServiceUUIDs: any[]
-
-        /**
-         * 当前蓝牙设备的广播数据段中的LocalName数据段
-         */
-        localName: string
-
-        /**
-         * 当前蓝牙设备的广播数据段中的ServiceData数据段
-         */
-        serviceData: ArrayBuffer
-      }>
-
+      devices?: ParamPropSuccessParamPropDevices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * uuid 对应的的已连接设备列表
+     */
+    type ParamPropSuccessParamPropDevices = ParamPropSuccessParamPropDevicesItem[]
+    type ParamPropSuccessParamPropDevicesItem = {
+      /**
+       * 蓝牙设备名称，某些设备可能没有
+       */
+      name?: string
+      /**
+       * 用于区分设备的 id
+       */
+      deviceId?: string
+      /**
+       * 当前蓝牙设备的信号强度
+       */
+      RSSI?: number
+      /**
+       * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
+       */
+      advertisData?: ArrayBuffer
+      /**
+       * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
+       */
+      advertisServiceUUIDs?: any[]
+      /**
+       * 当前蓝牙设备的广播数据段中的LocalName数据段
+       */
+      localName?: string
+      /**
+       * 当前蓝牙设备的广播数据段中的ServiceData数据段
+       */
+      serviceData?: ArrayBuffer
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4415,7 +5042,51 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbluetoothdevicesobject
    */
-  function getBluetoothDevices(OBJECT: IWxGetBluetoothDevicesObject): void
+  function getBluetoothDevices(OBJECT: getBluetoothDevices.Param): void
+
+  namespace onBluetoothDeviceFound {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 新搜索到的设备列表
+       */
+      devices?: ParamParamPropDevices
+    }
+    /**
+     * 新搜索到的设备列表
+     */
+    type ParamParamPropDevices = ParamParamPropDevicesItem[]
+    type ParamParamPropDevicesItem = {
+      /**
+       * 蓝牙设备名称，某些设备可能没有
+       */
+      name?: string
+      /**
+       * 用于区分设备的 id
+       */
+      deviceId?: string
+      /**
+       * 当前蓝牙设备的信号强度
+       */
+      RSSI?: number
+      /**
+       * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
+       */
+      advertisData?: ArrayBuffer
+      /**
+       * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
+       */
+      advertisServiceUUIDs?: any[]
+      /**
+       * 当前蓝牙设备的广播数据段中的LocalName数据段
+       */
+      localName?: string
+      /**
+       * 当前蓝牙设备的广播数据段中的ServiceData数据段
+       */
+      serviceData?: ArrayBuffer
+    }
+  }
   /**
    * @since 1.1.0
    *
@@ -4448,87 +5119,63 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbluetoothdevicefoundcallback
    */
-  function onBluetoothDeviceFound(CALLBACK: ((res: {
-    /**
-     * 新搜索到的设备列表
-     */
-    devices: Array<{
-      /**
-       * 蓝牙设备名称，某些设备可能没有
-       */
-      name: string
+  function onBluetoothDeviceFound(CALLBACK: onBluetoothDeviceFound.Param): void
 
+  namespace getConnectedBluetoothDevices {
+    type Param = {
       /**
-       * 用于区分设备的 id
+       * 蓝牙设备主 service 的 uuid 列表
        */
-      deviceId: string
-
+      services?: any[]
       /**
-       * 当前蓝牙设备的信号强度
+       * 成功则返回本机蓝牙适配器状态
        */
-      RSSI: number
-
+      success?: ParamPropSuccess
       /**
-       * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
+       * 接口调用失败的回调函数
        */
-      advertisData: ArrayBuffer
-
+      fail?: ParamPropFail
       /**
-       * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
        */
-      advertisServiceUUIDs: any[]
-
-      /**
-       * 当前蓝牙设备的广播数据段中的LocalName数据段
-       */
-      localName: string
-
-      /**
-       * 当前蓝牙设备的广播数据段中的ServiceData数据段
-       */
-      serviceData: ArrayBuffer
-    }>
-  }) => any)): void
-  type IWxGetConnectedBluetoothDevicesObject = {
-    /**
-     * 蓝牙设备主 service 的 uuid 列表
-     */
-    services: any[]
-
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 搜索到的设备列表
        */
-      devices: Array<{
-        /**
-         * 蓝牙设备名称，某些设备可能没有
-         */
-        name: string
-
-        /**
-         * 用于区分设备的 id
-         */
-        deviceId: string
-      }>
-
+      devices?: ParamPropSuccessParamPropDevices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * 搜索到的设备列表
+     */
+    type ParamPropSuccessParamPropDevices = ParamPropSuccessParamPropDevicesItem[]
+    type ParamPropSuccessParamPropDevicesItem = {
+      /**
+       * 蓝牙设备名称，某些设备可能没有
+       */
+      name?: string
+      /**
+       * 用于区分设备的 id
+       */
+      deviceId?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4550,32 +5197,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetconnectedbluetoothdevicesobject
    */
-  function getConnectedBluetoothDevices(OBJECT: IWxGetConnectedBluetoothDevicesObject): void
-  type IWxCreateBleConnectionObject = {
-    /**
-     * 蓝牙设备 id，参考 getDevices 接口
-     */
-    deviceId: string
+  function getConnectedBluetoothDevices(OBJECT: getConnectedBluetoothDevices.Param): void
 
+  namespace createBLEConnection {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 getDevices 接口
+       */
+      deviceId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4603,32 +5263,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxcreatebleconnectionobject
    */
-  function createBLEConnection(OBJECT: IWxCreateBleConnectionObject): void
-  type IWxCloseBleConnectionObject = {
-    /**
-     * 蓝牙设备 id，参考 getDevices 接口
-     */
-    deviceId: string
+  function createBLEConnection(OBJECT: createBLEConnection.Param): void
 
+  namespace closeBLEConnection {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 getDevices 接口
+       */
+      deviceId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4647,7 +5320,21 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxclosebleconnectionobject
    */
-  function closeBLEConnection(OBJECT: IWxCloseBleConnectionObject): void
+  function closeBLEConnection(OBJECT: closeBLEConnection.Param): void
+
+  namespace onBLEConnectionStateChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 连接目前的状态
+       */
+      connected?: boolean
+    }
+  }
   /**
    * @since 1.1.1
    *
@@ -4663,57 +5350,63 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbleconnectionstatechangecallback
    */
-  function onBLEConnectionStateChange(CALLBACK: ((res: {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function onBLEConnectionStateChange(CALLBACK: onBLEConnectionStateChange.Param): void
 
-    /**
-     * 连接目前的状态
-     */
-    connected: boolean
-  }) => any)): void
-  type IWxGetBleDeviceServicesObject = {
-    /**
-     * 蓝牙设备 id，参考 getDevices 接口
-     */
-    deviceId: string
-
+  namespace getBLEDeviceServices {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 getDevices 接口
+       */
+      deviceId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 设备服务列表
        */
-      services: Array<{
-        /**
-         * 蓝牙设备服务的 uuid
-         */
-        uuid: string
-
-        /**
-         * 该服务是否为主服务
-         */
-        isPrimary: boolean
-      }>
-
+      services?: ParamPropSuccessParamPropServices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * 设备服务列表
+     */
+    type ParamPropSuccessParamPropServices = ParamPropSuccessParamPropServicesItem[]
+    type ParamPropSuccessParamPropServicesItem = {
+      /**
+       * 蓝牙设备服务的 uuid
+       */
+      uuid?: string
+      /**
+       * 该服务是否为主服务
+       */
+      isPrimary?: boolean
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4737,72 +5430,88 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbledeviceservicesobject
    */
-  function getBLEDeviceServices(OBJECT: IWxGetBleDeviceServicesObject): void
-  type IWxGetBleDeviceCharacteristicsObject = {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function getBLEDeviceServices(OBJECT: getBLEDeviceServices.Param): void
 
-    /**
-     * 蓝牙服务 uuid
-     */
-    serviceId: string
-
+  namespace getBLEDeviceCharacteristics {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 蓝牙服务 uuid
+       */
+      serviceId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 设备特征值列表
        */
-      characteristics: Array<{
-        /**
-         * 蓝牙设备特征值的 uuid
-         */
-        uuid: string
-
-        /**
-         * 该特征值支持的操作类型
-         */
-        properties: {
-          /**
-           * 该特征值是否支持 read 操作
-           */
-          read: boolean
-
-          /**
-           * 该特征值是否支持 write 操作
-           */
-          write: boolean
-
-          /**
-           * 该特征值是否支持 notify 操作
-           */
-          notify: boolean
-
-          /**
-           * 该特征值是否支持 indicate 操作
-           */
-          indicate: boolean
-        }
-      }>
-
+      characteristics?: ParamPropSuccessParamPropCharacteristics
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * 设备特征值列表
+     */
+    type ParamPropSuccessParamPropCharacteristics = ParamPropSuccessParamPropCharacteristicsItem[]
+    type ParamPropSuccessParamPropCharacteristicsItem = {
+      /**
+       * 蓝牙设备特征值的 uuid
+       */
+      uuid?: string
+      /**
+       * 该特征值支持的操作类型
+       */
+      properties?: ParamPropSuccessParamPropCharacteristicsItemPropProperties
+    }
+    /**
+     * 该特征值支持的操作类型
+     */
+    type ParamPropSuccessParamPropCharacteristicsItemPropProperties = {
+      /**
+       * 该特征值是否支持 read 操作
+       */
+      read?: boolean
+      /**
+       * 该特征值是否支持 write 操作
+       */
+      write?: boolean
+      /**
+       * 该特征值是否支持 notify 操作
+       */
+      notify?: boolean
+      /**
+       * 该特征值是否支持 indicate 操作
+       */
+      indicate?: boolean
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4829,47 +5538,57 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbledevicecharacteristicsobject
    */
-  function getBLEDeviceCharacteristics(OBJECT: IWxGetBleDeviceCharacteristicsObject): void
-  type IWxReadBleCharacteristicValueObject = {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function getBLEDeviceCharacteristics(OBJECT: getBLEDeviceCharacteristics.Param): void
 
-    /**
-     * 蓝牙特征值对应服务的 uuid
-     */
-    serviceId: string
-
-    /**
-     * 蓝牙特征值的 uuid
-     */
-    characteristicId: string
-
+  namespace readBLECharacteristicValue {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 蓝牙特征值对应服务的 uuid
+       */
+      serviceId?: string
+      /**
+       * 蓝牙特征值的 uuid
+       */
+      characteristicId?: string
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误码
        */
-      errCode: number
-
+      errCode?: number
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4903,47 +5622,57 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxreadblecharacteristicvalueobject
    */
-  function readBLECharacteristicValue(OBJECT: IWxReadBleCharacteristicValueObject): void
-  type IWxWriteBleCharacteristicValueObject = {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function readBLECharacteristicValue(OBJECT: readBLECharacteristicValue.Param): void
 
-    /**
-     * 蓝牙特征值对应服务的 uuid
-     */
-    serviceId: string
-
-    /**
-     * 蓝牙特征值的 uuid
-     */
-    characteristicId: string
-
-    /**
-     * 蓝牙设备特征值对应的二进制值
-     */
-    value: ArrayBuffer
-
+  namespace writeBLECharacteristicValue {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 蓝牙特征值对应服务的 uuid
+       */
+      serviceId?: string
+      /**
+       * 蓝牙特征值的 uuid
+       */
+      characteristicId?: string
+      /**
+       * 蓝牙设备特征值对应的二进制值
+       */
+      value?: ArrayBuffer
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -4983,47 +5712,57 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxwriteblecharacteristicvalueobject
    */
-  function writeBLECharacteristicValue(OBJECT: IWxWriteBleCharacteristicValueObject): void
-  type IWxNotifyBleCharacteristicValueChangeObject = {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function writeBLECharacteristicValue(OBJECT: writeBLECharacteristicValue.Param): void
 
-    /**
-     * 蓝牙特征值对应服务的 uuid
-     */
-    serviceId: string
-
-    /**
-     * 蓝牙特征值的 uuid
-     */
-    characteristicId: string
-
-    /**
-     * true: 启用 notify; false: 停用 notify
-     */
-    state: boolean
-
+  namespace notifyBLECharacteristicValueChange {
+    type Param = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 蓝牙特征值对应服务的 uuid
+       */
+      serviceId?: string
+      /**
+       * 蓝牙特征值的 uuid
+       */
+      characteristicId?: string
+      /**
+       * true: 启用 notify; false: 停用 notify
+       */
+      state?: boolean
+      /**
+       * 成功则返回本机蓝牙适配器状态
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 成功则返回本机蓝牙适配器状态
      */
-    success: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.1
@@ -5055,7 +5794,29 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxnotifyblecharacteristicvaluechangeobject
    */
-  function notifyBLECharacteristicValueChange(OBJECT: IWxNotifyBleCharacteristicValueChangeObject): void
+  function notifyBLECharacteristicValueChange(OBJECT: notifyBLECharacteristicValueChange.Param): void
+
+  namespace onBLECharacteristicValueChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 蓝牙设备 id，参考 device 对象
+       */
+      deviceId?: string
+      /**
+       * 特征值所属服务 uuid
+       */
+      serviceId?: string
+      /**
+       * 特征值 uuid
+       */
+      characteristicId?: string
+      /**
+       * 特征值最新的值 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
+       */
+      value?: ArrayBuffer
+    }
+  }
   /**
    * @since 1.1.0
    *
@@ -5081,52 +5842,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonblecharacteristicvaluechangecallback
    */
-  function onBLECharacteristicValueChange(CALLBACK: ((res: {
-    /**
-     * 蓝牙设备 id，参考 device 对象
-     */
-    deviceId: string
+  function onBLECharacteristicValueChange(CALLBACK: onBLECharacteristicValueChange.Param): void
 
-    /**
-     * 特征值所属服务 uuid
-     */
-    serviceId: string
-
-    /**
-     * 特征值 uuid
-     */
-    characteristicId: string
-
-    /**
-     * 特征值最新的值 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
-     */
-    value: ArrayBuffer
-  }) => any)): void
-  type IWxStartBeaconDiscoveryObject = {
-    /**
-     * iBeacon设备广播的 uuids
-     */
-    uuids: string[]
-
+  namespace startBeaconDiscovery {
+    type Param = {
+      /**
+       * iBeacon设备广播的 uuids
+       */
+      uuids?: string[]
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -5143,27 +5897,41 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxstartbeacondiscoveryobject
    */
-  function startBeaconDiscovery(OBJECT: IWxStartBeaconDiscoveryObject): void
-  type IWxStopBeaconDiscoveryObject = {
+  function startBeaconDiscovery(OBJECT: startBeaconDiscovery.Param): void
+
+  namespace stopBeaconDiscovery {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -5171,62 +5939,75 @@ declare namespace wx {
    * 停止搜索附近的`iBeacon`设备
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxstopbeacondiscoveryobject
    */
-  function stopBeaconDiscovery(OBJECT: IWxStopBeaconDiscoveryObject): void
-  type IWxGetBeaconsObject = {
+  function stopBeaconDiscovery(OBJECT: stopBeaconDiscovery.Param): void
+
+  namespace getBeacons {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * iBeacon 设备列表
        */
-      beacons: Array<{
-        /**
-         * iBeacon 设备广播的 uuid
-         */
-        uuid: string
-
-        /**
-         * iBeacon 设备的主 id
-         */
-        major: string
-
-        /**
-         * iBeacon 设备的次 id
-         */
-        minor: string
-
-        /**
-         * 表示设备距离的枚举值
-         */
-        proximity: number
-
-        /**
-         * iBeacon 设备的距离
-         */
-        accuracy: number
-
-        /**
-         * 表示设备的信号强度
-         */
-        rssi: number
-      }>
-
+      beacons?: ParamPropSuccessParamPropBeacons
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
+    /**
+     * iBeacon 设备列表
+     */
+    type ParamPropSuccessParamPropBeacons = ParamPropSuccessParamPropBeaconsItem[]
+    type ParamPropSuccessParamPropBeaconsItem = {
+      /**
+       * iBeacon 设备广播的 uuid
+       */
+      uuid?: string
+      /**
+       * iBeacon 设备的主 id
+       */
+      major?: string
+      /**
+       * iBeacon 设备的次 id
+       */
+      minor?: string
+      /**
+       * 表示设备距离的枚举值
+       */
+      proximity?: number
+      /**
+       * iBeacon 设备的距离
+       */
+      accuracy?: number
+      /**
+       * 表示设备的信号强度
+       */
+      rssi?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -5234,91 +6015,113 @@ declare namespace wx {
    * 获取所有已搜索到的`iBeacon`设备
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxgetbeaconsobject
    */
-  function getBeacons(OBJECT: IWxGetBeaconsObject): void
+  function getBeacons(OBJECT: getBeacons.Param): void
+
+  namespace onBeaconUpdate {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 当前搜寻到的所有 iBeacon 设备列表
+       */
+      beacons?: ParamParamPropBeacons
+    }
+    /**
+     * 当前搜寻到的所有 iBeacon 设备列表
+     */
+    type ParamParamPropBeacons = ParamParamPropBeaconsItem[]
+    type ParamParamPropBeaconsItem = {
+      /**
+       * iBeacon 设备广播的 uuid
+       */
+      uuid?: string
+      /**
+       * iBeacon 设备的主 id
+       */
+      major?: string
+      /**
+       * iBeacon 设备的次 id
+       */
+      minor?: string
+      /**
+       * 表示设备距离的枚举值
+       */
+      proximity?: number
+      /**
+       * iBeacon 设备的距离
+       */
+      accuracy?: number
+      /**
+       * 表示设备的信号强度
+       */
+      rssi?: number
+    }
+  }
   /**
    * @since 1.2.0
    *
    * 监听 `iBeacon` 设备的更新事件
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxonbeaconupdatecallback
    */
-  function onBeaconUpdate(CALLBACK: ((res: {
-    /**
-     * 当前搜寻到的所有 iBeacon 设备列表
-     */
-    beacons: Array<{
-      /**
-       * iBeacon 设备广播的 uuid
-       */
-      uuid: string
+  function onBeaconUpdate(CALLBACK: onBeaconUpdate.Param): void
 
+  namespace onBeaconServiceChange {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
       /**
-       * iBeacon 设备的主 id
+       * 服务目前是否可用
        */
-      major: string
-
+      available?: boolean
       /**
-       * iBeacon 设备的次 id
+       * 目前是否处于搜索状态
        */
-      minor: string
-
-      /**
-       * 表示设备距离的枚举值
-       */
-      proximity: number
-
-      /**
-       * iBeacon 设备的距离
-       */
-      accuracy: number
-
-      /**
-       * 表示设备的信号强度
-       */
-      rssi: number
-    }>
-  }) => any)): void
+      discovering?: boolean
+    }
+  }
   /**
    * @since 1.2.0
    *
    * 监听 `iBeacon` 服务的状态变化
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxonbeaconservicechangecallback
    */
-  function onBeaconServiceChange(CALLBACK: ((res: {
-    /**
-     * 服务目前是否可用
-     */
-    available: boolean
+  function onBeaconServiceChange(CALLBACK: onBeaconServiceChange.Param): void
 
-    /**
-     * 目前是否处于搜索状态
-     */
-    discovering: boolean
-  }) => any)): void
-  type IWxSetKeepScreenOnObject = {
-    /**
-     * 是否保持屏幕常亮
-     */
-    keepScreenOn: boolean
-
+  namespace setKeepScreenOn {
+    type Param = {
+      /**
+       * 是否保持屏幕常亮
+       */
+      keepScreenOn?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.4.0
@@ -5335,7 +6138,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setKeepScreenOn.html#wxsetkeepscreenonobject
    */
-  function setKeepScreenOn(OBJECT: IWxSetKeepScreenOnObject): void
+  function setKeepScreenOn(OBJECT: setKeepScreenOn.Param): void
+
   /**
    * @since 1.4.0
    *
@@ -5351,181 +6155,162 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/onUserCaptureScreen.html#wxonusercapturescreencallback
    */
   function onUserCaptureScreen(CALLBACK: any): void
-  type IWxAddPhoneContactObject = {
-    /**
-     * 头像本地文件路径
-     */
-    photoFilePath?: string
 
-    /**
-     * 昵称
-     */
-    nickName?: string
-
-    /**
-     * 姓氏
-     */
-    lastName?: string
-
-    /**
-     * 中间名
-     */
-    middleName?: string
-
-    /**
-     * 名字
-     */
-    firstName: string
-
-    /**
-     * 备注
-     */
-    remark?: string
-
-    /**
-     * 手机号
-     */
-    mobilePhoneNumber?: string
-
-    /**
-     * 微信号
-     */
-    weChatNumber?: string
-
-    /**
-     * 联系地址国家
-     */
-    addressCountry?: string
-
-    /**
-     * 联系地址省份
-     */
-    addressState?: string
-
-    /**
-     * 联系地址城市
-     */
-    addressCity?: string
-
-    /**
-     * 联系地址街道
-     */
-    addressStreet?: string
-
-    /**
-     * 联系地址邮政编码
-     */
-    addressPostalCode?: string
-
-    /**
-     * 公司
-     */
-    organization?: string
-
-    /**
-     * 职位
-     */
-    title?: string
-
-    /**
-     * 工作传真
-     */
-    workFaxNumber?: string
-
-    /**
-     * 工作电话
-     */
-    workPhoneNumber?: string
-
-    /**
-     * 公司电话
-     */
-    hostNumber?: string
-
-    /**
-     * 电子邮件
-     */
-    email?: string
-
-    /**
-     * 网站
-     */
-    url?: string
-
-    /**
-     * 工作地址国家
-     */
-    workAddressCountry?: string
-
-    /**
-     * 工作地址省份
-     */
-    workAddressState?: string
-
-    /**
-     * 工作地址城市
-     */
-    workAddressCity?: string
-
-    /**
-     * 工作地址街道
-     */
-    workAddressStreet?: string
-
-    /**
-     * 工作地址邮政编码
-     */
-    workAddressPostalCode?: string
-
-    /**
-     * 住宅传真
-     */
-    homeFaxNumber?: string
-
-    /**
-     * 住宅电话
-     */
-    homePhoneNumber?: string
-
-    /**
-     * 住宅地址国家
-     */
-    homeAddressCountry?: string
-
-    /**
-     * 住宅地址省份
-     */
-    homeAddressState?: string
-
-    /**
-     * 住宅地址城市
-     */
-    homeAddressCity?: string
-
-    /**
-     * 住宅地址街道
-     */
-    homeAddressStreet?: string
-
-    /**
-     * 住宅地址邮政编码
-     */
-    homeAddressPostalCode?: string
-
+  namespace addPhoneContact {
+    type Param = {
+      /**
+       * 头像本地文件路径
+       */
+      photoFilePath?: string
+      /**
+       * 昵称
+       */
+      nickName?: string
+      /**
+       * 姓氏
+       */
+      lastName?: string
+      /**
+       * 中间名
+       */
+      middleName?: string
+      /**
+       * 名字
+       */
+      firstName?: string
+      /**
+       * 备注
+       */
+      remark?: string
+      /**
+       * 手机号
+       */
+      mobilePhoneNumber?: string
+      /**
+       * 微信号
+       */
+      weChatNumber?: string
+      /**
+       * 联系地址国家
+       */
+      addressCountry?: string
+      /**
+       * 联系地址省份
+       */
+      addressState?: string
+      /**
+       * 联系地址城市
+       */
+      addressCity?: string
+      /**
+       * 联系地址街道
+       */
+      addressStreet?: string
+      /**
+       * 联系地址邮政编码
+       */
+      addressPostalCode?: string
+      /**
+       * 公司
+       */
+      organization?: string
+      /**
+       * 职位
+       */
+      title?: string
+      /**
+       * 工作传真
+       */
+      workFaxNumber?: string
+      /**
+       * 工作电话
+       */
+      workPhoneNumber?: string
+      /**
+       * 公司电话
+       */
+      hostNumber?: string
+      /**
+       * 电子邮件
+       */
+      email?: string
+      /**
+       * 网站
+       */
+      url?: string
+      /**
+       * 工作地址国家
+       */
+      workAddressCountry?: string
+      /**
+       * 工作地址省份
+       */
+      workAddressState?: string
+      /**
+       * 工作地址城市
+       */
+      workAddressCity?: string
+      /**
+       * 工作地址街道
+       */
+      workAddressStreet?: string
+      /**
+       * 工作地址邮政编码
+       */
+      workAddressPostalCode?: string
+      /**
+       * 住宅传真
+       */
+      homeFaxNumber?: string
+      /**
+       * 住宅电话
+       */
+      homePhoneNumber?: string
+      /**
+       * 住宅地址国家
+       */
+      homeAddressCountry?: string
+      /**
+       * 住宅地址省份
+       */
+      homeAddressState?: string
+      /**
+       * 住宅地址城市
+       */
+      homeAddressCity?: string
+      /**
+       * 住宅地址街道
+       */
+      homeAddressStreet?: string
+      /**
+       * 住宅地址邮政编码
+       */
+      homeAddressPostalCode?: string
+      /**
+       * 接口调用成功
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -5541,32 +6326,45 @@ declare namespace wx {
    *   fail      |  fail ${detail}   |调用失败，detail 加上详细信息
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/phone-contact.html#wxaddphonecontactobject
    */
-  function addPhoneContact(OBJECT: IWxAddPhoneContactObject): void
-  type IWxGetHceStateObject = {
+  function addPhoneContact(OBJECT: addPhoneContact.Param): void
+
+  namespace getHCEState {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 错误码
        */
-      errCode: number
-    }) => any
-
+      errCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.7.0
@@ -5584,37 +6382,49 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxgethcestateobject
    */
-  function getHCEState(OBJECT: IWxGetHceStateObject): void
-  type IWxStartHceObject = {
-    /**
-     * 需要注册到系统的 AID 列表，每个 AID 为 String 类型
-     */
-    aid_list: any[]
+  function getHCEState(OBJECT: getHCEState.Param): void
 
+  namespace startHCE {
+    type Param = {
+      /**
+       * 需要注册到系统的 AID 列表，每个 AID 为 String 类型
+       */
+      aid_list?: any[]
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 错误码
        */
-      errCode: number
-    }) => any
-
+      errCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.7.0
@@ -5633,32 +6443,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxstarthceobject
    */
-  function startHCE(OBJECT: IWxStartHceObject): void
-  type IWxStopHceObject = {
+  function startHCE(OBJECT: startHCE.Param): void
+
+  namespace stopHCE {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 错误码
        */
-      errCode: number
-    }) => any
-
+      errCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.7.0
@@ -5676,7 +6499,25 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxstophceobject
    */
-  function stopHCE(OBJECT: IWxStopHceObject): void
+  function stopHCE(OBJECT: stopHCE.Param): void
+
+  namespace onHCEMessage {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 消息类型
+       */
+      messageType?: number
+      /**
+       * 客户端接收到 NFC 设备的指令，此参数当且仅当 `messageType=1` 时有效
+       */
+      data?: ArrayBuffer
+      /**
+       * 此参数当且仅当 `messageType=2` 时有效
+       */
+      reason?: number
+    }
+  }
   /**
    * @since 1.7.0
    *
@@ -5686,37 +6527,36 @@ declare namespace wx {
    * *   2：消息为设备离场事件
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxonhcemessagecallback
    */
-  function onHCEMessage(CALLBACK: ((res: {
-    /**
-     * 消息类型
-     */
-    messageType: number
+  function onHCEMessage(CALLBACK: onHCEMessage.Param): void
 
-    /**
-     * 客户端接收到 NFC 设备的指令，此参数当且仅当 `messageType=1` 时有效
-     */
-    data: ArrayBuffer
-
-    /**
-     * 此参数当且仅当 `messageType=2` 时有效
-     */
-    reason: number
-  }) => any)): void
-  type IWxSendHceMessageObject = {
-    /**
-     * 二进制数据
-     */
-    data: ArrayBuffer
-
+  namespace sendHCEMessage {
+    type Param = {
+      /**
+       * 二进制数据
+       */
+      data?: ArrayBuffer
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 错误码
        *
@@ -5735,18 +6575,16 @@ declare namespace wx {
        *   13005   |  返回的指令不合法         
        *   13006   |  注册 AID 失败            
        */
-      errCode: number
-    }) => any
-
+      errCode?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.7.0
@@ -5772,22 +6610,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxsendhcemessageobject
    */
-  function sendHCEMessage(OBJECT: IWxSendHceMessageObject): void
-  type IWxStartWifiObject = {
+  function sendHCEMessage(OBJECT: sendHCEMessage.Param): void
+
+  namespace startWifi {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -5805,22 +6656,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxstartwifiobject
    */
-  function startWifi(OBJECT: IWxStartWifiObject): void
-  type IWxStopWifiObject = {
+  function startWifi(OBJECT: startWifi.Param): void
+
+  namespace stopWifi {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -5838,37 +6702,47 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxstopwifiobject
    */
-  function stopWifi(OBJECT: IWxStopWifiObject): void
-  type IWxConnectWifiObject = {
-    /**
-     * Wi-Fi 设备ssid
-     */
-    SSID: string
+  function stopWifi(OBJECT: stopWifi.Param): void
 
-    /**
-     * Wi-Fi 设备bssid
-     */
-    BSSID: string
-
-    /**
-     * Wi-Fi 设备密码
-     */
-    password?: string
-
+  namespace connectWifi {
+    type Param = {
+      /**
+       * Wi-Fi 设备ssid
+       */
+      SSID?: string
+      /**
+       * Wi-Fi 设备bssid
+       */
+      BSSID?: string
+      /**
+       * Wi-Fi 设备密码
+       */
+      password?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -5888,22 +6762,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxconnectwifiobject
    */
-  function connectWifi(OBJECT: IWxConnectWifiObject): void
-  type IWxGetWifiListObject = {
+  function connectWifi(OBJECT: connectWifi.Param): void
+
+  namespace getWifiList {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -5911,74 +6798,96 @@ declare namespace wx {
    * 请求获取 Wi-Fi 列表，在 `onGetWifiList` 注册的回调中返回 wifiList 数据。iOS 将跳转到系统的 Wi-Fi 界面，Android 不会跳转。 **iOS 11.0 及 iOS 11.1 两个版本因系统问题，该方法失效。但在 iOS 11.2 中已修复。**
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxgetwifilistobject
    */
-  function getWifiList(OBJECT: IWxGetWifiListObject): void
+  function getWifiList(OBJECT: getWifiList.Param): void
+
+  namespace onGetWifiList {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * Wi-Fi 列表数据
+       */
+      wifiList?: ParamParamPropWifiList
+    }
+    /**
+     * Wi-Fi 列表数据
+     */
+    type ParamParamPropWifiList = ParamParamPropWifiListItem[]
+    type ParamParamPropWifiListItem = {
+      /**
+       * Wi-Fi 的SSID
+       */
+      SSID?: string
+      /**
+       * Wi-Fi 的BSSID
+       */
+      BSSID?: string
+      /**
+       * Wi-Fi 是否安全
+       */
+      secure?: boolean
+      /**
+       * Wi-Fi 信号强度
+       */
+      signalStrength?: number
+    }
+  }
   /**
    * @since 1.6.0
    *
    * 监听在获取到 Wi-Fi 列表数据时的事件，在回调中将返回 wifiList。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxongetwifilistcallback
    */
-  function onGetWifiList(CALLBACK: ((res: {
-    /**
-     * Wi-Fi 列表数据
-     */
-    wifiList: Array<{
-      /**
-       * Wi-Fi 的SSID
-       */
-      SSID: string
+  function onGetWifiList(CALLBACK: onGetWifiList.Param): void
 
+  namespace setWifiList {
+    type Param = {
       /**
-       * Wi-Fi 的BSSID
+       * 提供预设的 Wi-Fi 信息列表
        */
-      BSSID: string
-
+      wifiList?: ParamPropWifiList
       /**
-       * Wi-Fi 是否安全
+       * 接口调用成功的回调函数
        */
-      secure: boolean
-
+      success?: ParamPropSuccess
       /**
-       * Wi-Fi 信号强度
+       * 接口调用失败的回调函数
        */
-      signalStrength: number
-    }>
-  }) => any)): void
-  type IWxSetWifiListObject = {
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 提供预设的 Wi-Fi 信息列表
      */
-    wifiList: Array<{
+    type ParamPropWifiList = ParamPropWifiListItem[]
+    type ParamPropWifiListItem = {
       /**
        * Wi-Fi 设备ssid
        */
-      SSID: string
-
+      SSID?: string
       /**
        * Wi-Fi 设备bssid
        */
-      BSSID: string
-
+      BSSID?: string
       /**
        * Wi-Fi 设备密码
        */
-      password: string
-    }>
-
+      password?: string
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -6013,79 +6922,100 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxsetwifilistobject
    */
-  function setWifiList(OBJECT: IWxSetWifiListObject): void
+  function setWifiList(OBJECT: setWifiList.Param): void
+
+  namespace onWifiConnected {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * Wi-Fi 信息
+       */
+      wifi?: ParamParamPropWifi
+    }
+    /**
+     * Wi-Fi 信息
+     */
+    type ParamParamPropWifi = {
+      /**
+       * Wi-Fi 的SSID
+       */
+      SSID?: string
+      /**
+       * Wi-Fi 的BSSID
+       */
+      BSSID?: string
+      /**
+       * Wi-Fi 是否安全
+       */
+      secure?: boolean
+      /**
+       * Wi-Fi 信号强度
+       */
+      signalStrength?: number
+    }
+  }
   /**
    * @since 1.6.0
    *
    * 监听连接上 Wi-Fi 的事件。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxonwificonnectedcallback
    */
-  function onWifiConnected(CALLBACK: ((res: {
-    /**
-     * Wi-Fi 信息
-     */
-    wifi: {
-      /**
-       * Wi-Fi 的SSID
-       */
-      SSID: string
+  function onWifiConnected(CALLBACK: onWifiConnected.Param): void
 
+  namespace getConnectedWifi {
+    type Param = {
       /**
-       * Wi-Fi 的BSSID
+       * 接口调用成功的回调函数
        */
-      BSSID: string
-
+      success?: ParamPropSuccess
       /**
-       * Wi-Fi 是否安全
+       * 接口调用失败的回调函数
        */
-      secure: boolean
-
+      fail?: ParamPropFail
       /**
-       * Wi-Fi 信号强度
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
        */
-      signalStrength: number
+      complete?: ParamPropComplete
     }
-  }) => any)): void
-  type IWxGetConnectedWifiObject = {
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * Wi-Fi 信息
        */
-      wifi: {
-        /**
-         * Wi-Fi 的SSID
-         */
-        SSID: string
-
-        /**
-         * Wi-Fi 的BSSID
-         */
-        BSSID: string
-
-        /**
-         * Wi-Fi 是否安全
-         */
-        secure: boolean
-
-        /**
-         * Wi-Fi 信号强度
-         */
-        signalStrength: number
-      }
-    }) => any
-
+      wifi?: ParamPropSuccessParamPropWifi
+    }
+    /**
+     * Wi-Fi 信息
+     */
+    type ParamPropSuccessParamPropWifi = {
+      /**
+       * Wi-Fi 的SSID
+       */
+      SSID?: string
+      /**
+       * Wi-Fi 的BSSID
+       */
+      BSSID?: string
+      /**
+       * Wi-Fi 是否安全
+       */
+      secure?: boolean
+      /**
+       * Wi-Fi 信号强度
+       */
+      signalStrength?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -6113,57 +7043,65 @@ declare namespace wx {
    *   12011   |  weapp in background     |  应用在后台无法配置 Wi-Fi    
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxgetconnectedwifiobject
    */
-  function getConnectedWifi(OBJECT: IWxGetConnectedWifiObject): void
-  type IWxShowToastObject = {
-    /**
-     * 提示的内容
-     */
-    title: string
+  function getConnectedWifi(OBJECT: getConnectedWifi.Param): void
 
-    /**
-     * 图标，有效值 "success", "loading", "none"
-     *
-     * **icon有效值：**
-     *
-     *   有效值    |  说明                                 | 最低版本 
-     * ------------|---------------------------------------|----------
-     *   success   |显示成功图标，此时 title 文本最多显示 7 个汉字长度。默认值|          
-     *   loading   |显示加载图标，此时 title 文本最多显示 7 个汉字长度。|          
-     *   none      |不显示图标，此时 title 文本最多可显示两行|  1.9.0   
-     */
-    icon?: string
-
-    /**
-     * 自定义图标的本地路径，image 的优先级高于 icon
-     *
-     * @since 1.1.0
-     */
-    image?: string
-
-    /**
-     * 提示的延迟时间，单位毫秒，默认：1500
-     */
-    duration?: number
-
-    /**
-     * 是否显示透明蒙层，防止触摸穿透，默认：false
-     */
-    mask?: boolean
-
+  namespace showToast {
+    type Param = {
+      /**
+       * 提示的内容
+       */
+      title?: string
+      /**
+       * 图标，有效值 "success", "loading", "none"
+       *
+       * **icon有效值：**
+       *
+       *   有效值    |  说明                                 | 最低版本 
+       * ------------|---------------------------------------|----------
+       *   success   |显示成功图标，此时 title 文本最多显示 7 个汉字长度。默认值|          
+       *   loading   |显示加载图标，此时 title 文本最多显示 7 个汉字长度。|          
+       *   none      |不显示图标，此时 title 文本最多可显示两行|  1.9.0   
+       */
+      icon?: string
+      /**
+       * 自定义图标的本地路径，image 的优先级高于 icon
+       *
+       * @since 1.1.0
+       */
+      image?: string
+      /**
+       * 提示的延迟时间，单位毫秒，默认：1500
+       */
+      duration?: number
+      /**
+       * 是否显示透明蒙层，防止触摸穿透，默认：false
+       */
+      mask?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 显示消息提示框
@@ -6179,32 +7117,43 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowtoastobject
    */
-  function showToast(OBJECT: IWxShowToastObject): void
-  type IWxShowLoadingObject = {
-    /**
-     * 提示的内容
-     */
-    title: string
+  function showToast(OBJECT: showToast.Param): void
 
-    /**
-     * 是否显示透明蒙层，防止触摸穿透，默认：false
-     */
-    mask?: boolean
-
+  namespace showLoading {
+    type Param = {
+      /**
+       * 提示的内容
+       */
+      title?: string
+      /**
+       * 是否显示透明蒙层，防止触摸穿透，默认：false
+       */
+      mask?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -6212,12 +7161,14 @@ declare namespace wx {
    * 显示 loading 提示框, 需主动调用 [wx.hideLoading](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhideloading) 才能关闭提示框
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowloadingobject
    */
-  function showLoading(OBJECT: IWxShowLoadingObject): void
+  function showLoading(OBJECT: showLoading.Param): void
+
   /**
    * 隐藏消息提示框
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhidetoast
    */
   function hideToast(): void
+
   /**
    * @since 1.1.0
    *
@@ -6237,68 +7188,74 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhideloading
    */
   function hideLoading(): void
-  type IWxShowModalObject = {
-    /**
-     * 提示的标题
-     */
-    title: string
 
-    /**
-     * 提示的内容
-     */
-    content: string
-
-    /**
-     * 是否显示取消按钮，默认为 true
-     */
-    showCancel?: boolean
-
-    /**
-     * 取消按钮的文字，默认为"取消"，最多 4 个字符
-     */
-    cancelText?: string
-
-    /**
-     * 取消按钮的文字颜色，默认为"#000000"
-     */
-    cancelColor?: string
-
-    /**
-     * 确定按钮的文字，默认为"确定"，最多 4 个字符
-     */
-    confirmText?: string
-
-    /**
-     * 确定按钮的文字颜色，默认为"#3CC51F"
-     */
-    confirmColor?: string
-
+  namespace showModal {
+    type Param = {
+      /**
+       * 提示的标题
+       */
+      title?: string
+      /**
+       * 提示的内容
+       */
+      content?: string
+      /**
+       * 是否显示取消按钮，默认为 true
+       */
+      showCancel?: boolean
+      /**
+       * 取消按钮的文字，默认为"取消"，最多 4 个字符
+       */
+      cancelText?: string
+      /**
+       * 取消按钮的文字颜色，默认为"#000000"
+       */
+      cancelColor?: string
+      /**
+       * 确定按钮的文字，默认为"确定"，最多 4 个字符
+       */
+      confirmText?: string
+      /**
+       * 确定按钮的文字颜色，默认为"#3CC51F"
+       */
+      confirmColor?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 为 true 时，表示用户点击了确定按钮
        */
-      confirm: boolean
-
+      confirm?: boolean
       /**
        * 为 true 时，表示用户点击了取消（用于 Android 系统区分点击蒙层关闭还是点击取消按钮关闭）
        *
        * @since 1.1.0
        */
-      cancel: boolean
-    }) => any
-
+      cancel?: boolean
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * ​显示模态弹窗
@@ -6320,37 +7277,49 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowmodalobject
    */
-  function showModal(OBJECT: IWxShowModalObject): void
-  type IWxShowActionSheetObject = {
-    /**
-     * 按钮的文字数组，数组长度最大为6个
-     */
-    itemList: string[]
+  function showModal(OBJECT: showModal.Param): void
 
-    /**
-     * 按钮的文字颜色，默认为"#000000"
-     */
-    itemColor?: string
-
+  namespace showActionSheet {
+    type Param = {
+      /**
+       * 按钮的文字数组，数组长度最大为6个
+       */
+      itemList?: string[]
+      /**
+       * 按钮的文字颜色，默认为"#000000"
+       */
+      itemColor?: string
+      /**
+       * 接口调用成功的回调函数，详见返回参数说明
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，详见返回参数说明
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 用户点击的按钮，从上到下的顺序，从0开始
        */
-      tapIndex: number
-    }) => any
-
+      tapIndex?: number
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * ​显示操作菜单
@@ -6377,27 +7346,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowactionsheetobject
    */
-  function showActionSheet(OBJECT: IWxShowActionSheetObject): void
-  type IWxSetTopBarTextObject = {
-    /**
-     * 置顶栏文字内容
-     */
-    text: string
+  function showActionSheet(OBJECT: showActionSheet.Param): void
 
+  namespace setTopBarText {
+    type Param = {
+      /**
+       * 置顶栏文字内容
+       */
+      text?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.4.3
@@ -6413,27 +7394,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxsettopbartextobject
    */
-  function setTopBarText(OBJECT: IWxSetTopBarTextObject): void
-  type IWxSetNavigationBarTitleObject = {
-    /**
-     * 页面标题
-     */
-    title: string
+  function setTopBarText(OBJECT: setTopBarText.Param): void
 
+  namespace setNavigationBarTitle {
+    type Param = {
+      /**
+       * 页面标题
+       */
+      title?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 动态设置当前页面的标题。
@@ -6447,71 +7440,96 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxsetnavigationbartitleobject
    */
-  function setNavigationBarTitle(OBJECT: IWxSetNavigationBarTitleObject): void
+  function setNavigationBarTitle(OBJECT: setNavigationBarTitle.Param): void
+
   /**
    * 在当前页面显示导航条加载动画。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxshownavigationbarloading
    */
   function showNavigationBarLoading(): void
+
   /**
    * 隐藏导航条加载动画。
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxhidenavigationbarloading
    */
   function hideNavigationBarLoading(): void
-  type IWxSetNavigationBarColorObject = {
-    /**
-     * 前景颜色值，包括按钮、标题、状态栏的颜色，仅支持 #ffffff 和 #000000
-     */
-    frontColor: string
 
-    /**
-     * 背景颜色值，有效值为十六进制颜色
-     */
-    backgroundColor: string
-
+  namespace setNavigationBarColor {
+    type Param = {
+      /**
+       * 前景颜色值，包括按钮、标题、状态栏的颜色，仅支持 #ffffff 和 #000000
+       */
+      frontColor?: string
+      /**
+       * 背景颜色值，有效值为十六进制颜色
+       */
+      backgroundColor?: string
+      /**
+       * 动画效果
+       *
+       * **animation.timingFunc 有效值：**
+       *
+       *   值          |  说明             
+       * --------------|-------------------
+       *   linear      |动画从头到尾的速度是相同的。
+       *   easeIn      |  动画以低速开始   
+       *   easeOut     |  动画以低速结束。 
+       *   easeInOut   |动画以低速开始和结束。
+       */
+      animation?: ParamPropAnimation
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 动画效果
      *
      * **animation.timingFunc 有效值：**
      *
-     *   值          |  说明             
+     * 值          |  说明
      * --------------|-------------------
-     *   linear      |动画从头到尾的速度是相同的。
-     *   easeIn      |  动画以低速开始   
-     *   easeOut     |  动画以低速结束。 
-     *   easeInOut   |动画以低速开始和结束。
+     * linear      |动画从头到尾的速度是相同的。
+     * easeIn      |  动画以低速开始
+     * easeOut     |  动画以低速结束。
+     * easeInOut   |动画以低速开始和结束。
      */
-    animation?: {
+    type ParamPropAnimation = {
       /**
        * 动画变化时间，默认0，单位：毫秒
        */
       duration?: number
-
       /**
        * 动画变化方式，默认 linear
        */
       timingFunc?: string
     }
-
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.4.0
@@ -6530,32 +7548,43 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setNavigationBarColor.html#wxsetnavigationbarcolorobject
    */
-  function setNavigationBarColor(OBJECT: IWxSetNavigationBarColorObject): void
-  type IWxSetTabBarBadgeObject = {
-    /**
-     * tabBar的哪一项，从左边算起
-     */
-    index: number
+  function setNavigationBarColor(OBJECT: setNavigationBarColor.Param): void
 
-    /**
-     * 显示的文本，超过 3 个字符则显示成“…”
-     */
-    text: string
-
+  namespace setTabBarBadge {
+    type Param = {
+      /**
+       * tabBar的哪一项，从左边算起
+       */
+      index?: number
+      /**
+       * 显示的文本，超过 3 个字符则显示成“…”
+       */
+      text?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -6572,27 +7601,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbarbadgeobject
    */
-  function setTabBarBadge(OBJECT: IWxSetTabBarBadgeObject): void
-  type IWxRemoveTabBarBadgeObject = {
-    /**
-     * tabBar的哪一项，从左边算起
-     */
-    index: number
+  function setTabBarBadge(OBJECT: setTabBarBadge.Param): void
 
+  namespace removeTabBarBadge {
+    type Param = {
+      /**
+       * tabBar的哪一项，从左边算起
+       */
+      index?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -6600,27 +7641,39 @@ declare namespace wx {
    * 移除 tabBar 某一项右上角的文本
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxremovetabbarbadgeobject
    */
-  function removeTabBarBadge(OBJECT: IWxRemoveTabBarBadgeObject): void
-  type IWxShowTabBarRedDotObject = {
-    /**
-     * tabBar的哪一项，从左边算起
-     */
-    index: number
+  function removeTabBarBadge(OBJECT: removeTabBarBadge.Param): void
 
+  namespace showTabBarRedDot {
+    type Param = {
+      /**
+       * tabBar的哪一项，从左边算起
+       */
+      index?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -6628,27 +7681,39 @@ declare namespace wx {
    * 显示 tabBar 某一项的右上角的红点
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxshowtabbarreddotobject
    */
-  function showTabBarRedDot(OBJECT: IWxShowTabBarRedDotObject): void
-  type IWxHideTabBarRedDotObject = {
-    /**
-     * tabBar的哪一项，从左边算起
-     */
-    index: number
+  function showTabBarRedDot(OBJECT: showTabBarRedDot.Param): void
 
+  namespace hideTabBarRedDot {
+    type Param = {
+      /**
+       * tabBar的哪一项，从左边算起
+       */
+      index?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -6656,42 +7721,51 @@ declare namespace wx {
    * 隐藏 tabBar 某一项的右上角的红点
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxhidetabbarreddotobject
    */
-  function hideTabBarRedDot(OBJECT: IWxHideTabBarRedDotObject): void
-  type IWxSetTabBarStyleObject = {
-    /**
-     * tab 上的文字默认颜色
-     */
-    color?: string
+  function hideTabBarRedDot(OBJECT: hideTabBarRedDot.Param): void
 
-    /**
-     * tab 上的文字选中时的颜色
-     */
-    selectedColor?: string
-
-    /**
-     * tab 的背景色
-     */
-    backgroundColor?: string
-
-    /**
-     * tabbar上边框的颜色， 仅支持 black/white
-     */
-    borderStyle?: string
-
+  namespace setTabBarStyle {
+    type Param = {
+      /**
+       * tab 上的文字默认颜色
+       */
+      color?: string
+      /**
+       * tab 上的文字选中时的颜色
+       */
+      selectedColor?: string
+      /**
+       * tab 的背景色
+       */
+      backgroundColor?: string
+      /**
+       * tabbar上边框的颜色， 仅支持 black/white
+       */
+      borderStyle?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -6710,42 +7784,51 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbarstyleobject
    */
-  function setTabBarStyle(OBJECT: IWxSetTabBarStyleObject): void
-  type IWxSetTabBarItemObject = {
-    /**
-     * tabBar 的哪一项，从左边算起
-     */
-    index: number
+  function setTabBarStyle(OBJECT: setTabBarStyle.Param): void
 
-    /**
-     * tab 上按钮文字
-     */
-    text?: string
-
-    /**
-     * 图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px，当 postion 为 top 时，此参数无效，不支持网络图片
-     */
-    iconPath?: string
-
-    /**
-     * 选中时的图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px ，当 postion 为 top 时，此参数无效
-     */
-    selectedIconPath?: string
-
+  namespace setTabBarItem {
+    type Param = {
+      /**
+       * tabBar 的哪一项，从左边算起
+       */
+      index?: number
+      /**
+       * tab 上按钮文字
+       */
+      text?: string
+      /**
+       * 图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px，当 postion 为 top 时，此参数无效，不支持网络图片
+       */
+      iconPath?: string
+      /**
+       * 选中时的图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px ，当 postion 为 top 时，此参数无效
+       */
+      selectedIconPath?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -6764,27 +7847,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbaritemobject
    */
-  function setTabBarItem(OBJECT: IWxSetTabBarItemObject): void
-  type IWxShowTabBarObject = {
-    /**
-     * 是否需要动画效果，默认无
-     */
-    aniamtion?: boolean
+  function setTabBarItem(OBJECT: setTabBarItem.Param): void
 
+  namespace showTabBar {
+    type Param = {
+      /**
+       * 是否需要动画效果，默认无
+       */
+      aniamtion?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -6792,27 +7887,39 @@ declare namespace wx {
    * 显示 tabBar
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxshowtabbarobject
    */
-  function showTabBar(OBJECT: IWxShowTabBarObject): void
-  type IWxHideTabBarObject = {
-    /**
-     * 是否需要动画效果，默认无
-     */
-    aniamtion?: boolean
+  function showTabBar(OBJECT: showTabBar.Param): void
 
+  namespace hideTabBar {
+    type Param = {
+      /**
+       * 是否需要动画效果，默认无
+       */
+      aniamtion?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -6820,27 +7927,39 @@ declare namespace wx {
    * 隐藏 tabBar
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxhidetabbarobject
    */
-  function hideTabBar(OBJECT: IWxHideTabBarObject): void
-  type IWxNavigateToObject = {
-    /**
-     * 需要跳转的应用内非 tabBar 的页面的路径 , 路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'
-     */
-    url: string
+  function hideTabBar(OBJECT: hideTabBar.Param): void
 
+  namespace navigateTo {
+    type Param = {
+      /**
+       * 需要跳转的应用内非 tabBar 的页面的路径 , 路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'
+       */
+      url?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 保留当前页面，跳转到应用内的某个页面，使用`wx.navigateBack`可以返回到原页面。
@@ -6865,27 +7984,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxnavigatetoobject
    */
-  function navigateTo(OBJECT: IWxNavigateToObject): void
-  type IWxRedirectToObject = {
-    /**
-     * 需要跳转的应用内非 tabBar 的页面的路径，路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'
-     */
-    url: string
+  function navigateTo(OBJECT: navigateTo.Param): void
 
+  namespace redirectTo {
+    type Param = {
+      /**
+       * 需要跳转的应用内非 tabBar 的页面的路径，路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'
+       */
+      url?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 关闭当前页面，跳转到应用内的某个页面。
@@ -6899,27 +8030,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxredirecttoobject
    */
-  function redirectTo(OBJECT: IWxRedirectToObject): void
-  type IWxReLaunchObject = {
-    /**
-     * 需要跳转的应用内页面路径 , 路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'，如果跳转的页面路径是 tabBar 页面则不能带参数
-     */
-    url: string
+  function redirectTo(OBJECT: redirectTo.Param): void
 
+  namespace reLaunch {
+    type Param = {
+      /**
+       * 需要跳转的应用内页面路径 , 路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'，如果跳转的页面路径是 tabBar 页面则不能带参数
+       */
+      url?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -6946,27 +8089,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxrelaunchobject
    */
-  function reLaunch(OBJECT: IWxReLaunchObject): void
-  type IWxSwitchTabObject = {
-    /**
-     * 需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
-     */
-    url: string
+  function reLaunch(OBJECT: reLaunch.Param): void
 
+  namespace switchTab {
+    type Param = {
+      /**
+       * 需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
+       */
+      url?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
@@ -6996,14 +8151,17 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxswitchtabobject
    */
-  function switchTab(OBJECT: IWxSwitchTabObject): void
-  type IWxNavigateBackObject = {
-    /**
-     * 返回的页面数，如果 delta 大于现有页面数，则返回到首页。
-     *
-     * @default 1
-     */
-    delta?: number
+  function switchTab(OBJECT: switchTab.Param): void
+
+  namespace navigateBack {
+    type Param = {
+      /**
+       * 返回的页面数，如果 delta 大于现有页面数，则返回到首页。
+       *
+       * @default 1
+       */
+      delta?: number
+    }
   }
   /**
    * 关闭当前页面，返回上一页面或多级页面。可通过 [`getCurrentPages()`](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html#getCurrentPages()) 获取当前的页面栈，决定需要返回几层。
@@ -7034,47 +8192,47 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxnavigatebackobject
    */
-  function navigateBack(OBJECT: IWxNavigateBackObject): void
-  type IWxCreateAnimationObject = {
-    /**
-     * 动画持续时间，单位ms
-     *
-     * @default 400
-     */
-    duration?: number
+  function navigateBack(OBJECT: navigateBack.Param): void
 
-    /**
-     * 定义动画的效果
-     *
-     * **timingFunction 有效值：**
-     *
-     *   值            |  说明                    
-     * ----------------|--------------------------
-     *   linear        |动画从头到尾的速度是相同的
-     *   ease          |动画以低速开始，然后加快，在结束前变慢
-     *   ease-in       |  动画以低速开始          
-     *   ease-in-out   |  动画以低速开始和结束    
-     *   ease-out      |  动画以低速结束          
-     *   step-start    |动画第一帧就跳至结束状态直到结束
-     *   step-end      |动画一直保持开始状态，最后一帧跳到结束状态
-     *
-     * @default linear
-     */
-    timingFunction?: string
-
-    /**
-     * 动画延迟时间，单位 ms
-     *
-     * @default 0
-     */
-    delay?: number
-
-    /**
-     * 设置transform-origin
-     *
-     * @default 50% 50% 0
-     */
-    transformOrigin?: string
+  namespace createAnimation {
+    type Param = {
+      /**
+       * 动画持续时间，单位ms
+       *
+       * @default 400
+       */
+      duration?: number
+      /**
+       * 定义动画的效果
+       *
+       * **timingFunction 有效值：**
+       *
+       *   值            |  说明                    
+       * ----------------|--------------------------
+       *   linear        |动画从头到尾的速度是相同的
+       *   ease          |动画以低速开始，然后加快，在结束前变慢
+       *   ease-in       |  动画以低速开始          
+       *   ease-in-out   |  动画以低速开始和结束    
+       *   ease-out      |  动画以低速结束          
+       *   step-start    |动画第一帧就跳至结束状态直到结束
+       *   step-end      |动画一直保持开始状态，最后一帧跳到结束状态
+       *
+       * @default linear
+       */
+      timingFunction?: string
+      /**
+       * 动画延迟时间，单位 ms
+       *
+       * @default 0
+       */
+      delay?: number
+      /**
+       * 设置transform-origin
+       *
+       * @default 50% 50% 0
+       */
+      transformOrigin?: string
+    }
   }
   /**
    * 创建一个动画实例[animation](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html#animation)。调用实例的方法来描述动画。最后通过动画实例的`export`方法导出动画数据传递给组件的`animation`属性。
@@ -7093,7 +8251,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html#wxcreateanimationobject
    */
-  function createAnimation(OBJECT: IWxCreateAnimationObject): Animation
+  function createAnimation(OBJECT: createAnimation.Param): Animation
+
   class Animation {
     /**
      * 透明度，参数范围 0~1
@@ -7208,16 +8367,17 @@ declare namespace wx {
      */
     matrix3d(): any
   }
-  type IWxPageScrollToObject = {
-    /**
-     * 滚动到页面的目标位置（单位px）
-     */
-    scrollTop: number
-
-    /**
-     * 滚动动画的时长，默认300ms，单位 ms
-     */
-    duration?: number
+  namespace pageScrollTo {
+    type Param = {
+      /**
+       * 滚动到页面的目标位置（单位px）
+       */
+      scrollTop?: number
+      /**
+       * 滚动动画的时长，默认300ms，单位 ms
+       */
+      duration?: number
+    }
   }
   /**
    * @since 1.4.0
@@ -7234,7 +8394,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/scroll.html#wxpagescrolltoobject
    */
-  function pageScrollTo(OBJECT: IWxPageScrollToObject): void
+  function pageScrollTo(OBJECT: pageScrollTo.Param): void
+
   /**
    * @since 1.4.0
    *
@@ -7384,6 +8545,7 @@ declare namespace wx {
    *     ```
    */
   function createSelectorQuery(): SelectorQuery
+
   class SelectorQuery {
     /**
      * 参考下面详细介绍
@@ -7416,82 +8578,86 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/create-canvas-context.html#wxcreatecanvascontextcanvasid-this
    */
   function createCanvasContext(canvasId: string, componentInstance: any): CanvasContext
-  type IWxCanvasToTempFilePathObjectParam0 = {
-    /**
-     * 画布x轴起点（默认0）
-     *
-     * @since 1.2.0
-     */
-    x?: number
 
-    /**
-     * 画布y轴起点（默认0）
-     *
-     * @since 1.2.0
-     */
-    y?: number
-
-    /**
-     * 画布宽度（默认为canvas宽度-x）
-     *
-     * @since 1.2.0
-     */
-    width?: number
-
-    /**
-     * 画布高度（默认为canvas高度-y）
-     *
-     * @since 1.2.0
-     */
-    height?: number
-
-    /**
-     * 输出图片宽度（默认为width）
-     *
-     * @since 1.2.0
-     */
-    destWidth?: number
-
-    /**
-     * 输出图片高度（默认为height）
-     *
-     * @since 1.2.0
-     */
-    destHeight?: number
-
-    /**
-     * 画布标识，传入 [`<canvas/>`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
-     */
-    canvasId: string
-
-    /**
-     * 目标文件的类型，只支持 'jpg' 或 'png'。默认为 'png'
-     *
-     * @since 1.7.0
-     */
-    fileType?: string
-
-    /**
-     * 图片的质量，取值范围为 (0, 1]，不在范围内时当作1.0处理
-     *
-     * @since 1.7.0
-     */
-    quality?: number
-
+  namespace canvasToTempFilePath {
+    type Param0 = {
+      /**
+       * 画布x轴起点（默认0）
+       *
+       * @since 1.2.0
+       */
+      x?: number
+      /**
+       * 画布y轴起点（默认0）
+       *
+       * @since 1.2.0
+       */
+      y?: number
+      /**
+       * 画布宽度（默认为canvas宽度-x）
+       *
+       * @since 1.2.0
+       */
+      width?: number
+      /**
+       * 画布高度（默认为canvas高度-y）
+       *
+       * @since 1.2.0
+       */
+      height?: number
+      /**
+       * 输出图片宽度（默认为width）
+       *
+       * @since 1.2.0
+       */
+      destWidth?: number
+      /**
+       * 输出图片高度（默认为height）
+       *
+       * @since 1.2.0
+       */
+      destHeight?: number
+      /**
+       * 画布标识，传入 [`<canvas/>`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
+       */
+      canvasId?: string
+      /**
+       * 目标文件的类型，只支持 'jpg' 或 'png'。默认为 'png'
+       *
+       * @since 1.7.0
+       */
+      fileType?: string
+      /**
+       * 图片的质量，取值范围为 (0, 1]，不在范围内时当作1.0处理
+       *
+       * @since 1.7.0
+       */
+      quality?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: Param0PropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: Param0PropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: Param0PropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type Param0PropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type Param0PropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type Param0PropComplete = () => any
   }
   /**
    * 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。
@@ -7518,67 +8684,73 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/temp-file.html#wxcanvastotempfilepathobject-this
    */
-  function canvasToTempFilePath(OBJECT: IWxCanvasToTempFilePathObjectParam0, instance?: any): void
-  type IWxCanvasGetImageDataObject = {
-    /**
-     * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
-     */
-    canvasId: string
+  function canvasToTempFilePath(OBJECT: canvasToTempFilePath.Param0, instance?: any): void
 
-    /**
-     * 将要被提取的图像数据矩形区域的左上角 x 坐标
-     */
-    x: number
-
-    /**
-     * 将要被提取的图像数据矩形区域的左上角 y 坐标
-     */
-    y: number
-
-    /**
-     * 将要被提取的图像数据矩形区域的宽度
-     */
-    width: number
-
-    /**
-     * 将要被提取的图像数据矩形区域的高度
-     */
-    height: number
-
+  namespace canvasGetImageData {
+    type Param = {
+      /**
+       * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
+       */
+      canvasId?: string
+      /**
+       * 将要被提取的图像数据矩形区域的左上角 x 坐标
+       */
+      x?: number
+      /**
+       * 将要被提取的图像数据矩形区域的左上角 y 坐标
+       */
+      y?: number
+      /**
+       * 将要被提取的图像数据矩形区域的宽度
+       */
+      width?: number
+      /**
+       * 将要被提取的图像数据矩形区域的高度
+       */
+      height?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * errMsg
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 图像数据矩形的宽度
        */
-      width: number
-
+      width?: number
       /**
        * 图像数据矩形的高度
        */
-      height: number
-
+      height?: number
       /**
        * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
        */
-      data: Uint8ClampedArray
-    }) => any
-
+      data?: Uint8ClampedArray
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -7604,52 +8776,59 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject
    */
-  function canvasGetImageData(OBJECT: IWxCanvasGetImageDataObject): void
-  type IWxCanvasPutImageDataObject = {
-    /**
-     * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
-     */
-    canvasId: string
+  function canvasGetImageData(OBJECT: canvasGetImageData.Param): void
 
-    /**
-     * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
-     */
-    data: Uint8ClampedArray
-
-    /**
-     * 源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）
-     */
-    x: number
-
-    /**
-     * 源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）
-     */
-    y: number
-
-    /**
-     * 源图像数据矩形区域的宽度
-     */
-    width: number
-
-    /**
-     * 源图像数据矩形区域的高度
-     */
-    height?: number
-
+  namespace canvasPutImageData {
+    type Param = {
+      /**
+       * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
+       */
+      canvasId?: string
+      /**
+       * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
+       */
+      data?: Uint8ClampedArray
+      /**
+       * 源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）
+       */
+      x?: number
+      /**
+       * 源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）
+       */
+      y?: number
+      /**
+       * 源图像数据矩形区域的宽度
+       */
+      width?: number
+      /**
+       * 源图像数据矩形区域的高度
+       */
+      height?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.9.0
@@ -7671,27 +8850,41 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/put-image-data.html#wxcanvasputimagedataobject
    */
-  function canvasPutImageData(OBJECT: IWxCanvasPutImageDataObject): void
-  type IWxStartPullDownRefreshObject = {
+  function canvasPutImageData(OBJECT: canvasPutImageData.Param): void
+
+  namespace startPullDownRefresh {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.5.0
@@ -7705,7 +8898,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html#wxstartpulldownrefreshobject
    */
-  function startPullDownRefresh(OBJECT: IWxStartPullDownRefreshObject): void
+  function startPullDownRefresh(OBJECT: startPullDownRefresh.Param): void
+
   /**
    * 停止当前页面下拉刷新。
    *
@@ -7721,31 +8915,44 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html#wxstoppulldownrefresh
    */
   function stopPullDownRefresh(): void
-  type IWxGetExtConfigObject = {
+
+  namespace getExtConfig {
+    type Param = {
+      /**
+       * 返回第三方平台自定义的数据
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 返回第三方平台自定义的数据
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 第三方平台自定义的数据
        */
-      extConfig: any
-    }) => any
-
+      extConfig?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -7769,12 +8976,15 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ext-api.html#wxgetextconfigobject
    */
-  function getExtConfig(OBJECT: IWxGetExtConfigObject): void
-  type IWxGetExtConfigSyncReturn = {
-    /**
-     * 第三方平台自定义的数据
-     */
-    extConfig: any
+  function getExtConfig(OBJECT: getExtConfig.Param): void
+
+  namespace getExtConfigSync {
+    type Return = {
+      /**
+       * 第三方平台自定义的数据
+       */
+      extConfig?: any
+    }
   }
   /**
    * @since 1.1.0
@@ -7793,32 +9003,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ext-api.html#wxgetextconfigsync
    */
-  function getExtConfigSync(): IWxGetExtConfigSyncReturn
-  type IWxLoginObject = {
+  function getExtConfigSync(): getExtConfigSync.Return
+
+  namespace login {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 用户登录凭证（有效期五分钟）。开发者需要在开发者服务器后台调用 api，使用 code 换取 openid 和 session_key 等信息
        */
-      code: string
-    }) => any
-
+      code?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 调用接口获取**登录凭证（code）**进而换取用户登录态信息，包括用户的**唯一标识（openid）** 及本次登录的 **会话密钥（session_key）**等。**用户数据的加解密通讯**需要依赖会话密钥完成。
@@ -7851,22 +9074,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject
    */
-  function login(OBJECT: IWxLoginObject): void
-  type IWxCheckSessionObject = {
+  function login(OBJECT: login.Param): void
+
+  namespace checkSession {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数，登录态未过期
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数，登录态已过期
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，登录态未过期
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数，登录态已过期
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 通过上述接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用wx.checkSession接口**检测当前用户登录态是否有效**。登录态过期后开发者可以再调用wx.login获取新的用户登录态。
@@ -7895,32 +9131,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxchecksessionobject
    */
-  function checkSession(OBJECT: IWxCheckSessionObject): void
-  type IWxAuthorizeObject = {
-    /**
-     * 需要获取权限的scope，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
-     */
-    scope: string
+  function checkSession(OBJECT: checkSession.Param): void
 
+  namespace authorize {
+    type Param = {
+      /**
+       * 需要获取权限的scope，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+       */
+      scope?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -7947,96 +9196,102 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize.html#wxauthorizeobject
    */
-  function authorize(OBJECT: IWxAuthorizeObject): void
-  type IWxGetUserInfoObject = {
-    /**
-     * 是否带上登录态信息
-     *
-     * @since 1.1.0
-     */
-    withCredentials?: boolean
+  function authorize(OBJECT: authorize.Param): void
 
-    /**
-     * 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。默认为en。
-     *
-     * @since 1.3.0
-     */
-    lang?: string
-
+  namespace getUserInfo {
+    type Param = {
+      /**
+       * 是否带上登录态信息
+       *
+       * @since 1.1.0
+       */
+      withCredentials?: boolean
+      /**
+       * 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。默认为en。
+       *
+       * @since 1.3.0
+       */
+      lang?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 用户信息对象，不包含 openid 等敏感信息
        */
-      userInfo: {
-        /**
-         * 用户昵称
-         */
-        nickName: string
-
-        /**
-         * 用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
-         */
-        avatarUrl: string
-
-        /**
-         * 用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
-         */
-        gender: string
-
-        /**
-         * 用户所在城市
-         */
-        city: string
-
-        /**
-         * 用户所在省份
-         */
-        province: string
-
-        /**
-         * 用户所在国家
-         */
-        country: string
-
-        /**
-         * 用户的语言，简体中文为zh_CN
-         */
-        language: string
-      }
-
+      userInfo?: ParamPropSuccessParamPropUserInfo
       /**
        * 不包括敏感信息的原始数据字符串，用于计算签名。
        */
-      rawData: string
-
+      rawData?: string
       /**
        * 使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，参考文档 [signature](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html)。
        */
-      signature: string
-
+      signature?: string
       /**
        * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      encryptedData: string
-
+      encryptedData?: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv: string
-    }) => any
-
+      iv?: string
+    }
+    /**
+     * 用户信息对象，不包含 openid 等敏感信息
+     */
+    type ParamPropSuccessParamPropUserInfo = {
+      /**
+       * 用户昵称
+       */
+      nickName?: string
+      /**
+       * 用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
+       */
+      avatarUrl?: string
+      /**
+       * 用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+       */
+      gender?: string
+      /**
+       * 用户所在城市
+       */
+      city?: string
+      /**
+       * 用户所在省份
+       */
+      province?: string
+      /**
+       * 用户所在国家
+       */
+      country?: string
+      /**
+       * 用户的语言，简体中文为zh_CN
+       */
+      language?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 获取用户信息，withCredentials 为 true 时需要先调用 [wx.login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject) 接口。
@@ -8080,47 +9335,55 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/open.html#wxgetuserinfoobject
    */
-  function getUserInfo(OBJECT: IWxGetUserInfoObject): void
-  type IWxRequestPaymentObject = {
-    /**
-     * 时间戳从1970年1月1日00:00:00至今的秒数,即当前的时间
-     */
-    timeStamp: string
+  function getUserInfo(OBJECT: getUserInfo.Param): void
 
-    /**
-     * 随机字符串，长度为32个字符以下。
-     */
-    nonceStr: string
-
-    /**
-     * 统一下单接口返回的 prepay\_id 参数值，提交格式如：prepay\_id=_*_
-     */
-    package: string
-
-    /**
-     * 签名算法，暂支持 MD5
-     */
-    signType: string
-
-    /**
-     * 签名,具体签名方案参见[小程序支付接口文档](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_7&index=3);
-     */
-    paySign: string
-
+  namespace requestPayment {
+    type Param = {
+      /**
+       * 时间戳从1970年1月1日00:00:00至今的秒数,即当前的时间
+       */
+      timeStamp?: string
+      /**
+       * 随机字符串，长度为32个字符以下。
+       */
+      nonceStr?: string
+      /**
+       * 统一下单接口返回的 prepay\_id 参数值，提交格式如：prepay\_id=_*_
+       */
+      package?: string
+      /**
+       * 签名算法，暂支持 MD5
+       */
+      signType?: string
+      /**
+       * 签名,具体签名方案参见[小程序支付接口文档](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_7&index=3);
+       */
+      paySign?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * 发起微信支付。
@@ -8154,27 +9417,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html#wxrequestpaymentobject
    */
-  function requestPayment(OBJECT: IWxRequestPaymentObject): void
-  type IWxShowShareMenuObject = {
-    /**
-     * 是否使用带 shareTicket 的转发[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#获取更多转发信息)
-     */
-    withShareTicket?: boolean
+  function requestPayment(OBJECT: requestPayment.Param): void
 
+  namespace showShareMenu {
+    type Param = {
+      /**
+       * 是否使用带 shareTicket 的转发[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#获取更多转发信息)
+       */
+      withShareTicket?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -8190,22 +9465,35 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxshowsharemenuobject
    */
-  function showShareMenu(OBJECT: IWxShowShareMenuObject): void
-  type IWxHideShareMenuObject = {
+  function showShareMenu(OBJECT: showShareMenu.Param): void
+
+  namespace hideShareMenu {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -8219,27 +9507,39 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxhidesharemenuobject
    */
-  function hideShareMenu(OBJECT: IWxHideShareMenuObject): void
-  type IWxUpdateShareMenuObject = {
-    /**
-     * 是否使用带 shareTicket 的转发[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#获取更多转发信息)
-     */
-    withShareTicket?: boolean
+  function hideShareMenu(OBJECT: hideShareMenu.Param): void
 
+  namespace updateShareMenu {
+    type Param = {
+      /**
+       * 是否使用带 shareTicket 的转发[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#获取更多转发信息)
+       */
+      withShareTicket?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -8257,22 +9557,36 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxupdatesharemenuobject
    */
-  function updateShareMenu(OBJECT: IWxUpdateShareMenuObject): void
-  type IWxGetShareInfoObject = {
-    /**
-     * shareTicket
-     */
-    shareTicket: string
+  function updateShareMenu(OBJECT: updateShareMenu.Param): void
 
+  namespace getShareInfo {
+    type Param = {
+      /**
+       * shareTicket
+       */
+      shareTicket?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误信息
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        *
@@ -8284,23 +9598,20 @@ declare namespace wx {
        *
        * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://mp.weixin.qq.com/debug/wxadoc/dev/component/open-data.html)
        */
-      encryptedData: string
-
+      encryptedData?: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv: string
-    }) => any
-
+      iv?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -8308,67 +9619,73 @@ declare namespace wx {
    * 获取转发详细信息
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxgetshareinfoobject
    */
-  function getShareInfo(OBJECT: IWxGetShareInfoObject): void
-  type IWxChooseAddressObject = {
+  function getShareInfo(OBJECT: getShareInfo.Param): void
+
+  namespace chooseAddress {
+    type Param = {
+      /**
+       * 返回用户选择的收货地址信息
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 返回用户选择的收货地址信息
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 收货人姓名
        */
-      userName: string
-
+      userName?: string
       /**
        * 邮编
        */
-      postalCode: string
-
+      postalCode?: string
       /**
        * 国标收货地址第一级地址
        */
-      provinceName: string
-
+      provinceName?: string
       /**
        * 国标收货地址第二级地址
        */
-      cityName: string
-
+      cityName?: string
       /**
        * 国标收货地址第三级地址
        */
-      countyName: string
-
+      countyName?: string
       /**
        * 详细收货地址信息
        */
-      detailInfo: string
-
+      detailInfo?: string
       /**
        * 收货地址国家码
        */
-      nationalCode: string
-
+      nationalCode?: string
       /**
        * 收货人手机号码
        */
-      telNumber: string
-    }) => any
-
+      telNumber?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -8395,17 +9712,36 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/address.html#wxchooseaddressobject
    */
-  function chooseAddress(OBJECT: IWxChooseAddressObject): void
-  type IWxAddCardObject = {
+  function chooseAddress(OBJECT: chooseAddress.Param): void
+
+  namespace addCard {
+    type Param = {
+      /**
+       * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
+       */
+      cardList?: ParamPropCardList
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
      */
-    cardList: Array<{
+    type ParamPropCardList = ParamPropCardListItem[]
+    type ParamPropCardListItem = {
       /**
        * 卡券 Id
        */
-      cardId: string
-
+      cardId?: string
       /**
        * 卡券的扩展参数
        *
@@ -8423,48 +9759,48 @@ declare namespace wx {
        *
        * **注：cardExt 需进行 JSON 序列化为字符串传入**
        */
-      cardExt: string
-    }>
-
+      cardExt?: string
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
        */
-      cardList: Array<{
-        /**
-         * 加密 code，为用户领取到卡券的code加密后的字符串，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
-         */
-        code: string
-
-        /**
-         * 用户领取到卡券的Id
-         */
-        cardId: string
-
-        /**
-         * 用户领取到卡券的扩展参数，与调用时传入的参数相同
-         */
-        cardExt: string
-
-        /**
-         * 是否成功
-         */
-        isSuccess: boolean
-      }>
-    }) => any
-
+      cardList?: ParamPropSuccessParamPropCardList
+    }
+    /**
+     * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
+     */
+    type ParamPropSuccessParamPropCardList = ParamPropSuccessParamPropCardListItem[]
+    type ParamPropSuccessParamPropCardListItem = {
+      /**
+       * 加密 code，为用户领取到卡券的code加密后的字符串，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
+       */
+      code?: string
+      /**
+       * 用户领取到卡券的Id
+       */
+      cardId?: string
+      /**
+       * 用户领取到卡券的扩展参数，与调用时传入的参数相同
+       */
+      cardExt?: string
+      /**
+       * 是否成功
+       */
+      isSuccess?: boolean
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -8499,37 +9835,53 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxaddcardobject
    */
-  function addCard(OBJECT: IWxAddCardObject): void
-  type IWxOpenCardObject = {
+  function addCard(OBJECT: addCard.Param): void
+
+  namespace openCard {
+    type Param = {
+      /**
+       * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
+       */
+      cardList?: ParamPropCardList
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
      */
-    cardList: Array<{
+    type ParamPropCardList = ParamPropCardListItem[]
+    type ParamPropCardListItem = {
       /**
        * 需要打开的卡券 Id
        */
-      cardId: string
-
+      cardId?: string
       /**
        * 由 addCard 的返回对象中的加密 code 通过解密后得到，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
        */
-      code: string
-    }>
-
+      code?: string
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -8560,27 +9912,41 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxopencardobject
    */
-  function openCard(OBJECT: IWxOpenCardObject): void
-  type IWxOpenSettingObject = {
+  function openCard(OBJECT: openCard.Param): void
+
+  namespace openSetting {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数，返回内容详见返回参数说明。
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
        */
-      authSetting: any
-    }) => any
-
+      authSetting?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.1.0
@@ -8605,27 +9971,41 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html#wxopensettingobject
    */
-  function openSetting(OBJECT: IWxOpenSettingObject): void
-  type IWxGetSettingObject = {
+  function openSetting(OBJECT: openSetting.Param): void
+
+  namespace getSetting {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数，返回内容详见返回参数说明。
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数，返回内容详见返回参数说明。
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
        */
-      authSetting: any
-    }) => any
-
+      authSetting?: any
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -8650,17 +10030,32 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html#wxgetsettingobject
    */
-  function getSetting(OBJECT: IWxGetSettingObject): void
-  type IWxGetWeRunDataObject = {
+  function getSetting(OBJECT: getSetting.Param): void
+
+  namespace getWeRunData {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-
+      errMsg?: string
       /**
        * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        *
@@ -8674,23 +10069,20 @@ declare namespace wx {
        *   stepInfoList[].timestamp   |  Number        |时间戳，表示数据对应的时间
        *   stepInfoList[].step        |  Number        |  微信运动步数     
        */
-      encryptedData: string
-
+      encryptedData?: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv: string
-    }) => any
-
+      iv?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.2.0
@@ -8710,47 +10102,57 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html#wxgetwerundataobject
    */
-  function getWeRunData(OBJECT: IWxGetWeRunDataObject): void
-  type IWxNavigateToMiniProgramObject = {
-    /**
-     * 要打开的小程序 appId
-     */
-    appId: string
+  function getWeRunData(OBJECT: getWeRunData.Param): void
 
-    /**
-     * 打开的页面路径，如果为空则打开首页
-     */
-    path?: string
-
-    /**
-     * 需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch()`，`App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
-     */
-    extraData?: any
-
-    /**
-     * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。默认值 release
-     */
-    envVersion?: string
-
+  namespace navigateToMiniProgram {
+    type Param = {
+      /**
+       * 要打开的小程序 appId
+       */
+      appId?: string
+      /**
+       * 打开的页面路径，如果为空则打开首页
+       */
+      path?: string
+      /**
+       * 需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch()`，`App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
+       */
+      extraData?: any
+      /**
+       * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。默认值 release
+       */
+      envVersion?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.3.0
@@ -8782,32 +10184,45 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateToMiniProgram.html#wxnavigatetominiprogramobject
    */
-  function navigateToMiniProgram(OBJECT: IWxNavigateToMiniProgramObject): void
-  type IWxNavigateBackMiniProgramObject = {
-    /**
-     * 需要返回给上一个小程序的数据，上一个小程序可在 `App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
-     */
-    extraData?: any
+  function navigateToMiniProgram(OBJECT: navigateToMiniProgram.Param): void
 
+  namespace navigateBackMiniProgram {
+    type Param = {
+      /**
+       * 需要返回给上一个小程序的数据，上一个小程序可在 `App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
+       */
+      extraData?: any
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.3.0
@@ -8830,62 +10245,69 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateBackMiniProgram.html#wxnavigatebackminiprogramobject
    */
-  function navigateBackMiniProgram(OBJECT: IWxNavigateBackMiniProgramObject): void
-  type IWxChooseInvoiceTitleObject = {
+  function navigateBackMiniProgram(OBJECT: navigateBackMiniProgram.Param): void
+
+  namespace chooseInvoiceTitle {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 抬头类型（0：单位，1：个人）
        */
-      type: string
-
+      type?: string
       /**
        * 抬头名称
        */
-      title: string
-
+      title?: string
       /**
        * 抬头税号
        */
-      taxNumber: string
-
+      taxNumber?: string
       /**
        * 单位地址
        */
-      companyAddress: string
-
+      companyAddress?: string
       /**
        * 手机号码
        */
-      telephone: string
-
+      telephone?: string
       /**
        * 银行名称
        */
-      bankName: string
-
+      bankName?: string
       /**
        * 银行账号
        */
-      bankAccount: string
-
+      bankAccount?: string
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.5.0
@@ -8904,12 +10326,28 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/chooseInvoiceTitle.html#wxchooseinvoicetitleobject
    */
-  function chooseInvoiceTitle(OBJECT: IWxChooseInvoiceTitleObject): void
-  type IWxCheckIsSupportSoterAuthenticationObject = {
+  function chooseInvoiceTitle(OBJECT: chooseInvoiceTitle.Param): void
+
+  namespace checkIsSupportSoterAuthentication {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 该设备支持的可被SOTER识别的生物识别方式
        *
@@ -8921,23 +10359,20 @@ declare namespace wx {
        *   facial        |人脸识别（暂未支持）
        *   speech        |声纹识别（暂未支持）
        */
-      supportMode: string[]
-
+      supportMode?: string[]
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.5.0
@@ -8957,37 +10392,48 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSupportSoterAuthentication.html#wxcheckissupportsoterauthenticationobject
    */
-  function checkIsSupportSoterAuthentication(OBJECT: IWxCheckIsSupportSoterAuthenticationObject): void
-  type IWxStartSoterAuthenticationObject = {
-    /**
-     * 请求使用的可接受的生物认证方式
-     */
-    requestAuthModes: string[]
+  function checkIsSupportSoterAuthentication(OBJECT: checkIsSupportSoterAuthentication.Param): void
 
-    /**
-     * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键是别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
-     */
-    challenge: string
-
-    /**
-     * 验证描述，即识别过程中显示在界面上的对话框提示内容
-     */
-    authContent?: string
-
+  namespace startSoterAuthentication {
+    type Param = {
+      /**
+       * 请求使用的可接受的生物认证方式
+       */
+      requestAuthModes?: string[]
+      /**
+       * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键是别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
+       */
+      challenge?: string
+      /**
+       * 验证描述，即识别过程中显示在界面上的对话框提示内容
+       */
+      authContent?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 错误码
        */
-      errCode: number
-
+      errCode?: number
       /**
        * 生物认证方式
        */
-      authMode: string
-
+      authMode?: string
       /**
        * 在设备安全区域（TEE）内获得的本机安全信息（如TEE名称版本号等以及防重放参数）以及本次认证信息（仅Android支持，本次认证的指纹ID）（仅Android支持，本次认证的指纹ID）
        *
@@ -9007,28 +10453,24 @@ declare namespace wx {
        *   cpu_id    |  机器唯一识别ID                                     
        *   uid       |  概念同Android系统定义uid，即应用程序编号           
        */
-      resultJSON: string
-
+      resultJSON?: string
       /**
        * 用SOTER安全密钥对result_json的签名(SHA256withRSA/PSS, saltlen=20)
        */
-      resultJSONSignature: string
-
+      resultJSONSignature?: string
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.5.0
@@ -9072,45 +10514,57 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/startSoterAuthentication.html#wxstartsoterauthenticationobject
    */
-  function startSoterAuthentication(OBJECT: IWxStartSoterAuthenticationObject): void
-  type IWxCheckIsSoterEnrolledInDeviceObject = {
-    /**
-     * 认证方式
-     *
-     * **checkAuthMode 有效值：**
-     *
-     *   值            |  说明         
-     * ----------------|---------------
-     *   fingerPrint   |  指纹识别     
-     *   facial        |人脸识别（暂未支持）
-     *   speech        |声纹识别（暂未支持）
-     */
-    checkAuthMode: string
+  function startSoterAuthentication(OBJECT: startSoterAuthentication.Param): void
 
+  namespace checkIsSoterEnrolledInDevice {
+    type Param = {
+      /**
+       * 认证方式
+       *
+       * **checkAuthMode 有效值：**
+       *
+       *   值            |  说明         
+       * ----------------|---------------
+       *   fingerPrint   |  指纹识别     
+       *   facial        |人脸识别（暂未支持）
+       *   speech        |声纹识别（暂未支持）
+       */
+      checkAuthMode?: string
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 是否已录入信息
        */
-      isEnrolled: boolean
-
+      isEnrolled?: boolean
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.6.0
@@ -9129,7 +10583,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSoterEnrolledInDevice.html#wxcheckissoterenrolledindeviceobject
    */
-  function checkIsSoterEnrolledInDevice(OBJECT: IWxCheckIsSoterEnrolledInDeviceObject): void
+  function checkIsSoterEnrolledInDevice(OBJECT: checkIsSoterEnrolledInDevice.Param): void
+
   /**
    * 自定义分析数据上报接口。使用前，需要在小程序管理后台自定义分析中新建事件，配置好事件名与字段。
    *
@@ -9144,31 +10599,44 @@ declare namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis-report.html#wxreportanalyticseventname-data
    */
   function reportAnalytics(eventName: string, data: any): void
-  type IWxSetEnableDebugObject = {
-    /**
-     * 是否打开调试
-     */
-    enableDebug: boolean
 
+  namespace setEnableDebug {
+    type Param = {
+      /**
+       * 是否打开调试
+       */
+      enableDebug?: boolean
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.4.0
@@ -9190,7 +10658,8 @@ declare namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setEnableDebug.html#wxsetenabledebugobject
    */
-  function setEnableDebug(OBJECT: IWxSetEnableDebugObject): void
+  function setEnableDebug(OBJECT: setEnableDebug.Param): void
+
   class CanvasContext {
     /**
      *

@@ -1,26 +1,39 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html
 
 export namespace wx {
-  type IWxStartPullDownRefreshObject = {
+  namespace startPullDownRefresh {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调函数
      */
-    success?: (res: {
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
       /**
        * 接口调用结果
        */
-      errMsg: string
-    }) => any
-
+      errMsg?: string
+    }
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    * @since 1.5.0
@@ -34,7 +47,8 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html#wxstartpulldownrefreshobject
    */
-  function startPullDownRefresh(OBJECT: IWxStartPullDownRefreshObject): void
+  function startPullDownRefresh(OBJECT: startPullDownRefresh.Param): void
+
   /**
    * 停止当前页面下拉刷新。
    *
@@ -50,4 +64,5 @@ export namespace wx {
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html#wxstoppulldownrefresh
    */
   function stopPullDownRefresh(): void
+
 }

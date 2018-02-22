@@ -1,26 +1,37 @@
 // https://mp.weixin.qq.com/debug/wxadoc/dev/api/phonecall.html
 
 export namespace wx {
-  type IWxMakePhoneCallObject = {
-    /**
-     * 需要拨打的电话号码
-     */
-    phoneNumber: string
-
+  namespace makePhoneCall {
+    type Param = {
+      /**
+       * 需要拨打的电话号码
+       */
+      phoneNumber?: string
+      /**
+       * 接口调用成功的回调
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
     /**
      * 接口调用成功的回调
      */
-    success?: (res: any) => any
-
+    type ParamPropSuccess = (res: any) => any
     /**
      * 接口调用失败的回调函数
      */
-    fail?: (err: any) => any
-
+    type ParamPropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    complete?: () => any
+    type ParamPropComplete = () => any
   }
   /**
    *
@@ -33,5 +44,6 @@ export namespace wx {
    *     ```
    * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/phonecall.html#wxmakephonecallobject
    */
-  function makePhoneCall(OBJECT: IWxMakePhoneCallObject): void
+  function makePhoneCall(OBJECT: makePhoneCall.Param): void
+
 }
