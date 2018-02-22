@@ -1,16 +1,18 @@
 import * as webpack from 'webpack'
-import * as fs from 'fs-extra'
-import {join} from 'path'
+const debug = require('debug')('minapp:webpack-utils:RemoveEntryFile')
 
 export class RemoveEntryFile {
 
   apply(compiler: webpack.Compiler) {
-    compiler.plugin('done', () => {
-      let {filename, path} = (compiler.options.output || {}) as any
-      if (!filename || !path) return
+    compiler.plugin('emit', async (compilation: any, done) => {
+      debug('emit start')
 
-      let entry = join(path, filename)
-      if (fs.existsSync(entry)) fs.unlinkSync(entry)
+      let {filename} = (compiler.options.output || {}) as webpack.Output
+      if (!filename) return
+
+      debug('remove entry asset %o', filename)
+      delete compilation.assets[filename]
+      return done()
     })
   }
 }

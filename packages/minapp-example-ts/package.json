@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
-    "build": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js",
+    "build": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js -p",
     "dev": "npm run clear && node ../minapp-compiler/dist/cli/compiler.js -s"
   },
   "publishConfig": {

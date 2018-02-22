@@ -8,7 +8,7 @@
 		"test": "jest",
 		"generate": "node dist/cli/cmd.js api && node dist/cli/cmd.js api -p && git diff gen/**",
 		"build": "remove-all dist/ && tsc",
-		"build:watch": "remove-all dist/ && tsc -w"
+		"watch": "remove-all dist/ && tsc -w"
 	},
 	"publishConfig": {
   	"access": "public"

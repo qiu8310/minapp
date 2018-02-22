@@ -7,7 +7,7 @@
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "build": "npm run clear && tsc",
-    "build:watch": "npm run clear && tsc -w"
+    "watch": "npm run clear && tsc -w"
   },
   "publishConfig": {
     "access": "public"

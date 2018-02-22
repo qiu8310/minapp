@@ -6,7 +6,7 @@
 	"scripts": {
 		"publish": "lerna publish --ignore minapp-vscode --registry https://registry.npmjs.org/",
 		"build": "tsc .dtpl/dtpl.ts --outDir .dtpl/",
-		"build:watch": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/"
+		"watch": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/"
 	},
 	"devDependencies": {
 		"lerna": "^2.7.1",

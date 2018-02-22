@@ -9,7 +9,7 @@
 		"lint": "tslint src/**/*.ts",
 		"test": "jest",
 		"build": "remove-all dist/ && tsc",
-		"build:watch": "remove-all dist/ && tsc -w"
+		"watch": "remove-all dist/ && tsc -w"
 	},
 	"publishConfig": {
 		"access": "public"
