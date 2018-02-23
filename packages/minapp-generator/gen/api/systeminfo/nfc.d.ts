@@ -24,11 +24,11 @@ export namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 错误码
        */
-      errCode?: number
+      errCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -62,7 +62,7 @@ export namespace wx {
       /**
        * 需要注册到系统的 AID 列表，每个 AID 为 String 类型
        */
-      aid_list?: any[]
+      aid_list: any[]
       /**
        * 接口调用成功的回调函数
        */
@@ -84,11 +84,11 @@ export namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 错误码
        */
-      errCode?: number
+      errCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -141,11 +141,11 @@ export namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 错误码
        */
-      errCode?: number
+      errCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -180,15 +180,15 @@ export namespace wx {
       /**
        * 消息类型
        */
-      messageType?: number
+      messageType: number
       /**
        * 客户端接收到 NFC 设备的指令，此参数当且仅当 `messageType=1` 时有效
        */
-      data?: ArrayBuffer
+      data: ArrayBuffer
       /**
        * 此参数当且仅当 `messageType=2` 时有效
        */
-      reason?: number
+      reason: number
     }
   }
   /**
@@ -207,7 +207,7 @@ export namespace wx {
       /**
        * 二进制数据
        */
-      data?: ArrayBuffer
+      data: ArrayBuffer
       /**
        * 接口调用成功的回调函数
        */
@@ -229,7 +229,7 @@ export namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 错误码
        *
@@ -248,7 +248,7 @@ export namespace wx {
        *   13005   |  返回的指令不合法         
        *   13006   |  注册 AID 失败            
        */
-      errCode?: number
+      errCode: number
     }
     /**
      * 接口调用失败的回调函数

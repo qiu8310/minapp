@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
        */
-      cardList?: ParamPropCardList
+      cardList: ParamPropCardList
       /**
        * 接口调用成功的回调函数
        */
@@ -28,7 +28,7 @@ export namespace wx {
       /**
        * 卡券 Id
        */
-      cardId?: string
+      cardId: string
       /**
        * 卡券的扩展参数
        *
@@ -46,7 +46,7 @@ export namespace wx {
        *
        * **注：cardExt 需进行 JSON 序列化为字符串传入**
        */
-      cardExt?: string
+      cardExt: string
     }
     /**
      * 接口调用成功的回调函数
@@ -56,7 +56,7 @@ export namespace wx {
       /**
        * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
        */
-      cardList?: ParamPropSuccessParamPropCardList
+      cardList: ParamPropSuccessParamPropCardList
     }
     /**
      * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
@@ -66,19 +66,19 @@ export namespace wx {
       /**
        * 加密 code，为用户领取到卡券的code加密后的字符串，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
        */
-      code?: string
+      code: string
       /**
        * 用户领取到卡券的Id
        */
-      cardId?: string
+      cardId: string
       /**
        * 用户领取到卡券的扩展参数，与调用时传入的参数相同
        */
-      cardExt?: string
+      cardExt: string
       /**
        * 是否成功
        */
-      isSuccess?: boolean
+      isSuccess: boolean
     }
     /**
      * 接口调用失败的回调函数
@@ -129,7 +129,7 @@ export namespace wx {
       /**
        * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
        */
-      cardList?: ParamPropCardList
+      cardList: ParamPropCardList
       /**
        * 接口调用成功的回调函数
        */
@@ -151,11 +151,11 @@ export namespace wx {
       /**
        * 需要打开的卡券 Id
        */
-      cardId?: string
+      cardId: string
       /**
        * 由 addCard 的返回对象中的加密 code 通过解密后得到，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
        */
-      code?: string
+      code: string
     }
     /**
      * 接口调用成功的回调函数

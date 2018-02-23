@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 开发者服务器接口地址
        */
-      url?: string
+      url: string
       /**
        * 请求的参数
        */
@@ -63,17 +63,17 @@ export namespace wx {
        * *   对于 `POST` 方法且 `header['content-type']` 为 `application/json` 的数据，会对数据进行 JSON 序列化
        * *   对于 `POST` 方法且 `header['content-type']` 为 `application/x-www-form-urlencoded` 的数据，会将数据转换成 query string （encodeURIComponent(k)=encodeURIComponent(v)&encodeURIComponent(k)=encodeURIComponent(v)...）
        */
-      data?: any | string | ArrayBuffer
+      data: any | string | ArrayBuffer
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode?: number
+      statusCode: number
       /**
        * 开发者服务器返回的 HTTP Response Header
        *
        * @since 1.2.0
        */
-      header?: any
+      header: any
     }
     /**
      * 接口调用失败的回调函数
@@ -89,7 +89,7 @@ export namespace wx {
        *
        * @since 1.4.0
        */
-      abort?: ReturnPropAbort
+      abort: ReturnPropAbort
     }
     /**
      * 中断请求任务

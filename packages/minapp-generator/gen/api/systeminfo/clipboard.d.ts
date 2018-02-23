@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 需要设置的内容
        */
-      data?: string
+      data: string
       /**
        * 接口调用成功的回调函数
        */
@@ -79,7 +79,7 @@ export namespace wx {
       /**
        * 剪贴板的内容
        */
-      data?: string
+      data: string
     }
     /**
      * 接口调用失败的回调函数

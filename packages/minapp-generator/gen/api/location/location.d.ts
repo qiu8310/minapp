@@ -16,7 +16,7 @@ export namespace wx {
       /**
        * 接口调用成功的回调函数，返回内容详见返回参数说明。
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -34,37 +34,37 @@ export namespace wx {
       /**
        * 纬度，浮点数，范围为-90~90，负数表示南纬
        */
-      latitude?: any
+      latitude: any
       /**
        * 经度，浮点数，范围为-180~180，负数表示西经
        */
-      longitude?: any
+      longitude: any
       /**
        * 速度，浮点数，单位m/s
        */
-      speed?: any
+      speed: any
       /**
        * 位置的精确度
        */
-      accuracy?: any
+      accuracy: any
       /**
        * 高度，单位 m
        *
        * @since 1.2.0
        */
-      altitude?: any
+      altitude: any
       /**
        * 垂直精度，单位 m（Android 无法获取，返回 0）
        *
        * @since 1.2.0
        */
-      verticalAccuracy?: any
+      verticalAccuracy: any
       /**
        * 水平精度，单位 m
        *
        * @since 1.2.0
        */
-      horizontalAccuracy?: any
+      horizontalAccuracy: any
     }
     /**
      * 接口调用失败的回调函数
@@ -100,7 +100,7 @@ export namespace wx {
       /**
        * 接口调用成功的回调函数，返回内容详见返回参数说明。
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -118,19 +118,19 @@ export namespace wx {
       /**
        * 位置名称
        */
-      name?: any
+      name: any
       /**
        * 详细地址
        */
-      address?: any
+      address: any
       /**
        * 纬度，浮点数，范围为-90~90，负数表示南纬
        */
-      latitude?: any
+      latitude: any
       /**
        * 经度，浮点数，范围为-180~180，负数表示西经
        */
-      longitude?: any
+      longitude: any
     }
     /**
      * 接口调用失败的回调函数
@@ -154,11 +154,11 @@ export namespace wx {
       /**
        * 纬度，范围为-90~90，负数表示南纬
        */
-      latitude?: number
+      latitude: number
       /**
        * 经度，范围为-180~180，负数表示西经
        */
-      longitude?: number
+      longitude: number
       /**
        * 缩放比例，范围5~18，默认为18
        */

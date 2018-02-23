@@ -18,7 +18,7 @@ export namespace wx {
       /**
        * 成功则返回图片的本地文件路径列表 tempFilePaths
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -36,13 +36,13 @@ export namespace wx {
       /**
        * 图片的本地文件路径列表
        */
-      tempFilePaths?: string[]
+      tempFilePaths: string[]
       /**
        * 图片的本地文件列表，每一项是一个 File 对象
        *
        * @since 1.2.0
        */
-      tempFiles?: ParamPropSuccessParamPropTempFiles
+      tempFiles: ParamPropSuccessParamPropTempFiles
     }
     /**
      * 图片的本地文件列表，每一项是一个 File 对象
@@ -52,11 +52,11 @@ export namespace wx {
       /**
        * 本地文件路径
        */
-      path?: string
+      path: string
       /**
        * 本地文件大小，单位：B
        */
-      size?: number
+      size: number
     }
     /**
      * 接口调用失败的回调函数
@@ -96,7 +96,7 @@ export namespace wx {
       /**
        * 需要预览的图片链接列表
        */
-      urls?: string[]
+      urls: string[]
       /**
        * 接口调用成功的回调函数
        */
@@ -143,7 +143,7 @@ export namespace wx {
       /**
        * 图片的路径，可以是相对路径，临时文件路径，存储文件路径，网络图片路径
        */
-      src?: string
+      src: string
       /**
        * 接口调用成功的回调函数
        */
@@ -165,15 +165,15 @@ export namespace wx {
       /**
        * 图片宽度，单位px
        */
-      width?: number
+      width: number
       /**
        * 图片高度，单位px
        */
-      height?: number
+      height: number
       /**
        * 返回图片的本地路径
        */
-      path?: string
+      path: string
     }
     /**
      * 接口调用失败的回调函数
@@ -219,7 +219,7 @@ export namespace wx {
       /**
        * 图片文件路径，可以是临时文件路径也可以是永久文件路径，不支持网络图片路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 接口调用成功的回调函数
        */
@@ -241,7 +241,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

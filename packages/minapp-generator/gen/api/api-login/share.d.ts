@@ -146,7 +146,7 @@ export namespace wx {
       /**
        * shareTicket
        */
-      shareTicket?: string
+      shareTicket: string
       /**
        * 接口调用成功的回调函数
        */
@@ -168,7 +168,7 @@ export namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        *
@@ -180,11 +180,11 @@ export namespace wx {
        *
        * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://mp.weixin.qq.com/debug/wxadoc/dev/component/open-data.html)
        */
-      encryptedData?: string
+      encryptedData: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv?: string
+      iv: string
     }
     /**
      * 接口调用失败的回调函数

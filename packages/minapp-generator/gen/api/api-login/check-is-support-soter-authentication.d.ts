@@ -32,11 +32,11 @@ export namespace wx {
        *   facial        |人脸识别（暂未支持）
        *   speech        |声纹识别（暂未支持）
        */
-      supportMode?: string[]
+      supportMode: string[]
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

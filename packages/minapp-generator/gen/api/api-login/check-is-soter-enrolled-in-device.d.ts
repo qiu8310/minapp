@@ -14,7 +14,7 @@ export namespace wx {
        *   facial        |人脸识别（暂未支持）
        *   speech        |声纹识别（暂未支持）
        */
-      checkAuthMode?: string
+      checkAuthMode: string
       /**
        * 接口调用成功的回调函数
        */
@@ -36,11 +36,11 @@ export namespace wx {
       /**
        * 是否已录入信息
        */
-      isEnrolled?: boolean
+      isEnrolled: boolean
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

@@ -106,19 +106,19 @@ export namespace wx {
         /**
          * 指定marker
          */
-        markerId?: number
+        markerId: number
         /**
          * 指定marker移动到的目标点
          */
-        destination?: any
+        destination: any
         /**
          * 移动过程中是否自动旋转marker
          */
-        autoRotate?: boolean
+        autoRotate: boolean
         /**
          * marker的旋转角度
          */
-        rotate?: number
+        rotate: number
         /**
          * 动画持续时长，默认值1000ms，平移与旋转分别计算
          */
@@ -146,7 +146,7 @@ export namespace wx {
         /**
          * 要显示在可视区域内的坐标点列表，[{latitude, longitude}]
          */
-        points?: any[]
+        points: any[]
         /**
          * 坐标点形成的矩形边缘到地图边缘的距离，单位像素。格式为[上,右,下,左]，安卓上只能识别数组第一项，上下左右的padding一致。开发者工具暂不支持padding参数。
          */

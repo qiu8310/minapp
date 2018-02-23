@@ -98,11 +98,11 @@ export namespace wx {
       /**
        * Wi-Fi 设备ssid
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 设备bssid
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 设备密码
        */
@@ -195,7 +195,7 @@ export namespace wx {
       /**
        * Wi-Fi 列表数据
        */
-      wifiList?: ParamParamPropWifiList
+      wifiList: ParamParamPropWifiList
     }
     /**
      * Wi-Fi 列表数据
@@ -205,19 +205,19 @@ export namespace wx {
       /**
        * Wi-Fi 的SSID
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 的BSSID
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 是否安全
        */
-      secure?: boolean
+      secure: boolean
       /**
        * Wi-Fi 信号强度
        */
-      signalStrength?: number
+      signalStrength: number
     }
   }
   /**
@@ -233,7 +233,7 @@ export namespace wx {
       /**
        * 提供预设的 Wi-Fi 信息列表
        */
-      wifiList?: ParamPropWifiList
+      wifiList: ParamPropWifiList
       /**
        * 接口调用成功的回调函数
        */
@@ -255,15 +255,15 @@ export namespace wx {
       /**
        * Wi-Fi 设备ssid
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 设备bssid
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 设备密码
        */
-      password?: string
+      password: string
     }
     /**
      * 接口调用成功的回调函数
@@ -319,7 +319,7 @@ export namespace wx {
       /**
        * Wi-Fi 信息
        */
-      wifi?: ParamParamPropWifi
+      wifi: ParamParamPropWifi
     }
     /**
      * Wi-Fi 信息
@@ -328,19 +328,19 @@ export namespace wx {
       /**
        * Wi-Fi 的SSID
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 的BSSID
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 是否安全
        */
-      secure?: boolean
+      secure: boolean
       /**
        * Wi-Fi 信号强度
        */
-      signalStrength?: number
+      signalStrength: number
     }
   }
   /**
@@ -374,7 +374,7 @@ export namespace wx {
       /**
        * Wi-Fi 信息
        */
-      wifi?: ParamPropSuccessParamPropWifi
+      wifi: ParamPropSuccessParamPropWifi
     }
     /**
      * Wi-Fi 信息
@@ -383,19 +383,19 @@ export namespace wx {
       /**
        * Wi-Fi 的SSID
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 的BSSID
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 是否安全
        */
-      secure?: boolean
+      secure: boolean
       /**
        * Wi-Fi 信号强度
        */
-      signalStrength?: number
+      signalStrength: number
     }
     /**
      * 接口调用失败的回调函数

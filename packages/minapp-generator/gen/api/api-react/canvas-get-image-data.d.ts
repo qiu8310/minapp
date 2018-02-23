@@ -6,23 +6,23 @@ export namespace wx {
       /**
        * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
        */
-      canvasId?: string
+      canvasId: string
       /**
        * 将要被提取的图像数据矩形区域的左上角 x 坐标
        */
-      x?: number
+      x: number
       /**
        * 将要被提取的图像数据矩形区域的左上角 y 坐标
        */
-      y?: number
+      y: number
       /**
        * 将要被提取的图像数据矩形区域的宽度
        */
-      width?: number
+      width: number
       /**
        * 将要被提取的图像数据矩形区域的高度
        */
-      height?: number
+      height: number
       /**
        * 接口调用成功的回调函数
        */
@@ -44,19 +44,19 @@ export namespace wx {
       /**
        * errMsg
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 图像数据矩形的宽度
        */
-      width?: number
+      width: number
       /**
        * 图像数据矩形的高度
        */
-      height?: number
+      height: number
       /**
        * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
        */
-      data?: Uint8ClampedArray
+      data: Uint8ClampedArray
     }
     /**
      * 接口调用失败的回调函数

@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 接口调用成功的回调
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -26,69 +26,69 @@ export namespace wx {
        *
        * @since 1.5.0
        */
-      brand?: any
+      brand: any
       /**
        * 手机型号
        */
-      model?: any
+      model: any
       /**
        * 设备像素比
        */
-      pixelRatio?: any
+      pixelRatio: any
       /**
        * 屏幕宽度
        *
        * @since 1.1.0
        */
-      screenWidth?: any
+      screenWidth: any
       /**
        * 屏幕高度
        *
        * @since 1.1.0
        */
-      screenHeight?: any
+      screenHeight: any
       /**
        * 可使用窗口宽度
        */
-      windowWidth?: any
+      windowWidth: any
       /**
        * 可使用窗口高度
        */
-      windowHeight?: any
+      windowHeight: any
       /**
        * 状态栏的高度
        *
        * @since 1.9.0
        */
-      statusBarHeight?: any
+      statusBarHeight: any
       /**
        * 微信设置的语言
        */
-      language?: any
+      language: any
       /**
        * 微信版本号
        */
-      version?: any
+      version: any
       /**
        * 操作系统版本
        */
-      system?: any
+      system: any
       /**
        * 客户端平台
        */
-      platform?: any
+      platform: any
       /**
        * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
        *
        * @since 1.5.0
        */
-      fontSizeSetting?: any
+      fontSizeSetting: any
       /**
        * 客户端基础库版本
        *
        * @since 1.1.0
        */
-      SDKVersion?: any
+      SDKVersion: any
     }
     /**
      * 接口调用失败的回调函数
@@ -128,69 +128,69 @@ export namespace wx {
        *
        * @since 1.5.0
        */
-      brand?: any
+      brand: any
       /**
        * 手机型号
        */
-      model?: any
+      model: any
       /**
        * 设备像素比
        */
-      pixelRatio?: any
+      pixelRatio: any
       /**
        * 屏幕宽度
        *
        * @since 1.1.0
        */
-      screenWidth?: any
+      screenWidth: any
       /**
        * 屏幕高度
        *
        * @since 1.1.0
        */
-      screenHeight?: any
+      screenHeight: any
       /**
        * 可使用窗口宽度
        */
-      windowWidth?: any
+      windowWidth: any
       /**
        * 可使用窗口高度
        */
-      windowHeight?: any
+      windowHeight: any
       /**
        * 状态栏的高度
        *
        * @since 1.9.0
        */
-      statusBarHeight?: any
+      statusBarHeight: any
       /**
        * 微信设置的语言
        */
-      language?: any
+      language: any
       /**
        * 微信版本号
        */
-      version?: any
+      version: any
       /**
        * 操作系统版本
        */
-      system?: any
+      system: any
       /**
        * 客户端平台
        */
-      platform?: any
+      platform: any
       /**
        * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
        *
        * @since 1.5.0
        */
-      fontSizeSetting?: any
+      fontSizeSetting: any
       /**
        * 客户端基础库版本
        *
        * @since 1.1.0
        */
-      SDKVersion?: any
+      SDKVersion: any
     }
   }
   /**

@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 需要保存的文件的临时路径
        */
-      tempFilePath?: string
+      tempFilePath: string
       /**
        * 返回文件的保存路径，res = {savedFilePath: '文件的保存路径'}
        */
@@ -28,7 +28,7 @@ export namespace wx {
       /**
        * 文件的保存路径
        */
-      savedFilePath?: any
+      savedFilePath: any
     }
     /**
      * 接口调用失败的回调函数
@@ -88,11 +88,11 @@ export namespace wx {
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 文件列表
        */
-      fileList?: ParamPropSuccessParamPropFileList
+      fileList: ParamPropSuccessParamPropFileList
     }
     /**
      * 文件列表
@@ -102,15 +102,15 @@ export namespace wx {
       /**
        * 文件的本地路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 文件的保存时的时间戳，从1970/01/01 08:00:00 到当前时间的秒数
        */
-      createTime?: number
+      createTime: number
       /**
        * 文件大小，单位B
        */
-      size?: number
+      size: number
     }
     /**
      * 接口调用失败的回调函数
@@ -142,7 +142,7 @@ export namespace wx {
       /**
        * 文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 接口调用成功的回调函数，返回结果见`success返回参数说明`
        */
@@ -164,15 +164,15 @@ export namespace wx {
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 文件大小，单位B
        */
-      size?: number
+      size: number
       /**
        * 文件保存时的时间戳，从1970/01/01 08:00:00 到该时刻的秒数
        */
-      createTime?: number
+      createTime: number
     }
     /**
      * 接口调用失败的回调函数
@@ -206,7 +206,7 @@ export namespace wx {
       /**
        * 需要删除的文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 接口调用成功的回调函数
        */
@@ -261,7 +261,7 @@ export namespace wx {
       /**
        * 文件路径，可通过 downFile 获得
        */
-      filePath?: string
+      filePath: string
       /**
        * 文件类型，指定文件类型打开文件，有效值 doc, xls, ppt, pdf, docx, xlsx, pptx
        *

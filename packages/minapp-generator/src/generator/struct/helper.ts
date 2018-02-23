@@ -27,7 +27,7 @@ export function extractNS(name: string, desc: string[], type: ObjectType | Funct
         } else {
           newName = d.type.toTSString(0)
         }
-        types.push(`${TAB}${d.name}${d.readonly ? '' : '?'}: ${newName}`)
+        types.push(`${TAB}${d.name}${d.required ? '' : '?'}: ${newName}`)
       })
       types.push('}')
     }
@@ -64,6 +64,8 @@ export function extractNSFuncToNamespace(parentNamespace: string, namespace: str
   let rtns: string | undefined
   let prefix = (parentNamespace ? parentNamespace + '.' : '') + namespace
 
+  makeFunctionObjectFunctionParamToRequired(args)
+
   let argstr = args.map((a, i) => {
     if (canTypeExtract(a.type)) {
       let name = 'Param' + (shouldAppendIndex ? i : '')
@@ -73,7 +75,7 @@ export function extractNSFuncToNamespace(parentNamespace: string, namespace: str
         a.type.removePromisableKey()
         if (canTypeExtract(successArgType)) {
           rows.push(...extractNS('Promised', [], successArgType))
-          rtns = prefix + '.Promised'
+          rtns = `Promise<${prefix}.Promised>`
         } else {
           rtns = `Promise<${successArgType.toTSString(0)}>`
         }
@@ -111,6 +113,24 @@ export function extractNSFuncToNamespace(parentNamespace: string, namespace: str
     rtns
   }
 }
+
+function makeFunctionObjectFunctionParamToRequired(args: Arg[]) {
+  args.forEach(a => {
+    // 参数是 ObjectType
+    if (a.type instanceof ObjectType) {
+      a.type.definitions.forEach(d => {
+        if (d.type instanceof FunctionType) { // 这是个回调函数
+          d.type.args.forEach(a2 => {
+            if (a2.type instanceof ObjectType) {
+              a2.type.setDefaultRequired()
+            }
+          })
+        }
+      })
+    }
+  })
+}
+
 
 export function canTypeExtract(t: Type): t is ObjectType | FunctionType {
   return t instanceof ObjectType || t instanceof FunctionType

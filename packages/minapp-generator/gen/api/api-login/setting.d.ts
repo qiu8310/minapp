@@ -24,7 +24,7 @@ export namespace wx {
       /**
        * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
        */
-      authSetting?: any
+      authSetting: any
     }
     /**
      * 接口调用失败的回调函数
@@ -83,7 +83,7 @@ export namespace wx {
       /**
        * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
        */
-      authSetting?: any
+      authSetting: any
     }
     /**
      * 接口调用失败的回调函数

@@ -42,7 +42,7 @@ export namespace wx {
       /**
        * 画布标识，传入 [`<canvas/>`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
        */
-      canvasId?: string
+      canvasId: string
       /**
        * 目标文件的类型，只支持 'jpg' 或 'png'。默认为 'png'
        *

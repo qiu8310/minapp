@@ -28,7 +28,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

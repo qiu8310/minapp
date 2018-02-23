@@ -22,7 +22,7 @@ export namespace wx {
       /**
        * 名字
        */
-      firstName?: string
+      firstName: string
       /**
        * 备注
        */

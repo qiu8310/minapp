@@ -6,11 +6,11 @@ export namespace wx {
       /**
        * 前景颜色值，包括按钮、标题、状态栏的颜色，仅支持 #ffffff 和 #000000
        */
-      frontColor?: string
+      frontColor: string
       /**
        * 背景颜色值，有效值为十六进制颜色
        */
-      backgroundColor?: string
+      backgroundColor: string
       /**
        * 动画效果
        *
@@ -67,7 +67,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

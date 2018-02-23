@@ -24,11 +24,11 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 第三方平台自定义的数据
        */
-      extConfig?: any
+      extConfig: any
     }
     /**
      * 接口调用失败的回调函数
@@ -68,7 +68,7 @@ export namespace wx {
       /**
        * 第三方平台自定义的数据
        */
-      extConfig?: any
+      extConfig: any
     }
   }
   /**

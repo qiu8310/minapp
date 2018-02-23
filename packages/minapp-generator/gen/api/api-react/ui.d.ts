@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 置顶栏文字内容
        */
-      text?: string
+      text: string
       /**
        * 接口调用成功的回调函数
        */
@@ -54,7 +54,7 @@ export namespace wx {
       /**
        * 页面标题
        */
-      title?: string
+      title: string
       /**
        * 接口调用成功的回调函数
        */

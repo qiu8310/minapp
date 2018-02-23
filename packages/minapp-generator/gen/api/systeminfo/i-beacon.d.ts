@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * iBeacon设备广播的 uuids
        */
-      uuids?: string[]
+      uuids: string[]
       /**
        * 接口调用成功的回调函数
        */
@@ -28,7 +28,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -79,7 +79,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -121,11 +121,11 @@ export namespace wx {
       /**
        * iBeacon 设备列表
        */
-      beacons?: ParamPropSuccessParamPropBeacons
+      beacons: ParamPropSuccessParamPropBeacons
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * iBeacon 设备列表
@@ -135,27 +135,27 @@ export namespace wx {
       /**
        * iBeacon 设备广播的 uuid
        */
-      uuid?: string
+      uuid: string
       /**
        * iBeacon 设备的主 id
        */
-      major?: string
+      major: string
       /**
        * iBeacon 设备的次 id
        */
-      minor?: string
+      minor: string
       /**
        * 表示设备距离的枚举值
        */
-      proximity?: number
+      proximity: number
       /**
        * iBeacon 设备的距离
        */
-      accuracy?: number
+      accuracy: number
       /**
        * 表示设备的信号强度
        */
-      rssi?: number
+      rssi: number
     }
     /**
      * 接口调用失败的回调函数
@@ -180,7 +180,7 @@ export namespace wx {
       /**
        * 当前搜寻到的所有 iBeacon 设备列表
        */
-      beacons?: ParamParamPropBeacons
+      beacons: ParamParamPropBeacons
     }
     /**
      * 当前搜寻到的所有 iBeacon 设备列表
@@ -190,27 +190,27 @@ export namespace wx {
       /**
        * iBeacon 设备广播的 uuid
        */
-      uuid?: string
+      uuid: string
       /**
        * iBeacon 设备的主 id
        */
-      major?: string
+      major: string
       /**
        * iBeacon 设备的次 id
        */
-      minor?: string
+      minor: string
       /**
        * 表示设备距离的枚举值
        */
-      proximity?: number
+      proximity: number
       /**
        * iBeacon 设备的距离
        */
-      accuracy?: number
+      accuracy: number
       /**
        * 表示设备的信号强度
        */
-      rssi?: number
+      rssi: number
     }
   }
   /**
@@ -227,11 +227,11 @@ export namespace wx {
       /**
        * 服务目前是否可用
        */
-      available?: boolean
+      available: boolean
       /**
        * 目前是否处于搜索状态
        */
-      discovering?: boolean
+      discovering: boolean
     }
   }
   /**

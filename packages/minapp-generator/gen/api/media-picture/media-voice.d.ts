@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 需要播放的语音文件的文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 指定录音时长，到达指定的录音时长后会自动停止录音，单位：秒，默认值：60
        *

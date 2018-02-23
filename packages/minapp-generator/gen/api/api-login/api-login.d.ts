@@ -24,11 +24,11 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 用户登录凭证（有效期五分钟）。开发者需要在开发者服务器后台调用 api，使用 code 换取 openid 和 session_key 等信息
        */
-      code?: string
+      code: string
     }
     /**
      * 接口调用失败的回调函数

@@ -7,7 +7,7 @@ export namespace wx {
         /**
          * 需要发送的内容
          */
-        data?: string | ArrayBuffer
+        data: string | ArrayBuffer
         /**
          * 接口调用成功的回调函数
          */
@@ -76,7 +76,7 @@ export namespace wx {
         /**
          * 错误信息
          */
-        errMsg?: string
+        errMsg: string
       }
     }
     namespace onMessage {
@@ -85,7 +85,7 @@ export namespace wx {
         /**
          * 服务器返回的消息
          */
-        data?: string | ArrayBuffer
+        data: string | ArrayBuffer
       }
     }
   }

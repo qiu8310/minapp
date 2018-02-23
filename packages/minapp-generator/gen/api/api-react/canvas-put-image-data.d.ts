@@ -6,23 +6,23 @@ export namespace wx {
       /**
        * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
        */
-      canvasId?: string
+      canvasId: string
       /**
        * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
        */
-      data?: Uint8ClampedArray
+      data: Uint8ClampedArray
       /**
        * 源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）
        */
-      x?: number
+      x: number
       /**
        * 源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）
        */
-      y?: number
+      y: number
       /**
        * 源图像数据矩形区域的宽度
        */
-      width?: number
+      width: number
       /**
        * 源图像数据矩形区域的高度
        */

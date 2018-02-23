@@ -24,23 +24,23 @@ export namespace wx {
       /**
        * 选定音频的长度（单位：s），只有在当前有音乐播放时返回
        */
-      duration?: any
+      duration: any
       /**
        * 选定音频的播放位置（单位：s），只有在当前有音乐播放时返回
        */
-      currentPosition?: any
+      currentPosition: any
       /**
        * 播放状态（2：没有音乐在播放，1：播放中，0：暂停中）
        */
-      status?: any
+      status: any
       /**
        * 音频的下载进度（整数，80 代表 80%），只有在当前有音乐播放时返回
        */
-      downloadPercent?: any
+      downloadPercent: any
       /**
        * 歌曲数据链接，只有在当前有音乐播放时返回
        */
-      dataUrl?: any
+      dataUrl: any
     }
     /**
      * 接口调用失败的回调函数
@@ -78,7 +78,7 @@ export namespace wx {
       /**
        * 音乐链接，目前支持的格式有 m4a, aac, mp3, wav
        */
-      dataUrl?: string
+      dataUrl: string
       /**
        * 音乐标题
        */
@@ -148,7 +148,7 @@ export namespace wx {
       /**
        * 音乐位置，单位：秒
        */
-      position?: number
+      position: number
       /**
        * 接口调用成功的回调函数
        */

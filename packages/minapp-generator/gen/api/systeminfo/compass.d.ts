@@ -7,7 +7,7 @@ export namespace wx {
       /**
        * 面对的方向度数
        */
-      direction?: number
+      direction: number
     }
   }
   /**

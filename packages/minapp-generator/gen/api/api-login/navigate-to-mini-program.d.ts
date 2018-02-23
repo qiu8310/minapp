@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 要打开的小程序 appId
        */
-      appId?: string
+      appId: string
       /**
        * 打开的页面路径，如果为空则打开首页
        */
@@ -40,7 +40,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

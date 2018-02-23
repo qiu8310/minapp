@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 本地文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 计算文件摘要的算法，默认值 md5，有效值：md5，sha1
        */
@@ -32,15 +32,15 @@ export namespace wx {
       /**
        * 文件大小，单位：B
        */
-      size?: number
+      size: number
       /**
        * 按照传入的 digestAlgorithm 计算得出的的文件摘要
        */
-      digest?: string
+      digest: string
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

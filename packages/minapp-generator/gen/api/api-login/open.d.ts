@@ -36,23 +36,23 @@ export namespace wx {
       /**
        * 用户信息对象，不包含 openid 等敏感信息
        */
-      userInfo?: ParamPropSuccessParamPropUserInfo
+      userInfo: ParamPropSuccessParamPropUserInfo
       /**
        * 不包括敏感信息的原始数据字符串，用于计算签名。
        */
-      rawData?: string
+      rawData: string
       /**
        * 使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，参考文档 [signature](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html)。
        */
-      signature?: string
+      signature: string
       /**
        * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      encryptedData?: string
+      encryptedData: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv?: string
+      iv: string
     }
     /**
      * 用户信息对象，不包含 openid 等敏感信息
@@ -61,31 +61,31 @@ export namespace wx {
       /**
        * 用户昵称
        */
-      nickName?: string
+      nickName: string
       /**
        * 用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
        */
-      avatarUrl?: string
+      avatarUrl: string
       /**
        * 用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
        */
-      gender?: string
+      gender: string
       /**
        * 用户所在城市
        */
-      city?: string
+      city: string
       /**
        * 用户所在省份
        */
-      province?: string
+      province: string
       /**
        * 用户所在国家
        */
-      country?: string
+      country: string
       /**
        * 用户的语言，简体中文为zh_CN
        */
-      language?: string
+      language: string
     }
     /**
      * 接口调用失败的回调函数

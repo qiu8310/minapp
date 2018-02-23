@@ -6,11 +6,11 @@ export namespace wx {
       /**
        * tabBar的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * 显示的文本，超过 3 个字符则显示成“…”
        */
-      text?: string
+      text: string
       /**
        * 接口调用成功的回调函数
        */
@@ -59,7 +59,7 @@ export namespace wx {
       /**
        * tabBar的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * 接口调用成功的回调函数
        */
@@ -99,7 +99,7 @@ export namespace wx {
       /**
        * tabBar的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * 接口调用成功的回调函数
        */
@@ -139,7 +139,7 @@ export namespace wx {
       /**
        * tabBar的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * 接口调用成功的回调函数
        */
@@ -242,7 +242,7 @@ export namespace wx {
       /**
        * tabBar 的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * tab 上按钮文字
        */

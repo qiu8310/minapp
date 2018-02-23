@@ -24,39 +24,39 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 收货人姓名
        */
-      userName?: string
+      userName: string
       /**
        * 邮编
        */
-      postalCode?: string
+      postalCode: string
       /**
        * 国标收货地址第一级地址
        */
-      provinceName?: string
+      provinceName: string
       /**
        * 国标收货地址第二级地址
        */
-      cityName?: string
+      cityName: string
       /**
        * 国标收货地址第三级地址
        */
-      countyName?: string
+      countyName: string
       /**
        * 详细收货地址信息
        */
-      detailInfo?: string
+      detailInfo: string
       /**
        * 收货地址国家码
        */
-      nationalCode?: string
+      nationalCode: string
       /**
        * 收货人手机号码
        */
-      telNumber?: string
+      telNumber: string
     }
     /**
      * 接口调用失败的回调函数

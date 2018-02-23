@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 需要获取权限的scope，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
        */
-      scope?: string
+      scope: string
       /**
        * 接口调用成功的回调函数
        */
@@ -28,7 +28,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

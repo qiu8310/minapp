@@ -36,19 +36,19 @@ export namespace wx {
       /**
        * 所扫码的内容
        */
-      result?: any
+      result: any
       /**
        * 所扫码的类型
        */
-      scanType?: any
+      scanType: any
       /**
        * 所扫码的字符集
        */
-      charSet?: any
+      charSet: any
       /**
        * 当所扫的码为当前小程序的合法二维码时，会返回此字段，内容为二维码携带的 path
        */
-      path?: any
+      path: any
     }
     /**
      * 接口调用失败的回调函数

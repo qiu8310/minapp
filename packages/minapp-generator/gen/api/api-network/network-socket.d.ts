@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 开发者服务器接口地址，必须是 wss 协议，且域名必须是后台配置的合法域名
        */
-      url?: string
+      url: string
       /**
        * HTTP Header , header 中不能设置 Referer
        */
@@ -114,7 +114,7 @@ export namespace wx {
       /**
        * 需要发送的内容
        */
-      data?: string | ArrayBuffer
+      data: string | ArrayBuffer
       /**
        * 接口调用成功的回调函数
        */
@@ -181,7 +181,7 @@ export namespace wx {
       /**
        * 服务器返回的消息
        */
-      data?: string | ArrayBuffer
+      data: string | ArrayBuffer
     }
   }
   /**

@@ -7,15 +7,15 @@ export namespace wx {
       /**
        * X 轴
        */
-      x?: number
+      x: number
       /**
        * Y 轴
        */
-      y?: number
+      y: number
       /**
        * Z 轴
        */
-      z?: number
+      z: number
     }
   }
   /**

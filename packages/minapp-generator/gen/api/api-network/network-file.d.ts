@@ -6,15 +6,15 @@ export namespace wx {
       /**
        * 开发者服务器 url
        */
-      url?: string
+      url: string
       /**
        * 要上传文件资源的路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
        */
-      name?: string
+      name: string
       /**
        * HTTP 请求 Header, header 中不能设置 Referer
        */
@@ -44,11 +44,11 @@ export namespace wx {
       /**
        * 开发者服务器返回的数据
        */
-      data?: string
+      data: string
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode?: number
+      statusCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -64,13 +64,13 @@ export namespace wx {
        *
        * @since 1.4.0
        */
-      onProgressUpdate?: ReturnPropOnProgressUpdate
+      onProgressUpdate: ReturnPropOnProgressUpdate
       /**
        * 中断上传任务
        *
        * @since 1.4.0
        */
-      abort?: ReturnPropAbort
+      abort: ReturnPropAbort
     }
     /**
      * 监听上传进度变化
@@ -81,15 +81,15 @@ export namespace wx {
       /**
        * 上传进度百分比
        */
-      progress?: number
+      progress: number
       /**
        * 已经上传的数据长度，单位 Bytes
        */
-      totalBytesSent?: number
+      totalBytesSent: number
       /**
        * 预期需要上传的数据总长度，单位 Bytes
        */
-      totalBytesExpectedToSend?: number
+      totalBytesExpectedToSend: number
     }
     /**
      * 中断上传任务
@@ -162,7 +162,7 @@ export namespace wx {
       /**
        * 下载资源的 url
        */
-      url?: string
+      url: string
       /**
        * HTTP 请求 Header，header 中不能设置 Referer
        */
@@ -188,11 +188,11 @@ export namespace wx {
       /**
        * 临时文件路径，下载后的文件会存储到一个临时文件
        */
-      tempFilePath?: string
+      tempFilePath: string
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode?: number
+      statusCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -208,13 +208,13 @@ export namespace wx {
        *
        * @since 1.4.0
        */
-      onProgressUpdate?: ReturnPropOnProgressUpdate
+      onProgressUpdate: ReturnPropOnProgressUpdate
       /**
        * 中断下载任务
        *
        * @since 1.4.0
        */
-      abort?: ReturnPropAbort
+      abort: ReturnPropAbort
     }
     /**
      * 监听下载进度变化
@@ -225,15 +225,15 @@ export namespace wx {
       /**
        * 下载进度百分比
        */
-      progress?: number
+      progress: number
       /**
        * 已经下载的数据长度，单位 Bytes
        */
-      totalBytesWritten?: number
+      totalBytesWritten: number
       /**
        * 预期需要下载的数据总长度，单位 Bytes
        */
-      totalBytesExpectedToWrite?: number
+      totalBytesExpectedToWrite: number
     }
     /**
      * 中断下载任务

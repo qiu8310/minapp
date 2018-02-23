@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 提示的内容
        */
-      title?: string
+      title: string
       /**
        * 图标，有效值 "success", "loading", "none"
        *
@@ -80,7 +80,7 @@ export namespace wx {
       /**
        * 提示的内容
        */
-      title?: string
+      title: string
       /**
        * 是否显示透明蒙层，防止触摸穿透，默认：false
        */
@@ -150,11 +150,11 @@ export namespace wx {
       /**
        * 提示的标题
        */
-      title?: string
+      title: string
       /**
        * 提示的内容
        */
-      content?: string
+      content: string
       /**
        * 是否显示取消按钮，默认为 true
        */
@@ -196,13 +196,13 @@ export namespace wx {
       /**
        * 为 true 时，表示用户点击了确定按钮
        */
-      confirm?: boolean
+      confirm: boolean
       /**
        * 为 true 时，表示用户点击了取消（用于 Android 系统区分点击蒙层关闭还是点击取消按钮关闭）
        *
        * @since 1.1.0
        */
-      cancel?: boolean
+      cancel: boolean
     }
     /**
      * 接口调用失败的回调函数
@@ -240,7 +240,7 @@ export namespace wx {
       /**
        * 按钮的文字数组，数组长度最大为6个
        */
-      itemList?: string[]
+      itemList: string[]
       /**
        * 按钮的文字颜色，默认为"#000000"
        */
@@ -266,7 +266,7 @@ export namespace wx {
       /**
        * 用户点击的按钮，从上到下的顺序，从0开始
        */
-      tapIndex?: number
+      tapIndex: number
     }
     /**
      * 接口调用失败的回调函数

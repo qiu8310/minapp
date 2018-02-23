@@ -6,11 +6,11 @@ export namespace wx {
       /**
        * 本地缓存中的指定的 key
        */
-      key?: string
+      key: string
       /**
        * 需要存储的内容
        */
-      data?: any | string
+      data: any | string
       /**
        * 接口调用成功的回调函数
        */
@@ -72,11 +72,11 @@ export namespace wx {
       /**
        * 本地缓存中的指定的 key
        */
-      key?: string
+      key: string
       /**
        * 接口调用的回调函数,res = {data: key对应的内容}
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -94,7 +94,7 @@ export namespace wx {
       /**
        * key对应的内容
        */
-      data?: string
+      data: string
     }
     /**
      * 接口调用失败的回调函数
@@ -146,7 +146,7 @@ export namespace wx {
       /**
        * 接口调用的回调函数，详见返回参数说明
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -164,15 +164,15 @@ export namespace wx {
       /**
        * 当前storage中所有的key
        */
-      keys?: string[]
+      keys: string[]
       /**
        * 当前占用的空间大小, 单位kb
        */
-      currentSize?: number
+      currentSize: number
       /**
        * 限制的空间大小，单位kb
        */
-      limitSize?: number
+      limitSize: number
     }
     /**
      * 接口调用失败的回调函数
@@ -206,15 +206,15 @@ export namespace wx {
       /**
        * 当前storage中所有的key
        */
-      keys?: string[]
+      keys: string[]
       /**
        * 当前占用的空间大小, 单位kb
        */
-      currentSize?: number
+      currentSize: number
       /**
        * 限制的空间大小，单位kb
        */
-      limitSize?: number
+      limitSize: number
     }
   }
   /**
@@ -241,11 +241,11 @@ export namespace wx {
       /**
        * 本地缓存中的指定的 key
        */
-      key?: string
+      key: string
       /**
        * 接口调用的回调函数
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */

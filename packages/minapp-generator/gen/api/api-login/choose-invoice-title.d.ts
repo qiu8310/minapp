@@ -24,35 +24,35 @@ export namespace wx {
       /**
        * 抬头类型（0：单位，1：个人）
        */
-      type?: string
+      type: string
       /**
        * 抬头名称
        */
-      title?: string
+      title: string
       /**
        * 抬头税号
        */
-      taxNumber?: string
+      taxNumber: string
       /**
        * 单位地址
        */
-      companyAddress?: string
+      companyAddress: string
       /**
        * 手机号码
        */
-      telephone?: string
+      telephone: string
       /**
        * 银行名称
        */
-      bankName?: string
+      bankName: string
       /**
        * 银行账号
        */
-      bankAccount?: string
+      bankAccount: string
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

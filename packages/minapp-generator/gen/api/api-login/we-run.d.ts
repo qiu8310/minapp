@@ -24,7 +24,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        *
@@ -38,11 +38,11 @@ export namespace wx {
        *   stepInfoList[].timestamp   |  Number        |时间戳，表示数据对应的时间
        *   stepInfoList[].step        |  Number        |  微信运动步数     
        */
-      encryptedData?: string
+      encryptedData: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv?: string
+      iv: string
     }
     /**
      * 接口调用失败的回调函数

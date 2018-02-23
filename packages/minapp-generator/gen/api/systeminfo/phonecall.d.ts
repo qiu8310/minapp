@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 需要拨打的电话号码
        */
-      phoneNumber?: string
+      phoneNumber: string
       /**
        * 接口调用成功的回调
        */

@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 是否保持屏幕常亮
        */
-      keepScreenOn?: boolean
+      keepScreenOn: boolean
       /**
        * 接口调用成功的回调函数
        */
@@ -28,7 +28,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

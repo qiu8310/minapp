@@ -24,7 +24,7 @@ export namespace wx {
       /**
        * 录音文件的临时路径
        */
-      tempFilePath?: any
+      tempFilePath: any
     }
     /**
      * 接口调用失败的回调函数

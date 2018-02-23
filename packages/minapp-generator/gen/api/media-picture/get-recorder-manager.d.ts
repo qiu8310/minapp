@@ -93,7 +93,7 @@ export namespace wx {
         /**
          * 录音文件的临时路径
          */
-        tempFilePath?: string
+        tempFilePath: string
       }
     }
     namespace onFrameRecorded {
@@ -102,11 +102,11 @@ export namespace wx {
         /**
          * 录音分片结果数据
          */
-        frameBuffer?: ArrayBuffer
+        frameBuffer: ArrayBuffer
         /**
          * 当前帧是否正常录音结束前的最后一帧
          */
-        isLastFrame?: boolean
+        isLastFrame: boolean
       }
     }
     namespace onError {
@@ -115,7 +115,7 @@ export namespace wx {
         /**
          * 错误信息
          */
-        errMsg?: string
+        errMsg: string
       }
     }
   }

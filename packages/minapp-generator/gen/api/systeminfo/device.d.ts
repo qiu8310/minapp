@@ -6,7 +6,7 @@ export namespace wx {
       /**
        * 接口调用成功，返回网络类型 networkType
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -24,7 +24,7 @@ export namespace wx {
       /**
        * 网络类型
        */
-      networkType?: any
+      networkType: any
     }
     /**
      * 接口调用失败的回调函数
@@ -59,7 +59,7 @@ export namespace wx {
       /**
        * 当前是否有网络连接
        */
-      isConnected?: boolean
+      isConnected: boolean
       /**
        * 网络类型
        *
@@ -74,7 +74,7 @@ export namespace wx {
        *   none      |  无网络             
        *   unknown   |Android下不常见的网络类型
        */
-      networkType?: string
+      networkType: string
     }
   }
   /**
@@ -99,7 +99,7 @@ export namespace wx {
       /**
        * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
        */
-      value?: number
+      value: number
       /**
        * 接口调用成功
        */
@@ -157,7 +157,7 @@ export namespace wx {
       /**
        * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
        */
-      value?: number
+      value: number
     }
     /**
      * 接口调用失败的回调函数

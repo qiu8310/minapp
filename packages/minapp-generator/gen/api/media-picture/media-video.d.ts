@@ -42,23 +42,23 @@ export namespace wx {
       /**
        * 选定视频的临时文件路径
        */
-      tempFilePath?: any
+      tempFilePath: any
       /**
        * 选定视频的时间长度
        */
-      duration?: any
+      duration: any
       /**
        * 选定视频的数据量大小
        */
-      size?: any
+      size: any
       /**
        * 返回选定视频的长
        */
-      height?: any
+      height: any
       /**
        * 返回选定视频的宽
        */
-      width?: any
+      width: any
     }
     /**
      * 接口调用失败的回调函数
@@ -109,7 +109,7 @@ export namespace wx {
       /**
        * 视频文件路径，可以是临时文件路径也可以是永久文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 接口调用成功的回调函数
        */
@@ -131,7 +131,7 @@ export namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
