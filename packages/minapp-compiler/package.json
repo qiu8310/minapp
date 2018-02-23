@@ -2,7 +2,8 @@
   "name": "@minapp/compiler",
   "version": "0.0.1",
   "description": "微信小程序源代码编译器",
-  "main": "dist/index.js",
+  "main": "dist/Compiler.js",
+  "typings": "dist/Compiler.d.ts",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",

@@ -1,17 +1,20 @@
 {
   "compilerOptions": {
-    // "checkJs": true,
     "target": "es5",
     "module": "commonjs",
+    "declaration": false,
     "removeComments": true,
     "experimentalDecorators": true,
-    // "allowSyntheticDefaultImports": false,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": false,
-    // "noImplicitThis": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noImplicitReturns": true,
-    // "strictNullChecks": true,
+    "allowSyntheticDefaultImports": false,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "strictNullChecks": true,
     "noLib": false,
     "rootDir": "src",
     "baseUrl": "src",
@@ -27,7 +30,8 @@
     ]
   },
   "include": [
-    "src"
+    "src",
+    "globals.d.ts",
   ],
   "exclude": [
   ]

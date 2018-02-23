@@ -60,7 +60,7 @@ export function webpackConfig(compiler: Compiler) {
   if (compiler.production) {
     plugins.push(new webpack.optimize.UglifyJsPlugin({
       // NOTICE: 一定不能去掉 module 和 exports，否则压缩后代码可能失效
-      mangle: { except: ['module', 'exports'] },
+      mangle: { except: ['module', 'exports', 'global'] }, // mobx 使用了 global 变量
       sourceMap: false // TODO: 内部 loader 支持 sourceMap
     }))
   }

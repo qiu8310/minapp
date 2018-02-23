@@ -1,10 +1,11 @@
 {
+	"$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/project.config.json",
 	"description": "项目配置文件。",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
-		"minified": true,
+		"minified": false,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",

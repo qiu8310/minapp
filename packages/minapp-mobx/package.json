@@ -39,6 +39,9 @@
 			"json"
 		]
 	},
+	"peerDependencies": {
+    "mobx": "^3.5.1"
+  },
 	"dependencies": {
 		"mora-common": "^1.0.10",
 		"@minapp/core": "^0.0.1",

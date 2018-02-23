@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": true,
+    "declaration": false,
     "removeComments": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
@@ -26,6 +26,6 @@
     "src"
   ],
   "exclude": [
-    "**/__*"
+    "node_modules"
   ]
 }

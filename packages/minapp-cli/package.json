@@ -1,0 +1,29 @@
+{
+	"name": "@minapp/cli",
+	"description": "minapp 命令行工具，用于创建项目、开发项目、编译项目",
+	"version": "0.0.1",
+	"license": "MIT",
+	"scripts": {
+		"lint": "tslint src/**/*.ts",
+		"test": "jest",
+		"build": "remove-all dist/ && tsc",
+		"watch": "remove-all dist/ && tsc -w"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@minapp/compiler": "^0.0.1",
+		"fs-extra": "^5.0.0",
+		"inquirer": "^5.1.0",
+		"mora-scripts": "^1.6.19",
+		"tslib": "^1.9.0",
+		"validate-npm-package-name": "^3.0.0"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^5.0.0",
+		"@types/inquirer": "^0.0.36",
+		"ts-lint": "^4.5.1",
+		"typescript": "^2.7.0"
+	}
+}
