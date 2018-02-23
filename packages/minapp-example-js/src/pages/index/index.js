@@ -1,57 +1,32 @@
-import m from 'minapp'
-const {wxp} = m
+import {wxp, BasePage, pagify} from '@minapp/mobx'
 
-@m.pagify()
-export default class extends m.Page {
+// 把这个 class 转化成 微信的 Page 参数，并且注入全局 store
+@pagify()
+export default class extends BasePage {
   data = {
     motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wxp.canIUse('button.open-type.getUserInfo')
+    canIUseOpenButton: wxp.canIUse('button.open-type.getUserInfo')
   }
 
-  //事件处理函数
-  bindTap() {
+  onClickAvatarImage() {
+    // 跳转到 logs 页面
     wxp.navigateTo({
       url: '../logs/logs'
     })
   }
 
-  async onLoad() {
-    let {app} = this
-    console.log('globalData in index page onLoad', app.globalData)
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app._userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
+  onClickOpenButton(e) {
+    // 轻松修改全局存储
+    this.store.userInfo = e.detail.userInfo
+  }
+
+  async onLoad(options) {
+    // 轻松调用全局存储
+    console.log('current page store: %o', this.store)
+    if (!this.store.userInfo && !this.data.canIUseOpenButton) {
       // 在没有 open-type=getUserInfo 版本的兼容处理
-      let res = await wxp.getUserInfo()
-      app.globalData.userInfo = res.userInfo
-      this.setData({
-        userInfo: res.userInfo,
-        hasUserInfo: true
-      })
+      let {userInfo} = await wxp.getUserInfo()
+      this.store.userInfo = userInfo
     }
   }
-
-  getUserInfo(e) {
-    console.log(e)
-    this.app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
 }
-

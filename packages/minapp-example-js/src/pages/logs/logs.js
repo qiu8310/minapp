@@ -1,10 +1,8 @@
-import m from 'minapp'
+import {wxp, BasePage, pagify} from '@minapp/mobx'
 import {formatTime} from 'utils/util'
 
-const {wxp} = m
-
-@m.pagify()
-export default class extends m.Page {
+@pagify()
+export default class extends BasePage {
   data = {
     logs: []
   }
