@@ -22,12 +22,13 @@ export function pagify<D, S extends Store, A extends BaseApp<S>>(mapStoreToData?
       Object.defineProperties(obj, {
         onLoad: {...baseDesc, value(...args: any[]) {
           dispose = autorun(() => {
-
             let data = toJS(app.store) as any
-            delete data.constructor
+            if (data.__MOBX__) {
+              delete data.constructor
+              delete data.__MOBX__
+            }
             if (typeof mapStoreToData === 'function') data = mapStoreToData(data)
-            // 触发 render
-            this.setData({...data})
+            this.setData(data)
           })
           if (_onLoad) _onLoad.apply(this, args)
         }},
@@ -66,4 +67,3 @@ export class BasePage<D, S extends Store, A extends BaseApp<S>> extends Base {
     return getApp() as A
   }
 }
-

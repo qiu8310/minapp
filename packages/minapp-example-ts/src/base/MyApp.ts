@@ -1,10 +1,14 @@
-import m from '@minapp/mobx'
+import {Location, BaseApp} from '@minapp/mobx'
 import {MyStore} from './MyStore'
 
 const PAGES = require('../app.cjson?pages') // 获取 app.cjson 中的 pages 字段
+const TAB_BAR_LIST: undefined | Array<{pagePath: string, text: string}> = require('../app.cjson?tabBar.list')
 
-export class MyApp extends m.App<MyStore> {
-  indexPage: string = PAGES[0]
+let homePage: Location
+let pageMap = getLocationMap()
+
+export class MyApp extends BaseApp<MyStore> {
+  homePage = homePage
   page: {
     /*
       ！注意：INJECT_START 到 INJECT_END 之间的文件是自动注入的，请不要随意修改
@@ -16,22 +20,29 @@ export class MyApp extends m.App<MyStore> {
     */
 
     /*# INJECT_START {"key": "pagesMap", "append": true} #*/
-    index: string
-    logs: string
+    index: Location
+    logs: Location
     /*# INJECT_END #*/
-  } = getPagesMap()
+  } = pageMap
 }
 
+function getLocationMap() {
+  let tabBarPage: any = {}
+  let locationMap: {[key: string]: Location} = {}
+  if (TAB_BAR_LIST) TAB_BAR_LIST.forEach(tab => tabBarPage[tab.pagePath] = true)
 
-function getPagesMap() {
-  return PAGES.reduce((pagesMap: any, page: string) => {
+  return PAGES.reduce((map: any, page: string) => {
     // 需要驼峰形式的名字
     let camelPageName = (page.split('/').pop() as string).replace(/[-_](\w)/, (r, k: string) => k.toUpperCase())
 
-    if (pagesMap.hasOwnProperty(camelPageName)) {
-      console.warn(`${pagesMap[camelPageName]} 和 ${page} 的键名 ${camelPageName} 重复了，只能保留一个，请注意修改！`)
+    if (map.hasOwnProperty(camelPageName)) {
+      console.warn(`${map[camelPageName]} 和 ${page} 的键名 ${camelPageName} 重复了，只能保留一个，请注意修改！`)
     }
-    pagesMap[camelPageName] = '/' + page // 使用绝对路径
-    return pagesMap
-  }, {} as any)
+
+    let location = new Location((page[0] !== '/' ? '/' : '') + page, tabBarPage[page])
+
+    if (!homePage) homePage = location
+    map[camelPageName] = location
+    return map
+  }, locationMap)
 }

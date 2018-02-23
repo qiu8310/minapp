@@ -1,11 +1,11 @@
-// Generated at 2018-2-22
+// Generated at 2018-2-23
 declare namespace wx {
   namespace request {
     type Param = {
       /**
        * 开发者服务器接口地址
        */
-      url?: string
+      url: string
       /**
        * 请求的参数
        */
@@ -62,17 +62,17 @@ declare namespace wx {
        * *   对于 `POST` 方法且 `header['content-type']` 为 `application/json` 的数据，会对数据进行 JSON 序列化
        * *   对于 `POST` 方法且 `header['content-type']` 为 `application/x-www-form-urlencoded` 的数据，会将数据转换成 query string （encodeURIComponent(k)=encodeURIComponent(v)&encodeURIComponent(k)=encodeURIComponent(v)...）
        */
-      data?: any | string | ArrayBuffer
+      data: any | string | ArrayBuffer
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode?: number
+      statusCode: number
       /**
        * 开发者服务器返回的 HTTP Response Header
        *
        * @since 1.2.0
        */
-      header?: any
+      header: any
     }
     /**
      * 接口调用失败的回调函数
@@ -88,7 +88,7 @@ declare namespace wx {
        *
        * @since 1.4.0
        */
-      abort?: ReturnPropAbort
+      abort: ReturnPropAbort
     }
     /**
      * 中断请求任务
@@ -156,15 +156,15 @@ declare namespace wx {
       /**
        * 开发者服务器 url
        */
-      url?: string
+      url: string
       /**
        * 要上传文件资源的路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
        */
-      name?: string
+      name: string
       /**
        * HTTP 请求 Header, header 中不能设置 Referer
        */
@@ -194,11 +194,11 @@ declare namespace wx {
       /**
        * 开发者服务器返回的数据
        */
-      data?: string
+      data: string
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode?: number
+      statusCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -214,13 +214,13 @@ declare namespace wx {
        *
        * @since 1.4.0
        */
-      onProgressUpdate?: ReturnPropOnProgressUpdate
+      onProgressUpdate: ReturnPropOnProgressUpdate
       /**
        * 中断上传任务
        *
        * @since 1.4.0
        */
-      abort?: ReturnPropAbort
+      abort: ReturnPropAbort
     }
     /**
      * 监听上传进度变化
@@ -231,15 +231,15 @@ declare namespace wx {
       /**
        * 上传进度百分比
        */
-      progress?: number
+      progress: number
       /**
        * 已经上传的数据长度，单位 Bytes
        */
-      totalBytesSent?: number
+      totalBytesSent: number
       /**
        * 预期需要上传的数据总长度，单位 Bytes
        */
-      totalBytesExpectedToSend?: number
+      totalBytesExpectedToSend: number
     }
     /**
      * 中断上传任务
@@ -312,7 +312,7 @@ declare namespace wx {
       /**
        * 下载资源的 url
        */
-      url?: string
+      url: string
       /**
        * HTTP 请求 Header，header 中不能设置 Referer
        */
@@ -338,11 +338,11 @@ declare namespace wx {
       /**
        * 临时文件路径，下载后的文件会存储到一个临时文件
        */
-      tempFilePath?: string
+      tempFilePath: string
       /**
        * 开发者服务器返回的 HTTP 状态码
        */
-      statusCode?: number
+      statusCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -358,13 +358,13 @@ declare namespace wx {
        *
        * @since 1.4.0
        */
-      onProgressUpdate?: ReturnPropOnProgressUpdate
+      onProgressUpdate: ReturnPropOnProgressUpdate
       /**
        * 中断下载任务
        *
        * @since 1.4.0
        */
-      abort?: ReturnPropAbort
+      abort: ReturnPropAbort
     }
     /**
      * 监听下载进度变化
@@ -375,15 +375,15 @@ declare namespace wx {
       /**
        * 下载进度百分比
        */
-      progress?: number
+      progress: number
       /**
        * 已经下载的数据长度，单位 Bytes
        */
-      totalBytesWritten?: number
+      totalBytesWritten: number
       /**
        * 预期需要下载的数据总长度，单位 Bytes
        */
-      totalBytesExpectedToWrite?: number
+      totalBytesExpectedToWrite: number
     }
     /**
      * 中断下载任务
@@ -448,7 +448,7 @@ declare namespace wx {
       /**
        * 开发者服务器接口地址，必须是 wss 协议，且域名必须是后台配置的合法域名
        */
-      url?: string
+      url: string
       /**
        * HTTP Header , header 中不能设置 Referer
        */
@@ -556,7 +556,7 @@ declare namespace wx {
       /**
        * 需要发送的内容
        */
-      data?: string | ArrayBuffer
+      data: string | ArrayBuffer
       /**
        * 接口调用成功的回调函数
        */
@@ -623,7 +623,7 @@ declare namespace wx {
       /**
        * 服务器返回的消息
        */
-      data?: string | ArrayBuffer
+      data: string | ArrayBuffer
     }
   }
   /**
@@ -731,7 +731,7 @@ declare namespace wx {
         /**
          * 需要发送的内容
          */
-        data?: string | ArrayBuffer
+        data: string | ArrayBuffer
         /**
          * 接口调用成功的回调函数
          */
@@ -800,7 +800,7 @@ declare namespace wx {
         /**
          * 错误信息
          */
-        errMsg?: string
+        errMsg: string
       }
     }
     namespace onMessage {
@@ -809,7 +809,7 @@ declare namespace wx {
         /**
          * 服务器返回的消息
          */
-        data?: string | ArrayBuffer
+        data: string | ArrayBuffer
       }
     }
   }
@@ -879,7 +879,7 @@ declare namespace wx {
       /**
        * 成功则返回图片的本地文件路径列表 tempFilePaths
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -897,13 +897,13 @@ declare namespace wx {
       /**
        * 图片的本地文件路径列表
        */
-      tempFilePaths?: string[]
+      tempFilePaths: string[]
       /**
        * 图片的本地文件列表，每一项是一个 File 对象
        *
        * @since 1.2.0
        */
-      tempFiles?: ParamPropSuccessParamPropTempFiles
+      tempFiles: ParamPropSuccessParamPropTempFiles
     }
     /**
      * 图片的本地文件列表，每一项是一个 File 对象
@@ -913,11 +913,11 @@ declare namespace wx {
       /**
        * 本地文件路径
        */
-      path?: string
+      path: string
       /**
        * 本地文件大小，单位：B
        */
-      size?: number
+      size: number
     }
     /**
      * 接口调用失败的回调函数
@@ -957,7 +957,7 @@ declare namespace wx {
       /**
        * 需要预览的图片链接列表
        */
-      urls?: string[]
+      urls: string[]
       /**
        * 接口调用成功的回调函数
        */
@@ -1004,7 +1004,7 @@ declare namespace wx {
       /**
        * 图片的路径，可以是相对路径，临时文件路径，存储文件路径，网络图片路径
        */
-      src?: string
+      src: string
       /**
        * 接口调用成功的回调函数
        */
@@ -1026,15 +1026,15 @@ declare namespace wx {
       /**
        * 图片宽度，单位px
        */
-      width?: number
+      width: number
       /**
        * 图片高度，单位px
        */
-      height?: number
+      height: number
       /**
        * 返回图片的本地路径
        */
-      path?: string
+      path: string
     }
     /**
      * 接口调用失败的回调函数
@@ -1080,7 +1080,7 @@ declare namespace wx {
       /**
        * 图片文件路径，可以是临时文件路径也可以是永久文件路径，不支持网络图片路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 接口调用成功的回调函数
        */
@@ -1102,7 +1102,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -1153,7 +1153,7 @@ declare namespace wx {
       /**
        * 录音文件的临时路径
        */
-      tempFilePath?: any
+      tempFilePath: any
     }
     /**
      * 接口调用失败的回调函数
@@ -1289,7 +1289,7 @@ declare namespace wx {
         /**
          * 录音文件的临时路径
          */
-        tempFilePath?: string
+        tempFilePath: string
       }
     }
     namespace onFrameRecorded {
@@ -1298,11 +1298,11 @@ declare namespace wx {
         /**
          * 录音分片结果数据
          */
-        frameBuffer?: ArrayBuffer
+        frameBuffer: ArrayBuffer
         /**
          * 当前帧是否正常录音结束前的最后一帧
          */
-        isLastFrame?: boolean
+        isLastFrame: boolean
       }
     }
     namespace onError {
@@ -1311,7 +1311,7 @@ declare namespace wx {
         /**
          * 错误信息
          */
-        errMsg?: string
+        errMsg: string
       }
     }
   }
@@ -1358,7 +1358,7 @@ declare namespace wx {
       /**
        * 需要播放的语音文件的文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 指定录音时长，到达指定的录音时长后会自动停止录音，单位：秒，默认值：60
        *
@@ -1484,23 +1484,23 @@ declare namespace wx {
       /**
        * 选定音频的长度（单位：s），只有在当前有音乐播放时返回
        */
-      duration?: any
+      duration: any
       /**
        * 选定音频的播放位置（单位：s），只有在当前有音乐播放时返回
        */
-      currentPosition?: any
+      currentPosition: any
       /**
        * 播放状态（2：没有音乐在播放，1：播放中，0：暂停中）
        */
-      status?: any
+      status: any
       /**
        * 音频的下载进度（整数，80 代表 80%），只有在当前有音乐播放时返回
        */
-      downloadPercent?: any
+      downloadPercent: any
       /**
        * 歌曲数据链接，只有在当前有音乐播放时返回
        */
-      dataUrl?: any
+      dataUrl: any
     }
     /**
      * 接口调用失败的回调函数
@@ -1538,7 +1538,7 @@ declare namespace wx {
       /**
        * 音乐链接，目前支持的格式有 m4a, aac, mp3, wav
        */
-      dataUrl?: string
+      dataUrl: string
       /**
        * 音乐标题
        */
@@ -1608,7 +1608,7 @@ declare namespace wx {
       /**
        * 音乐位置，单位：秒
        */
-      position?: number
+      position: number
       /**
        * 接口调用成功的回调函数
        */
@@ -2076,23 +2076,23 @@ declare namespace wx {
       /**
        * 选定视频的临时文件路径
        */
-      tempFilePath?: any
+      tempFilePath: any
       /**
        * 选定视频的时间长度
        */
-      duration?: any
+      duration: any
       /**
        * 选定视频的数据量大小
        */
-      size?: any
+      size: any
       /**
        * 返回选定视频的长
        */
-      height?: any
+      height: any
       /**
        * 返回选定视频的宽
        */
-      width?: any
+      width: any
     }
     /**
      * 接口调用失败的回调函数
@@ -2143,7 +2143,7 @@ declare namespace wx {
       /**
        * 视频文件路径，可以是临时文件路径也可以是永久文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 接口调用成功的回调函数
        */
@@ -2165,7 +2165,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -2758,7 +2758,7 @@ declare namespace wx {
       /**
        * 需要保存的文件的临时路径
        */
-      tempFilePath?: string
+      tempFilePath: string
       /**
        * 返回文件的保存路径，res = {savedFilePath: '文件的保存路径'}
        */
@@ -2780,7 +2780,7 @@ declare namespace wx {
       /**
        * 文件的保存路径
        */
-      savedFilePath?: any
+      savedFilePath: any
     }
     /**
      * 接口调用失败的回调函数
@@ -2840,11 +2840,11 @@ declare namespace wx {
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 文件列表
        */
-      fileList?: ParamPropSuccessParamPropFileList
+      fileList: ParamPropSuccessParamPropFileList
     }
     /**
      * 文件列表
@@ -2854,15 +2854,15 @@ declare namespace wx {
       /**
        * 文件的本地路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 文件的保存时的时间戳，从1970/01/01 08:00:00 到当前时间的秒数
        */
-      createTime?: number
+      createTime: number
       /**
        * 文件大小，单位B
        */
-      size?: number
+      size: number
     }
     /**
      * 接口调用失败的回调函数
@@ -2894,7 +2894,7 @@ declare namespace wx {
       /**
        * 文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 接口调用成功的回调函数，返回结果见`success返回参数说明`
        */
@@ -2916,15 +2916,15 @@ declare namespace wx {
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 文件大小，单位B
        */
-      size?: number
+      size: number
       /**
        * 文件保存时的时间戳，从1970/01/01 08:00:00 到该时刻的秒数
        */
-      createTime?: number
+      createTime: number
     }
     /**
      * 接口调用失败的回调函数
@@ -2958,7 +2958,7 @@ declare namespace wx {
       /**
        * 需要删除的文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 接口调用成功的回调函数
        */
@@ -3013,7 +3013,7 @@ declare namespace wx {
       /**
        * 文件路径，可通过 downFile 获得
        */
-      filePath?: string
+      filePath: string
       /**
        * 文件类型，指定文件类型打开文件，有效值 doc, xls, ppt, pdf, docx, xlsx, pptx
        *
@@ -3074,7 +3074,7 @@ declare namespace wx {
       /**
        * 本地文件路径
        */
-      filePath?: string
+      filePath: string
       /**
        * 计算文件摘要的算法，默认值 md5，有效值：md5，sha1
        */
@@ -3100,15 +3100,15 @@ declare namespace wx {
       /**
        * 文件大小，单位：B
        */
-      size?: number
+      size: number
       /**
        * 按照传入的 digestAlgorithm 计算得出的的文件摘要
        */
-      digest?: string
+      digest: string
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -3143,11 +3143,11 @@ declare namespace wx {
       /**
        * 本地缓存中的指定的 key
        */
-      key?: string
+      key: string
       /**
        * 需要存储的内容
        */
-      data?: any | string
+      data: any | string
       /**
        * 接口调用成功的回调函数
        */
@@ -3209,11 +3209,11 @@ declare namespace wx {
       /**
        * 本地缓存中的指定的 key
        */
-      key?: string
+      key: string
       /**
        * 接口调用的回调函数,res = {data: key对应的内容}
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -3231,7 +3231,7 @@ declare namespace wx {
       /**
        * key对应的内容
        */
-      data?: string
+      data: string
     }
     /**
      * 接口调用失败的回调函数
@@ -3283,7 +3283,7 @@ declare namespace wx {
       /**
        * 接口调用的回调函数，详见返回参数说明
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -3301,15 +3301,15 @@ declare namespace wx {
       /**
        * 当前storage中所有的key
        */
-      keys?: string[]
+      keys: string[]
       /**
        * 当前占用的空间大小, 单位kb
        */
-      currentSize?: number
+      currentSize: number
       /**
        * 限制的空间大小，单位kb
        */
-      limitSize?: number
+      limitSize: number
     }
     /**
      * 接口调用失败的回调函数
@@ -3343,15 +3343,15 @@ declare namespace wx {
       /**
        * 当前storage中所有的key
        */
-      keys?: string[]
+      keys: string[]
       /**
        * 当前占用的空间大小, 单位kb
        */
-      currentSize?: number
+      currentSize: number
       /**
        * 限制的空间大小，单位kb
        */
-      limitSize?: number
+      limitSize: number
     }
   }
   /**
@@ -3378,11 +3378,11 @@ declare namespace wx {
       /**
        * 本地缓存中的指定的 key
        */
-      key?: string
+      key: string
       /**
        * 接口调用的回调函数
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -3485,7 +3485,7 @@ declare namespace wx {
       /**
        * 接口调用成功的回调函数，返回内容详见返回参数说明。
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -3503,37 +3503,37 @@ declare namespace wx {
       /**
        * 纬度，浮点数，范围为-90~90，负数表示南纬
        */
-      latitude?: any
+      latitude: any
       /**
        * 经度，浮点数，范围为-180~180，负数表示西经
        */
-      longitude?: any
+      longitude: any
       /**
        * 速度，浮点数，单位m/s
        */
-      speed?: any
+      speed: any
       /**
        * 位置的精确度
        */
-      accuracy?: any
+      accuracy: any
       /**
        * 高度，单位 m
        *
        * @since 1.2.0
        */
-      altitude?: any
+      altitude: any
       /**
        * 垂直精度，单位 m（Android 无法获取，返回 0）
        *
        * @since 1.2.0
        */
-      verticalAccuracy?: any
+      verticalAccuracy: any
       /**
        * 水平精度，单位 m
        *
        * @since 1.2.0
        */
-      horizontalAccuracy?: any
+      horizontalAccuracy: any
     }
     /**
      * 接口调用失败的回调函数
@@ -3569,7 +3569,7 @@ declare namespace wx {
       /**
        * 接口调用成功的回调函数，返回内容详见返回参数说明。
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -3587,19 +3587,19 @@ declare namespace wx {
       /**
        * 位置名称
        */
-      name?: any
+      name: any
       /**
        * 详细地址
        */
-      address?: any
+      address: any
       /**
        * 纬度，浮点数，范围为-90~90，负数表示南纬
        */
-      latitude?: any
+      latitude: any
       /**
        * 经度，浮点数，范围为-180~180，负数表示西经
        */
-      longitude?: any
+      longitude: any
     }
     /**
      * 接口调用失败的回调函数
@@ -3623,11 +3623,11 @@ declare namespace wx {
       /**
        * 纬度，范围为-90~90，负数表示南纬
        */
-      latitude?: number
+      latitude: number
       /**
        * 经度，范围为-180~180，负数表示西经
        */
-      longitude?: number
+      longitude: number
       /**
        * 缩放比例，范围5~18，默认为18
        */
@@ -3800,19 +3800,19 @@ declare namespace wx {
         /**
          * 指定marker
          */
-        markerId?: number
+        markerId: number
         /**
          * 指定marker移动到的目标点
          */
-        destination?: any
+        destination: any
         /**
          * 移动过程中是否自动旋转marker
          */
-        autoRotate?: boolean
+        autoRotate: boolean
         /**
          * marker的旋转角度
          */
-        rotate?: number
+        rotate: number
         /**
          * 动画持续时长，默认值1000ms，平移与旋转分别计算
          */
@@ -3840,7 +3840,7 @@ declare namespace wx {
         /**
          * 要显示在可视区域内的坐标点列表，[{latitude, longitude}]
          */
-        points?: any[]
+        points: any[]
         /**
          * 坐标点形成的矩形边缘到地图边缘的距离，单位像素。格式为[上,右,下,左]，安卓上只能识别数组第一项，上下左右的padding一致。开发者工具暂不支持padding参数。
          */
@@ -3943,7 +3943,7 @@ declare namespace wx {
       /**
        * 接口调用成功的回调
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -3963,69 +3963,69 @@ declare namespace wx {
        *
        * @since 1.5.0
        */
-      brand?: any
+      brand: any
       /**
        * 手机型号
        */
-      model?: any
+      model: any
       /**
        * 设备像素比
        */
-      pixelRatio?: any
+      pixelRatio: any
       /**
        * 屏幕宽度
        *
        * @since 1.1.0
        */
-      screenWidth?: any
+      screenWidth: any
       /**
        * 屏幕高度
        *
        * @since 1.1.0
        */
-      screenHeight?: any
+      screenHeight: any
       /**
        * 可使用窗口宽度
        */
-      windowWidth?: any
+      windowWidth: any
       /**
        * 可使用窗口高度
        */
-      windowHeight?: any
+      windowHeight: any
       /**
        * 状态栏的高度
        *
        * @since 1.9.0
        */
-      statusBarHeight?: any
+      statusBarHeight: any
       /**
        * 微信设置的语言
        */
-      language?: any
+      language: any
       /**
        * 微信版本号
        */
-      version?: any
+      version: any
       /**
        * 操作系统版本
        */
-      system?: any
+      system: any
       /**
        * 客户端平台
        */
-      platform?: any
+      platform: any
       /**
        * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
        *
        * @since 1.5.0
        */
-      fontSizeSetting?: any
+      fontSizeSetting: any
       /**
        * 客户端基础库版本
        *
        * @since 1.1.0
        */
-      SDKVersion?: any
+      SDKVersion: any
     }
     /**
      * 接口调用失败的回调函数
@@ -4065,69 +4065,69 @@ declare namespace wx {
        *
        * @since 1.5.0
        */
-      brand?: any
+      brand: any
       /**
        * 手机型号
        */
-      model?: any
+      model: any
       /**
        * 设备像素比
        */
-      pixelRatio?: any
+      pixelRatio: any
       /**
        * 屏幕宽度
        *
        * @since 1.1.0
        */
-      screenWidth?: any
+      screenWidth: any
       /**
        * 屏幕高度
        *
        * @since 1.1.0
        */
-      screenHeight?: any
+      screenHeight: any
       /**
        * 可使用窗口宽度
        */
-      windowWidth?: any
+      windowWidth: any
       /**
        * 可使用窗口高度
        */
-      windowHeight?: any
+      windowHeight: any
       /**
        * 状态栏的高度
        *
        * @since 1.9.0
        */
-      statusBarHeight?: any
+      statusBarHeight: any
       /**
        * 微信设置的语言
        */
-      language?: any
+      language: any
       /**
        * 微信版本号
        */
-      version?: any
+      version: any
       /**
        * 操作系统版本
        */
-      system?: any
+      system: any
       /**
        * 客户端平台
        */
-      platform?: any
+      platform: any
       /**
        * 用户字体大小设置。以“我-设置-通用-字体大小”中的设置为准，单位：px
        *
        * @since 1.5.0
        */
-      fontSizeSetting?: any
+      fontSizeSetting: any
       /**
        * 客户端基础库版本
        *
        * @since 1.1.0
        */
-      SDKVersion?: any
+      SDKVersion: any
     }
   }
   /**
@@ -4191,7 +4191,7 @@ declare namespace wx {
       /**
        * 接口调用成功，返回网络类型 networkType
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -4209,7 +4209,7 @@ declare namespace wx {
       /**
        * 网络类型
        */
-      networkType?: any
+      networkType: any
     }
     /**
      * 接口调用失败的回调函数
@@ -4244,7 +4244,7 @@ declare namespace wx {
       /**
        * 当前是否有网络连接
        */
-      isConnected?: boolean
+      isConnected: boolean
       /**
        * 网络类型
        *
@@ -4259,7 +4259,7 @@ declare namespace wx {
        *   none      |  无网络             
        *   unknown   |Android下不常见的网络类型
        */
-      networkType?: string
+      networkType: string
     }
   }
   /**
@@ -4284,7 +4284,7 @@ declare namespace wx {
       /**
        * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
        */
-      value?: number
+      value: number
       /**
        * 接口调用成功
        */
@@ -4342,7 +4342,7 @@ declare namespace wx {
       /**
        * 屏幕亮度值，范围 0~1，0 最暗，1 最亮
        */
-      value?: number
+      value: number
     }
     /**
      * 接口调用失败的回调函数
@@ -4444,15 +4444,15 @@ declare namespace wx {
       /**
        * X 轴
        */
-      x?: number
+      x: number
       /**
        * Y 轴
        */
-      y?: number
+      y: number
       /**
        * Z 轴
        */
-      z?: number
+      z: number
     }
   }
   /**
@@ -4561,7 +4561,7 @@ declare namespace wx {
       /**
        * 面对的方向度数
        */
-      direction?: number
+      direction: number
     }
   }
   /**
@@ -4667,7 +4667,7 @@ declare namespace wx {
       /**
        * 需要拨打的电话号码
        */
-      phoneNumber?: string
+      phoneNumber: string
       /**
        * 接口调用成功的回调
        */
@@ -4742,19 +4742,19 @@ declare namespace wx {
       /**
        * 所扫码的内容
        */
-      result?: any
+      result: any
       /**
        * 所扫码的类型
        */
-      scanType?: any
+      scanType: any
       /**
        * 所扫码的字符集
        */
-      charSet?: any
+      charSet: any
       /**
        * 当所扫的码为当前小程序的合法二维码时，会返回此字段，内容为二维码携带的 path
        */
-      path?: any
+      path: any
     }
     /**
      * 接口调用失败的回调函数
@@ -4795,7 +4795,7 @@ declare namespace wx {
       /**
        * 需要设置的内容
        */
-      data?: string
+      data: string
       /**
        * 接口调用成功的回调函数
        */
@@ -4868,7 +4868,7 @@ declare namespace wx {
       /**
        * 剪贴板的内容
        */
-      data?: string
+      data: string
     }
     /**
      * 接口调用失败的回调函数
@@ -4902,7 +4902,7 @@ declare namespace wx {
       /**
        * 成功则返回成功初始化信息
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -4954,7 +4954,7 @@ declare namespace wx {
       /**
        * 成功则返回成功关闭模块信息
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5000,7 +5000,7 @@ declare namespace wx {
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5018,15 +5018,15 @@ declare namespace wx {
       /**
        * 是否正在搜索设备
        */
-      discovering?: boolean
+      discovering: boolean
       /**
        * 蓝牙适配器是否可用
        */
-      available?: boolean
+      available: boolean
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -5061,11 +5061,11 @@ declare namespace wx {
       /**
        * 蓝牙适配器是否可用
        */
-      available?: boolean
+      available: boolean
       /**
        * 蓝牙适配器是否处于搜索状态
        */
-      discovering?: boolean
+      discovering: boolean
     }
   }
   /**
@@ -5101,7 +5101,7 @@ declare namespace wx {
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5119,7 +5119,7 @@ declare namespace wx {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -5155,7 +5155,7 @@ declare namespace wx {
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5173,7 +5173,7 @@ declare namespace wx {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -5207,7 +5207,7 @@ declare namespace wx {
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5225,11 +5225,11 @@ declare namespace wx {
       /**
        * uuid 对应的的已连接设备列表
        */
-      devices?: ParamPropSuccessParamPropDevices
+      devices: ParamPropSuccessParamPropDevices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * uuid 对应的的已连接设备列表
@@ -5239,31 +5239,31 @@ declare namespace wx {
       /**
        * 蓝牙设备名称，某些设备可能没有
        */
-      name?: string
+      name: string
       /**
        * 用于区分设备的 id
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 当前蓝牙设备的信号强度
        */
-      RSSI?: number
+      RSSI: number
       /**
        * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
        */
-      advertisData?: ArrayBuffer
+      advertisData: ArrayBuffer
       /**
        * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
        */
-      advertisServiceUUIDs?: any[]
+      advertisServiceUUIDs: any[]
       /**
        * 当前蓝牙设备的广播数据段中的LocalName数据段
        */
-      localName?: string
+      localName: string
       /**
        * 当前蓝牙设备的广播数据段中的ServiceData数据段
        */
-      serviceData?: ArrayBuffer
+      serviceData: ArrayBuffer
     }
     /**
      * 接口调用失败的回调函数
@@ -5318,7 +5318,7 @@ declare namespace wx {
       /**
        * 新搜索到的设备列表
        */
-      devices?: ParamParamPropDevices
+      devices: ParamParamPropDevices
     }
     /**
      * 新搜索到的设备列表
@@ -5328,31 +5328,31 @@ declare namespace wx {
       /**
        * 蓝牙设备名称，某些设备可能没有
        */
-      name?: string
+      name: string
       /**
        * 用于区分设备的 id
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 当前蓝牙设备的信号强度
        */
-      RSSI?: number
+      RSSI: number
       /**
        * 当前蓝牙设备的广播数据段中的ManufacturerData数据段 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
        */
-      advertisData?: ArrayBuffer
+      advertisData: ArrayBuffer
       /**
        * 当前蓝牙设备的广播数据段中的ServiceUUIDs数据段
        */
-      advertisServiceUUIDs?: any[]
+      advertisServiceUUIDs: any[]
       /**
        * 当前蓝牙设备的广播数据段中的LocalName数据段
        */
-      localName?: string
+      localName: string
       /**
        * 当前蓝牙设备的广播数据段中的ServiceData数据段
        */
-      serviceData?: ArrayBuffer
+      serviceData: ArrayBuffer
     }
   }
   /**
@@ -5394,11 +5394,11 @@ declare namespace wx {
       /**
        * 蓝牙设备主 service 的 uuid 列表
        */
-      services?: any[]
+      services: any[]
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5416,11 +5416,11 @@ declare namespace wx {
       /**
        * 搜索到的设备列表
        */
-      devices?: ParamPropSuccessParamPropDevices
+      devices: ParamPropSuccessParamPropDevices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 搜索到的设备列表
@@ -5430,11 +5430,11 @@ declare namespace wx {
       /**
        * 蓝牙设备名称，某些设备可能没有
        */
-      name?: string
+      name: string
       /**
        * 用于区分设备的 id
        */
-      deviceId?: string
+      deviceId: string
     }
     /**
      * 接口调用失败的回调函数
@@ -5472,11 +5472,11 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 getDevices 接口
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5494,7 +5494,7 @@ declare namespace wx {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -5538,11 +5538,11 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 getDevices 接口
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5560,7 +5560,7 @@ declare namespace wx {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -5596,11 +5596,11 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 device 对象
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 连接目前的状态
        */
-      connected?: boolean
+      connected: boolean
     }
   }
   /**
@@ -5625,11 +5625,11 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 getDevices 接口
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5647,11 +5647,11 @@ declare namespace wx {
       /**
        * 设备服务列表
        */
-      services?: ParamPropSuccessParamPropServices
+      services: ParamPropSuccessParamPropServices
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 设备服务列表
@@ -5661,11 +5661,11 @@ declare namespace wx {
       /**
        * 蓝牙设备服务的 uuid
        */
-      uuid?: string
+      uuid: string
       /**
        * 该服务是否为主服务
        */
-      isPrimary?: boolean
+      isPrimary: boolean
     }
     /**
      * 接口调用失败的回调函数
@@ -5705,15 +5705,15 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 device 对象
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 蓝牙服务 uuid
        */
-      serviceId?: string
+      serviceId: string
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5731,11 +5731,11 @@ declare namespace wx {
       /**
        * 设备特征值列表
        */
-      characteristics?: ParamPropSuccessParamPropCharacteristics
+      characteristics: ParamPropSuccessParamPropCharacteristics
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 设备特征值列表
@@ -5745,11 +5745,11 @@ declare namespace wx {
       /**
        * 蓝牙设备特征值的 uuid
        */
-      uuid?: string
+      uuid: string
       /**
        * 该特征值支持的操作类型
        */
-      properties?: ParamPropSuccessParamPropCharacteristicsItemPropProperties
+      properties: ParamPropSuccessParamPropCharacteristicsItemPropProperties
     }
     /**
      * 该特征值支持的操作类型
@@ -5758,19 +5758,19 @@ declare namespace wx {
       /**
        * 该特征值是否支持 read 操作
        */
-      read?: boolean
+      read: boolean
       /**
        * 该特征值是否支持 write 操作
        */
-      write?: boolean
+      write: boolean
       /**
        * 该特征值是否支持 notify 操作
        */
-      notify?: boolean
+      notify: boolean
       /**
        * 该特征值是否支持 indicate 操作
        */
-      indicate?: boolean
+      indicate: boolean
     }
     /**
      * 接口调用失败的回调函数
@@ -5813,19 +5813,19 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 device 对象
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 蓝牙特征值对应服务的 uuid
        */
-      serviceId?: string
+      serviceId: string
       /**
        * 蓝牙特征值的 uuid
        */
-      characteristicId?: string
+      characteristicId: string
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5843,11 +5843,11 @@ declare namespace wx {
       /**
        * 错误码
        */
-      errCode?: number
+      errCode: number
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -5897,23 +5897,23 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 device 对象
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 蓝牙特征值对应服务的 uuid
        */
-      serviceId?: string
+      serviceId: string
       /**
        * 蓝牙特征值的 uuid
        */
-      characteristicId?: string
+      characteristicId: string
       /**
        * 蓝牙设备特征值对应的二进制值
        */
-      value?: ArrayBuffer
+      value: ArrayBuffer
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -5931,7 +5931,7 @@ declare namespace wx {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -5987,23 +5987,23 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 device 对象
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 蓝牙特征值对应服务的 uuid
        */
-      serviceId?: string
+      serviceId: string
       /**
        * 蓝牙特征值的 uuid
        */
-      characteristicId?: string
+      characteristicId: string
       /**
        * true: 启用 notify; false: 停用 notify
        */
-      state?: boolean
+      state: boolean
       /**
        * 成功则返回本机蓝牙适配器状态
        */
-      success?: ParamPropSuccess
+      success: ParamPropSuccess
       /**
        * 接口调用失败的回调函数
        */
@@ -6021,7 +6021,7 @@ declare namespace wx {
       /**
        * 成功：ok，错误：详细信息
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -6070,19 +6070,19 @@ declare namespace wx {
       /**
        * 蓝牙设备 id，参考 device 对象
        */
-      deviceId?: string
+      deviceId: string
       /**
        * 特征值所属服务 uuid
        */
-      serviceId?: string
+      serviceId: string
       /**
        * 特征值 uuid
        */
-      characteristicId?: string
+      characteristicId: string
       /**
        * 特征值最新的值 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
        */
-      value?: ArrayBuffer
+      value: ArrayBuffer
     }
   }
   /**
@@ -6117,7 +6117,7 @@ declare namespace wx {
       /**
        * iBeacon设备广播的 uuids
        */
-      uuids?: string[]
+      uuids: string[]
       /**
        * 接口调用成功的回调函数
        */
@@ -6139,7 +6139,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -6190,7 +6190,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -6232,11 +6232,11 @@ declare namespace wx {
       /**
        * iBeacon 设备列表
        */
-      beacons?: ParamPropSuccessParamPropBeacons
+      beacons: ParamPropSuccessParamPropBeacons
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * iBeacon 设备列表
@@ -6246,27 +6246,27 @@ declare namespace wx {
       /**
        * iBeacon 设备广播的 uuid
        */
-      uuid?: string
+      uuid: string
       /**
        * iBeacon 设备的主 id
        */
-      major?: string
+      major: string
       /**
        * iBeacon 设备的次 id
        */
-      minor?: string
+      minor: string
       /**
        * 表示设备距离的枚举值
        */
-      proximity?: number
+      proximity: number
       /**
        * iBeacon 设备的距离
        */
-      accuracy?: number
+      accuracy: number
       /**
        * 表示设备的信号强度
        */
-      rssi?: number
+      rssi: number
     }
     /**
      * 接口调用失败的回调函数
@@ -6291,7 +6291,7 @@ declare namespace wx {
       /**
        * 当前搜寻到的所有 iBeacon 设备列表
        */
-      beacons?: ParamParamPropBeacons
+      beacons: ParamParamPropBeacons
     }
     /**
      * 当前搜寻到的所有 iBeacon 设备列表
@@ -6301,27 +6301,27 @@ declare namespace wx {
       /**
        * iBeacon 设备广播的 uuid
        */
-      uuid?: string
+      uuid: string
       /**
        * iBeacon 设备的主 id
        */
-      major?: string
+      major: string
       /**
        * iBeacon 设备的次 id
        */
-      minor?: string
+      minor: string
       /**
        * 表示设备距离的枚举值
        */
-      proximity?: number
+      proximity: number
       /**
        * iBeacon 设备的距离
        */
-      accuracy?: number
+      accuracy: number
       /**
        * 表示设备的信号强度
        */
-      rssi?: number
+      rssi: number
     }
   }
   /**
@@ -6338,11 +6338,11 @@ declare namespace wx {
       /**
        * 服务目前是否可用
        */
-      available?: boolean
+      available: boolean
       /**
        * 目前是否处于搜索状态
        */
-      discovering?: boolean
+      discovering: boolean
     }
   }
   /**
@@ -6358,7 +6358,7 @@ declare namespace wx {
       /**
        * 是否保持屏幕常亮
        */
-      keepScreenOn?: boolean
+      keepScreenOn: boolean
       /**
        * 接口调用成功的回调函数
        */
@@ -6380,7 +6380,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -6445,7 +6445,7 @@ declare namespace wx {
       /**
        * 名字
        */
-      firstName?: string
+      firstName: string
       /**
        * 备注
        */
@@ -6619,11 +6619,11 @@ declare namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 错误码
        */
-      errCode?: number
+      errCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -6657,7 +6657,7 @@ declare namespace wx {
       /**
        * 需要注册到系统的 AID 列表，每个 AID 为 String 类型
        */
-      aid_list?: any[]
+      aid_list: any[]
       /**
        * 接口调用成功的回调函数
        */
@@ -6679,11 +6679,11 @@ declare namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 错误码
        */
-      errCode?: number
+      errCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -6736,11 +6736,11 @@ declare namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 错误码
        */
-      errCode?: number
+      errCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -6775,15 +6775,15 @@ declare namespace wx {
       /**
        * 消息类型
        */
-      messageType?: number
+      messageType: number
       /**
        * 客户端接收到 NFC 设备的指令，此参数当且仅当 `messageType=1` 时有效
        */
-      data?: ArrayBuffer
+      data: ArrayBuffer
       /**
        * 此参数当且仅当 `messageType=2` 时有效
        */
-      reason?: number
+      reason: number
     }
   }
   /**
@@ -6802,7 +6802,7 @@ declare namespace wx {
       /**
        * 二进制数据
        */
-      data?: ArrayBuffer
+      data: ArrayBuffer
       /**
        * 接口调用成功的回调函数
        */
@@ -6824,7 +6824,7 @@ declare namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 错误码
        *
@@ -6843,7 +6843,7 @@ declare namespace wx {
        *   13005   |  返回的指令不合法         
        *   13006   |  注册 AID 失败            
        */
-      errCode?: number
+      errCode: number
     }
     /**
      * 接口调用失败的回调函数
@@ -6977,11 +6977,11 @@ declare namespace wx {
       /**
        * Wi-Fi 设备ssid
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 设备bssid
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 设备密码
        */
@@ -7074,7 +7074,7 @@ declare namespace wx {
       /**
        * Wi-Fi 列表数据
        */
-      wifiList?: ParamParamPropWifiList
+      wifiList: ParamParamPropWifiList
     }
     /**
      * Wi-Fi 列表数据
@@ -7084,19 +7084,19 @@ declare namespace wx {
       /**
        * Wi-Fi 的SSID
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 的BSSID
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 是否安全
        */
-      secure?: boolean
+      secure: boolean
       /**
        * Wi-Fi 信号强度
        */
-      signalStrength?: number
+      signalStrength: number
     }
   }
   /**
@@ -7112,7 +7112,7 @@ declare namespace wx {
       /**
        * 提供预设的 Wi-Fi 信息列表
        */
-      wifiList?: ParamPropWifiList
+      wifiList: ParamPropWifiList
       /**
        * 接口调用成功的回调函数
        */
@@ -7134,15 +7134,15 @@ declare namespace wx {
       /**
        * Wi-Fi 设备ssid
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 设备bssid
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 设备密码
        */
-      password?: string
+      password: string
     }
     /**
      * 接口调用成功的回调函数
@@ -7198,7 +7198,7 @@ declare namespace wx {
       /**
        * Wi-Fi 信息
        */
-      wifi?: ParamParamPropWifi
+      wifi: ParamParamPropWifi
     }
     /**
      * Wi-Fi 信息
@@ -7207,19 +7207,19 @@ declare namespace wx {
       /**
        * Wi-Fi 的SSID
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 的BSSID
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 是否安全
        */
-      secure?: boolean
+      secure: boolean
       /**
        * Wi-Fi 信号强度
        */
-      signalStrength?: number
+      signalStrength: number
     }
   }
   /**
@@ -7253,7 +7253,7 @@ declare namespace wx {
       /**
        * Wi-Fi 信息
        */
-      wifi?: ParamPropSuccessParamPropWifi
+      wifi: ParamPropSuccessParamPropWifi
     }
     /**
      * Wi-Fi 信息
@@ -7262,19 +7262,19 @@ declare namespace wx {
       /**
        * Wi-Fi 的SSID
        */
-      SSID?: string
+      SSID: string
       /**
        * Wi-Fi 的BSSID
        */
-      BSSID?: string
+      BSSID: string
       /**
        * Wi-Fi 是否安全
        */
-      secure?: boolean
+      secure: boolean
       /**
        * Wi-Fi 信号强度
        */
-      signalStrength?: number
+      signalStrength: number
     }
     /**
      * 接口调用失败的回调函数
@@ -7318,7 +7318,7 @@ declare namespace wx {
       /**
        * 提示的内容
        */
-      title?: string
+      title: string
       /**
        * 图标，有效值 "success", "loading", "none"
        *
@@ -7392,7 +7392,7 @@ declare namespace wx {
       /**
        * 提示的内容
        */
-      title?: string
+      title: string
       /**
        * 是否显示透明蒙层，防止触摸穿透，默认：false
        */
@@ -7462,11 +7462,11 @@ declare namespace wx {
       /**
        * 提示的标题
        */
-      title?: string
+      title: string
       /**
        * 提示的内容
        */
-      content?: string
+      content: string
       /**
        * 是否显示取消按钮，默认为 true
        */
@@ -7508,13 +7508,13 @@ declare namespace wx {
       /**
        * 为 true 时，表示用户点击了确定按钮
        */
-      confirm?: boolean
+      confirm: boolean
       /**
        * 为 true 时，表示用户点击了取消（用于 Android 系统区分点击蒙层关闭还是点击取消按钮关闭）
        *
        * @since 1.1.0
        */
-      cancel?: boolean
+      cancel: boolean
     }
     /**
      * 接口调用失败的回调函数
@@ -7552,7 +7552,7 @@ declare namespace wx {
       /**
        * 按钮的文字数组，数组长度最大为6个
        */
-      itemList?: string[]
+      itemList: string[]
       /**
        * 按钮的文字颜色，默认为"#000000"
        */
@@ -7578,7 +7578,7 @@ declare namespace wx {
       /**
        * 用户点击的按钮，从上到下的顺序，从0开始
        */
-      tapIndex?: number
+      tapIndex: number
     }
     /**
      * 接口调用失败的回调函数
@@ -7621,7 +7621,7 @@ declare namespace wx {
       /**
        * 置顶栏文字内容
        */
-      text?: string
+      text: string
       /**
        * 接口调用成功的回调函数
        */
@@ -7669,7 +7669,7 @@ declare namespace wx {
       /**
        * 页面标题
        */
-      title?: string
+      title: string
       /**
        * 接口调用成功的回调函数
        */
@@ -7727,11 +7727,11 @@ declare namespace wx {
       /**
        * 前景颜色值，包括按钮、标题、状态栏的颜色，仅支持 #ffffff 和 #000000
        */
-      frontColor?: string
+      frontColor: string
       /**
        * 背景颜色值，有效值为十六进制颜色
        */
-      backgroundColor?: string
+      backgroundColor: string
       /**
        * 动画效果
        *
@@ -7788,7 +7788,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -7823,11 +7823,11 @@ declare namespace wx {
       /**
        * tabBar的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * 显示的文本，超过 3 个字符则显示成“…”
        */
-      text?: string
+      text: string
       /**
        * 接口调用成功的回调函数
        */
@@ -7876,7 +7876,7 @@ declare namespace wx {
       /**
        * tabBar的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * 接口调用成功的回调函数
        */
@@ -7916,7 +7916,7 @@ declare namespace wx {
       /**
        * tabBar的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * 接口调用成功的回调函数
        */
@@ -7956,7 +7956,7 @@ declare namespace wx {
       /**
        * tabBar的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * 接口调用成功的回调函数
        */
@@ -8059,7 +8059,7 @@ declare namespace wx {
       /**
        * tabBar 的哪一项，从左边算起
        */
-      index?: number
+      index: number
       /**
        * tab 上按钮文字
        */
@@ -8202,7 +8202,7 @@ declare namespace wx {
       /**
        * 需要跳转的应用内非 tabBar 的页面的路径 , 路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'
        */
-      url?: string
+      url: string
       /**
        * 接口调用成功的回调函数
        */
@@ -8259,7 +8259,7 @@ declare namespace wx {
       /**
        * 需要跳转的应用内非 tabBar 的页面的路径，路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'
        */
-      url?: string
+      url: string
       /**
        * 接口调用成功的回调函数
        */
@@ -8305,7 +8305,7 @@ declare namespace wx {
       /**
        * 需要跳转的应用内页面路径 , 路径后可以带参数。参数与路径之间使用`?`分隔，参数键与参数值用`=`相连，不同参数用`&`分隔；如 'path?key=value&key2=value2'，如果跳转的页面路径是 tabBar 页面则不能带参数
        */
-      url?: string
+      url: string
       /**
        * 接口调用成功的回调函数
        */
@@ -8364,7 +8364,7 @@ declare namespace wx {
       /**
        * 需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
        */
-      url?: string
+      url: string
       /**
        * 接口调用成功的回调函数
        */
@@ -8640,7 +8640,7 @@ declare namespace wx {
       /**
        * 滚动到页面的目标位置（单位px）
        */
-      scrollTop?: number
+      scrollTop: number
       /**
        * 滚动动画的时长，默认300ms，单位 ms
        */
@@ -8888,7 +8888,7 @@ declare namespace wx {
       /**
        * 画布标识，传入 [`<canvas/>`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
        */
-      canvasId?: string
+      canvasId: string
       /**
        * 目标文件的类型，只支持 'jpg' 或 'png'。默认为 'png'
        *
@@ -8959,23 +8959,23 @@ declare namespace wx {
       /**
        * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
        */
-      canvasId?: string
+      canvasId: string
       /**
        * 将要被提取的图像数据矩形区域的左上角 x 坐标
        */
-      x?: number
+      x: number
       /**
        * 将要被提取的图像数据矩形区域的左上角 y 坐标
        */
-      y?: number
+      y: number
       /**
        * 将要被提取的图像数据矩形区域的宽度
        */
-      width?: number
+      width: number
       /**
        * 将要被提取的图像数据矩形区域的高度
        */
-      height?: number
+      height: number
       /**
        * 接口调用成功的回调函数
        */
@@ -8997,19 +8997,19 @@ declare namespace wx {
       /**
        * errMsg
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 图像数据矩形的宽度
        */
-      width?: number
+      width: number
       /**
        * 图像数据矩形的高度
        */
-      height?: number
+      height: number
       /**
        * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
        */
-      data?: Uint8ClampedArray
+      data: Uint8ClampedArray
     }
     /**
      * 接口调用失败的回调函数
@@ -9051,23 +9051,23 @@ declare namespace wx {
       /**
        * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
        */
-      canvasId?: string
+      canvasId: string
       /**
        * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
        */
-      data?: Uint8ClampedArray
+      data: Uint8ClampedArray
       /**
        * 源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）
        */
-      x?: number
+      x: number
       /**
        * 源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）
        */
-      y?: number
+      y: number
       /**
        * 源图像数据矩形区域的宽度
        */
-      width?: number
+      width: number
       /**
        * 源图像数据矩形区域的高度
        */
@@ -9143,7 +9143,7 @@ declare namespace wx {
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -9207,11 +9207,11 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 第三方平台自定义的数据
        */
-      extConfig?: any
+      extConfig: any
     }
     /**
      * 接口调用失败的回调函数
@@ -9251,7 +9251,7 @@ declare namespace wx {
       /**
        * 第三方平台自定义的数据
        */
-      extConfig?: any
+      extConfig: any
     }
   }
   /**
@@ -9296,11 +9296,11 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 用户登录凭证（有效期五分钟）。开发者需要在开发者服务器后台调用 api，使用 code 换取 openid 和 session_key 等信息
        */
-      code?: string
+      code: string
     }
     /**
      * 接口调用失败的回调函数
@@ -9406,7 +9406,7 @@ declare namespace wx {
       /**
        * 需要获取权限的scope，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
        */
-      scope?: string
+      scope: string
       /**
        * 接口调用成功的回调函数
        */
@@ -9428,7 +9428,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -9501,23 +9501,23 @@ declare namespace wx {
       /**
        * 用户信息对象，不包含 openid 等敏感信息
        */
-      userInfo?: ParamPropSuccessParamPropUserInfo
+      userInfo: ParamPropSuccessParamPropUserInfo
       /**
        * 不包括敏感信息的原始数据字符串，用于计算签名。
        */
-      rawData?: string
+      rawData: string
       /**
        * 使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，参考文档 [signature](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html)。
        */
-      signature?: string
+      signature: string
       /**
        * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      encryptedData?: string
+      encryptedData: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv?: string
+      iv: string
     }
     /**
      * 用户信息对象，不包含 openid 等敏感信息
@@ -9526,31 +9526,31 @@ declare namespace wx {
       /**
        * 用户昵称
        */
-      nickName?: string
+      nickName: string
       /**
        * 用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
        */
-      avatarUrl?: string
+      avatarUrl: string
       /**
        * 用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
        */
-      gender?: string
+      gender: string
       /**
        * 用户所在城市
        */
-      city?: string
+      city: string
       /**
        * 用户所在省份
        */
-      province?: string
+      province: string
       /**
        * 用户所在国家
        */
-      country?: string
+      country: string
       /**
        * 用户的语言，简体中文为zh_CN
        */
-      language?: string
+      language: string
     }
     /**
      * 接口调用失败的回调函数
@@ -9610,23 +9610,23 @@ declare namespace wx {
       /**
        * 时间戳从1970年1月1日00:00:00至今的秒数,即当前的时间
        */
-      timeStamp?: string
+      timeStamp: string
       /**
        * 随机字符串，长度为32个字符以下。
        */
-      nonceStr?: string
+      nonceStr: string
       /**
        * 统一下单接口返回的 prepay\_id 参数值，提交格式如：prepay\_id=_*_
        */
-      package?: string
+      package: string
       /**
        * 签名算法，暂支持 MD5
        */
-      signType?: string
+      signType: string
       /**
        * 签名,具体签名方案参见[小程序支付接口文档](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_7&index=3);
        */
-      paySign?: string
+      paySign: string
       /**
        * 接口调用成功的回调函数
        */
@@ -9832,7 +9832,7 @@ declare namespace wx {
       /**
        * shareTicket
        */
-      shareTicket?: string
+      shareTicket: string
       /**
        * 接口调用成功的回调函数
        */
@@ -9854,7 +9854,7 @@ declare namespace wx {
       /**
        * 错误信息
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        *
@@ -9866,11 +9866,11 @@ declare namespace wx {
        *
        * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://mp.weixin.qq.com/debug/wxadoc/dev/component/open-data.html)
        */
-      encryptedData?: string
+      encryptedData: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv?: string
+      iv: string
     }
     /**
      * 接口调用失败的回调函数
@@ -9912,39 +9912,39 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 收货人姓名
        */
-      userName?: string
+      userName: string
       /**
        * 邮编
        */
-      postalCode?: string
+      postalCode: string
       /**
        * 国标收货地址第一级地址
        */
-      provinceName?: string
+      provinceName: string
       /**
        * 国标收货地址第二级地址
        */
-      cityName?: string
+      cityName: string
       /**
        * 国标收货地址第三级地址
        */
-      countyName?: string
+      countyName: string
       /**
        * 详细收货地址信息
        */
-      detailInfo?: string
+      detailInfo: string
       /**
        * 收货地址国家码
        */
-      nationalCode?: string
+      nationalCode: string
       /**
        * 收货人手机号码
        */
-      telNumber?: string
+      telNumber: string
     }
     /**
      * 接口调用失败的回调函数
@@ -9987,7 +9987,7 @@ declare namespace wx {
       /**
        * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
        */
-      cardList?: ParamPropCardList
+      cardList: ParamPropCardList
       /**
        * 接口调用成功的回调函数
        */
@@ -10009,7 +10009,7 @@ declare namespace wx {
       /**
        * 卡券 Id
        */
-      cardId?: string
+      cardId: string
       /**
        * 卡券的扩展参数
        *
@@ -10027,7 +10027,7 @@ declare namespace wx {
        *
        * **注：cardExt 需进行 JSON 序列化为字符串传入**
        */
-      cardExt?: string
+      cardExt: string
     }
     /**
      * 接口调用成功的回调函数
@@ -10037,7 +10037,7 @@ declare namespace wx {
       /**
        * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
        */
-      cardList?: ParamPropSuccessParamPropCardList
+      cardList: ParamPropSuccessParamPropCardList
     }
     /**
      * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
@@ -10047,19 +10047,19 @@ declare namespace wx {
       /**
        * 加密 code，为用户领取到卡券的code加密后的字符串，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
        */
-      code?: string
+      code: string
       /**
        * 用户领取到卡券的Id
        */
-      cardId?: string
+      cardId: string
       /**
        * 用户领取到卡券的扩展参数，与调用时传入的参数相同
        */
-      cardExt?: string
+      cardExt: string
       /**
        * 是否成功
        */
-      isSuccess?: boolean
+      isSuccess: boolean
     }
     /**
      * 接口调用失败的回调函数
@@ -10110,7 +10110,7 @@ declare namespace wx {
       /**
        * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
        */
-      cardList?: ParamPropCardList
+      cardList: ParamPropCardList
       /**
        * 接口调用成功的回调函数
        */
@@ -10132,11 +10132,11 @@ declare namespace wx {
       /**
        * 需要打开的卡券 Id
        */
-      cardId?: string
+      cardId: string
       /**
        * 由 addCard 的返回对象中的加密 code 通过解密后得到，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
        */
-      code?: string
+      code: string
     }
     /**
      * 接口调用成功的回调函数
@@ -10205,7 +10205,7 @@ declare namespace wx {
       /**
        * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
        */
-      authSetting?: any
+      authSetting: any
     }
     /**
      * 接口调用失败的回调函数
@@ -10264,7 +10264,7 @@ declare namespace wx {
       /**
        * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
        */
-      authSetting?: any
+      authSetting: any
     }
     /**
      * 接口调用失败的回调函数
@@ -10323,7 +10323,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
       /**
        * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        *
@@ -10337,11 +10337,11 @@ declare namespace wx {
        *   stepInfoList[].timestamp   |  Number        |时间戳，表示数据对应的时间
        *   stepInfoList[].step        |  Number        |  微信运动步数     
        */
-      encryptedData?: string
+      encryptedData: string
       /**
        * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
        */
-      iv?: string
+      iv: string
     }
     /**
      * 接口调用失败的回调函数
@@ -10377,7 +10377,7 @@ declare namespace wx {
       /**
        * 要打开的小程序 appId
        */
-      appId?: string
+      appId: string
       /**
        * 打开的页面路径，如果为空则打开首页
        */
@@ -10411,7 +10411,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -10481,7 +10481,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -10538,35 +10538,35 @@ declare namespace wx {
       /**
        * 抬头类型（0：单位，1：个人）
        */
-      type?: string
+      type: string
       /**
        * 抬头名称
        */
-      title?: string
+      title: string
       /**
        * 抬头税号
        */
-      taxNumber?: string
+      taxNumber: string
       /**
        * 单位地址
        */
-      companyAddress?: string
+      companyAddress: string
       /**
        * 手机号码
        */
-      telephone?: string
+      telephone: string
       /**
        * 银行名称
        */
-      bankName?: string
+      bankName: string
       /**
        * 银行账号
        */
-      bankAccount?: string
+      bankAccount: string
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -10627,11 +10627,11 @@ declare namespace wx {
        *   facial        |人脸识别（暂未支持）
        *   speech        |声纹识别（暂未支持）
        */
-      supportMode?: string[]
+      supportMode: string[]
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -10667,11 +10667,11 @@ declare namespace wx {
       /**
        * 请求使用的可接受的生物认证方式
        */
-      requestAuthModes?: string[]
+      requestAuthModes: string[]
       /**
        * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键是别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
        */
-      challenge?: string
+      challenge: string
       /**
        * 验证描述，即识别过程中显示在界面上的对话框提示内容
        */
@@ -10697,11 +10697,11 @@ declare namespace wx {
       /**
        * 错误码
        */
-      errCode?: number
+      errCode: number
       /**
        * 生物认证方式
        */
-      authMode?: string
+      authMode: string
       /**
        * 在设备安全区域（TEE）内获得的本机安全信息（如TEE名称版本号等以及防重放参数）以及本次认证信息（仅Android支持，本次认证的指纹ID）（仅Android支持，本次认证的指纹ID）
        *
@@ -10721,15 +10721,15 @@ declare namespace wx {
        *   cpu_id    |  机器唯一识别ID                                     
        *   uid       |  概念同Android系统定义uid，即应用程序编号           
        */
-      resultJSON?: string
+      resultJSON: string
       /**
        * 用SOTER安全密钥对result_json的签名(SHA256withRSA/PSS, saltlen=20)
        */
-      resultJSONSignature?: string
+      resultJSONSignature: string
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -10797,7 +10797,7 @@ declare namespace wx {
        *   facial        |人脸识别（暂未支持）
        *   speech        |声纹识别（暂未支持）
        */
-      checkAuthMode?: string
+      checkAuthMode: string
       /**
        * 接口调用成功的回调函数
        */
@@ -10819,11 +10819,11 @@ declare namespace wx {
       /**
        * 是否已录入信息
        */
-      isEnrolled?: boolean
+      isEnrolled: boolean
       /**
        * 接口调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数
@@ -10873,7 +10873,7 @@ declare namespace wx {
       /**
        * 是否打开调试
        */
-      enableDebug?: boolean
+      enableDebug: boolean
       /**
        * 接口调用成功的回调函数
        */
@@ -10895,7 +10895,7 @@ declare namespace wx {
       /**
        * 调用结果
        */
-      errMsg?: string
+      errMsg: string
     }
     /**
      * 接口调用失败的回调函数

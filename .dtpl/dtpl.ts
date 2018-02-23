@@ -25,7 +25,7 @@ export default function(s: _.Source): _.IDtplConfig {
 
           return [
             {file: appJson, data: {page: `"${page}",`}, tags: 'loose'},
-            {file: bootstrap, data: {pagesMap: `${rawModuleName}: string`}, tags: 'loose'},
+            {file: bootstrap, data: {pagesMap: `${rawModuleName}: Location`}, tags: 'loose'},
           ]
         }
       },
