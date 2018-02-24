@@ -6,7 +6,8 @@
 	"scripts": {
 		"lint": "tslint src/**/*.ts",
 		"test": "jest",
-		"generate": "node dist/cli/cmd.js api && node dist/cli/cmd.js api -p && git diff gen/**",
+		"generate-api": "node dist/cli/cmd.js api && node dist/cli/cmd.js api -p && git diff gen/**",
+		"generate-tpl": "node dist/cli/cmd.js tpl && git diff gen/tpl/components.json",
 		"build": "remove-all dist/ && tsc",
 		"watch": "remove-all dist/ && tsc -w"
 	},

@@ -1,0 +1,22 @@
+{
+  "name": "@minapp/common",
+  "version": "0.0.0",
+  "description": "minapp 内部组件通用的一个库",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "lint": "tslint src/**/*.ts",
+    "build": "remove-all dist/ && tsc",
+		"watch": "remove-all dist/ && tsc -w"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
+  "license": "MIT",
+  "devDependencies": {
+    "mora-scripts": "^1.6.20",
+    "ts-lint": "^4.5.1",
+    "typescript": "^2.7.1"
+  }
+}

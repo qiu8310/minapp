@@ -32,6 +32,9 @@
 		},
 		{
 			"path": "packages/minapp-vscode"
+		},
+		{
+			"path": "packages/minapp-common"
 		}
 	],
 	"settings": {

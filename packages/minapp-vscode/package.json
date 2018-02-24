@@ -5,9 +5,9 @@
   "version": "0.0.1",
   "publisher": "qiu8310",
   "scripts": {
-    "vscode:prepublish": "npm run build",
-    "build": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "node src/dev/script.js prod && npm run build",
+    "build": "remove-all dist && tsc -p ./",
+    "watch": "remove-all dist && tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run build && node ./node_modules/vscode/bin/test"
   },
@@ -18,17 +18,10 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.sayHello"
+    "onLanguage:wxml"
   ],
   "main": "./dist/extension",
   "contributes": {
-    "themes": [
-      {
-        "label": "Dark+ for wxml",
-        "uiTheme": "vs-dark",
-        "path": "./res/theme.json"
-      }
-    ],
     "languages": [
       {
         "id": "wxml",
@@ -45,22 +38,20 @@
         "path": "./res/wxml.tmLanguage.json",
         "embeddedLanguages": {
           "text.html": "html",
-          "source.css": "css",
           "source.js": "js"
         }
       }
-    ],
-    "commands": [
-      {
-        "command": "extension.sayHello",
-        "title": "Hello World"
-      }
     ]
   },
+  "dependencies": {
+    "@minapp/common": "^0.0.0",
+    "tslib": "^1.9.0"
+  },
   "devDependencies": {
+    "mora-scripts": "^1.6.22",
+    "@minapp/generator": "^0.0.0",
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
-    "tslib": "^1.9.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
     "vscode": "^1.1.6"

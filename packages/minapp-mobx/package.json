@@ -6,6 +6,7 @@
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
+		"lint": "tslint src/**/*.ts",
 		"test": "jest",
 		"build": "remove-all dist/ && tsc",
 		"watch": "remove-all dist/ && tsc -w"
