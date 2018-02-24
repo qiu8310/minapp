@@ -18,12 +18,12 @@ let commonOpts = {
 }
 
 cli({
-  usage: 'minapp <command> [options]',
+  usage: 'minapp [options] <command> [commandOptions]',
   version
 }).commands({
   init: {
     desc: '在指定的文件夹中初始化一个 minapp 项目',
-    conf: { usage: 'cli js <folder>' },
+    conf: { usage: 'cli init <folder>' },
     cmd: res => initProject(res._)
   },
   dev: {

@@ -3,6 +3,9 @@
 	"description": "minapp 命令行工具，用于创建项目、开发项目、编译项目",
 	"version": "0.0.1",
 	"license": "MIT",
+	"bin": {
+		"minapp": "dist/index.js"
+	},
 	"scripts": {
 		"lint": "tslint src/**/*.ts",
 		"test": "jest",
