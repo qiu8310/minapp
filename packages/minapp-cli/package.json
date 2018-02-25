@@ -21,6 +21,7 @@
 		"inquirer": "^5.1.0",
 		"mora-scripts": "^1.6.19",
 		"tslib": "^1.9.0",
+		"update-notifier": "^2.3.0",
 		"validate-npm-package-name": "^3.0.0"
 	},
 	"devDependencies": {

@@ -22,7 +22,7 @@ function internalMake() {
     fs.emptyDirSync(distProjectFolder)
 
     walkDirectory(projectFolder, (dir, name, file, stat) => {
-      if (stat.isDirectory() && dir === projectFolder && name !== 'src') return false
+      if (stat.isDirectory() && dir === projectFolder && name !== 'src' && name !== '.vscode') return false
       if (name === 'package-lock.json') return false
 
       let relative = path.relative(projectFolder, file)
@@ -49,7 +49,7 @@ function internalMake() {
 function updatePackageJson(json: any, id: 'js' | 'ts'): string {
   json.name = '${name}'
   json.description = '${description}'
-  delete json.author
+  json.author = '${author}'
   delete json.publishConfig
   delete json.devDependencies['mora-common']
   if (id === 'js') {

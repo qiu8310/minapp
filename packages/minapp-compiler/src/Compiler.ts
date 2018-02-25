@@ -11,6 +11,8 @@ const debug = require('debug')('minapp:compiler')
 export interface CompilerOptions {
   watch?: boolean
   production?: boolean
+  /** 如果 production 为 true，则 minimize 一定是 true */
+  minimize?: boolean
 
   /**
    * 插件 babel-plugin-transform-runtime 的配置选项，
@@ -63,6 +65,7 @@ export interface CompilerOptions {
 
 export class Compiler {
   production: boolean
+  minimize: boolean
   srcDir: string
   distDir: string
   modulesDir: string
@@ -70,9 +73,11 @@ export class Compiler {
 
   constructor(srcDir: string, distDir: string, options: Partial<CompilerOptions> = {}) {
     this.production = !!options.production
+    this.minimize = !!options.minimize
     if (this.production) {
       process.env.NODE_ENV = 'production'
       process.env.BABEL_ENV = 'production'
+      this.minimize = true
     }
 
     debug('production: %j', this.production)

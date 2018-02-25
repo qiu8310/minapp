@@ -5,12 +5,15 @@ import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as inquirer from 'inquirer'
 const validateProjectName = require('validate-npm-package-name')
+const pkg = require('../package.json')
 
 import {Compiler} from '@minapp/compiler'
 import {getGitUser} from './helper'
 import {make} from './make'
 
-const version = require('../package.json').version
+require('update-notifier')({pkg}).notify()
+
+const version = pkg.version
 
 let commonOpts = {
   srcDir: '<string> 指定 源代码 目录      {{"src"}}',
@@ -27,18 +30,18 @@ cli({
     cmd: res => initProject(res._)
   },
   dev: {
-    desc: '启动开发服务器，实时编译小程序源代码',
+    desc: '启动开发服务器，实时编译小程序源代码, __ENV__="development"',
     conf: {version},
     options: {
       ...commonOpts,
       'host': '<string> 指定本地服务器 host {{"localhost"}}',
       'port': '<string> 指定本地服务器 port {{"8080"}}',
-      'p | production': '<boolean> 编译成生产环境的代码（主要会开启压缩）',
+      'm | minimize': '<boolean> 开启代码压缩，类似于 production 环境，但 __ENV__ 仍然是 development',
     },
     cmd: res => compile('dev', res)
   },
   build: {
-    desc: '将小程序源代码编译成可发布的代码',
+    desc: '将小程序源代码编译成可发布的代码, __ENV__="production"',
     conf: {version},
     options: {
       ...commonOpts,
@@ -121,9 +124,9 @@ function code(str: string) {
 
 function compile(type: string, opts: any) {
   if (type === 'dev') {
-    let {host, port, production} = opts
+    let {host, port, minimize} = opts
     let server: any = {host, port}
-    return new Compiler(opts.srcDir, opts.distDir, {server, production})
+    return new Compiler(opts.srcDir, opts.distDir, {server, minimize, production: false})
   } else {
     let {watch, publicPath} = opts
     return new Compiler(opts.srcDir, opts.distDir, {watch, publicPath, production: true})

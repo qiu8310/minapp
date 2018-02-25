@@ -7,6 +7,7 @@
     "dev": "minapp dev",
     "build": "minapp build"
   },
+  "author": "${author}",
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.24.0",

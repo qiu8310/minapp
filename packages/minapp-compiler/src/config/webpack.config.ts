@@ -27,12 +27,13 @@ export function webpackConfig(compiler: Compiler) {
 
   let plugins: any[] = [
     new webpack.DefinePlugin({
-      __ENV__: JSON.stringify(compiler.production ? 'production' : (process.env.NODE_ENV || 'development'))
+      __ENV__: JSON.stringify(compiler.production ? 'production' : (process.env.NODE_ENV || 'development')),
+      __APP_JSON__: JSON.stringify(appJson)
     }),
 
     // 传给所有 loader 的选项
     new webpack.LoaderOptionsPlugin({
-      minimize: compiler.production,
+      minimize: compiler.minimize || compiler.production,
 
       // 下面几个配置是传给 minapp loader 用的，都是默认的配置，可以不传
       minapp: {

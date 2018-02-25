@@ -16,6 +16,6 @@ export interface BaseApp<S extends Store> extends App, App.BaseOptions {
 
 export class BaseApp<S extends Store> extends Base {
   // @ts-ignore
-  store: S
+  readonly store: S
 }
 

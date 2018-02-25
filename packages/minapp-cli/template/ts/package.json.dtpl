@@ -8,6 +8,7 @@
     "dev": "minapp dev",
     "build": "minapp build"
   },
+  "author": "${author}",
   "license": "MIT",
   "dependencies": {
     "@minapp/core": "^0.0.1",

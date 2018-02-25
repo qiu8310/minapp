@@ -1,4 +1,6 @@
 
+
+
 ## 功能列表（完成的与待完成的）
 
 * [x] 抓取官方文档，生成结构化的数据 <已由 [@minapp/generator][minapp-generator] 完成>

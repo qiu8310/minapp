@@ -1,3 +1,5 @@
+/// <reference path="./globals.d.ts" />
+
 import wxp from '@minapp/core'
 export * from './lib/BaseApp'
 export * from './lib/BasePage'

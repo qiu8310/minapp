@@ -1,3 +1,5 @@
+/// <reference path="./component.d.ts" />
+
 interface Behavior {
 
 }
