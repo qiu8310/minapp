@@ -1,8 +1,8 @@
 import wxp from '@minapp/core'
-export * from './class/BaseApp'
-export * from './class/BasePage'
-export * from './class/Location'
-export * from './class/History'
-export * from './class/Store'
+export * from './lib/BaseApp'
+export * from './lib/BasePage'
+export * from './lib/Location'
+export * from './lib/History'
+export * from './lib/Store'
 
 export {wxp}
