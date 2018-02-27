@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 import {pagify, wxp, MyPage} from 'base/'
 
 // 把这个 class 转化成 微信的 Page 参数，并且注入全局 store

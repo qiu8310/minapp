@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 import * as xlog from 'mora-scripts/libs/sys/xlog'
 import * as warn from 'mora-scripts/libs/sys/warn'
 import * as rawinfo from 'mora-scripts/libs/sys/info'

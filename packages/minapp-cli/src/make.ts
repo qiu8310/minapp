@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 /**
  * 从 minapp-example-ts 和 minapp-example-ts 中提取出源代码来
  */

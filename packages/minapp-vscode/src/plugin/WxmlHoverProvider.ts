@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 import {HoverProvider, TextDocument, Position, CancellationToken, Hover, MarkdownString} from 'vscode'
 
 import {components, getComponentMarkdown, getComponentAttrMarkdown} from '../dev/components'

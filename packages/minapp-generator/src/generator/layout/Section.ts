@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 import {Generator, warn, markdown, TABLE_FIRST_FILED_NAMES, Definition} from './_'
 import {Area} from './Area'
 import {Table} from './Table'

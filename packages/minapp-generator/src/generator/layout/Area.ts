@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 import {
   Generator, Func, Klass, Definition, Arg, Type, ObjectType, FunctionType,
   markdown, info, warn, FunctionCodeMeta, error,

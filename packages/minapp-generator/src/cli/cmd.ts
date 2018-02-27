@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import * as cli from 'mora-scripts/libs/tty/cli'
 import * as rp from 'request-promise'
 import * as path from 'path'

@@ -3,10 +3,3 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {ApiModifier, TemplateMeta} from '../..'
-
-export default class extends ApiModifier {
-  modify($root: Cheerio): TemplateMeta[] {
-    return []
-  }
-}

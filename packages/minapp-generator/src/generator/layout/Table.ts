@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 import {
   Generator, warn, TABLE_REST_FIELD_MAP, TYPE_MAP, PROMISABLE_KEYS,
   Definition, DefinitionOptions, Type, ObjectType, ArrayObjectType, FunctionType, Arg

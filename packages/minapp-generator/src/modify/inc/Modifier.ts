@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 import {Generator} from '../../generator/Generator'
 import * as config from '../../generator/base/config'
 import {info, warn, error} from '../../generator/base/'

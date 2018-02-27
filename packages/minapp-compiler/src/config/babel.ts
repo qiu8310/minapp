@@ -1,3 +1,8 @@
+/******************************************************************
+MIT License http://www.opensource.org/licenses/mit-license.php
+Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+*******************************************************************/
+
 // 参考： parcel 会获取本地的 babelrc 文件，同时对其中的 presets 和 plugins 去重（避免 babel 重复处理）
 // 要使用 transform-runtime 需要手动在项目中安装 babel-runtime 或 @babel/runtime
 import {Compiler} from '../Compiler'

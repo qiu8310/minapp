@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {error, clog} from 'mora-scripts/libs/sys/'
 import * as cli from 'mora-scripts/libs/tty/cli'
 import {EOL} from 'os'
