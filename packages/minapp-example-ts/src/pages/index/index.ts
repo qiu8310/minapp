@@ -9,15 +9,18 @@ import {pagify, wxp, MyPage} from 'base/'
 @pagify()
 export default class extends MyPage {
   data = {
-    motto: 'Hello World',
+    motto: '',
     canIUseOpenButton: wxp.canIUse('button.open-type.getUserInfo')
+  }
+
+  onShow() {
+    this.setData({motto: 'Hello World'})
   }
 
   onClickAvatarImage() {
     // 跳转到 logs 页面
-    this.app.page.logs.go()
-
-    this.setData({motto: 'You go to logs page'})
+    this.app.$url.logs.go({id: 1})
+    this.setData({motto: '开始跳转到 logs 页面'})
   }
 
   onClickOpenButton(e: any) {
@@ -25,14 +28,14 @@ export default class extends MyPage {
     this.store.userInfo = e.detail.userInfo
 
     // 组件内数据还是用 setData
-    this.setData({motto: 'You click button'})
+    this.setData({motto: '点击了『获取头像昵称』按钮'})
   }
 
   async onLoad(options: any) {
     // 使用 require 加载图片
-    console.log('local image url: %o', require('images/heart-active@3x.png'))
+    console.log('可以使用 require 的方法加载图片: %o', require('images/heart-active@3x.png'))
     // 轻松读取全局数据
-    console.log('current page store: %o', this.store)
+    console.log('当前 Store: %o', this.store)
     if (!this.store.userInfo && !this.data.canIUseOpenButton) {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       let {userInfo} = await wxp.getUserInfo()

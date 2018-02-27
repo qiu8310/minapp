@@ -117,7 +117,7 @@ export class Compiler {
   }
 
   build() {
-    fs.emptyDirSync(this.distDir)
+    fs.ensureDirSync(this.distDir)
     const wpOpts = webpackConfig(this)
     let wp = webpack(wpOpts)
     let callback = (err: any, stats: webpack.Stats) => {

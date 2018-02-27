@@ -44,3 +44,9 @@ export function mixin(target: any, source: any[] | any) {
   })
 }
 
+/**
+ * 将 str 转化成 camelCase
+ */
+export function camelCase(str: string) {
+  return str.replace(/[-_](\w)/, (r, k: string) => k.toUpperCase())
+}

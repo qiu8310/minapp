@@ -10,6 +10,8 @@ import {Store} from './Store'
 import {BaseApp} from './BaseApp'
 import {warn, mixin} from './util'
 
+import {Location} from '../feat/Location'
+
 export interface PagifyOptions {
   /** 指定要注入的 mixin */
   mixins?: Page.Options[]
@@ -21,14 +23,11 @@ export interface PagifyOptions {
 
 /**
  * 将一个继承了 BasePage 的类转化成 小程序 Page 的调用
- * @param {(false | ((storeData: any) => any))} [mapStoreToData] - 是否要注入 store 中的数据，或者返回指定要注入的数据
  */
 export function pagify<D, S extends Store, A extends BaseApp<S>>(options: PagifyOptions = {}) {
   return function(SomePage: new() => BasePage<D, S, A>) {
     let obj: Page.Options = toObject(new SomePage())
     let app = getApp() as BaseApp<S>
-
-    obj.store = app.store || {}
 
     if (!app.store) {
       warn(`用 appify 函数时没有提供 store，需要提供；或者将 pagify 中 observe 属性指定为 false`)
@@ -45,6 +44,8 @@ export function pagify<D, S extends Store, A extends BaseApp<S>>(options: Pagify
       mixin(obj, options.mixins)
     }
 
+    obj.app = app
+    obj.store = app.store || {}
     Page(obj)
   }
 }
@@ -69,8 +70,14 @@ export class BasePage<D, S extends Store, A extends BaseApp<S>> extends Base {
   /**
    * 获取 App 实例，即微信原生函数 getApp() 返回的对象
    */
-  get app(): A {
-    return getApp() as A
+  // @ts-ignore
+  readonly app: A
+
+  /**
+   * 获取当前 page 的 location 相关信息，包括当前 pathname 和 query 参数
+   */
+  getLocation() {
+    return new Location()
   }
 }
 

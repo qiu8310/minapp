@@ -9,21 +9,24 @@
 		{
 			"path": "packages/minapp-core"
 		},
-		{
-			"path": "packages/minapp-mobx"
-		},
-		{
-			"path": "packages/minapp-wxml-parser"
-		},
-		{
-			"path": "packages/minapp-webpack-utils"
-		},
-		{
+    {
+      "path": "packages/minapp-wxml-parser"
+    },
+    {
+      "path": "packages/minapp-webpack-utils"
+    },
+    {
+      "path": "packages/minapp-common"
+    },
+    {
 			"path": "packages/minapp-compiler"
 		},
 		{
 			"path": "packages/minapp-cli"
 		},
+    {
+      "path": "packages/minapp-mobx"
+    },
 		{
 			"path": "packages/minapp-example-ts"
 		},
@@ -32,9 +35,6 @@
 		},
 		{
 			"path": "packages/minapp-vscode"
-		},
-		{
-			"path": "packages/minapp-common"
 		}
 	],
 	"settings": {

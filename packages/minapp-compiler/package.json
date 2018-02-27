@@ -21,7 +21,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "bugs": "https://github.com/qiu8310/minapp/issues",
   "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-compiler",
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-compiler"
   },
@@ -42,6 +42,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "debug": "^3.1.0",
     "fs-extra": "^5.0.0",
+    "json5": "^0.5.1",
     "less": "^3.0.0",
     "less-loader": "^4.0.5",
     "mora-common": "^1.0.8",

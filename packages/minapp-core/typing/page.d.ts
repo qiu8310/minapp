@@ -146,3 +146,5 @@ interface PageConstructor {
   (options: Page.Options): Page
 }
 declare var Page: PageConstructor
+
+declare var getCurrentPages: () => any[]

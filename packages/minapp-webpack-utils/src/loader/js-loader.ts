@@ -6,8 +6,8 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 // import * as path from 'path'
 import {Loader} from './Loader'
 import * as JSON5 from 'json5'
-import {replace, readFile} from '../util'
 import * as DotProp from 'mora-scripts/libs/lang/DotProp'
+import {replace, readFile} from '../util'
 
 const debug = require('debug')('minapp:webpack-utils:js-loader')
 

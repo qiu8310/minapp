@@ -13,7 +13,10 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
  */
 declare var __ENV__: 'developemnt' | 'production' | 'test' | string
 
-/*
- * 小程序 app.json 文件的全路径
- */
-declare var __APP_JSON__: string
+/** app.json 中的 tabBar.list 中的 pagePath 列表 */
+declare var __APP_JSON_TAB_BAR_LIST__: string[]
+
+/** app.json 中的 pages 列表 */
+declare var __APP_JSON_PAGE__: string[]
+
+

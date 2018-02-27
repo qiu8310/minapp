@@ -9,6 +9,7 @@ import * as fs from 'fs-extra'
 
 import {babel} from './babel'
 import {postcss} from './postcss'
+import {define} from './define'
 import {loader as minappLoaders, ExtractMinappCode} from '@minapp/webpack-utils'
 import {JSON_REGEXP} from '@minapp/webpack-utils/dist/util'
 
@@ -33,7 +34,7 @@ export function webpackConfig(compiler: Compiler) {
   let plugins: any[] = [
     new webpack.DefinePlugin({
       __ENV__: JSON.stringify(compiler.production ? 'production' : (process.env.NODE_ENV || 'development')),
-      __APP_JSON__: JSON.stringify(appJson)
+      ...define(path.join(srcDir, appJson)) // 注入 mobx 框架需要的一些变量
     }),
 
     // 传给所有 loader 的选项
