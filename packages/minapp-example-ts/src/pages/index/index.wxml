@@ -1,9 +1,10 @@
 <!--index.wxml-->
 <view class="container">
+  <include src="./test.wxml" />
   <view class="userinfo">
     <button wx:if="{{!userInfo && canIUseOpenButton}}" open-type="getUserInfo" bindgetuserinfo="onClickOpenButton"> 获取头像昵称 </button>
     <block wx:else>
-      <image bindtap="onClickAvatarImage" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image bind:tap="onClickAvatarImage" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>

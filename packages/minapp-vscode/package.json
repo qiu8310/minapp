@@ -11,6 +11,14 @@
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run build && node ./node_modules/vscode/bin/test"
   },
+  "license": "MIT",
+  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+  "bugs": "https://github.com/qiu8310/minapp/issues",
+  "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-vscode",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-vscode"
+  },
   "engines": {
     "vscode": "^1.20.0"
   },

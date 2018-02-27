@@ -41,7 +41,9 @@ export default class JsonLoader extends Loader {
     }
 
     // JSON5 的 stringify 生成的 json 不是标准的 json
-    this.extract('.json', JSON.stringify(json, null, this.minimize ? 0 : 2))
+    if (Object.keys(json).length) {
+      this.extract('.json', JSON.stringify(json, null, this.minimize ? 0 : 2))
+    }
     return this.toRequire(requires, 'webpack')
   }
 }

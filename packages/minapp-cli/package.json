@@ -2,7 +2,6 @@
 	"name": "@minapp/cli",
 	"description": "minapp 命令行工具，用于创建项目、开发项目、编译项目",
 	"version": "0.0.1",
-	"license": "MIT",
 	"bin": {
 		"minapp": "dist/index.js"
 	},
@@ -15,11 +14,19 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"license": "MIT",
+  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+  "bugs": "https://github.com/qiu8310/minapp/issues",
+  "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-cli",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-cli"
+  },
 	"dependencies": {
 		"@minapp/compiler": "^0.0.1",
 		"fs-extra": "^5.0.0",
 		"inquirer": "^5.1.0",
-		"mora-scripts": "^1.6.19",
+		"mora-scripts": "^1.6.24",
 		"tslib": "^1.9.0",
 		"update-notifier": "^2.3.0",
 		"validate-npm-package-name": "^3.0.0"

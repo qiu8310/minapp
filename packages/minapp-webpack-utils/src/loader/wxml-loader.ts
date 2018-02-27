@@ -23,25 +23,45 @@ export default class WxmlLoader extends Loader {
     }
 
     let assets = this.getNeedResolveAssets(xml.nodes)
+    let requires: string[] = []
 
     if (assets.length) {
       debug('含有的静态资源：%o', assets.map(a => toString(a.node, a.attr)))
-      await this.resolveAssets(assets)
+      await this.resolveAssets(assets, requires)
       debug('处理后的静态资源：%o', assets.map(a => toString(a.node, a.attr)))
     } else {
       debug('没有任何静态资源')
     }
 
+    this.updateNode(xml.nodes)
     content = xml.toXML(this.minimize ? 0 : 2)
     // debug('ToContent: %o', content)
-    this.extract('.wxml', content)
-    return ''
+    if (this.hasContent(xml.nodes)) this.extract('.wxml', content)
+
+    return this.toRequire(requires, 'webpack')
+  }
+
+  private hasContent(nodes: parser.Node[]) {
+    return nodes.length && !nodes.every(n => n.is(parser.Node.TYPE.COMMENT))
+  }
+
+  /**
+   * 1. bind:xxx 和 catch:xxx => bindxxx 和 catchxxx
+   * 2.
+   */
+  private updateNode(nodes: parser.Node[]) {
+    iterateTagNode(nodes, node => {
+      node.attrs.forEach(attr => {
+        if (/^(bind|catch):(\w+)$/.test(attr.name)) {
+          attr.name = RegExp.$1 + RegExp.$2
+        }
+      })
+    })
   }
 
   private getNeedResolveAssets(nodes: parser.Node[]): Asset[] {
     let assets: Asset[] = []
-
-    let handle = (node: parser.TagNode) => {
+    iterateTagNode(nodes, node => {
       node.attrs.forEach(attr => {
         let src = attr.value
         // 如果剩下的是个空字符串，去掉
@@ -63,22 +83,15 @@ export default class WxmlLoader extends Loader {
           if (PATH_REGEXP.test(src) && this.isStaticFile(src)) assets.push({node, attr, src})
         }
       })
-    }
-
-    let iterate = (ns: parser.Node[]) => {
-      ns.forEach(n => {
-        if (n.is(parser.Node.TYPE.TAG)) {
-          handle(n)
-          iterate(n.children)
-        }
-      })
-    }
-
-    iterate(nodes)
+    })
     return assets
   }
 
-  private async resolveAssets(assets: Asset[]) {
+  /**
+   * 1. emit 静态资源
+   * 2. 将 import 和 include 标签中的 src 字段提取到 requires 中
+   */
+  private async resolveAssets(assets: Asset[], requires: string[]) {
     await map(assets, async ({src, required, attr, node}, index) => {
       let absFile = await this.tryResolve(src)
       if (!absFile) {
@@ -88,10 +101,21 @@ export default class WxmlLoader extends Loader {
       } else {
         if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
           attr.value = attr.value.replace(src, await this.loadStaticFile(absFile))
+        } else if (node.name === 'import' || node.name === 'include') {
+          requires.push(absFile)
         }
       }
     }, 5)
   }
+}
+
+function iterateTagNode(ns: parser.Node[], callback: (n: parser.TagNode) => void) {
+  ns.forEach(n => {
+    if (n.is(parser.Node.TYPE.TAG)) {
+      callback(n)
+      iterateTagNode(n.children, callback)
+    }
+  })
 }
 
 

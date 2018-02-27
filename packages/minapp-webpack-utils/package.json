@@ -2,7 +2,6 @@
 	"name": "@minapp/webpack-utils",
 	"description": "微信小程序相关的 webpack 插件 及 loader",
 	"version": "0.0.1",
-	"license": "MIT",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
@@ -14,6 +13,14 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"license": "MIT",
+  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+  "bugs": "https://github.com/qiu8310/minapp/issues",
+  "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-webpack-utils",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-webpack-utils"
+  },
 	"jest": {
 		"roots": [
 			"src"

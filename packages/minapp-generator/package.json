@@ -2,7 +2,6 @@
 	"name": "@minapp/generator",
 	"description": "微信官方文档解析器，同时生成解析后的结构化的文件",
 	"version": "0.0.0",
-	"license": "MIT",
 	"scripts": {
 		"lint": "tslint src/**/*.ts",
 		"test": "jest",
@@ -14,6 +13,14 @@
 	"publishConfig": {
   	"access": "public"
 	},
+	"license": "MIT",
+  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+  "bugs": "https://github.com/qiu8310/minapp/issues",
+  "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-generator",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-generator"
+  },
 	"data": {
 		"components": "gen/tpl/components.json",
 		"detailComponents": "gen/tpl/components-with-examples.json",

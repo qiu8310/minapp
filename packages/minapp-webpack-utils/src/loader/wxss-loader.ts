@@ -9,7 +9,7 @@ export default class WxssLoader extends Loader {
     debug('FromFile: ' + this.fromFile)
     debug('ToFile: %o', this.toFile)
 
-    this.extract('.wxss', await replace(content, STYLE_RESOURCE_REGEXP, async (mat) => {
+    let emitContent = await replace(content, STYLE_RESOURCE_REGEXP, async (mat) => {
       let [raw, request] = mat
 
       if (!this.shouleMakeRequire(request)) return raw
@@ -22,7 +22,9 @@ export default class WxssLoader extends Loader {
 
       debug(`reqplace ${request} => ${url}`)
       return raw.replace(request, url)
-    }))
+    })
+
+    if (emitContent.trim()) this.extract('.wxss', emitContent)
 
     return '' // css 都可以用此 loader 处理完，没什么可以让 webpack 效劳的了
   }

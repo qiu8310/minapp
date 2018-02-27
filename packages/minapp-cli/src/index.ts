@@ -29,6 +29,10 @@ cli({
     conf: { usage: 'cli init <folder>' },
     cmd: res => initProject(res._)
   },
+  // inject: {
+  //   desc: '自动获取所有 pages，并注入到 app.json 中',
+  //   cmd: injectCmd
+  // },
   dev: {
     desc: '启动开发服务器，实时编译小程序源代码, __ENV__="development"',
     conf: {version},
@@ -132,3 +136,4 @@ function compile(type: string, opts: any) {
     return new Compiler(opts.srcDir, opts.distDir, {watch, publicPath, production: true})
   }
 }
+
