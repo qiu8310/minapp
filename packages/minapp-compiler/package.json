@@ -5,6 +5,7 @@
   "main": "dist/Compiler.js",
   "typings": "dist/Compiler.d.ts",
   "scripts": {
+    "test": "echo 0",
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "build": "npm run clear && tsc",

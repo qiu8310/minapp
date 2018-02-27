@@ -32,7 +32,6 @@
 		"roots": [
 			"src"
 		],
-		"mapCoverage": false,
 		"collectCoverage": false,
 		"coverageReporters": [
 			"text",

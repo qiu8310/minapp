@@ -6,8 +6,8 @@
 		"minapp": "dist/index.js"
 	},
 	"scripts": {
+		"test": "echo 0",
 		"lint": "tslint src/**/*.ts",
-		"test": "jest",
 		"build": "remove-all dist/ && tsc",
 		"watch": "remove-all dist/ && tsc -w"
 	},

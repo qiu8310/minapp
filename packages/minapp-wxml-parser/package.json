@@ -25,7 +25,6 @@
 		"roots": [
 			"src"
 		],
-		"mapCoverage": true,
 		"collectCoverage": true,
 		"coverageReporters": [
 			"text",

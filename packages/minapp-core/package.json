@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "test": "echo 0",
     "lint": "tslint src/**/*.ts",
     "__init__": "node scripts/init.js",
     "build": "remove-all dist && tsc && npm run __init__"

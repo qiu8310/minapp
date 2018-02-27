@@ -5,8 +5,8 @@
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
+		"test": "echo 0",
 		"lint": "tslint src/**/*.ts",
-		"test": "jest",
 		"build": "remove-all dist/ && tsc",
 		"watch": "remove-all dist/ && tsc -w"
 	},
@@ -21,32 +21,6 @@
     "type": "git",
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-mobx"
   },
-	"jest": {
-		"roots": [
-			"src"
-		],
-		"mapCoverage": true,
-		"collectCoverage": true,
-		"coverageReporters": [
-			"text",
-			"html"
-		],
-		"coveragePathIgnorePatterns": [
-			"/node_modules/",
-			"/__tests__/helper/"
-		],
-		"coverageDirectory": "./coverage",
-		"transform": {
-			"^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-		},
-		"testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
-		"moduleFileExtensions": [
-			"ts",
-			"tsx",
-			"js",
-			"json"
-		]
-	},
 	"peerDependencies": {
     "mobx": "^3.5.1"
   },

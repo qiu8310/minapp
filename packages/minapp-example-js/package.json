@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "minapp js 示例项目",
   "scripts": {
+    "test": "echo 0",
     "clear": "remove-all dist",
     "dev": "minapp dev",
     "build": "minapp build"
