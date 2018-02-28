@@ -1,27 +1,27 @@
 {
 	"name": "@minapp/wxml-parser",
 	"description": "微信小程序 wxml 解析器",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
 		"lint": "tslint src/**/*.ts",
 		"test": "jest",
-    "clear": "remove-all dist",
-    "build": "npm run clear && tsc",
-    "watch": "tsc -w"
+		"clear": "remove-all dist",
+		"build": "npm run clear && tsc",
+		"watch": "tsc -w"
 	},
 	"publishConfig": {
 		"access": "public"
 	},
 	"license": "MIT",
-  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
-  "bugs": "https://github.com/qiu8310/minapp/issues",
-  "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-wxml-parser",
+	"author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+	"bugs": "https://github.com/qiu8310/minapp/issues",
+	"homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-wxml-parser",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-wxml-parser"
-  },
+		"type": "git",
+		"url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-wxml-parser"
+	},
 	"jest": {
 		"roots": [
 			"src"

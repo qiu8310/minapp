@@ -1,41 +1,41 @@
 {
 	"name": "@minapp/mobx",
 	"description": "微信小程序框架",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
 		"test": "echo 0",
-    "lint": "tslint src/**/*.ts",
-    "clear": "remove-all dist",
-    "build": "npm run clear && tsc",
-    "watch": "tsc -w"
+		"lint": "tslint src/**/*.ts",
+		"clear": "remove-all dist",
+		"build": "npm run clear && tsc",
+		"watch": "tsc -w"
 	},
 	"publishConfig": {
 		"access": "public"
 	},
 	"license": "MIT",
-  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
-  "bugs": "https://github.com/qiu8310/minapp/issues",
-  "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-mobx",
+	"author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+	"bugs": "https://github.com/qiu8310/minapp/issues",
+	"homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-mobx",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-mobx"
-  },
+		"type": "git",
+		"url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-mobx"
+	},
 	"peerDependencies": {
-    "mobx": "^3.5.1"
-  },
+		"mobx": "^3.5.1"
+	},
 	"dependencies": {
+		"@minapp/core": "^0.0.2",
 		"mora-common": "^1.0.10",
-		"@minapp/core": "^0.0.1",
 		"tslib": "^1.9.0"
 	},
 	"devDependencies": {
-		"mora-scripts": "^1.6.21",
 		"@types/debug": "^0.0.30",
 		"@types/jest": "^22.1.3",
 		"jest": "^22.1.4",
 		"mobx": "^3.5.1",
+		"mora-scripts": "^1.6.21",
 		"ts-jest": "^22.0.2",
 		"ts-lint": "^4.5.1",
 		"typescript": "^2.7.0"

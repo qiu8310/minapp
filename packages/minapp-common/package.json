@@ -1,6 +1,6 @@
 {
   "name": "@minapp/common",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "minapp 内部组件通用的一个库",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -18,7 +18,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "bugs": "https://github.com/qiu8310/minapp/issues",
   "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-common",
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-common"
   },

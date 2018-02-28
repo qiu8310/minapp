@@ -1,6 +1,6 @@
 {
   "name": "@minapp/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "微信小程序 api 的 typings，同时提供 promise 版",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -17,7 +17,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "bugs": "https://github.com/qiu8310/minapp/issues",
   "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-core",
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-core"
   },

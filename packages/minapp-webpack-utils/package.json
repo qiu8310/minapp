@@ -1,29 +1,29 @@
 {
 	"name": "@minapp/webpack-utils",
 	"description": "微信小程序相关的 webpack 插件 及 loader",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
 		"test": "echo 0",
-    "lint": "tslint src/**/*.ts",
-    "clear": "remove-all dist",
-    "build": "npm run clear && tsc",
-    "watch": "tsc -w"
+		"lint": "tslint src/**/*.ts",
+		"clear": "remove-all dist",
+		"build": "npm run clear && tsc",
+		"watch": "tsc -w"
 	},
 	"publishConfig": {
 		"access": "public"
 	},
 	"license": "MIT",
-  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
-  "bugs": "https://github.com/qiu8310/minapp/issues",
-  "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-webpack-utils",
+	"author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+	"bugs": "https://github.com/qiu8310/minapp/issues",
+	"homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-webpack-utils",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-webpack-utils"
-  },
+		"type": "git",
+		"url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-webpack-utils"
+	},
 	"dependencies": {
-		"@minapp/wxml-parser": "^0.0.1",
+		"@minapp/wxml-parser": "^0.0.2",
 		"debug": "^3.1.0",
 		"json5": "^0.5.1",
 		"mora-common": "^1.0.8",
