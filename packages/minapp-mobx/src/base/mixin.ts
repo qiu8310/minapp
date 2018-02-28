@@ -1,20 +1,10 @@
 /******************************************************************
-MIT License http://www.opensource.org/licenses/mit-license.php
-Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+ MIT License http://www.opensource.org/licenses/mit-license.php
+ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
 import {isObject} from 'mora-common/util/object'
-
-let warn: (...args: any[]) => void
-
-if (__ENV__ === 'production') {
-  warn = (...args: any[]) => {}
-} else {
-  warn = (...args: any[]) => console.warn(...args)
-}
-
-export {warn}
-
+import {warn} from './warn'
 
 export function mixin(target: any, source: any[] | any) {
   let sources = Array.isArray(source) ? source : [source]
@@ -42,11 +32,4 @@ export function mixin(target: any, source: any[] | any) {
       }
     })
   })
-}
-
-/**
- * 将 str 转化成 camelCase
- */
-export function camelCase(str: string) {
-  return str.replace(/[-_](\w)/, (r, k: string) => k.toUpperCase())
 }

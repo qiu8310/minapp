@@ -43,6 +43,14 @@ export default class JsonLoader extends Loader {
 
       // 搜索主目录下的同名文件
       searchDir(requires, this.fromFile, 'project.config.json')
+    } else {
+      // 加载页面中的组件或者组件中的组件
+      let components: {[key: string]: string} = json.usingComponents || {}
+      await map(Object.keys(components).map(k => components[k]), async (component) => {
+        if (component[0] === '/') component = component.substr(1) // 组件可以使用绝对路径
+        let main = await this.resolve(component)
+        searchDir(requires, main)
+      })
     }
 
     // JSON5 的 stringify 生成的 json 不是标准的 json

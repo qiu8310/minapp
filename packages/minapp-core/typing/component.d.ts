@@ -1,5 +1,5 @@
 declare namespace Component {
-  interface BaseOptions {
+  interface HookOptions {
     /** 组件生命周期函数，在组件实例进入页面节点树时执行，注意此时不能调用 setData */
     created?(this: Component): any
     /** 组件生命周期函数，在组件实例进入页面节点树时执行 */
@@ -12,6 +12,15 @@ declare namespace Component {
     detached?(this: Component): any
   }
 
+  /** 组件属性类型，null 表示任意类型 */
+  type PropType = typeof String
+    | typeof Number
+    | typeof Boolean
+    | typeof Object
+    | typeof Array
+    | null
+
+
   interface Options {
     /**
      * 组件的对外属性
@@ -23,7 +32,7 @@ declare namespace Component {
     properties?: {
       [key: string]: {
         /** 属性类型 */
-        type?: string
+        type: PropType
         /** 属性初始值 */
         value?: any
         /** 属性值被更改时的响应函数 */
@@ -63,7 +72,7 @@ declare namespace Component {
      * 包括事件响应函数和任意的自定义方法，关于事件响应函数的使用，参见 [组件事件](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/events.html)
      */
     methods?: {
-      [key: string]: any
+      [key: string]: (this: Component) => void
     }
 
     /** 类似于mixins和traits的组件间代码复用机制，参见 behaviors: https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/behaviors.html */
@@ -71,6 +80,21 @@ declare namespace Component {
 
 
     [key: string]: any
+  }
+
+  interface TriggerEventOptions {
+    /**
+     * 事件是否冒泡，默认 false
+     */
+    bubbles?: boolean
+    /**
+     * 事件是否可以穿越组件边界，为false时，事件将只能在引用组件的节点树上触发，不进入其他任何组件内部，默认 false
+     */
+    composed?: boolean
+    /**
+     * 事件是否拥有捕获阶段，默认 false
+     */
+    capturePhase?: boolean
   }
 }
 
@@ -81,8 +105,6 @@ declare interface Component {
   id: string
   /** 节点dataset */
   dataset: string
-  /** 组件数据，包括内部数据和属性值 */
-  data: any
 
   /** 设置data并执行视图层渲染 */
   setData(newData: any): void
@@ -91,10 +113,10 @@ declare interface Component {
   hasBehavior(behavior: any): boolean
 
   /** 触发事件 */
-  triggerEvent(name: string, detail: any, option: any): void
+  triggerEvent(name: string, detail: any, options: Component.TriggerEventOptions): void
 
   /** 也可以使用 wx.createSelectorQuery */
-  createSelectorQuery(): any
+  createSelectorQuery(): wx.SelectorQuery
   /** 使用选择器选择组件实例节点，返回匹配到的第一个组件实例对象 */
   selectComponent(selector: string): Component
   /** 使用选择器选择组件实例节点，返回匹配到的全部组件实例对象组成的数组 */
@@ -106,6 +128,6 @@ declare interface Component {
 
 declare interface ComponentConstructor {
   new(): Component
-  (options: Component.Options): Component
+  (options: Component.Options & Component.HookOptions): Component
 }
 declare var Component: ComponentConstructor

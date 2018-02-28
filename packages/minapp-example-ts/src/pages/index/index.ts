@@ -9,6 +9,8 @@ import {pagify, wxp, MyPage} from 'base/'
 @pagify()
 export default class extends MyPage {
   data = {
+    conterStart: 10,
+
     motto: '',
     canIUseOpenButton: wxp.canIUse('button.open-type.getUserInfo')
   }
@@ -29,6 +31,10 @@ export default class extends MyPage {
 
     // 组件内数据还是用 setData
     this.setData({motto: '点击了『获取头像昵称』按钮'})
+  }
+
+  increase() {
+    this.setData({conterStart: this.data.conterStart + 1})
   }
 
   async onLoad(options: any) {

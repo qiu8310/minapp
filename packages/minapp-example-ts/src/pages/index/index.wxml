@@ -11,4 +11,8 @@
   </view>
 
   <include src="./inc.wxml" />
+
+  <button size="mini" bind:tap="increase">在 Page 中增加 Count</button>
+  <counter-a start="{{conterStart}}" />
+  <counter-b start="{{conterStart}}" />
 </view>

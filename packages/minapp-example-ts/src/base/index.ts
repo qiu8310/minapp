@@ -6,5 +6,6 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 export * from './MyStore'
 export * from './MyApp'
 export * from './MyPage'
+export * from './MyComponent'
 
-export {wxp, pagify, appify} from '@minapp/mobx'
+export {wxp, pagify, appify, comify} from '@minapp/mobx'
