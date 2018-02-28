@@ -5,9 +5,11 @@
   "version": "0.0.1",
   "publisher": "qiu8310",
   "scripts": {
+    "lint": "tslint src/**/*.ts",
+    "clear": "remove-all dist",
     "vscode:prepublish": "node src/dev/script.js prod && npm run build",
-    "build": "remove-all dist && tsc -p ./",
-    "watch": "remove-all dist && tsc -watch -p ./",
+    "build": "npm run clear && tsc -p ./",
+    "watch": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run build && node ./node_modules/vscode/bin/test"
   },

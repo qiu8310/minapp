@@ -27,7 +27,7 @@ function internalMake() {
     fs.emptyDirSync(distProjectFolder)
 
     walkDirectory(projectFolder, (dir, name, file, stat) => {
-      if (stat.isDirectory() && dir === projectFolder && name !== 'src' && name !== '.vscode') return false
+      if (stat.isDirectory() && dir === projectFolder && name !== 'src' && name !== '.vscode' && name !== '.dtpl') return false
       if (name === 'package-lock.json') return false
 
       let relative = path.relative(projectFolder, file)

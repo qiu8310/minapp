@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "${description}",
   "scripts": {
+    "test": "echo 0",
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "dev": "minapp dev",
@@ -11,13 +12,13 @@
   "author": "${author}",
   "license": "MIT",
   "dependencies": {
+    "mora-scripts": "^1.6.21",
     "@minapp/core": "^0.0.1",
     "@minapp/mobx": "^0.0.1",
     "mobx": "^3.5.1",
     "tslib": "~1.9.0"
   },
   "devDependencies": {
-    "mora-scripts": "^1.6.21",
     "ts-lint": "~4.5.1",
     "typescript": "~2.7.1"
   }

@@ -1,13 +1,18 @@
-<!--index.wxml-->
 <view class="container">
   <view class="userinfo">
     <button wx:if="{{!userInfo && canIUseOpenButton}}" open-type="getUserInfo" bindgetuserinfo="onClickOpenButton"> 获取头像昵称 </button>
     <block wx:else>
-      <image bindtap="onClickAvatarImage" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image bind:tap="onClickAvatarImage" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+
+  <include src="./inc.wxml" />
+
+  <button size="mini" bind:tap="increase">在 Page 中增加 Count</button>
+  <counter-a start="{{conterStart}}" />
+  <counter-b start="{{conterStart}}" />
 </view>

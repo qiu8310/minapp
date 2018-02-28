@@ -15,6 +15,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
   "dependencies": {
+    "mora-scripts": "^1.6.21",
     "@minapp/core": "^0.0.1",
     "@minapp/mobx": "^0.0.1",
     "mobx": "^3.5.1",
@@ -22,7 +23,6 @@
   },
   "devDependencies": {
     "mora-common": "^1.0.11",
-    "mora-scripts": "^1.6.21",
     "ts-lint": "~4.5.1",
     "typescript": "~2.7.1"
   }

@@ -6,7 +6,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 import {toObject} from 'mora-common/util/object'
 import {Base} from './Base'
 import {Store} from './Store'
-import {warn, camelCase} from './util'
+import {warn, camelCase} from '../base'
 
 import {TAB_PAGES, PAGES} from '../feat/data'
 import {Url} from '../feat/Url'

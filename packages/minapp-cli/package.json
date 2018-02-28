@@ -7,9 +7,10 @@
 	},
 	"scripts": {
 		"test": "echo 0",
-		"lint": "tslint src/**/*.ts",
-		"build": "remove-all dist/ && tsc",
-		"watch": "remove-all dist/ && tsc -w"
+    "lint": "tslint src/**/*.ts",
+    "clear": "remove-all dist",
+    "build": "npm run clear && tsc",
+    "watch": "tsc -w"
 	},
 	"publishConfig": {
 		"access": "public"

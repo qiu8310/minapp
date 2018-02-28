@@ -53,7 +53,7 @@ export class MyApp extends BaseApp<MyStore> {
         4. 触发条件是：每次在 src/pages 目录下新建一个空文件夹时
     */
 
-    /*# INJECT_START {"key": "pagesMap", "append": true} #*/
+    /*# INJECT_START {"key": "pagesMap"} #*/
     index: Url
     logs: Url
     /*# INJECT_END #*/

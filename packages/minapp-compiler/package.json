@@ -9,7 +9,7 @@
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "build": "npm run clear && tsc",
-    "watch": "npm run clear && tsc -w"
+    "watch": "tsc -w"
   },
   "publishConfig": {
     "access": "public"

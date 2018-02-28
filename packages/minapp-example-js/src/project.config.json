@@ -9,9 +9,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.91",
+	"libVersion": "1.9.1",
 	"appid": "wxcbe3dcec68e268e3",
-	"projectname": "%40minapp%2Fexample-js",
+	"projectname": "@minapp/example-ts",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

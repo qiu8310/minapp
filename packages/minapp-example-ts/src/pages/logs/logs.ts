@@ -7,7 +7,7 @@ import * as formatDate from 'mora-scripts/libs/lang/formatDate'
 import {pagify, MyPage} from 'base/'
 
 @pagify()
-export default class extends MyPage<{logs: string[]}> {
+export default class extends MyPage {
   data = {
     logs: []
   }
