@@ -9,7 +9,7 @@
 		"test": "echo 0",
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
-    "build": "npm run clear && tsc",
+    "build": "npm run clear && tsc && node dist/make.js",
     "watch": "tsc -w"
 	},
 	"publishConfig": {

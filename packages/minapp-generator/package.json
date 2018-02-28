@@ -5,10 +5,11 @@
 	"scripts": {
 		"lint": "tslint src/**/*.ts",
 		"test": "jest",
+		"clear": "remove-all dist/",
 		"generate-api": "node dist/cli/cmd.js api && node dist/cli/cmd.js api -p && git diff gen/**",
 		"generate-tpl": "node dist/cli/cmd.js tpl && git diff gen/tpl/components.json",
-		"build": "remove-all dist/ && tsc",
-		"watch": "remove-all dist/ && tsc -w"
+		"build": "npm run clear && tsc",
+		"watch": "tsc -w"
 	},
 	"publishConfig": {
   	"access": "public"

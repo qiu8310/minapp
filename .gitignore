@@ -5,3 +5,4 @@ dist
 vendor
 node_modules
 coverage
+packages/minapp-cli/template
