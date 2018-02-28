@@ -17,7 +17,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "bugs": "https://github.com/qiu8310/minapp/issues",
   "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-vscode",
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-vscode"
   },
@@ -54,12 +54,12 @@
     ]
   },
   "dependencies": {
-    "@minapp/common": "^0.0.0",
+    "@minapp/common": "^0.0.2",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
     "mora-scripts": "^1.6.22",
-    "@minapp/generator": "^0.0.0",
+    "@minapp/generator": "^0.0.2",
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
     "tslint": "^5.8.0",
