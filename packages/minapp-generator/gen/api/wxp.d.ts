@@ -1,4 +1,4 @@
-// Generated at 2018-2-23
+// Generated at 2018-3-1
 export namespace wxp {
   namespace request {
     type Promised = {
@@ -3314,6 +3314,8 @@ export namespace wxp {
   function getSystemInfoSync(): getSystemInfoSync.Return
 
   /**
+   * **注意：此接口从基础库 1.1.1 版本开始支持。**
+   *
    * 判断小程序的API，回调，参数，组件等是否在当前版本可用。
    *
    * **String参数说明：** 使用`${API}.${method}.${param}.${options}`或者`${component}.${attribute}.${option}`方式来调用，例如：
@@ -5940,7 +5942,7 @@ export namespace wxp {
       /**
        * 是否需要动画效果，默认无
        */
-      aniamtion?: boolean
+      animation?: boolean
     }
   }
   /**
@@ -5956,7 +5958,7 @@ export namespace wxp {
       /**
        * 是否需要动画效果，默认无
        */
-      aniamtion?: boolean
+      animation?: boolean
     }
   }
   /**
@@ -6380,7 +6382,7 @@ export namespace wxp {
    *
    * 添加节点的滚动位置查询请求，以像素为单位。节点必须是`scroll-view`或者viewport。返回值是nodesRef对应的selectorQuery。
    *
-   * 返回的节点信息中，每个节点的滚动位置用`scrollLeft`、`scrollHeight`字段描述。如果提供了callback回调函数，在执行selectQuery的exec方法后，节点信息会在callback中返回。
+   * 返回的节点信息中，每个节点的滚动位置用`scrollLeft`、`scrollTop`字段描述。如果提供了callback回调函数，在执行selectQuery的exec方法后，节点信息会在callback中返回。
    *
    * **selectorQuery.exec([callback])：**
    *
@@ -7442,7 +7444,7 @@ export namespace wxp {
    *
    * **Tip：**
    *
-   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=201828)进行认证。
+   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=2018228)进行认证。
    * 2.  `tip`: 了解更多信息，请查看[微信卡券接口文档](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1490190158&version=1&lang=zh_CN&platform=2)
    *
    * **示例代码：**
@@ -7618,7 +7620,7 @@ export namespace wxp {
    *
    * 1.  `tip`: 在开发者工具上调用此 API 并不会真实的跳转到另外的小程序，但是开发者工具会校验本次调用跳转是否成功[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/different.html#小程序跳转的调试支持)
    * 2.  `tip`: 开发者工具上支持被跳转的小程序处理接收参数的调试[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/different.html#小程序跳转的调试支持)
-   * 3.  `tip`: 只有同一公众号下的关联的小程序之间才可相互跳转 [详情](https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=201828#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%85%B3%E8%81%94%E5%B0%8F%E7%A8%8B%E5%BA%8F)
+   * 3.  `tip`: 只有同一公众号下的关联的小程序之间才可相互跳转 [详情](https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2018228#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%85%B3%E8%81%94%E5%B0%8F%E7%A8%8B%E5%BA%8F)
    *
    * **示例代码：**
    *
@@ -8964,7 +8966,7 @@ export namespace wxp {
      * -----------|-----------|-----------------------------------------------------
      *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
      *
-     * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=201828)
+     * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018228)
      *
      * **参数：**
      *

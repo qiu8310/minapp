@@ -2,6 +2,8 @@
 
 export namespace wx {
   /**
+   * **注意：此接口从基础库 1.1.1 版本开始支持。**
+   *
    * 判断小程序的API，回调，参数，组件等是否在当前版本可用。
    *
    * **String参数说明：** 使用`${API}.${method}.${param}.${options}`或者`${component}.${attribute}.${option}`方式来调用，例如：

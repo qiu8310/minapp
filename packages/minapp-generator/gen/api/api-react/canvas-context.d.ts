@@ -995,7 +995,7 @@ class CanvasContext {
    * -----------|-----------|-----------------------------------------------------
    *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
    *
-   * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=201828)
+   * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018228)
    *
    * **参数：**
    *

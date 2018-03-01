@@ -43,7 +43,7 @@ export namespace wx {
    *
    * 添加节点的滚动位置查询请求，以像素为单位。节点必须是`scroll-view`或者viewport。返回值是nodesRef对应的selectorQuery。
    *
-   * 返回的节点信息中，每个节点的滚动位置用`scrollLeft`、`scrollHeight`字段描述。如果提供了callback回调函数，在执行selectQuery的exec方法后，节点信息会在callback中返回。
+   * 返回的节点信息中，每个节点的滚动位置用`scrollLeft`、`scrollTop`字段描述。如果提供了callback回调函数，在执行selectQuery的exec方法后，节点信息会在callback中返回。
    *
    * **selectorQuery.exec([callback])：**
    *

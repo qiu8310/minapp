@@ -305,7 +305,7 @@ export namespace wx {
       /**
        * 是否需要动画效果，默认无
        */
-      aniamtion?: boolean
+      animation?: boolean
       /**
        * 接口调用成功的回调函数
        */
@@ -345,7 +345,7 @@ export namespace wx {
       /**
        * 是否需要动画效果，默认无
        */
-      aniamtion?: boolean
+      animation?: boolean
       /**
        * 接口调用成功的回调函数
        */
