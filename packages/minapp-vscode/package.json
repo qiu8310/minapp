@@ -2,7 +2,7 @@
   "name": "minapp-vscode",
   "displayName": "minapp",
   "description": "微信小程序模板语言(wxml)语法高亮，并提供标签与属性自动补全",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "publisher": "qiu8310",
   "scripts": {
     "lint": "tslint src/**/*.ts",
@@ -70,10 +70,10 @@
     "tslib": "^1.9.0"
   },
   "devDependencies": {
-    "mora-scripts": "^1.6.22",
-    "@minapp/generator": "^0.0.2",
+    "@minapp/generator": "^0.0.3",
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
+    "mora-scripts": "^1.6.22",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
     "vscode": "^1.1.6"

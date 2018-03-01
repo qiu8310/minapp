@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/mobx",
 	"description": "微信小程序框架",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
@@ -26,7 +26,7 @@
 		"mobx": "^3.5.1"
 	},
 	"dependencies": {
-		"@minapp/core": "^0.0.2",
+		"@minapp/core": "^0.0.3",
 		"mora-common": "^1.0.10",
 		"tslib": "^1.9.0"
 	},
