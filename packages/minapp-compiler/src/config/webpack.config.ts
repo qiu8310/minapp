@@ -13,19 +13,10 @@ import {define} from './define'
 import {loader as minappLoaders, ExtractMinappCode} from '@minapp/webpack-utils'
 import {JSON_REGEXP} from '@minapp/webpack-utils/dist/util'
 
-const loader = {
-  ts: require.resolve('awesome-typescript-loader'),
-  babel: require.resolve('babel-loader'),
-  sass: require.resolve('sass-loader'),
-  less: require.resolve('less-loader'),
-  postcss: require.resolve('postcss-loader'),
-  ...minappLoaders
-}
-
 import { Compiler } from '../Compiler'
 
 export function webpackConfig(compiler: Compiler) {
-  let {srcDir, modulesDir, distDir, options: {server, publicPath}} = compiler
+  let {srcDir, modulesDir, localPkg, distDir, options: {server, publicPath}} = compiler
 
   // 查找 srcDir 下的 app.json/app.cjson/app.jsonc 文件
   let appJson = fs.readdirSync(srcDir).find(n => JSON_REGEXP.test(n) && /^app\.\w+$/i.test(n))
@@ -76,6 +67,16 @@ export function webpackConfig(compiler: Compiler) {
     publicPath = !server ? '' : `http${server.https ? 's' : ''}://${server.host}:${server.port}/`
   }
 
+  const loader = {
+    ts: require.resolve('awesome-typescript-loader'),
+    babel: require.resolve('babel-loader'),
+    sass: require.resolve('sass-loader'),
+    less: require.resolve('less-loader'),
+    postcss: require.resolve('postcss-loader'),
+    ...getLocalLoaders(modulesDir, localPkg),
+    ...minappLoaders
+  }
+
   const wpOpts: webpack.Configuration = {
     target: 'web',
     // devtool: 'source-map', // TODO: 内部 loader 支持 sourceMap
@@ -92,7 +93,7 @@ export function webpackConfig(compiler: Compiler) {
       mainFields: ['main', 'module', 'browser'],
       // symlinks 和 getExternalLinkModules 可以不加
       symlinks: true,
-      modules: [srcDir, modulesDir, ...getExternalLinkModules(modulesDir)],
+      modules: [srcDir, modulesDir, ...getExternalLinkModules(modulesDir, localPkg)],
     },
     stats: { // https://webpack.js.org/configuration/stats/#stats
       // ['all' as '']: false,
@@ -137,9 +138,8 @@ export function webpackConfig(compiler: Compiler) {
 
 // node_modules 下可能会有 link 文件， webpack resolve 不了
 // 需要把 link 项目的 node_modules 也加入 resolve 列表
-function getExternalLinkModules(modulesDir: string) {
-  let pkg = require(path.resolve(modulesDir, '..', 'package.json'))
-  let modules: string[] = Object.keys(pkg.dependencies)
+function getExternalLinkModules(modulesDir: string, localPkg: any) {
+  let modules: string[] = Object.keys(localPkg.dependencies || {})
   let folders: string[] = []
   modules.forEach(m => {
     let folder = path.join(modulesDir, m)
@@ -149,4 +149,15 @@ function getExternalLinkModules(modulesDir: string) {
     }
   })
   return folders
+}
+
+function getLocalLoaders(modulesDir: string, localPkg: any) {
+  let npms = [...Object.keys(localPkg.dependencies || {}), ...Object.keys(localPkg.devDependencies || {})]
+  return npms
+    .filter(k => k.endsWith('-loader'))
+    .map(k => k.replace(/-loader$/, ''))
+    .reduce((all, k) => {
+      all[k === 'awesome-typescript' ? 'ts' : k] = k + '-loader'
+      return all
+    }, {} as any)
 }

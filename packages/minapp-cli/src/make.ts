@@ -8,6 +8,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
  */
 import * as fs from 'fs-extra'
 import * as info from 'mora-scripts/libs/sys/info'
+import * as isWin from 'mora-scripts/libs/sys/isWin'
 import * as path from 'path'
 import {walkDirectory} from './helper'
 
@@ -91,6 +92,13 @@ export function make(id: string, toDir: string, data: any) {
           if (data.hasOwnProperty(key)) return data[key]
           return raw
         })
+
+        // windows 用户需要安装 awesome-typescript-loader
+        if (name === 'package.json.dtpl' && isWin && id === 'ts') {
+          let json = JSON.parse(content)
+          json.devDependencies['awesome-typescript-loader'] = '^3.4.1'
+          content = JSON.stringify(json, null, 2)
+        }
       }
 
       fs.writeFileSync(toFile.replace(/\.dtpl$/, ''), content)

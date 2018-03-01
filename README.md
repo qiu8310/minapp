@@ -2,17 +2,11 @@
 
 **给原生微信小程序开发提供 TypeScript 支持**
 
-## 说明
+## 使用
 
-这不是一个项目，是有好几个项目组合而成的，用的是 [lerna](https://github.com/lerna/lerna) 开发工具，其它项目在 [packages 目录下](./packages/)，这里对其中的几个主要项目做个简要概述
-
-* [minapp-generator][minapp-generator]: 此模块负责解析微信官方文档，生成结构化的数据，供其它模块使用
-* [minapp-core][minapp-core]: 微信所有原生 api 的 TypeScripts 定义，另外提供一个 promise 版的 wx 接口
-* [minapp-mobx][minapp-mobx]: 开发框架，集成 mobx
-* [minapp-compiler][minapp-compiler]: 一个小程序的编译器，集成 webpack 和 webpack-dev-server
-* [minapp-webpack-utils][minapp-webpack-utils]: 编译器中需要使用的 webpack 相关的插件
-* [minapp-cli][minapp-cli]: 提供给用户的命令行工具，集成了 minapp-compiler，并可以快速创建一个新项目
-* [minapp-vscode][minapp-vscode]: vscode 插件，为wxml提供语法高亮、标签与属性的自动补全
+1. （可选，但建议安装）安装两个 vscode 插件：[minapp][vscode-minapp] 和 [dot-template][vscode-dot-template]
+2. 用 npm 安装命令行工具： `npm install -g @minapp/cli`
+3. 初始化项目：`minapp init <你要创建项目的文件件>`
 
 ## 功能概览（在 vscode 编辑器下）
 
@@ -33,11 +27,11 @@
 ![mobx](https://n1image.hjfile.cn/res7/2018/03/01/beaf3616dc87b851156fe107e79deff9.gif)
 
 
-* wxml 模板语言支持语法高亮，组件智能提示，组件属性智能提示（需要安装 vscode 插件 [minapp](https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode)）
+* wxml 模板语言支持语法高亮，组件智能提示，组件属性智能提示（需要安装 vscode 插件 [minapp][vscode-minapp]）
 
 ![wxml](https://n1image.hjfile.cn/res7/2018/03/01/13631761451ae134c6eb3ea2ed1a6a12.gif)
 
-* 新建一个 page 文件夹时（需要安装 vscode 插件 [dot-template](https://marketplace.visualstudio.com/items?itemName=qiu8310.dot-template-vscode)）
+* 新建一个 page 文件夹时（需要安装 vscode 插件 [dot-template][vscode-dot-template]）
   - 自动为你创建相关的同名的文件，包括 js/json/wxml/scss，并且这些模板文件你可以随时在 .dtpl 文件夹下修改
   - 自动将新建的 page 路径注入到 app.json 文件夹中
 
@@ -52,8 +46,21 @@
 ![Component 示例](https://n1image.hjfile.cn/res7/2018/03/01/5ad639730bee6eea44d93a22edfc8921.gif)
 
 
+## 关于此仓库说明
+
+这不是一个项目，是有好几个项目组合而成的，用的是 [lerna](https://github.com/lerna/lerna) 开发工具，其它项目在 [packages 目录下](./packages/)，这里对其中的几个主要项目做个简要概述
+
+* [minapp-generator][minapp-generator]: 此模块负责解析微信官方文档，生成结构化的数据，供其它模块使用
+* [minapp-core][minapp-core]: 微信所有原生 api 的 TypeScripts 定义，另外提供一个 promise 版的 wx 接口
+* [minapp-mobx][minapp-mobx]: 开发框架，集成 mobx
+* [minapp-compiler][minapp-compiler]: 一个小程序的编译器，集成 webpack 和 webpack-dev-server
+* [minapp-webpack-utils][minapp-webpack-utils]: 编译器中需要使用的 webpack 相关的插件
+* [minapp-cli][minapp-cli]: 提供给用户的命令行工具，集成了 minapp-compiler，并可以快速创建一个新项目
+* [minapp-vscode][minapp-vscode]: vscode 插件，为wxml提供语法高亮、标签与属性的自动补全
 
 
+[vscode-minapp]: https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode
+[vscode-dot-template]: https://marketplace.visualstudio.com/items?itemName=qiu8310.dot-template-vscode
 [minapp-generator]: ./packages/minapp-generator
 [minapp-core]: ./packages/minapp-core
 [minapp-mobx]: ./packages/minapp-mobx

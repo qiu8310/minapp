@@ -18,8 +18,8 @@ require('update-notifier')({pkg}).notify()
 const version = pkg.version
 
 let commonOpts = {
-  srcDir: '<string> 指定 源代码 目录      {{"src"}}',
-  distDir: '<string> 指定 编译后代码 目录  {{"dist"}}',
+  srcDir: '<string> specify code source directory    {{"src"}}',
+  distDir: '<string> specify build files directory   {{"dist"}}',
 }
 
 cli({
@@ -27,32 +27,28 @@ cli({
   version
 }).commands({
   init: {
-    desc: '在指定的文件夹中初始化一个 minapp 项目',
+    desc: 'init a project',
     conf: { usage: 'cli init <folder>' },
     cmd: res => initProject(res._)
   },
-  // inject: {
-  //   desc: '自动获取所有 pages，并注入到 app.json 中',
-  //   cmd: injectCmd
-  // },
   dev: {
-    desc: '启动开发服务器，实时编译小程序源代码, __ENV__="development"',
+    desc: 'develop a preject, will inject a global variable: __ENV__="development"',
     conf: {version},
     options: {
       ...commonOpts,
-      'host': '<string> 指定本地服务器 host {{"localhost"}}',
-      'port': '<string> 指定本地服务器 port {{"8080"}}',
-      'm | minimize': '<boolean> 开启代码压缩，类似于 production 环境，但 __ENV__ 仍然是 development',
+      'host': '<string> server host {{"localhost"}}',
+      'port': '<string> server port {{"8080"}}',
+      'm | minimize': '<boolean> minimize source files',
     },
     cmd: res => compile('dev', res)
   },
   build: {
-    desc: '将小程序源代码编译成可发布的代码, __ENV__="production"',
+    desc: 'build a project, will inject a global variable: __ENV__="production"',
     conf: {version},
     options: {
       ...commonOpts,
-      'p | publicPath': '<string> 指定静态资源的 publicPath（参考 webpack 的 output.publicPath 配置）',
-      'w | watch': '<boolean> 开启 watch (没有运行服务器，wxss 中的静态资源可能会无法访问）',
+      'p | publicPath': '<string> static file\'s publicPath, just like `output.publicPath` in webpack',
+      'w | watch': '<boolean> watch mode, without webpack-dev-server',
     },
     cmd: res => compile('build', res)
   }
@@ -63,15 +59,15 @@ cli({
  * 初始化一个项目
  */
 function initProject(folders: string[]) {
-  if (folders.length === 0) return error('请指定要创建的项目所在的目录')
-  if (folders.length > 1) return error('不能同时创建项目在多个目录中')
+  if (folders.length === 0) return error('Please specify the initial project directory')
+  if (folders.length > 1) return error('You can only specify one project directory')
   let dir = folders[0]
   let absDir = path.resolve(dir)
 
-  if (fs.existsSync(dir) && !fs.statSync(dir).isDirectory()) return error(`指定的文件 ${dir} 不是一个有效的目录`)
+  if (fs.existsSync(dir) && !fs.statSync(dir).isDirectory()) return error(`Target "${dir}" not a valid directory`)
 
   fs.ensureDirSync(dir)
-  if (fs.readdirSync(dir).length) return error(`文件夹 ${dir} 下已经有文件了，请指定一个空文件夹或不存在的文件夹`)
+  if (fs.readdirSync(dir).length) return error(`Directory "${dir}" already has files in it, please use an empty directory or not exist directory`)
 
   inquirer.prompt([
     {
@@ -114,11 +110,11 @@ function initProject(folders: string[]) {
     make(answers.language === 'TypeScript' ? 'ts' : 'js', absDir, answers)
 
     console.log(
-      `${EOL}  ${answers.language} 项目 ${answers.name} 创建完成${EOL}`
+      `${EOL}  ${answers.language} project ${answers.name} initialize successfully${EOL}`
       + `===============================================${EOL}${EOL}`
-      + `  请运行下面两条命令来安装依赖:${EOL}${EOL}`
+      + `  You can run next two commands to continue:${EOL}${EOL}`
       + `    ${code('cd ' + dir)}${EOL}`
-      + `    ${code('npm install')} 或 ${code('yarn install')}${EOL}${EOL}${EOL}`
+      + `    ${code('npm install')} or ${code('yarn install')}${EOL}${EOL}${EOL}`
       + `    ${clog.format('%cHave a good time !', 'magenta')} ${EOL}`
     )
   })

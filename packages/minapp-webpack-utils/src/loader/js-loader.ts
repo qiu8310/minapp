@@ -45,7 +45,7 @@ export default class WxsLoader extends Loader {
     }, 0)
 
     return [
-      `__minapp__("${emitFile}", function() { ${emitContent} });`,
+      `__minapp__(${JSON.stringify(emitFile)}, function() { ${emitContent} });`,
       '__minapp_end__();',
       `${this.toRequire(requires, 'webpack')}`
     ].join('')

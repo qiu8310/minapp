@@ -75,6 +75,8 @@ export class Compiler {
   distDir: string
   modulesDir: string
   options: CompilerOptions
+  /** 本地端的 package.json 的内容 */
+  localPkg: any
 
   constructor(srcDir: string, distDir: string, options: Partial<CompilerOptions> = {}) {
     this.production = !!options.production
@@ -90,7 +92,9 @@ export class Compiler {
     this.distDir = path.resolve(distDir)
 
     try {
-      this.modulesDir = path.resolve(findup.pkg(this.srcDir), '..', 'node_modules')
+      let pkgFile = findup.pkg(this.srcDir)
+      this.localPkg = require(pkgFile)
+      this.modulesDir = path.resolve(pkgFile, '..', 'node_modules')
     } catch (e) {
       throw new Error(`当前项目中没有 package.json 文件，无法编译`)
     }
