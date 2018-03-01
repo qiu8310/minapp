@@ -1,46 +1,66 @@
+# minapp
+
+**给原生微信小程序开发提供 TypeScript 支持**
+
+## 说明
+
+这不是一个项目，是有好几个项目组合而成的，用的是 [lerna](https://github.com/lerna/lerna) 开发工具，其它项目在 [packages 目录下](./packages/)，这里对其中的几个主要项目做个简要概述
+
+* [minapp-generator][minapp-generator]: 此模块负责解析微信官方文档，生成结构化的数据，供其它模块使用
+* [minapp-core][minapp-core]: 微信所有原生 api 的 TypeScripts 定义，另外提供一个 promise 版的 wx 接口
+* [minapp-mobx][minapp-mobx]: 开发框架，集成 mobx
+* [minapp-compiler][minapp-compiler]: 一个小程序的编译器，集成 webpack 和 webpack-dev-server
+* [minapp-webpack-utils][minapp-webpack-utils]: 编译器中需要使用的 webpack 相关的插件
+* [minapp-cli][minapp-cli]: 提供给用户的命令行工具，集成了 minapp-compiler，并可以快速创建一个新项目
+* [minapp-vscode][minapp-vscode]: vscode 插件，为wxml提供语法高亮、标签与属性的自动补全
+
+## 功能概览（在 vscode 编辑器下）
+
+* wx 所有接口都有智能的提醒，同时包括接口的参数，和返回值
+
+![wx接口示例](https://n1image.hjfile.cn/res7/2018/03/01/428c4297bb1f6b6cf335317f89bab237.gif)
+
+* 提供一个 promise 版的 wx 接口 **wxp**，和 wx 一样，只是它会将 wx 中所有需要 success/fail/complete 三个参数的函数 promise 化
+  - wxp 中也支持使用 success 回调
+  - wxp 给 Promise 添加了一个 finally 方法；如，你可以这样用 `wxp.getUserInfo().finally(() => { /* do something */ })`
+
+![wxp示例](https://n1image.hjfile.cn/res7/2018/03/01/a8ccc97ac7146b81e080daf8eb778b4d.gif)
+
+* 集成 mobx，可以非常方便的修改全局数据，并自动更新当前页面状态
+  - 注入 Store 只需要在 appify 函数中添加 Store 对象即可
+  - Page 和 Component 中都默认注入了 Store 对象，你可以使用 `this.store` 获取
+
+![mobx](https://n1image.hjfile.cn/res7/2018/03/01/beaf3616dc87b851156fe107e79deff9.gif)
+
+
+* wxml 模板语言支持语法高亮，组件智能提示，组件属性智能提示（需要安装 vscode 插件 [minapp](https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode)）
+
+![wxml](https://n1image.hjfile.cn/res7/2018/03/01/13631761451ae134c6eb3ea2ed1a6a12.gif)
+
+* 新建一个 page 文件夹时（需要安装 vscode 插件 [dot-template](https://marketplace.visualstudio.com/items?itemName=qiu8310.dot-template-vscode)）
+  - 自动为你创建相关的同名的文件，包括 js/json/wxml/scss，并且这些模板文件你可以随时在 .dtpl 文件夹下修改
+  - 自动将新建的 page 路径注入到 app.json 文件夹中
+
+![新建 Page 示例](https://n1image.hjfile.cn/res7/2018/03/01/8dc5a66a33857c2cfb16353727d15f41.gif)
+
+* 小程序 Page 中的支持的函数自动提示
+
+![Page 中的函数自动提示示例](https://n1image.hjfile.cn/res7/2018/03/01/18702b10498aee7ddc394eb04a703a43.gif)
+
+* 同理，新建组件文件夹时，也会创建相关的文件；同时组件中的生命周期函数也会自动提示
+
+![Component 示例](https://n1image.hjfile.cn/res7/2018/03/01/5ad639730bee6eea44d93a22edfc8921.gif)
 
 
 
-## 功能列表（完成的与待完成的）
 
-* [x] 抓取官方文档，生成结构化的数据 <已由 [@minapp/generator][minapp-generator] 完成>
-  - [x] [根据官方API文档](https://mp.weixin.qq.com/debug/wxadoc/dev/api/) 生成 wx api 数据
-  - [x] [根据官方组件文档](https://mp.weixin.qq.com/debug/wxadoc/dev/component/)生成组件数据
-  - [x] 将生成的 typescripts 中的对象定义扁平化，不要出现对象中嵌套对象（方便在用户项目中引用）
-* [x] 生成一个用户可以直接使用的 wx api 模块 <已由 [@minapp/core][minapp-core] 完成>
-  - [x] 提供原生回调版本的 api
-  - [x] 提供 promise 版本的 api
-* [ ] 制作一个类似于 wepy 的框架 <由 [@minapp/mobx][minapp-mobx] 解决中>
-  - [x] 嵌入 mobx，简化开发流程
-  - [ ] 支持组件
-  - [ ] 给框架添加更多的辅助函数，参考 wepy
-  - [ ] 模板 class/属性/标签 等支持自动补全（需要 vscode 插件）
-* [x] 解析 wxml，生成类似于语法树的数据 <已由 [@minapp/wxml-parser][minapp-wxml-parser] 完成>
-* [ ] 制作编译器 <由 [@minapp/compiler][minapp-compiler] 和 [@minapp/webpack-utils][minapp-webpack-utils] 完成>
-  - [x] js-loader
-  - [x] json-loader
-  - [x] wxml-loader
-  - [x] wxss-loader
-  - [x] ExtractMinappCode plugin
-  - [ ] 需要一个 vue loader
-  - [ ] ExtractMinappCode 可能需要优化（虽然现在还没发现错误，参考 extract-text-webpack-plugin）
-* [ ] 制作命令行工具
-  - [ ] 快速生成初始化代码
-  - [ ] 集成编译器
-  - [ ] 更新提醒
-* [ ] 制作示例代码
-  - [ ] ts 版本（mobx + typescript）
-  - [ ] js 版本
-
-
-
-[minapp-generator]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-generator
-[minapp-core]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-core
-[minapp-mobx]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-mobx
-[minapp-wxml-parser]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-wxml-parser
-[minapp-webpack-utils]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-webpack-utils
-[minapp-compiler]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-compiler
-[minapp-cli]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-cli
-[minapp-example-ts]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-example-ts
-[minapp-example-js]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-example-js
-[minapp-vscode]: https://github.com/qiu8310/minapp/tree/master/packages/minapp-vscode
+[minapp-generator]: ./packages/minapp-generator
+[minapp-core]: ./packages/minapp-core
+[minapp-mobx]: ./packages/minapp-mobx
+[minapp-wxml-parser]: ./packages/minapp-wxml-parser
+[minapp-webpack-utils]: ./packages/minapp-webpack-utils
+[minapp-compiler]: ./packages/minapp-compiler
+[minapp-cli]: ./packages/minapp-cli
+[minapp-example-ts]: ./packages/minapp-example-ts
+[minapp-example-js]: ./packages/minapp-example-js
+[minapp-vscode]: ./packages/minapp-vscode

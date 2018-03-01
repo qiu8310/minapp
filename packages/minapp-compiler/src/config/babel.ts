@@ -13,10 +13,6 @@ const PREFIX = 'babel-' // v7.x 会改成 @babel/
 
 const defaultPresets = [
   'env',
-  'es2015',
-  'es2016',
-  'es2017',
-  'latest',
   'stage-0',
   'stage-1',
 ]

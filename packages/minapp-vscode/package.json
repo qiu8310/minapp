@@ -1,18 +1,29 @@
 {
   "name": "minapp-vscode",
   "displayName": "minapp",
-  "description": "A extension for minapp(微信小程序)",
+  "description": "微信小程序模板语言(wxml)语法高亮，并提供标签与属性自动补全",
   "version": "0.0.1",
   "publisher": "qiu8310",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
+    "publish": "vsce publish",
     "vscode:prepublish": "node src/dev/script.js prod && npm run build",
     "build": "npm run clear && tsc -p ./",
     "watch": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run build && node ./node_modules/vscode/bin/test"
   },
+  "keywords": [
+    "minapp-vscode",
+    "minapp",
+    "wxml",
+    "微信",
+    "模板",
+    "小程序",
+    "wexin",
+    "wechat"
+  ],
   "license": "MIT",
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "bugs": "https://github.com/qiu8310/minapp/issues",
@@ -24,6 +35,7 @@
   "engines": {
     "vscode": "^1.20.0"
   },
+  "icon": "res/icon.png",
   "categories": [
     "Other"
   ],
