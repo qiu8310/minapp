@@ -1,47 +1,51 @@
 # minapp
 
-**给原生微信小程序开发提供 TypeScript 支持**
+**给微信小程序开发提供 TypeScript 支持**
 
 ## 使用
 
 1. （可选，但建议安装）安装两个 vscode 插件：[minapp][vscode-minapp] 和 [dot-template][vscode-dot-template]
 2. 用 npm 安装命令行工具： `npm install -g @minapp/cli`
-3. 初始化项目：`minapp init <你要创建项目的文件件>`
+3. 初始化项目：`minapp init <你要创建项目的文件件>` (同时支持创建 js 和 ts 项目)
 
 ## 功能概览（在 vscode 编辑器下）
 
-* wx 所有接口都有智能的提醒，同时包括接口的参数，和返回值
+### wx 所有接口都有智能的提醒，同时包括接口的参数，和返回值
 
 ![wx接口示例](https://n1image.hjfile.cn/res7/2018/03/01/428c4297bb1f6b6cf335317f89bab237.gif)
 
-* 提供一个 promise 版的 wx 接口 **wxp**，和 wx 一样，只是它会将 wx 中所有需要 success/fail/complete 三个参数的函数 promise 化
+### 提供一个 promise 版的 wx 接口 wxp，和 wx 一样，只是它会将 wx 中所有需要 success/fail/complete 三个参数的函数 promise 化
   - wxp 中也支持使用 success 回调
   - wxp 给 Promise 添加了一个 finally 方法；如，你可以这样用 `wxp.getUserInfo().finally(() => { /* do something */ })`
 
 ![wxp示例](https://n1image.hjfile.cn/res7/2018/03/01/a8ccc97ac7146b81e080daf8eb778b4d.gif)
 
-* 集成 mobx，可以非常方便的修改全局数据，并自动更新当前页面状态
+### 集成 mobx，可以非常方便的修改全局数据，并自动更新当前页面状态
   - 注入 Store 只需要在 appify 函数中添加 Store 对象即可
   - Page 和 Component 中都默认注入了 Store 对象，你可以使用 `this.store` 获取
 
 ![mobx](https://n1image.hjfile.cn/res7/2018/03/01/beaf3616dc87b851156fe107e79deff9.gif)
 
 
-* wxml 模板语言支持语法高亮，组件智能提示，组件属性智能提示（需要安装 vscode 插件 [minapp][vscode-minapp]）
+### wxml 模板语言支持语法高亮，组件智能提示，组件属性智能提示（需要安装 vscode 插件 [minapp][vscode-minapp]）
 
 ![wxml](https://n1image.hjfile.cn/res7/2018/03/01/13631761451ae134c6eb3ea2ed1a6a12.gif)
 
-* 新建一个 page 文件夹时（需要安装 vscode 插件 [dot-template][vscode-dot-template]）
+### json 文件支持自动提示
+
+![json](https://n1image.hjfile.cn/res7/2018/03/01/ee0ec301194156469cfe5533a2008d04.gif)
+
+### 新建一个 page 文件夹时，自动生成相关文件（需要安装 vscode 插件 [dot-template][vscode-dot-template]）
   - 自动为你创建相关的同名的文件，包括 js/json/wxml/scss，并且这些模板文件你可以随时在 .dtpl 文件夹下修改
   - 自动将新建的 page 路径注入到 app.json 文件夹中
 
 ![新建 Page 示例](https://n1image.hjfile.cn/res7/2018/03/01/8dc5a66a33857c2cfb16353727d15f41.gif)
 
-* 小程序 Page 中的支持的函数自动提示
+### 小程序 Page 中支持函数自动提示
 
 ![Page 中的函数自动提示示例](https://n1image.hjfile.cn/res7/2018/03/01/18702b10498aee7ddc394eb04a703a43.gif)
 
-* 同理，新建组件文件夹时，也会创建相关的文件；同时组件中的生命周期函数也会自动提示
+### 同理，新建组件文件夹时，也会创建相关的文件；同时组件中的生命周期函数也会自动提示
 
 ![Component 示例](https://n1image.hjfile.cn/res7/2018/03/01/5ad639730bee6eea44d93a22edfc8921.gif)
 
