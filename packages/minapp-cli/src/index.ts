@@ -23,7 +23,7 @@ let commonOpts = {
 }
 
 cli({
-  usage: 'minapp [options] <command> [commandOptions]',
+  usage: 'minapp <command> [options]',
   version
 }).commands({
   init: {

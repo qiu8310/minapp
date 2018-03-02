@@ -4,9 +4,9 @@
 
 ## 使用
 
-1. （可选，但建议安装）安装两个 vscode 插件：[minapp][vscode-minapp] 和 [dot-template][vscode-dot-template]
-2. 用 npm 安装命令行工具： `npm install -g @minapp/cli`
-3. 初始化项目：`minapp init <你要创建项目的文件件>` (同时支持创建 js 和 ts 项目)
+1. 用 npm 安装命令行工具： `npm install -g @minapp/cli`
+2. 初始化项目：`minapp init <你要创建项目的文件夹>` (同时支持创建 js 和 ts 项目)
+3. 安装两个 vscode 插件：[minapp][vscode-minapp] 和 [dot-template][vscode-dot-template]（可选，但建议安装）
 
 ## 功能概览（在 vscode 编辑器下）
 
@@ -55,7 +55,7 @@
 这不是一个项目，是有好几个项目组合而成的，用的是 [lerna](https://github.com/lerna/lerna) 开发工具，其它项目在 [packages 目录下](./packages/)，这里对其中的几个主要项目做个简要概述
 
 * [minapp-generator][minapp-generator]: 此模块负责解析微信官方文档，生成结构化的数据，供其它模块使用
-* [minapp-core][minapp-core]: 微信所有原生 api 的 TypeScripts 定义，另外提供一个 promise 版的 wx 接口
+* [minapp-core][minapp-core]: 微信所有原生 api 的 TypeScript 定义，另外提供一个 promise 版的 wx 接口
 * [minapp-mobx][minapp-mobx]: 开发框架，集成 mobx
 * [minapp-compiler][minapp-compiler]: 一个小程序的编译器，集成 webpack 和 webpack-dev-server
 * [minapp-webpack-utils][minapp-webpack-utils]: 编译器中需要使用的 webpack 相关的插件

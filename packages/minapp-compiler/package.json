@@ -56,7 +56,7 @@
     "@types/debug": "^0.0.30",
     "@types/fs-extra": "^5.0.0",
     "@types/webpack": "^3.8.5",
-    "ts-lint": "~4.5.1",
-    "typescript": "~2.7.1"
+    "ts-lint": "^4.5.1",
+    "typescript": "^2.7.1"
   }
 }

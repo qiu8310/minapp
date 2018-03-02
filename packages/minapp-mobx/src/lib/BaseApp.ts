@@ -8,12 +8,20 @@ import {Base} from './Base'
 import {Store} from './Store'
 import {warn, camelCase} from '../base'
 
-import {TAB_PAGES, PAGES} from '../feat/data'
+// import {TAB_PAGES, PAGES} from '../feat/data'
 import {Url} from '../feat/Url'
 
-export function appify<S extends Store>(store: S) {
+export interface AppifyOptions {
+  pages: string[]
+  tabBarList: Array<{pagePath: string, text: string}> | undefined
+}
+
+export function appify<S extends Store>(store: S, options: AppifyOptions) {
   return function(SomeApp: new() => BaseApp<S>) {
-    let obj = toObject(new SomeApp())
+    let app = new SomeApp()
+    // @ts-ignore
+    app.__init$home$url(options.pages || [], options.tabBarList || [])
+    let obj = toObject(app)
     obj.store = store
     App(obj)
   }
@@ -29,16 +37,18 @@ export class BaseApp<S extends Store> extends Base {
   /**
    * 首页的 url，默认是 app.json 中的 pages 中的第一个页面的 Url
    */
+  // @ts-ignore
   readonly $home: Url
+  // @ts-ignore
   readonly $url: {[key: string]: Url}
 
-  constructor() {
-    super()
-
+  // @ts-ignore
+  private __init$home$url(pages: string[] = [], tabBarList: Array<{pagePath: string, text: string}> = []) {
     let $home: Url
     let $url: {[key: string]: Url} = {}
 
-    PAGES.forEach(page => {
+    let tabPages = tabBarList.map(t => t.pagePath)
+    pages.forEach(page => {
       // 需要驼峰形式的名字
       let camelPageName = camelCase(page.split('/').pop() as string)
 
@@ -48,7 +58,7 @@ export class BaseApp<S extends Store> extends Base {
       }
 
       // url 需要以 / 开头
-      let url = new Url('/' + page, TAB_PAGES.indexOf(page) >= 0)
+      let url = new Url('/' + page, tabPages.indexOf(page) >= 0)
 
       if (!$home) $home = url // $home 是 PAGES 中的第一个 url
       $url[camelPageName] = url
@@ -56,6 +66,7 @@ export class BaseApp<S extends Store> extends Base {
 
     // @ts-ignore
     this.$home = $home
+    // @ts-ignore
     this.$url = $url
   }
 

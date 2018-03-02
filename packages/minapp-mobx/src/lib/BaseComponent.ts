@@ -73,7 +73,7 @@ export interface ComifyOptions extends PolluteOptions {
  */
 export function comify<D, S extends Store, A extends BaseApp<S>>(options: ComifyOptions = {}) {
   return function(SomeComponent: new() => BaseComponent<D, S, A>) {
-    let obj = pollute(SomeComponent, options) as BaseComponent<D, S, A>
+    let obj = pollute(SomeComponent, {observe: false, ...options}) as BaseComponent<D, S, A>
 
     if (obj.properties) {
       Object.keys(obj.properties).forEach(k => {
