@@ -19,7 +19,7 @@ const siteConfig = {
   title: 'minapp' /* title for your website */,
   tagline: '重新定义微信小程序的开发',
   url: 'https://qiu8310.github.io/minapp' /* your website url */,
-  baseUrl: '/' /* base url for your project */,
+  baseUrl: '/minapp/' /* base url for your project */,
   projectName: 'minapp',
   headerLinks: [
     {doc: 'guide-install', label: '文档'},
@@ -53,7 +53,7 @@ const siteConfig = {
     new Date().getFullYear() +
     ' Mora <qiuzhongleiabc@126.com>',
   // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
-  // projectName: 'test-site', // or set an env variable PROJECT_NAME
+  projectName: 'minapp', // or set an env variable PROJECT_NAME
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
     theme: 'default',

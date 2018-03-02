@@ -1,0 +1,53 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>个性化定制Page和Component · minapp</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="个性化定制Page和Component · minapp"/><meta property="og:type" content="website"/><meta property="og:url" content="https://qiu8310.github.io/minapp/minapp/index.html"/><meta property="og:description" content="* 默认情况下，所有的 page 都会自动监听全局 store 的变化，而 component 则不会，"/><link rel="shortcut icon" href="/minapp/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://qiu8310.github.io/minapp/blog/atom.xml" title="minapp Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://qiu8310.github.io/minapp/blog/feed.xml" title="minapp Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/minapp/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/minapp/"><img class="logo" src="/minapp/img/minapp.svg"/><h2 class="headerTitle">minapp</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/minapp/docs/guide-install.html" target="_self">文档</a></li><li><a href="/minapp/docs/api-app.html" target="_self">API</a></li><li><a href="/minapp/en/help.html" target="_self">帮助</a></li><li><a href="/minapp/blog" target="_self">博客</a></li><li><a href="https://github.com/qiu8310/minapp" target="_self">Github</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>进阶功能</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>入门指南</h3><ul><li class="navListItem"><a class="navItem" href="/minapp/docs/guide-install.html">安装</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/guide-autocomplete.html">代码自动补全</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/guide-warn.html">重要提醒</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/basic-wepy.html">和 wepy 的对比</a></li></ul></div><div class="navGroup navGroupActive"><h3>基本功能</h3><ul><li class="navListItem"><a class="navItem" href="/minapp/docs/basic-unit.html">样式中的单位</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/basic-json.html">关于 json 文件</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/basic-require.html">关于 js 或 ts 中的 require</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/basic-app.html">基本代码</a></li></ul></div><div class="navGroup navGroupActive"><h3>进阶功能</h3><ul><li class="navListItem"><a class="navItem" href="/minapp/docs/advance-code.html">编码准则</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/advance-component.html">Component 开发注意事项</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/advance-build.html">minapp build 时注意事项</a></li><li class="navListItem"><a class="navItem" href="/minapp/docs/advance-minapp-core.html">如何实现 wx api 自动补全</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/minapp/docs/advance-observe.html">个性化定制Page和Component</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>个性化定制Page和Component</h1></header><article><div><span><ul>
+<li><p>默认情况下，所有的 page 都会自动监听全局 store 的变化，而 component 则不会，
+所以，如果要在 page 中禁用，或在 component 中启用，可以这样做：</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// 在 page 中禁用</span>
+@pagify({<span class="hljs-attr">observe</span>: <span class="hljs-literal">false</span>})
+<span class="hljs-keyword">export</span> MyPage extends BasePage {
+
+}
+
+<span class="hljs-comment">// 在 component 中启用</span>
+@comify({<span class="hljs-attr">observe</span>: <span class="hljs-literal">true</span>})
+<span class="hljs-keyword">export</span> MyComponent extends BaseComponent {
+
+}
+</code></pre></li>
+<li><p>默认情况下，如果启用了 observe，会将所有的 store 中的属性注入到 data 中，可能会和你自己定义的数据冲突，
+或者你只想监听 store 中的某个字段，你可以这样做（ page 和 component 做法一样）：</p>
+<pre><code class="hljs css js">@pagify({<span class="hljs-attr">mapStoreToData</span>: <span class="hljs-function">(<span class="hljs-params">store</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">newKey</span>: store.oldKey
+  }
+}})
+<span class="hljs-keyword">export</span> MyPage extends BasePage {
+
+}
+</code></pre></li>
+<li><p>使用 mixin 扩展组件功能</p>
+<p>如 <a href="/minapp/docs/advance-code.html">编码准则</a> 中所述，框架中的 App，Page，Component 的子类并不是完整的 class，有一些 class
+的功能你不能使用，但你可以使用下面的 mixin 来实现你需要的功能</p>
+<pre><code class="hljs css js"><span class="hljs-keyword">const</span> mixins = [
+  {
+    onLoad() {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'in mixin'</span>)
+    }
+  }
+]
+
+@pagify({minxins})
+<span class="hljs-keyword">export</span> MyPage extends BasePage {
+  onLoad() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'in page'</span>)
+  }
+}
+</code></pre>
+<p>上面两个 onLoad 都会执行，<strong>注意：minxins 必须保证函数的执行顺序是无关的</strong></p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="advance-minapp-core.html">← 如何实现 wx api 自动补全</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/minapp/" class="nav-home"><img src="/minapp/img/minapp-transparent.svg" alt="minapp" width="66" height="58"/></a><div><h5>文档</h5><a href="/minapp/docs/guide-install.html">快速开始</a><a href="/minapp/docs/basic-wepy.html">和 wepy 框架有什么异同</a><a href="/minapp/docs/api-app.html">API 文档</a></div><div style="display:none;"><h5>Community</h5><a href="/minapp/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank">Twitter</a></div><div><h5>更多</h5><a href="/minapp/blog">博客</a><a href="https://github.com/">GitHub</a><a class="github-button" href="https://github.com/qiu8310/minapp" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Mora &lt;qiuzhongleiabc@126.com&gt;</section></footer></div></body></html>

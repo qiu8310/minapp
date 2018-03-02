@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://qiu8310.github.io/minapp/minapp/blog</id>
+    <title>minapp Blog</title>
+    <updated>2018-03-02T06:00:00Z</updated>
+    <generator>Feed for Node.js</generator>
+    <link rel="alternate" href="https://qiu8310.github.io/minapp/minapp/blog"/>
+    <subtitle>The best place to stay up-to-date with the latest minapp news and events.</subtitle>
+    <logo>https://qiu8310.github.io/minapp/minapp/img/minapp.svg</logo>
+    <rights>Copyright © 2018 Mora &lt;qiuzhongleiabc@126.com&gt;</rights>
+    <entry>
+        <title type="html"><![CDATA[发布版本 v0.1.0]]></title>
+        <id>https://qiu8310.github.io/minapp/minapp/blog/2018/03/02/first-release.html</id>
+        <link href="https://qiu8310.github.io/minapp/minapp/blog/2018/03/02/first-release.html">
+        </link>
+        <updated>2018-03-02T06:00:00Z</updated>
+        <author>
+            <name>Mora</name>
+            <uri>https://github.com/qiu8310</uri>
+        </author>
+    </entry>
+</feed>
