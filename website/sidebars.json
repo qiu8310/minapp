@@ -1,0 +1,22 @@
+{
+  "docs": {
+    "入门指南": ["guide-install", "guide-autocomplete", "guide-warn", "basic-wepy"],
+    "基本功能": [
+      "basic-unit",
+      "basic-json",
+      "basic-require",
+      "basic-app"
+    ],
+    "进阶功能": [
+      "advance-code",
+      "advance-component",
+      "advance-build",
+      "advance-minapp-core",
+      "advance-observe"
+    ]
+  },
+  "api": {
+    "基类": ["api-app", "api-page", "api-component", "api-url", "api-location"],
+    "mobx": ["api-store"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "website"
+		},
+		{
+			"path": "docs"
+		}
+	],
+	"settings": {
+		"git.decorations.enabled": false
+	}
+}
