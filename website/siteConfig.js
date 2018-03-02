@@ -21,6 +21,7 @@ const siteConfig = {
   url: 'https://qiu8310.github.io/minapp' /* your website url */,
   baseUrl: '/minapp/' /* base url for your project */,
   projectName: 'minapp',
+  customDocsPath: 'docs-md',
   headerLinks: [
     {doc: 'guide-install', label: '文档'},
     {doc: 'api-app', label: 'API'},
@@ -36,23 +37,12 @@ const siteConfig = {
     primaryColor: '#09BB07',
     secondaryColor: '#205C3B',
   },
-  /* custom fonts for website */
-  /*fonts: {
-    myFont: [
-      "Times New Roman",
-      "Serif"
-    ],
-    myOtherFont: [
-      "-apple-system",
-      "system-ui"
-    ]
-  },*/
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright:
     'Copyright © ' +
     new Date().getFullYear() +
     ' Mora <qiuzhongleiabc@126.com>',
-  // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
+  organizationName: 'qiu8310', // or set an env variable ORGANIZATION_NAME
   projectName: 'minapp', // or set an env variable PROJECT_NAME
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
