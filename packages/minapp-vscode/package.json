@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
-    "publish": "vsce publish",
+    "postpublish": "vsce publish",
     "vscode:prepublish": "node src/dev/script.js prod && npm run build",
     "build": "npm run clear && tsc -p ./",
     "watch": "tsc -watch -p ./",

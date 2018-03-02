@@ -8,6 +8,7 @@
 	"scripts": {
 		"test": "echo 0",
 		"lint": "tslint src/**/*.ts",
+		"postpublish": "cnpm sync @minapp/cli",
 		"clear": "remove-all dist",
 		"prepublish": "node dist/make.js",
 		"build": "npm run clear && tsc && npm run prepublish",

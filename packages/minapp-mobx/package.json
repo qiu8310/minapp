@@ -7,6 +7,7 @@
 	"scripts": {
 		"test": "echo 0",
 		"lint": "tslint src/**/*.ts",
+		"postpublish": "cnpm sync @minapp/mobx",
 		"clear": "remove-all dist",
 		"build": "npm run clear && tsc",
 		"watch": "tsc -w"

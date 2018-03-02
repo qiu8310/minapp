@@ -7,6 +7,7 @@
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
+    "postpublish": "cnpm sync @minapp/core",
     "__init__": "node scripts/init.js",
     "build": "remove-all dist && tsc && npm run __init__"
   },
