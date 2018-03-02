@@ -1,6 +1,6 @@
 {
   "name": "@minapp/compiler",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "微信小程序源代码编译器",
   "main": "dist/Compiler.js",
   "typings": "dist/Compiler.d.ts",
@@ -27,7 +27,7 @@
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-compiler"
   },
   "dependencies": {
-    "@minapp/webpack-utils": "^0.0.4",
+    "@minapp/webpack-utils": "^0.0.6",
     "autoprefixer": "^8.0.0",
     "awesome-typescript-loader": "^3.4.1",
     "babel-core": "^6.26.0",
