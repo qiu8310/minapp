@@ -4,12 +4,12 @@ title: 重要提醒
 
 ### 开发前的准备：
 
-  1. 注册小程序： https://mp.weixin.qq.com/wxopen/waregister?action=step1
+  1. 注册小程序：[点此直接跳到微信小程序注册页面](https://mp.weixin.qq.com/wxopen/waregister?action=step1)
   2. 登录 https://mp.weixin.qq.com/ 在菜单 “设置”-“开发设置” 中可以看到小程序的 AppID
-  3. 安装官方提供的开发者工具  https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html
+  3. 安装官方提供的[开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)
   4. 使用 minapp init 新建项目，过程中会让你提供 appid，如果没提供，可以手动修改 src/project.config.json 中的 appid 字段
 
-  更多详细介绍可以前往官方文档： https://mp.weixin.qq.com/debug/wxadoc/dev/
+  更多详细介绍可以前往[微信官方文档](https://mp.weixin.qq.com/debug/wxadoc/dev/)
 
 ### 关于 project.config.json
 

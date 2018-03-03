@@ -6,12 +6,12 @@
           };
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>重要提醒</h1></header><article><div><span><h3><a class="anchor" aria-hidden="true" name=""></a><a href="#" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>开发前的准备：</h3>
 <ol>
-<li>注册小程序： <a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1">https://mp.weixin.qq.com/wxopen/waregister?action=step1</a></li>
+<li>注册小程序：<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1">点此直接跳到微信小程序注册页面</a></li>
 <li>登录 <a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a> 在菜单 “设置”-“开发设置” 中可以看到小程序的 AppID</li>
-<li>安装官方提供的开发者工具  <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html">https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html</a></li>
+<li>安装官方提供的<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html">开发者工具</a></li>
 <li>使用 minapp init 新建项目，过程中会让你提供 appid，如果没提供，可以手动修改 src/project.config.json 中的 appid 字段</li>
 </ol>
-<p>更多详细介绍可以前往官方文档： <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
+<p>更多详细介绍可以前往<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/">微信官方文档</a></p>
 <h3><a class="anchor" aria-hidden="true" name="projectconfigjson"></a><a href="#projectconfigjson" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>关于 project.config.json</h3>
 <p>主要是下面的 setting 部分，<code>es6</code>、<code>postcss</code>、<code>minified</code> 都设置为 false 即可，<code>minapp build</code> 的时候会自动为你做这些事；
 默认情况下 <code>minapp init</code> 初始化的项目都已经帮你配置好了，你无需修改</p>

@@ -6,7 +6,7 @@
 	"scripts": {
 		"all_test": "lerna run test --ignore minapp-vscode",
 		"all_build": "lerna run build --ignore '@minapp/example-*' ",
-		"all_publish": "lerna publish --registry https://registry.npmjs.org/",
+		"all_publish": "npm run all_build && lerna publish --registry https://registry.npmjs.org/",
 		"build": "tsc .dtpl/dtpl.ts --outDir .dtpl/",
 		"watch": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/"
 	},

@@ -6,7 +6,8 @@
           };
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>minapp build 时注意事项</h1></header><article><div><span><p>小程序的样式文件中不允许使用本地图片资源，所以在使用 <code>minapp build</code> 时，
 如果样式中有本地资源，编译程序会报错，如果没有，则能顺利编译通过；如果一定
-要在样式中用本地资源的话，请使用 <code>minapp build --publicPath &quot;http://xxx.com/xxx&quot; 指定一个</code>publicPath<code>，编译后静态文件全会在</code>dist/static` 目录下，你
+要在样式中用本地资源的话，请使用 <code>minapp build --publicPath &quot;http://xxx.com/xxx&quot;</code>
+指定一个 <code>publicPath</code>，编译后静态文件全会在 <code>dist/static</code> 目录下，你
 只需要把这些静态文件上传到你指定的那个服务器就行了。</p>
 <h3><a class="anchor" aria-hidden="true" name="minapp-dev-publicpath"></a><a href="#minapp-dev-publicpath" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>为什么 <code>minapp dev</code> 时不需要使用 <code>publicPath</code>？</h3>
 <p>因为 dev 环境中内置了一个服务器，静态资源都会在服务器中，即 <code>publicPath</code> 自动指定成了那个内置的服务器的路径。</p>

@@ -1,6 +1,6 @@
 # minapp
 
-**给微信小程序开发提供 TypeScript 支持**
+**重新定义微信小程序的开发**
 
 ## 使用
 
@@ -61,6 +61,13 @@
 * [minapp-webpack-utils][minapp-webpack-utils]: 编译器中需要使用的 webpack 相关的插件
 * [minapp-cli][minapp-cli]: 提供给用户的命令行工具，集成了 minapp-compiler，并可以快速创建一个新项目
 * [minapp-vscode][minapp-vscode]: vscode 插件，为wxml提供语法高亮、标签与属性的自动补全
+
+## TODO
+
+* [ ] 小程序中的静态资源自动上传到 七牛 (完成我的 file-uploader 组件)
+* [ ] 实现类似于 vue 的功能，可以将所有文件写在一个页面上
+* [ ] webpack 升级到 4.0
+* [ ] 写一个小程序的自动化测试框架
 
 
 [vscode-minapp]: https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode

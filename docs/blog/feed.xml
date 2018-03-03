@@ -4,7 +4,7 @@
         <title>minapp Blog</title>
         <link>https://qiu8310.github.io/minapp/minapp/blog</link>
         <description>The best place to stay up-to-date with the latest minapp news and events.</description>
-        <lastBuildDate>Fri, 02 Mar 2018 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 03 Mar 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -14,10 +14,14 @@
         </image>
         <copyright>Copyright © 2018 Mora &lt;qiuzhongleiabc@126.com&gt;</copyright>
         <item>
-            <title><![CDATA[发布版本 v0.1.0]]></title>
-            <link>https://qiu8310.github.io/minapp/minapp/blog/2018/03/02/first-release.html</link>
-            <guid>https://qiu8310.github.io/minapp/minapp/blog/2018/03/02/first-release.html</guid>
-            <pubDate>Fri, 02 Mar 2018 06:00:00 GMT</pubDate>
+            <title><![CDATA[重新定义微信小程序开发 —— 上篇]]></title>
+            <link>https://qiu8310.github.io/minapp/minapp/blog/2018/03/03/redefine-1.html</link>
+            <guid>https://qiu8310.github.io/minapp/minapp/blog/2018/03/03/redefine-1.html</guid>
+            <pubDate>Sat, 03 Mar 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>时间回退到春节前，当时计划是要写个微信小程序的，但当我着手准备时，却发现小程序开发的整个生态基本上都是 JavaScript，没有一点 TypeScript 的踪影。偶尔能在社区里找到几个 wx api 的 TypeScript 的定义，但那都不全，而且项目长期没有维护。</p>
+<p>说实话，TypeScript 写多了会上瘾的，用 TypeScript 可以避免一些不必要的语法错误，还可以给你一个完善的自动补全机制，节省大量查看文档的时间，而且这种机制可以让你在入手一个新的框架或维护一个大型项目时更容易。</p>
+<p>所以，在没有 TypeScript 的环境中，我的小程序计划是执行不下去了。我必须先给微信小程序的开发制造一个 TypeScript 的环境。</p>
+]]></description>
         </item>
     </channel>
 </rss>

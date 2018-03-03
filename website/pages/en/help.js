@@ -21,21 +21,25 @@ function pageUrl(page, language) {
   return siteConfig.baseUrl + (language ? language + '/' : '') + page;
 }
 
+function blogUrl() {
+  return siteConfig.baseUrl + 'blog';
+}
+
 class Help extends React.Component {
   render() {
     const supportLinks = [
       {
         content:
           `Learn more using the [documentation on this site.](${docUrl('guide-install.html')})`,
-        title: 'Browse Docs',
+        title: '查看文档',
       },
       {
         content: 'Ask questions about the documentation and project',
-        title: 'Join the community',
+        title: '寻求社区的帮助',
       },
       {
-        content: "Find out what's new with this project",
-        title: 'Stay up to date',
+        content: `Find out what's new with this project in [blog](${blogUrl()}).`,
+        title: '查看最新博客',
       },
     ];
 
@@ -44,10 +48,17 @@ class Help extends React.Component {
         <Container className="mainContainer documentContainer postContainer">
           <div className="post">
             <header className="postHeader">
-              <h2>Need help?</h2>
+              <h2>需要帮助？</h2>
             </header>
-            <p>This project is maintained by Mora &lt;qiuzhongleiabc@126.com&gt;.</p>
+
             <GridBlock contents={supportLinks} layout="threeColumn" />
+            <br/>
+            <br/>
+            <h2>如果还是无法解决你的问题</h2>
+            <p>
+              可以给我发邮件：<a href="mailto:qiuzhongleiabc@126.com">qiuzhongleiabc@126.com</a>
+            </p>
+            <p>或者加我微信： <br/><img width="200" src="//n1image.hjfile.cn/res7/2018/03/03/2bdec398b2c2b9d291140127b00786d5.jpeg"/></p>
           </div>
         </Container>
       </div>

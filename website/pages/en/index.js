@@ -101,10 +101,14 @@ const Block = props => (
 
 const tryItOut = `
 <div style="text-align: left;">
-  <br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;<code>npm install -g @minapp/cli</code>
+  <code>npm install -g @minapp/cli</code>
   <br/><br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;<code>minapp init projectDir</code>
+  <code>minapp init projectDir</code>
+  <br/><br/>
+  建议 vscode 用户安装两个插件
+  <a href="https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode">minapp</a>
+  和 <a href="https://marketplace.visualstudio.com/items?itemName=qiu8310.dot-template-vscode">dot-template</a>
+  以获取更好的编码体验
 </div>
 `
 
