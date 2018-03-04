@@ -4,7 +4,7 @@
 
 ## 使用
 
-1. 用 npm 安装命令行工具： `npm install -g @minapp/cli`
+1. 用 npm 安装命令行工具： `npm install -g @minapp/cli --registry "https://registry.npmjs.org/"` （避免从淘宝镜像上安装，它上面的还是老版本，已经给他们提了一个 [issue](https://github.com/cnpm/cnpm/issues/243)）
 2. 初始化项目：`minapp init <你要创建项目的文件夹>` (同时支持创建 js 和 ts 项目)
 3. 安装两个 vscode 插件：[minapp][vscode-minapp] 和 [dot-template][vscode-dot-template]（可选，但建议安装）
 
