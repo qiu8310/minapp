@@ -7,7 +7,7 @@ import * as path from 'path'
 import * as fs from 'fs'
 import * as JSON5 from 'json5'
 import {Loader} from './Loader'
-import {map} from '../util'
+import {map, toUrlPath} from '../util'
 
 const debug = require('debug')('minapp:webpack-utils:json-loader')
 
@@ -50,7 +50,7 @@ export default class JsonLoader extends Loader {
         let component = components[k]
         if (component[0] === '/') component = component.substr(1) // 组件可以使用绝对路径
         let main = await this.resolve(component)
-        components[k] = path.relative(path.dirname(this.emitFile), this.getEmitFile(main)).replace(/\.\w+$/, '')
+        components[k] = toUrlPath(path.relative(path.dirname(this.emitFile), this.getEmitFile(main)).replace(/\.\w+$/, ''))
         searchDir(requires, main)
       })
     }
