@@ -46,9 +46,11 @@ export default class JsonLoader extends Loader {
     } else {
       // 加载页面中的组件或者组件中的组件
       let components: {[key: string]: string} = json.usingComponents || {}
-      await map(Object.keys(components).map(k => components[k]), async (component) => {
+      await map(Object.keys(components), async (k) => {
+        let component = components[k]
         if (component[0] === '/') component = component.substr(1) // 组件可以使用绝对路径
         let main = await this.resolve(component)
+        components[k] = path.relative(path.dirname(this.emitFile), this.getEmitFile(main)).replace(/\.\w+$/, '')
         searchDir(requires, main)
       })
     }

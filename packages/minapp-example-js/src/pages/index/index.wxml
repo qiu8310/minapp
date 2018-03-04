@@ -10,6 +10,10 @@
     <text class="user-motto">{{motto}}</text>
   </view>
 
+  <toast bind:close="hideToast" visible="{{toastVisble}}" message="npm toast" />
+  <button size="mini" bind:tap="showToast">显示 toast</button>
+  <button size="mini" bind:tap="hideToast">关闭 toast</button>
+
   <include src="./inc.wxml" />
 
   <button size="mini" bind:tap="increase">在 Page 中增加 Count</button>

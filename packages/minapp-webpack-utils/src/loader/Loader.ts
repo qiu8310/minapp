@@ -102,7 +102,7 @@ export abstract class Loader {
   /**
    * 根据文件当前的路径，获取到它编译后的相对 distDir 的路径
    */
-  private getEmitFile(absFile: string) {
+  getEmitFile(absFile: string) {
     let {srcDir, modulesDir} = this
 
     // 注意1：node_modules 中可能有 link 文件夹
@@ -198,6 +198,7 @@ export abstract class Loader {
   }
 
   async resolve(request: string): Promise<string> {
+    if (request[0] === '~') request = toUrlPath(this.modulesDir) + request.substr(1)
     return new Promise<string>((resolve, reject) => {
       this.lc.resolve(this.lc.context, request, (e, res) => e ? reject(e) : resolve(res))
     })

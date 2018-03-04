@@ -15,6 +15,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
   "dependencies": {
+    "@minapp/component-toast": "^0.0.6",
     "@minapp/core": "^0.0.6",
     "@minapp/mobx": "^0.0.6",
     "mobx": "^3.5.1",

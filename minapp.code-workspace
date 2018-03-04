@@ -33,6 +33,9 @@
 		{
 			"path": "packages/minapp-example-js"
 		},
+    {
+      "path": "packages/minapp-component-toast"
+    },
 		{
 			"path": "packages/minapp-vscode"
 		}
