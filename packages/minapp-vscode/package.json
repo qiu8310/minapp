@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
-    "postpublish": "vsce publish",
+    "publish": "vsce publish",
     "vscode:prepublish": "node src/dev/script.js prod && npm run build",
     "build": "npm run clear && tsc -p ./",
     "watch": "tsc -watch -p ./",
@@ -33,7 +33,7 @@
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-vscode"
   },
   "engines": {
-    "vscode": "^1.20.0"
+    "vscode": "^1.18.0"
   },
   "icon": "res/icon.png",
   "categories": [
