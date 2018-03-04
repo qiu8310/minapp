@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/cli",
 	"description": "minapp 命令行工具，用于创建项目、开发项目、编译项目",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"bin": {
 		"minapp": "dist/index.js"
 	},
@@ -26,7 +26,7 @@
 		"url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-cli"
 	},
 	"dependencies": {
-		"@minapp/compiler": "^0.0.6",
+		"@minapp/compiler": "^0.0.7",
 		"fs-extra": "^5.0.0",
 		"inquirer": "^5.1.0",
 		"mora-scripts": "^1.6.24",

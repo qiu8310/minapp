@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "minapp js 示例项目",
   "scripts": {
     "test": "echo 0",
@@ -14,7 +14,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/component-toast": "^0.0.6",
+    "@minapp/component-toast": "^0.0.7",
     "@minapp/core": "^0.0.6",
     "@minapp/mobx": "^0.0.6",
     "babel-runtime": "^6.24.0",

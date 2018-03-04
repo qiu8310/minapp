@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/webpack-utils",
 	"description": "微信小程序相关的 webpack 插件 及 loader",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {

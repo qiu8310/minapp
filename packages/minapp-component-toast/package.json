@@ -1,15 +1,15 @@
 {
   "name": "@minapp/component-toast",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "wechat toast component for minapp",
   "main": "dist/toast.js",
   "scripts": {
     "test": "echo 0",
-		"lint": "tslint src/**/*.ts",
-		"postpublish": "cnpm sync @minapp/cli",
-		"clear": "remove-all dist",
-		"build": "npm run clear && tsc && cp src/* dist/ && rm dist/toast.ts",
-		"watch": "tsc -w"
+    "lint": "tslint src/**/*.ts",
+    "postpublish": "cnpm sync @minapp/cli",
+    "clear": "remove-all dist",
+    "build": "npm run clear && tsc && cp src/* dist/ && rm dist/toast.ts",
+    "watch": "tsc -w"
   },
   "publishConfig": {
     "access": "public"
@@ -24,9 +24,9 @@
   },
   "devDependencies": {
     "@minapp/core": "^0.0.6",
-    "mora-scripts": "^1.6.21",
     "@minapp/mobx": "^0.0.6",
     "mora-common": "^1.0.11",
+    "mora-scripts": "^1.6.21",
     "ts-lint": "^4.5.1",
     "typescript": "^2.7.1"
   }
