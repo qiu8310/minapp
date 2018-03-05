@@ -4,3 +4,5 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
 export * from './attrs'
+export * from './fs'
+export * from './CacheableFile'
