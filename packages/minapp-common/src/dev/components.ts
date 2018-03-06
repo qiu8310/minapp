@@ -24,17 +24,17 @@ export function getComponentMarkdown(c: Component) {
 }
 
 export function getComponentAttrMarkdown(a: ComponentAttr) {
-
   let rows = a.desc ? [...a.desc] : [a.name]
   if (a.type) rows.push(field('类型', a.type.name))
   if (a.since) rows.push(since(a.since))
   if (a.enum) rows.push(...list('可选值', a.enum.map(_formatAttrValue)))
+  if (a.subAttrs && !a.enum) rows.push(...list('可选值', a.subAttrs.map(s => _formatAttrValue({value: s.equal}))))
   if (a.extras) rows.push(...a.extras.filter(e => e.key && e.value).map(e => field(e.key, e.value)))
 
   return rows.join('\n\n')
 }
 
-function list(title: string, items: string[]) {
+function list(title: string, items?: string[]) {
   if (!items || !items.length) return []
   if (items.length === 1) return [field(title, items[0])]
   return [field(title, items.map(it => `\n* ${it}`).join(''))]

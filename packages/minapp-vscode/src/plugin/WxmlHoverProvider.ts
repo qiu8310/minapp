@@ -5,9 +5,11 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 
 import {HoverProvider, TextDocument, Position, CancellationToken, Hover, MarkdownString} from 'vscode'
 
-import {components, getComponentMarkdown, getComponentAttrMarkdown} from '../dev/components'
+import {
+  components, getComponentMarkdown, getComponentAttrMarkdown,
+  ComponentAttr
+} from '@minapp/common/dist/dev/'
 import {getTagAtPosition, Tag} from './getTagAtPosition'
-import { ComponentAttr } from '../dev/Component'
 
 export default class implements HoverProvider {
   provideHover(document: TextDocument, position: Position, token: CancellationToken) {
@@ -23,7 +25,7 @@ export default class implements HoverProvider {
     }
 
     if (!tag.isOnTagName && tag.posWord && !(/^(wx|bind|catch):/.test(tag.posWord))) {
-      comp.attrs.find(a => {
+      (comp.attrs || []).find(a => {
         if (a.name === tag.posWord) {
           attr = a
         } else if (a.subAttrs) {

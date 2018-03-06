@@ -23,8 +23,8 @@ function makeProdComponentTs() {
   fs.writeFileSync(
     path.resolve(__dirname, 'Component.ts'),
     `/* tslint:disable */
-export type Component = {name: string, docLink: string, since?: string, desc: string[], attrs: ComponentAttr[], authorize?: any, relateApis: any[], notices: string[], tips: string[], bugs: string[]}
-export type ComponentAttr = {name: string, type: any, desc: string[], required?: boolean, since?: string, defaultValue?: string, enum: any[], extras: any[], subAttrs: Array<{equal: boolean, attrs: ComponentAttr[]}>}`
+export type Component = {name: string, docLink?: string, since?: string, desc: string[], attrs?: ComponentAttr[], authorize?: any, relateApis?: any[], notices?: string[], tips?: string[], bugs?: string[]}
+export type ComponentAttr = {name: string, type?: any, desc?: string[], required?: boolean, since?: string, defaultValue?: string, enum?: any[], extras?: any[], subAttrs?: Array<{equal: string, attrs: ComponentAttr[]}>}`
   )
 }
 

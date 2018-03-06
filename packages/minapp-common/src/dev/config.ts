@@ -3,21 +3,22 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-export interface CustomAttr {
-  name: string
-  desc?: string[]
-  type?: string
-  since?: string
-  addBrace?: boolean // 是否加上 {{}}
-}
+import {ComponentAttr} from './Component'
 
-export const BASE_ATTRS: CustomAttr[] = [
+export const JSON_REGEXP = /\.(?:json|cjson|jsonc)$/i
+
+export const BASE_ATTRS: ComponentAttr[] = [
   {name: 'id'},
   {name: 'class'},
   {name: 'style', desc: ['组件的内联样式']},
   {name: 'hidden', desc: ['组件是否隐藏']},
   // {name: 'data-'},
 ]
+
+
+export interface CustomAttr extends ComponentAttr {
+  addBrace?: boolean // 是否加上 {{}}
+}
 
 export const EVENT_ATTRS: CustomAttr[] = [
   {name: 'touchstart'},

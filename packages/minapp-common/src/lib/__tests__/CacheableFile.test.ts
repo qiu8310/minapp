@@ -59,7 +59,7 @@ describe('basic', () => {
     let c1 = await f.getContent()
     expect(f.cached).toEqual(false)
 
-    await sleep(800)
+    await sleep(1000)
 
     fs.writeFileSync(file, 'def')
     let c2 = await f.getContent()

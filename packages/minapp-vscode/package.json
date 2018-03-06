@@ -8,7 +8,7 @@
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "publish": "vsce publish",
-    "vscode:prepublish": "node src/dev/script.js prod && npm run build",
+    "vscode:prepublish": "npm run build",
     "build": "npm run clear && tsc -p ./",
     "watch": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
@@ -70,7 +70,6 @@
     "tslib": "^1.9.0"
   },
   "devDependencies": {
-    "@minapp/generator": "^0.0.3",
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
     "mora-scripts": "^1.6.22",

@@ -9,45 +9,42 @@ import {
   CompletionItemKind, SnippetString, MarkdownString
 } from 'vscode'
 
-import {components, getComponentMarkdown, getComponentAttrMarkdown} from '../dev/components'
-import {getTagAtPosition, Tag} from './getTagAtPosition'
-import { ComponentAttr, Component } from '../dev/Component'
+import {autocompleteTagName, autocompleteTagAttr, TagItem, TagAttrItem, autocompleteSpecialTagAttr} from '@minapp/common'
+import {getTagAtPosition} from './getTagAtPosition'
 
-import {BASE_ATTRS, EVENT_ATTRS, CTRL_ATTRS} from '@minapp/common'
+const TRIGGERS = ['wx', 'bind', 'catch'].map(k => {
+  let item = new CompletionItem(k, CompletionItemKind.Field)
+  item.sortText = 'z'
+  item.documentation = new MarkdownString('输入此字段再输入 "**:**" 字符可以再次触发自动补全')
+  return item
+})
 
 export default class implements CompletionItemProvider {
-  provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): CompletionItem[] {
+  provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): Promise<CompletionItem[]> {
     switch (context.triggerCharacter) {
       case '<': return this.createComponentSnippetItems()
       case ' ': return this.createComponentAttributeSnippetItems(document, position)
       case ':': return this.createSpecialAttributeSnippetItems(document, position)
-      default: return []
+      default: return [] as any
     }
   }
 
   /**
    * 创建组件名称的自动补全
    */
-  createComponentSnippetItems(prefix = ''): CompletionItem[] {
-    return components
-      .filter(c => !prefix || c.name.startsWith(prefix))
-      .map(c => {
-        let item = new CompletionItem(c.name, CompletionItemKind.Module)
+  async createComponentSnippetItems() {
+    let res = await autocompleteTagName()
 
-        let attrs = (c.attrs || [])
-          .filter(a => a.required || a.subAttrs)
-          .map((a, i) => ` ${a.name}="${setDefault(i + 1, a.defaultValue)}"`)
-        let len = attrs.length + 1
-        item.insertText = new SnippetString(`<${c.name}${attrs.join('')}\${${len}}>\${0}</${c.name}>`.substr(prefix.length + 1))
-        item.documentation = new MarkdownString(getComponentMarkdown(c))
-        return item
-      })
+    return [
+      ...res.customs.map(t => renderTag(t, 'a')), // 自定义的组件放在前面
+      ...res.natives.map(t => renderTag(t, 'b'))
+    ]
   }
 
   /**
    * 创建组件属性的自动补全
    */
-  createComponentAttributeSnippetItems(doc: TextDocument, pos: Position): CompletionItem[] {
+  async createComponentAttributeSnippetItems(doc: TextDocument, pos: Position) {
     let tag = getTagAtPosition(doc, pos)
     if (!tag) return []
     if (tag.isOnAttrValue) {
@@ -56,62 +53,36 @@ export default class implements CompletionItemProvider {
       }
       return []
     } else {
-      return [...BASE_ATTRS, ...this.getAvailableAttrs(tag)]
-        .map(r => getAttrCompletionItem(r as any))
+      let res = await autocompleteTagAttr(tag.name, tag.attrs)
+      return [
+        ...res.natives.map(a => renderTagAttr(a, 'a')),
+        ...res.basics.map(a => renderTagAttr(a, 'b')), // 基本属性放最后
+        ...TRIGGERS
+      ]
     }
   }
 
   /**
    * 生成 wx:, bind:, catch: 的自动补全
    */
-  createSpecialAttributeSnippetItems(doc: TextDocument, pos: Position): CompletionItem[] {
+  async createSpecialAttributeSnippetItems(doc: TextDocument, pos: Position) {
     let range = doc.getWordRangeAtPosition(pos, /\b(wx|bind|catch):/)
     if (range) {
       let text = doc.getText(range)
-      if (text === 'wx:') return CTRL_ATTRS.map(a => getAttrCompletionItem(a as any))
-      else return EVENT_ATTRS.map(a => getAttrCompletionItem(a as any))
+      let tag = getTagAtPosition(doc, pos)
+      if (!tag) return []
+
+      text = text.substr(0, text.length - 1) // 去掉后面的 ":"
+      let res = await autocompleteSpecialTagAttr(text as 'wx', tag.name, tag.attrs)
+
+      return [
+        ...res.customs.map(c => renderTagAttr(c, 'a')),
+        ...res.natives.map(c => renderTagAttr(c, 'b'))
+      ]
     }
     return []
   }
 
-  private getAvailableAttrs(tag: Tag): ComponentAttr[] {
-    let comp = findComponentByName(tag.name) as Component
-    if (!comp) return []
-    let results = comp.attrs.filter(a => !tag.attrs[a.name]); // 先取出没有写的属性
-
-    // 如果没写的属性中有 subAttrs，则要把它们全取出来
-    [...results].forEach(a => {
-      if (a.subAttrs) {
-        a.subAttrs.forEach(s => {
-          s.attrs.forEach(suba => {
-            if (results.every(_ => _.name !== suba.name)) results.push(suba) // 去重
-          })
-        })
-      }
-    })
-
-    // 写了的属性需要找出 subAttrs
-    Object.keys(tag.attrs).forEach(key => {
-      comp.attrs.forEach(a => {
-        if (a.subAttrs && a.name === key) {
-          let sub = a.subAttrs.find(s => s.equal === tag.attrs[key])
-          if (sub) results.push(...sub.attrs)
-        }
-      })
-    })
-
-    return results
-  }
-}
-
-function getAttrCompletionItem(a: ComponentAttr & {addBrace: boolean}) {
-  let item = new CompletionItem(a.name, CompletionItemKind.Field)
-  let value = a.addBrace
-    ? '{{\${1}}}'
-    : setDefault(1, a.defaultValue || a.enum && a.enum[0].value)
-  item.insertText = new SnippetString(`${a.name}="${value}"$0`)
-  item.documentation = new MarkdownString(getComponentAttrMarkdown(a))
-  return item
 }
 
 function setDefault(index: number, defaultValue: any) {
@@ -123,6 +94,28 @@ function setDefault(index: number, defaultValue: any) {
   }
 }
 
-function findComponentByName(name: string) {
-  return components.find(c => c.name === name)
+function renderTag(tag: TagItem, sortText: string) {
+  let c = tag.component
+  let item = new CompletionItem(c.name, CompletionItemKind.Module)
+
+  let attrs = (c.attrs || [])
+    .filter(a => a.required || a.subAttrs)
+    .map((a, i) => ` ${a.name}="${setDefault(i + 1, a.defaultValue)}"`)
+  let len = attrs.length + 1
+  item.insertText = new SnippetString(`${c.name}${attrs.join('')}\${${len}}>\${0}</${c.name}>`)
+  item.documentation = new MarkdownString(tag.markdown)
+  item.sortText = sortText
+  return item
+}
+
+function renderTagAttr(tagAttr: TagAttrItem, sortText: string) {
+  let a = tagAttr.attr
+  let item = new CompletionItem(a.name, CompletionItemKind.Field)
+  let value = a.addBrace
+    ? '{{\${1}}}'
+    : setDefault(1, a.defaultValue || a.enum && a.enum[0].value)
+  item.insertText = new SnippetString(`${a.name}="${value}"$0`)
+  item.documentation = new MarkdownString(tagAttr.markdown)
+  item.sortText = sortText
+  return item
 }

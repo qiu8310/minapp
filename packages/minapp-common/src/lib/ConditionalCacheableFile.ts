@@ -6,12 +6,17 @@
 import {CacheableFile} from './CacheableFile'
 
 export class ConditionalCacheableFile {
+  public filename?: string
+  public cached?: boolean
+
   private cacheableFile?: CacheableFile
-  constructor(private getFilePathFn: () => string | undefined | Promise<string | undefined>) {}
+  private cachedParseContent?: any
+  constructor(private getFilePathFn: () => string | undefined | Promise<string | undefined>, private parseFileContent?: (filename: string, buffer: Buffer) => any) {}
 
   private async getFile() {
     let filepath = await this.getFilePathFn()
     this.cacheableFile = filepath ? new CacheableFile(filepath) : undefined
+    this.filename = filepath
     return this.cacheableFile
   }
 
@@ -21,18 +26,29 @@ export class ConditionalCacheableFile {
   }
 
   async getContent() {
+    this.cached = false
+    let content: Buffer | undefined
     if (this.cacheableFile) {
       try {
-        return await this.cacheableFile.getContent()
+        content =  await this.cacheableFile.getContent()
+        this.cached = this.cacheableFile.cached
       } catch (e) {
         if (e.code === 'ENOENT') { // 缓存的文件可能被删除了，重新获取
-          return this.tryGetFileContent()
+          content = await this.tryGetFileContent()
         } else {
           throw e
         }
       }
     } else {
-      return this.tryGetFileContent()
+      content = await this.tryGetFileContent()
     }
+
+    if (content === undefined || !this.parseFileContent) return content
+
+    if (!this.cached || this.cachedParseContent === undefined) {
+      this.cachedParseContent = await this.parseFileContent(this.filename as string, content)
+    }
+
+    return this.cachedParseContent
   }
 }

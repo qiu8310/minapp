@@ -3,5 +3,3 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-export * from './dev/Component'
-export * from './autocomplete'

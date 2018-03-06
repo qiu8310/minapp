@@ -1,0 +1,10 @@
+{
+  "minapp": {
+    "component": {
+      "attrs": [
+        {"name": "foo"},
+        {"name": "bindclick"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "comp": "./comp.js",
+    "no": "./no",
+    "xx": "./xx_not_exists"
+  }
+}
