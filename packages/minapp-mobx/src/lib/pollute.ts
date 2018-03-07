@@ -21,7 +21,7 @@ export function pollute(Klass: any, options: PolluteOptions) {
   let app = getApp() as any
 
   if (!app.store) {
-    warn(`用 appify 函数时没有提供 store，需要提供；或者将 %o 装饰器中的 observe 属性指定为 false`, Klass)
+    warn(`用 appify 函数时没有提供 store，需要提供`)
     warnWhenGetStore(obj, '无 store，详情查看之前的警告', obj)
   // @ts-ignore
   } else if (!app.store.__MOBX__) {
