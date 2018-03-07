@@ -11,6 +11,7 @@ import {
 
 import {autocompleteTagName, autocompleteTagAttr, TagItem, TagAttrItem, autocompleteSpecialTagAttr} from '@minapp/common'
 import {getTagAtPosition} from './getTagAtPosition'
+import {Config} from './config'
 
 const TRIGGERS = ['wx', 'bind', 'catch'].map(k => {
   let item = new CompletionItem(k, CompletionItemKind.Field)
@@ -20,20 +21,28 @@ const TRIGGERS = ['wx', 'bind', 'catch'].map(k => {
 })
 
 export default class implements CompletionItemProvider {
+  constructor(public config: Config) {}
+
   provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): Promise<CompletionItem[]> {
     switch (context.triggerCharacter) {
-      case '<': return this.createComponentSnippetItems()
+      case '<': return this.createComponentSnippetItems(document, position)
       case ' ': return this.createComponentAttributeSnippetItems(document, position)
       case ':': return this.createSpecialAttributeSnippetItems(document, position)
       default: return [] as any
     }
   }
 
+  getCustomOptions(filename: string) {
+    return this.config.disableCustomComponentAutocomponent
+      ? undefined
+      : {filename, resolves: this.config.resolveRoots}
+  }
+
   /**
    * 创建组件名称的自动补全
    */
-  async createComponentSnippetItems() {
-    let res = await autocompleteTagName()
+  async createComponentSnippetItems(doc: TextDocument, pos: Position) {
+    let res = await autocompleteTagName(this.getCustomOptions(doc.fileName))
 
     return [
       ...res.customs.map(t => renderTag(t, 'a')), // 自定义的组件放在前面
@@ -53,7 +62,7 @@ export default class implements CompletionItemProvider {
       }
       return []
     } else {
-      let res = await autocompleteTagAttr(tag.name, tag.attrs)
+      let res = await autocompleteTagAttr(tag.name, tag.attrs, this.getCustomOptions(doc.fileName))
       return [
         ...res.natives.map(a => renderTagAttr(a, 'a')),
         ...res.basics.map(a => renderTagAttr(a, 'b')), // 基本属性放最后
@@ -73,7 +82,7 @@ export default class implements CompletionItemProvider {
       if (!tag) return []
 
       text = text.substr(0, text.length - 1) // 去掉后面的 ":"
-      let res = await autocompleteSpecialTagAttr(text as 'wx', tag.name, tag.attrs)
+      let res = await autocompleteSpecialTagAttr(text as 'wx', tag.name, tag.attrs, this.getCustomOptions(doc.fileName))
 
       return [
         ...res.customs.map(c => renderTagAttr(c, 'a')),
@@ -82,7 +91,6 @@ export default class implements CompletionItemProvider {
     }
     return []
   }
-
 }
 
 function setDefault(index: number, defaultValue: any) {

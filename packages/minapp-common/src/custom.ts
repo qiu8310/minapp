@@ -3,82 +3,47 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {ConditionalCacheableFile, readdir, stat} from './lib/'
+import {ConditionalCacheableFile, readdir, readFile, stat} from './lib/'
 import {JSON_REGEXP, Component} from './dev/'
 import {map, series} from 'mora-common/util/async'
+import {parseAttrs} from './parseAttrs'
 import * as JSON5 from 'json5'
 import * as path from 'path'
 
 const JSON_CACHE: {[key: string]: ConditionalCacheableFile} = {}
-
-export interface JsonConfig {
-  /** 当前组件  */
-  component?: Component
-  /** 当前组件使用的其它组件 */
-  usingComponents: Component[]
-}
 
 export interface CustomOptions {
   filename: string
   resolves?: string[]
 }
 
-export async function getJson(co: CustomOptions, founds: string[] = []): Promise<undefined | JsonConfig> {
-  let dir = path.dirname(co.filename)
-  let base = path.basename(co.filename, path.extname(co.filename))
-  let cacheKey = path.join(dir, base)
+export {Component}
 
-  if (founds.indexOf(cacheKey) >= 0) return
-  founds.push(cacheKey)
+export async function getCustomComponents(co?: CustomOptions): Promise<Component[]> {
+  if (!co) return []
 
-  let f = JSON_CACHE[cacheKey]
-  if (!f) f = JSON_CACHE[cacheKey] = new ConditionalCacheableFile(() => getJsonFile(dir, base), (name, buf) => parseJson(name, buf, co.resolves, founds))
+  let f = getCachedJsonFile(co.filename)
   try {
-    return await f.getContent()
-  } catch (e) {
-    return
-  }
-}
-
-/**
- * 根据目录中的某个文件来获取当前目录中同名的 json 文件
- *
- * @export
- * @param {string} filename 目录中的某个文件
- */
-async function getJsonFile(dir: string, base: string) {
-  base += '.'
-  let names = await readdir(dir)
-  let name = names.find(n => n.startsWith(base) && n.substr(base.length).indexOf('.') < 0 && JSON_REGEXP.test(n))
-  return name ? path.join(dir, name) : undefined
-}
-
-/**
- * 根据 json 文件的 buffer 内容，解析出它的内容
- */
-async function parseJson(jsonfile: string, jsonBuffer: Buffer, resolves: string[] | undefined, founds: string[]) {
-  try {
-    let meta: JsonConfig = {usingComponents: []}
-    let data = JSON5.parse(jsonBuffer.toString())
-    if (data.usingComponents) {
-      await map(Object.keys(data.usingComponents), async (name) => {
+    let data =  await f.getContent()
+    let jsonfile = f.filename as string
+    if (data && data.usingComponents) {
+      return await map(Object.keys(data.usingComponents), async (name) => {
         let filepath = data.usingComponents[name]
-        let comp = await parseComponentFile(filepath, jsonfile, resolves, founds)
-        comp.name = name
-        meta.usingComponents.push(comp)
+        try {
+          let comp = await parseComponentFile(filepath, jsonfile, co.resolves)
+          comp.name = name
+          return comp
+        } catch (e) {
+          return {name} as Component
+        }
       }, 0)
+    }
+  } catch (e) {}
 
-    }
-    if (data.minapp && data.minapp.component) {
-      meta.component = data.minapp.component
-    }
-    return meta
-  } catch (e) {
-    return
-  }
+  return []
 }
 
-async function parseComponentFile(filepath: string, refFile: string, resolves: string[] | undefined, founds: string[]): Promise<Component> {
+async function parseComponentFile(filepath: string, refFile: string, resolves: string[] | undefined): Promise<Component> {
   if (filepath[0] === '~') filepath = filepath.substr(1)
   resolves = resolves || []
   let localResolves = filepath[0] !== '/' ? [path.dirname(refFile), ...resolves] : resolves
@@ -98,9 +63,37 @@ async function parseComponentFile(filepath: string, refFile: string, resolves: s
   })
 
   if (found) {
-    let meta = await getJson({filename: found, resolves}, founds)
-    if (meta && meta.component) return meta.component
+    let f = getCachedJsonFile(found)
+    let data = await f.getContent()
+    if (data && data.minapp && data.minapp.component) {
+      return data.minapp.component
+    }
+    // 实时解析
+    let attrs = parseAttrs((await readFile(found)).toString())
+    if (attrs.length) return {attrs} as any
   }
-
   return {} as any
+}
+
+function getCachedJsonFile(filename: string) {
+  let dir = path.dirname(filename)
+  let base = path.basename(filename, path.extname(filename))
+  let cacheKey = path.join(dir, base)
+  if (!JSON_CACHE[cacheKey]) {
+    JSON_CACHE[cacheKey] = new ConditionalCacheableFile(() => getJsonFilePath(dir, base), (name, buf) => JSON5.parse(buf.toString()))
+  }
+  return JSON_CACHE[cacheKey]
+}
+
+/**
+ * 根据目录中的某个文件来获取当前目录中同名的 json 文件
+ *
+ * @export
+ * @param {string} filename 目录中的某个文件
+ */
+async function getJsonFilePath(dir: string, base: string) {
+  base += '.'
+  let names = await readdir(dir)
+  let name = names.find(n => n.startsWith(base) && n.substr(base.length).indexOf('.') < 0 && JSON_REGEXP.test(n))
+  return name ? path.join(dir, name) : undefined
 }

@@ -5,3 +5,5 @@
 
 export * from './dev/Component'
 export * from './autocomplete'
+export * from './hover'
+

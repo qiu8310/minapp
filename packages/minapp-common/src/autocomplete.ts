@@ -3,7 +3,7 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {CustomOptions, getJson} from './custom'
+import {CustomOptions, getCustomComponents} from './custom'
 import {components, getComponentMarkdown, getComponentAttrMarkdown, Component, ComponentAttr, CustomAttr, BASE_ATTRS, CTRL_ATTRS, EVENT_ATTRS} from './dev/'
 
 export interface TagItem {
@@ -25,8 +25,7 @@ export interface TagAttrItem {
  */
 export async function autocompleteTagName(co?: CustomOptions) {
   let natives: TagItem[] = components.map(mapComponent)
-  let json = co ? await getJson(co) : null
-  let customs: TagItem[] = json && json.usingComponents ? json.usingComponents.map(mapComponent) : []
+  let customs: TagItem[] = (await getCustomComponents(co)).map(mapComponent)
 
   return {
     customs,
@@ -83,9 +82,7 @@ async function getNativeAvailableAttrs(tagName: string, tagAttrs: {[key: string]
   if (comp) {
     attrs = getAvailableAttrs(comp, tagAttrs)
   } else {
-    let json = co && (await getJson(co))
-    let customs = json && json.usingComponents
-    comp = customs && customs.find(c => c.name === tagName)
+    comp = (await getCustomComponents(co)).find(c => c.name === tagName)
     if (comp) attrs = getAvailableAttrs(comp, tagAttrs)
   }
   return attrs
