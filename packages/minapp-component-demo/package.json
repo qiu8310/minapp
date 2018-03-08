@@ -1,6 +1,6 @@
 {
   "name": "@minapp/component-demo",
-  "version": "0.0.7",
+  "version": "1.0.0-alpha.1",
   "description": "wechat demo component for minapp",
   "main": "dist/demo.js",
   "scripts": {
@@ -22,14 +22,14 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/component-toast": "^0.0.7",
+    "@minapp/component-toast": "^1.0.0-alpha.1",
     "tslib": "^1.9.0"
   },
   "peerDependencies": {
     "@minapp/core": "^0.0.6"
   },
   "devDependencies": {
-    "@minapp/core": "^0.0.6",
+    "@minapp/core": "^1.0.0-alpha.1",
     "mora-common": "^1.0.11",
     "mora-scripts": "^1.6.21",
     "ts-lint": "^4.5.1",
