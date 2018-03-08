@@ -3,8 +3,8 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {BaseComponent} from '@minapp/mobx'
+import {MobxComponent} from '@minapp/mobx'
 
-export class MyComponent extends BaseComponent {
+export class MyComponent extends MobxComponent {
 
 }

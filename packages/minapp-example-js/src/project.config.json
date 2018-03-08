@@ -11,7 +11,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
 	"appid": "wxcbe3dcec68e268e3",
-	"projectname": "@minapp/example-ts",
+	"projectname": "@minapp/example-js",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

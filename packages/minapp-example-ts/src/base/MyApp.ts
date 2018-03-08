@@ -3,10 +3,11 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {Url, BaseApp} from '@minapp/mobx'
+import {Url} from '@minapp/core/system'
+import {MobxApp} from '@minapp/mobx'
 import {MyStore} from './MyStore'
 
-export class MyApp extends BaseApp<MyStore> {
+export class MyApp extends MobxApp<MyStore> {
   // @ts-ignore
   $url: {
     /*

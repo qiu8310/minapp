@@ -16,7 +16,7 @@
 
   <include src="./inc.wxml" />
 
-  <button size="mini" bind:tap="increase">在 Page 中增加 Count</button>
-  <counter-a start="{{conterStart}}" />
-  <counter-b start="{{conterStart}}" />
+  <button size="mini" bind:tap="increase">在 Page 中增加 Count: {{conterStart}}</button>
+  双向绑定<counter-a start.sync="{{conterStart}}" />
+  单向绑定<counter-b start="{{conterStart}}" />
 </view>

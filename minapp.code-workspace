@@ -36,6 +36,9 @@
     {
       "path": "packages/minapp-component-toast"
     },
+    {
+      "path": "packages/minapp-component-demo"
+    },
 		{
 			"path": "packages/minapp-vscode"
 		}

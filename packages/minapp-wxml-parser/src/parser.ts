@@ -137,7 +137,7 @@ export function parse(xml: string) {
    */
   function attr() {
     debug('attr %j', xml)
-    let m = match(/^([\w:-]+)\s*(=\s*("[^"]*"|'[^']*'|\w+))?/)
+    let m = match(/^([\w-:.]+)\s*(=\s*("[^"]*"|'[^']*'|\w+))?/)
     if (!m) throw new ParserError(location, `node attribute syntax error`)
     return new TagNodeAttr(m[1], m[2] ? strip(m[3]) : true, location, lastLocation)
   }

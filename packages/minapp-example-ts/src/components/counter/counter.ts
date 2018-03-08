@@ -11,7 +11,7 @@ export default class extends MyComponent {
    * 组件的属性列表
    */
   properties = {
-    start: {
+    number: {
       value: 0,
       type: Number
     }
@@ -30,28 +30,31 @@ export default class extends MyComponent {
    * 原生的是 create，为了方便语法提醒，统一改成以 on 开头的函数
    */
   onCreated() {
-    console.log('组件 Created')
+
   }
+
 
   /**
    * 组件属性值有更新时会调用此函数，不需要在 properties 中设置 observer 函数
    */
   onPropUpdate(prop: string, newValue: any, oldValue: any) {
-    console.log(`属性 ${prop} 从 ${oldValue} 更新到了 ${newValue}`)
+    console.log(`属性 ${prop} 从 %o 更新到了 %o`, oldValue, newValue)
   }
 
   /**
-   * 自定义的函数，不需要放在 methods 中，在 comify 中会帮你提取出来放到 methods
+   * 自定义的函数，不需要放在 methods 中，在 comify() 执行过程中会帮你提取出来放到 methods
    */
   increase() {
-    this.setData({start: this.data.start + 1})
+    // 支持双向绑定的数据需要使用 setDataSync 来更新
+    this.setDataSync({number: this.data.number + 1})
   }
 
   /**
    * 自定义的函数，不需要放在 methods 中，在 comify 中会帮你提取出来放到 methods
    */
   decrease() {
-    this.setData({start: this.data.start - 1})
+    // 支持双向绑定的数据需要使用 setDataSync 来更新
+    this.setDataSync({number: this.data.number - 1})
   }
 }
 

@@ -3,10 +3,10 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {BaseComponent} from '@minapp/mobx'
+import {MobxComponent} from '@minapp/mobx'
 import {MyStore} from './MyStore'
 import {MyApp} from './MyApp'
 
-export class MyComponent<D = any> extends BaseComponent<D, MyStore, MyApp> {
+export class MyComponent<D = any> extends MobxComponent<D, MyStore, MyApp> {
 
 }

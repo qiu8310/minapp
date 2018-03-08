@@ -8,7 +8,7 @@
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "publish": "vsce publish",
-    "vscode:prepublish": "node src/dev/script.js prod && npm run build",
+    "vscode:prepublish": "npm run build",
     "build": "npm run clear && tsc -p ./",
     "watch": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
@@ -44,6 +44,24 @@
   ],
   "main": "./dist/extension",
   "contributes": {
+    "configuration": {
+      "title": "minapp-vscode",
+      "properties": {
+        "minapp-vscode.disableCustomComponentAutocomponent": {
+          "type": "boolean",
+          "description": "禁止自定义组件的自动补全（自定义组件自动补全需要遍历组件文件，可能会影响性能）",
+          "default": false
+        },
+        "minapp-vscode.resolveRoots": {
+          "type": "array",
+          "description": "解析文件引用关系用的根目录",
+          "default": ["node_modules", "src"],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "languages": [
       {
         "id": "wxml",
@@ -70,7 +88,6 @@
     "tslib": "^1.9.0"
   },
   "devDependencies": {
-    "@minapp/generator": "^0.0.3",
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
     "mora-scripts": "^1.6.22",

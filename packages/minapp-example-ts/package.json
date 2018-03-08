@@ -7,7 +7,7 @@
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "dev": "minapp dev",
-    "build": "minapp build"
+    "build": "minapp build --publicPath 'http://your.static.server/'"
   },
   "publishConfig": {
     "access": "public"
@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@minapp/component-toast": "^0.0.7",
+    "@minapp/component-demo": "^0.0.7",
     "@minapp/core": "^0.0.6",
     "@minapp/mobx": "^0.0.6",
     "mobx": "^3.5.1",

@@ -9,21 +9,22 @@ import {pagify, wxp, MyPage} from 'base/'
 @pagify()
 export default class extends MyPage {
   data = {
-    conterStart: 10,
-    toastVisble: false,
+    count: 10,
+    npmToast: false,
+    demoToast: false,
 
     motto: '',
     canIUseOpenButton: wxp.canIUse('button.open-type.getUserInfo')
   }
 
   onShow() {
-    this.setData({motto: 'Hello World'})
+    this.setDataSync({motto: 'Hello World'})
   }
 
   onClickAvatarImage() {
     // 跳转到 logs 页面
     this.app.$url.logs.go({id: 1})
-    this.setData({motto: '开始跳转到 logs 页面'})
+    this.setDataSync({motto: '开始跳转到 logs 页面'})
   }
 
   onClickOpenButton(e: any) {
@@ -31,25 +32,29 @@ export default class extends MyPage {
     this.store.userInfo = e.detail.userInfo
 
     // 组件内数据还是用 setData
-    this.setData({motto: '点击了『获取头像昵称』按钮'})
+    this.setDataSync({motto: '点击了『获取头像昵称』按钮'})
   }
 
   showToast() {
     console.log('showToast')
-    this.setData({toastVisble: true})
+    this.setDataSync({npmToast: true})
   }
   hideToast() {
     console.log('hideToast')
-    this.setData({toastVisble: false})
+    this.setDataSync({npmToast: false})
+  }
+
+  toggleDemoToast() {
+    this.setDataSync({demoToast: !this.data.demoToast})
   }
 
   increase() {
-    this.setData({conterStart: this.data.conterStart + 1})
+    this.setDataSync({count: this.data.count + 1})
   }
 
   async onLoad(options: any) {
     // 使用 require 加载图片
-    console.log('可以使用 require 的方法加载图片: %o', require('images/heart-active@3x.png'))
+    console.log('可以使用 require 的方法加载图片: %o', require('images/heart@3x.png'))
     // 轻松读取全局数据
     console.log('当前 Store: %o', this.store)
     if (!this.store.userInfo && !this.data.canIUseOpenButton) {

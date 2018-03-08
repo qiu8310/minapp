@@ -6,7 +6,7 @@
     "removeComments": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
-    "importHelpers": false,
+    "importHelpers": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "noImplicitThis": true,
@@ -23,7 +23,8 @@
     "outDir": "dist"
   },
   "include": [
-    "src"
+    "src",
+    "typing"
   ],
   "exclude": [
   ]
