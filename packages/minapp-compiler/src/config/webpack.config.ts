@@ -9,23 +9,29 @@ import * as fs from 'fs-extra'
 
 import {babel} from './babel'
 import {postcss} from './postcss'
-import {define} from './define'
 import {loader as minappLoaders, ExtractMinappCode} from '@minapp/webpack-utils'
 import {JSON_REGEXP} from '@minapp/webpack-utils/dist/util'
 
 import { Compiler } from '../Compiler'
 
 export function webpackConfig(compiler: Compiler) {
-  let {srcDir, modulesDir, localPkg, distDir, options: {server, publicPath}} = compiler
+  let {rootDir, srcDir, modulesDir, localPkg, distDir, options: {server, publicPath, minapp = {}}} = compiler
 
-  // 查找 srcDir 下的 app.json/app.cjson/app.jsonc 文件
-  let appJson = fs.readdirSync(srcDir).find(n => JSON_REGEXP.test(n) && /^app\.\w+$/i.test(n))
-  if (!appJson) throw new Error(`${srcDir} 下面没有 app.json 文件，无法编译`)
+  let appJson: string | undefined
+  let mode = minapp.component ? 'component' : 'project'
+  if (minapp.component) {
+    let cp = path.join(rootDir, minapp.component).replace(/\.\w+$/, '') // 去除文件后缀名
+    appJson = getJsonFileFrom(path.dirname(cp), path.basename(cp))
+    if (!appJson) throw new Error(`指定的组件文件 ${minapp.component} 不存在，无法编译`)
+  } else {
+    appJson = getJsonFileFrom(srcDir, 'app')
+    if (!appJson) throw new Error(`${srcDir} 下面没有 app.json 文件，无法编译`)
+  }
+
 
   let plugins: any[] = [
     new webpack.DefinePlugin({
-      __ENV__: JSON.stringify(compiler.production ? 'production' : (process.env.NODE_ENV || 'development')),
-      ...define(path.join(srcDir, appJson)) // 注入 mobx 框架需要的一些变量
+      __ENV__: JSON.stringify(compiler.production ? 'production' : (process.env.NODE_ENV || 'development'))
     }),
 
     // 传给所有 loader 的选项
@@ -34,6 +40,7 @@ export function webpackConfig(compiler: Compiler) {
 
       // 下面几个配置是传给 minapp loader 用的，都是默认的配置，可以不传
       minapp: {
+        mode, // 当前模式，是编译 project 还是 component
         static: {
           /** 用于判断文件是不是静态文件 */
           test: /\.(?:gif|png|jpg|jpeg|svg|ico|woff|woff2|ttf|eot|otf|mp3|mp4)$/i,
@@ -80,7 +87,7 @@ export function webpackConfig(compiler: Compiler) {
   const wpOpts: webpack.Configuration = {
     target: 'web',
     // devtool: 'source-map', // TODO: 内部 loader 支持 sourceMap
-    entry: path.join(srcDir, appJson),
+    entry: appJson,
     output: {
       path: distDir,
       // 随机生成一个输出的文件即可（编译完后会被删除）
@@ -90,15 +97,15 @@ export function webpackConfig(compiler: Compiler) {
     resolve: {
       extensions: ['.js', '.ts'],
       // main 要放在前面， module 的代码含有 es6，除非给 node_modules 中的代码也加上 babel-loader
-      mainFields: ['main', 'module', 'browser'],
+      mainFields: ['main'], // 'module', 'browser'
       // symlinks 和 getExternalLinkModules 可以不加
       symlinks: true,
       modules: [srcDir, modulesDir, ...getExternalLinkModules(modulesDir, localPkg)],
     },
     stats: { // https://webpack.js.org/configuration/stats/#stats
-      // ['all' as '']: false,
+      ['all' as '']: false,
       modules: true,
-      maxModules: 0,
+      maxModules: 6,
       publicPath: true,
       performance: true,
       timings: true,
@@ -124,8 +131,8 @@ export function webpackConfig(compiler: Compiler) {
         {test: /\.wxml$/i, use: loader.wxml},
 
         // 样式
-        {test: /\.s(c|a)ss$/i, use: [loader.wxss, postcss(loader.postcss), loader.sass]},
-        {test: /\.less$/i, use: [loader.wxss, postcss(loader.postcss), loader.less]},
+        {test: /\.s(c|a)ss$/i, use: [loader.wxss, postcss(loader.postcss, minapp.compiler), loader.sass]},
+        {test: /\.less$/i, use: [loader.wxss, postcss(loader.postcss, minapp.compiler), loader.less]},
         {test: /\.(css|wxss)$/i, use: loader.wxss},
 
         // 其它文件：不存在；静态资源在对应的其它文件中可以通过 loader 的 loadStaticFile 来 load
@@ -160,4 +167,9 @@ function getLocalLoaders(modulesDir: string, localPkg: any) {
       all[k === 'awesome-typescript' ? 'ts' : k] = k + '-loader'
       return all
     }, {} as any)
+}
+
+function getJsonFileFrom(dir: string, startWith: string) {
+  let name = fs.readdirSync(dir).find(n => JSON_REGEXP.test(n) && n.replace(JSON_REGEXP, '') === startWith)
+  return name ? path.join(dir, name) : undefined
 }

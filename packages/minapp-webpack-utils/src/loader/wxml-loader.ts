@@ -124,7 +124,10 @@ export default class WxmlLoader extends Loader {
         if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
           attr.value = attr.value.replace(src, await this.loadStaticFile(absFile))
         } else if (node.name === 'import' || node.name === 'include') {
-          requires.push(absFile)
+          if (this.isFileInSrcDir(absFile) || this.mode !== 'component') {
+            attr.value = this.getExtractRequirePath(absFile, '.wxml')
+            requires.push(absFile)
+          }
         }
       }
     }, 5)
@@ -157,6 +160,6 @@ function toString(node: parser.TagNode, attr: parser.TagNodeAttr) {
  */
 function stripBrackets(str: string) {
   return str.startsWith('{{') && str.endsWith('}}')
-    ? str.substr(2, str.length - 4)
+    ? str.substr(2, str.length - 4).trim()
     : str
 }

@@ -19,7 +19,7 @@
       "description": "分包加载",
       "items": {
         "type": "object",
-        "definitions": {
+        "properties": {
           "root": {
             "type": "string",
             "description": "指定分包的名称，对应会自动生成一个文件夹"

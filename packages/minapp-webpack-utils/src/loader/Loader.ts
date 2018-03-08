@@ -5,7 +5,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 
 import * as webpack from 'webpack'
 import * as path from 'path'
-import {getProjectRoot, readFile, md5, toUrlPath, toRelative, STATIC_REGEXP, JSON_REGEXP} from '../util'
+import {getProjectRoot, readFile, md5, toUrlPath, toRelative, STATIC_REGEXP, JSON_REGEXP, replaceExt} from '../util'
 
 export abstract class Loader {
   static decorate(loaderConstructor: any) {
@@ -94,6 +94,12 @@ export abstract class Loader {
   }
   get toFile() { return path.join(this.distDir, this.emitFile) }
 
+  /** 当前是编译 project 还是 component */
+  get mode(): 'project' | 'component' {
+    let m = (this.lc as any).minapp
+    return m && m.mode || 'project'
+  }
+
   abstract run(content: string, sourceMap?: string | Buffer): string | Promise<string>
 
   /** 判断某个文件是否在 srcDir 中 */
@@ -102,7 +108,7 @@ export abstract class Loader {
   /**
    * 根据文件当前的路径，获取到它编译后的相对 distDir 的路径
    */
-  getEmitFile(absFile: string) {
+  private getEmitFile(absFile: string) {
     let {srcDir, modulesDir} = this
 
     // 注意1：node_modules 中可能有 link 文件夹
@@ -168,9 +174,10 @@ export abstract class Loader {
     return true
   }
 
-  getExtractRequirePath(absFile: string) {
+  getExtractRequirePath(absFile: string, fileExt?: string, relativeDir?: string) {
     let emitFile = this.getEmitFile(absFile)
-    let file = path.relative(path.dirname(this.toFile), path.join(this.distDir, emitFile))
+    let file = path.relative(relativeDir || path.dirname(this.toFile), path.join(this.distDir, emitFile))
+    if (fileExt != null) file = replaceExt(file, fileExt)
     return toUrlPath(toRelative(file))
   }
   getWebpackRequirePath(absFile: string) {
@@ -193,7 +200,7 @@ export abstract class Loader {
    * @memberof Loader
    */
   extract(fileExt: string, content: string) {
-    let file = fileExt ? this.emitFile.replace(/\.\w+$/, fileExt) : this.emitFile
+    let file = fileExt ? replaceExt(this.emitFile, fileExt) : this.emitFile
     this.emit(file, content, null)
   }
 

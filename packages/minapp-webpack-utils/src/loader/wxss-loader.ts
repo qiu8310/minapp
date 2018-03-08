@@ -21,11 +21,11 @@ export default class WxssLoader extends Loader {
 
       let url = await this.loadStaticFile(request)
 
-      if (this.minimize && !(/^(\w+?:)\/\//.test(url))) {
+      if (this.minimize && !(/^(\w+?:)\/\//.test(url)) && this.mode !== 'component') {
         this.emitWarning(`你的样式文件 ${path.relative(this.srcDir, this.fromFile)} 使用了本地的静态资源！请在 minapp dev 模式下运行，或者在 minapp build 模式下指定 --publicPath`)
       }
 
-      debug(`reqplace ${request} => ${url}`)
+      debug(`replace ${request} => ${url}`)
       return raw.replace(request, url)
     })
 

@@ -2,15 +2,16 @@
 
 import {error, clog} from 'mora-scripts/libs/sys/'
 import * as cli from 'mora-scripts/libs/tty/cli'
+
 import {EOL} from 'os'
 import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as inquirer from 'inquirer'
+import {Compiler} from '@minapp/compiler'
 const validateProjectName = require('validate-npm-package-name')
 const pkg = require('../package.json')
 
-import {Compiler} from '@minapp/compiler'
-import {getGitUser} from './helper'
+import {getGitUser, getMinappConfig} from './helper'
 import {make} from './make'
 
 require('update-notifier')({pkg}).notify()
@@ -131,13 +132,19 @@ function code(str: string) {
 }
 
 function compile(type: string, opts: any) {
+  let minapp = getMinappConfig()
+
   if (type === 'dev') {
     let {host, port, minimize} = opts
     let server: any = {host, port}
-    return new Compiler(opts.srcDir, opts.distDir, {server, minimize, production: false})
+
+    if (minapp.component) { // 组件开发不需要 server
+      return new Compiler(opts.srcDir, opts.distDir, {watch: true, production: false, minapp})
+    }
+    return new Compiler(opts.srcDir, opts.distDir, {server, minimize, production: false, minapp})
   } else {
     let {watch, publicPath} = opts
-    return new Compiler(opts.srcDir, opts.distDir, {watch, publicPath, production: true})
+    return new Compiler(opts.srcDir, opts.distDir, {watch, publicPath, production: true, minapp})
   }
 }
 

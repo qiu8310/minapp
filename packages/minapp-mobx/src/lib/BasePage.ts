@@ -47,6 +47,15 @@ export class BasePage<D, S extends Store, A extends BaseApp<S>> extends Base {
     return new Location()
   }
 
+  /**
+   * 对 setData 的封装，不过它更新的 data 可以支持数据双向绑定
+   *
+   * @memberof BaseComponent
+   */
+  setDataSync(data: Partial<D>, callback?: () => void) {
+    this.setData(data, callback)
+  }
+
   // @ts-ignore
   // 双向绑定用于更新父组件的数据
   private minappsyncupdate(e) {

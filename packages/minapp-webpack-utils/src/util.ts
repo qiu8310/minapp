@@ -33,6 +33,13 @@ export function md5(str: string | Buffer) {
 }
 
 /**
+ * 修改后缀名
+ */
+export function replaceExt(file: string, ext: string) {
+  return file.replace(/\.\w+$/, ext)
+}
+
+/**
  * 将文件转化成相对路径形式
  *
  * 如将 "abc/some.js" => "./abc/some.js"

@@ -63,7 +63,7 @@ export class BaseComponent<D, S extends Store, A extends BaseApp<S>> extends Bas
   readonly app: A
 
   /**
-   * 对 setData 的封装，能过它更新 data 可以支持数据双向绑定
+   * 对 setData 的封装，不过它更新的 data 可以支持数据双向绑定
    *
    * @memberof BaseComponent
    */

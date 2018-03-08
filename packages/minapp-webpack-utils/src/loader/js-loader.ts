@@ -37,6 +37,9 @@ export default class WxsLoader extends Loader {
         return JSON.stringify(query ? DotProp.get(json, query) : json)
       }
 
+      if (!this.isFileInSrcDir(absFile) && this.mode === 'component') {
+        return `__minapp_require("${request}")`
+      }
       requires.push(absFile) // 使用绝对路径，避免重复 resolve
 
       // 修改文件路径成相对引用的形式，同时去除文件后缀（可能是 .ts 的后缀）
