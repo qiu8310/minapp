@@ -7,25 +7,23 @@ import * as core from '@minapp/core/system'
 
 import {MobxStore} from './MobxStore'
 import {MobxApp} from './MobxApp'
-import {PolluteOptions, pollute} from './pollute'
 
-export interface ComifyOptions extends PolluteOptions, core.ComifyOptions {
+export interface ComifyOptions extends core.ComifyOptions {
 }
 
 /**
  * 将一个继承了 MobxComponent 的类转化成 小程序 Component 的调用
  */
 export function comify<D, S extends MobxStore, A extends MobxApp<S>>(options: ComifyOptions = {}) {
-  return core.comify<D, A>(options, (obj) => {
-    pollute(obj, options)
-  })
+  return core.comify<D, A>(options)
 }
 
 
 export class MobxComponent<D, S extends MobxStore, A extends MobxApp<S>> extends core.BaseComponent<D, A> {
   /**
-   * app.store 的别名
+   * 获取 app.store 对象
    */
-  // @ts-ignore
-  readonly store: S
+  getStore() {
+    return this.getApp().store
+  }
 }

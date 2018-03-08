@@ -19,7 +19,6 @@ export default class extends BaseComponent<any, any> {
   }
 
   onReady() {
-    console.log(this)
   }
 
   toggleToast() {

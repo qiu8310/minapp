@@ -22,8 +22,8 @@ export function mixin(target: any, source: any[] | any) {
           Object.defineProperty(target, name, {
             ...distDesc,
             value() {
-              srcDesc.value.apply(this, arguments);
               (distDesc as any).value.apply(this, arguments)
+              srcDesc.value.apply(this, arguments)
             }
           })
         } else {

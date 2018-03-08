@@ -119,7 +119,7 @@ function initProject(folders: string[]) {
 
     console.log(
       `${EOL}  ${answers.language} project ${answers.name} initialize successfully${EOL}`
-      + `===============================================${EOL}${EOL}`
+      + `============================================================${EOL}${EOL}`
       + `  You can run next two commands to continue:${EOL}${EOL}`
       + `    ${code('cd ' + dir)}${EOL}`
       + `    ${code('npm install')} or ${code('yarn install')}${EOL}${EOL}${EOL}`

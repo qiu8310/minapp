@@ -21,7 +21,6 @@ export {Component}
 
 export async function getCustomComponents(co?: CustomOptions): Promise<Component[]> {
   if (!co) return []
-
   let f = getCachedJsonFile(co.filename)
   try {
     let data =  await f.getContent()

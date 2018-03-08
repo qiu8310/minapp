@@ -17,7 +17,7 @@ export default class implements HoverProvider {
 
     let co = this.config.disableCustomComponentAutocomponent
       ? undefined
-      : {filename: document.fileName, resolves: this.config.resolveRoots}
+      : {filename: document.fileName, resolves: this.config.getResolveRoots(document.uri)}
 
     let markdown: string | undefined
     if (tag.isOnTagName) {

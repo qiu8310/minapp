@@ -16,7 +16,7 @@ export interface PagifyOptions extends PolluteOptions, core.PagifyOptions {
  */
 export function pagify<D, S extends MobxStore, A extends MobxApp<S>>(options: PagifyOptions = {}) {
   return core.pagify<D, A>(options, (obj) => {
-    pollute(obj, options)
+    pollute(obj, 'onLoad', 'onUnload', options)
   })
 }
 

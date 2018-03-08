@@ -4,17 +4,25 @@
 *******************************************************************/
 
 import * as vscode from 'vscode'
+import * as path from 'path'
 
 let listener = vscode.workspace.onDidChangeConfiguration(getConfig)
 
 export interface Config {
   disableCustomComponentAutocomponent: boolean
   resolveRoots: string[]
+  getResolveRoots: (uri: vscode.Uri) => string[]
 }
 
 export const config: Config = {
   disableCustomComponentAutocomponent: false,
-  resolveRoots: []
+  resolveRoots: [],
+  getResolveRoots
+}
+
+function getResolveRoots(uri: vscode.Uri) {
+  let root = vscode.workspace.getWorkspaceFolder(uri) as vscode.WorkspaceFolder
+  return root ? config.resolveRoots.map(r => path.resolve(root.uri.fsPath, r)) : []
 }
 
 function getConfig() {
@@ -26,3 +34,5 @@ function getConfig() {
 export function destroy() {
   listener.dispose()
 }
+
+getConfig()

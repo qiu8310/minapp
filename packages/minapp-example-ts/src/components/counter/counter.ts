@@ -33,6 +33,10 @@ export default class extends MyComponent {
 
   }
 
+  onReady() {
+    console.log('在 counter 组件中获取 store: ', this.getStore())
+  }
+
 
   /**
    * 组件属性值有更新时会调用此函数，不需要在 properties 中设置 observer 函数

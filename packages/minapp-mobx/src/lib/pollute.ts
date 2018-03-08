@@ -13,35 +13,36 @@ export interface PolluteOptions {
   mapStoreToData?: (storeData: any) => any
 }
 
-export function pollute(obj: any, options: PolluteOptions) {
+export function pollute(obj: any, init: string, destroy: string, options: PolluteOptions) {
   let app = getApp() as any
 
   if (options.observe !== false) {
-    observe(obj, options.mapStoreToData)
+    observe(obj, init, destroy, options.mapStoreToData)
   }
 
   obj.store = app.store || {}
   return obj
 }
 
-function observe(obj: Page.Options, mapStoreToData?: (storeData: any) => any) {
+function observe(obj: Page.Options, init: string, destroy: string, mapStoreToData?: (storeData: any) => any) {
   let dispose: IReactionDisposer
 
-  core.util.mixin(obj, {
-    onLoad() {
-      dispose = autorun(() => {
-        let data = toJS(obj.store) as any
-        if (data.__MOBX__) {
-          delete data.constructor
-          delete data.__MOBX__
-        }
-        if (typeof mapStoreToData === 'function') data = mapStoreToData(data)
-        this.setDataSync(data)
-      })
-      dispose.onError(e => console.error(e))
-    },
-    onUnload() {
-      if (dispose) dispose()
-    }
-  })
+  let mixin: any = {}
+  mixin[init] = function() {
+    dispose = autorun(() => {
+      let data = toJS(obj.store) as any
+      if (data.__MOBX__) {
+        delete data.constructor
+        delete data.__MOBX__
+      }
+      if (typeof mapStoreToData === 'function') data = mapStoreToData(data)
+      this.setDataSync(data)
+    })
+    dispose.onError(e => console.error(e))
+  }
+  mixin[destroy] = function() {
+    if (dispose) dispose()
+  }
+
+  core.util.mixin(obj, mixin)
 }

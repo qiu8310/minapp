@@ -7,7 +7,7 @@
     "lint": "tslint src/**/*.ts",
     "clear": "remove-all dist",
     "dev": "minapp dev",
-    "build": "minapp build --publicPath 'http://your.static.server/'"
+    "build": "minapp build --publicPath http://your.static.server/"
   },
   "publishConfig": {
     "access": "public"

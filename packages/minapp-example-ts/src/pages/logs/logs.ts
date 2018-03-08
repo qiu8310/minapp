@@ -17,6 +17,7 @@ export default class extends MyPage {
   }
 
   onLoad() {
+    this.store.userInfo = null
     let location = this.getLocation()
     console.log(`当前页面 ${location.pathname}, 页面参数 ${JSON.stringify(location.query)}`)
     this.setData({

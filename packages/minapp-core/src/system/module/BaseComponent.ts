@@ -2,7 +2,6 @@
  MIT License http://www.opensource.org/licenses/mit-license.php
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
-import {Base} from './Base'
 import {BaseApp} from './BaseApp'
 import {PolluteOptions, pollute, isPlainObject} from '../util'
 
@@ -13,6 +12,11 @@ let NATIVE_LIFE_CYCLES = RAW_LIFE_CYCLES.map(k => k.toLowerCase())
 
 // @ts-ignore
 export interface BaseComponent<D, A extends BaseApp> extends Component, Component.Options {
+  /**
+   * 建议使用组件的 setDataSync 方法
+   *
+   * 两者用法一样，但 setDataSync 支持数据双向绑定
+   */
   setData(data: Partial<D>, callback?: () => void): void
 
   /** 组件生命周期函数，在组件实例进入页面节点树时执行，注意此时不能调用 setData */
@@ -39,7 +43,7 @@ export interface BaseComponent<D, A extends BaseApp> extends Component, Componen
   onPropUpdate?(prop: string, newValue: any, oldValue: any): any
 }
 
-export class BaseComponent<D, A extends BaseApp> extends Base<D> {
+export class BaseComponent<D, A extends BaseApp> {
   /**
    * 组件的内部数据
    *
@@ -51,8 +55,54 @@ export class BaseComponent<D, A extends BaseApp> extends Base<D> {
   /**
    * 获取 App 实例，即微信原生函数 getApp() 返回的对象
    */
+  getApp() {
+    return getApp() as A
+  }
+
+  /**
+   * 对 setData 的封装，不过它更新的 data 可以支持数据双向绑定
+   *
+   * @memberof BaseComponent
+   */
+  setDataSync(data: Partial<D>, callback?: () => void) {
+    let origin: any = this.data
+    let {minappsync} = origin
+    if (!minappsync) return this.setData(data, callback)
+
+    let mixedData: any = data
+    let parentData: any = {}
+    minappsync.split('&').forEach((pair: string) => {
+      let [key, parentKey] = pair.split('=')
+      if (mixedData[key] !== undefined) {
+        parentData[parentKey] = mixedData[key]
+        delete mixedData[key]
+      }
+    })
+
+    let count = 0
+    let done = () => {
+      count++
+      if (count >= 2 && callback) callback()
+    }
+    if (Object.keys(mixedData).length) {
+      this.setData(mixedData, done)
+    } else {
+      count++
+    }
+    if (Object.keys(parentData).length) {
+      parentData.minappdone = done
+      this.triggerEvent('minappsyncupdate', parentData, {})
+    } else {
+      count++
+    }
+  }
+
   // @ts-ignore
-  readonly app: A
+  // 双向绑定用于更新父组件的数据
+  private minappsyncupdate(e) {
+    let {minappdone, ...data} = e.detail
+    this.setDataSync(data, minappdone)
+  }
 }
 
 export interface ComifyOptions extends PolluteOptions {
@@ -82,15 +132,16 @@ export function comify<D, A extends BaseApp>(options: ComifyOptions = {}, pollut
     }
 
     // 处理自定义的方法和生命周期函数
-    if (!obj.methods) obj.methods = {}
-    Object.keys(obj).forEach(k => {
-      let v = obj[k]
+    if (!obj.methods) obj.methods = {} as any
+    Object.getOwnPropertyNames(obj).forEach(k => {
+      let desc = Object.getOwnPropertyDescriptor(obj, k)
+      if (!desc) return
       if (ON_LIFE_CYCLES.indexOf(k) >= 0) {
+        Object.defineProperty(obj, k.substr(2).toLowerCase(), desc)
         delete obj[k]
-        obj[k.substr(2).toLowerCase()] = v
-      } else if (NATIVE_LIFE_CYCLES.indexOf(k) < 0) {
-        // @ts-ignore
-        obj.methods[k] = v
+      } else if (NATIVE_LIFE_CYCLES.indexOf(k) < 0 && (typeof desc.value === 'function')) {
+        Object.defineProperty(obj.methods, k, desc)
+        delete obj[k]
       }
     })
 
@@ -101,7 +152,8 @@ export function comify<D, A extends BaseApp>(options: ComifyOptions = {}, pollut
 function injectObserver(obj: any, key: string, propOption: any) {
   let oldObserver = propOption.observer
   propOption.observer = function(newValue: any, oldValue: any) {
-    obj.onPropUpdate.call(this, key, newValue, oldValue)
+    this.onPropUpdate(key, newValue, oldValue)
+    // obj.methods.onPropUpdate.call(this, key, newValue, oldValue)
     if (typeof oldObserver === 'function') oldObserver.apply(this, arguments)
   }
 }
