@@ -3,7 +3,6 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import * as path from 'path'
 import {Loader} from './Loader'
 import {replace, STYLE_RESOURCE_REGEXP} from '../util'
 const debug = require('debug')('minapp:webpack-utils:wxss-loader')
@@ -19,14 +18,15 @@ export default class WxssLoader extends Loader {
 
       if (!this.shouleMakeRequire(request)) return raw
 
-      let url = await this.loadStaticFile(request)
+      let absFile = await this.resolve(request)
+      if (this.shouldResolve(absFile)) {
+        let url = await this.loadStaticFile(absFile)
 
-      if (this.minimize && !(/^(\w+?:)\/\//.test(url)) && this.mode !== 'component') {
-        this.emitWarning(`你的样式文件 ${path.relative(this.srcDir, this.fromFile)} 使用了本地的静态资源！请在 minapp dev 模式下运行，或者在 minapp build 模式下指定 --publicPath`)
+        debug(`replace ${request} => ${url}`)
+        return raw.replace(request, url)
       }
 
-      debug(`replace ${request} => ${url}`)
-      return raw.replace(request, url)
+      return raw
     })
 
     if (emitContent.trim()) this.extract('.wxss', emitContent)

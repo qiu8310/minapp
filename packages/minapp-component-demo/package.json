@@ -1,14 +1,21 @@
 {
-  "name": "@minapp/example-ts",
+  "name": "@minapp/component-demo",
   "version": "0.0.7",
-  "description": "minapp ts 示例项目",
+  "description": "wechat demo component for minapp",
+  "main": "dist/demo.js",
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
+    "postpublish": "cnpm sync @minapp/cli",
     "clear": "remove-all dist",
-    "dev": "minapp dev",
-    "build": "minapp build --publicPath 'http://your.static.server/'"
+    "build": "npm run clear && minapp build",
+    "watch": "minapp dev"
   },
+  "files": [
+    "dist/",
+    "package-lock.json",
+    "README.md"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -16,15 +23,15 @@
   "license": "MIT",
   "dependencies": {
     "@minapp/component-toast": "^0.0.7",
-    "@minapp/component-demo": "^0.0.7",
-    "@minapp/core": "^0.0.6",
-    "@minapp/mobx": "^0.0.6",
-    "mobx": "^3.5.1",
-    "mora-scripts": "^1.6.21",
     "tslib": "^1.9.0"
   },
+  "peerDependencies": {
+    "@minapp/core": "^0.0.6"
+  },
   "devDependencies": {
+    "@minapp/core": "^0.0.6",
     "mora-common": "^1.0.11",
+    "mora-scripts": "^1.6.21",
     "ts-lint": "^4.5.1",
     "typescript": "^2.7.1"
   }

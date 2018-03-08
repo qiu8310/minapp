@@ -44,14 +44,14 @@ export default class extends MyComponent {
    * 自定义的函数，不需要放在 methods 中，在 comify 中会帮你提取出来放到 methods
    */
   increase() {
-    this.setData({start: this.data.start + 1})
+    this.setDataSync({start: this.data.start + 1})
   }
 
   /**
    * 自定义的函数，不需要放在 methods 中，在 comify 中会帮你提取出来放到 methods
    */
   decrease() {
-    this.setData({start: this.data.start - 1})
+    this.setDataSync({start: this.data.start - 1})
   }
 }
 

@@ -18,11 +18,12 @@ export default class JsonLoader extends Loader {
     debug('ToFile: %o', this.toFile)
     // debug('FromContent: ' + content)
 
+    let {mode} = this
     let json = JSON5.parse(content)
     delete json.$schema // 删除 $schema 字段
+    if (mode === 'project') delete json.minapp
 
     let requires: string[] = []
-    let {mode} = this
 
     // 根据 app.json 中的 pages 字段，查找其依赖的所有文件
     if (this.fromFile === this.entryFile && mode === 'project') {
@@ -39,10 +40,10 @@ export default class JsonLoader extends Loader {
       }
 
       // 搜索主目录下的同名文件
-      searchDir(requires, this.fromFile, 'project.config.json')
+      searchDir(requires, this.fromFile, 'project.config.json', true)
     } else {
       if (this.fromFile === this.entryFile && mode === 'component') {
-        searchDir(requires, this.entryFile)
+        searchDir(requires, this.entryFile, null, true)
       }
 
       // 加载页面中的组件或者组件中的组件
@@ -53,7 +54,7 @@ export default class JsonLoader extends Loader {
         let main = await this.resolve(component)
 
         // component 模式下只有在 srcDir 中的组件才解析
-        if (this.isFileInSrcDir(main) || mode !== 'component') {
+        if (this.shouldResolve(main)) {
           components[k] = this.getExtractRequirePath(main, '')
           searchDir(requires, main)
         }
@@ -84,13 +85,12 @@ export default class JsonLoader extends Loader {
   }
 }
 
-
-function searchDir(requires: string[], file: string, fullname?: string) {
+function searchDir(requires: string[], file: string, fullname?: string | null, excludeSelf?: boolean) {
   let dir = path.dirname(file)
   let name = path.basename(file)
   let prefix = path.basename(file, path.extname(file))
 
   fs.readdirSync(dir)
-    .filter(n => n !== name && (n.startsWith(prefix + '.') || fullname && fullname === n))
+    .filter(n => (!excludeSelf || n !== name) && (n.startsWith(prefix + '.') || fullname && fullname === n))
     .forEach(n => requires.push(path.join(dir, n)))
 }

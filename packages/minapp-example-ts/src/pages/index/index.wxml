@@ -10,7 +10,7 @@
     <text class="user-motto">{{motto}}</text>
   </view>
 
-  <toast bind:close="hideToast" visible="{{toastVisble}}" message="npm toast" />
+  <toast bind:close="hideToast" visible="{{npmToast}}" message="npm toast" />
   <view>
     <button size="mini" bind:tap="showToast">显示 toast</button>
     <button size="mini" bind:tap="hideToast">关闭 toast</button>
@@ -21,4 +21,7 @@
   <button size="mini" bind:tap="increase">在 Page 中增加 Count：{{count}}</button>
   双向绑定：<counter-a number.sync="{{count}}" />
   单向绑定：<counter-b number="{{count}}" />
+
+  <demo toast.sync="demoToast"/>
+  <button size="mini" bind:tap="toggleDemoToast">多层双向绑定，Page -> Demo -> Toast</button>
 </view>

@@ -3,10 +3,10 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {Store} from '@minapp/mobx'
+import {MobxStore} from '@minapp/mobx'
 import {observable} from 'mobx'
 
-export class MyStore extends Store {
+export class MyStore extends MobxStore {
   /**
    * 注意：
    *  小程序 setData({key: value}) 中，如果 value 为 undefined，小程序会报错（主要 undefined 时，小程序不会更新原来存储在 key 中的值）

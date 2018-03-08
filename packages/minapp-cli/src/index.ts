@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {error, clog} from 'mora-scripts/libs/sys/'
+import {error, clog, warn} from 'mora-scripts/libs/sys/'
 import * as cli from 'mora-scripts/libs/tty/cli'
 
 import {EOL} from 'os'
@@ -8,10 +8,11 @@ import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as inquirer from 'inquirer'
 import {Compiler} from '@minapp/compiler'
+import {parseAttrs} from '@minapp/common/dist/parseAttrs'
 const validateProjectName = require('validate-npm-package-name')
 const pkg = require('../package.json')
 
-import {getGitUser, getMinappConfig} from './helper'
+import {getGitUser, getMinappConfig, getComponentJson} from './helper'
 import {make} from './make'
 
 require('update-notifier')({pkg}).notify()
@@ -53,7 +54,7 @@ cli({
     },
     cmd: res => compile('build', res)
   },
-  'component-json': {
+  'cj | component-json': {
     desc: 'generate component autocomplete information to json file',
     conf: {version},
     options: {},
@@ -139,15 +140,36 @@ function compile(type: string, opts: any) {
     let server: any = {host, port}
 
     if (minapp.component) { // 组件开发不需要 server
-      return new Compiler(opts.srcDir, opts.distDir, {watch: true, production: false, minapp})
+      return new Compiler(opts.srcDir, opts.distDir, {watch: true, minimize, production: false, minapp})
     }
     return new Compiler(opts.srcDir, opts.distDir, {server, minimize, production: false, minapp})
   } else {
     let {watch, publicPath} = opts
+    if (minapp.component) { // 判断有没有添加组件描述
+      let {file, json} = getComponentJson(minapp.component)
+      if (!json.minapp || !json.minapp.component || Object.keys(json.minapp.component).length === 0) {
+        warn(`组件配置 ${file} 中没有指定 minapp.component 字段`)
+        warn('为了给使用者更好的体验，建议添加此组件的相关描述在 minapp.component 字段中')
+        warn('你可以使用命令 minapp component-json 尝试自动添加')
+      }
+    }
     return new Compiler(opts.srcDir, opts.distDir, {watch, publicPath, production: true, minapp})
   }
 }
 
 function componentJson(res: any) {
+  let minapp = getMinappConfig()
+  if (!minapp.component) return error('当前不是组件开发环境')
 
+  let {file, jsContent, json} = getComponentJson(minapp.component)
+  if (!file || !json || !jsContent) return error('找不到组件对应的 json 文件')
+  let attrs = parseAttrs(jsContent)
+  if (!attrs.length) return warn('没有检测到任何属性')
+  if (!json.minapp) json.minapp = {}
+  if (!json.minapp.component) json.minapp.component = {}
+  json.minapp.component.attrs = attrs
+
+  console.log(`写入 attrs: `)
+  console.log(JSON.stringify(attrs, null, 2))
+  fs.writeFileSync(file, JSON.stringify(json, null, 2))
 }

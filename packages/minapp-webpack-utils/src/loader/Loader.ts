@@ -106,6 +106,13 @@ export abstract class Loader {
   isFileInSrcDir(absFile: string) { return absFile.indexOf(this.srcDir) === 0 && this.modulesDir.indexOf(absFile) < 0 }
 
   /**
+   * 是否应该解析指定的文件
+   *
+   * 在组件开发中，无需解析 node_modules 中的文件
+   */
+  shouldResolve(absFile: string) { return this.isFileInSrcDir(absFile) || this.mode === 'project' }
+
+  /**
    * 根据文件当前的路径，获取到它编译后的相对 distDir 的路径
    */
   private getEmitFile(absFile: string) {
@@ -140,8 +147,8 @@ export abstract class Loader {
     if (typeof test === 'function') return test(request)
     return test.test(request.split(/[#\?]/).shift() as string)
   }
-  async loadStaticFile(request: string): Promise<string> {
-    let absFile = await this.resolve(request)
+  async loadStaticFile(absFile: string): Promise<string> {
+    // let absFile = await this.resolve(request)
     this.lc.addDependency(absFile)
 
     // TODO: 这里需要一个处理静态资源路径的脚本
@@ -161,7 +168,13 @@ export abstract class Loader {
 
     let file = path.relative(this.distDir, path.join(output, filename))
     this.emit(file, content)
-    return this.outputPublicPath + file
+    let url = this.outputPublicPath + file
+
+    if (this.minimize && !(/^(\w+?:)\/\//.test(url)) && this.mode === 'project') {
+      this.emitWarning(new Error(`文件 ${this.fromFile} 使用了本地的静态资源！请在 minapp dev 模式下运行，或者在 minapp build 模式下指定 --publicPath`))
+    }
+
+    return url
   }
 
   shouleMakeRequire(request: string) {
@@ -207,7 +220,18 @@ export abstract class Loader {
   async resolve(request: string): Promise<string> {
     if (request[0] === '~') request = toUrlPath(this.modulesDir) + request.substr(1)
     return new Promise<string>((resolve, reject) => {
-      this.lc.resolve(this.lc.context, request, (e, res) => e ? reject(e) : resolve(res))
+      this.lc.resolve(this.lc.context, request, (e, res) => {
+        if (e) {
+          // /a/b 解析 c.js 会解析不了，所以要再尝试下解析 ./c.js
+          if (/^\w/.test(request)) {
+            this.lc.resolve(this.lc.context, './' + request, (e1, res1) => e1 ? reject(e) : resolve(res1))
+          } else {
+            reject(e)
+          }
+        } else {
+          resolve(res)
+        }
+      })
     })
   }
   async tryResolve(request: string): Promise<string | undefined> {

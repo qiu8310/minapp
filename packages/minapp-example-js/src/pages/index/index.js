@@ -17,39 +17,39 @@ export default class extends MyPage {
   }
 
   onShow() {
-    this.setData({motto: 'Hello World'})
+    this.setDataSync({motto: 'Hello World'})
   }
 
   onClickAvatarImage() {
     // 跳转到 logs 页面
     this.app.$url.logs.go({id: 1})
-    this.setData({motto: '开始跳转到 logs 页面'})
+    this.setDataSync({motto: '开始跳转到 logs 页面'})
   }
 
   onClickOpenButton(e) {
     // 轻松修改全局数据
     this.store.userInfo = e.detail.userInfo
 
-    // 组件内数据还是用 setData
-    this.setData({motto: '点击了『获取头像昵称』按钮'})
+    // 组件内数据还是用 setDataSync
+    this.setDataSync({motto: '点击了『获取头像昵称』按钮'})
   }
 
   showToast() {
     console.log('showToast')
-    this.setData({toastVisble: true})
+    this.setDataSync({toastVisble: true})
   }
   hideToast() {
     console.log('hideToast')
-    this.setData({toastVisble: false})
+    this.setDataSync({toastVisble: false})
   }
 
   increase() {
-    this.setData({conterStart: this.data.conterStart + 1})
+    this.setDataSync({conterStart: this.data.conterStart + 1})
   }
 
   async onLoad(options) {
     // 使用 require 加载图片
-    console.log('可以使用 require 的方法加载图片: %o', require('images/heart-active@3x.png'))
+    console.log('可以使用 require 的方法加载图片: %o', require('images/heart@3x.png'))
     // 轻松读取全局数据
     console.log('当前 Store: %o', this.store)
     if (!this.store.userInfo && !this.data.canIUseOpenButton) {

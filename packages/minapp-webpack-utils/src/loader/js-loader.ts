@@ -23,12 +23,17 @@ export default class WxsLoader extends Loader {
 
     let emitFile = this.emitFile.replace(/\.\w+$/, '.js')
     let emitContent = await replace(content, REQUIRE_REGEXP, async ([, , request]) => {
-      if (this.isStaticFile(request)) {
-        return JSON.stringify(await this.loadStaticFile(request))
-      }
 
       // 将文件记录起来，触发 webpack 继续解析此文件
       let absFile = await this.resolve(request)
+
+      if (this.isStaticFile(absFile)) {
+        let url = await this.loadStaticFile(absFile)
+        if (!this.shouleMakeRequire(url) || this.mode === 'project') {
+          return JSON.stringify(url)
+        }
+        return `__minapp_require("${url}")`
+      }
 
       // 如果是 require json 文件，解析 json 的内容
       if (this.isJsonFile(request)) {
@@ -37,7 +42,7 @@ export default class WxsLoader extends Loader {
         return JSON.stringify(query ? DotProp.get(json, query) : json)
       }
 
-      if (!this.isFileInSrcDir(absFile) && this.mode === 'component') {
+      if (!this.shouldResolve(absFile)) {
         return `__minapp_require("${request}")`
       }
       requires.push(absFile) // 使用绝对路径，避免重复 resolve

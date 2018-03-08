@@ -15,12 +15,12 @@ import {JSON_REGEXP} from '@minapp/webpack-utils/dist/util'
 import { Compiler } from '../Compiler'
 
 export function webpackConfig(compiler: Compiler) {
-  let {rootDir, srcDir, modulesDir, localPkg, distDir, options: {server, publicPath, minapp = {}}} = compiler
+  let {srcDir, modulesDir, localPkg, distDir, options: {server, publicPath, minapp = {}}} = compiler
 
   let appJson: string | undefined
   let mode = minapp.component ? 'component' : 'project'
   if (minapp.component) {
-    let cp = path.join(rootDir, minapp.component).replace(/\.\w+$/, '') // 去除文件后缀名
+    let cp = path.join(minapp.component).replace(/\.\w+$/, '') // 去除文件后缀名
     appJson = getJsonFileFrom(path.dirname(cp), path.basename(cp))
     if (!appJson) throw new Error(`指定的组件文件 ${minapp.component} 不存在，无法编译`)
   } else {

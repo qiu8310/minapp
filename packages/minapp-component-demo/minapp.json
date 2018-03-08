@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schema/minapp.json",
+  "component": "src/demo",
+  "compiler": {
+    "px2rpx": true,
+    "rpx2px": true
+  }
+}

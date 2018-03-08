@@ -3,17 +3,20 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {comify, BaseComponent} from '@minapp/mobx'
+import {comify, BaseComponent} from '@minapp/core/system'
 
 @comify()
-export default class extends BaseComponent<any, any, any> {
+export default class extends BaseComponent<any, any> {
   properties = {
+    /** toast 显示内容 */
     message: {
       type: String
     },
+    /** 是否显示 toast */
     visible: {
       type: Boolean
     },
+    /** toast 显示时间，单位秒 */
     timeout: {
       type: Number,
       value: 5

@@ -3,10 +3,7 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {toObject} from 'mora-common/util/object'
-import {Base} from './Base'
-import {Store} from './Store'
-import {warn, camelCase} from '../base'
+import {warn, camelCase, toObject} from '../util'
 
 // import {TAB_PAGES, PAGES} from '../feat/data'
 import {Url} from '../feat/Url'
@@ -16,24 +13,21 @@ export interface AppifyOptions {
   tabBarList: Array<{pagePath: string, text: string}> | undefined
 }
 
-export function appify<S extends Store>(store: S, options: AppifyOptions) {
-  return function(SomeApp: new() => BaseApp<S>) {
+export function appify(options: AppifyOptions, polluteObj?: (obj: any) => void) {
+  return function(SomeApp: new() => BaseApp) {
     let app = new SomeApp()
     // @ts-ignore
     app.__init$home$url(options.pages || [], options.tabBarList || [])
     let obj = toObject(app)
-    obj.store = store
+    if (polluteObj) polluteObj(obj)
     App(obj)
   }
 }
 
-export interface BaseApp<S extends Store> extends App, App.BaseOptions {
+export interface BaseApp extends App, App.BaseOptions {
 }
 
-export class BaseApp<S extends Store> extends Base {
-  // @ts-ignore
-  readonly store: S
-
+export class BaseApp {
   /**
    * 首页的 url，默认是 app.json 中的 pages 中的第一个页面的 Url
    */

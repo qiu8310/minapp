@@ -45,7 +45,28 @@ export function getMinappConfig() {
   try {
     let root = path.dirname(findup.pkg())
     let file = fs.readdirSync(root).find(n => JSON_REGEXP.test(n) && n.replace(JSON_REGEXP, '') === 'minapp')
-    if (file) minapp = JSON5.parse(fs.readFileSync(path.join(root, file)).toString())
+    if (file) {
+      minapp = JSON5.parse(fs.readFileSync(path.join(root, file)).toString())
+      if (minapp.component) minapp.component = path.resolve(root, minapp.component)
+    }
   } catch (e) {}
   return minapp
+}
+
+export function getComponentJson(refFile: string) {
+  let dir = path.dirname(refFile)
+  let name = path.basename(refFile.replace(/\.\w+$/, ''))
+  let foundjson = fs.readdirSync(dir).find(n => n.replace(JSON_REGEXP, '__') === name + '__')
+  let foundjs = fs.readdirSync(dir).find(n => n === name + '.js' || n === name + '.ts')
+
+  if (foundjson && foundjs) {
+    let file = path.join(dir, foundjson)
+    let content = fs.readFileSync(path.join(dir, foundjson)).toString()
+    return {
+      file,
+      jsContent: fs.readFileSync(path.join(dir, foundjs)).toString(),
+      json: JSON5.parse(content)
+    }
+  }
+  return {}
 }

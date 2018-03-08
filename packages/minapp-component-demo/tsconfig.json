@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": true,
-    "removeComments": false,
+    "declaration": false,
+    "removeComments": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
     "importHelpers": true,
@@ -23,9 +23,9 @@
     "outDir": "dist"
   },
   "include": [
-    "src",
-    "typing"
+    "src"
   ],
   "exclude": [
+    "node_modules"
   ]
 }

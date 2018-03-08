@@ -3,7 +3,7 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {isObject} from 'mora-common/util/object'
+import {isObject} from './object'
 import {warn} from './warn'
 
 export function mixin(target: any, source: any[] | any) {
@@ -27,7 +27,7 @@ export function mixin(target: any, source: any[] | any) {
             }
           })
         } else {
-          warn(`无法将 %o 对象 mixin 到 %o 对象中，%o 字段不都为函数`, src, target, name)
+          warn(`无法将 %o 对象 mixin 到 %o 对象中，%o 字段值的类型不一致`, src, target, name)
         }
       }
     })

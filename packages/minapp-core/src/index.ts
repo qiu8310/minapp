@@ -28,7 +28,7 @@ Object.getOwnPropertyNames(wx).forEach(key => {
   }
 })
 
-export function wxpromisify<T>(func: (...args: any[]) => any, context?: any, callbackIndex = 0): ((...args: any[]) => Promise<T>) {
+function wxpromisify<T>(func: (...args: any[]) => any, context?: any, callbackIndex = 0): ((...args: any[]) => Promise<T>) {
   return (...args: any[]) => new Promise((resolve, reject) => {
     let {success, fail, complete, ...arg} = (args[callbackIndex] || {}) as any
 

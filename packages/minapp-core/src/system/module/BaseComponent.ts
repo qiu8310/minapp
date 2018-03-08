@@ -3,10 +3,8 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 import {Base} from './Base'
-import {Store} from './Store'
 import {BaseApp} from './BaseApp'
-import {PolluteOptions, pollute} from './pollute'
-import * as isPlainObject from 'mora-scripts/libs/lang/isPlainObject'
+import {PolluteOptions, pollute, isPlainObject} from '../util'
 
 // 将 on 开头的生命周期函数转变成非 on 开头的
 let RAW_LIFE_CYCLES = ['Created', 'Attached', 'Ready', 'Moved', 'Detached']
@@ -14,7 +12,7 @@ let ON_LIFE_CYCLES = RAW_LIFE_CYCLES.map(k => 'on' + k)
 let NATIVE_LIFE_CYCLES = RAW_LIFE_CYCLES.map(k => k.toLowerCase())
 
 // @ts-ignore
-export interface BaseComponent<D, S extends Store, A extends BaseApp<S>> extends Component, Component.Options {
+export interface BaseComponent<D, A extends BaseApp> extends Component, Component.Options {
   setData(data: Partial<D>, callback?: () => void): void
 
   /** 组件生命周期函数，在组件实例进入页面节点树时执行，注意此时不能调用 setData */
@@ -41,7 +39,7 @@ export interface BaseComponent<D, S extends Store, A extends BaseApp<S>> extends
   onPropUpdate?(prop: string, newValue: any, oldValue: any): any
 }
 
-export class BaseComponent<D, S extends Store, A extends BaseApp<S>> extends Base {
+export class BaseComponent<D, A extends BaseApp> extends Base<D> {
   /**
    * 组件的内部数据
    *
@@ -51,61 +49,10 @@ export class BaseComponent<D, S extends Store, A extends BaseApp<S>> extends Bas
   readonly data: D
 
   /**
-   * app.store 的别名
-   */
-  // @ts-ignore
-  readonly store: S
-
-  /**
    * 获取 App 实例，即微信原生函数 getApp() 返回的对象
    */
   // @ts-ignore
   readonly app: A
-
-  /**
-   * 对 setData 的封装，不过它更新的 data 可以支持数据双向绑定
-   *
-   * @memberof BaseComponent
-   */
-  setDataSync(data: Partial<D>, callback?: () => void) {
-    let origin: any = this.data
-    let {minappsync} = origin
-    if (!minappsync) return this.setData(data, callback)
-
-    let mixedData: any = data
-    let parentData: any = {}
-    minappsync.split('&').forEach((pair: string) => {
-      let [key, parentKey] = pair.split('=')
-      if (mixedData[key] !== undefined) {
-        parentData[parentKey] = mixedData[key]
-        delete mixedData[key]
-      }
-    })
-
-    let count = 0
-    let done = () => {
-      count++
-      if (count >= 2 && callback) callback()
-    }
-    if (Object.keys(mixedData).length) {
-      this.setData(mixedData, done)
-    } else {
-      count++
-    }
-    if (Object.keys(parentData).length) {
-      parentData.minappdone = done
-      this.triggerEvent('minappsyncupdate', parentData, {})
-    } else {
-      count++
-    }
-  }
-
-  // @ts-ignore
-  // 双向绑定用于更新父组件的数据
-  private minappsyncupdate(e) {
-    let {minappdone, ...data} = e.detail
-    this.setDataSync(data, minappdone)
-  }
 }
 
 export interface ComifyOptions extends PolluteOptions {
@@ -116,9 +63,9 @@ export interface ComifyOptions extends PolluteOptions {
 /**
  * 将一个继承了 BaseComponent 的类转化成 小程序 Component 的调用
  */
-export function comify<D, S extends Store, A extends BaseApp<S>>(options: ComifyOptions = {}) {
-  return function(SomeComponent: new() => BaseComponent<D, S, A>) {
-    let obj = pollute(SomeComponent, {observe: false, ...options}) as BaseComponent<D, S, A>
+export function comify<D, A extends BaseApp>(options: ComifyOptions = {}, polluteObj?: (obj: any) => void) {
+  return function(SomeComponent: new() => BaseComponent<D, A>) {
+    let obj = pollute(SomeComponent, options, polluteObj) as BaseComponent<D, A>
 
     if (obj.properties) {
       Object.keys(obj.properties).forEach(k => {
@@ -150,7 +97,6 @@ export function comify<D, S extends Store, A extends BaseApp<S>>(options: Comify
     Component(obj)
   }
 }
-
 
 function injectObserver(obj: any, key: string, propOption: any) {
   let oldObserver = propOption.observer

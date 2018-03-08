@@ -19,7 +19,7 @@ export default class extends MyPage {
   onLoad() {
     let location = this.getLocation()
     console.log(`当前页面 ${location.pathname}, 页面参数 ${JSON.stringify(location.query)}`)
-    this.setData({
+    this.setDataSync({
       logs: (wx.getStorageSync('logs') || []).map((log) => {
         return formatDate(new Date(log), 'yyyy-mm-dd HH:ii:ss')
       })

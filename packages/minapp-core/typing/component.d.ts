@@ -107,7 +107,7 @@ declare interface Component {
   dataset: string
 
   /** 设置data并执行视图层渲染 */
-  setData(newData: any): void
+  setData(newData: any, callback?: any): void
 
   /** 检查组件是否具有 behavior （检查时会递归检查被直接或间接引入的所有behavior） */
   hasBehavior(behavior: any): boolean

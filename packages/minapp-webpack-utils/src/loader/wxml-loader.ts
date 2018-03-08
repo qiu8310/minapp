@@ -121,10 +121,10 @@ export default class WxmlLoader extends Loader {
           this.emitWarning(`${toString(node, attr)} 中的文件无法找到`)
         }
       } else {
-        if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
-          attr.value = attr.value.replace(src, await this.loadStaticFile(absFile))
-        } else if (node.name === 'import' || node.name === 'include') {
-          if (this.isFileInSrcDir(absFile) || this.mode !== 'component') {
+        if (this.shouldResolve(absFile)) {
+          if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
+            attr.value = attr.value.replace(src, await this.loadStaticFile(absFile))
+          } else if (node.name === 'import' || node.name === 'include') {
             attr.value = this.getExtractRequirePath(absFile, '.wxml')
             requires.push(absFile)
           }

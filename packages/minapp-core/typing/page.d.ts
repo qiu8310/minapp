@@ -138,7 +138,7 @@ declare namespace Page {
 }
 
 interface Page {
-  setData: (data: any) => void
+  setData(data: any, callback?: any): void
 }
 
 interface PageConstructor {

@@ -24,7 +24,7 @@ import {ComponentAttr} from './dev/'
 */
 
 const SINGLE_LINE_REGEXP = /^\s+(?:\w+.)?properties\s*[:=]\s*\{(.*)\}\s*$/m
-const MULTIPLE_LINE_REGEXP = /^(\s+)(?:\w+.)?properties\s*[:=]\s*\{([\s\S]*?)\1\}\s*$/m
+const MULTIPLE_LINE_START_REGEXP = /^(\s+)(?:\w+.)?properties\s*[:=]\s*\{(.*?)$/
 const DOC_REGEXP = /\/\*\*([\s\S]*?)\*\/[\s\n\r]*(\w+)\s*:/g
 const TYPE_REGEXP = /^function\s+(\w+)\(/
 
@@ -34,9 +34,24 @@ export function parseAttrs(content: string): ComponentAttr[] {
     attrs = parseObjStr(RegExp.$1)
   }
 
-  if (!attrs && MULTIPLE_LINE_REGEXP.test(content)) {
-    attrs = parseObjStr(RegExp.$2)
+  if (!attrs) {
+    let flag = 0
+    let spaces = ''
+    let objstr = ''
+    content.split(/\r?\n/).forEach(l => {
+      if (flag === 2) return
+      if (flag === 1) {
+        if (l.trimRight() === spaces + '}') flag = 2
+        else objstr += '\n' + l
+      } else if (MULTIPLE_LINE_START_REGEXP.test(l)) {
+        flag = 1
+        spaces = RegExp.$1
+        objstr += RegExp.$2
+      }
+    })
+    if (flag === 2) attrs = parseObjStr(objstr)
   }
+
 
   return attrs || []
 }
@@ -77,7 +92,10 @@ function parseObjStr(objstr: string) {
     })
 
     return attrs
-  } catch (e) {}
+  } catch (e) {
+    console.log('解析失败:', e.message)
+    console.log(`{${objstr}}`)
+  }
   return
 }
 
