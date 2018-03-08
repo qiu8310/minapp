@@ -3,7 +3,7 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {ConditionalCacheableFile, readdir, readFile, stat} from './lib/'
+import {ConditionalCacheableFile, readdir, readFile, exists, stat} from './lib/'
 import {JSON_REGEXP, Component} from './dev/'
 import {map, series} from 'mora-common/util/async'
 import {parseAttrs} from './parseAttrs'
@@ -46,7 +46,9 @@ export async function getCustomComponents(co?: CustomOptions): Promise<Component
 async function parseComponentFile(filepath: string, refFile: string, resolves: string[] | undefined): Promise<Component> {
   if (filepath[0] === '~') filepath = filepath.substr(1)
   resolves = resolves || []
-  let localResolves = filepath[0] !== '/' ? [path.dirname(refFile), ...resolves] : resolves
+  let localResolves = filepath[0] === '.' ? [path.dirname(refFile)] // 只使用相对目录
+    : filepath[0] === '/' ? resolves  // 只使用绝对目录
+    : [path.dirname(refFile), ...resolves] // 使用相对和绝对目录
 
   let found: string | undefined
   await series(localResolves, async (root) => {
@@ -54,10 +56,26 @@ async function parseComponentFile(filepath: string, refFile: string, resolves: s
 
     await series(['', '.js', '.ts'], async (ext) => {
       if (found) return
-      let f = path.posix.join(root, filepath + ext)
+      let f = path.join(root, filepath + ext)
       try {
         let stats = await stat(f)
-        if (stats.isFile()) found = f
+        if (stats.isFile()) {
+          found = f
+        } else if (stats.isDirectory() && ext === '') { // 解析 index 文件 或 package.json 中的 main 文件
+          if (f.indexOf('node_modules') >= 0) {
+            try {
+              let pkg = require(path.join(f, 'package.json'))
+              if (pkg.main) found = path.resolve(f, pkg.main)
+            } catch (e) {}
+          }
+
+          if (!found) { // 看看有没有 index.ts 或 index.js
+            let f1 = path.join(f, 'index.js')
+            let f2 = path.join(f, 'index.ts')
+            if (await exists(f1)) found = f1
+            else if (await exists(f2)) found = f2
+          }
+        }
       } catch (e) {}
     })
   })

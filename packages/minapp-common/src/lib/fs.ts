@@ -11,3 +11,5 @@ export const stat: (filepath: string) => Promise<fs.Stats> = promisify<fs.Stats>
 export const readdir: (dirpath: string) => Promise<string[]> = promisify<string[]>(fs.readdir, fs)
 
 export const readFile: (filepath: string) => Promise<Buffer> = promisify<Buffer>(fs.readFile, fs)
+
+export const exists: (filepath: string) => Promise<boolean> = promisify<boolean>(fs.exists, fs)

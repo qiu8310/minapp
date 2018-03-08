@@ -48,7 +48,7 @@ function warnWhenGetStore(obj: any, ...args: any[]) {
     writable: false,
     get() {
       warn(...args)
-      return obj.store
+      return {}
     }
   })
 }

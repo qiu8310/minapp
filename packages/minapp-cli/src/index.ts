@@ -26,12 +26,12 @@ cli({
   usage: 'minapp <command> [options]',
   version
 }).commands({
-  init: {
+  'init': {
     desc: 'init a project',
     conf: { usage: 'cli init <folder>' },
     cmd: res => initProject(res._)
   },
-  dev: {
+  'dev': {
     desc: 'develop a preject, will inject a global variable: __ENV__="development"',
     conf: {version},
     options: {
@@ -42,7 +42,7 @@ cli({
     },
     cmd: res => compile('dev', res)
   },
-  build: {
+  'build': {
     desc: 'build a project, will inject a global variable: __ENV__="production"',
     conf: {version},
     options: {
@@ -51,6 +51,12 @@ cli({
       'w | watch': '<boolean> watch mode, without webpack-dev-server',
     },
     cmd: res => compile('build', res)
+  },
+  'component-json': {
+    desc: 'generate component autocomplete information to json file',
+    conf: {version},
+    options: {},
+    cmd: componentJson
   }
 }).parse((res, self) => self.help())
 
@@ -135,3 +141,6 @@ function compile(type: string, opts: any) {
   }
 }
 
+function componentJson(res: any) {
+
+}

@@ -23,8 +23,8 @@ import {ComponentAttr} from './dev/'
     }
 */
 
-const SINGLE_LINE_REGEXP = /^\s+properties\s*[:=]\s*\{(.*)\}\s*$/m
-const MULTIPLE_LINE_REGEXP = /^(\s+)properties\s*[:=]\s*\{([\s\S]*?)\1\}\s*$/m
+const SINGLE_LINE_REGEXP = /^\s+(?:\w+.)?properties\s*[:=]\s*\{(.*)\}\s*$/m
+const MULTIPLE_LINE_REGEXP = /^(\s+)(?:\w+.)?properties\s*[:=]\s*\{([\s\S]*?)\1\}\s*$/m
 const DOC_REGEXP = /\/\*\*([\s\S]*?)\*\/[\s\n\r]*(\w+)\s*:/g
 const TYPE_REGEXP = /^function\s+(\w+)\(/
 

@@ -9,7 +9,7 @@ import {pagify, wxp, MyPage} from 'base/'
 @pagify()
 export default class extends MyPage {
   data = {
-    conterStart: 10,
+    count: 10,
     toastVisble: false,
 
     motto: '',
@@ -44,7 +44,7 @@ export default class extends MyPage {
   }
 
   increase() {
-    this.setData({conterStart: this.data.conterStart + 1})
+    this.setData({count: this.data.count + 1})
   }
 
   async onLoad(options: any) {

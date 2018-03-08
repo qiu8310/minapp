@@ -61,6 +61,51 @@ export class BaseComponent<D, S extends Store, A extends BaseApp<S>> extends Bas
    */
   // @ts-ignore
   readonly app: A
+
+  /**
+   * 对 setData 的封装，能过它更新 data 可以支持数据双向绑定
+   *
+   * @memberof BaseComponent
+   */
+  setDataSync(data: Partial<D>, callback?: () => void) {
+    let origin: any = this.data
+    let {minappsync} = origin
+    if (!minappsync) return this.setData(data, callback)
+
+    let mixedData: any = data
+    let parentData: any = {}
+    minappsync.split('&').forEach((pair: string) => {
+      let [key, parentKey] = pair.split('=')
+      if (mixedData[key] !== undefined) {
+        parentData[parentKey] = mixedData[key]
+        delete mixedData[key]
+      }
+    })
+
+    let count = 0
+    let done = () => {
+      count++
+      if (count >= 2 && callback) callback()
+    }
+    if (Object.keys(mixedData).length) {
+      this.setData(mixedData, done)
+    } else {
+      count++
+    }
+    if (Object.keys(parentData).length) {
+      parentData.minappdone = done
+      this.triggerEvent('minappsyncupdate', parentData, {})
+    } else {
+      count++
+    }
+  }
+
+  // @ts-ignore
+  // 双向绑定用于更新父组件的数据
+  private minappsyncupdate(e) {
+    let {minappdone, ...data} = e.detail
+    this.setDataSync(data, minappdone)
+  }
 }
 
 export interface ComifyOptions extends PolluteOptions {
@@ -80,12 +125,13 @@ export function comify<D, S extends Store, A extends BaseApp<S>>(options: Comify
         // @ts-ignore
         let opt: any = obj.properties[k]
         if (!isPlainObject(opt)) {
-          // @ts-ignore
-          obj.properties[k] = opt = {type: opt}
+          opt = {type: opt}
         }
-
+        // @ts-ignore
+        obj.properties[k] = opt
         if (obj.onPropUpdate) injectObserver(obj, k, opt)
       })
+      obj.properties.minappsync = {type: String}
     }
 
     // 处理自定义的方法和生命周期函数

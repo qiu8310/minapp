@@ -30,7 +30,7 @@ declare namespace Component {
      * observer 表示属性值被更改时的响应函数
      */
     properties?: {
-      [key: string]: {
+      [key: string]: PropType | {
         /** 属性类型 */
         type: PropType
         /** 属性初始值 */

@@ -46,6 +46,13 @@ export class BasePage<D, S extends Store, A extends BaseApp<S>> extends Base {
   getLocation() {
     return new Location()
   }
+
+  // @ts-ignore
+  // 双向绑定用于更新父组件的数据
+  private minappsyncupdate(e) {
+    let {minappdone, ...data} = e.detail
+    this.setData(data, minappdone)
+  }
 }
 
 /**
@@ -53,6 +60,7 @@ export class BasePage<D, S extends Store, A extends BaseApp<S>> extends Base {
  */
 export function pagify<D, S extends Store, A extends BaseApp<S>>(options: PagifyOptions = {}) {
   return function(SomePage: new() => BasePage<D, S, A>) {
-    Page(pollute(SomePage, options))
+    let obj = pollute(SomePage, options)
+    Page(obj)
   }
 }
