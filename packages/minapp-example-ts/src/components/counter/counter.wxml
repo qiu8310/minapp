@@ -1,8 +1,0 @@
-<view class="counter">
-  <text>当前值：{{start}}</text>
-
-  <view>
-    <button size="mini" bind:tap="increase">递增</button>
-    <button size="mini" bind:tap="decrease">递减</button>
-  </view>
-</view>

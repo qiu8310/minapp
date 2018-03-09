@@ -28,13 +28,22 @@
 			"path": "packages/minapp-mobx"
 		},
 		{
-			"path": "packages/minapp-example-ts"
-		},
-		{
-			"path": "packages/minapp-example-js"
+			"path": "packages/minapp-example-core-ts"
 		},
     {
+      "path": "packages/minapp-example-core-js"
+    },
+    {
+      "path": "packages/minapp-example-mobx-ts"
+    },
+    {
+      "path": "packages/minapp-example-mobx-js"
+    },
+    {
       "path": "packages/minapp-component-toast"
+    },
+    {
+      "path": "packages/minapp-component-demo"
     },
 		{
 			"path": "packages/minapp-vscode"

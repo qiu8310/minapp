@@ -1,0 +1,8 @@
+<view class="counter">
+  <text>子组件值：{{number}}</text>
+
+  <view>
+    <button size="mini" bind:tap="increase">递增</button>
+    <button size="mini" bind:tap="decrease">递减</button>
+  </view>
+</view>

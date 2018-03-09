@@ -13,7 +13,23 @@ const Server = require('webpack-dev-server')
 
 const debug = require('debug')('minapp:compiler')
 
+export interface Minapp {
+  /** 要编译的组件的路径（指定了此选项表示当前是编译组件，而不是 project） */
+  component?: string
+
+  compiler?: {
+    /** 是否将样式的 px 单位转化成 rpx */
+    px2rpx?: boolean
+    /** 是否将样式的 rpx 单位转化成 px */
+    rpx2px?: boolean
+    /** autoprefixer 的 browsers 配置，参考：https://github.com/ai/browserslist#queries */
+    browsers?: string[]
+  }
+}
+
 export interface CompilerOptions {
+  minapp?: Minapp
+
   watch?: boolean
   production?: boolean
   /** 如果 production 为 true，则 minimize 一定是 true */
@@ -77,6 +93,7 @@ export class Compiler {
   options: CompilerOptions
   /** 本地端的 package.json 的内容 */
   localPkg: any
+  rootDir: string
 
   constructor(srcDir: string, distDir: string, options: Partial<CompilerOptions> = {}) {
     this.production = !!options.production
@@ -86,13 +103,13 @@ export class Compiler {
       process.env.BABEL_ENV = 'production'
       this.minimize = true
     }
-
     debug('production: %j', this.production)
     this.srcDir = path.resolve(srcDir)
     this.distDir = path.resolve(distDir)
 
     try {
       let pkgFile = findup.pkg(this.srcDir)
+      this.rootDir = path.dirname(pkgFile)
       this.localPkg = require(pkgFile)
       this.modulesDir = path.resolve(pkgFile, '..', 'node_modules')
     } catch (e) {

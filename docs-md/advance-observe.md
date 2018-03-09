@@ -47,7 +47,7 @@ title: 个性化定制Page和Component
     }
   ]
 
-  @pagify({minxins})
+  @pagify({mixins})
   export MyPage extends BasePage {
     onLoad() {
       console.log('in page')
@@ -55,4 +55,4 @@ title: 个性化定制Page和Component
   }
   ```
 
-  上面两个 onLoad 都会执行，**注意：minxins 必须保证函数的执行顺序是无关的**
+  上面两个 onLoad 都会执行，**注意：mixins 必须保证函数的执行顺序是无关的**

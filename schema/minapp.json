@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "minapp 配置文件",
+  "type": "object",
+  "properties": {
+    "component": {
+      "type": "string",
+      "description": "指定组件文件所在路径；如果指定了此值，表示此模块是个组件模块，会启动组件编译模式"
+    },
+    "compiler": {
+      "type": "object",
+      "description": "编译相关的选项",
+      "default": {},
+      "properties": {
+        "px2rpx": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否将样式的 px 单位转化成 rpx；默认为 true"
+        },
+        "rpx2px": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否将样式的 rpx 单位转化成 px；默认为 true"
+        },
+        "browsers": {
+          "type": "array",
+          "description": "autoprefixer 的 browsers 配置",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

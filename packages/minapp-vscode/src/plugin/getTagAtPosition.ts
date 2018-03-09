@@ -23,13 +23,13 @@ const attrRegExp = /^([\w:-]+)\s*(=\s*("[^"]*"|'[^']*'|\w+))?\s*/
 export function getTagAtPosition(doc: TextDocument, pos: Position): null | Tag {
   let tag: null | Tag = null
   let line = doc.lineAt(pos.line).text
-  let replacer = (raw: string) => '@'.repeat(raw.length)
+  let replacer = (char: string) => (raw: string) => char.repeat(raw.length)
 
   // 因为双大括号里可能会有任何字符，估优先处理
   // 用特殊字符替换 "{{" 与 "}}"" 之间的语句，并保证字符数一致
-  line = line.replace(/\{\{[^\}]*?\}\}/g, replacer)
-            // 将引号中的内容也替换掉
-            .replace(/("[^"]*"|'[^']')/g, replacer)
+  line = line.replace(/\{\{[^\}]*?\}\}/g, replacer('@'))
+
+  let attrFlagLine = line.replace(/("[^"]*"|'[^']')/g, replacer('%')) // 将引号中的内容也替换成 |
 
   line.replace(tagRegExp, (raw: string, name: string, attrstr: string, index: number) => {
     if (!tag && index <= pos.character && index + raw.length >= pos.character) {
@@ -37,7 +37,7 @@ export function getTagAtPosition(doc: TextDocument, pos: Position): null | Tag {
       let posWord = ''
       if (range) posWord = doc.getText(range)
       let isOnTagName = pos.character <= index + name.length + 1
-      let isOnAttrValue = line[pos.character] === '@'
+      let isOnAttrValue = attrFlagLine[pos.character] === '%'
       let isOnAttrName = !isOnTagName && !isOnAttrValue && !!posWord
       tag = {
         name,
@@ -50,17 +50,20 @@ export function getTagAtPosition(doc: TextDocument, pos: Position): null | Tag {
     }
     return raw
   })
-
   return tag
 }
-
 
 function getAttrs(text: string) {
   let attrs: any = {}
   match(text, attrRegExp, m => {
-    attrs[m[1]] = m[2] ? strip(m[3]) : true
+    // 名字中不要出现 : 符号，方便后缀处理
+    attrs[stripColon(m[1])] = m[2] ? strip(m[3]) : true
   })
   return attrs
+}
+
+function stripColon(name: string) {
+  return name.replace(':', '')
 }
 
 function strip(val: string) {

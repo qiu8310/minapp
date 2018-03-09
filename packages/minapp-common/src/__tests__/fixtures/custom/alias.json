@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "comp": "./comp.js",
+    "comp2": "/custom/test.json",
+    "comp3": "~/custom/no.js"
+  }
+}

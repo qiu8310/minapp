@@ -7,14 +7,17 @@ import * as vscode from 'vscode'
 
 import WxmlAutoCompletion from './plugin/WxmlAutoCompletion'
 import WxmlHoverProvider from './plugin/WxmlHoverProvider'
+import {config, destroy} from './plugin/config'
 
 export function activate(context: vscode.ExtensionContext) {
-    let selector = 'wxml'
-    context.subscriptions.push(
-        vscode.languages.registerCompletionItemProvider(selector, new WxmlAutoCompletion(), '<', ' ', ':'),
-        vscode.languages.registerHoverProvider(selector, new WxmlHoverProvider())
-    )
+  let selector = 'wxml'
+  context.subscriptions.push(
+    vscode.languages.registerCompletionItemProvider(selector, new WxmlAutoCompletion(config), '<', ' ', ':'),
+    vscode.languages.registerHoverProvider(selector, new WxmlHoverProvider(config))
+  )
 }
 
 export function deactivate() {
+  destroy()
 }
+

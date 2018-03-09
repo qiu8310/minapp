@@ -19,8 +19,8 @@ export {map, replace} from 'mora-common/util/async'
 /** 样式文件中匹配静态资源的正则 */
 export const STYLE_RESOURCE_REGEXP = /(?:src=|url\(\s*)['"]?([^'"\)\(#\?]+)[#\?]?[^'"\)\(]*['"]?\s*\)?/gm
 
-export const STATIC_REGEXP = /\.(?:gif|png|jpg|jpeg|svg|ico|woff|woff2|ttf|eot|otf|mp3|mp4)?$/i
-export const JSON_REGEXP = /\.(?:json|cjson|jsonc)?$/i
+export const STATIC_REGEXP = /\.(?:gif|png|jpg|jpeg|svg|ico|woff|woff2|ttf|eot|otf|mp3|mp4)$/i
+export const JSON_REGEXP = /\.(?:json|cjson|jsonc)$/i
 
 export function readFile(file: string) {
   return promisify<Buffer>(fs.readFile, fs)(file)
@@ -30,6 +30,13 @@ export function md5(str: string | Buffer) {
   let hash = crypto.createHash('md5')
   hash.update(str)
   return hash.digest('hex')
+}
+
+/**
+ * 修改后缀名
+ */
+export function replaceExt(file: string, ext: string) {
+  return file.replace(/\.\w+$/, ext)
 }
 
 /**

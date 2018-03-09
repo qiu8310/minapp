@@ -52,15 +52,32 @@ export default class WxmlLoader extends Loader {
 
   /**
    * 1. bind:xxx 和 catch:xxx => bindxxx 和 catchxxx
-   * 2.
+   * 2. 将 aaa.sync="bbb" xxx.sync="yyy" => aaa="{{bbb}}" xxx="{{yyy}}" minappsync="aaa=bbb&xxx=yyy"
    */
   private updateNode(nodes: parser.Node[]) {
     iterateTagNode(nodes, node => {
+      let minappsync: string[] = []
       node.attrs.forEach(attr => {
-        if (/^(bind|catch):(\w+)$/.test(attr.name)) {
+        let {name, value} = attr
+        if (/^(bind|catch):(\w+)$/.test(name)) {
           attr.name = RegExp.$1 + RegExp.$2
+        } else if (name.endsWith('.sync') && typeof value === 'string') {
+          name = name.substr(0, name.length - 5)
+          value = stripBrackets(value)
+          minappsync.push(`${name}=${value}`)
+
+          attr.name = name
+          attr.value = `{{${value}}}`
         }
       })
+
+      if (minappsync.length) {
+        node.attrs.push(
+          new parser.TagNodeAttr('minappsync', minappsync.join('&')),
+          new parser.TagNodeAttr('bindminappsyncupdate', 'minappsyncupdate')
+        )
+      }
+
     })
   }
 
@@ -104,10 +121,13 @@ export default class WxmlLoader extends Loader {
           this.emitWarning(`${toString(node, attr)} 中的文件无法找到`)
         }
       } else {
-        if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
-          attr.value = attr.value.replace(src, await this.loadStaticFile(absFile))
-        } else if (node.name === 'import' || node.name === 'include') {
-          requires.push(absFile)
+        if (this.shouldResolve(absFile)) {
+          if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
+            attr.value = attr.value.replace(src, await this.loadStaticFile(absFile))
+          } else if (node.name === 'import' || node.name === 'include') {
+            attr.value = this.getExtractRequirePath(absFile, '.wxml')
+            requires.push(absFile)
+          }
         }
       }
     }, 5)
@@ -133,4 +153,13 @@ interface Asset {
 
 function toString(node: parser.TagNode, attr: parser.TagNodeAttr) {
   return `<${node.name} ${attr.toXML()}>`
+}
+
+/**
+ * 去除 str 中的 {{ }} 符号
+ */
+function stripBrackets(str: string) {
+  return str.startsWith('{{') && str.endsWith('}}')
+    ? str.substr(2, str.length - 4).trim()
+    : str
 }

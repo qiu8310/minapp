@@ -68,6 +68,7 @@
 * [ ] 实现类似于 vue 的功能，可以将所有文件写在一个页面上
 * [ ] webpack 升级到 4.0
 * [ ] 写一个小程序的自动化测试框架
+* [ ] 自定义组件支持智能提示(需要修改 minapp-vscode 插件)
 
 
 [vscode-minapp]: https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/page.json",
+  "usingComponents": {
+    "counter": "components/counter/counter",
+    "demo": "@minapp/component-demo"  // 这个组件是 node_modules 中的组件
+  }
+}
