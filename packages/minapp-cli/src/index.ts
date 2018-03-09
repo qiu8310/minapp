@@ -79,7 +79,7 @@ function init(folders: string[]) {
   if (fs.readdirSync(dir).length) return error(`Directory "${dir}" already has files in it, please use an empty directory or not exist directory`)
 
   inquirer.prompt(optionsFactory(absDir)).then(answers => {
-    make(`${answers.type}-${getStateType[answers.state]}-${answers.language === 'TypeScript' ? 'ts' : 'js'}`, absDir, answers)
+    make(`${answers.type}-${getStateType[answers.state || 'None']}-${answers.language === 'TypeScript' ? 'ts' : 'js'}`, absDir, answers)
 
     console.log(
       `${EOL}  ${answers.language} ${answers.type} ${answers.name} initialize successfully${EOL}`
@@ -125,7 +125,10 @@ function optionsFactory(absDir: string) {
       name: 'state',
       message: 'State Management',
       choices: ['None', 'Mobx'],
-      default: 1
+      default: 1,
+      when: (answers: any) => {
+        return answers.type === 'Project'
+      }
     },
     {
       type: 'input',

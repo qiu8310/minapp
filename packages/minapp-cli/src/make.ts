@@ -84,9 +84,18 @@ function stringify(obj: any) {
 
 if (!module.parent) internalMake()
 
-function reviseJSON(content: string, key: string, output: string) {
-  let json = JSON.parse(content)
-  json[key] = output
+function reviseJSON(content: string, nestKeys: string|string[], output: string): string {
+  if (!Array.isArray(nestKeys)) {
+    nestKeys = [nestKeys];
+  }
+  let json = JSON.parse(content);
+  nestKeys.reduce((value, key, index) => {
+    if (index === nestKeys.length - 1) {
+      value[key] = output;
+    } else {
+      return value[key]
+    }
+  }, json)
   return JSON.stringify(json, null, 2)
 }
 
@@ -109,7 +118,7 @@ export function make(id: string, toDir: string, data: any) {
 
         // windows 用户需要安装 awesome-typescript-loader
         if (name === 'package.json.dtpl' && isWin && data.language === 'TypeScript') {
-          content = reviseJSON(content, 'devDependencies', '^3.4.1')
+          content = reviseJSON(content, ['devDependencies', 'awesome-typescript-loader'], '^3.4.1')
         }
 
         if (name === 'package.json.dtpl' && data.type !== 'Project') {
