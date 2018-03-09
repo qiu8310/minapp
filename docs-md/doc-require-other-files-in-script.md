@@ -1,5 +1,5 @@
 ---
-title: 关于 js 或 ts 中的 require
+title: 在脚本中 require 其它文件
 ---
 
 像你用 webpack 开发 web 程序一样，图片文件路径不能直接写在 js 或 ts 中，需要使用 require 来引用，如： `require("path/to/image.png")`

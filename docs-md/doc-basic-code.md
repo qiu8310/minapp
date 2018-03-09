@@ -6,12 +6,12 @@ title: 基本代码
 **MyStore.js**
 
 ```js
-// MyStore.js 建一个 Store 类
+// MyStore.js 建一个 MobxStore 类
 
-import {Store} from '@minapp/mobx'
+import {MobxStore} from '@minapp/mobx'
 import {observable} from 'mobx'
 
-export class MyStore extends Store {
+export class MyStore extends MobxStore {
   @observable userInfo = null
 }
 ```
@@ -21,7 +21,7 @@ export class MyStore extends Store {
 
 ```js
 // MyApp.js
-import {BaseApp, Store, appify, wxp} from '@minapp/mobx'
+import {MobxApp, MobxStore, appify, wxp} from '@minapp/mobx'
 import {MyStore} from './MyStore'
 
 // appify 主要是将 MyApp 转化成一个 PlainObject，并传入微信原生的函数 App 中；另外注入全局 store 和框架需要的数据
@@ -33,7 +33,7 @@ import {MyStore} from './MyStore'
     tabBarList: require('./app.json?tabBar.list') // 获取 app.json 中的 tabBar.list 字段
   }
 )
-export class MyApp extends BaseApp {
+export class MyApp extends MobxApp {
   async onLoad() {
     this.store.userInfo = (await wxp.getUserInfo()).userInfo // 轻松修改全局数据
   }
@@ -43,13 +43,13 @@ export class MyApp extends BaseApp {
 **IndexPage.js**
 
 ```js
-import {BasePage, pagify} from '@minapp/mobx'
+import {MobxPage, pagify} from '@minapp/mobx'
 
 // 类似于 appify，所有 Page 都需要调用 pagify；
 // 它会将 IndexPage 转化成 PlainObject，并传入微信原生的函数 App 中；
 // 另外会像这个对象中注入 app 实例和 app.store 对象
 @pagify()
-export class IndexPage extends BasePage {
+export class IndexPage extends MobxPage {
   onLoad() {
     // getUserInfo 是网络接口，所以当 indexPage 加载完的时候，app 中的接口不一定请求完了，所以要判断
     if (this.store.userInfo) {
