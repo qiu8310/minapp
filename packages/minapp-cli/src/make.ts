@@ -17,9 +17,10 @@ const PKGS_DIR = path.resolve(ROOT_DIR, '..')
 const TEMPLATE_DIR = path.join(ROOT_DIR, 'template')
 
 const SOURCE_PROJECTS = fs.readdirSync(PKGS_DIR).filter(p => p.startsWith('minapp-example-'))
+const SOURCE_COMPONENTS = fs.readdirSync(PKGS_DIR).filter(p => p.startsWith('minapp-component-'))
 
 function internalMake() {
-  SOURCE_PROJECTS.forEach(projectName => {
+  [...SOURCE_COMPONENTS, ...SOURCE_PROJECTS].forEach(projectName => {
     let id = projectName.replace('minapp-', '')
     let projectFolder = path.join(PKGS_DIR, projectName)
     let distProjectFolder = path.join(TEMPLATE_DIR, id)
@@ -83,8 +84,14 @@ function stringify(obj: any) {
 
 if (!module.parent) internalMake()
 
+function reviseJSON(content: string, key: string, output: string) {
+  let json = JSON.parse(content)
+  json[key] = output
+  return JSON.stringify(json, null, 2)
+}
+
 export function make(id: string, toDir: string, data: any) {
-  let fromDir = path.join(TEMPLATE_DIR, id)
+  let fromDir = path.join(TEMPLATE_DIR, id.toLowerCase())
   walkDirectory(fromDir, (dir, name, fromFile, stat) => {
     let relative = path.relative(fromDir, fromFile)
     let toFile = path.join(toDir, relative)
@@ -101,14 +108,20 @@ export function make(id: string, toDir: string, data: any) {
         })
 
         // windows 用户需要安装 awesome-typescript-loader
-        if (name === 'package.json.dtpl' && isWin && id === 'ts') {
-          let json = JSON.parse(content)
-          json.devDependencies['awesome-typescript-loader'] = '^3.4.1'
-          content = JSON.stringify(json, null, 2)
+        if (name === 'package.json.dtpl' && isWin && data.language === 'TypeScript') {
+          content = reviseJSON(content, 'devDependencies', '^3.4.1')
+        }
+
+        if (name === 'package.json.dtpl' && data.type !== 'Project') {
+          content = reviseJSON(content, 'main', `dist/${data.name}.js`)
         }
       }
 
-      fs.writeFileSync(toFile.replace(/\.dtpl$/, ''), content)
+      if (name === 'minapp.json.dtpl') {
+        content = reviseJSON(content.toString(), 'component', `src/${data.name}`)
+      }
+
+      fs.writeFileSync(toFile.replace(/demo/, data.name).replace(/\.dtpl$/, ''), content)
     }
   })
 }

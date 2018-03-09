@@ -70,3 +70,8 @@ export function getComponentJson(refFile: string) {
   }
   return {}
 }
+
+export enum getStateType {
+  None = 'core',
+  Mobx = 'mobx'
+}
