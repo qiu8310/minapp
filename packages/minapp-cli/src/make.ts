@@ -13,15 +13,17 @@ import * as path from 'path'
 import {walkDirectory} from './helper'
 
 const ROOT_DIR = path.resolve(__dirname, '..')
+const PKGS_DIR = path.resolve(ROOT_DIR, '..')
 const TEMPLATE_DIR = path.join(ROOT_DIR, 'template')
 
-const SOURCE_PROJECTS = ['minapp-example-ts', 'minapp-example-js']
+const SOURCE_PROJECTS = fs.readdirSync(PKGS_DIR).filter(p => p.startsWith('minapp-example-'))
 
 function internalMake() {
   SOURCE_PROJECTS.forEach(projectName => {
-    let id = projectName.replace(/^.*-(\w+)$/i, '$1')
-    let projectFolder = path.resolve(ROOT_DIR, '..', projectName)
+    let id = projectName.replace('minapp-', '')
+    let projectFolder = path.join(PKGS_DIR, projectName)
     let distProjectFolder = path.join(TEMPLATE_DIR, id)
+    let commonProjectFolder = path.join(TEMPLATE_DIR, 'example-common')
 
     info('初始化目录 ' + distProjectFolder)
     fs.ensureDirSync(distProjectFolder)
@@ -34,13 +36,13 @@ function internalMake() {
       let relative = path.relative(projectFolder, file)
       let distFile = path.join(distProjectFolder, relative)
 
-      console.log('  ' + relative)
       if (stat.isDirectory()) {
         fs.ensureDirSync(distFile)
-      } else if (stat.isFile()) {
+      } else if (stat.isFile() && !fs.existsSync(path.join(commonProjectFolder, relative + '.dtpl'))) {
+        console.log('  ' + relative)
         let buffer: string | Buffer = fs.readFileSync(file)
         if (name === 'package.json') {
-          buffer = updatePackageJson(JSON.parse(buffer.toString()), id as 'ts')
+          buffer = updatePackageJson(JSON.parse(buffer.toString()), id)
         } else if (name === 'project.config.json') {
           buffer = updateProjectConfigJson(JSON.parse(buffer.toString()))
         }
@@ -52,14 +54,19 @@ function internalMake() {
   })
 }
 
-function updatePackageJson(json: any, id: 'js' | 'ts'): string {
+function updatePackageJson(json: any, id: string): string {
   json.name = '${name}'
   json.description = '${description}'
   json.author = '${author}'
+  json.scripts.dev = 'minapp dev'
+  json.scripts.build = 'minapp build --publicPath http://your.static.server/'
   delete json.publishConfig
   delete json.devDependencies['mora-common']
-  if (id === 'js') {
+  if (/-js$/.test(id)) {
     delete json.devDependencies.tslib
+  }
+  if (/-core-/.test(id)) {
+    delete json.dependencies['@minapp/component-toast']
   }
   return stringify(json)
 }

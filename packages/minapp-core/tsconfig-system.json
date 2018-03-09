@@ -20,10 +20,10 @@
     "lib": [
       "es6"
     ],
-    "outDir": "dist/"
+    "outDir": "dist/system/"
   },
   "include": [
-    "src/",
+    "src/system/",
     "typing"
   ],
   "exclude": [

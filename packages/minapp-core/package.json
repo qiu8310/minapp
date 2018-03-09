@@ -9,7 +9,7 @@
     "lint": "tslint src/**/*.ts",
     "postpublish": "cnpm sync @minapp/core",
     "build": "tsc && node scripts/init.js",
-    "watch": "tsc -w"
+    "watch": "tsc -w -p tsconfig-system.json"
   },
   "publishConfig": {
     "access": "public"

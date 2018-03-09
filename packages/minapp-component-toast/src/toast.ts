@@ -28,9 +28,7 @@ export default class extends BaseComponent<any, any> {
   }
 
   onReady() {
-    if (__ENV__ === 'development') {
-      console.log('toast data', this.data)
-    }
+
   }
 
   onPropUpdate(prop: string, val: boolean) {

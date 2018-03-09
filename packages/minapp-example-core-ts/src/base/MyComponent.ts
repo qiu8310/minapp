@@ -3,13 +3,9 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-/// <reference path="../../globals.d.ts" />
+import {MyApp} from './MyApp'
+import {BaseComponent} from '@minapp/core/system'
 
-export * from './module/BaseApp'
-export * from './module/BasePage'
-export * from './module/BaseComponent'
-export * from './feat/Location'
-export * from './feat/Url'
-import * as util from './util'
+export class MyComponent<D = any> extends BaseComponent<D, MyApp> {
 
-export {util}
+}
