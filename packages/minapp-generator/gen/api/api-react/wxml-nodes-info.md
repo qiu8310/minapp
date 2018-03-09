@@ -28,13 +28,13 @@ WXML节点信息API
 
 **selectorQuery 对象的方法列表：**
 
-  方法             |  参数               |  说明       
--------------------|---------------------|-------------
-  in               |  object Component   |参考下面详细介绍
-  select           |  selector           |参考下面详细介绍
-  selectAll        |  selector           |参考下面详细介绍
-  selectViewport   |                     |参考下面详细介绍
-  exec             |  [callback]         |参考下面详细介绍
+  方法             |  参数         |  说明       
+-------------------|---------------|-------------
+  in               |  component    |参考下面详细介绍
+  select           |  selector     |参考下面详细介绍
+  selectAll        |  selector     |参考下面详细介绍
+  selectViewport   |               |参考下面详细介绍
+  exec             |  [callback]   |参考下面详细介绍
 
 #### selectorQuery.in(component)
 
@@ -117,7 +117,7 @@ WXML节点信息API
 
 添加节点的滚动位置查询请求，以像素为单位。节点必须是`scroll-view`或者viewport。返回值是nodesRef对应的selectorQuery。
 
-返回的节点信息中，每个节点的滚动位置用`scrollLeft`、`scrollHeight`字段描述。如果提供了callback回调函数，在执行selectQuery的exec方法后，节点信息会在callback中返回。
+返回的节点信息中，每个节点的滚动位置用`scrollLeft`、`scrollTop`字段描述。如果提供了callback回调函数，在执行selectQuery的exec方法后，节点信息会在callback中返回。
 
 **示例代码：**
 
@@ -137,14 +137,14 @@ WXML节点信息API
 
 获取节点的相关信息，需要获取的字段在`fields`中指定。返回值是nodesRef对应的selectorQuery。可指定获取的字段包括：
 
-  字段名         | 默认值 |  说明                                                                             
------------------|--------|-----------------------------------------------------------------------------------
-  id             |  否    |  是否返回节点`id`                                                                 
-  dataset        |  否    |  是否返回节点`dataset`                                                            
-  rect           |  否    |  是否返回节点布局位置（`left` `right` `top` `bottom`）                            
-  size           |  否    |  是否返回节点尺寸（`width` `height`）                                             
-  scrollOffset   |  否    |  是否返回节点的 `scrollLeft` `scrollTop` ，节点必须是`scroll-view`或者viewport    
-  properties     |  []    |指定属性名列表，返回节点对应属性名的当前属性值（只能获得组件文档中标注的常规属性值， `id` `class` `style` 和事件绑定的属性值不可获取）
+  字段名         |  默认值 |  说明                                                                             
+-----------------|---------|-----------------------------------------------------------------------------------
+  id             |  否     |  是否返回节点`id`                                                                 
+  dataset        |  否     |  是否返回节点`dataset`                                                            
+  rect           |  否     |  是否返回节点布局位置（`left` `right` `top` `bottom`）                            
+  size           |  否     |  是否返回节点尺寸（`width` `height`）                                             
+  scrollOffset   |  否     |  是否返回节点的 `scrollLeft` `scrollTop` ，节点必须是`scroll-view`或者viewport    
+  properties     |  `[]`   |指定属性名列表，返回节点对应属性名的当前属性值（只能获得组件文档中标注的常规属性值， `id` `class` `style` 和事件绑定的属性值不可获取）
 
 **示例代码：**
 

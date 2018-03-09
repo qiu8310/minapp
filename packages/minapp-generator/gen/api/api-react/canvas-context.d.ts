@@ -18,6 +18,13 @@ class CanvasContext {
    * ----------|-----------------------------------------------------------------------------|--------------------
    *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
    *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setFillStyle(color)
+   *     canvasContext.fillStyle = color // 基础库 1.9.90 起支持
+   *     ```
+   *
    * **例子：**
    *
    *     ```js
@@ -41,6 +48,13 @@ class CanvasContext {
    *   参数    |  类型                                                                       |  定义              
    * ----------|-----------------------------------------------------------------------------|--------------------
    *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setStrokeStyle(color)
+   *     canvasContext.strokeStyle = color // 基础库 1.9.90 起支持
+   *     ```
    *
    * **例子：**
    *
@@ -80,6 +94,62 @@ class CanvasContext {
    *     ```
    */
   setShadow(offsetX: number, offsetY: number, blur: number, color: string): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 设置阴影的模糊级别
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.shadowBlur = value
+   *     ```
+   */
+  shadowBlur(): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 设置阴影的颜色
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.shadowColor = value
+   *     ```
+   */
+  shadowColor(): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 设置阴影相对于形状在水平方向的偏移
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.shadowOffsetX = value
+   *     ```
+   */
+  shadowOffsetX(): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 设置阴影相对于形状在竖直方向的偏移
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.shadowOffsetY = value
+   *     ```
+   */
+  shadowOffsetY(): void
   /**
    *
    * **定义：**
@@ -200,6 +270,13 @@ class CanvasContext {
    * --------------|-----------|-----------------
    *   lineWidth   |  Number   |线条的宽度(单位是px)
    *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setLineWidth(lineWidth)
+   *     canvasContext.lineWidth = lineWidth // 基础库 1.9.90 起支持
+   *     ```
+   *
    * **例子：**
    *
    *     ```js
@@ -242,6 +319,13 @@ class CanvasContext {
    *   参数      |  类型     |  范围                      |  说明        
    * ------------|-----------|----------------------------|--------------
    *   lineCap   |  String   |  'butt'、'round'、'square' |线条的结束端点样式
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setLineCap(lineCap)
+   *     canvasContext.lineCap = lineCap // 基础库 1.9.90 起支持
+   *     ```
    *
    * **示例代码：**
    *
@@ -288,6 +372,13 @@ class CanvasContext {
    *   参数       |  类型     |  范围                      |  说明        
    * -------------|-----------|----------------------------|--------------
    *   lineJoin   |  String   |  'bevel'、'round'、'miter' |线条的结束交点样式
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setLineJoin(lineJoin)
+   *     canvasContext.lineJoin = lineJoin // 基础库 1.9.90 起支持
+   *     ```
    *
    * **例子：**
    *
@@ -368,6 +459,13 @@ class CanvasContext {
    *   参数         |  类型     |  说明     
    * ---------------|-----------|-----------
    *   miterLimit   |  Number   |最大斜接长度
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setMiterLimit(miterLimit)
+   *     canvasContext.miterLimit = miterLimit // 基础库 1.9.90 起支持
+   *     ```
    *
    * **例子：**
    *
@@ -995,7 +1093,7 @@ class CanvasContext {
    * -----------|-----------|-----------------------------------------------------
    *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
    *
-   * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018228)
+   * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=201838)
    *
    * **参数：**
    *
@@ -1137,6 +1235,13 @@ class CanvasContext {
    * ----------|-----------|--------------------------------
    *   align   |  String   |可选值 'left'、'center'、'right'
    *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setTextAlign(align)
+   *     canvasContext.textAlign = align // 基础库 1.9.90 起支持
+   *     ```
+   *
    * **示例代码：**
    *
    *     ```js
@@ -1173,6 +1278,13 @@ class CanvasContext {
    *   参数           |  类型     |  定义                                   
    * -----------------|-----------|-----------------------------------------
    *   textBaseline   |  String   |可选值 'top'、'bottom'、'middle'、'normal'
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setTextBaseline(textBaseline)
+   *     canvasContext.textBaseline = textBaseline // 基础库 1.9.90 起支持
+   *     ```
    *
    * **示例代码：**
    *
@@ -1334,6 +1446,13 @@ class CanvasContext {
    * ----------|-----------|--------|---------------------------
    *   alpha   |  Number   |  0~1   |透明度，0 表示完全透明，1 表示完全不透明
    *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setGlobalAlpha(alpha)
+   *     canvasContext.globalAlpha = alpha // 基础库 1.9.90 起支持
+   *     ```
+   *
    * **例子：**
    *
    *     ```javascript
@@ -1422,4 +1541,209 @@ class CanvasContext {
    *     ```
    */
   draw(reserve?: boolean, callback?: CanvasContext.draw.Param1): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 测量文本尺寸信息，目前仅返回文本宽度。同步接口。
+   *
+   * **参数：**
+   *
+   *   参数   |  类型     |  说明     
+   * ---------|-----------|-----------
+   *   text   |  String   |要测量的文本
+   *
+   * **返回：**
+   *
+   * 返回 TextMetrics 对象，结构如下：
+   *
+   *   参数    |  类型     |  说明    
+   * ----------|-----------|----------
+   *   width   |  Number   |文本的宽度
+   *
+   * **例子：**
+   *
+   *     ```javascript
+   *     const ctx = wx.createCanvasContext('myCanvas')
+   *     ctx.font = 'italic bold 20px cursive'
+   *     const metrics = ctx.measureText('Hello World')
+   *     console.log(metrics.width)
+   *     ```
+   */
+  measureText(width: number): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 该属性是设置要在绘制新形状时应用的合成操作的类型。
+   *
+   * **参数：**
+   *
+   *   属性值 |  类型     |  说明               
+   * ---------|-----------|---------------------
+   *   type   |  String   |标识要使用哪种合成或混合模式操作
+   *
+   * **`type` 支持的操作有：** | 平台 | 操作 | | \-\-\-\- | \-\-\-\- | | 安卓 | xor, source-over, source-atop, destination-out, lighter, overlay, darken, lighten, hard-light | | iOS |
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.globalCompositeOperation = type
+   *     ```
+   */
+  globalCompositeOperation(): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 根据控制点和半径绘制圆弧路径。
+   *
+   * **参数：**
+   *
+   *   属性值   |  类型     |  说明            
+   * -----------|-----------|------------------
+   *   x1       |  Number   |第一个控制点的 x 轴坐标
+   *   y1       |  Number   |第一个控制点的 y 轴坐标
+   *   x2       |  Number   |第二个控制点的 x 轴坐标
+   *   y2       |  Number   |第二个控制点的 y 轴坐标
+   *   radius   |  Number   |  圆弧的半径      
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.arcTo(x1, y1, x2, y2, radius)
+   *     ```
+   */
+  arcTo(): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 给定的 (x, y) 位置绘制文本描边的方法
+   *
+   * **参数：**
+   *
+   *   属性值     |  类型     |  说明           
+   * -------------|-----------|-----------------
+   *   text       |  String   |  要绘制的文本   
+   *   x          |  Number   |文本起始点的 x 轴坐标
+   *   y          |  Number   |文本起始点的 y 轴坐标
+   *   maxWidth   |  Number   |需要绘制的最大宽度，可选
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.strokeText(text, x, y, maxWidth)
+   *     ```
+   */
+  strokeText(): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 设置虚线偏移量的属性
+   *
+   * **参数：**
+   *
+   *   属性值  |  类型     |  说明         
+   * ----------|-----------|---------------
+   *   value   |  Number   |偏移量，初始值为 0
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.lineDashOffset = value
+   *     ```
+   */
+  lineDashOffset(): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 对指定的图像创建模式的方法，可在指定的方向上重复元图像
+   *
+   * **参数：**
+   *
+   *   属性值       |  类型     |  说明                                                   
+   * ---------------|-----------|---------------------------------------------------------
+   *   image        |  String   |  重复的图像源，仅支持包内路径和临时路径                 
+   *   repetition   |  String   |指定如何重复图像，有效值有: repeat, repeat-x, repeat-y, no-repeat
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.createPattern(image, repetition)
+   *     ```
+   *
+   * **例子：**
+   *
+   *     ```javascript
+   *     const ctx = wx.createCanvasContext('myCanvas')
+   *     const pattern = ctx.createPattern('/path/to/image', 'repeat-x')
+   *     ctx.fillStyle = pattern
+   *     ctx.fillRect(0, 0, 300, 150)
+   *     ctx.draw()
+   *     ```
+   */
+  createPattern(): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 设置当前字体样式的属性
+   *
+   * **参数：**
+   *
+   *   属性值  |  类型     |  说明                                                
+   * ----------|-----------|------------------------------------------------------
+   *   value   |  String   |符合CSS font 语法的DOMString 字符串，默认字体是 10px sans-serif
+   *
+   * **value 支持的属性有：**
+   *
+   *   属性     |  说明                               
+   * -----------|-------------------------------------
+   *   style    |字体样式。仅支持 italic, oblique, normal
+   *   size     |  字体大小                           
+   *   weight   |  字体粗细。仅支持 normal, bold      
+   *   family   | 字体族名。注意确认各平台所支持的字体
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.font = value
+   *     ```
+   */
+  font(style: any, size: any, weight: any, family: any): void
+  /**
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   *
+   * **定义：**
+   *
+   * 使用矩阵重新设置（覆盖）当前变换的方法
+   *
+   * **参数：**
+   *
+   *   属性值       |  类型     |  说明   
+   * ---------------|-----------|---------
+   *   scaleX       |  Number   | 水平缩放
+   *   skewX        |  Number   | 水平倾斜
+   *   skewY        |  Number   | 垂直倾斜
+   *   scaleY       |  Number   | 垂直缩放
+   *   translateX   |  Number   | 水平移动
+   *   translateY   |  Number   | 垂直移动
+   *
+   * **语法：**
+   *
+   *     ```javascript
+   *     canvasContext.setTransform(scaleX, skewX, skewY, scaleY, translateX, translateY)
+   *     ```
+   */
+  setTransform(): void
 }

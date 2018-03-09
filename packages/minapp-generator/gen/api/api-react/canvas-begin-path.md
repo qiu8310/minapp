@@ -35,4 +35,4 @@ canvasContext.beginPath
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-path.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-path.png?t=201838)

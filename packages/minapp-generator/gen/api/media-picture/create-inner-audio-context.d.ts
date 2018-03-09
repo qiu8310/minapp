@@ -80,6 +80,12 @@ export namespace wx {
      */
     buffered: number
     /**
+     * 音量。范围 0~1。
+     *
+     * @since 1.9.90
+     */
+    volume: number
+    /**
      * 播放
      */
     play(): any

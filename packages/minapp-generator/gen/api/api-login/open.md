@@ -8,13 +8,14 @@
 
 **OBJECT参数说明：**
 
-  参数名            |  类型       |  必填 |  说明                                             | 最低版本 
---------------------|-------------|-------|---------------------------------------------------|----------
-  withCredentials   |  Boolean    |  否   |  是否带上登录态信息                               |  1.1.0   
-  lang              |  String     |  否   |指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。默认为en。|  1.3.0   
-  success           |  Function   |  否   |  接口调用成功的回调函数                           |          
-  fail              |  Function   |  否   |  接口调用失败的回调函数                           |          
-  complete          |  Function   |  否   |  接口调用结束的回调函数（调用成功、失败都会执行） |          
+  参数名            |  类型       |  必填 |  说明                                             |  最低版本 
+--------------------|-------------|-------|---------------------------------------------------|-----------
+  withCredentials   |  Boolean    |  否   |  是否带上登录态信息                               |  1.1.0    
+  lang              |  String     |  否   |指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。默认为en。|  1.3.0    
+  timeout           |  Number     |  否   |  超时时间，单位 ms                                |  1.9.90   
+  success           |  Function   |  否   |  接口调用成功的回调函数                           |           
+  fail              |  Function   |  否   |  接口调用失败的回调函数                           |           
+  complete          |  Function   |  否   |  接口调用结束的回调函数（调用成功、失败都会执行） |           
 
 **注：当 withCredentials 为 true 时，要求此前有调用过 wx.login 且登录态尚未过期，此时返回的数据会包含 encryptedData, iv 等敏感信息；当 withCredentials 为 false 时，不要求有登录态，返回的数据不包含 encryptedData, iv 等敏感信息。**
 

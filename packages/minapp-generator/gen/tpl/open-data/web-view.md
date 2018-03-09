@@ -11,7 +11,7 @@ web-view 组件是一个可以用来承载网页的容器，会自动铺满整�
   src           |  String         |        |webview 指向网页的链接。需登录[小程序管理后台](https://mp.weixin.qq.com/)配置域名白名单。
   bindmessage   |  EventHandler   |        |网页向小程序 postMessage 时，会在特定时机（小程序后退、组件销毁、分享）触发并收到消息。e.detail = { data }
 
-示例代码：
+**示例代码：**
 
     <!-- wxml -->
     <!-- 指向微信公众平台首页的web-view -->
@@ -32,7 +32,7 @@ web-view 组件是一个可以用来承载网页的容器，会自动铺满整�
   wx.miniProgram.postMessage    |向小程序发送消息|  1.7.1   
   wx.miniProgram.getEnv         |  获取当前环境 |  1.7.1   
 
-示例代码：
+**示例代码：**
 
     <!-- html -->
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
@@ -82,7 +82,7 @@ web-view 组件是一个可以用来承载网页的容器，会自动铺满整�
 
 用户分享时可获取当前`<web-view/>`的URL，即在`onShareAppMessage`回调中返回`webViewUrl`参数。
 
-示例代码：
+**示例代码：**
 
     Page({
       onShareAppMessage(options) {
@@ -95,7 +95,7 @@ web-view 组件是一个可以用来承载网页的容器，会自动铺满整�
 
 在网页内可通过`window.__wxjs_environment`变量判断是否在小程序环境，建议在`WeixinJSBridgeReady`回调中使用，也可以使用[JSSDK 1.3.2](https://res.wx.qq.com/open/js/jweixin-1.3.2.js)提供的`getEnv`接口。
 
-示例代码：
+**示例代码：**
 
     // web-view下的页面内
     function ready() {

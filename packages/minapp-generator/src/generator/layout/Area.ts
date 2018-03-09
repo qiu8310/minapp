@@ -192,7 +192,7 @@ export class ApiArea extends Area {
             warn(`不支持 ${definition} 的 type=${definition.type}，无法注入 ${s} 模块`)
           }
         } else {
-          if (this.klassInfo && s.key === this.klassInfo.instanceName) {
+          if (this.klassInfo && s.key && s.key.toLowerCase() === this.klassInfo.instanceName.toLowerCase()) {
             if (!this.klass) this.klass = new Klass(this.klassInfo.klassName, s.hasDefinitions ? s.definitions : [], s.desc())
             else if (s.hasDefinitions) this.klass.definitions.push(...s.definitions)
             else warn(`${s} 无任何用途，需要 modify`)

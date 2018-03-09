@@ -31,7 +31,7 @@
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/linear-gradient.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/linear-gradient.png?t=201838)
 
 ### 使用 createCircularGradient()
 
@@ -48,4 +48,4 @@
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/circular-gradient.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/circular-gradient.png?t=201838)

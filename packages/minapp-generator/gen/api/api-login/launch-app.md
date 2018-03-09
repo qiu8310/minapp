@@ -18,12 +18,18 @@ launchApp(OBJECT)
 *   当小程序从 1089（微信聊天主界面下拉）或 1090（长按小程序右上角菜单唤出最近使用历史）的场景打开时，该状态不变，即保持上一次打开小程序时该状态的值。
 *   当小程序从非 1036/1089/1090 的场景打开，该状态置为 false。
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=201838)
 
 使用方法
 ----
 
+### 小程序端
+
 需要将 `<button>` 组件 `open-type` 的值设置为 `launchApp`。如果需要在打开 APP 时向 APP 传递参数，可以设置 `app-parameter` 为要传递的参数。通过 `binderror` 可以监听打开 APP 的错误事件。
+
+### app 端
+
+Android 第三方 app 需要处理 `ShowMessageFromWX.req` 的微信回调，iOS 则需要将 appId 添加到第三方 app 工程所属的 plist 文件 URL types 字段。 `app-parameter` 的获取方法，请参考 [Android SDKSample](https://open.weixin.qq.com/zh_CN/htmledition/res/dev/download/sdk/WeChatSDK_sample_Android.zip) 中 WXEntryActivity 中的 onReq 方法以及 [iOS SDKSample](https://open.weixin.qq.com/zh_CN/htmledition/res/dev/download/sdk/WeChatSDK_sample_iOS_1.4.2.1.zip) 中 WXApiDelegate 中的 onReq 方法。
 
 例子
 --

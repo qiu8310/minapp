@@ -7,6 +7,12 @@ canvasContext.setLineCap
 
 设置线条的端点样式。
 
+### 语法
+
+    canvasContext.setLineCap(lineCap)
+    canvasContext.lineCap = lineCap // 基础库 1.9.90 起支持
+    
+
 ### 参数
 
   参数      |  类型     |  范围                      |  说明        
@@ -45,4 +51,4 @@ canvasContext.setLineCap
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-cap.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-cap.png?t=201838)

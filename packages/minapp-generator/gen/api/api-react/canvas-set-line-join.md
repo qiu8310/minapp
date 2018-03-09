@@ -7,6 +7,12 @@ canvasContext.setLineJoin
 
 设置线条的交点样式。
 
+### 语法
+
+    canvasContext.setLineJoin(lineJoin)
+    canvasContext.lineJoin = lineJoin // 基础库 1.9.90 起支持
+    
+
 ### 参数
 
   参数       |  类型     |  范围                      |  说明        
@@ -49,4 +55,4 @@ canvasContext.setLineJoin
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-join.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-join.png?t=201838)

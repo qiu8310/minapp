@@ -72,7 +72,7 @@ export function normalizeTableRows(rows: string[][], columns: number): string[][
     let i = 0
     while (i++ < columns - row.length) row.push('')
     // 换行符会导致无法生成 markdownTable
-    return row.map(cell => cell ? cell.replace('\n', ' ') : '')
+    return row.map(cell => cell ? cell.replace(/\r?\n/g, ' ') : '')
   })
 }
 

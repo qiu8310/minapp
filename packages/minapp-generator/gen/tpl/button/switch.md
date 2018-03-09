@@ -27,7 +27,7 @@
     })
     
 
-![switch](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/switch.png?t=201828)
+![switch](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/switch.png?t=201838)
 
 ##### Tips
 

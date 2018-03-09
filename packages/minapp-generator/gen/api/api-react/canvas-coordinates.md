@@ -55,4 +55,4 @@ canvas 是在一个二维的网格当中。
 
 当你把手指放到 canvas 中，就会在下边显示出触碰点的坐标：
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/coordinates.gif?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/coordinates.gif?t=201838)

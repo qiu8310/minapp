@@ -9,6 +9,12 @@ canvasContext.setTextAlign
 
 用于设置文字的对齐
 
+### 语法
+
+    canvasContext.setTextAlign(align)
+    canvasContext.textAlign = align // 基础库 1.9.90 起支持
+    
+
 ### 参数
 
   参数    |  类型     |  定义                          
@@ -37,4 +43,4 @@ canvasContext.setTextAlign
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-text-align.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-text-align.png?t=201838)

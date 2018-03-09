@@ -7,6 +7,12 @@ canvasContext.setGlobalAlpha
 
 设置全局画笔透明度。
 
+### 语法
+
+    canvasContext.setGlobalAlpha(alpha)
+    canvasContext.globalAlpha = alpha // 基础库 1.9.90 起支持
+    
+
 ### 参数
 
   参数    |  类型     |  范围  |  说明                     
@@ -28,4 +34,4 @@ canvasContext.setGlobalAlpha
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/global-alpha.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/global-alpha.png?t=201838)

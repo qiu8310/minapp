@@ -10,13 +10,14 @@
 
 **livePusherContext 对象的方法列表：**
 
-  方法           |  参数     |  说明      
------------------|-----------|------------
-  start          |  OBJECT   |  播放推流  
-  stop           |  OBJECT   |  停止推流  
-  pause          |  OBJECT   |  暂停推流  
-  resume         |  OBJECT   |  恢复推流  
-  switchCamera   |  OBJECT   |切换前后摄像头
+  方法           |  参数     |  说明      |  最低版本 
+-----------------|-----------|------------|-----------
+  start          |  OBJECT   |  播放推流  |           
+  stop           |  OBJECT   |  停止推流  |           
+  pause          |  OBJECT   |  暂停推流  |           
+  resume         |  OBJECT   |  恢复推流  |           
+  switchCamera   |  OBJECT   |切换前后摄像头|           
+  snapshot       |  OBJECT   |  快照      |  1.9.90   
 
 **所有方法的 OBJECT 参数列表：**
 

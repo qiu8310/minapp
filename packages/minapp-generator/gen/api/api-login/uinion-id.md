@@ -14,10 +14,10 @@
 
 登录微信开放平台(open.weixin.qq.com) – 帐号中心 – 开发者资质认证
 
-![img](https://mp.weixin.qq.com/debug/wxadoc/dev/image/open.png?t=201828)
+![img](https://mp.weixin.qq.com/debug/wxadoc/dev/image/open.png?t=201838)
 
 绑定流程：
 
 登录微信开放平台（open.weixin.qq.com）—管理中心—公众帐号—绑定公众帐号
 
-![img](https://mp.weixin.qq.com/debug/wxadoc/dev/image/union_bind.png?t=201828)
+![img](https://mp.weixin.qq.com/debug/wxadoc/dev/image/union_bind.png?t=201838)

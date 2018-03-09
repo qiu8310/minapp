@@ -21,7 +21,7 @@ canvasContext.fill
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-line.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-line.png?t=201838)
 
     const ctx = wx.createCanvasContext('myCanvas')
     // begin path
@@ -45,4 +45,4 @@ canvasContext.fill
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-path.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-path.png?t=201838)

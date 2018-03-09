@@ -76,7 +76,7 @@
     })
     
 
-![picker_view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/picker_view.png?t=201828)
+![picker_view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/picker_view.png?t=201838)
 
 ##### Tips：
 

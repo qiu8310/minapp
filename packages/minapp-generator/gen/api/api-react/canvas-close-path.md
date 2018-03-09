@@ -22,7 +22,7 @@ canvasContext.closePath
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/close-line.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/close-line.png?t=201838)
 
     const ctx = wx.createCanvasContext('myCanvas')
     // begin path
@@ -45,4 +45,4 @@ canvasContext.closePath
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/close-path.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/close-path.png?t=201838)

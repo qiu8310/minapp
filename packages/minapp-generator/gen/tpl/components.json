@@ -50,7 +50,7 @@
       "如果需要使用滚动视图，请使用 [scroll-view](https://mp.weixin.qq.com/debug/wxadoc/dev/component/scroll-view.html)"
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/view.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/view.png?t=201838"
     ],
     "name": "view",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/view.html"
@@ -191,7 +191,7 @@
       "若要使用下拉刷新，请使用页面的滚动，而不是 `scroll-view` ，这样也能通过点击顶部状态栏回到页面顶部"
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/scroll-view.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/scroll-view.png?t=201838"
     ],
     "name": "scroll-view",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/scroll-view.html"
@@ -405,6 +405,19 @@
     "desc": [
       "`movable-view` 的可移动区域"
     ],
+    "attrs": [
+      {
+        "name": "scale-area",
+        "type": {
+          "name": "boolean"
+        },
+        "desc": [
+          "当里面的movable-view设置为支持双指缩放时，设置此值可将缩放手势生效区域修改为整个movable-area"
+        ],
+        "since": "1.9.90",
+        "defaultValue": "false"
+      }
+    ],
     "notices": [
       "movable-area 必须设置width和height属性，不设置默认为10px"
     ],
@@ -414,77 +427,7 @@
   },
   {
     "desc": [
-      "可移动的视图容器，在页面中可以拖拽滑动"
-    ],
-    "attrs": [
-      {
-        "name": "direction",
-        "type": {
-          "name": "string"
-        },
-        "desc": [
-          "movable-view的移动方向，属性值有all、vertical、horizontal、none"
-        ],
-        "defaultValue": "none"
-      },
-      {
-        "name": "inertia",
-        "type": {
-          "name": "boolean"
-        },
-        "desc": [
-          "movable-view是否带有惯性"
-        ],
-        "defaultValue": "false"
-      },
-      {
-        "name": "out-of-bounds",
-        "type": {
-          "name": "boolean"
-        },
-        "desc": [
-          "超过可移动区域后，movable-view是否还可以移动"
-        ],
-        "defaultValue": "false"
-      },
-      {
-        "name": "x",
-        "type": {
-          "name": "number"
-        },
-        "desc": [
-          "定义x轴方向的偏移，如果x的值不在可移动范围内，会自动移动到可移动范围；改变x的值会触发动画"
-        ]
-      },
-      {
-        "name": "y",
-        "type": {
-          "name": "number"
-        },
-        "desc": [
-          "定义y轴方向的偏移，如果y的值不在可移动范围内，会自动移动到可移动范围；改变y的值会触发动画"
-        ]
-      },
-      {
-        "name": "damping",
-        "type": {
-          "name": "number"
-        },
-        "desc": [
-          "阻尼系数，用于控制x或y改变时的动画和过界回弹的动画，值越大移动越快"
-        ],
-        "defaultValue": "20"
-      },
-      {
-        "name": "friction",
-        "type": {
-          "name": "number"
-        },
-        "desc": [
-          "摩擦系数，用于控制惯性滑动的动画，值越大摩擦力越大，滑动越快停止；必须大于0，否则会被设置成默认值"
-        ],
-        "defaultValue": "2"
-      }
+      "可移动的视图容器，在页面中可以拖拽滑动\n\n属性名\n\n类型\n\n默认值\n\n说明\n\n最低版本\n\ndirection\n\nString\n\nnone\n\nmovable-view的移动方向，属性值有all、vertical、horizontal、none\n\ninertia\n\nBoolean\n\nfalse\n\nmovable-view是否带有惯性\n\nout-of-bounds\n\nBoolean\n\nfalse\n\n超过可移动区域后，movable-view是否还可以移动\n\nx\n\nNumber / String\n\n定义x轴方向的偏移，如果x的值不在可移动范围内，会自动移动到可移动范围；改变x的值会触发动画\n\ny\n\nNumber / String\n\n定义y轴方向的偏移，如果y的值不在可移动范围内，会自动移动到可移动范围；改变y的值会触发动画\n\ndamping\n\nNumber\n\n20\n\n阻尼系数，用于控制x或y改变时的动画和过界回弹的动画，值越大移动越快\n\nfriction\n\nNumber\n\n2\n\n摩擦系数，用于控制惯性滑动的动画，值越大摩擦力越大，滑动越快停止；必须大于0，否则会被设置成默认值\n\ndisabled\n\nBoolean\n\nfalse\n\n是否禁用\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")\n\nscale\n\nBoolean\n\nfalse\n\n是否支持双指缩放，默认缩放手势生效区域是在movable-view内\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")\n\nscale-min\n\nNumber\n\n0.5\n\n定义缩放倍数最小值\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")\n\nscale-max\n\nNumber\n\n10\n\n定义缩放倍数最大值\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")\n\nscale-value\n\nNumber\n\n1\n\n定义缩放倍数，取值范围为 0.5 - 10\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")\n\nbindchange\n\nEventHandle\n\n完成一次拖动后触发的事件，event.detail = {x: x, y: y, source: source}，其中source表示产生移动的原因，值可为touch（拖动）、touch-out-of-bounds（超出移动范围）、out-of-bounds（超出移动范围后的回弹）、friction（惯性）和空字符串（setData）\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")\n\nbindscale\n\nEventHandle\n\n完成一次拖动后触发的事件，event.detail = {scale: scale}\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")\n\n除了基本事件外，movable-view提供了两个特殊事件\n\n类型\n\n触发条件\n\n最低版本\n\nhtouchmove\n\n初次手指触摸后移动为横向的移动，如果catch此事件，则意味着touchmove事件也被catch\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")\n\nvtouchmove\n\n初次手指触摸后移动为纵向的移动，如果catch此事件，则意味着touchmove事件也被catch\n\n[1.9.90](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html \"基础库 1.9.90 开始支持，低版本需做兼容处理。\")"
     ],
     "notices": [
       "movable-view 必须设置width和height属性，不设置默认为10px",
@@ -520,12 +463,14 @@
       }
     ],
     "tips": [
+      "基础库 1.9.90 起 `cover-view` 支持 `overflow: scroll`，但不支持动态更新 `overflow`",
+      "基础库 1.9.90 起最外层 `cover-view` 支持 `position: fixed`",
+      "基础库 1.9.0 起支持插在 `view` 等标签下。在此之前只可嵌套在原生组件`map`、`video`、`canvas`、`camera`内，避免嵌套在其他组件内。",
       "基础库 1.6.0 起支持css transition动画，`transition-property`只支持`transform (translateX, translateY)`与`opacity`。",
       "基础库 1.6.0 起支持css opacity。",
-      "基础库 1.9.0 起支持插在 `view` 等标签下。在此之前只可嵌套在原生组件`map`、`video`、`canvas`、`camera`内，避免嵌套在其他组件内。",
       "事件模型遵循冒泡模型，但不会冒泡到原生组件。",
       "文本建议都套上cover-view标签，避免排版错误。",
-      "只支持基本的定位、布局、文本样式。不支持设置`单边的border`、`background-image`、`shadow`、`overflow`等。",
+      "只支持基本的定位、布局、文本样式。不支持设置`单边的border`、`background-image`、`shadow`、`overflow: visible`等。",
       "建议子节点不要溢出父节点",
       "默认设置的样式有：`white-space: nowrap;` `line-height: 1.2;` `display: block;`"
     ],
@@ -568,7 +513,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/icon.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/icon.png?t=201838"
     ],
     "name": "icon",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/icon.html"
@@ -633,7 +578,7 @@
       "除了文本节点以外的其他节点都无法长按选中。"
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/text.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/text.png?t=201838"
     ],
     "name": "text",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/text.html"
@@ -756,7 +701,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/progress.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/progress.png?t=201838"
     ],
     "name": "progress",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/progress.html"
@@ -1187,7 +1132,7 @@
       "在`bindgetphonenumber` 等返回加密信息的回调中调用 `wx.login` 登录，可能会刷新登录态。此时服务器使用 code 换取的 sessionKey 不是加密时使用的 sessionKey，导致解密失败。建议开发者提前进行 `login`；或者在回调中先使用 `checkSession` 进行登录态检查，避免 `login` 刷新登录态。"
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/button.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/button.png?t=201838"
     ],
     "name": "button",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/button.html"
@@ -1258,7 +1203,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/checkbox.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/checkbox.png?t=201838"
     ],
     "name": "checkbox",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/checkbox.html"
@@ -1303,7 +1248,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/form.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/form.png?t=201838"
     ],
     "name": "form",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/form.html"
@@ -1515,6 +1460,17 @@
         "defaultValue": "-1"
       },
       {
+        "name": "adjust-position",
+        "type": {
+          "name": "boolean"
+        },
+        "desc": [
+          "键盘弹起时，是否自动上推页面"
+        ],
+        "since": "1.9.90",
+        "defaultValue": "true"
+      },
+      {
         "name": "bindinput",
         "type": {
           "name": "function",
@@ -1535,7 +1491,7 @@
           }
         },
         "desc": [
-          "输入框聚焦时触发，event.detail = {value: value}"
+          "输入框聚焦时触发，event.detail = { value, height }，height 参数在基础库 1.9.90 起支持"
         ]
       },
       {
@@ -1572,7 +1528,7 @@
       "微信版本 `6.3.30`, placeholder 在聚焦时出现重影问题；"
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/input.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/input.png?t=201838"
     ],
     "name": "input",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/input.html"
@@ -1593,7 +1549,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/label.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/label.png?t=201838"
     ],
     "name": "label",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/label.html"
@@ -1657,6 +1613,19 @@
                   "是否禁用"
                 ],
                 "defaultValue": "false"
+              },
+              {
+                "name": "bindcancel",
+                "type": {
+                  "name": "function",
+                  "returns": {
+                    "name": "any"
+                  }
+                },
+                "desc": [
+                  "取消选择或点遮罩层收起 picker 时触发"
+                ],
+                "since": "1.9.90"
               }
             ]
           },
@@ -1715,6 +1684,19 @@
                 ]
               },
               {
+                "name": "bindcancel",
+                "type": {
+                  "name": "function",
+                  "returns": {
+                    "name": "any"
+                  }
+                },
+                "desc": [
+                  "取消选择时触发"
+                ],
+                "since": "1.9.90"
+              },
+              {
                 "name": "disabled",
                 "type": {
                   "name": "boolean"
@@ -1767,6 +1749,19 @@
                 "desc": [
                   "value 改变时触发 change 事件，event.detail = {value: value}"
                 ]
+              },
+              {
+                "name": "bindcancel",
+                "type": {
+                  "name": "function",
+                  "returns": {
+                    "name": "any"
+                  }
+                },
+                "desc": [
+                  "取消选择时触发"
+                ],
+                "since": "1.9.90"
               },
               {
                 "name": "disabled",
@@ -1848,6 +1843,19 @@
                 ]
               },
               {
+                "name": "bindcancel",
+                "type": {
+                  "name": "function",
+                  "returns": {
+                    "name": "any"
+                  }
+                },
+                "desc": [
+                  "取消选择时触发"
+                ],
+                "since": "1.9.90"
+              },
+              {
                 "name": "disabled",
                 "type": {
                   "name": "boolean"
@@ -1894,6 +1902,19 @@
                 ]
               },
               {
+                "name": "bindcancel",
+                "type": {
+                  "name": "function",
+                  "returns": {
+                    "name": "any"
+                  }
+                },
+                "desc": [
+                  "取消选择时触发"
+                ],
+                "since": "1.9.90"
+              },
+              {
                 "name": "disabled",
                 "type": {
                   "name": "boolean"
@@ -1917,7 +1938,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/picker.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/picker.png?t=201838"
     ],
     "name": "picker",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/picker.html"
@@ -2002,7 +2023,7 @@
       "滚动时在iOS自带振动反馈，可在系统设置 -> 声音与触感 -> 系统触感反馈中关闭"
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/picker_view.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/picker_view.png?t=201838"
     ],
     "name": "picker-view-column",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/picker-view.html"
@@ -2073,7 +2094,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/radio.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/radio.png?t=201838"
     ],
     "name": "radio",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/radio.html"
@@ -2232,7 +2253,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/slider.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/slider.png?t=201838"
     ],
     "name": "slider",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/slider.html"
@@ -2288,7 +2309,7 @@
       "switch类型切换时在iOS自带振动反馈，可在系统设置 -> 声音与触感 -> 系统触感反馈中关闭"
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/switch.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/switch.png?t=201838"
     ],
     "name": "switch",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/switch.html"
@@ -2449,6 +2470,17 @@
         "defaultValue": "-1"
       },
       {
+        "name": "adjust-position",
+        "type": {
+          "name": "boolean"
+        },
+        "desc": [
+          "键盘弹起时，是否自动上推页面"
+        ],
+        "since": "1.9.90",
+        "defaultValue": "true"
+      },
+      {
         "name": "bindfocus",
         "type": {
           "name": "function",
@@ -2457,7 +2489,7 @@
           }
         },
         "desc": [
-          "输入框聚焦时触发，event.detail = {value: value}"
+          "输入框聚焦时触发，event.detail = { value, height }，height 参数在基础库 1.9.90 起支持"
         ]
       },
       {
@@ -2768,7 +2800,7 @@
       }
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/audio.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/audio.png?t=201838"
     ],
     "name": "audio",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/audio.html"
@@ -2791,15 +2823,15 @@
         "enum": [
           {
             "value": "scaleToFill",
-            "desc": "缩放: 不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/1.png?t=2018228)"
+            "desc": "缩放: 不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/1.png?t=201838)"
           },
           {
             "value": "aspectFit",
-            "desc": "缩放: 保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/2.png?t=2018228)"
+            "desc": "缩放: 保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/2.png?t=201838)"
           },
           {
             "value": "aspectFill",
-            "desc": "缩放: 保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/3.png?t=2018228)"
+            "desc": "缩放: 保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/3.png?t=201838)"
           },
           {
             "value": "widthFix",
@@ -2807,39 +2839,39 @@
           },
           {
             "value": "top",
-            "desc": "裁剪: 不缩放图片，只显示图片的顶部区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/4.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的顶部区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/4.png?t=201838)"
           },
           {
             "value": "bottom",
-            "desc": "裁剪: 不缩放图片，只显示图片的底部区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/5.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的底部区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/5.png?t=201838)"
           },
           {
             "value": "center",
-            "desc": "裁剪: 不缩放图片，只显示图片的中间区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/6.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的中间区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/6.png?t=201838)"
           },
           {
             "value": "left",
-            "desc": "裁剪: 不缩放图片，只显示图片的左边区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/7.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的左边区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/7.png?t=201838)"
           },
           {
             "value": "right",
-            "desc": "裁剪: 不缩放图片，只显示图片的右边区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/8.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的右边区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/8.png?t=201838)"
           },
           {
             "value": "top left",
-            "desc": "裁剪: 不缩放图片，只显示图片的左上边区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/9.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的左上边区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/9.png?t=201838)"
           },
           {
             "value": "top right",
-            "desc": "裁剪: 不缩放图片，只显示图片的右上边区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/10.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的右上边区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/10.png?t=201838)"
           },
           {
             "value": "bottom left",
-            "desc": "裁剪: 不缩放图片，只显示图片的左下边区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/11.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的左下边区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/11.png?t=201838)"
           },
           {
             "value": "bottom right",
-            "desc": "裁剪: 不缩放图片，只显示图片的右下边区域 \n原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=2018228) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/12.png?t=2018228)"
+            "desc": "裁剪: 不缩放图片，只显示图片的右下边区域  原图：![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/0.jpg?t=201838) 处理后: ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/cat/12.png?t=201838)"
           }
         ],
         "name": "mode",
@@ -3193,7 +3225,7 @@
       "`css` 动画对 `video` 组件无效。"
     ],
     "demoImages": [
-      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/video.png?t=2018228"
+      "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/video.png?t=201838"
     ],
     "name": "video",
     "docLink": "https://mp.weixin.qq.com/debug/wxadoc/dev/component/video.html"
@@ -4506,6 +4538,41 @@
             "value": "groupName",
             "desc": "拉取群名称",
             "since": "1.4.0"
+          },
+          {
+            "value": "userNickName",
+            "desc": "用户昵称",
+            "since": "1.9.90"
+          },
+          {
+            "value": "userAvatarUrl",
+            "desc": "用户头像",
+            "since": "1.9.90"
+          },
+          {
+            "value": "userGender",
+            "desc": "用户性别",
+            "since": "1.9.90"
+          },
+          {
+            "value": "userCity",
+            "desc": "用户所在城市",
+            "since": "1.9.90"
+          },
+          {
+            "value": "userProvince",
+            "desc": "用户所在省份",
+            "since": "1.9.90"
+          },
+          {
+            "value": "userCountry",
+            "desc": "用户所在国家",
+            "since": "1.9.90"
+          },
+          {
+            "value": "userLanguage",
+            "desc": "用户的语言",
+            "since": "1.9.90"
           }
         ],
         "name": "type",
@@ -4524,6 +4591,16 @@
         "desc": [
           "当 type=\"groupName\" 时生效, 群id"
         ]
+      },
+      {
+        "name": "lang",
+        "type": {
+          "name": "string"
+        },
+        "desc": [
+          "当 type=\"user*\" 时生效，以哪种语言展示 userInfo，有效值有：en, zh_CN, zh_TW"
+        ],
+        "defaultValue": "en"
       }
     ],
     "tips": [

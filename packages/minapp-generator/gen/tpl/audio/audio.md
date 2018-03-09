@@ -19,7 +19,7 @@
   bindtimeupdate   |  EventHandle   |          |当播放进度改变时触发 timeupdate 事件，detail = {currentTime, duration}
   bindended        |  EventHandle   |          |  当播放到末尾时触发 ended 事件                               
 
-**MediaError.code**
+**binderror __描述__ MediaError.code**
 
 返回错误码|  描述        
 ----------|--------------
@@ -66,6 +66,6 @@
     })
     
 
-![audio](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/audio.png?t=201828)
+![audio](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/audio.png?t=201838)
 
 相关api：[wx.createAudioContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-audio.html)

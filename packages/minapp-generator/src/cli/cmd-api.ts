@@ -13,17 +13,19 @@ import {COLLECT} from './collect'
 import {rootNode, warn, EOL} from '../generator'
 
 export default async function(res: any, nodeIterator: any) {
-  const EXPECT = 129
+  const EXPECT = 139
   const DATA = COLLECT.API
   if (rootNode.leafNodes.length !== EXPECT) warn(`API 文档数量更新了 ${rootNode.leafNodes.length - EXPECT} 页！`)
 
   // 确保要先在非 promise 模式下运行，并生成 PRE_PROMISABLE 文件
   if (res.promise) DATA.PROMISABLE = require(C.OUTPUT.PRE_PROMISABLE)
 
+  let nodes = rootNode.leafNodes.filter(n => !(/\.md$/.test(n.file)))
+
   async.reduce(
     res._.length
-      ? rootNode.leafNodes.filter(n => res._.indexOf(n.normilizedFile) >= 0)
-      : rootNode.leafNodes.filter(n => res.canvas ? n.isCanvas : res.noCanvas ? !n.isCanvas : true),
+      ? nodes.filter(n => res._.indexOf(n.normilizedFile) >= 0)
+      : nodes.filter(n => res.canvas ? n.isCanvas : res.noCanvas ? !n.isCanvas : true),
 
     [] as string[],
 

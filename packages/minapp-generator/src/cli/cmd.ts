@@ -78,10 +78,11 @@ function makeNodeReduceIterator(res: any, key: string) {
     let cacheFile = path.join(genDir, '.cache', node.topNode.normilizedFile, node.normilizedFile + '.html')
     fs.ensureDirSync(path.dirname(cacheFile))
     let noCache = res.force || !fs.existsSync(cacheFile)
-    let nodeSource = noCache ? (await rp(nodeUrl)) : fs.readFileSync(cacheFile).toString()
-    if (noCache) fs.writeFileSync(cacheFile, nodeSource)
 
     try { // new Generator 是同步的，其中可能报错
+      let nodeSource = noCache ? (await rp(nodeUrl)) : fs.readFileSync(cacheFile).toString()
+      if (noCache) fs.writeFileSync(cacheFile, nodeSource)
+
       new Generator(key, node, nodeUrl, nodeSource, genDir)
         .exec(res.markdown, res.promise)
         .then((str) => {

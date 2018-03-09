@@ -13,10 +13,10 @@ canvasContext.addColorStop
 
 ### 参数
 
-  参数    |  类型          |  定义              
-----------|----------------|--------------------
-  stop    |  Number(0-1)   |表示渐变点在起点和终点中的位置
-  color   |  Color         |  渐变点的颜色      
+  参数    |  类型                                                                       |  定义              
+----------|-----------------------------------------------------------------------------|--------------------
+  stop    |  Number(0-1)                                                                |表示渐变点在起点和终点中的位置
+  color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  渐变点的颜色      
 
 ### 示例代码：
 
@@ -38,4 +38,4 @@ canvasContext.addColorStop
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/color-stop.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/color-stop.png?t=201838)

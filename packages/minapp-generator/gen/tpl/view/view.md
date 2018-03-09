@@ -31,7 +31,7 @@
     </view>
     
 
-![view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/view.png?t=201828)
+![view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/view.png?t=201838)
 
 ##### Bug & Tip
 

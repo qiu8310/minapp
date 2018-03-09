@@ -16,6 +16,12 @@ export namespace wx {
        */
       lang?: string
       /**
+       * 超时时间，单位 ms
+       *
+       * @since 1.9.90
+       */
+      timeout?: number
+      /**
        * 接口调用成功的回调函数
        */
       success?: ParamPropSuccess

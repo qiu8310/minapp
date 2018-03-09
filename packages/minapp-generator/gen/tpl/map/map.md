@@ -4,24 +4,24 @@
 
 地图。
 
-  属性名             |  类型          | 默认值 |  说明               | 最低版本 
----------------------|----------------|--------|---------------------|----------
-  longitude          |  Number        |        |  中心经度           |          
-  latitude           |  Number        |        |  中心纬度           |          
-  scale              |  Number        |  16    |缩放级别，取值范围为5-18|          
-  markers            |  Array         |        |  标记点             |          
-  covers             |  Array         |        |即将移除，请使用 markers|          
-  polyline           |  Array         |        |  路线               |          
-  circles            |  Array         |        |  圆                 |          
-  controls           |  Array         |        |  控件               |          
+  属性名             |  类型          | 默认值 |  说明                   | 最低版本 
+---------------------|----------------|--------|-------------------------|----------
+  longitude          |  Number        |        |  中心经度               |          
+  latitude           |  Number        |        |  中心纬度               |          
+  scale              |  Number        |  16    | 缩放级别，取值范围为5-18|          
+  markers            |  Array         |        |  标记点                 |          
+  covers             |  Array         |        |**即将移除，请使用 markers**|          
+  polyline           |  Array         |        |  路线                   |          
+  circles            |  Array         |        |  圆                     |          
+  controls           |  Array         |        |  控件                   |          
   include-points     |  Array         |        |缩放视野以包含所有给定的坐标点|          
-  show-location      |  Boolean       |        |显示带有方向的当前定位点|          
-  bindmarkertap      |  EventHandle   |        |  点击标记点时触发   |          
+  show-location      |  Boolean       |        | 显示带有方向的当前定位点|          
+  bindmarkertap      |  EventHandle   |        |  点击标记点时触发       |          
   bindcallouttap     |  EventHandle   |        |点击标记点对应的气泡时触发|  1.2.0   
-  bindcontroltap     |  EventHandle   |        |  点击控件时触发     |          
-  bindregionchange   |  EventHandle   |        |  视野发生变化时触发 |          
-  bindtap            |  EventHandle   |        |  点击地图时触发     |          
-  bindupdated        |  EventHandle   |        |在地图渲染更新完成时触发|  1.6.0   
+  bindcontroltap     |  EventHandle   |        |  点击控件时触发         |          
+  bindregionchange   |  EventHandle   |        |  视野发生变化时触发     |          
+  bindtap            |  EventHandle   |        |  点击地图时触发         |          
+  bindupdated        |  EventHandle   |        | 在地图渲染更新完成时触发|  1.6.0   
 
 **注意: covers 属性即将移除，请使用 markers 替代**
 

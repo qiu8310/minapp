@@ -81,7 +81,7 @@
     })
     
 
-![scroll-view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/scroll-view.png?t=201828)
+![scroll-view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/scroll-view.png?t=201838)
 
 ##### Bug & Tip
 

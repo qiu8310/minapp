@@ -108,7 +108,7 @@
     })
     
 
-![video](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/video.png?t=201828)
+![video](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/video.png?t=201838)
 
 相关api：[wx.createVideoContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-video.html)
 

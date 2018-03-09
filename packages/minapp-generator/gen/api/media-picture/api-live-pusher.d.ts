@@ -150,6 +150,34 @@ export namespace wx {
        */
       type ParamPropComplete = () => any
     }
+    namespace snapshot {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
   }
   class LivePusherContext {
     /**
@@ -172,5 +200,11 @@ export namespace wx {
      * 切换前后摄像头
      */
     switchCamera(OBJECT: LivePusherContext.switchCamera.Param): any
+    /**
+     * 快照
+     *
+     * @since 1.9.90
+     */
+    snapshot(OBJECT: LivePusherContext.snapshot.Param): any
   }
 }

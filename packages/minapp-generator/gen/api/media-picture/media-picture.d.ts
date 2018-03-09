@@ -174,6 +174,31 @@ export namespace wx {
        * 返回图片的本地路径
        */
       path: string
+      /**
+       * 返回图片的方向，有效值见下表
+       *
+       * **orientation参数说明：**
+       *
+       *   枚举值           |  说明           
+       * -------------------|-----------------
+       *   up               |  默认           
+       *   down             |  180度旋转      
+       *   left             |  逆时针旋转90度 
+       *   right            |  顺时针旋转90度 
+       *   up-mirrored      | 同up，但水平翻转
+       *   down-mirrored    |同down，但水平翻转
+       *   left-mirrored    |同left，但垂直翻转
+       *   right-mirrored   |同right，但垂直翻转
+       *
+       * @since 1.9.90
+       */
+      orientation: string
+      /**
+       * 返回图片的格式
+       *
+       * @since 1.9.90
+       */
+      type: string
     }
     /**
      * 接口调用失败的回调函数

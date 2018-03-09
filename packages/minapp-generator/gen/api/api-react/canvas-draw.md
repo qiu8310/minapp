@@ -27,7 +27,7 @@ canvasContext.draw
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/un-reserve.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/un-reserve.png?t=201838)
 
 ### 例子
 
@@ -40,4 +40,4 @@ canvasContext.draw
     ctx.draw(true)
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/reserve.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/reserve.png?t=201838)

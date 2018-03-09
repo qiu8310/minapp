@@ -8,11 +8,12 @@
 
 **OBJECT参数说明：**
 
-  参数名     |  类型       |  必填 |  说明                       
--------------|-------------|-------|-----------------------------
-  success    |  Function   |  否   |  接口调用成功的回调函数     
-  fail       |  Function   |  否   |  接口调用失败的回调函数     
-  complete   |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）
+  参数名     |  类型       |  必填 |  说明                       |  最低版本 
+-------------|-------------|-------|-----------------------------|-----------
+  timeout    |  Number     |  否   |  超时时间，单位 ms          |  1.9.90   
+  success    |  Function   |  否   |  接口调用成功的回调函数     |           
+  fail       |  Function   |  否   |  接口调用失败的回调函数     |           
+  complete   |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）|           
 
 **success返回参数说明：**
 
@@ -125,7 +126,7 @@ session_key 是对用户数据进行[加密签名](https://mp.weixin.qq.com/debu
 
 ### 登录时序图
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/login.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/login.png?t=201838)
 
 #### Bug & Tip
 

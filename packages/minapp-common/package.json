@@ -9,7 +9,7 @@
     "lint": "tslint src/**/*.ts",
     "postpublish": "cnpm sync @minapp/common",
     "clear": "remove-all dist",
-    "build": "npm run clear && tsc",
+    "build": "npm run clear && tsc && node src/dev/script.js copy",
     "watch": "tsc -w"
   },
   "publishConfig": {

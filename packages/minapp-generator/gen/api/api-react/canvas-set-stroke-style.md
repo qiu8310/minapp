@@ -9,11 +9,17 @@ canvasContext.setStrokeStyle
 
 **Tip**: 如果没有设置 `fillStyle`，默认颜色为 `black`。
 
+### 语法
+
+    canvasContext.setStrokeStyle(color)
+    canvasContext.strokeStyle = color // 基础库 1.9.90 起支持
+    
+
 ### 参数
 
-  参数    |  类型    |  定义              
-----------|----------|--------------------
-  color   |  Color   |  Gradient Object   
+  参数    |  类型                                                                       |  定义              
+----------|-----------------------------------------------------------------------------|--------------------
+  color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
 
 ### 例子
 
@@ -23,4 +29,4 @@ canvasContext.setStrokeStyle
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/stroke-rect.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/stroke-rect.png?t=201838)

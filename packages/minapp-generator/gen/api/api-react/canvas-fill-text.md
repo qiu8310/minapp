@@ -26,4 +26,4 @@ canvasContext.fillText
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/text.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/text.png?t=201838)

@@ -30,4 +30,4 @@ canvasContext.setLineDash
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-line-dash.png?t=201828)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-line-dash.png?t=201838)
