@@ -93,8 +93,8 @@ export default class implements CompletionItemProvider {
 }
 
 function setDefault(index: number, defaultValue: any) {
-  if (!defaultValue) return '${' + index + '}'
-  if (/^\d+$/.test(defaultValue) || defaultValue === 'true' || defaultValue === 'false') {
+  if (!isDefaultValueValid(defaultValue)) return '${' + index + '}'
+  if (typeof defaultValue === 'boolean' || defaultValue === 'true' || defaultValue === 'false') {
     return `{{\${${index}|${defaultValue}|}}}`
   } else {
     return `\${${index}|${defaultValue}|}`
@@ -118,11 +118,20 @@ function renderTag(tag: TagItem, sortText: string) {
 function renderTagAttr(tagAttr: TagAttrItem, sortText: string) {
   let a = tagAttr.attr
   let item = new CompletionItem(a.name, CompletionItemKind.Field)
+  let defaultValue = a.defaultValue
+  if (!isDefaultValueValid(defaultValue)) {
+    defaultValue = a.enum && a.enum[0].value
+  }
+
   let value = a.addBrace
     ? '{{\${1}}}'
-    : setDefault(1, a.defaultValue || a.enum && a.enum[0].value)
+    : setDefault(1, defaultValue)
   item.insertText = new SnippetString(`${a.name}="${value}"$0`)
   item.documentation = new MarkdownString(tagAttr.markdown)
   item.sortText = sortText
   return item
+}
+
+function isDefaultValueValid(defaultValue: any) {
+  return defaultValue !== undefined && defaultValue !== ''
 }
