@@ -3,7 +3,7 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {BaseComponent} from '@minapp/core/system'
+import {BaseComponent} from '@minapp/core'
 
 export class MyComponent extends BaseComponent {
 

@@ -7,4 +7,4 @@ export * from './MyApp'
 export * from './MyPage'
 export * from './MyComponent'
 
-export {wxp, pagify, appify, comify} from '@minapp/core/system'
+export {wxp, pagify, appify, comify} from '@minapp/core'

@@ -4,7 +4,7 @@
 *******************************************************************/
 
 import {MyApp} from './MyApp'
-import {BaseComponent} from '@minapp/core/system'
+import {BaseComponent} from '@minapp/core'
 
 export class MyComponent<D = any> extends BaseComponent<D, MyApp> {
 

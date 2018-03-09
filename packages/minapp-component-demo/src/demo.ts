@@ -3,7 +3,7 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {comify, BaseComponent} from '@minapp/core/system'
+import {comify, BaseComponent} from '@minapp/core'
 
 @comify()
 export default class extends BaseComponent<any, any> {
