@@ -36,7 +36,7 @@ export function webpackConfig(compiler: Compiler) {
 
     // 传给所有 loader 的选项
     new webpack.LoaderOptionsPlugin({
-      minimize: compiler.minimize || compiler.production,
+      minimize: compiler.minimize,
 
       // 下面几个配置是传给 minapp loader 用的，都是默认的配置，可以不传
       minapp: {

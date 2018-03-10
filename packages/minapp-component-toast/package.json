@@ -8,8 +8,8 @@
     "lint": "tslint src/**/*.ts",
     "postpublish": "cnpm sync @minapp/component-toast",
     "clear": "remove-all dist",
-    "build": "npm run clear && minapp build",
-    "watch": "minapp dev"
+    "build": "npm run clear && node ../minapp-cli/dist/index.js build --pretty",
+    "watch": "node ../minapp-cli/dist/index.js dev"
   },
   "files": [
     "dist/",

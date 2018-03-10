@@ -28,7 +28,7 @@ export default class WxsLoader extends Loader {
       let absFile = await this.resolve(request)
 
       if (this.isStaticFile(absFile)) {
-        let url = await this.loadStaticFile(absFile)
+        let url = await this.loadStaticFile(absFile, request)
         if (!this.shouleMakeRequire(url) || this.mode === 'project') {
           return JSON.stringify(url)
         }

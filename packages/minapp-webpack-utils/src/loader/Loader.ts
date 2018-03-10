@@ -147,12 +147,18 @@ export abstract class Loader {
     if (typeof test === 'function') return test(request)
     return test.test(request.split(/[#\?]/).shift() as string)
   }
-  async loadStaticFile(absFile: string): Promise<string> {
+  async loadStaticFile(absFile: string, request: string): Promise<string> {
     // let absFile = await this.resolve(request)
     this.lc.addDependency(absFile)
 
     // TODO: 这里需要一个处理静态资源路径的脚本
     let content = await readFile(absFile)
+
+    if (this.mode !== 'project') {
+      this.emit(this.getEmitFile(absFile), content)
+      return request // 无须更新文件引用
+    }
+
     let {output, filename} = this.getStaticOptions()
 
     let ext = path.extname(absFile)
@@ -170,7 +176,7 @@ export abstract class Loader {
     this.emit(file, content)
     let url = this.outputPublicPath + file
 
-    if (this.minimize && !(/^(\w+?:)\/\//.test(url)) && this.mode === 'project') {
+    if (process.env.NODE_ENV === 'production' && !(/^(\w+?:)\/\//.test(url))) {
       this.emitWarning(new Error(`文件 ${this.fromFile} 使用了本地的静态资源！请在 minapp dev 模式下运行，或者在 minapp build 模式下指定 --publicPath`))
     }
 
