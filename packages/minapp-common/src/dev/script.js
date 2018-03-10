@@ -14,7 +14,7 @@ function copyComponentsJson() {
 function makeDevComponentTs() {
   fs.writeFileSync(
     path.resolve(__dirname, 'Component.ts'),
-    `export {Component, ComponentAttr} from '@minapp/generator/dist/generator/struct/Component'\n`
+    `export {Component, ComponentAttr, ComponentAttrValue} from '@minapp/generator/dist/generator/struct/Component'\n`
   )
 }
 
@@ -24,6 +24,7 @@ function makeProdComponentTs() {
     path.resolve(__dirname, 'Component.ts'),
     `/* tslint:disable */
 export type Component = {name: string, docLink?: string, since?: string, desc: string[], attrs?: ComponentAttr[], authorize?: any, relateApis?: any[], notices?: string[], tips?: string[], bugs?: string[]}
+export type ComponentAttrValue = {value: string, desc?: string, since?: string}
 export type ComponentAttr = {name: string, type?: any, desc?: string[], required?: boolean, since?: string, defaultValue?: string, enum?: any[], extras?: any[], subAttrs?: Array<{equal: string, attrs: ComponentAttr[]}>}`
   )
 }

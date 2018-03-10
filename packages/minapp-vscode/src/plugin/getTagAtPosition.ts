@@ -7,11 +7,18 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 import {TextDocument, Position} from 'vscode'
 
 export interface Tag {
+  /** Tag 的名称 */
   name: string
-  isOnTagName: boolean // 光标位置是否是在 tag name 上
-  isOnAttrName: boolean // 光标位置是否是在 tag attr name 上
-  isOnAttrValue: boolean // 光标位置是否是在 tag attr value 上
-  posWord: string // 光标所在位置上的单词是什么
+  /** 光标位置是否是在 tag name 上 */
+  isOnTagName: boolean
+  /** 光标位置是否是在 tag attr name 上 */
+  isOnAttrName: boolean
+  /** 只有 isOnAttrName 为 true 时才有效 */
+  attrName: string
+  /** 光标位置是否是在 tag attr value 上 */
+  isOnAttrValue: boolean
+  /** 光标所在位置上的单词是什么 */
+  posWord: string
   attrs: {
     [key: string]: string | boolean
   }
@@ -29,15 +36,19 @@ export function getTagAtPosition(doc: TextDocument, pos: Position): null | Tag {
   // 用特殊字符替换 "{{" 与 "}}"" 之间的语句，并保证字符数一致
   line = line.replace(/\{\{[^\}]*?\}\}/g, replacer('@'))
 
-  let attrFlagLine = line.replace(/("[^"]*"|'[^']')/g, replacer('%')) // 将引号中的内容也替换成 |
+  let attrFlagLine = line.replace(/("[^"]*"|'[^']')/g, replacer('%')) // 将引号中的内容也替换了
 
   line.replace(tagRegExp, (raw: string, name: string, attrstr: string, index: number) => {
     if (!tag && index <= pos.character && index + raw.length >= pos.character) {
       let range = doc.getWordRangeAtPosition(pos, /\b[\w-:.]+\b/)
       let posWord = ''
+      let attrName = ''
       if (range) posWord = doc.getText(range)
       let isOnTagName = pos.character <= index + name.length + 1
       let isOnAttrValue = attrFlagLine[pos.character] === '%'
+      if (isOnAttrValue) {
+        attrName = getAttrName(attrFlagLine.substring(0, pos.character))
+      }
       let isOnAttrName = !isOnTagName && !isOnAttrValue && !!posWord
       tag = {
         name,
@@ -45,12 +56,20 @@ export function getTagAtPosition(doc: TextDocument, pos: Position): null | Tag {
         posWord,
         isOnTagName,
         isOnAttrName,
-        isOnAttrValue
+        isOnAttrValue,
+        attrName
       }
     }
     return raw
   })
   return tag
+}
+
+function getAttrName(str: string) {
+  if (/\s([\w-:.]+)=%*$/.test(str)) {
+    return RegExp.$1
+  }
+  return ''
 }
 
 function getAttrs(text: string) {

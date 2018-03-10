@@ -7,6 +7,7 @@ import {ComponentAttr} from './Component'
 
 export const JSON_REGEXP = /\.(?:json|cjson|jsonc)$/i
 
+// @ts-ignore
 export const BASE_ATTRS: ComponentAttr[] = [
   {name: 'id'},
   {name: 'class'},
@@ -20,6 +21,7 @@ export interface CustomAttr extends ComponentAttr {
   addBrace?: boolean // 是否加上 {{}}
 }
 
+// @ts-ignore
 export const EVENT_ATTRS: CustomAttr[] = [
   {name: 'touchstart'},
   {name: 'touchmove'},
@@ -34,6 +36,7 @@ export const EVENT_ATTRS: CustomAttr[] = [
   {name: 'animationend'},
 ]
 
+// @ts-ignore
 export const CTRL_ATTRS: CustomAttr[] = [
   {name: 'if', addBrace: true},
   {name: 'elif', addBrace: true},

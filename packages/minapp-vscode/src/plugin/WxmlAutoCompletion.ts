@@ -6,10 +6,15 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 import {
   Position, CancellationToken, CompletionItemProvider,
   TextDocument, CompletionItem, CompletionContext,
-  CompletionItemKind, SnippetString, MarkdownString
+  CompletionItemKind, SnippetString, MarkdownString, Range
 } from 'vscode'
 
-import {autocompleteTagName, autocompleteTagAttr, TagItem, TagAttrItem, autocompleteSpecialTagAttr} from '@minapp/common'
+import {
+  TagItem, TagAttrItem,
+  autocompleteTagAttrValue, autocompleteTagAttr,
+  autocompleteTagName, autocompleteSpecialTagAttr
+} from '@minapp/common'
+
 import {getTagAtPosition} from './getTagAtPosition'
 import {Config} from './config'
 
@@ -55,9 +60,26 @@ export default class implements CompletionItemProvider {
   async createComponentAttributeSnippetItems(doc: TextDocument, pos: Position) {
     let tag = getTagAtPosition(doc, pos)
     if (!tag) return []
-    if (tag.isOnAttrValue) {
-      if (tag.posWord === 'class') {
+    if (tag.isOnAttrValue && tag.attrName) {
+      let attrValue = tag.attrs[tag.attrName]
+      if (tag.attrName === 'class') {
         // TODO: 样式自动补全
+      } else if (typeof attrValue === 'string' && attrValue.trim() === '') {
+        let values = await autocompleteTagAttrValue(tag.name, tag.attrName, this.getCustomOptions(doc))
+        if (!values.length) return []
+        let range = doc.getWordRangeAtPosition(pos, /['"]\s*['"]/)
+        if (range) {
+          range = new Range(
+            new Position(range.start.line, range.start.character + 1),
+            new Position(range.end.line, range.end.character - 1)
+          )
+        }
+        return values.map(v => {
+          let it = new CompletionItem(v.value, CompletionItemKind.Value)
+          it.documentation = new MarkdownString(v.markdown)
+          it.range = range
+          return it
+        })
       }
       return []
     } else {

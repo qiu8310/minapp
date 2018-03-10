@@ -3,7 +3,7 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {Component, ComponentAttr} from './Component'
+import {Component, ComponentAttr, ComponentAttrValue} from './Component'
 
 export const components: Component[] = require('../../res/components.json')
 
@@ -31,6 +31,12 @@ export function getComponentAttrMarkdown(a: ComponentAttr) {
   if (a.subAttrs && !a.enum) rows.push(...list('可选值', a.subAttrs.map(s => _formatAttrValue({value: s.equal}))))
   if (a.extras) rows.push(...a.extras.filter(e => e.key && e.value).map(e => field(e.key, e.value)))
 
+  return rows.join('\n\n')
+}
+
+export function getComponentAttrValueMarkdown(v: ComponentAttrValue) {
+  let rows = [v.desc || v.value]
+  if (v.since) rows.push(since(v.since))
   return rows.join('\n\n')
 }
 
