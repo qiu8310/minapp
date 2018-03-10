@@ -78,11 +78,12 @@ Component({
   methods: {
     // 子组件更新数据时，只要调用此方法即可，而不是 `setData`
     setDataSync(data) {
+      // splitDataBySyncAttrMap 函数的实现过程就不说了，只是将对象拆分，大家应该都能实现
       let {parentData, innerData} = splitDataBySyncAttrMap(data, this.data.syncAttrMap)
 
       // 内部数据使用 setData 更新
       if (Object.keys(innerData).length) {
-        this.setData(innerData)
+        this.setData(innerData) // setData 中还支持 callback 的回调，为了简化代码，这里不讨论
       }
 
       // 双向绑定的父组件数据触发事件让父组件自己去更新
@@ -116,10 +117,12 @@ const BaseComponent = {
 }
 ```
 
-然后将 BaseComponent minin 到每个组件的对象上去就可以了，这就是 [minapp][minapp] 的双向绑定的基本原理了。
+然后将 BaseComponent minin 到每个组件的对象上去就可以了；另外小程序中还有一个特殊的组件：**Page**，虽然 Page 和 Component 结构是两样的，
+但它也应该算是一个组件，不过它一定是父组件，不可能是别的组件的子组件，所以还需要将 `onSyncAttrUpdate` 方法写了所有的 Page 定义中。
+所有这些就是 [minapp][minapp] 的双向绑定的基本原理了。
 
 
-对，还有最后一件事：**wxml 模板**，不能让用户每次写双向绑定的时候都要写那么复杂语句吧？当然不用，[minapp][minapp] 在编译时，会将模板做个简单的转化：
+等等，最后还有一件事：**wxml 模板**，不能让用户每次写双向绑定的时候都要写那么复杂语句吧？当然不用，[minapp][minapp] 在编译时，会将模板做个简单的转化：
 
 ```html
 <child childAttr.sync="parentAttr" />

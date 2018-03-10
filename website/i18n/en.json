@@ -23,7 +23,7 @@
     "doc-basic-code": "基本代码",
     "doc-coding-rule": "编码准则",
     "doc-data-bind": "数据双向绑定",
-    "doc-develop-npm-component": "开发一个组件，并把它发布到 npm 中",
+    "doc-develop-npm-component": "组件化开发实战",
     "doc-difference-with-wepy": "和 wepy 的对比",
     "doc-how-to-realize-two-way-data-bind": "如何在原生的小程中实现数据双向绑定",
     "doc-how-to-use-wxp-in-other-project": "如何在其它项目中复用 wx 及 wxp 自动补全",

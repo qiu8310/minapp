@@ -25,6 +25,7 @@
         "browsers": {
           "type": "array",
           "description": "autoprefixer 的 browsers 配置",
+          "default": ["last 7 android version", "last 5 chrome version", "last 5 safari version"],
           "items": {
             "type": "string"
           }
