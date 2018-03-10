@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/generator",
 	"description": "微信官方文档解析器，同时生成解析后的结构化的文件",
-	"version": "1.0.0-alpha.2",
+	"version": "1.0.0-alpha.5",
 	"scripts": {
 		"lint": "tslint src/**/*.ts",
 		"test": "jest",

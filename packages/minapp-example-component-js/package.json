@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-component-js",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.5",
   "description": "wechat example component for minapp",
   "main": "dist/test.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "babel-runtime": "^6.24.0"
   },
   "devDependencies": {
-    "@minapp/core": "^1.0.0-alpha.2",
+    "@minapp/core": "^1.0.0-alpha.5",
     "babel-runtime": "^6.24.0",
     "mora-common": "^1.0.11",
     "mora-scripts": "^1.6.21",
