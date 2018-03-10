@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-component-js",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "wechat example component for minapp",
   "main": "dist/test.js",
   "scripts": {
@@ -19,15 +19,13 @@
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
-  "dependencies": {
-  },
   "peerDependencies": {
-    "babel-runtime": "^6.24.0",
-    "@minapp/core": "^1.0.0"
+    "@minapp/core": "^1.0.0",
+    "babel-runtime": "^6.24.0"
   },
   "devDependencies": {
+    "@minapp/core": "^1.0.0-alpha.2",
     "babel-runtime": "^6.24.0",
-    "@minapp/core": "^1.0.0-alpha.1",
     "mora-common": "^1.0.11",
     "mora-scripts": "^1.6.21",
     "tslib": "^1.9.0"
