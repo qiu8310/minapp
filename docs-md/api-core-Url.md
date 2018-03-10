@@ -17,4 +17,4 @@ title: Url
   关闭所有页面，打开到应用内的某个页面
 
 
-> 源代码： [minapp-mobx/src/feat/Url.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-mobx/src/feat/Url.ts)
+> 源代码： [Url.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/system/feat/Url.ts)

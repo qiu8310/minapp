@@ -1,5 +1,5 @@
 ---
-title: minapp build 时注意事项
+title: 编译时的注意事项
 ---
 
 小程序的样式文件中不允许使用本地图片资源，所以在使用 `minapp build` 时，

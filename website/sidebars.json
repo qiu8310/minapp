@@ -1,22 +1,44 @@
 {
   "docs": {
-    "入门指南": ["guide-install", "guide-autocomplete", "guide-warn", "basic-wepy"],
+    "入门指南": [
+      "doc-install",
+      "doc-autocomplete",
+      "doc-warn",
+      "doc-difference-with-wepy"
+    ],
     "基本功能": [
-      "basic-unit",
-      "basic-json",
-      "basic-require",
-      "basic-app"
+      "doc-unit-in-style",
+      "doc-data-bind",
+      "doc-use-setDataSync-not-setData",
+      "doc-about-json-file",
+      "doc-require-other-files-in-script",
+      "doc-basic-code"
     ],
     "进阶功能": [
-      "advance-code",
-      "advance-component",
-      "advance-build",
-      "advance-minapp-core",
-      "advance-observe"
+      "doc-coding-rule",
+      "doc-about-page",
+      "doc-about-component",
+      "doc-how-to-use-wxp-in-other-project",
+      "doc-how-to-realize-two-way-data-bind",
+      "doc-attention-on-build"
     ]
   },
   "api": {
-    "基类": ["api-app", "api-page", "api-component", "api-url", "api-location"],
-    "mobx": ["api-store"]
+    "minapp 1.x": [
+      "api-index"
+    ],
+    "@minapp/core": [
+      "api-core-wxp",
+      "api-core-BaseApp",
+      "api-core-BasePage",
+      "api-core-BaseComponent",
+      "api-core-Url",
+      "api-core-Location"],
+    "@minapp/mobx": [
+      "api-mobx-MobxApp",
+      "api-mobx-MobxPage",
+      "api-mobx-MobxComponent",
+      "api-mobx-MobxStore"
+    ]
   }
 }

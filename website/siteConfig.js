@@ -23,8 +23,8 @@ const siteConfig = {
   projectName: 'minapp',
   customDocsPath: 'docs-md',
   headerLinks: [
-    {doc: 'guide-install', label: '文档'},
-    {doc: 'api-app', label: 'API'},
+    {doc: 'doc-install', label: '文档'},
+    {doc: 'api-index', label: 'API'},
     {page: 'help', label: '帮助'},
     {blog: true, label: '博客'},
     {href: 'https://github.com/qiu8310/minapp', label: 'Github'},
