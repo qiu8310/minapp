@@ -48,7 +48,7 @@ title: 如何在原生的小程中实现数据双向绑定
 则直接调用 `setData` ；如果是双向绑定中的父组件数据，则可以触发一个事件去通知父组件去更新对应的值。
 
 所以根据上面的描述，父组件需要有个监听函数，子组件需要有个智能的 `setData` 函数。不防将父组件的监听函数
-命名为 `onSyncAttrUpdate`，将子组件的智能 `setData` 函数命名为 `setDataSync`，则可以有如下代码：
+命名为 `onSyncAttrUpdate`，将子组件的智能 `setData` 函数命名为 `setDataSmart`，则可以有如下代码：
 
 
 ```js
@@ -77,7 +77,7 @@ Component({
   },
   methods: {
     // 子组件更新数据时，只要调用此方法即可，而不是 `setData`
-    setDataSync(data) {
+    setDataSmart(data) {
       // splitDataBySyncAttrMap 函数的实现过程就不说了，只是将对象拆分，大家应该都能实现
       let {parentData, innerData} = splitDataBySyncAttrMap(data, this.data.syncAttrMap)
 
@@ -97,7 +97,7 @@ Component({
 ```
 
 到此，一个简单的双向绑定功能就完成了。但是由于子组件也有可能包含其它组件，也就是说子组件也可以是父组件，而父组件同样也
-可以是子组件。所以上面的 `onSyncAttrUpdate` `setDataSync` 函数需要在每个组件中都实现，所以不防
+可以是子组件。所以上面的 `onSyncAttrUpdate` `setDataSmart` 函数需要在每个组件中都实现，所以不防
 定义一个公共对象 `BaseComponent` 来实现上面的所有功能，如：
 
 ```js
@@ -107,7 +107,7 @@ const BaseComponent = {
     syncAttrMap: String
   },
   methods: {
-    setDataSync() {
+    setDataSmart() {
       // ...
     },
     onSyncAttrUpdate() {

@@ -18,13 +18,13 @@ export default class extends MyPage {
   }
 
   onShow() {
-    this.setDataSync({motto: 'See you again'})
+    this.setDataSmart({motto: 'See you again'})
   }
 
   onClickAvatarImage() {
     // 跳转到 logs 页面
     this.app.$url.logs.go({id: 1})
-    this.setDataSync({motto: '开始跳转到 logs 页面'})
+    this.setDataSmart({motto: '开始跳转到 logs 页面'})
   }
 
   onClickOpenButton(e: any) {
@@ -32,24 +32,24 @@ export default class extends MyPage {
     this.store.userInfo = e.detail.userInfo
 
     // 组件内数据还是用 setData
-    this.setDataSync({motto: '点击了『获取头像昵称』按钮'})
+    this.setDataSmart({motto: '点击了『获取头像昵称』按钮'})
   }
 
   showToast() {
     console.log('showToast')
-    this.setDataSync({npmToast: true})
+    this.setDataSmart({npmToast: true})
   }
   hideToast() {
     console.log('hideToast')
-    this.setDataSync({npmToast: false})
+    this.setDataSmart({npmToast: false})
   }
 
   toggleDemoToast() {
-    this.setDataSync({demoToast: !this.data.demoToast})
+    this.setDataSmart({demoToast: !this.data.demoToast})
   }
 
   increase() {
-    this.setDataSync({count: this.data.count + 1})
+    this.setDataSmart({count: this.data.count + 1})
   }
 
   async onLoad(options: any) {

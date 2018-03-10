@@ -17,25 +17,25 @@ export default class extends MyPage {
 
   onShow() {
     /**
-     * setDataSync 和 setData 基本一样，但 setDataSync 内部做过优化：
+     * setDataSmart 和 setData 基本一样，但 setDataSmart 内部做过优化：
      *
      * 1. 支持双向绑定
      * 2. 页面隐藏是会缓存 data，等到页面显示的时候再 set
      */
-    this.setDataSync({motto: 'See you again, Try to click me!'})
+    this.setDataSmart({motto: 'See you again, Try to click me!'})
   }
 
   gotoLogsPage() {
     // 跳转到 logs 页面
     this.app.$url.logs.go({id: 1})
-    this.setDataSync({motto: '开始跳转到 logs 页面'})
+    this.setDataSmart({motto: '开始跳转到 logs 页面'})
   }
 
   toggleDemoToast() {
-    this.setDataSync({demoToast: !this.data.demoToast})
+    this.setDataSmart({demoToast: !this.data.demoToast})
   }
 
   increase() {
-    this.setDataSync({count: this.data.count + 1})
+    this.setDataSmart({count: this.data.count + 1})
   }
 }

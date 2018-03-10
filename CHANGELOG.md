@@ -9,6 +9,7 @@
 * wxml 模板支持数据双向绑定（只需要在模板后面加上 `.sync` 即可实现）
 * 可选择是否使用 mobx 框架
 * 可选择支持的样式语言： scss、less、css、wxss
+* 更新 wx.d.ts 和 wxp.d.ts，详情查看[官方更新](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/uplog.html#20180307-%E5%9F%BA%E7%A1%80%E5%BA%93%E6%9B%B4%E6%96%B0-1992)
 
 
 0.0.9 / 2018-03-04

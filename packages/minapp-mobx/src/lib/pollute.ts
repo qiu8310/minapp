@@ -36,7 +36,7 @@ function observe(obj: Page.Options, init: string, destroy: string, mapStoreToDat
         delete data.__MOBX__
       }
       if (typeof mapStoreToData === 'function') data = mapStoreToData(data)
-      this.setDataSync(data)
+      this.setDataSmart(data)
     })
     dispose.onError(e => console.error(e))
   }

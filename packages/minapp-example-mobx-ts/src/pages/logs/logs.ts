@@ -20,7 +20,7 @@ export default class extends MyPage {
     this.store.userInfo = null // 清除 userInfo
     let location = this.getLocation()
     console.log(`当前页面 ${location.pathname}, 页面参数 ${JSON.stringify(location.query)}`)
-    this.setData({
+    this.setDataSmart({
       logs: (wx.getStorageSync('logs') || []).map((log: string) => {
         return formatDate(new Date(log), 'yyyy-mm-dd HH:ii:ss')
       })

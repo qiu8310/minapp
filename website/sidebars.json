@@ -9,7 +9,7 @@
     "基本功能": [
       "doc-unit-in-style",
       "doc-data-bind",
-      "doc-use-setDataSync-not-setData",
+      "doc-use-setDataSmart-not-setData",
       "doc-about-json-file",
       "doc-require-other-files-in-script",
       "doc-basic-code"

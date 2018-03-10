@@ -45,12 +45,12 @@ export default class extends BaseComponent<any, any> {
         this.close()
       } else {
         setTimeout(() => {
-          this.setData({count: this.data.count - 1}, countDown)
+          this.setDataSmart({count: this.data.count - 1}, countDown)
         }, 1000)
       }
     }
 
-    this.setData({count: this.data.timeout}, countDown)
+    this.setDataSmart({count: this.data.timeout}, countDown)
   }
 
   close() {

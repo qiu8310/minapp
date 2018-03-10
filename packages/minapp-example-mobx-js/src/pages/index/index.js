@@ -17,34 +17,34 @@ export default class extends MyPage {
   }
 
   onShow() {
-    this.setDataSync({motto: 'Hello World'})
+    this.setDataSmart({motto: 'Hello World'})
   }
 
   onClickAvatarImage() {
     // 跳转到 logs 页面
     this.app.$url.logs.go({id: 1})
-    this.setDataSync({motto: '开始跳转到 logs 页面'})
+    this.setDataSmart({motto: '开始跳转到 logs 页面'})
   }
 
   onClickOpenButton(e) {
     // 轻松修改全局数据
     this.store.userInfo = e.detail.userInfo
 
-    // 组件内数据还是用 setDataSync
-    this.setDataSync({motto: '点击了『获取头像昵称』按钮'})
+    // 组件内数据还是用 setDataSmart
+    this.setDataSmart({motto: '点击了『获取头像昵称』按钮'})
   }
 
   showToast() {
     console.log('showToast')
-    this.setDataSync({toastVisble: true})
+    this.setDataSmart({toastVisble: true})
   }
   hideToast() {
     console.log('hideToast')
-    this.setDataSync({toastVisble: false})
+    this.setDataSmart({toastVisble: false})
   }
 
   increase() {
-    this.setDataSync({conterStart: this.data.conterStart + 1})
+    this.setDataSmart({conterStart: this.data.conterStart + 1})
   }
 
   async onLoad(options) {

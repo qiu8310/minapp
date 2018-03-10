@@ -22,9 +22,9 @@ export interface PagifyOptions extends PolluteOptions {
 
 export interface BasePage<D, A extends BaseApp> extends Page, Page.BaseOptions {
   /**
-   * 建议使用 Page 的 setDataSync 方法
+   * 建议使用 Page 的 setDataSmart 方法
    *
-   * 两者用法一样，但 setDataSync 额外功能有：
+   * 两者用法一样，但 setDataSmart 额外功能有：
    *  1. 支持数据双向绑定
    *  2. 优化性能，在页面隐藏状态时不更新，统一在页面显示的时候再更新（pagify 中可以指定选项 lazySetData 来禁用此功能）
    */
@@ -64,7 +64,7 @@ export class BasePage<D, A extends BaseApp> {
    *
    * @memberof BaseComponent
    */
-  setDataSync(data: Partial<D>, callback?: () => void) {
+  setDataSmart(data: Partial<D>, callback?: () => void) {
     if (this.$visiable || !this.$lazySetData) {
       this.setData(data, callback)
     } else {
@@ -76,7 +76,7 @@ export class BasePage<D, A extends BaseApp> {
   // 双向绑定用于更新父组件的数据
   private minappsyncupdate(e) {
     let {minappdone, ...data} = e.detail
-    this.setDataSync(data, minappdone)
+    this.setDataSmart(data, minappdone)
   }
 }
 

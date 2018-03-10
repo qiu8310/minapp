@@ -9,9 +9,9 @@ title: BaseComponent
   获取 app 实例，对微信原生全局函数 `getApp()` 的简单封装
 
 
-* **setDataSync(data, callback?)**
+* **setDataSmart(data, callback?)**
 
-  对 `setData` 的封装，不过 `setDataSync` 还支持 **数据双向绑定** 及 **hide 状态下不更新 data** 的两个功能
+  对 `setData` 的封装，不过 `setDataSmart` 还支持 **数据双向绑定** 及 **hide 状态下不更新 data** 的两个功能
 
 * **生成周期函数：**
 

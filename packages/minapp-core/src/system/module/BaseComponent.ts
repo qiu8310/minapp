@@ -13,9 +13,9 @@ let NATIVE_LIFE_CYCLES = RAW_LIFE_CYCLES.map(k => k.toLowerCase())
 // @ts-ignore
 export interface BaseComponent<D, A extends BaseApp> extends Component, Component.Options {
   /**
-   * 建议使用组件的 setDataSync 方法
+   * 建议使用组件的 setDataSmart 方法
    *
-   * 两者用法一样，但 setDataSync 支持数据双向绑定
+   * 两者用法一样，但 setDataSmart 支持数据双向绑定
    */
   setData(data: Partial<D>, callback?: () => void): void
 
@@ -64,7 +64,7 @@ export class BaseComponent<D, A extends BaseApp> {
    *
    * @memberof BaseComponent
    */
-  setDataSync(data: Partial<D>, callback?: () => void) {
+  setDataSmart(data: Partial<D>, callback?: () => void) {
     let origin: any = this.data
     let {minappsync} = origin
     if (!minappsync) return this.setData(data, callback)
@@ -101,7 +101,7 @@ export class BaseComponent<D, A extends BaseApp> {
   // 双向绑定用于更新父组件的数据
   private minappsyncupdate(e) {
     let {minappdone, ...data} = e.detail
-    this.setDataSync(data, minappdone)
+    this.setDataSmart(data, minappdone)
   }
 }
 

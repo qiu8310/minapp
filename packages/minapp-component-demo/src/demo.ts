@@ -22,6 +22,6 @@ export default class extends BaseComponent<any, any> {
   }
 
   toggleToast() {
-    this.setDataSync({toast: !this.data.toast})
+    this.setDataSmart({toast: !this.data.toast})
   }
 }

@@ -27,7 +27,7 @@ title: 关于 Page
   }
   ```
 
-* 不用担心使用了全局对象会造成 page 的频繁更新，当你使用 `setDataSync` 时，当页面处于 hide
+* 不用担心使用了全局对象会造成 page 的频繁更新，当你使用 `setDataSmart` 时，当页面处于 hide
   状态时，并不会真正更新隐藏的页面数据，而等到页面 show 后，会统一更新页面数据。
 
   如果不想要此功能，可以设置 `lazySetData` 为 false 来禁用此功能

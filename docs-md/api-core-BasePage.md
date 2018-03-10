@@ -8,9 +8,9 @@ title: BasePage
 
   当前 app 实例，微信原生需要通过全局函数 `getApp()` 来获取，这里为了方便，可以直接在 Page 中通过 `this.app` 来获取
 
-* **setDataSync(data, callback?)**
+* **setDataSmart(data, callback?)**
 
-  对 `setData` 的封装，不过 `setDataSync` 还支持 **数据双向绑定** 及 **hide 状态下不更新 data** 的两个功能
+  对 `setData` 的封装，不过 `setDataSmart` 还支持 **数据双向绑定** 及 **hide 状态下不更新 data** 的两个功能
 
 * **getLocation()**
 

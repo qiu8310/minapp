@@ -49,16 +49,16 @@ export default class extends MyComponent {
    * 自定义的函数，不需要放在 methods 中，在 comify() 执行过程中会帮你提取出来放到 methods
    */
   increase() {
-    // 支持双向绑定的数据需要使用 setDataSync 来更新
-    this.setDataSync({number: this.data.number + 1})
+    // 支持双向绑定的数据需要使用 setDataSmart 来更新
+    this.setDataSmart({number: this.data.number + 1})
   }
 
   /**
    * 自定义的函数，不需要放在 methods 中，在 comify 中会帮你提取出来放到 methods
    */
   decrease() {
-    // 支持双向绑定的数据需要使用 setDataSync 来更新
-    this.setDataSync({number: this.data.number - 1})
+    // 支持双向绑定的数据需要使用 setDataSmart 来更新
+    this.setDataSmart({number: this.data.number - 1})
   }
 }
 
