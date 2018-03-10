@@ -2,6 +2,7 @@ tsconfig.json
 tslint.json
 src
 !template/*/src
+!common/**/src
 gen
 vendor
 coverage

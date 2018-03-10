@@ -4,10 +4,12 @@
 	"private": true,
 	"license": "MIT",
 	"scripts": {
+		"build_app": "lerna run build --ignore '@minapp/example-*' --ignore '@minapp/component-*'",
+		"build_exp": "lerna run build --scope '@minapp/component-*' --scope '@minapp/example-*'",
+		"all_build": "npm run build_app && npm run build_exp",
 		"all_test": "lerna run test --ignore minapp-vscode",
-		"all_build": "lerna run build --ignore '@minapp/example-*' --ignore '@minapp/component-*' ",
-		"all_publish": "npm run all_build && lerna publish --registry https://registry.npmjs.org/",
-		"all_publish_tag": "npm run all_build && lerna publish --repo-version 1.0.0-alpha.2 --npm-tag next --registry https://registry.npmjs.org/",
+		"all_publish": "lerna publish --registry https://registry.npmjs.org/",
+		"all_publish_tag": "lerna publish --npm-tag next --registry https://registry.npmjs.org/ --repo-version 1.0.0-alpha.2",
 		"build": "tsc .dtpl/dtpl.ts --outDir .dtpl/",
 		"watch": "tsc -w .dtpl/dtpl.ts --outDir .dtpl/"
 	},
