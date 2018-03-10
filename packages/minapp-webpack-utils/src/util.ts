@@ -19,6 +19,9 @@ export {map, replace} from 'mora-common/util/async'
 /** 样式文件中匹配静态资源的正则 */
 export const STYLE_RESOURCE_REGEXP = /(?:src=|url\(\s*)['"]?([^'"\)\(#\?]+)[#\?]?[^'"\)\(]*['"]?\s*\)?/gm
 
+/** css 或 wxss 中支持使用 @import，@import 的文件需要 emit */
+export const CSS_IMPORT_REGEXP = /@import\s*["']([^'"]*)["']/g
+
 export const STATIC_REGEXP = /\.(?:gif|png|jpg|jpeg|svg|ico|woff|woff2|ttf|eot|otf|mp3|mp4)$/i
 export const JSON_REGEXP = /\.(?:json|cjson|jsonc)$/i
 

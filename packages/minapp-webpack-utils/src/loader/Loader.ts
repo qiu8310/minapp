@@ -193,7 +193,7 @@ export abstract class Loader {
     return true
   }
 
-  getExtractRequirePath(absFile: string, fileExt?: string, relativeDir?: string) {
+  getExtractRequirePath(absFile: string, fileExt?: string | null, relativeDir?: string) {
     let emitFile = this.getEmitFile(absFile)
     let file = path.relative(relativeDir || path.dirname(this.toFile), path.join(this.distDir, emitFile))
     if (fileExt != null) file = replaceExt(file, fileExt)
