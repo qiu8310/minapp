@@ -1,0 +1,11 @@
+/*
+  此文件是由模板文件 ".dtpl/page/${ref.dollar}rawModuleName.cjson.dtpl" 生成的，你可以自行修改模板
+
+  注意：
+    1. cjson 是支持注释的 json 文件（可以在你的编辑器里配置文件关联）
+    2. 文件为空，编译时不会生成新文件
+*/
+
+{
+  "$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/page.json"
+}

@@ -1,5 +1,5 @@
 <!--
-  此文件是由模板文件 ".dtpl/page/rawModuleName.wxml.dtpl" 生成的，你可以自行修改模板
+  此文件是由模板文件 ".dtpl/page/${dollar}rawModuleName.wxml.dtpl" 生成的，你可以自行修改模板
 
   注意：
   1. 文件为空，编译时不会生成新文件

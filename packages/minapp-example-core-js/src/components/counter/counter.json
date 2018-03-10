@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/component.json",
   "component": true,
   "usingComponents": {}
 }

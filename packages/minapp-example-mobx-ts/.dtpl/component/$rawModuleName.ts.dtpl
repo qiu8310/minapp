@@ -1,4 +1,4 @@
-// 此文件是由模板文件 ".dtpl/component/rawModuleName.ts.dtpl" 生成的，你可以自行修改模板
+// 此文件是由模板文件 ".dtpl/component/${dollar}rawModuleName.ts.dtpl" 生成的，你可以自行修改模板
 
 import {MyComponent, comify} from 'base'
 

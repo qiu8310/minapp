@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
-    "postpublish": "cnpm sync @minapp/cli",
+    "postpublish": "cnpm sync @minapp/component-demo",
     "clear": "remove-all dist",
     "build": "npm run clear && minapp build",
     "watch": "minapp dev"
@@ -26,7 +26,7 @@
     "tslib": "^1.9.0"
   },
   "peerDependencies": {
-    "@minapp/core": "^0.0.6"
+    "@minapp/core": "^1.0.0"
   },
   "devDependencies": {
     "@minapp/core": "^1.0.0-alpha.1",

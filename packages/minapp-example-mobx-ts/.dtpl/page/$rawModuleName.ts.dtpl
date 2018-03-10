@@ -1,4 +1,4 @@
-// 此文件是由模板文件 ".dtpl/page/rawModuleName.ts.dtpl" 生成的，你可以自行修改模板
+// 此文件是由模板文件 ".dtpl/page/${dollar}rawModuleName.ts.dtpl" 生成的，你可以自行修改模板
 
 import {pagify, MyPage, wxp} from 'base/'
 

@@ -62,7 +62,7 @@ export function webpackConfig(compiler: Compiler) {
     plugins.push(new WriteFile())
   }
 
-  if (compiler.production) {
+  if (compiler.minimize) {
     plugins.push(new webpack.optimize.UglifyJsPlugin({
       // NOTICE: 一定不能去掉 module 和 exports，否则压缩后代码可能失效
       mangle: { except: ['module', 'exports', 'global'] }, // mobx 使用了 global 变量
@@ -133,7 +133,8 @@ export function webpackConfig(compiler: Compiler) {
         // 样式
         {test: /\.s(c|a)ss$/i, use: [loader.wxss, postcss(loader.postcss, minapp.compiler), loader.sass]},
         {test: /\.less$/i, use: [loader.wxss, postcss(loader.postcss, minapp.compiler), loader.less]},
-        {test: /\.(css|wxss)$/i, use: loader.wxss},
+        {test: /\.(css|wxss)$/i, include: srcDir, use: [loader.wxss, postcss(loader.postcss, minapp.compiler)]},
+        {test: /\.(css|wxss)$/i, exclude: srcDir, use: [loader.wxss]},
 
         // 其它文件：不存在；静态资源在对应的其它文件中可以通过 loader 的 loadStaticFile 来 load
       ]

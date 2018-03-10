@@ -1,0 +1,9 @@
+<!--
+  此文件是由模板文件 ".dtpl/component/${ref.dollar}rawModuleName.wxml.dtpl" 生成的，你可以自行修改模板
+
+  注意：
+  1. 文件为空，编译时不会生成新文件
+  2. 如果没有语法高亮，且你使用的是 vscode 编辑器的话，建义在 vscode 插件库中安装 minapp-vscode 插件
+-->
+
+<text>component: $rawModuleName</text>

@@ -60,18 +60,14 @@ export function getComponentJson(refFile: string) {
   let foundjs = fs.readdirSync(dir).find(n => n === name + '.js' || n === name + '.ts')
 
   if (foundjson && foundjs) {
-    let file = path.join(dir, foundjson)
+    let jsonFile = path.join(dir, foundjson)
+    let jsFile = path.join(dir, foundjs)
     let content = fs.readFileSync(path.join(dir, foundjson)).toString()
     return {
-      file,
-      jsContent: fs.readFileSync(path.join(dir, foundjs)).toString(),
+      jsonFile, jsFile,
+      jsContent: fs.readFileSync(jsFile).toString(),
       json: JSON5.parse(content)
     }
   }
   return {}
-}
-
-export enum getStateType {
-  None = 'core',
-  Mobx = 'mobx'
 }

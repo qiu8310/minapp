@@ -1,0 +1,7 @@
+{
+  "$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/minapp.json",
+  "compiler": {
+    "px2rpx": true, // 开启将 px 单位转化成 rpx 单位
+    "rpx2px": false
+  }
+}

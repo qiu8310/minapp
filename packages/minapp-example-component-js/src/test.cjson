@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/component.json",
+  "component": true,
+  "minapp": {
+    // 在这里描述你的组件 （方便在 vscode 插件中生成自动补全的提醒）
+    "component": {
+      "desc": [
+        "这个组件是做什么的？",
+        "支持 **markdown** 的语法"
+      ],
+      // attrs 字段可以使用 "minapp attrs" 命令自动生成
+      // 它会去你的 ts 脚本文件中找 properties 字段的定义
+      "attrs": [
+
+      ]
+    }
+  }
+}

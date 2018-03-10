@@ -27,6 +27,9 @@ module.exports = function (source) {
         name: './component/'
       }
     ],
-    globalData: {}
+    globalData: {
+      dollar: '$',
+      style: 'css'
+    }
   }
 }

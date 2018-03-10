@@ -1,0 +1,35 @@
+{
+  "name": "@minapp/example-component-js",
+  "version": "1.0.0-alpha.1",
+  "description": "wechat example component for minapp",
+  "main": "dist/test.js",
+  "scripts": {
+    "test": "echo 0",
+    "clear": "remove-all dist",
+    "build": "node ../minapp-cli/dist/index.js build --pretty",
+    "dev": "node ../minapp-cli/dist/index.js dev"
+  },
+  "files": [
+    "dist/",
+    "package-lock.json",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "babel-runtime": "^6.24.0",
+    "@minapp/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-runtime": "^6.24.0",
+    "@minapp/core": "^1.0.0-alpha.1",
+    "mora-common": "^1.0.11",
+    "mora-scripts": "^1.6.21",
+    "tslib": "^1.9.0"
+  }
+}

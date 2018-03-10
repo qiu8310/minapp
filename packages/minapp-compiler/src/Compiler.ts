@@ -101,7 +101,6 @@ export class Compiler {
     if (this.production) {
       process.env.NODE_ENV = 'production'
       process.env.BABEL_ENV = 'production'
-      this.minimize = true
     }
     debug('production: %j', this.production)
     this.srcDir = path.resolve(srcDir)

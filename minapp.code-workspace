@@ -40,6 +40,12 @@
       "path": "packages/minapp-example-mobx-js"
     },
     {
+      "path": "packages/minapp-example-component-ts"
+    },
+    {
+      "path": "packages/minapp-example-component-js"
+    },
+    {
       "path": "packages/minapp-component-toast"
     },
     {

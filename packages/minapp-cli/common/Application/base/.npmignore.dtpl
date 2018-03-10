@@ -1,0 +1,11 @@
+*.log
+.cache
+vendor
+node_modules
+coverage
+
+tsconfig.json
+jsconfig.json
+.gitignore
+.dtpl
+src
