@@ -1,5 +1,9 @@
 /* your custom css */
 
+#try .blockContent h2 {
+  margin-top: 0;
+}
+
 .homeGifContainer .blockContent p {
   max-width: none;
 }

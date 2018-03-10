@@ -81,8 +81,9 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <PromoSection>
             <Button href="#try">Try It Out</Button>
-            <Button href="https://github.com/qiu8310/minapp/tree/master/packages/minapp-example-ts">TS 示例项目</Button>
-            <Button href="https://github.com/qiu8310/minapp/tree/master/packages/minapp-example-js">JS 示例项目</Button>
+            <Button href="https://github.com/qiu8310/minapp/tree/master/packages/minapp-example-core-ts">TS 示例项目</Button>
+            <Button href="https://github.com/qiu8310/minapp/tree/master/packages/minapp-example-core-js">JS 示例项目</Button>
+            <Button href="https://github.com/qiu8310/minapp/tree/master/packages/minapp-example-mobx-ts">MOBX 示例项目</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -122,13 +123,13 @@ const Features = props => (
         title: '所有语言都能自动补全',
       },
       {
-        content: '所有的 App/Page/Component 都基于 class 开发，另外集成 mobx，轻松管理全局数据对象',
+        content: '所有的 App/Page/Component 都基于 class 开发，集成 mobx，轻松管理全局数据对象',
         image: imgUrl('feature-js.svg'),
         imageAlign: 'top',
         title: '最时尚的开发模式',
       },
       {
-        content: '采用 webpack 构建，集成 webpack-dev-server，给你一个像开发 web 应用一样的体验',
+        content: '采用 webpack 构建，集成 webpack-dev-server，给你一个开发 web 应用一样的体验',
         image: imgUrl('feature-webpack.svg'),
         imageAlign: 'top',
         title: '简化开发与部署的流程',
@@ -142,7 +143,7 @@ const TryOut = props => (
     {[
       {
         content: tryItOut,
-        image: imgUrl('help.png'),
+        image: 'https://n1image.hjfile.cn/res7/2018/03/10/f58cfeb8fbb947999309a941074b1904.png',
         imageAlign: 'left',
         title: 'Try it Out',
       },

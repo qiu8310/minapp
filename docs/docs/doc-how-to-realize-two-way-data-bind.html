@@ -1,0 +1,102 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>如何在原生的小程中实现数据双向绑定 · minapp</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="如何在原生的小程中实现数据双向绑定 · minapp"/><meta property="og:type" content="website"/><meta property="og:url" content="https://qiu8310.github.io/minapp/minapp/index.html"/><meta property="og:description" content="在原生小程序开发中，数据流是单向的，无法双向绑定，但是要实现双向绑定的功能还是蛮简单的！"/><link rel="shortcut icon" href="/minapp/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://qiu8310.github.io/minapp/blog/atom.xml" title="minapp Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://qiu8310.github.io/minapp/blog/feed.xml" title="minapp Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/minapp/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/minapp/"><img class="logo" src="/minapp/img/minapp.svg"/><h2 class="headerTitle">minapp</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/minapp/docs/doc-install.html" target="_self">文档</a></li><li><a href="/minapp/docs/api-index.html" target="_self">API</a></li><li><a href="/minapp/en/help.html" target="_self">帮助</a></li><li><a href="/minapp/blog" target="_self">博客</a></li><li><a href="https://github.com/qiu8310/minapp" target="_self">Github</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>如何在原生的小程中实现数据双向绑定</h1></header><article><div><span><p>在原生小程序开发中，数据流是单向的，无法双向绑定，但是要实现双向绑定的功能还是蛮简单的！</p>
+<blockquote>
+<p>下文要讲的是小程序框架 <a href="https://github.com/qiu8310/minapp">minapp</a> 中实现双向绑定的原理，在 <a href="https://github.com/qiu8310/minapp">minapp</a> 中，你只需要在 wxml 模板中给组件的属性名后加上 <code>.sync</code> 就可以实现双向绑定。下面为了解释其原理，过程可能会说的稍微复杂些，但其实 <a href="https://github.com/qiu8310/minapp">minapp</a> 框架已经处理了那些繁杂的细节！</p>
+</blockquote>
+<p>首先，<strong>要使数据双向绑定，应该避免过多的数据源</strong>。
+在数据从上到下自然流动的情况下，如果每个组件中都维护它们自己的数据，而又要保持它们数据值的一致，这虽然可以做到，但实现过程并不会简单。
+但是也没必要说为了有一个统一的数据源就使用 <strong>mobx</strong> 或 <strong>redux</strong> 来全局管理数据，这就有点杀鸡用牛刀的感觉了。
+由于双向绑定只存在于父子组件之间，而数据又是从父到子传递的，所以可以优先使用父组件中的数据为数据源，
+子组件每次更新数据并不更新它自己内部的数据，而是通过事件机制触发父组件更新它的数据，而父组件更新数据后又会将更新的数据自然地传给子组件，
+由此达到数据的双向流动！</p>
+<p><img src="https://n1image.hjfile.cn/res7/2018/03/09/7b2b06c970055559fc6181d55b51c57a.png" alt="data-stream"></p>
+<p>并不是所有数据都需要双向绑定，也并不是所有数据都是对外的，子组件还可以有它自己的一个内部数据。所以这就涉及到我们要说的第二个问题：<strong>区分哪些数据需要双向绑定，哪些数据又需要子组件自己维护</strong>。</p>
+<p>用过 <strong>vue</strong> 的应该都知道，在 vue 中要实现双向绑定，需要在模板中做特殊处理。比如要将父组件的 <code>parentAttr</code> 双向绑定到子组件的 <code>childAttr</code> 上，需要在父组件的模板中这样写：</p>
+<pre><code class="hljs css html"><span class="hljs-tag">&lt;<span class="hljs-name">child</span> <span class="hljs-attr">childAttr.sync</span>=<span class="hljs-string">"parentAttr"</span> /&gt;</span>
+</code></pre>
+<p>但是小程序并没有这样的简单的语法，小程序的 wxml 语言的属性名中甚至都不允许出现 &quot; . &quot; 这样的字符。回到我们的问题上来，<strong>子组件需要知道哪些属性需要双向绑定，哪些属性需要自己维护</strong>，
+给模板加个字段（<code>syncAttrMap</code>）专门来告诉子组件需要双向绑定的数据集合不就行了么。如，可以将上面的示例写成微信小程序支持的写法：</p>
+<pre><code class="hljs css html"><span class="hljs-tag">&lt;<span class="hljs-name">child</span> <span class="hljs-attr">childAttr</span>=<span class="hljs-string">"{{parentAttr}}"</span> <span class="hljs-attr">syncAttrMap</span>=<span class="hljs-string">"childAttr=parentAttr"</span> /&gt;</span>
+
+<span class="hljs-comment">&lt;!--
+  如果同时存在多个双向绑定和不需要双向绑定的属性时，可以写成下面这样：
+  p1, p2 分别双向绑定到子组件的 c1, c2，而 p3 单向绑定到 c3 上
+--&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">child</span> <span class="hljs-attr">c1</span>=<span class="hljs-string">"{{p1}}"</span> <span class="hljs-attr">c2</span>=<span class="hljs-string">"{{p2}}"</span> <span class="hljs-attr">c3</span>=<span class="hljs-string">"{{p3}}"</span> <span class="hljs-attr">syncAttrMap</span>=<span class="hljs-string">"c1=p1&amp;c2=p2"</span> /&gt;</span>
+</code></pre>
+<p>接着，就需要处理<strong>子组件数据更新的问题</strong>了，在子组件中有两部分数据，一部分是内部数据，另一部分是父组件中的数据，
+子组件可以通过读取属性 <code>syncAttrMap</code> 来得到哪些数据是内部的数据，哪些数据是父组件的数据，并且可以知道对应
+的父组件中的数据的键名是什么。由于原生的组件方法 <code>setData</code> 不会管你是内部数据，还是父组件中的数据，只要
+你调用它去更新数据，它只会更新内部的数据。所以需要另外实现一个新的方法，来自动判断数据源，如果是内部数据，
+则直接调用 <code>setData</code> ；如果是双向绑定中的父组件数据，则可以触发一个事件去通知父组件去更新对应的值。</p>
+<p>所以根据上面的描述，父组件需要有个监听函数，子组件需要有个智能的 <code>setData</code> 函数。不防将父组件的监听函数
+命名为 <code>onSyncAttrUpdate</code>，将子组件的智能 <code>setData</code> 函数命名为 <code>setDataSmart</code>，则可以有如下代码：</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// 父组件</span>
+Component({
+  <span class="hljs-attr">methods</span>: {
+    onSyncAttrUpdate(e) {
+      <span class="hljs-keyword">this</span>.setData(e.detail) <span class="hljs-comment">// 子组件传来的需要更新的数据</span>
+    }
+  }
+})
+
+</code></pre>
+<pre><code class="hljs css html"><span class="hljs-comment">&lt;!-- 父组件的模板 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">child</span> <span class="hljs-attr">childAttr</span>=<span class="hljs-string">"{{parentAttr}}"</span> <span class="hljs-attr">syncAttrMap</span>=<span class="hljs-string">"childAttr=parentAttr"</span> <span class="hljs-attr">bind:syncAttrUpdate</span>=<span class="hljs-string">"onSyncAttrUpdate"</span> /&gt;</span>
+</code></pre>
+<pre><code class="hljs css js"><span class="hljs-comment">// 子组件</span>
+Component({
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">childAttr</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-attr">syncAttrMap</span>: <span class="hljs-built_in">String</span>
+  },
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-comment">// 子组件更新数据时，只要调用此方法即可，而不是 `setData`</span>
+    setDataSmart(data) {
+      <span class="hljs-comment">// splitDataBySyncAttrMap 函数的实现过程就不说了，只是将对象拆分，大家应该都能实现</span>
+      <span class="hljs-keyword">let</span> {parentData, innerData} = splitDataBySyncAttrMap(data, <span class="hljs-keyword">this</span>.data.syncAttrMap)
+
+      <span class="hljs-comment">// 内部数据使用 setData 更新</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.keys(innerData).length) {
+        <span class="hljs-keyword">this</span>.setData(innerData) <span class="hljs-comment">// setData 中还支持 callback 的回调，为了简化代码，这里不讨论</span>
+      }
+
+      <span class="hljs-comment">// 双向绑定的父组件数据触发事件让父组件自己去更新</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.keys(parentData).length) {
+        <span class="hljs-keyword">this</span>.triggerEvent(<span class="hljs-string">'syncAttrUpdate'</span>, parentData)
+      }
+    }
+  }
+})
+
+</code></pre>
+<p>到此，一个简单的双向绑定功能就完成了。但是由于子组件也有可能包含其它组件，也就是说子组件也可以是父组件，而父组件同样也
+可以是子组件。所以上面的 <code>onSyncAttrUpdate</code> <code>setDataSmart</code> 函数需要在每个组件中都实现，所以不防
+定义一个公共对象 <code>BaseComponent</code> 来实现上面的所有功能，如：</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// BaseComponent</span>
+<span class="hljs-keyword">const</span> BaseComponent = {
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">syncAttrMap</span>: <span class="hljs-built_in">String</span>
+  },
+  <span class="hljs-attr">methods</span>: {
+    setDataSmart() {
+      <span class="hljs-comment">// ...</span>
+    },
+    onSyncAttrUpdate() {
+      <span class="hljs-comment">// ...</span>
+    }
+  }
+}
+</code></pre>
+<p>然后将 BaseComponent minin 到每个组件的对象上去就可以了；另外小程序中还有一个特殊的组件：<strong>Page</strong>，虽然 Page 和 Component 结构是两样的，
+但它也应该算是一个组件，不过它一定是父组件，不可能是别的组件的子组件，所以还需要将 <code>onSyncAttrUpdate</code> 方法写了所有的 Page 定义中。
+所有这些就是 <a href="https://github.com/qiu8310/minapp">minapp</a> 的双向绑定的基本原理了。</p>
+<p>等等，最后还有一件事：<strong>wxml 模板</strong>，不能让用户每次写双向绑定的时候都要写那么复杂语句吧？当然不用，<a href="https://github.com/qiu8310/minapp">minapp</a> 在编译时，会将模板做个简单的转化：</p>
+<pre><code class="hljs css html"><span class="hljs-tag">&lt;<span class="hljs-name">child</span> <span class="hljs-attr">childAttr.sync</span>=<span class="hljs-string">"parentAttr"</span> /&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 由于属性名 syncAttrMap 是固定的，所以完全可以通过编译手段，将上面的模板转成下面这个模板 --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">child</span> <span class="hljs-attr">childAttr</span>=<span class="hljs-string">"{{parentAttr}}"</span> <span class="hljs-attr">syncAttrMap</span>=<span class="hljs-string">"childAttr=parentAttr"</span> /&gt;</span>
+</code></pre>
+<p>谢谢，文章到此结束，欢迎关注 <a href="https://github.com/qiu8310/minapp">minapp：重新定义微信小程序的开发</a></p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/minapp/" class="nav-home"><img src="/minapp/img/minapp-transparent.svg" alt="minapp" width="66" height="58"/></a><div><h5>文档</h5><a href="/minapp/docs/guide-install.html">快速开始</a><a href="/minapp/docs/basic-wepy.html">和 wepy 框架有什么异同</a><a href="/minapp/docs/api-app.html">API 文档</a></div><div style="display:none;"><h5>Community</h5><a href="/minapp/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank">Twitter</a></div><div><h5>更多</h5><a href="/minapp/blog">博客</a><a href="https://github.com/">GitHub</a><a class="github-button" href="https://github.com/qiu8310/minapp" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Mora &lt;qiuzhongleiabc@126.com&gt;</section></footer></div></body></html>
