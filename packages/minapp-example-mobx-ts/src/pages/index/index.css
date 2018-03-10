@@ -13,8 +13,7 @@
 
 .userinfo-nickname {
   color: #aaa;
-  // 使用了此需要在 dev 模式下，或者在 build 模式下指定 publicPath
-  // background-image: url("images/heart@3x.png");
+  background-image: url("images/heart@3x.png");
 }
 
 .usermotto {

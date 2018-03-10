@@ -65,6 +65,7 @@ function updatePackageJson(json: any, id: string): string {
   json.name = '${name}'
   json.description = '${description}'
   json.author = '${author}'
+  json.version = '${version}'
 
   delete json.publishConfig
   delete json.devDependencies['mora-common']

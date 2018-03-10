@@ -29,6 +29,12 @@ export function questions(absDir: string) {
       default: 0
     },
     {
+      type: 'input',
+      name: 'version',
+      message: 'Project version',
+      default: '1.0.0'
+    },
+    {
       type: 'list',
       name: 'language',
       message: 'Script language',
