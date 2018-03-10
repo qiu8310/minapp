@@ -12,7 +12,7 @@ import {parseAttrs} from '@minapp/common/dist/parseAttrs'
 const validateProjectName = require('validate-npm-package-name')
 const pkg = require('../package.json')
 
-import {getGitUser, getMinappConfig, getComponentJson} from './helper'
+import {getGitUser, getMinappConfig, getComponentJson, getStateType} from './helper'
 import {make} from './make'
 
 require('update-notifier')({pkg}).notify()
@@ -29,9 +29,9 @@ cli({
   version
 }).commands({
   'init': {
-    desc: 'init a project',
+    desc: 'init a project|component',
     conf: { usage: 'cli init <folder>' },
-    cmd: res => initProject(res._)
+    cmd: res => init(res._)
   },
   'dev': {
     desc: 'develop a preject, will inject a global variable: __ENV__="development"',
@@ -66,9 +66,10 @@ cli({
 /**
  * 初始化一个项目
  */
-function initProject(folders: string[]) {
-  if (folders.length === 0) return error('Please specify the initial project directory')
-  if (folders.length > 1) return error('You can only specify one project directory')
+
+function init(folders: string[]) {
+  if (folders.length === 0) return error(`Please specify the initial directory`)
+  if (folders.length > 1) return error(`You can only specify one directory`)
   let dir = folders[0]
   let absDir = path.resolve(dir)
 
@@ -77,20 +78,42 @@ function initProject(folders: string[]) {
   fs.ensureDirSync(dir)
   if (fs.readdirSync(dir).length) return error(`Directory "${dir}" already has files in it, please use an empty directory or not exist directory`)
 
-  inquirer.prompt([
+  inquirer.prompt(optionsFactory(absDir)).then(answers => {
+    make(`${answers.type}-${getStateType[answers.state || 'None']}-${answers.language === 'TypeScript' ? 'ts' : 'js'}`, absDir, answers)
+
+    console.log(
+      `${EOL}  ${answers.language} ${answers.type} ${answers.name} initialize successfully${EOL}`
+      + `===============================================${EOL}${EOL}`
+      + `  You can run next two commands to continue:${EOL}${EOL}`
+      + `    ${code('cd ' + dir)}${EOL}`
+      + `    ${code('npm install')} or ${code('yarn install')}${EOL}${EOL}${EOL}`
+      + `    ${clog.format('%cHave a good time !', 'magenta')} ${EOL}`
+    )
+  })
+}
+
+function optionsFactory(absDir: string) {
+  const options = [
     {
       type: 'list',
       name: 'language',
       message: 'Project language',
       choices: ['TypeScript', 'JavaScript'],
       default: 0
+    }, 
+    {
+      type: 'list',
+      name: 'type',
+      message: 'Init type',
+      choices: ['Project', 'Component'],
+      default: 0
     },
     {
       type: 'input',
       name: 'name',
-      message: 'Project name',
+      message: (answers: any) => `${answers.type} name`,
       default: path.basename(absDir),
-      validate: (answer) => {
+      validate: (answer: any) => {
         let result = validateProjectName(answer)
         if (result.validForNewPackages) return true
         let message = [...(result.warnings || []), ...(result.errors || [])]
@@ -98,10 +121,20 @@ function initProject(folders: string[]) {
       }
     },
     {
+      type: 'list',
+      name: 'state',
+      message: 'State Management',
+      choices: ['None', 'Mobx'],
+      default: 1,
+      when: (answers: any) => {
+        return answers.type === 'Project'
+      }
+    },
+    {
       type: 'input',
       name: 'description',
-      message: 'Project description',
-      default: 'A wonderful miniapp project'
+      message: (answers: any) => `${answers.type} description`,
+      default: (answers: any) => `A wonderful miniapp ${answers.type}`
     },
     {
       type: 'input',
@@ -112,20 +145,13 @@ function initProject(folders: string[]) {
     {
       type: 'input',
       name: 'appid',
-      message: 'Wexin app id'
+      message: 'Wexin app id',
+      when: (answers: any) => {
+        return answers.type === 'Project'
+      }
     }
-  ]).then(answers => {
-    make(answers.language === 'TypeScript' ? 'ts' : 'js', absDir, answers)
-
-    console.log(
-      `${EOL}  ${answers.language} project ${answers.name} initialize successfully${EOL}`
-      + `================================================================${EOL}${EOL}`
-      + `  You can run next two commands to continue:${EOL}${EOL}`
-      + `    ${code('cd ' + dir)}${EOL}`
-      + `    ${code('npm install')} or ${code('yarn install')}${EOL}${EOL}${EOL}`
-      + `    ${clog.format('%cHave a good time !', 'magenta')} ${EOL}`
-    )
-  })
+  ];
+  return options;
 }
 
 function code(str: string) {
