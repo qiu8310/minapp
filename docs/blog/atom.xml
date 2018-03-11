@@ -15,8 +15,8 @@
         </link>
         <updated>2018-03-10T06:00:00Z</updated>
         <summary type="html"><![CDATA[<blockquote>
-<p><a href="https://github.com/qiu8310/minapp">minapp</a> 是小程序开发过程中的一整套解决方案：
-包括应用层框架，编译器，及在 vscode 上开发的完美体验，更多介绍可以<a href="https://juejin.im/post/5a9b5b10f265da239866b826">查看此文</a></p>
+<p><a href="https://github.com/qiu8310/minapp">minapp</a> 提供微信小程序开发过程中的一整套解决方案，
+包括应用层框架，编译器，及在 vscode 上开发的完美体验，更多介绍可以查看 <a href="https://qiu8310.github.io/minapp">minapp 官网</a></p>
 </blockquote>
 <p>经过前面几个小版本的迭代， minapp 正式发布 1.0.0 版本了，新增功能如下：</p>
 ]]></summary>

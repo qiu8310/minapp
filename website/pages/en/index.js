@@ -143,7 +143,7 @@ const TryOut = props => (
     {[
       {
         content: tryItOut,
-        image: 'https://n1image.hjfile.cn/res7/2018/03/10/f58cfeb8fbb947999309a941074b1904.png',
+        image: 'https://n1image.hjfile.cn/res7/2018/03/11/4d83fcb9e0a1d94c749911af2fa9ffc9.gif',
         imageAlign: 'left',
         title: 'Try it Out',
       },
