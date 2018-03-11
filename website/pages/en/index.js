@@ -114,13 +114,19 @@ const tryItOut = `
 `
 
 const Features = props => (
-  <Block layout="threeColumn">
+  <Block layout="fourColumn">
     {[
       {
         content: 'ts/js/wxml/json/css 所有语言在 vscode 中都能自动补全，让你轻松上手小程序开发',
         image: imgUrl('feature-complete.svg'),
         imageAlign: 'top',
         title: '所有语言都能自动补全',
+      },
+      {
+        content: '可以将原生的小程序代码直接移入 minapp 环境，完全兼容',
+        image: imgUrl('minapp.svg'),
+        imageAlign: 'top',
+        title: '兼容原生小程序代码',
       },
       {
         content: '所有的 App/Page/Component 都基于 class 开发，集成 mobx，轻松管理全局数据对象',
