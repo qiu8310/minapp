@@ -14,14 +14,11 @@
     "test": "npm run build && node ./node_modules/vscode/bin/test"
   },
   "keywords": [
-    "minapp-vscode",
     "minapp",
     "wxml",
     "微信",
-    "模板",
     "小程序",
-    "wexin",
-    "wechat"
+    "wexin"
   ],
   "license": "MIT",
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
