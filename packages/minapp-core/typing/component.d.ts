@@ -23,6 +23,16 @@ declare namespace Component {
 
   interface Options {
     /**
+     * 外部样式类
+     *
+     * 有时，组件希望接受外部传入的样式类（类似于 view 组件的 hover-class 属性）。
+     * 此时可以在 Component 中用 externalClasses 定义段定义若干个外部样式类
+     *
+     * 参考： https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/wxml-wxss.html#%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E7%B1%BB
+     */
+    externalClasses?: string[]
+
+    /**
      * 组件的对外属性
      *
      * 是属性名到属性设置的映射表，属性设置中可包含三个字段，
