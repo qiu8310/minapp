@@ -1,6 +1,6 @@
 {
   "name": "@minapp/compiler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "微信小程序源代码编译器",
   "main": "dist/Compiler.js",
   "typings": "dist/Compiler.d.ts",
