@@ -131,8 +131,16 @@ export function webpackConfig(compiler: Compiler) {
         {test: /\.wxml$/i, use: loader.wxml},
 
         // 样式
-        {test: /\.s(c|a)ss$/i, use: [loader.wxss, postcss(loader.postcss, minapp.compiler), loader.sass]},
-        {test: /\.less$/i, use: [loader.wxss, postcss(loader.postcss, minapp.compiler), loader.less]},
+        {test: /\.s(c|a)ss$/i, use: [
+          loader.wxss,
+          postcss(loader.postcss, minapp.compiler),
+          {loader: loader.sass, options: {includePaths: [srcDir, modulesDir]}}
+        ]},
+        {test: /\.less$/i, use: [
+          loader.wxss,
+          postcss(loader.postcss, minapp.compiler),
+          {loader: loader.less, options: {paths: [srcDir, modulesDir]}}
+        ]},
         {test: /\.(css|wxss)$/i, include: srcDir, use: [loader.wxss, postcss(loader.postcss, minapp.compiler)]},
         {test: /\.(css|wxss)$/i, exclude: srcDir, use: [loader.wxss]},
 
