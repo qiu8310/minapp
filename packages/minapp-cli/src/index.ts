@@ -40,8 +40,8 @@ cli({
     conf: {version},
     options: {
       ...commonOpts,
-      'host': '<string> server host, default: "localhost"',
-      'port': '<string> server port, default: "8080"',
+      'host': '<string> server host  {{"localhost"}}',
+      'port': '<string> server port  {{"8080"}}',
       'm | minimize': '<boolean> minimize source files',
     },
     cmd: res => compile('dev', res)
@@ -99,7 +99,7 @@ function code(str: string) {
   return clog.format('%c' + str, 'yellow')
 }
 
-function compile(type: string, opts: any) {
+function compile(type: string, opts: cli.Response) {
   let minapp = getMinappConfig()
 
   if (type === 'dev') {
@@ -109,8 +109,8 @@ function compile(type: string, opts: any) {
       return new Compiler(opts.srcDir, opts.distDir, {watch: true, minimize, production: false, minapp})
     } else {
       let server: any = minapp && minapp.compiler && minapp.compiler.devServer || {}
-      if (host || !server.host) server.host = host || 'localhost'
-      if (port || !server.port) server.port = port || '8080'
+      if (opts.userDefined.host || !server.host) server.host = host || 'localhost'
+      if (opts.userDefined.port || !server.port) server.port = port || '8080'
 
       return new Compiler(opts.srcDir, opts.distDir, {server, minimize, production: false, minapp})
     }

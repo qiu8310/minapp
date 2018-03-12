@@ -28,7 +28,7 @@
 		"debug": "^3.1.0",
 		"json5": "^0.5.1",
 		"mora-common": "^1.0.8",
-		"mora-scripts": "^1.6.21",
+		"mora-scripts": "^1.6.25",
 		"tslib": "^1.9.0",
 		"webpack-sources": "^1.1.0"
 	},

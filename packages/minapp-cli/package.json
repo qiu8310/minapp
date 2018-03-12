@@ -31,7 +31,7 @@
 		"fs-extra": "^5.0.0",
 		"inquirer": "^5.1.0",
 		"json5": "^0.5.1",
-		"mora-scripts": "^1.6.24",
+		"mora-scripts": "^1.6.25",
 		"tslib": "^1.9.0",
 		"update-notifier": "^2.3.0",
 		"validate-npm-package-name": "^3.0.0"

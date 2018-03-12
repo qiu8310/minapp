@@ -60,7 +60,7 @@
 		"debug": "^3.1.0",
 		"fs-extra": "^5.0.0",
 		"lodash": "^4.17.4",
-		"mora-scripts": "^1.6.19",
+		"mora-scripts": "^1.6.25",
 		"request": "^2.83.0",
 		"request-promise": "^4.2.2",
 		"tslib": "^1.9.0",
