@@ -40,8 +40,8 @@ cli({
     conf: {version},
     options: {
       ...commonOpts,
-      'host': '<string> server host {{"localhost"}}',
-      'port': '<string> server port {{"8080"}}',
+      'host': '<string> server host, default: "localhost"',
+      'port': '<string> server port, default: "8080"',
       'm | minimize': '<boolean> minimize source files',
     },
     cmd: res => compile('dev', res)
@@ -104,12 +104,16 @@ function compile(type: string, opts: any) {
 
   if (type === 'dev') {
     let {host, port, minimize} = opts
-    let server: any = {host, port}
 
     if (minapp.component) { // 组件开发不需要 server
       return new Compiler(opts.srcDir, opts.distDir, {watch: true, minimize, production: false, minapp})
+    } else {
+      let server: any = minapp && minapp.compiler && minapp.compiler.devServer || {}
+      if (host || !server.host) server.host = host || 'localhost'
+      if (port || !server.port) server.port = port || '8080'
+
+      return new Compiler(opts.srcDir, opts.distDir, {server, minimize, production: false, minapp})
     }
-    return new Compiler(opts.srcDir, opts.distDir, {server, minimize, production: false, minapp})
   } else {
     let {watch, publicPath, pretty} = opts
     if (minapp.component) { // 判断有没有添加组件描述

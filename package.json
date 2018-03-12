@@ -4,6 +4,7 @@
 	"private": true,
 	"license": "MIT",
 	"scripts": {
+		"publish_app": "lerna publish --registry https://registry.npmjs.org/ --ignore '@minapp/example-*' --ignore '@minapp/component-*' --ignore minapp-vscode",
 		"build_app": "lerna run build --ignore '@minapp/example-*' --ignore '@minapp/component-*'",
 		"build_exp": "lerna run build --scope '@minapp/component-*' --scope '@minapp/example-*'",
 		"all_build": "npm run build_app && npm run build_exp",

@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schema/minapp.json",
+  "compiler": {
+    "px2rpx": true,
+    "rpx2px": false,
+    "devServer": {
+      "port": "9000"
+    }
+  }
+}

@@ -24,6 +24,8 @@ export interface Minapp {
     rpx2px?: boolean
     /** autoprefixer 的 browsers 配置，参考：https://github.com/ai/browserslist#queries */
     browsers?: string[]
+
+    devServer?: {[key: string]: any}
   }
 }
 

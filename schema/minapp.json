@@ -29,6 +29,11 @@
           "items": {
             "type": "string"
           }
+        },
+        "devServer": {
+          "type": "object",
+          "description": "开发环境中，webpack-dev-server 的配置，参考 https://webpack.js.org/configuration/dev-server/",
+          "default": {}
         }
       }
     }
