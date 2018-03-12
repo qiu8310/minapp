@@ -19,7 +19,6 @@ export class MyApp extends BaseApp {
     /*# INJECT_START {"key": "pagesMap"} #*/
     index: Url
     logs: Url
-    about: Url
     /*# INJECT_END #*/
   }
 }
