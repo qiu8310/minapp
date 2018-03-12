@@ -8,7 +8,9 @@
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
     "postpublish": "cnpm sync @minapp/core",
-    "build": "tsc && node scripts/init.js",
+    "bundle:pretty": "webpack --output-library-target commonjs  system.js system.bundle.js",
+    "bundle:minify": "webpack -p --output-library-target commonjs  system.js system.bundle.min.js",
+    "build": "tsc && node scripts/init.js && npm run bundle:pretty && npm run bundle:minify",
     "watch": "tsc -w -p tsconfig-system.json"
   },
   "publishConfig": {
