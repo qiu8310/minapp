@@ -10,6 +10,16 @@
 2. 初始化项目：`minapp init <你要创建项目的文件夹>` (同时支持创建 js 和 ts 项目)
 3. 安装两个 vscode 插件：[minapp][vscode-minapp] 和 [dot-template][vscode-dot-template]（可选，但建议安装）
 
+## 特点
+
+* 完全兼容原生小程序，所有原生小程序代码可以直接迁移到 minapp 的环境中
+* 集成 webpack 和 webpack-dev-server，编译有保障
+* 可以选择使用 mobx，方便管理全局数据
+* 所有语言在 minapp 的环境中都能自动补全，开发体验超级棒（见下面的`功能概览`）
+* 体积小，核心代码压缩后只有 16kb （安装 `@minapp/core` 后，对应目录下面会有一个 `system.bundle.min.js`）
+* 支持数据双向绑定
+* setData 性能优化
+
 ## 功能概览（在 vscode 编辑器下）
 
 ### wx 所有接口都有智能的提醒，同时包括接口的参数，和返回值
