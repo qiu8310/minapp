@@ -1,4 +1,19 @@
 
+1.0.2 / 2018-03-15
+==================
+
+* 添加生成 bundle 的脚本，方便用户直接使用单个 bundle 文件
+* 示例项目中有多余的 page
+* 修复 sass 和 less 的 import 路径 resolve 问题 close #18
+* 更新 mora-scripts，支持判断哪些命令行参数是用户自定义的
+
+1.0.1 / 2018-03-12
+==================
+
+* 暴露 webpack-dev-server 的配置 close #17
+* Component 添加 externalClasses 字段
+* vscode 插件只支持 5 个 keywords
+
 1.0.0 / 2018-03-11
 ==================
 

@@ -42,7 +42,7 @@
     "json5": "^0.5.1",
     "less": "^3.0.0",
     "less-loader": "^4.0.5",
-    "mora-common": "^1.0.8",
+    "mora-common": "^1.0.12",
     "mora-scripts": "^1.6.25",
     "node-sass": "^4.7.2",
     "postcss": "^6.0.17",

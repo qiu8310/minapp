@@ -63,6 +63,6 @@
   },
   "dependencies": {
     "json5": "^0.5.1",
-    "mora-common": "^1.0.11"
+    "mora-common": "^1.0.12"
   }
 }
