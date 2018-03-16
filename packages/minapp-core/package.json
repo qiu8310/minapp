@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
-    "postpublish": "cnpm sync @minapp/core",
+    "postpublish": "sync-taobao",
     "bundle:pretty": "webpack --output-library-target commonjs  system.js system.bundle.js",
     "bundle:minify": "webpack -p --output-library-target commonjs  system.js system.bundle.min.js",
     "build": "tsc && node scripts/init.js && npm run bundle:pretty && npm run bundle:minify",
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/fs-extra": "^5.0.0",
     "fs-extra": "^5.0.0",
-    "mora-scripts": "^1.6.25",
+    "mora-scripts": "^1.6.28",
     "ts-lint": "^4.5.1",
     "typescript": "^2.7.1"
   },

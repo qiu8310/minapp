@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
-    "postpublish": "cnpm sync @minapp/component-demo",
+    "postpublish": "sync-taobao",
     "clear": "remove-all dist",
     "build": "npm run clear && node ../minapp-cli/dist/index.js build --pretty",
     "watch": "node ../minapp-cli/dist/index.js dev"
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@minapp/core": "^1.0.2",
     "mora-common": "^1.0.11",
-    "mora-scripts": "^1.6.21",
+    "mora-scripts": "^1.6.28",
     "ts-lint": "^4.5.1",
     "typescript": "^2.7.1"
   }

@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
-    "postpublish": "cnpm sync @minapp/compiler",
+    "postpublish": "sync-taobao",
     "clear": "remove-all dist",
     "build": "npm run clear && tsc",
     "watch": "tsc -w"
@@ -43,7 +43,7 @@
     "less": "^3.0.0",
     "less-loader": "^4.0.5",
     "mora-common": "^1.0.12",
-    "mora-scripts": "^1.6.25",
+    "mora-scripts": "^1.6.28",
     "node-sass": "^4.7.2",
     "postcss": "^6.0.17",
     "postcss-loader": "^2.1.0",

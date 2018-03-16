@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "lint": "tslint src/**/*.ts",
-    "postpublish": "cnpm sync @minapp/common",
+    "postpublish": "sync-taobao",
     "clear": "remove-all dist",
     "build": "npm run clear && tsc && node src/dev/script.js copy",
     "watch": "tsc -w"
@@ -55,7 +55,7 @@
     "@types/json5": "^0.0.29",
     "fs-extra": "^5.0.0",
     "jest": "^22.1.4",
-    "mora-scripts": "^1.6.20",
+    "mora-scripts": "^1.6.28",
     "ts-jest": "^22.0.2",
     "ts-lint": "^4.5.1",
     "tslib": "^1.9.0",

@@ -7,7 +7,7 @@
 	"scripts": {
 		"test": "echo 0",
 		"lint": "tslint src/**/*.ts",
-		"postpublish": "cnpm sync @minapp/webpack-utils",
+		"postpublish": "sync-taobao",
 		"clear": "remove-all dist",
 		"build": "npm run clear && tsc",
 		"watch": "tsc -w"
@@ -28,7 +28,7 @@
 		"debug": "^3.1.0",
 		"json5": "^0.5.1",
 		"mora-common": "^1.0.12",
-		"mora-scripts": "^1.6.25",
+		"mora-scripts": "^1.6.28",
 		"tslib": "^1.9.0",
 		"webpack-sources": "^1.1.0"
 	},
