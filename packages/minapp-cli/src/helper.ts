@@ -8,8 +8,13 @@ import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as JSON5 from 'json5'
 import * as findup from 'mora-scripts/libs/fs/findup'
+import * as clog from 'mora-scripts/libs/sys/clog'
 import {JSON_REGEXP} from '@minapp/common/dist/dev/config'
 import {Minapp} from '@minapp/compiler'
+
+export function code(str: string) {
+  return clog.format('%c' + str, 'yellow')
+}
 
 export function walkDirectory(dir: string, cb: (dir: string, name: string, file: string, stat: fs.Stats) => boolean | void | undefined) {
   fs.readdirSync(dir).forEach(name => {

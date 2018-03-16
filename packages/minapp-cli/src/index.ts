@@ -14,8 +14,9 @@ import {questions} from './questions'
 
 const pkg = require('../package.json')
 
-import {getMinappConfig, getComponentJson} from './helper'
+import {getMinappConfig, getComponentJson, code} from './helper'
 import {make} from './make'
+import {check} from './check'
 
 require('update-notifier')({pkg}).notify()
 
@@ -95,13 +96,11 @@ function init(folders: string[]) {
   })
 }
 
-function code(str: string) {
-  return clog.format('%c' + str, 'yellow')
-}
-
 function compile(type: string, opts: cli.Response) {
-  let minapp = getMinappConfig()
+  // 验证依赖的模块
+  if (!check()) return
 
+  let minapp = getMinappConfig()
   if (type === 'dev') {
     let {host, port, minimize} = opts
 
