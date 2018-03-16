@@ -174,7 +174,7 @@ export abstract class Loader {
 
     let file = path.relative(this.distDir, path.join(output, filename))
     this.emit(file, content)
-    let url = this.outputPublicPath + file
+    let url = this.outputPublicPath + toUrlPath(file)
 
     if (process.env.NODE_ENV === 'production' && !(/^(\w+?:)\/\//.test(url))) {
       this.emitWarning(new Error(`文件 ${this.fromFile} 使用了本地的静态资源！请在 minapp dev 模式下运行，或者在 minapp build 模式下指定 --publicPath`))
