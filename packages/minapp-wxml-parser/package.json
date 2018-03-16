@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/wxml-parser",
 	"description": "微信小程序 wxml 解析器",
-	"version": "1.0.0",
+	"version": "1.0.3",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
