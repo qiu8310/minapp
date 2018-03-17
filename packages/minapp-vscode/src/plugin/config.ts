@@ -11,7 +11,7 @@ let listener = vscode.workspace.onDidChangeConfiguration(getConfig)
 export interface Config {
   disableCustomComponentAutocomponent: boolean
   resolveRoots: string[]
-  getResolveRoots: (uri: vscode.Uri) => string[]
+  getResolveRoots: (doc: vscode.TextDocument) => string[]
 }
 
 export const config: Config = {
@@ -20,8 +20,8 @@ export const config: Config = {
   getResolveRoots
 }
 
-function getResolveRoots(uri: vscode.Uri) {
-  let root = vscode.workspace.getWorkspaceFolder(uri) as vscode.WorkspaceFolder
+function getResolveRoots(doc: vscode.TextDocument) {
+  let root = vscode.workspace.getWorkspaceFolder(doc.uri) as vscode.WorkspaceFolder
   return root ? config.resolveRoots.map(r => path.resolve(root.uri.fsPath, r)) : []
 }
 

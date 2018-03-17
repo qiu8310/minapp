@@ -7,17 +7,17 @@ import {HoverProvider, TextDocument, Position, CancellationToken, Hover, Markdow
 import { hoverComponentAttrMarkdown, hoverComponentMarkdown } from '@minapp/common'
 import {getTagAtPosition, Tag} from './getTagAtPosition'
 import {Config} from './config'
+import {inTemplate, getCustomOptions} from './helper'
 
 export default class implements HoverProvider {
   constructor(public config: Config) {}
 
   async provideHover(document: TextDocument, position: Position, token: CancellationToken) {
+    if (!inTemplate(document, position)) return null
     let tag = getTagAtPosition(document, position) as Tag
     if (!tag) return null
 
-    let co = this.config.disableCustomComponentAutocomponent
-      ? undefined
-      : {filename: document.fileName, resolves: this.config.getResolveRoots(document.uri)}
+    let co = getCustomOptions(this.config, document)
 
     let markdown: string | undefined
     if (tag.isOnTagName) {

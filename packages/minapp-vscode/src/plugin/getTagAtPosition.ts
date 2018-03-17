@@ -1,6 +1,6 @@
 /******************************************************************
 MIT License http://www.opensource.org/licenses/mit-license.php
-Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
+Author Mora <qiuzhongleiabc^126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
 // tslint:disable: no-conditional-assignment
@@ -25,7 +25,7 @@ export interface Tag {
 }
 
 const tagRegExp = /<([\w-:.]+)(\s+[^<>]*)?/g
-const attrRegExp = /^([\w:-]+)\s*(=\s*("[^"]*"|'[^']*'|\w+))?\s*/
+const attrRegExp = /^(@?[\w:-]+)\s*(=\s*("[^"]*"|'[^']*'|\w+))?\s*/
 
 export function getTagAtPosition(doc: TextDocument, pos: Position): null | Tag {
   let tag: null | Tag = null
@@ -34,7 +34,7 @@ export function getTagAtPosition(doc: TextDocument, pos: Position): null | Tag {
 
   // 因为双大括号里可能会有任何字符，估优先处理
   // 用特殊字符替换 "{{" 与 "}}"" 之间的语句，并保证字符数一致
-  line = line.replace(/\{\{[^\}]*?\}\}/g, replacer('@'))
+  line = line.replace(/\{\{[^\}]*?\}\}/g, replacer('^'))
 
   let attrFlagLine = line.replace(/("[^"]*"|'[^']')/g, replacer('%')) // 将引号中的内容也替换了
 
@@ -83,6 +83,8 @@ function getAttrs(text: string) {
 
 function stripColon(name: string) {
   return name.replace(':', '')
+    .replace(/^@/, 'bind')
+    .replace(/\..*$/, '') // 去除修饰字符，如 .default, .stop, .user, .sync
 }
 
 function strip(val: string) {

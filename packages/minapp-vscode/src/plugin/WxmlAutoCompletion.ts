@@ -12,10 +12,11 @@ import {
 import {
   TagItem, TagAttrItem,
   autocompleteTagAttrValue, autocompleteTagAttr,
-  autocompleteTagName, autocompleteSpecialTagAttr
+  autocompleteTagName, autocompleteSpecialTagAttr, ComponentAttr
 } from '@minapp/common'
 
 import {getTagAtPosition} from './getTagAtPosition'
+import {inTemplate, getCustomOptions} from './helper'
 import {Config} from './config'
 
 const TRIGGERS = ['wx', 'bind', 'catch'].map(k => {
@@ -25,22 +26,28 @@ const TRIGGERS = ['wx', 'bind', 'catch'].map(k => {
   return item
 })
 
+const VUE_BIND_OPERATORS = ['sync']
+const VUE_EVENT_OPERATORS = ['default', 'user', 'stop']
+
 export default class implements CompletionItemProvider {
   constructor(public config: Config) {}
 
   provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): Promise<CompletionItem[]> {
+    if (!inTemplate(document, position)) return [] as any
+
     switch (context.triggerCharacter) {
       case '<': return this.createComponentSnippetItems(document, position)
       case ' ': return this.createComponentAttributeSnippetItems(document, position)
-      case ':': return this.createSpecialAttributeSnippetItems(document, position)
+      case ':':
+      case '@':
+      case '.':
+        return this.createSpecialAttributeSnippetItems(document, position)
       default: return [] as any
     }
   }
 
   getCustomOptions(doc: TextDocument) {
-    return this.config.disableCustomComponentAutocomponent
-      ? undefined
-      : {filename: doc.fileName, resolves: this.config.getResolveRoots(doc.uri)}
+    return getCustomOptions(this.config, doc)
   }
 
   /**
@@ -57,7 +64,7 @@ export default class implements CompletionItemProvider {
   /**
    * 创建组件属性的自动补全
    */
-  async createComponentAttributeSnippetItems(doc: TextDocument, pos: Position) {
+  async createComponentAttributeSnippetItems(doc: TextDocument, pos: Position, prefixChar?: string) {
     let tag = getTagAtPosition(doc, pos)
     if (!tag) return []
     if (tag.isOnAttrValue && tag.attrName) {
@@ -84,30 +91,62 @@ export default class implements CompletionItemProvider {
       return []
     } else {
       let res = await autocompleteTagAttr(tag.name, tag.attrs, this.getCustomOptions(doc))
+      let triggers: CompletionItem[] = []
+
+      let {natives, basics} = res
+
+      if (doc.languageId === 'wxml') {
+        triggers = TRIGGERS
+      } else {
+        triggers = prefixChar ? [] : TRIGGERS.slice(0, 1)
+        natives = natives.filter(n => !isEventAttr(n.attr))
+      }
+
       return [
-        ...res.natives.map(a => renderTagAttr(a, 'a')),
-        ...res.basics.map(a => renderTagAttr(a, 'b')), // 基本属性放最后
-        ...TRIGGERS
+        ...natives.map(a => renderTagAttr(a, 'a')),
+        ...basics.map(a => renderTagAttr(a, 'b')), // 基本属性放最后
+        ...triggers
       ]
     }
   }
 
   /**
-   * 生成 wx:, bind:, catch: 的自动补全
+   * wxml:
+   *    wx:
+   *    bind:
+   *    catch:
+   *
+   * vue:
+   *    :
+   *    @
+   *    :xxx.sync
+   *    @xxx.default, @xxx.user, @xxx.stop
    */
   async createSpecialAttributeSnippetItems(doc: TextDocument, pos: Position) {
-    let range = doc.getWordRangeAtPosition(pos, /\b(wx|bind|catch):/)
+    let range = doc.languageId === 'wxml'
+      ? doc.getWordRangeAtPosition(pos, /\b(wx|bind|catch):/)
+      : (doc.getWordRangeAtPosition(pos, /\s[:@]([\w\.]+\.)?/) || doc.getWordRangeAtPosition(pos, /\bwx:/))
+
     if (range) {
-      let text = doc.getText(range)
+      let text = doc.getText(range).trim()
+
+      // text is ":" or "@"
+      if (text === ':') return this.createComponentAttributeSnippetItems(doc, pos, text)
+      let operators = text[0] === ':' ? VUE_BIND_OPERATORS : text[0] === '@' && text.length > 1 ? VUE_EVENT_OPERATORS : []
+      if (operators.length) {
+        return operators.map(o => new CompletionItem(o, CompletionItemKind.Constant))
+      }
+
       let tag = getTagAtPosition(doc, pos)
       if (!tag) return []
 
-      text = text.substr(0, text.length - 1) // 去掉后面的 ":"
+      text = text === '@' ? 'bind' : text.replace(/:$/, '') // 去掉后面的 ":"
       let res = await autocompleteSpecialTagAttr(text as 'wx', tag.name, tag.attrs, this.getCustomOptions(doc))
 
+      let kind = text === 'wx' ? CompletionItemKind.Field : CompletionItemKind.Event
       return [
-        ...res.customs.map(c => renderTagAttr(c, 'a')),
-        ...res.natives.map(c => renderTagAttr(c, 'b'))
+        ...res.customs.map(c => renderTagAttr(c, 'a', kind)),
+        ...res.natives.map(c => renderTagAttr(c, 'b', kind))
       ]
     }
     return []
@@ -137,9 +176,9 @@ function renderTag(tag: TagItem, sortText: string) {
   return item
 }
 
-function renderTagAttr(tagAttr: TagAttrItem, sortText: string) {
+function renderTagAttr(tagAttr: TagAttrItem, sortText: string, kind?: CompletionItemKind) {
   let a = tagAttr.attr
-  let item = new CompletionItem(a.name, CompletionItemKind.Field)
+  let item = new CompletionItem(a.name, kind === undefined ? CompletionItemKind.Field : kind)
   let defaultValue = a.defaultValue
   if (!isDefaultValueValid(defaultValue)) {
     defaultValue = a.enum && a.enum[0].value
@@ -156,4 +195,8 @@ function renderTagAttr(tagAttr: TagAttrItem, sortText: string) {
 
 function isDefaultValueValid(defaultValue: any) {
   return defaultValue !== undefined && defaultValue !== ''
+}
+
+function isEventAttr(attr: ComponentAttr) {
+  return attr.name.startsWith('bind') || attr.name.startsWith('catch')
 }

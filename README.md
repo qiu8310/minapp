@@ -41,6 +41,8 @@
 
 ### wxml 模板语言支持语法高亮，组件智能提示，组件属性智能提示（需要安装 vscode 插件 [minapp][vscode-minapp]）
 
+欲了解更多此插件的功能详情，[点此查看](./packages/minapp-vscode)
+
 ![wxml](https://n1image.hjfile.cn/res7/2018/03/01/13631761451ae134c6eb3ea2ed1a6a12.gif)
 
 ### json 文件支持自动提示

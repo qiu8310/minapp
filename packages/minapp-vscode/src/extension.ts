@@ -10,11 +10,18 @@ import WxmlHoverProvider from './plugin/WxmlHoverProvider'
 import {config, destroy} from './plugin/config'
 
 export function activate(context: vscode.ExtensionContext) {
-  let selector = 'wxml'
+  let selector = ['wxml', 'vue']
+  let autoCompletion = new WxmlAutoCompletion(config)
+  let hoverProvider = new WxmlHoverProvider(config)
+  // console.log('minapp-vscode is active!')
   context.subscriptions.push(
-    vscode.languages.registerCompletionItemProvider(selector, new WxmlAutoCompletion(config), '<', ' ', ':'),
-    vscode.languages.registerHoverProvider(selector, new WxmlHoverProvider(config))
+    vscode.languages.registerCompletionItemProvider(selector, autoCompletion, '<', ' ', ':', '@', '.'),
+    vscode.languages.registerHoverProvider(selector, hoverProvider)
   )
+
+  return {
+    autoCompletion, hoverProvider
+  }
 }
 
 export function deactivate() {
