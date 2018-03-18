@@ -6,9 +6,19 @@ import {BaseApp} from './BaseApp'
 import {PolluteOptions, pollute, isPlainObject} from '../util'
 
 // 将 on 开头的生命周期函数转变成非 on 开头的
-let RAW_LIFE_CYCLES = ['Created', 'Attached', 'Ready', 'Moved', 'Detached']
-let ON_LIFE_CYCLES = RAW_LIFE_CYCLES.map(k => 'on' + k)
-let NATIVE_LIFE_CYCLES = RAW_LIFE_CYCLES.map(k => k.toLowerCase())
+const RAW_LIFE_CYCLES = ['Created', 'Attached', 'Ready', 'Moved', 'Detached']
+const ON_LIFE_CYCLES = RAW_LIFE_CYCLES.map(k => 'on' + k)
+const NATIVE_LIFE_CYCLES = RAW_LIFE_CYCLES.map(k => k.toLowerCase())
+
+// https://mp.weixin.qq.com/debug/wxadoc/dev/framework/custom-component/component.html
+const COMPONENT_NATIVE_PROPS = [
+  'externalClasses',
+  'properties',
+  'data',
+  'options',
+  'relations',
+  'behaviors'
+]
 
 // @ts-ignore
 export interface BaseComponent<D, A extends BaseApp> extends Component, Component.Options {
@@ -53,7 +63,15 @@ export class BaseComponent<D, A extends BaseApp> {
   readonly data: D
 
   /**
+   * App 实例
+   */
+  // @ts-ignore
+  readonly app: A
+
+  /**
    * 获取 App 实例，即微信原生函数 getApp() 返回的对象
+   *
+   * @deprecated 直接使用 this.app 即可，无需使用函数调用
    */
   getApp() {
     return getApp() as A
@@ -133,6 +151,7 @@ export function comify<D, A extends BaseApp>(options: ComifyOptions = {}, pollut
 
     // 处理自定义的方法和生命周期函数
     if (!obj.methods) obj.methods = {} as any
+    let inits: {[key: string]: PropertyDescriptor} = {}
     Object.getOwnPropertyNames(obj).forEach(k => {
       let desc = Object.getOwnPropertyDescriptor(obj, k)
       if (!desc) return
@@ -142,8 +161,20 @@ export function comify<D, A extends BaseApp>(options: ComifyOptions = {}, pollut
       } else if (NATIVE_LIFE_CYCLES.indexOf(k) < 0 && (typeof desc.value === 'function')) {
         Object.defineProperty(obj.methods, k, desc)
         delete obj[k]
+      } else if (COMPONENT_NATIVE_PROPS.indexOf(k) < 0) {
+        // 非函数，也组件内部属性
+        // 由于小程序组件会忽略不能识别的字段，需要这里需要把这些字段配置在组件 created 的时候赋值
+        inits[k] = desc
       }
     })
+
+    if (Object.keys(inits).length) {
+      let oldCreated = obj.created as any
+      obj.created = function() {
+        Object.defineProperties(this, inits)
+        if (oldCreated) oldCreated.apply(this, arguments)
+      }
+    }
 
     Component(obj)
   }

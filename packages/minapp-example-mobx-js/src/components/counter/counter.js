@@ -34,7 +34,7 @@ export default class extends MyComponent {
   }
 
   onReady() {
-    console.log('在 counter 组件中获取 store: ', this.getApp().store)
+    console.log('在 counter 组件中获取 store: %o', this.store)
   }
 
   /**

@@ -24,13 +24,17 @@ export default class extends MyComponent {
 
   }
 
+  // 虽然是 Math.random()， 但所有此组件的此值都会是一样的， 因为组件只会初始化一次
+  // 所以建议在 onCreated 中初化化组件的属性（也不要在 constructor 中初始化）
+  prop = Math.random()
+
   /**
    * 生命周期函数
    *
    * 原生的是 create，为了方便语法提醒，统一改成以 on 开头的函数
    */
   onCreated() {
-
+    console.log('获取属性 prop: %o, 获取 app 实例: %o', this.prop, this.app)
   }
 
   /**
