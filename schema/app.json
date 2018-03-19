@@ -80,7 +80,13 @@
       "required": [
         "color", "selectedColor", "backgroundColor", "list"
       ],
-      "definitions": {
+      "default": {
+        "color": "",
+        "selectedColor": "",
+        "backgroundColor": "",
+        "list": []
+      },
+      "properties": {
         "color": {
           "type": "string",
           "description": "tab 上的文字默认颜色"
@@ -114,7 +120,7 @@
           "items": {
             "type": "object",
             "required": ["pagePath", "text"],
-            "definitions": {
+            "properties": {
               "pagePath": {
                 "type": "string",
                 "description": "页面路径，必须在 pages 中先定义"
@@ -140,7 +146,7 @@
     },
     "networkTimeout": {
       "type": "object",
-      "definitions": {
+      "properties": {
         "request": {
           "type": "number",
           "default": 60000,

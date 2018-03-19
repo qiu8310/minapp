@@ -147,14 +147,20 @@ export abstract class Loader {
     if (typeof test === 'function') return test(request)
     return test.test(request.split(/[#\?]/).shift() as string)
   }
-  async loadStaticFile(absFile: string, request: string): Promise<string> {
+  /**
+   * @param {string} absFile
+   * @param {string} request
+   * @param {boolean} [local] 不需要网络图片（如 app.json 中配置的 tabBar 图标）
+   * @memberof Loader
+   */
+  async loadStaticFile(absFile: string, request: string, local?: boolean): Promise<string> {
     // let absFile = await this.resolve(request)
     this.lc.addDependency(absFile)
 
     // TODO: 这里需要一个处理静态资源路径的脚本
     let content = await readFile(absFile)
 
-    if (this.mode !== 'project') {
+    if (this.mode !== 'project' || local) {
       this.emit(this.getEmitFile(absFile), content)
       return request // 无须更新文件引用
     }

@@ -39,6 +39,14 @@ export default class JsonLoader extends Loader {
         }, 0)
       }
 
+      // 解析 json 中配置的文件链接
+      if (json.tabBar && json.tabBar.list && json.tabBar.list.length) {
+        await map(json.tabBar.list, async (item: any) => {
+          if (item.iconPath) item.iconPath = await this.resolveImage(item.iconPath)
+          if (item.selectedIconPath) item.selectedIconPath = await this.resolveImage(item.selectedIconPath)
+        }, 0)
+      }
+
       // 搜索主目录下的同名文件
       searchDir(requires, this.fromFile, 'project.config.json', true)
     } else {
@@ -66,6 +74,12 @@ export default class JsonLoader extends Loader {
       this.extract('.json', JSON.stringify(json, null, this.minimize ? 0 : 2))
     }
     return this.toRequire(requires, 'webpack')
+  }
+
+  async resolveImage(request: string) {
+    if (!this.shouleMakeRequire(request)) return request
+    let absFile = await this.resolve(request)
+    return await this.loadStaticFile(absFile, request, true)
   }
 
   async resolvePages(pages: string[], requires: string[], relativeDir: string) {
