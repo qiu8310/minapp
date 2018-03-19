@@ -33,7 +33,7 @@
   },
   "icon": "res/icon.png",
   "categories": [
-    "Other"
+    "Languages"
   ],
   "activationEvents": [
     "onLanguage:wxml",
