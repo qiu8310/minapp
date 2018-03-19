@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/cli",
 	"description": "minapp 命令行工具，用于创建项目、开发项目、编译项目",
-	"version": "1.0.3",
+	"version": "1.0.5",
 	"bin": {
 		"minapp": "dist/index.js"
 	},
@@ -27,7 +27,7 @@
 	},
 	"dependencies": {
 		"@minapp/common": "^1.0.3",
-		"@minapp/compiler": "^1.0.3",
+		"@minapp/compiler": "^1.0.5",
 		"fs-extra": "^5.0.0",
 		"inquirer": "^5.1.0",
 		"json5": "^0.5.1",
