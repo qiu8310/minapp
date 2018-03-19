@@ -84,6 +84,7 @@
     ]
   },
   "dependencies": {
+    "@minapp/wxml-parser": "^1.0.3",
     "@minapp/common": "^1.0.3",
     "tslib": "^1.9.0"
   },

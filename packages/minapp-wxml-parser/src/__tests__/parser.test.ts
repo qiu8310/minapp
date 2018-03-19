@@ -119,12 +119,12 @@ describe('complex node', () => {
 
   test('fixture a xml => json => xml', () => {
     let xml = readFixture('a.xml')
-    expect(parse(xml).toXML(2).trim()).toEqual(xml.trim())
+    expect(parse(xml).toXML({eol: '\n', preferSpaces: true, tabSize: 2}).trim()).toEqual(xml.trim())
   })
 
   test('fixture b xml => json => xml', () => {
     let xml = readFixture('b.xml')
-    expect(parse(xml).toXML(2).trim()).toEqual(xml.trim())
+    expect(parse(xml).toXML({eol: '\n', preferSpaces: true, tabSize: 2}).trim()).toEqual(xml.trim())
   })
 })
 

@@ -6,7 +6,7 @@
 import * as vscode from 'vscode'
 import * as path from 'path'
 
-let listener = vscode.workspace.onDidChangeConfiguration(getConfig)
+let listener: vscode.Disposable
 
 export interface Config {
   disableCustomComponentAutocomponent: boolean
@@ -31,8 +31,11 @@ function getConfig() {
   config.resolveRoots = minapp.get('resolveRoots', ['src', 'node_modules'])
 }
 
-export function destroy() {
-  listener.dispose()
+export function configActivate() {
+  listener = vscode.workspace.onDidChangeConfiguration(getConfig)
+  getConfig()
 }
 
-getConfig()
+export function configDeactivate() {
+  listener.dispose()
+}

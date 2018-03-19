@@ -4,6 +4,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
 import * as parser from '@minapp/wxml-parser'
+import {EOL} from 'os'
 const debug = require('debug')('minapp:webpack-utils:wxml-loader')
 
 import {Loader} from './Loader'
@@ -39,7 +40,10 @@ export default class WxmlLoader extends Loader {
     }
 
     this.updateNode(xml.nodes)
-    content = xml.toXML(this.minimize ? 0 : 2)
+    content = xml.toXML(this.minimize
+      ? {eol: '', tabSize: 0}
+      : {eol: EOL, tabSize: 2}
+    )
     // debug('ToContent: %o', content)
     if (this.hasContent(xml.nodes)) this.extract('.wxml', content)
 

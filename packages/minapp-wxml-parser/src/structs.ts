@@ -8,11 +8,10 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
  */
 export class Document {
   nodes: Node[] = []
-
-  toXML(space?: number) {
-    let eol = space ? '\n' : ''
-    let step = space ? ' '.repeat(space) : ''
-    return this.nodes.map(n => toXML(n, '', step, eol)).join(eol)
+  toXML(opts: {prefix?: string, preferSpaces?: boolean, tabSize?: number, eol?: string} = {}) {
+    let {prefix = '', preferSpaces = true, tabSize = 2, eol = '\n'} = opts
+    let step = (preferSpaces ? ' ' : '\t').repeat(tabSize)
+    return this.nodes.map(n => toXML(n, prefix, step, eol)).join(eol)
   }
 }
 
