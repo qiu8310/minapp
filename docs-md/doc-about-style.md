@@ -1,0 +1,91 @@
+---
+title: 关于样式
+---
+
+## 样式单位
+
+由于微信小程序中支持 `rpx` 单位
+
+```
+新增了尺寸单位。在写 CSS 样式时，开发者需要考虑到手机设备的屏幕会有不同的宽度和设备像素比，
+采用一些技巧来换算一些像素单位。WXSS 在底层支持新的尺寸单位 rpx ，开发者可以免去换算的烦恼，
+只要交给小程序底层来换算即可，由于换算采用的浮点数运算，所以运算结果会和预期结果有一点点偏差
+```
+
+而原生的 css 并不支持此单位，所以为了开发方便，minapp 会默认把所有 `px` 转化成 `rpx` 单位，而把所有的 `rpx` 单位转化成 `px`
+
+你可以在 `minapp.json` 中修改此配置
+
+
+## urlLoaderLimit
+
+在 `minapp.json` 中的 `compiler` 中可以设置此字段，类似于 [url-loader](https://github.com/webpack-contrib/url-loader) 中的 `limit` 选项，
+表示：如果图片大小小于此值，则会使用 base64 对图片进行编码，而不会生成一个新的文件
+
+## 图片相关的辅助方法
+
+* data("path/to/image/file")
+
+  返回图片的 base64 编码的格式，同时会加上 `url()`，如
+
+  ```css
+  background: data("path/to/image/file.png");
+  ```
+
+  会生成类似下面的结构
+
+  ```css
+  background: url(data:image/png;base64,iVB...CC);
+  ```
+
+* width("path/to/image/file", disableAutoRatio?)
+
+  返回图片的宽度，并带上单位 `px`，如
+
+  ```css
+  width: width("image-40x20.png");
+
+  /* 会转化成 */
+
+  width: 40px;
+  ```
+
+  另外，现在经常需要用到高分辨率的图片，会在图片后面加上如 `@2x` 或 `@3x` 的后缀，
+  width 函数会智能识别出此后缀，返回的宽度会除对应的后缀，如果图片宽度是 `40px`，
+  而它带了 `@2x` 的后缀，则返回的宽度会是 `20px`，如：
+
+  ```css
+  width: width("image-40x20@2x.png");
+
+  /* 会转化成 */
+
+  width: 20px;
+  ```
+
+  如果不想自动识别图片的 `@2x` 这样的后缀，可以指定第二个参数为 `true`，如：
+
+  ```css
+  width: width("image-40x20@2x.png", true);
+
+  /* 会转化成 */
+
+  width: 40px;
+  ```
+
+
+* height("path/to/image/file", disableAutoRatio?)
+
+  类似于 `width`，返回的是图片的高度
+
+* size("path/to/image/file", disableAutoRatio?)
+
+  类似于 `width`，返回的是图片的宽度和高度，如
+
+
+  ```css
+  background-size: size("image-40x20@2x.png");
+
+  /* 会转化成 */
+
+  background-size: 20px 10px;
+  ```

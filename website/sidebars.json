@@ -7,7 +7,7 @@
       "doc-difference-with-wepy"
     ],
     "基本功能": [
-      "doc-unit-in-style",
+      "doc-about-style",
       "doc-data-bind",
       "doc-use-setDataSmart-not-setData",
       "doc-about-json-file",
