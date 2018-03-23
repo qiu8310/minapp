@@ -1,5 +1,7 @@
 # minapp-vscode
 
+<div style="color:red; font-size: 1.6em;">重要通知：由于旧版本不小心被我删除了，所以请 1.0.7 版本之前的用户删除旧版本再重新安装新版本；否则可能会无法成功安装新版本，并且也得不到新版本的推送！</div>
+
 微信小程序模板语言 wxml 语法高亮，并提供标签名、属性名、属性值的智能补全（同时支持在 vue 模板中补全）
 
 > **所有自动补全的模板数据都来自于官方文档，通过[脚本](https://github.com/qiu8310/minapp/tree/master/packages/minapp-generator)自动获取的**
