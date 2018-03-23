@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-core-ts",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "minapp ts 示例项目",
   "scripts": {
     "test": "echo 0",
