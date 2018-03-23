@@ -29,7 +29,7 @@ export default class WxsLoader extends Loader {
 
       if (this.isStaticFile(absFile)) {
         let url = await this.loadStaticFile(absFile, request)
-        if (!this.shouleMakeRequire(url) || this.mode === 'project') {
+        if (!this.shouleMakeResolve(url) || this.mode === 'project') {
           return JSON.stringify(url)
         }
         return `__minapp_require("${url}")`
@@ -42,7 +42,7 @@ export default class WxsLoader extends Loader {
         return JSON.stringify(query ? DotProp.get(json, query) : json)
       }
 
-      if (!this.shouldResolve(absFile)) {
+      if (!this.shouleMakeRequire(absFile)) {
         return `__minapp_require("${request}")`
       }
       requires.push(absFile) // 使用绝对路径，避免重复 resolve

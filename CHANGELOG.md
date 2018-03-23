@@ -1,3 +1,9 @@
+1.0.6 / 2018-03-23
+==================
+
+* compiler: 样式中支持图片处理相关函数：data/width/height/size
+* compiler: 支持 urlLoaderLimit
+
 1.0.5 / 2018-03-19
 ==================
 

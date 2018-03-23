@@ -18,6 +18,8 @@ export interface Minapp {
   component?: string
 
   compiler?: {
+    /** url-loader limit, 单位：B */
+    urlLoaderLimit?: number
     /** 是否将样式的 px 单位转化成 rpx */
     px2rpx?: boolean
     /** 是否将样式的 rpx 单位转化成 px */

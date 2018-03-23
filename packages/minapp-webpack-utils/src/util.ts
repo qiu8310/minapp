@@ -103,3 +103,13 @@ export function getProjectRoot(absFile: string) {
     return root
   }
 }
+
+export function base64EncodeBuffer(buffer: Buffer, mediaType: string) {
+  let val: string
+  if (mediaType === 'image/svg+xml') {
+    val = 'charset=utf-8,' + encodeURIComponent(buffer.toString('utf8').trim())
+  } else {
+    val = 'base64,' + buffer.toString('base64')
+  }
+  return `data:${mediaType};${val}`
+}

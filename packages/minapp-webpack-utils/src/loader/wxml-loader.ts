@@ -96,7 +96,7 @@ export default class WxmlLoader extends Loader {
         // {{ }} 标签内不解析（不排队其中会有字符串）
         if (src.indexOf('{{') >= 0) return
 
-        if (!this.shouleMakeRequire(src)) return
+        if (!this.shouleMakeResolve(src)) return
 
         if (attr.name === 'src') {
           // 这里的资源必须要存在
@@ -125,7 +125,7 @@ export default class WxmlLoader extends Loader {
           this.emitWarning(`${toString(node, attr)} 中的文件无法找到`)
         }
       } else {
-        if (this.shouldResolve(absFile)) {
+        if (this.shouleMakeRequire(absFile)) {
           if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
             attr.value = attr.value.replace(src, await this.loadStaticFile(absFile, src))
           } else if (node.name === 'import' || node.name === 'include') {

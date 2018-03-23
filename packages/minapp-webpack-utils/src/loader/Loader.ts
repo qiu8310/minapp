@@ -5,7 +5,8 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 
 import * as webpack from 'webpack'
 import * as path from 'path'
-import {getProjectRoot, readFile, md5, toUrlPath, toRelative, STATIC_REGEXP, JSON_REGEXP, replaceExt} from '../util'
+import {getProjectRoot, readFile, md5, toUrlPath, toRelative, STATIC_REGEXP, JSON_REGEXP, replaceExt, base64EncodeBuffer} from '../util'
+const mime = require('mime')
 
 export abstract class Loader {
   static decorate(loaderConstructor: any) {
@@ -110,7 +111,7 @@ export abstract class Loader {
    *
    * 在组件开发中，无需解析 node_modules 中的文件
    */
-  shouldResolve(absFile: string) { return this.isFileInSrcDir(absFile) || this.mode === 'project' }
+  shouleMakeRequire(absFile: string) { return this.isFileInSrcDir(absFile) || this.mode === 'project' }
 
   /**
    * 根据文件当前的路径，获取到它编译后的相对 distDir 的路径
@@ -131,6 +132,7 @@ export abstract class Loader {
     let opts = (this.lc as any).minapp || {}
 
     return {
+      limit: undefined,
       test: STATIC_REGEXP,
       output: path.join(this.distDir, 'static'),
       filename: '[name:0]-[hash:10].[ext]',
@@ -165,7 +167,10 @@ export abstract class Loader {
       return request // 无须更新文件引用
     }
 
-    let {output, filename} = this.getStaticOptions()
+    let {output, filename, limit} = this.getStaticOptions()
+    if (limit && limit > 0 && content.length < limit) {
+      return base64EncodeBuffer(content, mime.getType(absFile))
+    }
 
     let ext = path.extname(absFile)
     filename = filename.replace(/\[([\w]+)(?::(\d+))?\]/g, (raw: string, key: string, truncate: string) => {
@@ -189,7 +194,7 @@ export abstract class Loader {
     return url
   }
 
-  shouleMakeRequire(request: string) {
+  shouleMakeResolve(request: string) {
     // 如果剩下的是个空字符串，去掉
     if (!request || typeof request !== 'string') return false
 

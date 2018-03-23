@@ -26,7 +26,10 @@
 	"dependencies": {
 		"@minapp/wxml-parser": "^1.0.3",
 		"debug": "^3.1.0",
+		"image-size": "^0.6.2",
 		"json5": "^0.5.1",
+		"loader-utils": "^1.1.0",
+		"mime": "^2.2.0",
 		"mora-common": "^1.0.12",
 		"mora-scripts": "^1.6.28",
 		"tslib": "^1.9.0",

@@ -28,7 +28,6 @@ export function webpackConfig(compiler: Compiler) {
     if (!appJson) throw new Error(`${srcDir} 下面没有 app.json 文件，无法编译`)
   }
 
-
   let plugins: any[] = [
     new webpack.DefinePlugin({
       __ENV__: JSON.stringify(compiler.production ? 'production' : (process.env.NODE_ENV || 'development'))
@@ -42,6 +41,7 @@ export function webpackConfig(compiler: Compiler) {
       minapp: {
         mode, // 当前模式，是编译 project 还是 component
         static: {
+          limit: minapp.compiler && minapp.compiler.urlLoaderLimit,
           /** 用于判断文件是不是静态文件 */
           test: /\.(?:gif|png|jpg|jpeg|svg|ico|woff|woff2|ttf|eot|otf|mp3|mp4)$/i,
           /** 用于存放编译后的 静态文件的文件夹（相对于 distDir，默认为 static） */
@@ -79,7 +79,7 @@ export function webpackConfig(compiler: Compiler) {
     babel: require.resolve('babel-loader'),
     sass: require.resolve('sass-loader'),
     less: require.resolve('less-loader'),
-    postcss: require.resolve('postcss-loader'),
+    // postcss: require.resolve('postcss-loader'),
     ...getLocalLoaders(modulesDir, localPkg),
     ...minappLoaders
   }

@@ -12,6 +12,7 @@ export const loader = {
   js: join(loaderDir, 'js-loader'),
   wxml: join(loaderDir, 'wxml-loader'),
   wxss: join(loaderDir, 'wxss-loader'),
+  postcss: join(loaderDir, 'postcss-loader'),
 }
 
 export * from './plugin/ExtractMinappCode'

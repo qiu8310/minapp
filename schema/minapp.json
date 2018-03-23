@@ -22,6 +22,10 @@
           "default": true,
           "description": "是否将样式的 rpx 单位转化成 px；默认为 true"
         },
+        "urlLoaderLimit": {
+          "type": "number",
+          "description": "小于指定的大小的所有静态资源都将变成 data-url 的格式，单位：B"
+        },
         "browsers": {
           "type": "array",
           "description": "autoprefixer 的 browsers 配置",

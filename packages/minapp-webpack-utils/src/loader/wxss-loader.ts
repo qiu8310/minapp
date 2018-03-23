@@ -16,10 +16,10 @@ export default class WxssLoader extends Loader {
     let emitContent = await replace(content, STYLE_RESOURCE_REGEXP, async (mat) => {
       let [raw, request] = mat
 
-      if (!this.shouleMakeRequire(request)) return raw
+      if (!this.shouleMakeResolve(request)) return raw
 
       let absFile = await this.resolve(request)
-      if (this.shouldResolve(absFile)) {
+      if (this.shouleMakeRequire(absFile)) {
         let url = await this.loadStaticFile(absFile, request)
 
         debug(`replace ${request} => ${url}`)
@@ -33,7 +33,7 @@ export default class WxssLoader extends Loader {
     emitContent = await replace(emitContent, CSS_IMPORT_REGEXP, async (mat) => {
       let [raw, request] = mat
       let absFile = await this.resolve(request)
-      if (this.shouldResolve(absFile)) {
+      if (this.shouleMakeRequire(absFile)) {
         this.addDependency(absFile)
         requires.push(absFile)
         return `@import "${this.getExtractRequirePath(absFile, '.wxss')}"`

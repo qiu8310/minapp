@@ -62,7 +62,7 @@ export default class JsonLoader extends Loader {
         let main = await this.resolve(component)
 
         // component 模式下只有在 srcDir 中的组件才解析
-        if (this.shouldResolve(main)) {
+        if (this.shouleMakeRequire(main)) {
           components[k] = this.getExtractRequirePath(main, '')
           searchDir(requires, main)
         }
@@ -77,7 +77,7 @@ export default class JsonLoader extends Loader {
   }
 
   async resolveImage(request: string) {
-    if (!this.shouleMakeRequire(request)) return request
+    if (!this.shouleMakeResolve(request)) return request
     let absFile = await this.resolve(request)
     return await this.loadStaticFile(absFile, request, true)
   }
