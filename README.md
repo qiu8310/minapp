@@ -4,6 +4,16 @@
 
 **minapp 1.0.0 已经发布，更新详情请[查看此文](https://qiu8310.github.io/minapp/blog/2018/03/10/release-v1.html)**
 
+## 介绍
+
+**minapp 是为开发微信小程序而打造的一整套提升开发体验的工具：**
+- 提供一个命令行工具 `@minapp/cli`，用它可以快速创建一个项目，并可以用 webpack 来构建生成的项目；
+- 提供一个开发框架 `@minapp/core`，此框架是完全兼容原生小程序代码的框架，支持使用 class 的方式来开发，支持代码自动补全，同时提供微信所有 api 的自动补全
+- 提供一个集成了 mobx 的框架 `@minapp/mobx`，此框架主要给 `@minapp/core` 注入了 mobx，可以让你轻松使用 mobx 来管理全局数据
+- 提供一个 vscode 插件 `minapp-vscode`，此插件主要是针对小程序的 `wxml` 模板语言，可以自动补全所有的组件、组件属性、组件属性值等等
+
+注意：使用 minapp 后，还是需要使用微信官方提供的"微信开发者工具"来测试
+
 ## 使用
 
 1. 用 npm 安装命令行工具： `npm install -g @minapp/cli`
