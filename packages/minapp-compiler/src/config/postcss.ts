@@ -5,13 +5,14 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 
 const autoprefixer = require('autoprefixer')
 import {postcss as minapp} from '@minapp/webpack-utils'
+import {MinappCompiler} from '../Compiler'
 
-export function postcss(loader: string, opts: {px2rpx?: boolean, rpx2px?: boolean, browsers?: string[]} = {}) {
+export function postcss(loader: string, opts: MinappCompiler = {}) {
   let {px2rpx = true, rpx2px = true, browsers = ['last 7 android version', 'last 5 chrome version', 'last 5 safari version']} = opts
 
-  let map: any = {}
-  if (px2rpx) map.px = 'rpx'
-  if (rpx2px) map.rpx = 'px'
+  let map = opts.unitTransformer || {}
+  if (px2rpx && !map.px) map.px = 'rpx'
+  if (rpx2px && !map.rpx) map.rpx = 'px'
 
   let plugins: any[] = []
 

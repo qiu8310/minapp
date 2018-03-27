@@ -13,22 +13,58 @@ const Server = require('webpack-dev-server')
 
 const debug = require('debug')('minapp:compiler')
 
+export interface MinappCompiler {
+  /** url-loader limit, 单位：B */
+  urlLoaderLimit?: number
+
+  /**
+   * 对 css 中的单位进行转化
+   *
+   * 比如，需要将 px 转化成 rpx，同时将 rpx 转化成 px，可以这样设置：
+   *
+   * ```
+   * unitTransformer: {px: 'rpx', rpx: 'px'}
+   * ```
+   *
+   * 如果需要将 1px 转化成 2rpx，可以这样设置：
+   *
+   * ```
+   * unitTransformer: {px: '2rpx'}
+   * ```
+   */
+  unitTransformer?: {
+    [unit: string]: string
+  }
+
+  /**
+   * @deprecated
+   *
+   * 是否将样式的 px 单位转化成 rpx
+   *
+   * **建议使用 unitTransformer 配置**
+   */
+  px2rpx?: boolean
+
+  /**
+   * @deprecated
+   *
+   * 是否将样式的 rpx 单位转化成 px
+   *
+   * **建议使用 unitTransformer 配置**
+   */
+  rpx2px?: boolean
+
+  /** autoprefixer 的 browsers 配置，参考：https://github.com/ai/browserslist#queries */
+  browsers?: string[]
+
+  devServer?: {[key: string]: any}
+}
+
 export interface Minapp {
   /** 要编译的组件的路径（指定了此选项表示当前是编译组件，而不是 project） */
   component?: string
 
-  compiler?: {
-    /** url-loader limit, 单位：B */
-    urlLoaderLimit?: number
-    /** 是否将样式的 px 单位转化成 rpx */
-    px2rpx?: boolean
-    /** 是否将样式的 rpx 单位转化成 px */
-    rpx2px?: boolean
-    /** autoprefixer 的 browsers 配置，参考：https://github.com/ai/browserslist#queries */
-    browsers?: string[]
-
-    devServer?: {[key: string]: any}
-  }
+  compiler?: MinappCompiler
 }
 
 export interface CompilerOptions {

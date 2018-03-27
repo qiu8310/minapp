@@ -1,8 +1,10 @@
 {
   "$schema": "../../schema/minapp.json",
   "compiler": {
-    "px2rpx": true,
-    "rpx2px": false,
+    "unitTransformer": {
+      "px": "2rpx",
+      "rpx": "px"
+    },
     "devServer": {
       "port": "9000"
     }

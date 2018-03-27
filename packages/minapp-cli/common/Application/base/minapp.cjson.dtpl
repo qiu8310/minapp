@@ -1,8 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/minapp.json",
   "compiler": {
-    "px2rpx": true, // 开启将 px 单位转化成 rpx 单位
-    "rpx2px": false,
+    /*
+      将 px 转化成 rpx，同时将 rpx 转化成 px
+
+      如果需要将 1px 转化成 2rpx，可以设置成 {"px": "2rpx"}
+      如果需要将 2px 转化成 1rpx，可以设置成 {"px": "0.5rpx"}
+      你还可以设置其它任何单位的转化
+
+      **注：左边的单位一定不能带任何数字**
+    */
+    "unitTransformer": {
+      "px": "rpx",
+      "rpx": "px"
+    },
     "devServer": { // webpack-dev-server 相关的配置，详情参考：https://webpack.js.org/configuration/dev-server/
 
     }
