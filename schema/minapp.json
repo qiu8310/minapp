@@ -17,6 +17,10 @@
           "default": {},
           "description": "对 css 中的单位进行转化 \n\n比如，需要将 px 转化成 rpx，同时将 rpx 转化成 px，可以这样设置：{\"px\": \"rpx\", \"rpx\": \"px\"}\n\n如果需要将 1px 转化成 2rpx，可以这样设置：{\"px\": \"2rpx\"}"
         },
+        "json2sassPath": {
+          "type": "string",
+          "description": "指定一个 json 文件的路径，此文件会转化成 sass，放在每个 sass 文件的开头"
+        },
         "px2rpx": {
           "type": "boolean",
           "default": true,

@@ -84,6 +84,11 @@ export function webpackConfig(compiler: Compiler) {
     ...minappLoaders
   }
 
+  let sassLoaders: any[] = [{loader: loader.sass, options: {includePaths: [srcDir, modulesDir]}}]
+  if (minapp.compiler && minapp.compiler.json2sassPath) {
+    sassLoaders.push({loader: loader.json2sass, options: {path: minapp.compiler.json2sassPath}})
+  }
+
   const wpOpts: webpack.Configuration = {
     target: 'web',
     // devtool: 'source-map', // TODO: 内部 loader 支持 sourceMap
@@ -134,7 +139,8 @@ export function webpackConfig(compiler: Compiler) {
         {test: /\.s(c|a)ss$/i, use: [
           loader.wxss,
           postcss(loader.postcss, minapp.compiler),
-          {loader: loader.sass, options: {includePaths: [srcDir, modulesDir]}}
+          // {loader: loader.sass, options: {includePaths: [srcDir, modulesDir]}}
+          ...sassLoaders
         ]},
         {test: /\.less$/i, use: [
           loader.wxss,
@@ -175,7 +181,7 @@ function getLocalLoaders(modulesDir: string, localPkg: any) {
     .reduce((all, k) => {
       all[k === 'awesome-typescript' ? 'ts' : k] = k + '-loader'
       return all
-    }, {} as any)
+    }, {} as any) as {}
 }
 
 function getJsonFileFrom(dir: string, startWith: string) {

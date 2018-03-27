@@ -36,6 +36,9 @@ export interface MinappCompiler {
     [unit: string]: string
   }
 
+  /** 指定一个 json 文件的路径，此文件会转化成 sass，放在每个 sass 文件的开头 */
+  json2sassPath?: string
+
   /**
    * @deprecated
    *

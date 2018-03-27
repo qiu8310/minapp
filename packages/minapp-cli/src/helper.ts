@@ -53,6 +53,9 @@ export function getMinappConfig() {
     if (file) {
       minapp = JSON5.parse(fs.readFileSync(path.join(root, file)).toString())
       if (minapp.component) minapp.component = path.resolve(root, minapp.component)
+      if (minapp.compiler) {
+        if (minapp.compiler.json2sassPath) minapp.compiler.json2sassPath = path.resolve(root, minapp.compiler.json2sassPath)
+      }
     }
   } catch (e) {}
   return minapp
