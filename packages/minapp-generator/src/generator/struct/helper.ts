@@ -23,6 +23,7 @@ export function extractNS(name: string, desc: string[], type: ObjectType | Funct
       types.push(`type ${name} = {}`)
     } else {
       types.push(`type ${name} = {`)
+      let start = types.length - 1
       ds.forEach(d => {
         types.push(...d.doc.map(l => TAB + l))
         let newName: string
@@ -32,7 +33,14 @@ export function extractNS(name: string, desc: string[], type: ObjectType | Funct
         } else {
           newName = d.type.toTSString(0)
         }
-        types.push(`${TAB}${d.name}${d.required ? '' : '?'}: ${newName}`)
+        // 对Promised的返回结果带data值的增加泛型参数
+        if (d.name === 'data' && name === 'Promised') {
+          // 修改类型
+          types[start] = 'type ' + name + '<T = ' + newName + '> = {'
+          types.push('' + TAB + d.name + (d.required ? '' : '?') + ': T')
+        } else {
+          types.push('' + TAB + d.name + (d.required ? '' : '?') + ': ' + newName)
+        }
       })
       types.push('}')
     }
@@ -67,6 +75,7 @@ export function extractNSFuncToNamespace(parentNamespace: string, namespace: str
   let shouldAppendIndex = args.length > 1
   let rows: string[] = []
   let rtns: string | undefined
+  let generic: boolean = false
   let prefix = (parentNamespace ? parentNamespace + '.' : '') + namespace
 
   makeFunctionObjectFunctionParamToRequired(args)
@@ -80,7 +89,12 @@ export function extractNSFuncToNamespace(parentNamespace: string, namespace: str
         a.type.removePromisableKey()
         if (canTypeExtract(successArgType)) {
           rows.push(...extractNS('Promised', [], successArgType))
-          rtns = `Promise<${prefix}.Promised>`
+          if (rows.filter(row => /data: T/.test(row)).length) {
+            generic = true
+            rtns = `Promise<${prefix}.Promised<T>>`
+          } else {
+            rtns = `Promise<${prefix}.Promised>`
+          }
         } else {
           rtns = `Promise<${successArgType.toTSString(0)}>`
         }
@@ -115,7 +129,8 @@ export function extractNSFuncToNamespace(parentNamespace: string, namespace: str
   return {
     rows,
     args: argstr,
-    rtns
+    rtns,
+    generic
   }
 }
 
