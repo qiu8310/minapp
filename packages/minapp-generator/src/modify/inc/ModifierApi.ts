@@ -63,6 +63,19 @@ export class ApiModifier extends Modifier {
           this.assert(body[m.body.row][m.body.col] === m.body.from)
           $table.find('tbody tr').eq(m.body.row).find('td').eq(m.body.col).text(m.body.to)
         }
+        // 增加、删除或者修改列
+        if(m.col) {
+          let {splice, rows} = m.col;
+          head.splice.apply(head, splice.concat(m.col.head))
+          let $ths = head.map(r => `<th>${r}</th>`);
+          $table.find('thead').html(`<tr>${$ths.join('')}</tr>`);
+
+          let $body = body.map((row, idx) => {
+              row.splice.apply(row, splice.concat(rows[idx] || ''));
+              return `<tr>${row.map(r => `<td>${r}</td>`).join('')}</tr>`;
+          });
+          $table.find('tbody').html($body.join(''));
+        }
       } else if (m.type === 'ignoreHeadWarn') {
         let $table = $(tables[m.index])
         this.assert($table.find('thead th').eq(m.col).text() === m.from)

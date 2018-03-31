@@ -34,6 +34,11 @@ export interface TableUpdateTemplateMeta {
     col: number
     from: string
     to: string
+  },
+  col?: {
+    splice: any[]
+    head: string
+    rows: any[]
   }
 }
 
