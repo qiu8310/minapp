@@ -37,7 +37,7 @@ export function extractNS(name: string, desc: string[], type: ObjectType | Funct
         } else {
           newName = d.type.toTSString(0)
           // 只针对返回值带data或者值类型为any的均增加泛型
-          if ((d.name === 'data' || newName === 'any') && name === 'Promised') {
+          if (name === 'Promised' && (d.name === 'data' || newName === 'any')) {
             newName = 'T' + genericIdx++;
             generic.push(newName);
           }
