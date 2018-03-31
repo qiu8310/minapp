@@ -17,10 +17,13 @@ export class Func extends Struct {
 
   toTSString(tabCount: number, promise: boolean = false) {
     if (promise && !this.promisable) promise = false
-    let {rows, args, rtns} = extractNSFuncToNamespace('', this.name, this.args, this.returns, tabCount, promise)
+    let {rows, args, rtns, generic} = extractNSFuncToNamespace('', this.name, this.args, this.returns, tabCount, promise)
 
     let prefix = TAB.repeat(tabCount)
     let fn = `${prefix}function ${this.name}(${args}): ${rtns}`
+    if(generic.length) {
+      fn = `${prefix}function ${this.name}<${generic.map(t => `${t}=any`).join(', ')}>(${args}): ${rtns}`
+    }
     return [...rows.map(r => prefix + r), joinDesc(this.desc, tabCount) + fn + EOL].join(EOL)
   }
 
