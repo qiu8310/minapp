@@ -3,46 +3,33 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {ComponentAttr} from './Component'
+import {ComponentAttr, Component} from './Component'
 
 export const JSON_REGEXP = /\.(?:json|cjson|jsonc)$/i
 
-// @ts-ignore
-export const BASE_ATTRS: ComponentAttr[] = [
-  {name: 'id'},
-  {name: 'class'},
-  {name: 'style', desc: ['组件的内联样式']},
-  {name: 'hidden', desc: ['组件是否隐藏']},
-  // {name: 'data-'},
-]
-
-
 export interface CustomAttr extends ComponentAttr {
   addBrace?: boolean // 是否加上 {{}}
+  boolean?: boolean  // 属性是个 boolean 值，不需要加 =
 }
 
-// @ts-ignore
-export const EVENT_ATTRS: CustomAttr[] = [
-  {name: 'touchstart'},
-  {name: 'touchmove'},
-  {name: 'touchcancel'},
-  {name: 'touchend'},
-  {name: 'tap'},
-  {name: 'longpress', since: '1.5.0'},
-  {name: 'longtap'},
-  {name: 'transitionend'},
-  {name: 'animationstart'},
-  {name: 'animationiteration'},
-  {name: 'animationend'},
-]
+export interface LanguageConfig {
+  id: string
+  /** 基本属性 */
+  baseAttrs: CustomAttr[]
+  /** 事件相关配置 */
+  event: {
+    prefixes: string[]
+    modifiers: string[]
+    attrs: CustomAttr[]
+  }
+  /** 语言相关的 trigger */
+  custom: {
+    [prefix: string]: {
+      attrs: CustomAttr[]
+      modifiers: string[]
+    }
+  },
+  /** 自定义的组件 */
+  components: Component[]
+}
 
-// @ts-ignore
-export const CTRL_ATTRS: CustomAttr[] = [
-  {name: 'if', addBrace: true},
-  {name: 'elif', addBrace: true},
-  {name: 'else', addBrace: true},
-  {name: 'for', addBrace: true},
-  {name: 'key'},
-  {name: 'for-item'},
-  {name: 'for-index'},
-]

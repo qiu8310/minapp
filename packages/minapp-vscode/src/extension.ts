@@ -8,7 +8,7 @@ import {ExtensionContext, languages} from 'vscode'
 import WxmlAutoCompletion from './plugin/WxmlAutoCompletion'
 import WxmlHoverProvider from './plugin/WxmlHoverProvider'
 import WxmlFormatter from './plugin/WxmlFormatter'
-import {config, configActivate, configDeactivate} from './plugin/config'
+import {config, configActivate, configDeactivate} from './plugin/lib/config'
 
 export function activate(context: ExtensionContext) {
   configActivate()
@@ -21,7 +21,7 @@ export function activate(context: ExtensionContext) {
   // console.log('minapp-vscode is active!')
   context.subscriptions.push(
     languages.registerHoverProvider(selector, hoverProvider),
-    languages.registerCompletionItemProvider(selector, autoCompletion, '<', ' ', ':', '@', '.'),
+    languages.registerCompletionItemProvider(selector, autoCompletion, '<', ' ', ':', '@', '.', '-'),
     // languages.registerOnTypeFormattingEditProvider('wxml', formatter, '\n', '\t', 'a'),
     languages.registerDocumentFormattingEditProvider('wxml', formatter),
     languages.registerDocumentRangeFormattingEditProvider('wxml', formatter)

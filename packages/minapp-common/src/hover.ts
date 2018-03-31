@@ -4,15 +4,15 @@
 *******************************************************************/
 
 import {CustomOptions, getCustomComponents} from './custom'
-import {components, getComponentMarkdown, getComponentAttrMarkdown, ComponentAttr} from './dev'
+import {components, getComponentMarkdown, getComponentAttrMarkdown, ComponentAttr, LanguageConfig} from './dev'
 
-export async function hoverComponentMarkdown(tag: string, co?: CustomOptions) {
-  let comp = await getComponent(tag, co)
+export async function hoverComponentMarkdown(tag: string, lc: LanguageConfig, co?: CustomOptions) {
+  let comp = await getComponent(tag, lc, co)
   return comp ? getComponentMarkdown(comp) : undefined
 }
 
-export async function hoverComponentAttrMarkdown(tag: string, name: string, co?: CustomOptions) {
-  let comp = await getComponent(tag, co)
+export async function hoverComponentAttrMarkdown(tag: string, name: string, lc: LanguageConfig, co?: CustomOptions) {
+  let comp = await getComponent(tag, lc, co)
   if (!comp) return
   let attrs = comp.attrs || []
 
@@ -34,10 +34,10 @@ export async function hoverComponentAttrMarkdown(tag: string, name: string, co?:
   return attr ? getComponentAttrMarkdown(attr) : undefined
 }
 
-async function getComponent(tag: string, co?: CustomOptions) {
-  let comp = components.find(c => c.name === tag)
+async function getComponent(tagName: string, lc: LanguageConfig, co?: CustomOptions) {
+  let comp = [...lc.components, ...components].find(c => c.name === tagName)
   if (!comp) {
-    comp = (await getCustomComponents(co)).find(c => c.name === tag)
+    comp = (await getCustomComponents(co)).find(c => c.name === tagName)
   }
   return comp
 }

@@ -12,36 +12,29 @@ import {
 import {
   TagItem, TagAttrItem,
   autocompleteTagAttrValue, autocompleteTagAttr,
-  autocompleteTagName, autocompleteSpecialTagAttr, ComponentAttr
+  autocompleteTagName, autocompleteSpecialTagAttr
 } from '@minapp/common'
 
 import {getTagAtPosition} from './getTagAtPosition'
-import {inTemplate, getCustomOptions} from './helper'
-import {Config} from './config'
-
-const TRIGGERS = ['wx', 'bind', 'catch'].map(k => {
-  let item = new CompletionItem(k, CompletionItemKind.Field)
-  item.sortText = 'z'
-  item.documentation = new MarkdownString('输入此字段再输入 "**:**" 字符可以再次触发自动补全')
-  return item
-})
-
-const VUE_BIND_OPERATORS = ['sync']
-const VUE_EVENT_OPERATORS = ['default', 'user', 'stop']
+import {getLanguage, getCustomOptions, getTextAtPosition} from './lib/helper'
+import {LanguageConfig} from './lib/language'
+import {Config} from './lib/config'
 
 export default class implements CompletionItemProvider {
   constructor(public config: Config) {}
 
   provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): Promise<CompletionItem[]> {
-    if (!inTemplate(document, position)) return [] as any
+    let language = getLanguage(document, position)
+    if (!language) return [] as any
 
     switch (context.triggerCharacter) {
-      case '<': return this.createComponentSnippetItems(document, position)
-      case ' ': return this.createComponentAttributeSnippetItems(document, position)
-      case ':':
-      case '@':
-      case '.':
-        return this.createSpecialAttributeSnippetItems(document, position)
+      case '<': return this.createComponentSnippetItems(language, document, position)
+      case ' ': return this.createComponentAttributeSnippetItems(language, document, position)
+      case ':': // 绑定变量 （也可以是原生小程序的控制语句或事件，如 wx:for, bind:tap）
+      case '@': // 绑定事件
+      case '-': // v-if
+      case '.': // 变量或事件的修饰符
+        return this.createSpecialAttributeSnippetItems(language, document, position)
       default: return [] as any
     }
   }
@@ -53,8 +46,8 @@ export default class implements CompletionItemProvider {
   /**
    * 创建组件名称的自动补全
    */
-  async createComponentSnippetItems(doc: TextDocument, pos: Position) {
-    let res = await autocompleteTagName(this.getCustomOptions(doc))
+  async createComponentSnippetItems(lc: LanguageConfig, doc: TextDocument, pos: Position) {
+    let res = await autocompleteTagName(lc, this.getCustomOptions(doc))
     return [
       ...res.customs.map(t => renderTag(t, 'a')), // 自定义的组件放在前面
       ...res.natives.map(t => renderTag(t, 'b'))
@@ -64,7 +57,7 @@ export default class implements CompletionItemProvider {
   /**
    * 创建组件属性的自动补全
    */
-  async createComponentAttributeSnippetItems(doc: TextDocument, pos: Position, prefixChar?: string) {
+  async createComponentAttributeSnippetItems(lc: LanguageConfig, doc: TextDocument, pos: Position, prefixChar?: string) {
     let tag = getTagAtPosition(doc, pos)
     if (!tag) return []
     if (tag.isOnAttrValue && tag.attrName) {
@@ -72,7 +65,7 @@ export default class implements CompletionItemProvider {
       if (tag.attrName === 'class') {
         // TODO: 样式自动补全
       } else if (typeof attrValue === 'string' && attrValue.trim() === '') {
-        let values = await autocompleteTagAttrValue(tag.name, tag.attrName, this.getCustomOptions(doc))
+        let values = await autocompleteTagAttrValue(tag.name, tag.attrName, lc, this.getCustomOptions(doc))
         if (!values.length) return []
         let range = doc.getWordRangeAtPosition(pos, /['"]\s*['"]/)
         if (range) {
@@ -90,17 +83,21 @@ export default class implements CompletionItemProvider {
       }
       return []
     } else {
-      let res = await autocompleteTagAttr(tag.name, tag.attrs, this.getCustomOptions(doc))
+      let res = await autocompleteTagAttr(tag.name, tag.attrs, lc, this.getCustomOptions(doc))
       let triggers: CompletionItem[] = []
 
       let {natives, basics} = res
 
-      if (doc.languageId === 'wxml') {
-        triggers = TRIGGERS
-      } else {
-        triggers = prefixChar ? [] : TRIGGERS.slice(0, 1)
-        natives = natives.filter(n => !isEventAttr(n.attr))
-      }
+      triggers = [...Object.keys(lc.custom), ...lc.event.prefixes]
+        .filter(k => k.length > 1)
+        .map(k => {
+          let prefix = k.substr(0, k.length - 1)
+          let trigger = k[k.length - 1]
+          let item = new CompletionItem(prefix, CompletionItemKind.Constant)
+          item.sortText = 'z'
+          item.documentation = new MarkdownString(`输入此字段再输入 "**${trigger}**" 字符可以再次触发自动补全`)
+          return item
+        })
 
       return [
         ...natives.map(a => renderTagAttr(a, 'a')),
@@ -122,34 +119,37 @@ export default class implements CompletionItemProvider {
    *    :xxx.sync
    *    @xxx.default, @xxx.user, @xxx.stop
    */
-  async createSpecialAttributeSnippetItems(doc: TextDocument, pos: Position) {
-    let range = doc.languageId === 'wxml'
-      ? doc.getWordRangeAtPosition(pos, /\b(wx|bind|catch):/)
-      : (doc.getWordRangeAtPosition(pos, /\s[:@]([\w\.]+\.)?/) || doc.getWordRangeAtPosition(pos, /\bwx:/))
+  async createSpecialAttributeSnippetItems(lc: LanguageConfig, doc: TextDocument, pos: Position) {
+    let prefix = getTextAtPosition(doc, pos, /[:@\w\d\.-]/) as string
+    if (!prefix) return []
 
-    if (range) {
-      let text = doc.getText(range).trim()
+    let tag = getTagAtPosition(doc, pos)
+    if (!tag) return []
+    let isEventPrefix = lc.event.prefixes.indexOf(prefix) >= 0
 
-      // text is ":" or "@"
-      if (text === ':') return this.createComponentAttributeSnippetItems(doc, pos, text)
-      let operators = text[0] === ':' ? VUE_BIND_OPERATORS : text[0] === '@' && text.length > 1 ? VUE_EVENT_OPERATORS : []
-      if (operators.length) {
-        return operators.map(o => new CompletionItem(o, CompletionItemKind.Constant))
+    // 非 Event，也非其它自定义的属性
+    if (!isEventPrefix && !lc.custom.hasOwnProperty(prefix)) {
+      // modifiers
+      let modifiers: string[] = []
+      if (prefix[prefix.length - 1] === '.') {
+        if (lc.event.prefixes.some(p => prefix.startsWith(p))) {
+          modifiers = lc.event.modifiers
+        } else {
+          let customPrefix = Object.keys(lc.custom).find(p => prefix.startsWith(p))
+          if (customPrefix) modifiers = lc.custom[customPrefix].modifiers
+        }
       }
 
-      let tag = getTagAtPosition(doc, pos)
-      if (!tag) return []
-
-      text = text === '@' ? 'bind' : text.replace(/:$/, '') // 去掉后面的 ":"
-      let res = await autocompleteSpecialTagAttr(text as 'wx', tag.name, tag.attrs, this.getCustomOptions(doc))
-
-      let kind = text === 'wx' ? CompletionItemKind.Field : CompletionItemKind.Event
-      return [
-        ...res.customs.map(c => renderTagAttr(c, 'a', kind)),
-        ...res.natives.map(c => renderTagAttr(c, 'b', kind))
-      ]
+      return modifiers.map(m => new CompletionItem(m, CompletionItemKind.Constant))
     }
-    return []
+
+    let res = await autocompleteSpecialTagAttr(prefix, tag.name, tag.attrs, lc, this.getCustomOptions(doc))
+    let kind = isEventPrefix ? CompletionItemKind.Event : CompletionItemKind.Field
+
+    return [
+      ...res.customs.map(c => renderTagAttr(c, 'a', kind)),
+      ...res.natives.map(c => renderTagAttr(c, 'b', kind))
+    ]
   }
 }
 
@@ -158,7 +158,7 @@ function setDefault(index: number, defaultValue: any) {
   if (typeof defaultValue === 'boolean' || defaultValue === 'true' || defaultValue === 'false') {
     return `{{\${${index}|${defaultValue}|}}}`
   } else {
-    return `\${${index}|${defaultValue}|}`
+    return `\${${index}|${defaultValue.replace(/['"]/g, '')}|}`
   }
 }
 
@@ -184,10 +184,15 @@ function renderTagAttr(tagAttr: TagAttrItem, sortText: string, kind?: Completion
     defaultValue = a.enum && a.enum[0].value
   }
 
-  let value = a.addBrace
-    ? '{{\${1}}}'
-    : setDefault(1, defaultValue)
-  item.insertText = new SnippetString(`${a.name}="${value}"$0`)
+  if (a.boolean) {
+    item.insertText = new SnippetString(`${a.name}`)
+  } else {
+    let value = a.addBrace
+      ? '{{\${1}}}'
+      : setDefault(1, defaultValue)
+    item.insertText = new SnippetString(`${a.name}="${value}"$0`)
+  }
+
   item.documentation = new MarkdownString(tagAttr.markdown)
   item.sortText = sortText
   return item
@@ -195,8 +200,4 @@ function renderTagAttr(tagAttr: TagAttrItem, sortText: string, kind?: Completion
 
 function isDefaultValueValid(defaultValue: any) {
   return defaultValue !== undefined && defaultValue !== ''
-}
-
-function isEventAttr(attr: ComponentAttr) {
-  return attr.name.startsWith('bind') || attr.name.startsWith('catch')
 }

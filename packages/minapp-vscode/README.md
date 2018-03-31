@@ -13,9 +13,14 @@
 
 
 ## 在 vue 模板文件中也能自动补全
-  - 需要指定 template 的 lang="wxml"，如 `<template lang="wxml"></template>`
+  需要给 template 中的 lang 指定为 `wxml` 或 `wepy` 或 `mpvue`，如 `<template lang="wepy"></template>`
 
-  ![示例图片](https://n1image.hjfile.cn/res7/2018/03/17/07a2f53003393202183b100597eaf49d.gif)
+  指定为不同的 lang 会触发对应语言的自动补全，由于本人没有使用 wepy 和 mpvue 开发过，所以这些自动补全是根据官方文档说明而加上的，如果有错误，欢迎 PR（只需要修改文件 [src/plugin/lib/language.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/src/plugin/language.ts))
+
+  > 注意，[具说 mpvue 中修改了 lang 会报错](https://github.com/qiu8310/minapp/issues/39)，所以可以使用 minapp="mpvue" 来替换，如 `<template minapp="mpvue"></template>`；但这样此模板会同时触发 vue 和 minapp 的补全！
+
+  <!-- ![示例图片](https://n1image.hjfile.cn/res7/2018/03/17/07a2f53003393202183b100597eaf49d.gif) -->
+  ![示例图片](https://n1image.hjfile.cn/res7/2018/03/31/ac8941bd64403d2d691682d143881067.gif)
 
 
 ## 属性值也可以自动补全

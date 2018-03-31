@@ -1,7 +1,17 @@
 {
   "lerna": "2.7.1",
-  "packages": [
-    "packages/*"
-  ],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "*.md"
+      ],
+      "bootstrap": {
+        "ignore": [
+          "@minapp/example-*",
+          "@minapp/component-*"
+        ]
+      }
+    }
+  },
   "version": "1.0.9"
 }

@@ -8,7 +8,7 @@ import {
   components,
   Component, ComponentAttr, ComponentAttrValue, CustomAttr,
   getComponentMarkdown, getComponentAttrMarkdown, getComponentAttrValueMarkdown,
-  BASE_ATTRS, CTRL_ATTRS, EVENT_ATTRS
+  LanguageConfig
 } from './dev/'
 
 export interface TagItem {
@@ -28,8 +28,8 @@ export interface TagAttrItem {
  * 自动补全支持的所有的 tag
  * @param {CustomOptions} co 用于解析自定义组件的配置
  */
-export async function autocompleteTagName(co?: CustomOptions) {
-  let natives: TagItem[] = components.map(mapComponent)
+export async function autocompleteTagName(lc: LanguageConfig, co?: CustomOptions) {
+  let natives: TagItem[] = [...lc.components, ...components].map(mapComponent)
   let customs: TagItem[] = (await getCustomComponents(co)).map(mapComponent)
 
   return {
@@ -46,19 +46,22 @@ export async function autocompleteTagName(co?: CustomOptions) {
  * @param {{[key: string]: string}} attrs 当前已经写了的属性的集合
  * @param {CustomOptions} co 用于解析自定义组件的配置
  */
-export async function autocompleteTagAttr(tagName: string, tagAttrs: {[key: string]: string | boolean}, co?: CustomOptions) {
-  let attrs = await getAvailableAttrs(tagName, tagAttrs, co)
+export async function autocompleteTagAttr(tagName: string, tagAttrs: {[key: string]: string | boolean}, lc: LanguageConfig, co?: CustomOptions) {
+  let attrs = await getAvailableAttrs(tagName, tagAttrs, lc, co)
+
+  // 属性不能是已经存在的，也不能是事件
+  let filter = createComponentFilter(tagAttrs, false)
   return {
-    basics: BASE_ATTRS.filter(a => tagAttrs[a.name] == null).map(mapComponentAttr) as TagAttrItem[],
-    natives: attrs.map(mapComponentAttr) as TagAttrItem[]
+    basics: lc.baseAttrs.filter(filter).map(mapComponentAttr) as TagAttrItem[],
+    natives: attrs.filter(filter).map(mapComponentAttr) as TagAttrItem[]
   }
 }
 
 /**
  * 自动补全指定的属性的值
  */
-export async function autocompleteTagAttrValue(tagName: string, tagAttrName: string, co?: CustomOptions) {
-  let comp = await getComponent(tagName, co)
+export async function autocompleteTagAttrValue(tagName: string, tagAttrName: string, lc: LanguageConfig, co?: CustomOptions) {
+  let comp = await getComponent(tagName, lc, co)
   if (!comp || !comp.attrs) return []
   let attr = comp.attrs.find(a => a.name === tagAttrName)
   if (!attr) return []
@@ -72,20 +75,21 @@ export async function autocompleteTagAttrValue(tagName: string, tagAttrName: str
   })
 }
 
-export async function autocompleteSpecialTagAttr(prefix: 'wx' | 'bind' | 'catch', tagName: string, tagAttrs: {[key: string]: string | boolean}, co?: CustomOptions) {
+export async function autocompleteSpecialTagAttr(prefix: string, tagName: string, tagAttrs: {[key: string]: string | boolean}, lc: LanguageConfig, co?: CustomOptions) {
   let customs: TagAttrItem[] = []
   let natives: TagAttrItem[] = []
 
-  if (prefix === 'wx') {
-    natives = CTRL_ATTRS.map(mapComponentAttr)
-  } else if (prefix === 'bind' || prefix === 'catch') {
-    let filter = (a: ComponentAttr) => tagAttrs[prefix + a.name] == null && tagAttrs[prefix + ':' + a.name] == null
-    customs = (await getAvailableAttrs(tagName, tagAttrs, co))
-                  .filter(a => a.name.startsWith(prefix))
-                  .map(a => ({...a, name: a.name.substr(prefix.length)} as ComponentAttr)) // 去除 bind/catch 前缀
-                  .filter(filter)
+  if (lc.custom.hasOwnProperty(prefix)) {
+    natives = lc.custom[prefix].attrs
+                  .filter(attr => tagAttrs[prefix + attr.name] == null)
                   .map(mapComponentAttr)
-    natives = EVENT_ATTRS.filter(filter).map(mapComponentAttr)
+  } else if (lc.event.prefixes.indexOf(prefix) >= 0) {
+    let filter = createComponentFilter(tagAttrs, true)
+    customs = (await getAvailableAttrs(tagName, tagAttrs, lc, co))
+                  .filter(filter)
+                  .map(a => ({...a, name: a.name.replace(/^(bind|catch)/, '')} as ComponentAttr)) // 去除 bind/catch 前缀
+                  .map(mapComponentAttr)
+    natives = lc.event.attrs.filter(attr => tagAttrs[prefix + attr.name] == null).map(mapComponentAttr)
   }
   return {customs, natives}
 }
@@ -95,19 +99,26 @@ function mapComponent(component: Component) {
 }
 
 function mapComponentAttr(attr: ComponentAttr) {
-  return {attr, markdown: getComponentAttrMarkdown(attr)}
+  return {attr, markdown: getComponentAttrMarkdown(attr)} as TagAttrItem
 }
 
-async function getComponent(tagName: string, co?: CustomOptions) {
-  let comp = components.find(c => c.name === tagName)
+function createComponentFilter(existsTagAttrs: {[key: string]: string | boolean}, event?: boolean) {
+  return (attr: ComponentAttr) => {
+    let isEvent = attr.name.startsWith('bind') || attr.name.startsWith('catch')
+    return existsTagAttrs[attr.name] == null && (event == null || (event ? isEvent : !isEvent))
+  }
+}
+
+async function getComponent(tagName: string, lc: LanguageConfig, co?: CustomOptions) {
+  let comp = [...lc.components, ...components].find(c => c.name === tagName)
   if (!comp) {
     comp = (await getCustomComponents(co)).find(c => c.name === tagName)
   }
   return comp
 }
 
-async function getAvailableAttrs(tagName: string, tagAttrs: {[key: string]: string | boolean}, co?: CustomOptions) {
-  let comp = await getComponent(tagName, co)
+async function getAvailableAttrs(tagName: string, tagAttrs: {[key: string]: string | boolean}, lc: LanguageConfig, co?: CustomOptions) {
+  let comp = await getComponent(tagName, lc, co)
   return comp ? getAvailableAttrsFromComponent(comp, tagAttrs) : []
 }
 

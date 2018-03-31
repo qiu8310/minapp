@@ -75,15 +75,15 @@ function getAttrName(str: string) {
 function getAttrs(text: string) {
   let attrs: any = {}
   match(text, attrRegExp, m => {
-    // 名字中不要出现 : 符号，方便后缀处理
     attrs[stripColon(m[1])] = m[2] ? strip(m[3]) : true
   })
   return attrs
 }
 
 function stripColon(name: string) {
-  return name.replace(':', '')
-    .replace(/^@/, 'bind')
+  return name
+    // .replace(':', '')
+    // .replace(/^@/, 'bind')
     .replace(/\..*$/, '') // 去除修饰字符，如 .default, .stop, .user, .sync
 }
 
