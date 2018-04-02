@@ -137,6 +137,14 @@ describe('mustache in test', () => {
   })
 })
 
+describe('big file', () => {
+  test('it should parse big file', () => {
+    let json = JSON.stringify(c(readFixture('big.wxml')), null, 2).trim()
+    // fs.writeFileSync(fixture('big.json'), json)
+    expect(json).toEqual(fs.readFileSync(fixture('big.json')).toString().trim())
+  })
+})
+
 function p(xml: string) {
   return JSON.parse(JSON.stringify(parse(xml).nodes))
 }
