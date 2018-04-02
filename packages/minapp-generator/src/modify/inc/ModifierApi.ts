@@ -3,9 +3,9 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {Modifier} from './Modifier'
-import {isSectionHead} from '../../generator/base/'
-import {TemplateMeta} from './interface'
+import { Modifier } from './Modifier'
+import { isSectionHead } from '../../generator/base/'
+import { TemplateMeta } from './interface'
 
 export class ApiModifier extends Modifier {
   modify($root: Cheerio): TemplateMeta[] | void {
@@ -26,8 +26,8 @@ export class ApiModifier extends Modifier {
         let $fromTable = $(tables[m.fromIndex])
         let $target = $(tables[m.toIndex]).find('tbody')
 
-        let {body} = this.g.getTableData($fromTable)
-        let {prefixes, suffixes, splice} = m
+        let { body } = this.g.getTableData($fromTable)
+        let { prefixes, suffixes, splice } = m
         body.forEach(row => {
           if (prefixes) prefixes.forEach((prefix, i) => row[i] = prefix + row[i])
           if (suffixes) suffixes.forEach((suffix, i) => row[i] = row[i] + suffix)
@@ -54,7 +54,7 @@ export class ApiModifier extends Modifier {
         }
       } else if (m.type === 'update') {
         let $table = $(tables[m.index])
-        let {head, body} = this.g.getTableData($table)
+        let { head, body } = this.g.getTableData($table)
         if (m.head) {
           this.assert(head[m.head.col] === m.head.from)
           $table.find('thead th').eq(m.head.col).text(m.head.to)
@@ -64,17 +64,19 @@ export class ApiModifier extends Modifier {
           $table.find('tbody tr').eq(m.body.row).find('td').eq(m.body.col).text(m.body.to)
         }
         // 增加、删除或者修改列
-        if(m.col) {
-          let {splice, rows} = m.col;
-          head.splice.apply(head, splice.concat(m.col.head))
-          let $ths = head.map(r => `<th>${r}</th>`);
-          $table.find('thead').html(`<tr>${$ths.join('')}</tr>`);
+        if (m.col) {
+          let { splice, rows, head: title } = m.col
+          // 判断微信文档是否增加了参数或者已经增加了当前字段
+          this.assert(body.length === rows.length || head.indexOf(title) === -1)
+          head.splice.apply(head, splice.concat(title))
+          let $ths = head.map(r => `<th>${r}</th>`)
+          $table.find('thead').html(`<tr>${$ths.join('')}</tr>`)
 
           let $body = body.map((row, idx) => {
-              row.splice.apply(row, splice.concat(rows[idx] || ''));
-              return `<tr>${row.map(r => `<td>${r}</td>`).join('')}</tr>`;
-          });
-          $table.find('tbody').html($body.join(''));
+            row.splice.apply(row, splice.concat(rows[idx] || ''))
+            return `<tr>${row.map(r => `<td>${r}</td>`).join('')}</tr>`
+          })
+          $table.find('tbody').html($body.join(''))
         }
       } else if (m.type === 'ignoreHeadWarn') {
         let $table = $(tables[m.index])
