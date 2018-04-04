@@ -15,7 +15,7 @@ import {JSON_REGEXP} from '@minapp/webpack-utils/dist/util'
 import { Compiler } from '../Compiler'
 
 export function webpackConfig(compiler: Compiler) {
-  let {srcDir, modulesDir, localPkg, distDir, options: {server, publicPath, minapp = {}}} = compiler
+  let {srcDir, rootDir, modulesDir, localPkg, distDir, options: {server, publicPath, minapp = {}}} = compiler
 
   let appJson: string | undefined
   let mode = minapp.component ? 'component' : 'project'
@@ -153,6 +153,19 @@ export function webpackConfig(compiler: Compiler) {
         // 其它文件：不存在；静态资源在对应的其它文件中可以通过 loader 的 loadStaticFile 来 load
       ]
     }
+  }
+
+  let mod: any
+  if (fs.existsSync(path.join(rootDir, 'webpack.minapp.js'))) {
+    mod = require(path.join(rootDir, 'webpack.minapp.js'))
+  } else if (fs.existsSync(path.join(rootDir, 'webpack.minapp.ts'))) {
+    require(path.join(rootDir, 'node_modules', 'ts-node', 'register'))
+    mod = require(path.join(rootDir, 'webpack.minapp.ts'))
+  }
+
+  if (mod) {
+    let newWpOpts = mod.default ? mod.default(wpOpts) : mod(wpOpts)
+    return newWpOpts || wpOpts
   }
 
   return wpOpts
