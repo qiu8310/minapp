@@ -137,7 +137,7 @@ declare namespace Page {
   }
 }
 
-interface Page {
+interface Page extends Component {
   setData(data: any, callback?: any): void
 }
 
