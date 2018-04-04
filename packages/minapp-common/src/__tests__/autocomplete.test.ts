@@ -13,6 +13,7 @@ const fixture = (key: string) => path.resolve(root, key)
 const notEvent = (attr: ComponentAttr) => !attr.name.startsWith('bind') && !attr.name.startsWith('catch')
 
 const WxmlConfig = {
+  id: 'wxml',
   baseAttrs: [
     {name: 'id'},
     {name: 'class'},
