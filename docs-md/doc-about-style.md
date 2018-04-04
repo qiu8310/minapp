@@ -14,7 +14,21 @@ title: 关于样式
 
 而原生的 css 并不支持此单位，所以为了开发方便，minapp 会默认把所有 `px` 转化成 `rpx` 单位，而把所有的 `rpx` 单位转化成 `px`
 
-你可以在 `minapp.json` 中修改此配置
+你可以在 `minapp.json` 中通过修改 `unitTransformer` 来修改对应的转化关系，如：
+
+```js
+{
+  "unitTransformer": {
+    "px": "2rpx"  // 表示将 1px 转化成 2px (配置中第一个单位不能出现数字)
+  }
+}
+```
+
+## json2sassPath
+
+`minapp.json` 文件中的 `compiler` 选项中的配置
+
+指定一个 json 文件的路径，`json2sass-loader` 会将这个 json 文件转化成 scss 变量的定义，这样你这个 json 文件就可以同时在 js 和 css 中使用
 
 
 ## urlLoaderLimit

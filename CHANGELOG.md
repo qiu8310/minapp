@@ -1,3 +1,10 @@
+1.0.11 / 2018-04-04
+==================
+
+* compiler: minapp.json支持配置 unitTransformer，px2rpx 和 rpx2px 会被废弃
+* compiler: 引入 json2sass-loader
+* compiler: 支持使用 webpack.minapp.js / webpack.minapp.ts 来修改 webpack 配置
+
 1.0.6 / 2018-03-23
 ==================
 

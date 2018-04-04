@@ -23,6 +23,7 @@
     "doc-autocomplete": "代码自动补全",
     "doc-basic-code": "基本代码",
     "doc-coding-rule": "编码准则",
+    "doc-custom-webpack": "自定义 webpack 配置",
     "doc-data-bind": "数据双向绑定",
     "doc-develop-npm-component": "组件化开发实战",
     "doc-difference-with-wepy": "和 wepy 的对比",

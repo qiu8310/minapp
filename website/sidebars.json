@@ -12,6 +12,7 @@
       "doc-use-setDataSmart-not-setData",
       "doc-about-json-file",
       "doc-require-other-files-in-script",
+      "doc-custom-webpack",
       "doc-basic-code"
     ],
     "进阶功能": [
