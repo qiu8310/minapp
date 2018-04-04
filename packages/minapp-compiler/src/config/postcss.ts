@@ -10,9 +10,11 @@ import {MinappCompiler} from '../Compiler'
 export function postcss(loader: string, opts: MinappCompiler = {}) {
   let {px2rpx = true, rpx2px = true, browsers = ['last 7 android version', 'last 5 chrome version', 'last 5 safari version']} = opts
 
-  let map = opts.unitTransformer || {}
-  if (px2rpx && !map.px) map.px = 'rpx'
-  if (rpx2px && !map.rpx) map.rpx = 'px'
+  let map: any = opts.unitTransformer || {}
+  if (!opts.unitTransformer) {
+    if (px2rpx) map.px = 'rpx'
+    if (rpx2px) map.rpx = 'px'
+  }
 
   let plugins: any[] = []
 
