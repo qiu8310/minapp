@@ -12,6 +12,7 @@ export const loader = {
   json2sass: join(loaderDir, 'json2sass-loader'),
   js: join(loaderDir, 'js-loader'),
   wxml: join(loaderDir, 'wxml-loader'),
+  pug: join(loaderDir, 'pug-loader'),
   wxss: join(loaderDir, 'wxss-loader'),
   postcss: join(loaderDir, 'postcss-loader'),
 }

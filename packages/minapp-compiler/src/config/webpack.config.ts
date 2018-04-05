@@ -134,6 +134,7 @@ export function webpackConfig(compiler: Compiler) {
 
         // 模板
         {test: /\.wxml$/i, use: loader.wxml},
+        {test: /\.(pug|wpug)$/i, use: [loader.wxml, loader.pug]},
 
         // 样式
         {test: /\.s(c|a)ss$/i, use: [
