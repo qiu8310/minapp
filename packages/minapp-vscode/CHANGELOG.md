@@ -1,3 +1,15 @@
+1.0.12 / 2018-04-05
+==================
+
+* 支持 pug 语言
+
+  现在需要在 vue 的 template 上指定 `lang` 和 `minapp` 两个选项，如果不指定 `minapp`，默认为 `minapp="mpvue"`
+
+  如:
+
+  1. `<template lang="wxml" minapp="native">`   表示使用 wxml 语言，不使用任何框架
+  2. `<template lang="pug" minapp="mpvue">`     表示使用 pug 语言，并使用 mpvue 框架
+
 1.0.10 / 2018-03-31
 ==================
 

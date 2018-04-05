@@ -17,7 +17,7 @@
     "minapp",
     "wxml",
     "微信",
-    "小程序",
+    "pug",
     "wexin"
   ],
   "license": "MIT",
@@ -36,6 +36,7 @@
     "Languages"
   ],
   "activationEvents": [
+    "onLanguage:wxml-pug",
     "onLanguage:wxml",
     "onLanguage:vue"
   ],
@@ -68,7 +69,15 @@
         "extensions": [
           ".wxml"
         ],
-        "configuration": "./res/language-configuration.json"
+        "configuration": "./res/wxml.language-configuration.json"
+      },
+      {
+        "id": "wxml-pug",
+        "extensions": [
+          ".wpug",
+          ".pug"
+        ],
+        "configuration": "./res/wxml-pug.language-configuration.json"
       }
     ],
     "grammars": [
@@ -76,6 +85,15 @@
         "language": "wxml",
         "scopeName": "text.html.wxml",
         "path": "./res/wxml.tmLanguage.json",
+        "embeddedLanguages": {
+          "text.html": "html",
+          "source.js": "js"
+        }
+      },
+      {
+        "language": "wxml-pug",
+        "scopeName": "text.jade.wxml",
+        "path": "./res/wxml-pug.tmLanguage.json",
         "embeddedLanguages": {
           "text.html": "html",
           "source.js": "js"

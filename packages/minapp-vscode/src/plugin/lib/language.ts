@@ -23,7 +23,7 @@ export interface Languages {
   [language: string]: LanguageConfig
 }
 export const Languages: Languages = {
-  wxml: {
+  native: {
     id: 'wxml',
     baseAttrs: [
       {name: 'id'},

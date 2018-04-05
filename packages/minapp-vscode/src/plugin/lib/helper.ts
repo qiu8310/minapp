@@ -6,23 +6,37 @@ import { TextDocument, Position } from 'vscode'
 import { Config } from './config'
 import {Languages, LanguageConfig} from './language'
 
-const vueTemplateStartTag = /^\s*<template\b[^>]*(?:lang|minapp)=('wxml'|"wxml"|'wepy'|"wepy"|'mpvue'|"mpvue")[^>]*>/
+// <template lang="wxml/pug/wxml-pug" minapp="native/wepy/mpvue"> ；默认 minapp="mpvue"
+const vueTemplateMinappStartTag = /^\s*<template\b[^>]*(?:minapp)=['"](native|wepy|mpvue)['"][^>]*>/
+const vueTemplateLangStartTag = /^\s*<template\b[^>]*(?:x?lang)=['"]([\w-]+)['"][^>]*>/
 const vueTemplateEndTag = /<\/template>\s*$/
 
 export function getLanguage(doc: TextDocument, pos: Position): undefined | LanguageConfig {
-  let language: undefined | keyof Languages
-  if (doc.languageId === 'wxml') {
-    language = 'wxml'
+  let minapp: undefined | keyof Languages
+  if (doc.languageId === 'wxml' || doc.languageId === 'wxml-pug') {
+    minapp = 'native'
   } else {
     doc.getText().split(/\r?\n/).some((text, i) => {
-      if (!language && vueTemplateStartTag.test(text)) language = RegExp.$1.replace(/['"]/g, '')
+      if (!minapp && vueTemplateMinappStartTag.test(text)) minapp = RegExp.$1.replace(/['"]/g, '')
       if (i === pos.line) return true
-      if (language && vueTemplateEndTag.test(text)) language = undefined
+      if (minapp && vueTemplateEndTag.test(text)) minapp = undefined
       return false
     })
+    if (!minapp) minapp = 'mpvue'
   }
 
-  return language && Languages[language] ? Languages[language] : undefined
+  return minapp && Languages[minapp] ? Languages[minapp] : undefined
+}
+
+export function getLangForVue(doc: TextDocument, pos: Position) {
+  let lang: string | undefined
+  doc.getText().split(/\r?\n/).some((text, i) => {
+    if (!lang && vueTemplateLangStartTag.test(text)) lang = RegExp.$1.replace(/['"]/g, '')
+    if (i === pos.line) return true
+    if (lang && vueTemplateEndTag.test(text)) lang = undefined
+    return false
+  })
+  return lang
 }
 
 export function getCustomOptions(config: Config, document: TextDocument) {
