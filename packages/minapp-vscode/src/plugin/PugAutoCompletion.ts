@@ -36,7 +36,9 @@ export default class extends AutoCompletion implements CompletionItemProvider {
           return this.createComponentAttributeSnippetItems(language, document, position)
         }
       }
-      return this.createComponentSnippetItems(language, document, position, prefix)
+      if (line.trim()) {
+        return this.createComponentSnippetItems(language, document, position, prefix)
+      }
     }
     switch (context.triggerCharacter) {
       case ' ': return this.createComponentAttributeSnippetItems(language, document, position)

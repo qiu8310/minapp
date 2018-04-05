@@ -97,11 +97,19 @@ export default abstract class AutoCompletion {
    */
   async createComponentSnippetItems(lc: LanguageConfig, doc: TextDocument, pos: Position, prefix?: string) {
     let res = await autocompleteTagName(lc, this.getCustomOptions(doc))
-    let filter = (t: TagItem) => !prefix || t.component.name.startsWith(prefix)
-    return [
+    let filter = (t: TagItem) => !prefix || prefix.split('').every(c => t.component.name.includes(c))
+    let items = [
       ...res.customs.filter(filter).map(t => this.renderTag(t, 'a')), // 自定义的组件放在前面
       ...res.natives.filter(filter).map(t => this.renderTag(t, 'b'))
     ]
+
+    if (prefix) {
+      items.forEach(it => {
+        it.range = new Range(new Position(pos.line, pos.character - prefix.length), pos)
+      })
+    }
+
+    return items
   }
 
   /**
