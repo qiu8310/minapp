@@ -165,7 +165,7 @@ export function webpackConfig(compiler: Compiler) {
   }
 
   if (mod) {
-    let newWpOpts = mod.default ? mod.default(wpOpts) : mod(wpOpts)
+    let newWpOpts = mod.default ? mod.default(wpOpts, webpack) : mod(wpOpts, webpack)
     return newWpOpts || wpOpts
   }
 

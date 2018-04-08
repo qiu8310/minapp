@@ -11,7 +11,7 @@ title: 自定义 webpack 配置
 ```js
 // webpack.minapp.js
 
-module.exports = function(webpackOpts) {
+module.exports = function(webpackOpts, webpack) {
 
   // 在这里修改 webpackOpts
 
@@ -22,7 +22,7 @@ module.exports = function(webpackOpts) {
 ```ts
 // webpack.minapp.ts
 
-export default function(webpackOpts: any) {
+export default function(webpackOpts: any, webpack: any) {
 
   // 在这里修改 webpackOpts
 
