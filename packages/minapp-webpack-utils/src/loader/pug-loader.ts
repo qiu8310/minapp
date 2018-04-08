@@ -10,6 +10,6 @@ import * as pug from 'pug'
 export default class JsonLoader extends Loader {
   async run(content: string) {
     this.lc.cacheable()
-    return pug.render(content, {pretty: true, filename: this.fromFile})
+    return pug.render(content, {pretty: true, filename: this.fromFile, basedir: this.srcDir})
   }
 }
