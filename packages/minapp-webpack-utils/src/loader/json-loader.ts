@@ -58,13 +58,15 @@ export default class JsonLoader extends Loader {
       let components: {[key: string]: string} = json.usingComponents || {}
       await map(Object.keys(components), async (k) => {
         let component = components[k]
-        if (component[0] === '/') component = component.substr(1) // 组件可以使用绝对路径
-        let main = await this.resolve(component)
+        if (this.shouleMakeResolve(component)) {
+          if (component[0] === '/') component = component.substr(1) // 组件可以使用绝对路径
+          let main = await this.resolve(component)
 
-        // component 模式下只有在 srcDir 中的组件才解析
-        if (this.shouleMakeRequire(main)) {
-          components[k] = this.getExtractRequirePath(main, '')
-          searchDir(requires, main)
+          // component 模式下只有在 srcDir 中的组件才解析
+          if (this.shouleMakeRequire(main)) {
+            components[k] = this.getExtractRequirePath(main, '')
+            searchDir(requires, main)
+          }
         }
       })
     }

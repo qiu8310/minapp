@@ -169,6 +169,11 @@
         }
       }
     },
+    "plugins": {
+      "type": "object",
+      "default": {},
+      "description": "引入插件代码包"
+    },
     "debug": {
       "type": "boolean",
       "description": "可以在开发者工具中开启 debug 模式，在开发者工具的控制台面板，调试信息以 info 的形式给出，其信息有Page的注册，页面路由，数据更新，事件触发 。 可以帮助开发者快速定位一些常见的问题"

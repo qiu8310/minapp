@@ -44,6 +44,8 @@ declare namespace App {
   }
 }
 
+declare function requirePlugin(plugin: string): any
+
 declare function getApp(): App
 
 interface App {
