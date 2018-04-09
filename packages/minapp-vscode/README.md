@@ -31,7 +31,7 @@
   > 注意，[mpvue 中指定 lang="wxml" 会报错](https://github.com/Meituan-Dianping/mpvue/issues/208)，需要等待作者修复！不过
   > 你可以临时使用 `xlang="wxml"`，但这样同时也会触发 vue 的自动补全
 
-  指定为不同的 minapp 值会触发对应框架的自动补全，由于本人没有使用 wepy 和 mpvue 开发过，所以这些自动补全是根据官方文档说明而加上的，如果有错误，欢迎 PR（只需要修改文件 [src/plugin/lib/language.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/src/plugin/language.ts))
+  指定为不同的 minapp 值会触发对应框架的自动补全，由于本人没有使用 wepy 和 mpvue 开发过，所以这些自动补全是根据官方文档说明而加上的，如果有错误，欢迎 PR（只需要修改文件 [src/plugin/lib/language.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/src/plugin/lib/language.ts))
 
   ![示例图片](https://n1image.hjfile.cn/res7/2018/04/09/0b4573624091b04566232c38df08e323.gif)
 
