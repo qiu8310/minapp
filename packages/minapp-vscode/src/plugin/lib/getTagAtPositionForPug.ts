@@ -33,7 +33,10 @@ export function getTagAtPosition(doc: TextDocument, pos: Position): null | Tag {
         isOnAttrValue: false,
         attrName: ''
       }
-    } else if (index < prefix.length + name.length + classOrId.length + rest.length) {
+    } else if (
+      index < prefix.length + name.length + classOrId.length + rest.length ||
+      index > prefix.length + name.length + classOrId.length + rest.length + attrstr.length + 1 // 后面有半个括号
+    ) {
       return null
     } else {
       let {posWord, attrName, isOnAttrValue} = parseLine(line, doc, pos)

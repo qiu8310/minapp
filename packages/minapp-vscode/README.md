@@ -33,9 +33,7 @@
 
   指定为不同的 minapp 值会触发对应框架的自动补全，由于本人没有使用 wepy 和 mpvue 开发过，所以这些自动补全是根据官方文档说明而加上的，如果有错误，欢迎 PR（只需要修改文件 [src/plugin/lib/language.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/src/plugin/language.ts))
 
-
-  <!-- ![示例图片](https://n1image.hjfile.cn/res7/2018/03/17/07a2f53003393202183b100597eaf49d.gif) -->
-  ![示例图片](https://n1image.hjfile.cn/res7/2018/03/31/ac8941bd64403d2d691682d143881067.gif)
+  ![示例图片](https://n1image.hjfile.cn/res7/2018/04/09/0b4573624091b04566232c38df08e323.gif)
 
 
 ## 属性值也可以自动补全
