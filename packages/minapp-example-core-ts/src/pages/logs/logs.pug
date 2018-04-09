@@ -1,0 +1,4 @@
+view(class='container log-list')
+  button(bind:tap='backToHome') 返回到首页
+  block(wx:for='{{logs}}' wx:key='i' wx:for-item='log')
+    text(class='log-item') {{index + 1}}. {{log}}

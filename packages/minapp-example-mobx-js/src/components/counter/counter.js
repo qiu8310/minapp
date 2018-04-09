@@ -11,7 +11,7 @@ export default class extends MyComponent {
    * 组件的属性列表
    */
   properties = {
-    start: {
+    number: {
       value: 0,
       type: Number
     }
@@ -48,14 +48,14 @@ export default class extends MyComponent {
    * 自定义的函数，不需要放在 methods 中，在 comify 中会帮你提取出来放到 methods
    */
   increase() {
-    this.setDataSmart({start: this.data.start + 1})
+    this.setDataSmart({number: this.data.number + 1})
   }
 
   /**
    * 自定义的函数，不需要放在 methods 中，在 comify 中会帮你提取出来放到 methods
    */
   decrease() {
-    this.setDataSmart({start: this.data.start - 1})
+    this.setDataSmart({number: this.data.number - 1})
   }
 }
 

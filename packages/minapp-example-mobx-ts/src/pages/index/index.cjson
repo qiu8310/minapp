@@ -2,8 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/qiu8310/minapp/master/schema/page.json",
   "usingComponents": {
     "demo": "@minapp/component-demo",
-    "counter-a": "components/counter/counter",
-    "counter-b": "components/counter/counter",
+    "counter": "components/counter/counter",
     "toast": "@minapp/component-toast" // 加载 npm 包中的组件
   }
 }

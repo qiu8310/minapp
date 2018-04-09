@@ -12,6 +12,7 @@ export interface Answers extends inquirer.Answers {
   type: 'Application' | 'Component'
   language: 'TypeScript' | 'JavaScript'
   style: string
+  template: string
   name: string
   state?: 'Mobx' | 'None'
   description: string
@@ -46,6 +47,13 @@ export function questions(absDir: string) {
       name: 'style',
       message: 'Style language',
       choices: ['scss', 'less', 'css', 'wxss'],
+      default: 0
+    },
+    {
+      type: 'list',
+      name: 'template',
+      message: 'Template language',
+      choices: ['wxml', 'pug'],
       default: 0
     },
     {

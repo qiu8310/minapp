@@ -29,7 +29,8 @@ module.exports = function (source) {
     ],
     globalData: {
       dollar: '$',
-      style: '${style}'
+      style: '${style}',
+      template: '${template}'
     }
   }
 }

@@ -1,0 +1,25 @@
+view.container
+  view.userinfo
+    button(wx:if!='{{!userInfo && canIUseOpenButton}}' open-type='getUserInfo' bindgetuserinfo='onClickOpenButton')  获取头像昵称
+    block(wx:else)
+      image.userinfo-avatar(bind:tap='onClickAvatarImage' src='{{userInfo.avatarUrl}}' background-size='cover')
+      text.userinfo-nickname {{userInfo.nickName}}
+
+  view.usermotto
+    text.user-motto {{motto}}
+
+  toast(bind:close='hideToast' visible='{{npmToast}}' message='npm toast')
+  view
+    button(size='mini' bind:tap='showToast') 显示 toast
+    button(size='mini' bind:tap='hideToast') 关闭 toast
+
+  button(size='mini' bind:tap='increase') 在 Page 中增加 Count：{{count}}
+
+  view
+    | 双向绑定：
+    counter(number.sync='{{count}}')
+    | 单向绑定：
+    counter(number='{{count}}')
+
+  demo(toast.sync='demoToast')
+  button(size='mini' bind:tap='toggleDemoToast') 多层双向绑定，Page -> Demo -> Toast
