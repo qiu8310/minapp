@@ -1,7 +1,7 @@
 {
   "name": "minapp-vscode",
   "displayName": "minapp",
-  "description": "wxml 语法高亮，并提供标签、属性名、属性值的智能补全（支持在 vue 模板中补全）",
+  "description": "wxml 语法高亮，并提供标签、属性名、属性值的智能补全（同时支持在 vue 模板和 pug 语言的补全）",
   "version": "1.0.13",
   "publisher": "qiu8310",
   "scripts": {
