@@ -2,7 +2,7 @@
   "$schema": "../../schema/minapp.json",
   "compiler": {
     "unitTransformer": {
-      "px": "2rpx",
+      "px": "rpx",
       "rpx": "px"
     },
     "devServer": {

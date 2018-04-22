@@ -29,7 +29,8 @@
     "fs-extra": "^5.0.0",
     "mora-scripts": "^1.6.28",
     "ts-lint": "^4.5.1",
-    "typescript": "^2.7.1"
+    "typescript": "^2.7.1",
+    "webpack": "^3.11.0"
   },
   "dependencies": {
     "tslib": "^1.9.0"
