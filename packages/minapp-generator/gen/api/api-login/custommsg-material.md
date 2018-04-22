@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/material.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/material.html -->
 
 临时素材接口
 ------

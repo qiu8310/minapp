@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/get-actions.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-actions.html -->
 
 getActions (不推荐使用)
 ==================

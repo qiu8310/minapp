@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-video.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/api-video.html -->
 
 ### wx.createVideoContext(videoId, this)
 
@@ -21,6 +21,8 @@
   exitFullScreen      |  无         |  退出全屏                                      |  1.4.0   
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/X5V6Xmmk6xYB)
 
     <view class="section tc">
       <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"   enable-danmu danmu-btn controls></video>

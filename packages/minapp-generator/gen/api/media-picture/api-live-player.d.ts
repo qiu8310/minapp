@@ -5,6 +5,10 @@ export namespace wx {
    * @since 1.7.0
    *
    * 操作对应的 `<live-player/>` 组件。 创建并返回 `live-player` 上下文 `LivePlayerContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<live-player/>` 组件
+   *
+   * **示例代码：**
+   *
+   * [在开发者工具中预览效果](wechatide://minicode/UzWEzmm763Y4)
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-live-player.html#wxcreateliveplayercontextdomid-this
    */
   function createLivePlayerContext(domId: any, instance?: any): LivePlayerContext

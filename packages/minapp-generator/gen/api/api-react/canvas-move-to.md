@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/move-to.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/move-to.html -->
 
 canvasContext.moveTo
 ====================
@@ -28,4 +28,4 @@ canvasContext.moveTo
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/move-to.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/move-to.png?t=2018413)

@@ -145,5 +145,65 @@ export namespace wx {
      * 音频完成 seek 操作事件
      */
     onSeeked(callback: any): any
+    /**
+     * 取消监听 onCanplay 事件
+     *
+     * @since 1.9.0
+     */
+    offCanplay(callback: any): any
+    /**
+     * 取消监听 onPlay 事件
+     *
+     * @since 1.9.0
+     */
+    offPlay(callback: any): any
+    /**
+     * 取消监听 onPause 事件
+     *
+     * @since 1.9.0
+     */
+    offPause(callback: any): any
+    /**
+     * 取消监听 onStop 事件
+     *
+     * @since 1.9.0
+     */
+    offStop(callback: any): any
+    /**
+     * 取消监听 onEnded 事件
+     *
+     * @since 1.9.0
+     */
+    offEnded(callback: any): any
+    /**
+     * 取消监听 onTimeUpdate 事件
+     *
+     * @since 1.9.0
+     */
+    offTimeUpdate(callback: any): any
+    /**
+     * 取消监听 onError 事件
+     *
+     * @since 1.9.0
+     */
+    offError(callback: any): any
+    /**
+     * 取消监听 onWaiting 事件
+     *
+     * @since 1.9.0
+     */
+    offWaiting(callback: any): any
+    /**
+     * 取消监听 onSeeking 事件
+     *
+     * @since 1.9.0
+     */
+    offSeeking(callback: any): any
+    /**
+     * 取消监听 onSeeked 事件
+     *
+     * @since 1.9.0
+     */
+    offSeeked(callback: any): any
   }
 }

@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/scale.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/scale.html -->
 
 canvasContext.scale
 ===================
@@ -27,4 +27,4 @@ canvasContext.scale
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/scale.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/scale.png?t=2018413)

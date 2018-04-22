@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-caniuse.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/api-caniuse.html -->
 
 ### wx.canIUse(String)
 

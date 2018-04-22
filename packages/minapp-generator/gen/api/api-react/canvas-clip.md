@@ -1,9 +1,9 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/clip.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/clip.html -->
 
 canvasContext.clip
 ==================
 
-> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 ### 定义
 
@@ -27,4 +27,4 @@ clip() 方法从原始画布中剪切任意形状和尺寸。一旦剪切了某�
     })
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/clip.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/clip.png?t=2018413)

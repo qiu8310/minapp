@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/set-font-size.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/set-font-size.html -->
 
 canvasContext.setFontSize
 =========================
@@ -29,4 +29,4 @@ canvasContext.setFontSize
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/font-size.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/font-size.png?t=2018413)

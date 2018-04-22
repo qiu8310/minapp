@@ -1,11 +1,11 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/wxml-nodes-info.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/wxml-nodes-info.html -->
 
 WXML节点信息API
 ===========
 
 ### wx.createSelectorQuery()
 
-> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 返回一个SelectorQuery对象实例。可以在这个实例上使用`select`等方法选择节点，并使用`boundingClientRect`等方法选择需要查询的信息。
 
@@ -38,7 +38,7 @@ WXML节点信息API
 
 #### selectorQuery.in(component)
 
-> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 将选择器的选取范围更改为自定义组件`component`内。（初始时，选择器仅选取页面范围的节点，不会选取任何自定义组件中的节点。）
 

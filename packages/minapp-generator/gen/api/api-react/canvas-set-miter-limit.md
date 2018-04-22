@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/set-miter-limit.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/set-miter-limit.html -->
 
 canvasContext.setMiterLimit
 ===========================
@@ -61,4 +61,4 @@ canvasContext.setMiterLimit
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/miter-limit.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/miter-limit.png?t=2018413)

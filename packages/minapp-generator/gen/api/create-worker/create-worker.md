@@ -1,10 +1,10 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/createWorker.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/createWorker.html -->
 
 ### wx.createWorker(scriptPath)
 
-> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-在使用 createWorker 前，请查阅 [多线程](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/workers.html) 文档了解基础知识和配置方法。
+在使用 createWorker 前，请查阅 [多线程](https://developers.weixin.qq.com/miniprogram/dev/framework/workers.html) 文档了解基础知识和配置方法。
 
 创建一个 Worker 线程，并返回 Worker 实例，目前限制最多只能创建一个 Worker，创建下一个 Worker 前请调用 Worker.terminate。
 
@@ -36,7 +36,7 @@
 
 **示例代码：**
 
-运行以下代码需先进行基础配置，详细请查阅 [多线程](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/workers.html) 文档了解基础知识和配置方法。
+运行以下代码需先进行基础配置，详细请查阅 [多线程](https://developers.weixin.qq.com/miniprogram/dev/framework/workers.html) 文档了解基础知识和配置方法。
 
     const worker = wx.createWorker('workers/request/index.js') // 文件名指定 worker 的入口文件路径，绝对路径
     

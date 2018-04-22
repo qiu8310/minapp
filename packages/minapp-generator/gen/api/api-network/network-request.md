@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/network-request.html -->
 
 ### wx.request(OBJECT)
 
-发起网络请求。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+发起网络请求。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
 
 **OBJECT参数说明：**
 
@@ -53,7 +53,7 @@
 
 **返回值：**
 
-> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 返回一个 `requestTask` 对象，通过 `requestTask`，可中断请求任务。
 

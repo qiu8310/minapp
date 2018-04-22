@@ -1,11 +1,11 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/receive.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/receive.html -->
 
 接收消息和事件
 -------
 
-在页面中使用 [`<button open-type="contact" />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/button.html) 可以显示进入客服会话按钮。
+在页面中使用 [`<button open-type="contact" />`](https://developers.weixin.qq.com/miniprogram/dev/component/button.html) 可以显示进入客服会话按钮。
 
-当用户在客服会话发送消息（或进行某些特定的用户操作引发的事件推送时），微信服务器会将消息（或事件）的数据包（JSON或者XML格式）POST请求开发者填写的URL。开发者收到请求后可以使用[发送客服消息](https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/conversation.html#发送客服消息)接口进行异步回复。
+当用户在客服会话发送消息（或进行某些特定的用户操作引发的事件推送时），微信服务器会将消息（或事件）的数据包（JSON或者XML格式）POST请求开发者填写的URL。开发者收到请求后可以使用[发送客服消息](https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/conversation.html#发送客服消息)接口进行异步回复。
 
 微信服务器在将用户的消息发给小程序的开发者服务器地址（开发设置处配置）后，微信服务器在五秒内收不到响应会断掉连接，并且重新发起请求，总共重试三次，如果在调试中，发现用户无法收到响应的消息，可以检查是否消息处理超时。关于重试的消息排重，有msgid的消息推荐使用msgid排重。事件类型消息推荐使用FromUserName + CreateTime 排重。
 
@@ -96,15 +96,15 @@
 
 #### 参数说明
 
-  参数           |  说明                                                                                                         
------------------|---------------------------------------------------------------------------------------------------------------
-  ToUserName     |  小程序的原始ID                                                                                               
-  FromUserName   |  发送者的openid                                                                                               
-  CreateTime     |  消息创建时间(整型）                                                                                          
-  MsgType        |  image                                                                                                        
-  PicUrl         |  图片链接（由系统生成）                                                                                       
-  MediaId        |图片消息媒体id，可以调用[获取临时素材](https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/material.html#获取临时素材)接口拉取数据。
-  MsgId          |  消息id，64位整型                                                                                             
+  参数           |  说明                                                                                                                
+-----------------|----------------------------------------------------------------------------------------------------------------------
+  ToUserName     |  小程序的原始ID                                                                                                      
+  FromUserName   |  发送者的openid                                                                                                      
+  CreateTime     |  消息创建时间(整型）                                                                                                 
+  MsgType        |  image                                                                                                               
+  PicUrl         |  图片链接（由系统生成）                                                                                              
+  MediaId        |图片消息媒体id，可以调用[获取临时素材](https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/material.html#获取临时素材)接口拉取数据。
+  MsgId          |  消息id，64位整型                                                                                                    
 
 ### 小程序卡片消息
 
@@ -187,11 +187,11 @@
 
 #### 参数说明
 
-  参数           |  说明                                                                                             
------------------|---------------------------------------------------------------------------------------------------
-  ToUserName     |  小程序的原始ID                                                                                   
-  FromUserName   |  发送者的openid                                                                                   
-  CreateTime     |  事件创建时间(整型）                                                                              
-  MsgType        |  event                                                                                            
-  Event          |  事件类型，user_enter_tempsession                                                                 
-  SessionFrom    |开发者在[客服会话按钮](https://mp.weixin.qq.com/debug/wxadoc/dev/component/button.html)设置的session-from属性
+  参数           |  说明                                                                                                    
+-----------------|----------------------------------------------------------------------------------------------------------
+  ToUserName     |  小程序的原始ID                                                                                          
+  FromUserName   |  发送者的openid                                                                                          
+  CreateTime     |  事件创建时间(整型）                                                                                     
+  MsgType        |  event                                                                                                   
+  Event          |  事件类型，user_enter_tempsession                                                                        
+  SessionFrom    |开发者在[客服会话按钮](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)设置的session-from属性

@@ -1,9 +1,9 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/analysis.html -->
 
 数据分析接口
 ------
 
-开发者通过数据分析接口，可获取到小程序的各项数据指标，便于进行数据存储和整理。数据分析详细功能介绍及指标解释参见[数据分析文档](https://mp.weixin.qq.com/debug/wxadoc/analysis/?t=201838)。
+开发者通过数据分析接口，可获取到小程序的各项数据指标，便于进行数据存储和整理。数据分析详细功能介绍及指标解释参见[数据分析文档](https://mp.weixin.qq.com/debug/wxadoc/analysis/?t=2018413)。
 
 ### 概况
 

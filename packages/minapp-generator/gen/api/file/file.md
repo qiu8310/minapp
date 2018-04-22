@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/file.html -->
 
 ### wx.saveFile(OBJECT)
 
@@ -71,7 +71,7 @@
 
 ### wx.getSavedFileInfo(OBJECT)
 
-获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 [wx.getFileInfo](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getFileInfo.html) 接口。
+获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 [wx.getFileInfo](https://developers.weixin.qq.com/miniprogram/dev/api/getFileInfo.html) 接口。
 
 **OBJECT参数说明：**
 

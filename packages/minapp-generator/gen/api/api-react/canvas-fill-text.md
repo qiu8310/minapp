@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/fill-text.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/fill-text.html -->
 
 canvasContext.fillText
 ======================
@@ -9,11 +9,12 @@ canvasContext.fillText
 
 ### 参数
 
-  参数   |  类型     |  说明            
----------|-----------|------------------
-  text   |  String   |在画布上输出的文本
-  x      |  Number   |绘制文本的左上角x坐标位置
-  y      |  Number   |绘制文本的左上角y坐标位置
+  参数       |  类型     |  说明            
+-------------|-----------|------------------
+  text       |  String   |在画布上输出的文本
+  x          |  Number   |绘制文本的左上角x坐标位置
+  y          |  Number   |绘制文本的左上角y坐标位置
+  maxWidth   |  Number   |需要绘制的最大宽度，可选
 
 ### 例子
 
@@ -26,4 +27,4 @@ canvasContext.fillText
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/text.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/text.png?t=2018413)

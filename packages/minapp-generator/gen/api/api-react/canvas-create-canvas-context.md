@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/create-canvas-context.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/create-canvas-context.html -->
 
 wx.createCanvasContext(canvasId, this)
 ======================================

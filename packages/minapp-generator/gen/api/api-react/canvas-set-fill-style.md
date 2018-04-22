@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/set-fill-style.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/set-fill-style.html -->
 
 canvasContext.setFillStyle
 ==========================
@@ -17,9 +17,9 @@ canvasContext.setFillStyle
 
 ### 参数
 
-  参数    |  类型                                                                       |  定义              
-----------|-----------------------------------------------------------------------------|--------------------
-  color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
+  参数    |  类型                                                                              |  定义              
+----------|------------------------------------------------------------------------------------|--------------------
+  color   |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |  Gradient Object   
 
 ### 例子
 
@@ -29,4 +29,4 @@ canvasContext.setFillStyle
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-rect.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-rect.png?t=2018413)

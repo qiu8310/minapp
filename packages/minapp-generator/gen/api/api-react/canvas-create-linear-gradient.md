@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/create-linear-gradient.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/create-linear-gradient.html -->
 
 canvasContext.createLinearGradient
 ==================================
@@ -33,4 +33,4 @@ canvasContext.createLinearGradient
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/linear-gradient.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/linear-gradient.png?t=2018413)

@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/getPhoneNumber.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/getPhoneNumber.html -->
 
 getPhoneNumber(OBJECT)
 ======================
@@ -6,7 +6,7 @@ getPhoneNumber(OBJECT)
 说明
 --
 
-获取微信用户绑定的手机号，需先调用[login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html?t=201838#wxloginobject)接口。
+获取微信用户绑定的手机号，需先调用[login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html?t=2018413#wxloginobject)接口。
 
 因为需要用户主动触发才能发起获取手机号接口，所以该功能不由 API 来调用，需用 `<button>` 组件的点击来触发。
 
@@ -40,12 +40,12 @@ getPhoneNumber(OBJECT)
 返回参数说明
 ------
 
-  参数            |  类型     |  说明                                                                                                                                                                                 
-------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  encryptedData   |  String   |包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html?t=201838#%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95)
-  iv              |  String   |加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html?t=201838#%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95)
+  参数            |  类型     |  说明                                                                                                                                                                                  
+------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  encryptedData   |  String   |包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html?t=2018413#%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95)
+  iv              |  String   |加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html?t=2018413#%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95)
 
-encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html?t=201838#%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95)
+encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html?t=2018413#%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95)
 
     {
         "phoneNumber": "13580006666",  

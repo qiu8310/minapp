@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/begin-path.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/begin-path.html -->
 
 canvasContext.beginPath
 =======================
@@ -35,4 +35,4 @@ canvasContext.beginPath
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-path.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-path.png?t=2018413)

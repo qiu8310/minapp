@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/api-pay.html -->
 
 ### wx.requestPayment(OBJECT)
 

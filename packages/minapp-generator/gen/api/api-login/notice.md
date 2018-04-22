@@ -1,10 +1,10 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/notice.html -->
 
 基于微信的通知渠道，我们为开发者提供了可以高效触达用户的模板消息能力，以便实现服务的闭环并提供更佳的体验。
 
 模板推送位置：服务通知
 
-模板下发条件：用户本人在微信体系内与页面有交互行为后触发，详见[下发条件说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html#下发条件说明)
+模板下发条件：用户本人在微信体系内与页面有交互行为后触发，详见[下发条件说明](https://developers.weixin.qq.com/miniprogram/dev/api/notice.html#下发条件说明)
 
 模板跳转能力：点击查看详情仅能跳转下发模板的该帐号的各个页面
 
@@ -15,16 +15,16 @@
 
 有两个方法可以获取模版ID
 
-1.  通过模版消息管理接口获取模版ID（详见[模版消息管理](https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html#模版消息管理)）
+1.  通过模版消息管理接口获取模版ID（详见[模版消息管理](https://developers.weixin.qq.com/miniprogram/dev/api/notice.html#模版消息管理)）
 2.  在微信公众平台手动配置获取模版ID
 
-登录[https://mp.weixin.qq.com](https://mp.weixin.qq.com) 获取模板，如果没有合适的模板，可以申请添加新模板，审核通过后可使用，详见[模板审核说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html#审核说明)
+登录[https://mp.weixin.qq.com](https://mp.weixin.qq.com) 获取模板，如果没有合适的模板，可以申请添加新模板，审核通过后可使用，详见[模板审核说明](https://developers.weixin.qq.com/miniprogram/dev/api/notice.html#审核说明)
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/mp-notice.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/mp-notice.png?t=2018413)
 
-步骤二：页面的 [`<form/>`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/form.html) 组件，属性`report-submit`为`true`时，可以声明为需发模板消息，此时点击按钮提交表单可以获取`formId`，用于发送模板消息。或者当用户完成[支付行为](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html)，可以获取`prepay_id`用于发送模板消息。
+步骤二：页面的 [`<form/>`](https://developers.weixin.qq.com/miniprogram/dev/component/form.html) 组件，属性`report-submit`为`true`时，可以声明为需发模板消息，此时点击按钮提交表单可以获取`formId`，用于发送模板消息。或者当用户完成[支付行为](https://developers.weixin.qq.com/miniprogram/dev/api/api-pay.html)，可以获取`prepay_id`用于发送模板消息。
 
-步骤三：调用接口下发模板消息（详见[发送模版消息](https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html#发送模版消息)）
+步骤三：调用接口下发模板消息（详见[发送模版消息](https://developers.weixin.qq.com/miniprogram/dev/api/notice.html#发送模版消息)）
 
 模版消息管理
 ------
@@ -357,15 +357,15 @@ access\_token 是全局唯一接口调用凭据，开发者调用各接口时都
 
 **POST参数说明：**
 
-  参数               |  必填 |  说明                                                                                                                                                                                  
----------------------|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  touser             |  是   |  接收者（用户）的 openid                                                                                                                                                               
-  template_id        |  是   |  所需下发的模板消息的id                                                                                                                                                                
-  page               |  否   |  点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例index?foo=bar）。该字段不填则模板无跳转。                                                                            
-  form_id            |  是   |表单提交场景下，为 submit 事件带上的 [formId](https://mp.weixin.qq.com/debug/wxadoc/dev/component/form.html)；支付场景下，为本次支付的 [prepay_id](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html)
-  data               |  是   |  模板内容，不填则下发空模板                                                                                                                                                            
-  color              |  否   |  模板内容字体的颜色，不填默认黑色                                                                                                                                                      
-  emphasis_keyword   |  否   |  模板需要放大的关键词，不填则默认无放大                                                                                                                                                
+  参数               |  必填 |  说明                                                                                                                                                                                                
+---------------------|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  touser             |  是   |  接收者（用户）的 openid                                                                                                                                                                             
+  template_id        |  是   |  所需下发的模板消息的id                                                                                                                                                                              
+  page               |  否   |  点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例index?foo=bar）。该字段不填则模板无跳转。                                                                                          
+  form_id            |  是   |表单提交场景下，为 submit 事件带上的 [formId](https://developers.weixin.qq.com/miniprogram/dev/component/form.html)；支付场景下，为本次支付的 [prepay_id](https://developers.weixin.qq.com/miniprogram/dev/api/api-pay.html)
+  data               |  是   |  模板内容，不填则下发空模板                                                                                                                                                                          
+  color              |  否   |  模板内容字体的颜色，不填默认黑色                                                                                                                                                                    
+  emphasis_keyword   |  否   |  模板需要放大的关键词，不填则默认无放大                                                                                                                                                              
 
 ##### 示例：
 
@@ -420,7 +420,7 @@ access\_token 是全局唯一接口调用凭据，开发者调用各接口时都
 
 **使用效果：**
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/notice.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/notice.png?t=2018413)
 
 ### 下发条件说明
 
@@ -430,7 +430,7 @@ access\_token 是全局唯一接口调用凭据，开发者调用各接口时都
     
 2.  提交表单
     
-    当用户在小程序内发生过提交[表单](https://mp.weixin.qq.com/debug/wxadoc/dev/component/form.html)行为且该表单声明为要发模板消息的，开发者需要向用户提供服务时，可允许开发者向用户在7天内推送有限条数的模板消息（1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
+    当用户在小程序内发生过提交[表单](https://developers.weixin.qq.com/miniprogram/dev/component/form.html)行为且该表单声明为要发模板消息的，开发者需要向用户提供服务时，可允许开发者向用户在7天内推送有限条数的模板消息（1次提交表单可下发1条，多次提交下发条数独立，相互不影响）
     
 
 审核说明

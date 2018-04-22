@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/line-to.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/line-to.html -->
 
 canvasContext.lineTo
 ====================
@@ -26,4 +26,4 @@ canvasContext.lineTo
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-to.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-to.png?t=2018413)

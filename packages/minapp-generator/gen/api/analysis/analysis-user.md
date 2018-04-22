@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis-user.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/analysis-user.html -->
 
 ### 用户画像
 

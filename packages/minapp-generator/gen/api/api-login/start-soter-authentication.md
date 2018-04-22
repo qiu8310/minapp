@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/startSoterAuthentication.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/startSoterAuthentication.html -->
 
 ### wx.startSoterAuthentication(OBJECT)
 
-> 基础库 1.5.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.5.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 开始 SOTER 生物认证
 
@@ -11,7 +11,7 @@
   参数               |  类型          |  必填 |  说明                                                                                                       
 ---------------------|----------------|-------|-------------------------------------------------------------------------------------------------------------
   requestAuthModes   |  StringArray   |  是   |  请求使用的可接受的生物认证方式                                                                             
-  challenge          |  String        |  是   |挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键是别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
+  challenge          |  String        |  是   |挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键识别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
   authContent        |  String        |  否   |  验证描述，即识别过程中显示在界面上的对话框提示内容                                                         
   success            |  Function      |  否   |  接口调用成功的回调函数                                                                                     
   fail               |  Function      |  否   |  接口调用失败的回调函数                                                                                     
@@ -77,7 +77,7 @@
 
 ### 调用流程
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/soter.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/soter.png?t=2018413)
 
 #### 流程步骤说明
 

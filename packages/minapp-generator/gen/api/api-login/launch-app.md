@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/launchApp.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/launchApp.html -->
 
 launchApp(OBJECT)
 =================
@@ -18,7 +18,7 @@ launchApp(OBJECT)
 *   当小程序从 1089（微信聊天主界面下拉）或 1090（长按小程序右上角菜单唤出最近使用历史）的场景打开时，该状态不变，即保持上一次打开小程序时该状态的值。
 *   当小程序从非 1036/1089/1090 的场景打开，该状态置为 false。
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/launch-app.png?t=2018413)
 
 使用方法
 ----

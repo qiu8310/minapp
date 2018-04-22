@@ -1,12 +1,12 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/address.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/address.html -->
 
 ### wx.chooseAddress(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 调起用户编辑收货地址原生界面，并在编辑完成后返回用户选择的地址。
 
-需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.address
+需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.address
 
 **OBJECT参数说明：**
 

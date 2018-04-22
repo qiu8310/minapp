@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/setKeepScreenOn.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/setKeepScreenOn.html -->
 
 ### wx.setKeepScreenOn(OBJECT)
 
-> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 设置是否保持常亮状态。仅在当前小程序生效，离开小程序后设置失效。
 

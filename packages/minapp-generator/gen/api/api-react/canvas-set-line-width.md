@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/set-line-width.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/set-line-width.html -->
 
 canvasContext.setLineWidth
 ==========================
@@ -48,4 +48,4 @@ canvasContext.setLineWidth
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-width.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-width.png?t=2018413)

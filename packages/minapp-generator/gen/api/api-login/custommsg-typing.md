@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/typing.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/typing.html -->
 
 ### 客服输入状态
 

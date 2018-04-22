@@ -1,11 +1,11 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/rotate.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/rotate.html -->
 
 canvasContext.rotate
 ====================
 
 ### 定义
 
-以原点为中心，原点可以用 [translate](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/rotate.html#translate)方法修改。顺时针旋转当前坐标轴。多次调用`rotate`，旋转的角度会叠加。
+以原点为中心，原点可以用 [translate](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/rotate.html#translate)方法修改。顺时针旋转当前坐标轴。多次调用`rotate`，旋转的角度会叠加。
 
 ### 参数
 
@@ -24,4 +24,4 @@ canvasContext.rotate
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018413)

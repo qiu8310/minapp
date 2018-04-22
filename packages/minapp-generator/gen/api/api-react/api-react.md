@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html -->
 
 ### wx.showToast(OBJECT)
 
@@ -36,9 +36,9 @@
 
 ### wx.showLoading(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-显示 loading 提示框, 需主动调用 [wx.hideLoading](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhideloading) 才能关闭提示框
+显示 loading 提示框, 需主动调用 [wx.hideLoading](https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxhideloading) 才能关闭提示框
 
 **OBJECT参数说明：**
 
@@ -56,7 +56,7 @@
 
 ### wx.hideLoading()
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 隐藏 loading 提示框
 

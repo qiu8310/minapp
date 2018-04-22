@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/clear-rect.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/clear-rect.html -->
 
 canvasContext.clearRect
 =======================
@@ -32,4 +32,4 @@ canvasContext.clearRect
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/clear-rect.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/clear-rect.png?t=2018413)

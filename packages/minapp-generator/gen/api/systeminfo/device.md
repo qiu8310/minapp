@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/device.html -->
 
 ### wx.getNetworkType(OBJECT)
 
@@ -29,7 +29,7 @@
 
 ### wx.onNetworkStatusChange(CALLBACK)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 监听网络状态变化。
 
@@ -61,7 +61,7 @@
 
 ### wx.setScreenBrightness(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 设置屏幕亮度。
 
@@ -76,7 +76,7 @@
 
 ### wx.getScreenBrightness(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 获取屏幕亮度。
 
@@ -96,7 +96,7 @@
 
 ### wx.vibrateLong(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 使手机发生较长时间的振动（400ms）
 
@@ -110,7 +110,7 @@
 
 ### wx.vibrateShort(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 使手机发生较短时间的振动（15ms）
 

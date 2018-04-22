@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis-visit.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/analysis-visit.html -->
 
 ### 访问分析
 
-获取小程序访问分析数据，数据说明参见[访问分析](https://mp.weixin.qq.com/debug/wxadoc/analysis/regular/?t=201838#%E8%AE%BF%E9%97%AE%E5%88%86%E6%9E%90)
+获取小程序访问分析数据，数据说明参见[访问分析](https://mp.weixin.qq.com/debug/wxadoc/analysis/regular/?t=2018413#%E8%AE%BF%E9%97%AE%E5%88%86%E6%9E%90)
 
 #### 访问趋势
 
@@ -278,6 +278,12 @@ value   场景下的值（均为整数型）|
 > 28: 会话左下角菜单
 > 
 > 29: 小程序任务栏
+> 
+> 30: 长按小程序菜单圆点
+> 
+> 31: 连wifi成功页
+> 
+> 32: 城市服务
 
 访问时长：(index="access\_staytime\_info")
 

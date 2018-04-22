@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/trans.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/custommsg/trans.html -->
 
 ### 转发消息
 

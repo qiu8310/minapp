@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/draw.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/draw.html -->
 
 canvasContext.draw
 ==================
@@ -27,7 +27,7 @@ canvasContext.draw
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/un-reserve.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/un-reserve.png?t=2018413)
 
 ### 例子
 
@@ -40,4 +40,4 @@ canvasContext.draw
     ctx.draw(true)
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/reserve.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/reserve.png?t=2018413)

@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/scancode.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/scancode.html -->
 
 ### wx.scanCode(OBJECT)
 

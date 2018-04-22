@@ -42,7 +42,7 @@ export namespace wx {
   /**
    * @since 1.1.0
    *
-   * 获取第三方平台自定义的数据字段。
+   * 获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html?t=2018413)自定义的数据字段。
    *
    * **Bug & Tip：**
    *
@@ -74,7 +74,7 @@ export namespace wx {
   /**
    * @since 1.1.0
    *
-   * 获取第三方平台自定义的数据字段的同步接口。
+   * 获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html?t=2018413)自定义的数据字段的同步接口。
    *
    * **Bug & Tip：**
    *

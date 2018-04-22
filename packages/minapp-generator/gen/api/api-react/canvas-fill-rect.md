@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/fill-rect.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/fill-rect.html -->
 
 canvasContext.fillRect
 ======================
@@ -26,4 +26,4 @@ canvasContext.fillRect
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-rect.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-rect.png?t=2018413)

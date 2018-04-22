@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/quadratic-curve-to.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/quadratic-curve-to.html -->
 
 canvasContext.quadraticCurveTo
 ==============================
@@ -59,7 +59,7 @@ canvasContext.quadraticCurveTo
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/quadratic-curve-to.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/quadratic-curve-to.png?t=2018413)
 
 针对 `moveTo(20, 20)` `quadraticCurveTo(20, 100, 200, 20)` 的三个关键坐标如下：
 

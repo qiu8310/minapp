@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/getRecorderManager.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/getRecorderManager.html -->
 
 ### wx.getRecorderManager()
 
-> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 获取**全局唯一**的录音管理器 `recorderManager`。
 

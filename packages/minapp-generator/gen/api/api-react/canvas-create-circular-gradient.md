@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/create-circular-gradient.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/create-circular-gradient.html -->
 
 canvasContext.createCircularGradient
 ====================================
@@ -34,4 +34,4 @@ canvasContext.createCircularGradient
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/circular-gradient.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/circular-gradient.png?t=2018413)

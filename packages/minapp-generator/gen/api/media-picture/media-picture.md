@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html -->
 
 ### wx.chooseImage(OBJECT)
 
@@ -15,7 +15,7 @@
   fail         |  Function      |  否   |  接口调用失败的回调函数              
   complete     |  Function      |  否   |接口调用结束的回调函数（调用成功、失败都会执行）
 
-**注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html)，在小程序下次启动时才能访问得到。**
+**注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://developers.weixin.qq.com/miniprogram/dev/api/file.html)，在小程序下次启动时才能访问得到。**
 
 **success返回参数说明：**
 
@@ -99,6 +99,8 @@
 
 **示例代码：**
 
+[代码片段](wechatide://minicode/Kd47Sbmr6yYu)
+
     wx.getImageInfo({
       src: 'images/a.jpg',
       success: function (res) {
@@ -122,9 +124,9 @@
 
 ### wx.saveImageToPhotosAlbum(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-保存图片到系统相册。需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.writePhotosAlbum
+保存图片到系统相册。需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.writePhotosAlbum
 
 **OBJECT参数说明：**
 

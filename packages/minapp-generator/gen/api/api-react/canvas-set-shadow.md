@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/set-shadow.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/set-shadow.html -->
 
 canvasContext.setShadow
 =======================
@@ -11,12 +11,12 @@ canvasContext.setShadow
 
 ### 参数
 
-  参数      |  类型                                                                       |  范围    |  定义              
-------------|-----------------------------------------------------------------------------|----------|--------------------
-  offsetX   |  Number                                                                     |          |阴影相对于形状在水平方向的偏移
-  offsetY   |  Number                                                                     |          |阴影相对于形状在竖直方向的偏移
-  blur      |  Number                                                                     |  0~100   |阴影的模糊级别，数值越大越模糊
-  color     |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |          |  阴影的颜色        
+  参数      |  类型                                                                              |  范围    |  定义              
+------------|------------------------------------------------------------------------------------|----------|--------------------
+  offsetX   |  Number                                                                            |          |阴影相对于形状在水平方向的偏移
+  offsetY   |  Number                                                                            |          |阴影相对于形状在竖直方向的偏移
+  blur      |  Number                                                                            |  0~100   |阴影的模糊级别，数值越大越模糊
+  color     |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |          |  阴影的颜色        
 
 ### 例子
 
@@ -27,12 +27,12 @@ canvasContext.setShadow
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/shadow.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/shadow.png?t=2018413)
 
 canvasContext.shadowBlur
 ========================
 
-> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 ### 定义
 
@@ -46,7 +46,7 @@ canvasContext.shadowBlur
 canvasContext.shadowColor
 =========================
 
-> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 ### 定义
 
@@ -60,7 +60,7 @@ canvasContext.shadowColor
 canvasContext.shadowOffsetX
 ===========================
 
-> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 ### 定义
 
@@ -74,7 +74,7 @@ canvasContext.shadowOffsetX
 canvasContext.shadowOffsetY
 ===========================
 
-> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 ### 定义
 

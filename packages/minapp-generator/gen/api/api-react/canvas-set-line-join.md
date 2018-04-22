@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/set-line-join.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/set-line-join.html -->
 
 canvasContext.setLineJoin
 =========================
@@ -55,4 +55,4 @@ canvasContext.setLineJoin
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-join.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/line-join.png?t=2018413)

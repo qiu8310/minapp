@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html -->
 
 ### wx.getBackgroundAudioPlayerState(OBJECT)
 
-**注意：1.2.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getBackgroundAudioManager](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getBackgroundAudioManager.html) 接口**
+**注意：1.2.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getBackgroundAudioManager](https://developers.weixin.qq.com/miniprogram/dev/api/getBackgroundAudioManager.html) 接口**
 
 获取后台音乐播放状态。
 

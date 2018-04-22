@@ -1,11 +1,11 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html -->
 
 iBeacon
 -------
 
 ### wx.startBeaconDiscovery(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 开始搜索附近的`iBeacon`设备
 
@@ -34,7 +34,7 @@ iBeacon
 
 ### wx.stopBeaconDiscovery(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 停止搜索附近的`iBeacon`设备
 
@@ -54,7 +54,7 @@ iBeacon
 
 ### wx.getBeacons(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 获取所有已搜索到的`iBeacon`设备
 
@@ -81,7 +81,7 @@ iBeacon
 
 ### wx.onBeaconUpdate(CALLBACK)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 监听 `iBeacon` 设备的更新事件
 
@@ -99,7 +99,7 @@ iBeacon
 
 ### wx.onBeaconServiceChange(CALLBACK)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 监听 `iBeacon` 服务的状态变化
 

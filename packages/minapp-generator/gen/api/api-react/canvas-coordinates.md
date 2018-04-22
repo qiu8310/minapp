@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/coordinates.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/coordinates.html -->
 
 Canvas 坐标系
 ==========
@@ -7,7 +7,7 @@ canvas 是在一个二维的网格当中。
 
 左上角的坐标为`(0, 0)`。
 
-在之前的[章节](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/intro.html)，我们用了这个方法 `fillRect(0, 0, 150, 75)`。
+在之前的[章节](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/intro.html)，我们用了这个方法 `fillRect(0, 0, 150, 75)`。
 
 它的含义为：从左上角`(0, 0)`开始，画一个`150 x 75`px 的矩形。
 
@@ -55,4 +55,4 @@ canvas 是在一个二维的网格当中。
 
 当你把手指放到 canvas 中，就会在下边显示出触碰点的坐标：
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/coordinates.gif?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/coordinates.gif?t=2018413)

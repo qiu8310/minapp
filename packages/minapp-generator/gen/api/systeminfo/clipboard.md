@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/clipboard.html -->
 
 ### wx.setClipboardData(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 设置系统剪贴板的内容
 
@@ -31,7 +31,7 @@
 
 ### wx.getClipboardData(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 获取系统剪贴板内容
 

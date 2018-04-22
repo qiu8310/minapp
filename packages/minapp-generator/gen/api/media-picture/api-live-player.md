@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-player.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/api-live-player.html -->
 
 ### wx.createLivePlayerContext(domId, this)
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 操作对应的 `<live-player/>` 组件。 创建并返回 `live-player` 上下文 `LivePlayerContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<live-player/>` 组件
 
@@ -10,13 +10,15 @@
 
 **livePlayerContext 对象的方法列表：**
 
-  方法                |  参数     |  说明   
-----------------------|-----------|---------
-  play                |  OBJECT   |  播放   
-  stop                |  OBJECT   |  停止   
-  mute                |  OBJECT   |  静音   
-  requestFullScreen   |  OBJECT   | 进入全屏
-  exitFullScreen      |  OBJECT   | 退出全屏
+  方法                |  参数     |  说明   |  最低版本 
+----------------------|-----------|---------|-----------
+  play                |  OBJECT   |  播放   |           
+  stop                |  OBJECT   |  停止   |           
+  mute                |  OBJECT   |  静音   |           
+  pause               |  OBJECT   |  暂停   |  1.9.90   
+  resume              |  OBJECT   |  恢复   |  1.9.90   
+  requestFullScreen   |  OBJECT   | 进入全屏|           
+  exitFullScreen      |  OBJECT   | 退出全屏|           
 
 **requestFullScreen 的 OBJECT 参数列表：**
 
@@ -34,3 +36,7 @@
   success    |  Function   |  否   |  接口调用成功的回调函数     
   fail       |  Function   |  否   |  接口调用失败的回调函数     
   complete   |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）
+
+**示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/UzWEzmm763Y4)

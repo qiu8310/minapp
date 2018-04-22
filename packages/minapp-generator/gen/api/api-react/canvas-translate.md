@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/translate.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/translate.html -->
 
 canvasContext.translate
 =======================
@@ -27,4 +27,4 @@ canvasContext.translate
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/translate.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/translate.png?t=2018413)

@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-video.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/media-video.html -->
 
 ### wx.chooseVideo(OBJECT)
 
@@ -25,9 +25,11 @@
   height         |返回选定视频的长
   width          |返回选定视频的宽
 
-**注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html)，在小程序下次启动时才能访问得到。**
+**注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://developers.weixin.qq.com/miniprogram/dev/api/file.html)，在小程序下次启动时才能访问得到。**
 
 **示例代码：**
+
+[代码片段](wechatide://minicode/Qu4htbmu6RYo)
 
     <view class="container">
         <video src="{{src}}"></video>
@@ -54,9 +56,9 @@
 
 ### wx.saveVideoToPhotosAlbum(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-保存视频到系统相册。需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.writePhotosAlbum
+保存视频到系统相册。需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.writePhotosAlbum
 
 **OBJECT参数说明：**
 
@@ -76,8 +78,10 @@
 **示例代码：**
 
     wx.saveVideoToPhotosAlbum({
-        success(res) {
-        }
+      filePath: 'wxfile://xxx'
+      success(res) {
+        console.log(res.errMsg)
+      }
     })
     
 

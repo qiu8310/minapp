@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-map.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/api-map.html -->
 
 ### wx.createMapContext(mapId, this)
 
@@ -10,14 +10,14 @@
 
 **mapContext 对象的方法列表**
 
-  方法                |  参数     |  说明                                                                                                                                     | 最低版本 
-----------------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------|----------
-  getCenterLocation   |  OBJECT   |获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject)|          
-  moveToLocation      |  无       |  将地图中心移动到当前定位点，需要配合map组件的show-location使用                                                                           |          
-  translateMarker     |  OBJECT   |  平移marker，带动画                                                                                                                       |  1.2.0   
-  includePoints       |  OBJECT   |  缩放视野展示所有经纬度                                                                                                                   |  1.2.0   
-  getRegion           |  OBJECT   |  获取当前地图的视野范围                                                                                                                   |  1.4.0   
-  getScale            |  OBJECT   |  获取当前地图的缩放级别                                                                                                                   |  1.4.0   
+  方法                |  参数     |  说明                                                                                                                                            | 最低版本 
+----------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------
+  getCenterLocation   |  OBJECT   |获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxopenlocationobject)|          
+  moveToLocation      |  无       |  将地图中心移动到当前定位点，需要配合map组件的show-location使用                                                                                  |          
+  translateMarker     |  OBJECT   |  平移marker，带动画                                                                                                                              |  1.2.0   
+  includePoints       |  OBJECT   |  缩放视野展示所有经纬度                                                                                                                          |  1.2.0   
+  getRegion           |  OBJECT   |  获取当前地图的视野范围                                                                                                                          |  1.4.0   
+  getScale            |  OBJECT   |  获取当前地图的缩放级别                                                                                                                          |  1.4.0   
 
 **getCenterLocation 的 OBJECT 参数列表**
 
@@ -63,6 +63,8 @@
   complete   |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/3uVxpmmT6wY9)
 
     <!-- map.wxml -->
     <map id="myMap" show-location />

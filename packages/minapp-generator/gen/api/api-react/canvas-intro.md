@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/intro.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/intro.html -->
 
 在Canvas上画图
 ==========
@@ -50,4 +50,4 @@ CanvasContext 是小程序内建的一个对象，有一些绘图的方法：
 
 ### 结果：
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-rect.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/fill-rect.png?t=2018413)

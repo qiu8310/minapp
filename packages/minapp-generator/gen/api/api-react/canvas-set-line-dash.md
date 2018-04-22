@@ -1,9 +1,9 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/set-line-dash.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/set-line-dash.html -->
 
 canvasContext.setLineDash
 =========================
 
-> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 ### 定义
 
@@ -30,4 +30,4 @@ canvasContext.setLineDash
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-line-dash.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-line-dash.png?t=2018413)

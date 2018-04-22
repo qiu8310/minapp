@@ -1,12 +1,12 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/chooseInvoiceTitle.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/chooseInvoiceTitle.html -->
 
 ### wx.chooseInvoiceTitle(OBJECT)
 
-> 基础库 1.5.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.5.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 选择用户的发票抬头。
 
-需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.invoiceTitle
+需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.invoiceTitle
 
 **Object参数说明：**
 

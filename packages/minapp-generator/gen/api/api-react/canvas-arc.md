@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/arc.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/arc.html -->
 
 canvasContext.arc
 =================
@@ -71,7 +71,7 @@ canvasContext.arc
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/arc.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/arc.png?t=2018413)
 
 针对 `arc(100, 75, 50, 0, 1.5 * Math.PI)`的三个关键坐标如下：
 

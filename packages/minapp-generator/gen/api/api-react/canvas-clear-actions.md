@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/clear-actions.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/clear-actions.html -->
 
 canvasContext.clearActions (不推荐使用)
 ==================================

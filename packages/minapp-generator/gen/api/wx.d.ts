@@ -2065,6 +2065,66 @@ declare namespace wx {
      * 音频完成 seek 操作事件
      */
     onSeeked(callback: any): any
+    /**
+     * 取消监听 onCanplay 事件
+     *
+     * @since 1.9.0
+     */
+    offCanplay(callback: any): any
+    /**
+     * 取消监听 onPlay 事件
+     *
+     * @since 1.9.0
+     */
+    offPlay(callback: any): any
+    /**
+     * 取消监听 onPause 事件
+     *
+     * @since 1.9.0
+     */
+    offPause(callback: any): any
+    /**
+     * 取消监听 onStop 事件
+     *
+     * @since 1.9.0
+     */
+    offStop(callback: any): any
+    /**
+     * 取消监听 onEnded 事件
+     *
+     * @since 1.9.0
+     */
+    offEnded(callback: any): any
+    /**
+     * 取消监听 onTimeUpdate 事件
+     *
+     * @since 1.9.0
+     */
+    offTimeUpdate(callback: any): any
+    /**
+     * 取消监听 onError 事件
+     *
+     * @since 1.9.0
+     */
+    offError(callback: any): any
+    /**
+     * 取消监听 onWaiting 事件
+     *
+     * @since 1.9.0
+     */
+    offWaiting(callback: any): any
+    /**
+     * 取消监听 onSeeking 事件
+     *
+     * @since 1.9.0
+     */
+    offSeeking(callback: any): any
+    /**
+     * 取消监听 onSeeked 事件
+     *
+     * @since 1.9.0
+     */
+    offSeeked(callback: any): any
   }
   namespace chooseVideo {
     type Param = {
@@ -2220,8 +2280,10 @@ declare namespace wx {
    *
    *     ```javascript
    *     wx.saveVideoToPhotosAlbum({
-   *         success(res) {
-   *         }
+   *       filePath: 'wxfile://xxx'
+   *       success(res) {
+   *         console.log(res.errMsg)
+   *       }
    *     })
    *     ```
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-video.html#wxsavevideotophotosalbumobject
@@ -2320,6 +2382,10 @@ declare namespace wx {
    * @since 1.6.0
    *
    * 创建并返回 camera 上下文 `cameraContext` 对象，`cameraContext` 与页面的 `camera` 组件绑定，一个页面只能有一个camera，通过它可以操作对应的 `<camera/>` 组件。 在自定义组件下，第一个参数传入组件实例this，以操作组件内 `<camera/>` 组件
+   *
+   * **示例代码：**
+   *
+   * [在开发者工具中预览效果](wechatide://minicode/VBZ3Jim26zYu)
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-camera.html#wxcreatecameracontextthis
    */
   function createCameraContext(instance?: any): CameraContext
@@ -2440,6 +2506,10 @@ declare namespace wx {
    * @since 1.7.0
    *
    * 操作对应的 `<live-player/>` 组件。 创建并返回 `live-player` 上下文 `LivePlayerContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<live-player/>` 组件
+   *
+   * **示例代码：**
+   *
+   * [在开发者工具中预览效果](wechatide://minicode/UzWEzmm763Y4)
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-live-player.html#wxcreateliveplayercontextdomid-this
    */
   function createLivePlayerContext(domId: any, instance?: any): LivePlayerContext
@@ -2684,6 +2754,10 @@ declare namespace wx {
    * @since 1.7.0
    *
    * 创建并返回 `live-pusher` 上下文 `LivePusherContext` 对象，`LivePusherContext` 与页面的 `<live-pusher />` 组件绑定，一个页面只能有一个 `live-pusher`，通过它可以操作对应的 `<live-pusher/>` 组件。 在自定义组件下，第一个参数传入组件实例this，以操作组件内 `<live-pusher/>` 组件
+   *
+   * **示例代码：**
+   *
+   * [在开发者工具中预览效果](wechatide://minicode/KvWD9mmA62Yk)
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-live-pusher.html#wxcreatelivepushercontext
    */
   function createLivePusherContext(): LivePusherContext
@@ -9360,7 +9434,7 @@ declare namespace wx {
   /**
    * @since 1.1.0
    *
-   * 获取第三方平台自定义的数据字段。
+   * 获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html?t=2018413)自定义的数据字段。
    *
    * **Bug & Tip：**
    *
@@ -9392,7 +9466,7 @@ declare namespace wx {
   /**
    * @since 1.1.0
    *
-   * 获取第三方平台自定义的数据字段的同步接口。
+   * 获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html?t=2018413)自定义的数据字段的同步接口。
    *
    * **Bug & Tip：**
    *
@@ -10301,7 +10375,7 @@ declare namespace wx {
    *
    * **Tip：**
    *
-   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=2018323)进行认证。
+   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=2018413)进行认证。
    * 2.  `tip`: 了解更多信息，请查看[微信卡券接口文档](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1490190158&version=1&lang=zh_CN&platform=2)
    *
    * **示例代码：**
@@ -10582,7 +10656,7 @@ declare namespace wx {
    *
    * 1.  `tip`: 在开发者工具上调用此 API 并不会真实的跳转到另外的小程序，但是开发者工具会校验本次调用跳转是否成功[详情](https://developers.weixin.qq.com/miniprogram/dev/devtools/different.html#小程序跳转的调试支持)
    * 2.  `tip`: 开发者工具上支持被跳转的小程序处理接收参数的调试[详情](https://developers.weixin.qq.com/miniprogram/dev/devtools/different.html#小程序跳转的调试支持)
-   * 3.  `tip`: 只有同一公众号下的关联的小程序之间才可相互跳转 [详情](https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2018323#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%85%B3%E8%81%94%E5%B0%8F%E7%A8%8B%E5%BA%8F)
+   * 3.  `tip`: 只有同一公众号下的关联的小程序之间才可相互跳转 [详情](https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2018413#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%85%B3%E8%81%94%E5%B0%8F%E7%A8%8B%E5%BA%8F)
    *
    * **示例代码：**
    *
@@ -11035,8 +11109,17 @@ declare namespace wx {
    *     })
    *
    *     updateManager.onUpdateReady(function () {
-   *       // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
-   *       updateManager.applyUpdate()
+   *       wx.showModal({
+   *         title: '更新提示',
+   *         content: '新版本已经准备好，是否重启应用？',
+   *         success: function (res) {
+   *           if (res.confirm) {
+   *             // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+   *             updateManager.applyUpdate()
+   *           }
+   *         }
+   *       })
+   *
    *     })
    *
    *     updateManager.onUpdateFailed(function () {
@@ -12306,7 +12389,7 @@ declare namespace wx {
      * -----------|-----------|-----------------------------------------------------
      *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
      *
-     * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018323)
+     * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018413)
      *
      * **参数：**
      *
@@ -12416,11 +12499,12 @@ declare namespace wx {
      *
      * **参数：**
      *
-     *   参数   |  类型     |  说明            
-     * ---------|-----------|------------------
-     *   text   |  String   |在画布上输出的文本
-     *   x      |  Number   |绘制文本的左上角x坐标位置
-     *   y      |  Number   |绘制文本的左上角y坐标位置
+     *   参数       |  类型     |  说明            
+     * -------------|-----------|------------------
+     *   text       |  String   |在画布上输出的文本
+     *   x          |  Number   |绘制文本的左上角x坐标位置
+     *   y          |  Number   |绘制文本的左上角y坐标位置
+     *   maxWidth   |  Number   |需要绘制的最大宽度，可选
      *
      * **例子：**
      *
@@ -12434,7 +12518,7 @@ declare namespace wx {
      *     ctx.draw()
      *     ```
      */
-    fillText(text: string, x: number, y: number): void
+    fillText(text: string, x: number, y: number, maxWidth: number): void
     /**
      * > 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
@@ -12919,17 +13003,17 @@ declare namespace wx {
      *
      * **参数：**
      *
-     *   属性值  |  类型     |  说明                                                
-     * ----------|-----------|------------------------------------------------------
-     *   value   |  String   |符合CSS font 语法的DOMString 字符串，默认字体是 10px sans-serif
+     *   属性值  |  类型     |  说明                                                                 
+     * ----------|-----------|-----------------------------------------------------------------------
+     *   value   |  String   |符合 CSS font 语法的 DOMString 字符串，至少需要提供字体大小和字体族名。默认值为 10px sans-serif
      *
      * **value 支持的属性有：**
      *
      *   属性     |  说明                               
      * -----------|-------------------------------------
      *   style    |字体样式。仅支持 italic, oblique, normal
-     *   size     |  字体大小                           
      *   weight   |  字体粗细。仅支持 normal, bold      
+     *   size     |  字体大小                           
      *   family   | 字体族名。注意确认各平台所支持的字体
      *
      * **语法：**
@@ -12938,7 +13022,7 @@ declare namespace wx {
      *     canvasContext.font = value
      *     ```
      */
-    font(style: any, size: any, weight: any, family: any): void
+    font(style: any, weight: any, size: any, family: any): void
     /**
      * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *

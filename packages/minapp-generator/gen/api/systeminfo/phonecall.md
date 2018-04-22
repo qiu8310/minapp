@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/phonecall.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/phonecall.html -->
 
 ### wx.makePhoneCall(OBJECT)
 

@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/draw-image.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/draw-image.html -->
 
 canvasContext.drawImage
 =======================
@@ -39,4 +39,4 @@ canvasContext.drawImage
     })
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/draw-image.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/draw-image.png?t=2018413)

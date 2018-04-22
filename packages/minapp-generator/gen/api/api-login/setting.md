@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/setting.html -->
 
 ### wx.openSetting(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 调起客户端小程序设置界面，返回用户设置的操作结果。
 
@@ -18,9 +18,9 @@
 
 **success返回参数说明：**
 
-  参数          |  类型     |  说明                                                                                                                                           
-----------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------
-  authSetting   |  Object   |用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+  参数          |  类型     |  说明                                                                                                                                                  
+----------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------
+  authSetting   |  Object   |用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html#scope-列表)
 
 **示例代码：**
 
@@ -38,7 +38,7 @@
 
 ### wx.getSetting(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 获取用户的当前设置。
 
@@ -54,9 +54,9 @@
 
 **success返回参数说明：**
 
-  参数          |  类型     |  说明                                                                                                                                           
-----------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------
-  authSetting   |  Object   |用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+  参数          |  类型     |  说明                                                                                                                                                  
+----------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------
+  authSetting   |  Object   |用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html#scope-列表)
 
 **示例代码：**
 

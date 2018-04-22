@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/location.html -->
 
 ### wx.getLocation(OBJECT)
 
@@ -43,7 +43,7 @@
 
 打开地图选择位置。
 
-需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userLocation
+需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userLocation
 
 **OBJECT参数说明：**
 
@@ -66,7 +66,7 @@
 
 ​使用微信内置地图查看位置。
 
-需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userLocation
+需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userLocation
 
 **OBJECT参数说明：**
 

@@ -1,12 +1,28 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html -->
+
+小程序登录
+-----
+
+小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识，快速建立小程序内的用户体系。
+
+### 登录流程时序
+
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/api-login.jpg?t=2018413)
+
+#### 说明：
+
+1.  小程序调用wx.login() 获取 **临时登录凭证code** ，并回传到开发者服务器。
+    
+2.  开发者服务器以code换取 **用户唯一标识openid** 和 **会话密钥session_key**。
+    
+
+之后开发者服务器可以根据用户标识来生成自定义登录态，用于后续业务逻辑中前后端交互时识别用户身份。
 
 ### wx.login(OBJECT)
 
-调用接口获取**登录凭证（code）**进而换取用户登录态信息，包括用户的**唯一标识（openid）** 及本次登录的 **会话密钥（session_key）**等。**用户数据的加解密通讯**需要依赖会话密钥完成。
+调用接口wx.login() 获取**临时登录凭证（code）**
 
-**注：调用 `login` 会引起登录态的刷新，之前的 sessionKey 可能会失效。**
-
-**OBJECT参数说明：**
+#### OBJECT参数说明
 
   参数名     |  类型       |  必填 |  说明                       |  最低版本 
 -------------|-------------|-------|-----------------------------|-----------
@@ -15,14 +31,14 @@
   fail       |  Function   |  否   |  接口调用失败的回调函数     |           
   complete   |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）|           
 
-**success返回参数说明：**
+#### success返回参数说明
 
   参数名   |  类型     |  说明                                                                      
 -----------|-----------|----------------------------------------------------------------------------
   errMsg   |  String   |  调用结果                                                                  
   code     |  String   |用户登录凭证（有效期五分钟）。开发者需要在开发者服务器后台调用 api，使用 code 换取 openid 和 session_key 等信息
 
-**示例代码：**
+#### 示例代码
 
     //app.js
     App({
@@ -38,7 +54,7 @@
                 }
               })
             } else {
-              console.log('获取用户登录态失败！' + res.errMsg)
+              console.log('登录失败！' + res.errMsg)
             }
           }
         });
@@ -46,18 +62,25 @@
     })
     
 
-### code 换取 session_key
+### 登录凭证校验
 
-​这是一个 HTTPS 接口，开发者服务器使用**登录凭证 code** 获取 session_key 和 openid。
+临时登录凭证校验接口是一个 HTTPS 接口，开发者服务器使用 **临时登录凭证code** 获取 session_key 和 openid 等。
 
-session_key 是对用户数据进行[加密签名](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html)的密钥。为了自身应用安全，**session_key 不应该在网络上传输**。
+**注意：**
+
+1.  会话密钥session_key 是对用户数据进行[加密签名](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#用户数据的签名验证和加解密)的密钥。为了应用自身的数据安全，开发者服务器**不应该把会话密钥下发到小程序，也不应该对外提供这个密钥**。
+    
+2.  UnionID 只在满足一定条件的情况下返回。具体参看[UnionID机制说明](https://developers.weixin.qq.com/miniprogram/dev/api/uinionID.html)
+    
+3.  临时登录凭证code只能使用一次
+    
 
 **接口地址：**
 
     https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
     
 
-**请求参数：**
+#### 请求参数
 
   参数         |  必填 |  说明                     
 ---------------|-------|---------------------------
@@ -66,21 +89,34 @@ session_key 是对用户数据进行[加密签名](https://mp.weixin.qq.com/debu
   js_code      |  是   |  登录时获取的 code        
   grant_type   |  是   | 填写为 authorization_code 
 
-**返回参数：**
+#### 在不满足UnionID下发条件的情况下，返回参数
 
-  参数          |  说明                                                                                                             
-----------------|-------------------------------------------------------------------------------------------------------------------
-  openid        |  用户唯一标识                                                                                                     
-  session_key   |  会话密钥                                                                                                         
-  unionid       |用户在开放平台的唯一标识符。本字段在满足一定条件的情况下才返回。具体参看[UnionID机制说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/uinionID.html)
+  参数          |  说明     
+----------------|-----------
+  openid        |用户唯一标识
+  session_key   |  会话密钥 
 
-**返回说明：**
+#### 在满足UnionID下发条件的情况下，返回参数
+
+  参数          |  说明            
+----------------|------------------
+  openid        |  用户唯一标识    
+  session_key   |  会话密钥        
+  unionid       |用户在开放平台的唯一标识符
+
+#### 返回说明
 
     //正常返回的JSON数据包
     {
           "openid": "OPENID",
           "session_key": "SESSIONKEY",
-          "unionid": "UNIONID"
+    }
+    
+    //满足UnionID返回条件时，返回的JSON数据包
+    {
+        "openid": "OPENID",
+        "session_key": "SESSIONKEY",
+        "unionid": "UNIONID"
     }
     //错误时返回JSON数据包(示例为Code无效)
     {
@@ -88,45 +124,6 @@ session_key 是对用户数据进行[加密签名](https://mp.weixin.qq.com/debu
         "errmsg": "invalid code"
     }
     
-
-### wx.checkSession(OBJECT)
-
-通过上述接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用wx.checkSession接口**检测当前用户登录态是否有效**。登录态过期后开发者可以再调用wx.login获取新的用户登录态。
-
-**OBJECT参数说明：**
-
-  参数名     |  类型       |  必填 |  说明                       
--------------|-------------|-------|-----------------------------
-  success    |  Function   |  否   |接口调用成功的回调函数，登录态未过期
-  fail       |  Function   |  否   |接口调用失败的回调函数，登录态已过期
-  complete   |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）
-
-**示例代码：**
-
-    wx.checkSession({
-      success: function(){
-        //session 未过期，并且在本生命周期一直有效
-      },
-      fail: function(){
-        //登录态过期
-        wx.login() //重新登录
-        ....
-      }
-    })
-    
-
-登录态维护
------
-
-通过 `wx.login` 获取到用户登录态之后，需要维护登录态。
-
-开发者要注意**不应该直接把 session_key、openid 等字段作为用户的标识或者 session 的标识**，而应该自己派发一个 session 登录态（请参考登录时序图）。对于开发者自己生成的 session，应该保证其安全性且不应该设置较长的过期时间。session 派发到小程序客户端之后，可将其存储在 storage ，用于后续通信使用。
-
-通过 `wx.checkSession` 可以检测用户登录态是否失效。并决定是否调用 `wx.login` 重新获取登录态
-
-### 登录时序图
-
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/login.png?t=201838)
 
 #### Bug & Tip
 

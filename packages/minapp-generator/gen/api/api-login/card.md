@@ -1,21 +1,21 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/card.html -->
 
 ### wx.addCard(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 批量添加卡券。
 
 **Object参数说明：**
 
-  参数                 |  类型          |  必填 |  说明                                                                                           
------------------------|----------------|-------|-------------------------------------------------------------------------------------------------
-  cardList             |  ObjectArray   |  是   |需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
-  success              |  Function      |  否   |  接口调用成功的回调函数                                                                         
-  fail                 |  Function      |  否   |  接口调用失败的回调函数                                                                         
-  complete             |  Function      |  否   |  接口调用结束的回调函数（调用成功、失败都会执行）                                               
-  cardList[].cardId    |  String        |  是   |  卡券 Id                                                                                        
-  cardList[].cardExt   |  String        |  是   |  卡券的扩展参数                                                                                 
+  参数                 |  类型          |  必填 |  说明                                                                                                  
+-----------------------|----------------|-------|--------------------------------------------------------------------------------------------------------
+  cardList             |  ObjectArray   |  是   |需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#请求对象说明)
+  success              |  Function      |  否   |  接口调用成功的回调函数                                                                                
+  fail                 |  Function      |  否   |  接口调用失败的回调函数                                                                                
+  complete             |  Function      |  否   |  接口调用结束的回调函数（调用成功、失败都会执行）                                                      
+  cardList[].cardId    |  String        |  是   |  卡券 Id                                                                                               
+  cardList[].cardExt   |  String        |  是   |  卡券的扩展参数                                                                                        
 
 **cardExt 说明**
 
@@ -43,7 +43,7 @@
 
   参数                   |  类型          |  说明                                                                                                                
 -------------------------|----------------|----------------------------------------------------------------------------------------------------------------------
-  cardList               |  ObjectArray   |卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
+  cardList               |  ObjectArray   |卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#返回对象说明)
   cardList[].code        |  String        |加密 code，为用户领取到卡券的code加密后的字符串，解密请参照：[code 解码接口](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1451025239)
   cardList[].cardId      |  String        |  用户领取到卡券的Id                                                                                                  
   cardList[].cardExt     |  String        |  用户领取到卡券的扩展参数，与调用时传入的参数相同                                                                    
@@ -69,7 +69,7 @@
 
 ### wx.openCard(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 查看微信卡包中的卡券。
 
@@ -77,7 +77,7 @@
 
   参数                |  类型          |  必填 |  说明                                                                                                                    
 ----------------------|----------------|-------|--------------------------------------------------------------------------------------------------------------------------
-  cardList            |  ObjectArray   |  是   |需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
+  cardList            |  ObjectArray   |  是   |需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#opencard-请求对象说明)
   success             |  Function      |  否   |  接口调用成功的回调函数                                                                                                  
   fail                |  Function      |  否   |  接口调用失败的回调函数                                                                                                  
   complete            |  Function      |  否   |  接口调用结束的回调函数（调用成功、失败都会执行）                                                                        
@@ -103,7 +103,7 @@
 
 #### Tip
 
-1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=201838)进行认证。
+1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=2018413)进行认证。
 2.  `tip`: 了解更多信息，请查看[微信卡券接口文档](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1490190158&version=1&lang=zh_CN&platform=2)
 
 ### 会员卡组件

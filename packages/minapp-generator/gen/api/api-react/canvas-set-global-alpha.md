@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/set-global-alpha.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/set-global-alpha.html -->
 
 canvasContext.setGlobalAlpha
 ============================
@@ -34,4 +34,4 @@ canvasContext.setGlobalAlpha
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/global-alpha.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/global-alpha.png?t=2018413)

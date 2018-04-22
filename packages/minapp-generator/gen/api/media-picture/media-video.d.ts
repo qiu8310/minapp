@@ -155,8 +155,10 @@ export namespace wx {
    *
    *     ```javascript
    *     wx.saveVideoToPhotosAlbum({
-   *         success(res) {
-   *         }
+   *       filePath: 'wxfile://xxx'
+   *       success(res) {
+   *         console.log(res.errMsg)
+   *       }
    *     })
    *     ```
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-video.html#wxsavevideotophotosalbumobject

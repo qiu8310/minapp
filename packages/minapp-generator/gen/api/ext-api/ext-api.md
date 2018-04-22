@@ -1,10 +1,10 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/ext-api.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/ext-api.html -->
 
 ### wx.getExtConfig(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-获取第三方平台自定义的数据字段。
+获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html?t=2018413)自定义的数据字段。
 
 **OBJECT参数说明：**
 
@@ -38,9 +38,9 @@
 
 ### wx.getExtConfigSync()
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-获取第三方平台自定义的数据字段的同步接口。
+获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html?t=2018413)自定义的数据字段的同步接口。
 
 **返回说明：**
 

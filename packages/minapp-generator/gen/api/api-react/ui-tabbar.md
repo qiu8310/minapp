@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html -->
 
 ### wx.setTabBarBadge(OBJECT)
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 为 tabBar 某一项的右上角添加文本
 
@@ -26,7 +26,7 @@
 
 ### wx.removeTabBarBadge(OBJECT)
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 移除 tabBar 某一项右上角的文本
 
@@ -41,7 +41,7 @@
 
 ### wx.showTabBarRedDot(OBJECT)
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 显示 tabBar 某一项的右上角的红点
 
@@ -56,7 +56,7 @@
 
 ### wx.hideTabBarRedDot(OBJECT)
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 隐藏 tabBar 某一项的右上角的红点
 
@@ -71,9 +71,9 @@
 
 ### onTabItemTap
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-点击 tab 时触发，见 [链接](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html)
+点击 tab 时触发，见 [链接](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html)
 
 **示例代码：**
 
@@ -88,7 +88,7 @@
 
 ### wx.setTabBarStyle(OBJECT)
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 动态设置 tabBar 的整体样式
 
@@ -116,7 +116,7 @@
 
 ### wx.setTabBarItem(OBJECT)
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 动态设置 tabBar 某一项的内容
 
@@ -144,7 +144,7 @@
 
 ### wx.showTabBar(OBJECT)
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 显示 tabBar
 
@@ -159,7 +159,7 @@
 
 ### wx.hideTabBar(OBJECT)
 
-> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 隐藏 tabBar
 

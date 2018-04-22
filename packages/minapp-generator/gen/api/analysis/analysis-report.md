@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis-report.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/analysis-report.html -->
 
 ### wx.reportAnalytics(eventName, data)
 

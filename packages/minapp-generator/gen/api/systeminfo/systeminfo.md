@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/systeminfo.html -->
 
 ### wx.getSystemInfo(OBJECT)
 

@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html -->
 
 ### wx.navigateTo(OBJECT)
 
@@ -52,7 +52,7 @@
 
 ### wx.reLaunch(OBJECT)
 
-> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 关闭所有页面，打开到应用内的某个页面。
 
@@ -86,12 +86,12 @@
 
 **OBJECT 参数说明：**
 
-  参数       |  类型       |  必填 |  说明                                                                                                                                  
--------------|-------------|-------|----------------------------------------------------------------------------------------------------------------------------------------
-  url        |  String     |  是   |需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
-  success    |  Function   |  否   |  接口调用成功的回调函数                                                                                                                
-  fail       |  Function   |  否   |  接口调用失败的回调函数                                                                                                                
-  complete   |  Function   |  否   |  接口调用结束的回调函数（调用成功、失败都会执行）                                                                                      
+  参数       |  类型       |  必填 |  说明                                                                                                                                         
+-------------|-------------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------
+  url        |  String     |  是   |需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
+  success    |  Function   |  否   |  接口调用成功的回调函数                                                                                                                       
+  fail       |  Function   |  否   |  接口调用失败的回调函数                                                                                                                       
+  complete   |  Function   |  否   |  接口调用结束的回调函数（调用成功、失败都会执行）                                                                                             
 
 **示例代码：**
 
@@ -115,7 +115,7 @@
 
 ### wx.navigateBack(OBJECT)
 
-关闭当前页面，返回上一页面或多级页面。可通过 [`getCurrentPages()`](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html#getCurrentPages()) 获取当前的页面栈，决定需要返回几层。
+关闭当前页面，返回上一页面或多级页面。可通过 [`getCurrentPages()`](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html#getCurrentPages()) 获取当前的页面栈，决定需要返回几层。
 
 **OBJECT 参数说明：**
 

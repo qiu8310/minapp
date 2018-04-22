@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html -->
 
 暂仅支持 HCE（基于主机的卡模拟）模式，即将安卓手机模拟成实体智能卡。
 
@@ -8,7 +8,7 @@
 
 ### wx.getHCEState(OBJECT)
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 判断当前设备是否支持 HCE 能力。
 
@@ -36,7 +36,7 @@
 
 ### wx.startHCE(OBJECT)
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 初始化 NFC 模块。
 
@@ -68,7 +68,7 @@
 
 ### wx.stopHCE(OBJECT)
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 关闭 NFC 模块。仅在安卓系统下有效。
 
@@ -98,7 +98,7 @@
 
 ### wx.onHCEMessage(CALLBACK)
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 监听 NFC 设备的消息回调，并在回调中处理。返回参数中 `messageType` 表示消息类型，目前有如下值：
 
@@ -115,7 +115,7 @@
 
 ### wx.sendHCEMessage(OBJECT)
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 发送 NFC 消息。仅在安卓系统下有效。
 

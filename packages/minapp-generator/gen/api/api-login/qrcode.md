@@ -1,11 +1,18 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/qrcode.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/qrcode.html -->
 
 获取二维码
 -----
 
 通过后台接口可以获取小程序任意页面的二维码，扫描该二维码可以直接进入小程序对应的页面。目前微信支持两种二维码，小程序码（左），小程序二维码（右），如下所示：
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/qrcode/qrcode.png?t=201838)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/qrcode/qrcode.png?t=2018413)
+
+可以使用开发工具 1.02.1803130 及以后版本通过二维码编译功能调试所获得的二维码
+
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/devtools2/qrcodecompile.png?t=2018413)
+------------------------------------------------------------------------------------------
+
+为满足不同需求和场景，这里提供了三个接口，开发者可挑选适合自己的接口。 A接口，生成小程序码，可接受path参数较长，生成个数受限。 B接口，生成小程序码，可接受页面参数较短，生成个数不受限。 C接口，生成二维码，可接受path参数较长，生成个数受限。
 
 ### 获取小程序码
 
@@ -29,7 +36,7 @@
 
 **注意：通过该接口生成的小程序码，永久有效，数量限制见文末说明，请谨慎使用。用户扫描该码进入小程序后，将直接进入 path 对应的页面。**
 
-接口B：适用于需要的码数量极多，或仅临时使用的业务场景
+接口B：适用于需要的码数量极多的业务场景
 
 接口地址：
 
@@ -84,7 +91,7 @@
     {"path": "pages/index?query=1", "width": 430}
     
 
-**注：pages/index 需要在 `app.json` 的 [`pages`](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pages) 中定义**
+**注：pages/index 需要在 `app.json` 的 [`pages`](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#pages) 中定义**
 
 ### Bug & Tip
 

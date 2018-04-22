@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html -->
 
 Color
 =====

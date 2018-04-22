@@ -1,12 +1,12 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/api/we-run.html -->
 
 ### wx.getWeRunData(OBJECT)
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-获取用户过去三十天微信运动步数，需要先调用 [wx.login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject) 接口。
+获取用户过去三十天微信运动步数，需要先调用 [wx.login](https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html#wxloginobject) 接口。
 
-需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.werun
+需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.werun
 
 **OBJECT参数说明：**
 
@@ -19,11 +19,11 @@
 
 **success返回参数说明：**
 
-  参数名          |  类型     |  说明                                                                                                        
-------------------|-----------|--------------------------------------------------------------------------------------------------------------
-  errMsg          |  String   |  调用结果                                                                                                    
-  encryptedData   |  String   |包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
-  iv              |  String   |加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+  参数名          |  类型     |  说明                                                                                                               
+------------------|-----------|---------------------------------------------------------------------------------------------------------------------
+  errMsg          |  String   |  调用结果                                                                                                           
+  encryptedData   |  String   |包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
+  iv              |  String   |加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
 
 **示例代码：**
 
@@ -36,7 +36,7 @@
 
 ##### encryptedData：
 
-encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
 
   属性                       |  类型          |  说明             
 -----------------------------|----------------|-------------------
