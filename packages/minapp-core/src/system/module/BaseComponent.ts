@@ -91,6 +91,10 @@ export class BaseComponent<D, A extends BaseApp> {
     let parentData: any = {}
     minappsync.split('&').forEach((pair: string) => {
       let [key, parentKey] = pair.split('=')
+      // 需要将 key 转化成驼峰形式，见 https://github.com/qiu8310/minapp/issues/53
+      if (key.indexOf('-') >= 0) {
+        key = key.replace(/[-](\w)/g, (r, k: string) => k.toUpperCase())
+      }
       if (mixedData[key] !== undefined) {
         parentData[parentKey] = mixedData[key]
         delete mixedData[key]
