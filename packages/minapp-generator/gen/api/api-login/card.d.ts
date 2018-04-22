@@ -1,10 +1,10 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/card.html
 
 export namespace wx {
   namespace addCard {
     type Param = {
       /**
-       * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
+       * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#请求对象说明)
        */
       cardList: ParamPropCardList
       /**
@@ -21,7 +21,7 @@ export namespace wx {
       complete?: ParamPropComplete
     }
     /**
-     * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
+     * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#请求对象说明)
      */
     type ParamPropCardList = ParamPropCardListItem[]
     type ParamPropCardListItem = {
@@ -54,12 +54,12 @@ export namespace wx {
     type ParamPropSuccess = (res: ParamPropSuccessParam) => any
     type ParamPropSuccessParam = {
       /**
-       * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
+       * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#返回对象说明)
        */
       cardList: ParamPropSuccessParamPropCardList
     }
     /**
-     * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
+     * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#返回对象说明)
      */
     type ParamPropSuccessParamPropCardList = ParamPropSuccessParamPropCardListItem[]
     type ParamPropSuccessParamPropCardListItem = {
@@ -120,14 +120,14 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxaddcardobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/card.html#wxaddcardobject
    */
   function addCard(OBJECT: addCard.Param): void
 
   namespace openCard {
     type Param = {
       /**
-       * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
+       * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#opencard-请求对象说明)
        */
       cardList: ParamPropCardList
       /**
@@ -144,7 +144,7 @@ export namespace wx {
       complete?: ParamPropComplete
     }
     /**
-     * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
+     * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#opencard-请求对象说明)
      */
     type ParamPropCardList = ParamPropCardListItem[]
     type ParamPropCardListItem = {
@@ -177,7 +177,7 @@ export namespace wx {
    *
    * **Tip：**
    *
-   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=201838)进行认证。
+   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=2018323)进行认证。
    * 2.  `tip`: 了解更多信息，请查看[微信卡券接口文档](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1490190158&version=1&lang=zh_CN&platform=2)
    *
    * **示例代码：**
@@ -197,7 +197,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxopencardobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/card.html#wxopencardobject
    */
   function openCard(OBJECT: openCard.Param): void
 

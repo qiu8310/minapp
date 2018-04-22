@@ -1,10 +1,10 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateBackMiniProgram.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/navigateBackMiniProgram.html
 
 export namespace wx {
   namespace navigateBackMiniProgram {
     type Param = {
       /**
-       * 需要返回给上一个小程序的数据，上一个小程序可在 `App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
+       * 需要返回给上一个小程序的数据，上一个小程序可在 `App.onShow()` 中获取到这份数据。[详情](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html)
        */
       extraData?: any
       /**
@@ -58,7 +58,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateBackMiniProgram.html#wxnavigatebackminiprogramobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/navigateBackMiniProgram.html#wxnavigatebackminiprogramobject
    */
   function navigateBackMiniProgram(OBJECT: navigateBackMiniProgram.Param): void
 

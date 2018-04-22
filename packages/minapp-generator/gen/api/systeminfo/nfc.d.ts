@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html
 
 export namespace wx {
   namespace getHCEState {
@@ -53,7 +53,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxgethcestateobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxgethcestateobject
    */
   function getHCEState(OBJECT: getHCEState.Param): void
 
@@ -114,7 +114,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxstarthceobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxstarthceobject
    */
   function startHCE(OBJECT: startHCE.Param): void
 
@@ -170,7 +170,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxstophceobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxstophceobject
    */
   function stopHCE(OBJECT: stopHCE.Param): void
 
@@ -198,7 +198,7 @@ export namespace wx {
    *
    * *   1：消息为HCE Apdu Command类型，小程序需对此指令进行处理，并调用 `sendHCEMessage` 接口返回处理指令；
    * *   2：消息为设备离场事件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxonhcemessagecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxonhcemessagecallback
    */
   function onHCEMessage(CALLBACK: onHCEMessage.Param): void
 
@@ -281,7 +281,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxsendhcemessageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxsendhcemessageobject
    */
   function sendHCEMessage(OBJECT: sendHCEMessage.Param): void
 

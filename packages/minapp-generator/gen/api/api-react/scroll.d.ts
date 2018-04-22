@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/scroll.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/scroll.html
 
 export namespace wx {
   namespace pageScrollTo {
@@ -26,7 +26,7 @@ export namespace wx {
    *       duration: 300
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/scroll.html#wxpagescrolltoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/scroll.html#wxpagescrolltoobject
    */
   function pageScrollTo(OBJECT: pageScrollTo.Param): void
 

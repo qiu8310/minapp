@@ -8,8 +8,8 @@ import {dirname, resolve, join} from 'path'
 
 // 相关 URL
 export const URL = {
-  BASE_API: 'https://mp.weixin.qq.com/debug/wxadoc/dev/api/',
-  BASE_TPL: 'https://mp.weixin.qq.com/debug/wxadoc/dev/component/'
+  BASE_API: 'https://developers.weixin.qq.com/miniprogram/dev/api/',
+  BASE_TPL: 'https://developers.weixin.qq.com/miniprogram/dev/component/'
 }
 
 // 相关目录

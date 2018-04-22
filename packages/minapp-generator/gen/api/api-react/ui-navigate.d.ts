@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html
 
 export namespace wx {
   namespace navigateTo {
@@ -54,7 +54,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxnavigatetoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxnavigatetoobject
    */
   function navigateTo(OBJECT: navigateTo.Param): void
 
@@ -100,7 +100,7 @@ export namespace wx {
    *       url: 'test?id=1'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxredirecttoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxredirecttoobject
    */
   function redirectTo(OBJECT: redirectTo.Param): void
 
@@ -159,14 +159,14 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxrelaunchobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxrelaunchobject
    */
   function reLaunch(OBJECT: reLaunch.Param): void
 
   namespace switchTab {
     type Param = {
       /**
-       * 需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
+       * 需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
        */
       url: string
       /**
@@ -221,7 +221,7 @@ export namespace wx {
    *       url: '/index'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxswitchtabobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxswitchtabobject
    */
   function switchTab(OBJECT: switchTab.Param): void
 
@@ -236,7 +236,7 @@ export namespace wx {
     }
   }
   /**
-   * 关闭当前页面，返回上一页面或多级页面。可通过 [`getCurrentPages()`](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html#getCurrentPages()) 获取当前的页面栈，决定需要返回几层。
+   * 关闭当前页面，返回上一页面或多级页面。可通过 [`getCurrentPages()`](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html#getCurrentPages()) 获取当前的页面栈，决定需要返回几层。
    *
    * **Tip：**
    *
@@ -262,7 +262,7 @@ export namespace wx {
    *       delta: 2
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxnavigatebackobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxnavigatebackobject
    */
   function navigateBack(OBJECT: navigateBack.Param): void
 

@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/device.html
 
 export namespace wx {
   namespace getNetworkType {
@@ -49,7 +49,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxgetnetworktypeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxgetnetworktypeobject
    */
   function getNetworkType(OBJECT: getNetworkType.Param): void
 
@@ -90,7 +90,7 @@ export namespace wx {
    *       console.log(res.networkType)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxonnetworkstatuschangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxonnetworkstatuschangecallback
    */
   function onNetworkStatusChange(CALLBACK: onNetworkStatusChange.Param): void
 
@@ -130,7 +130,7 @@ export namespace wx {
    * @since 1.2.0
    *
    * 设置屏幕亮度。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxsetscreenbrightnessobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxsetscreenbrightnessobject
    */
   function setScreenBrightness(OBJECT: setScreenBrightness.Param): void
 
@@ -172,7 +172,7 @@ export namespace wx {
    * @since 1.2.0
    *
    * 获取屏幕亮度。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxgetscreenbrightnessobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxgetscreenbrightnessobject
    */
   function getScreenBrightness(OBJECT: getScreenBrightness.Param): void
 
@@ -208,7 +208,7 @@ export namespace wx {
    * @since 1.2.0
    *
    * 使手机发生较长时间的振动（400ms）
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxvibratelongobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxvibratelongobject
    */
   function vibrateLong(OBJECT: vibrateLong.Param): void
 
@@ -249,7 +249,7 @@ export namespace wx {
    *
    * 1.  `tip`：`vibrateShort` 接口仅在 iPhone7/iPhone7Plus 及 Android 机型生效
    * 2.  `tip`: `getScreenBrightness` 接口若安卓系统设置中开启了自动调节亮度功能，则屏幕亮度会根据光线自动调整，该接口仅能获取自动调节亮度之前的值，而非实时的亮度值。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxvibrateshortobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxvibrateshortobject
    */
   function vibrateShort(OBJECT: vibrateShort.Param): void
 

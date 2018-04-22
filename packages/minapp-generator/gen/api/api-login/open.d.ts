@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/open.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/open.html
 
 export namespace wx {
   namespace getUserInfo {
@@ -48,15 +48,15 @@ export namespace wx {
        */
       rawData: string
       /**
-       * 使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，参考文档 [signature](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html)。
+       * 使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，参考文档 [signature](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html)。
        */
       signature: string
       /**
-       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        */
       encryptedData: string
       /**
-       * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        */
       iv: string
     }
@@ -103,9 +103,9 @@ export namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 获取用户信息，withCredentials 为 true 时需要先调用 [wx.login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject) 接口。
+   * 获取用户信息，withCredentials 为 true 时需要先调用 [wx.login](https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html#wxloginobject) 接口。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userInfo
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userInfo
    *
    * **示例代码：**
    *
@@ -142,7 +142,7 @@ export namespace wx {
    *         }
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/open.html#wxgetuserinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/open.html#wxgetuserinfoobject
    */
   function getUserInfo(OBJECT: getUserInfo.Param): void
 

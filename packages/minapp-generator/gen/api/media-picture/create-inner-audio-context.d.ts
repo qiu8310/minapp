@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/createInnerAudioContext.html
 
 export namespace wx {
   /**
@@ -30,7 +30,7 @@ export namespace wx {
    *         console.log(res.errCode)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html#wxcreateinneraudiocontext
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/createInnerAudioContext.html#wxcreateinneraudiocontext
    */
   function createInnerAudioContext(): InnerAudioContext
 

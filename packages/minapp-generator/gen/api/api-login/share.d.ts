@@ -1,10 +1,10 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/share.html
 
 export namespace wx {
   namespace showShareMenu {
     type Param = {
       /**
-       * 是否使用带 shareTicket 的转发[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#获取更多转发信息)
+       * 是否使用带 shareTicket 的转发[详情](https://developers.weixin.qq.com/miniprogram/dev/api/share.html#获取更多转发信息)
        */
       withShareTicket?: boolean
       /**
@@ -45,7 +45,7 @@ export namespace wx {
    *       withShareTicket: true
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxshowsharemenuobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxshowsharemenuobject
    */
   function showShareMenu(OBJECT: showShareMenu.Param): void
 
@@ -87,14 +87,14 @@ export namespace wx {
    *     ```javascript
    *     wx.hideShareMenu()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxhidesharemenuobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxhidesharemenuobject
    */
   function hideShareMenu(OBJECT: hideShareMenu.Param): void
 
   namespace updateShareMenu {
     type Param = {
       /**
-       * 是否使用带 shareTicket 的转发[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#获取更多转发信息)
+       * 是否使用带 shareTicket 的转发[详情](https://developers.weixin.qq.com/miniprogram/dev/api/share.html#获取更多转发信息)
        */
       withShareTicket?: boolean
       /**
@@ -137,7 +137,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxupdatesharemenuobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxupdatesharemenuobject
    */
   function updateShareMenu(OBJECT: updateShareMenu.Param): void
 
@@ -176,7 +176,7 @@ export namespace wx {
        */
       errMsg: string
       /**
-       * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        *
        * **encryptedData 解密后为一个 JSON 结构，包含字段如下：**
        *
@@ -184,11 +184,11 @@ export namespace wx {
        * ------------|------------------
        *   openGId   |群对当前小程序的唯一 ID
        *
-       * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://mp.weixin.qq.com/debug/wxadoc/dev/component/open-data.html)
+       * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html)
        */
       encryptedData: string
       /**
-       * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        */
       iv: string
     }
@@ -205,7 +205,7 @@ export namespace wx {
    * @since 1.1.0
    *
    * 获取转发详细信息
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxgetshareinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxgetshareinfoobject
    */
   function getShareInfo(OBJECT: getShareInfo.Param): void
 

@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/clipboard.html
 
 export namespace wx {
   namespace setClipboardData {
@@ -52,7 +52,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html#wxsetclipboarddataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/clipboard.html#wxsetclipboarddataobject
    */
   function setClipboardData(OBJECT: setClipboardData.Param): void
 
@@ -104,7 +104,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html#wxgetclipboarddataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/clipboard.html#wxgetclipboarddataobject
    */
   function getClipboardData(OBJECT: getClipboardData.Param): void
 

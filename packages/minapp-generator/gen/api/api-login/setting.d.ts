@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/setting.html
 
 export namespace wx {
   namespace openSetting {
@@ -22,7 +22,7 @@ export namespace wx {
     type ParamPropSuccess = (res: ParamPropSuccessParam) => any
     type ParamPropSuccessParam = {
       /**
-       * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+       * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html#scope-列表)
        */
       authSetting: any
     }
@@ -56,7 +56,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html#wxopensettingobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setting.html#wxopensettingobject
    */
   function openSetting(OBJECT: openSetting.Param): void
 
@@ -81,7 +81,7 @@ export namespace wx {
     type ParamPropSuccess = (res: ParamPropSuccessParam) => any
     type ParamPropSuccessParam = {
       /**
-       * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+       * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html#scope-列表)
        */
       authSetting: any
     }
@@ -115,7 +115,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html#wxgetsettingobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setting.html#wxgetsettingobject
    */
   function getSetting(OBJECT: getSetting.Param): void
 

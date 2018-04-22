@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis-report.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/analysis-report.html
 
 export namespace wx {
   /**
@@ -12,7 +12,7 @@ export namespace wx {
    *       color: 'red'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis-report.html#wxreportanalyticseventname-data
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/analysis-report.html#wxreportanalyticseventname-data
    */
   function reportAnalytics(eventName: string, data: any): void
 

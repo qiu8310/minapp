@@ -1,10 +1,10 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/get-image-data.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-image-data.html
 
 export namespace wx {
   namespace canvasGetImageData {
     type Param = {
       /**
-       * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
+       * 画布标识，传入 [`<canvas />`](https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html) 的 canvas-id
        */
       canvasId: string
       /**
@@ -89,7 +89,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject
    */
   function canvasGetImageData(OBJECT: canvasGetImageData.Param): void
 

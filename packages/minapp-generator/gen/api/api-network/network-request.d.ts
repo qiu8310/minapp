@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/network-request.html
 
 export namespace wx {
   namespace request {
@@ -97,7 +97,7 @@ export namespace wx {
     type ReturnPropAbort = () => any
   }
   /**
-   * 发起网络请求。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+   * 发起网络请求。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
    *
    * **返回值：**
    *
@@ -148,7 +148,7 @@ export namespace wx {
    *
    *     requestTask.abort() // 取消请求任务
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html#wxrequestobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-request.html#wxrequestobject
    */
   function request(OBJECT: request.Param): request.Return
 

@@ -1,11 +1,11 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-camera.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-camera.html
 
 export namespace wx {
   /**
    * @since 1.6.0
    *
    * 创建并返回 camera 上下文 `cameraContext` 对象，`cameraContext` 与页面的 `camera` 组件绑定，一个页面只能有一个camera，通过它可以操作对应的 `<camera/>` 组件。 在自定义组件下，第一个参数传入组件实例this，以操作组件内 `<camera/>` 组件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-camera.html#wxcreatecameracontextthis
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-camera.html#wxcreatecameracontextthis
    */
   function createCameraContext(instance?: any): CameraContext
 

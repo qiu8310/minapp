@@ -14,9 +14,9 @@ class CanvasContext {
    *
    * **参数：**
    *
-   *   参数    |  类型                                                                       |  定义              
-   * ----------|-----------------------------------------------------------------------------|--------------------
-   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
+   *   参数    |  类型                                                                              |  定义              
+   * ----------|------------------------------------------------------------------------------------|--------------------
+   *   color   |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |  Gradient Object   
    *
    * **语法：**
    *
@@ -45,9 +45,9 @@ class CanvasContext {
    *
    * **参数：**
    *
-   *   参数    |  类型                                                                       |  定义              
-   * ----------|-----------------------------------------------------------------------------|--------------------
-   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
+   *   参数    |  类型                                                                              |  定义              
+   * ----------|------------------------------------------------------------------------------------|--------------------
+   *   color   |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |  Gradient Object   
    *
    * **语法：**
    *
@@ -76,12 +76,12 @@ class CanvasContext {
    *
    * **参数：**
    *
-   *   参数      |  类型                                                                       |  范围    |  定义              
-   * ------------|-----------------------------------------------------------------------------|----------|--------------------
-   *   offsetX   |  Number                                                                     |          |阴影相对于形状在水平方向的偏移
-   *   offsetY   |  Number                                                                     |          |阴影相对于形状在竖直方向的偏移
-   *   blur      |  Number                                                                     |  0~100   |阴影的模糊级别，数值越大越模糊
-   *   color     |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |          |  阴影的颜色        
+   *   参数      |  类型                                                                              |  范围    |  定义              
+   * ------------|------------------------------------------------------------------------------------|----------|--------------------
+   *   offsetX   |  Number                                                                            |          |阴影相对于形状在水平方向的偏移
+   *   offsetY   |  Number                                                                            |          |阴影相对于形状在竖直方向的偏移
+   *   blur      |  Number                                                                            |  0~100   |阴影的模糊级别，数值越大越模糊
+   *   color     |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |          |  阴影的颜色        
    *
    * **例子：**
    *
@@ -95,7 +95,7 @@ class CanvasContext {
    */
   setShadow(offsetX: number, offsetY: number, blur: number, color: string): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -109,7 +109,7 @@ class CanvasContext {
    */
   shadowBlur(): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -123,7 +123,7 @@ class CanvasContext {
    */
   shadowColor(): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -137,7 +137,7 @@ class CanvasContext {
    */
   shadowOffsetX(): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -231,10 +231,10 @@ class CanvasContext {
    *
    * **参数：**
    *
-   *   参数    |  类型                                                                       |  定义              
-   * ----------|-----------------------------------------------------------------------------|--------------------
-   *   stop    |  Number(0-1)                                                                |表示渐变点在起点和终点中的位置
-   *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  渐变点的颜色      
+   *   参数    |  类型                                                                              |  定义              
+   * ----------|------------------------------------------------------------------------------------|--------------------
+   *   stop    |  Number(0-1)                                                                       |表示渐变点在起点和终点中的位置
+   *   color   |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |  渐变点的颜色      
    *
    * **示例代码：**
    *
@@ -419,7 +419,7 @@ class CanvasContext {
    */
   setLineJoin(lineJoin: string): void
   /**
-   * > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1085,7 +1085,7 @@ class CanvasContext {
    *
    * **定义：**
    *
-   * 以原点为中心，原点可以用 [translate](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/rotate.html#translate)方法修改。顺时针旋转当前坐标轴。多次调用`rotate`，旋转的角度会叠加。
+   * 以原点为中心，原点可以用 [translate](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/rotate.html#translate)方法修改。顺时针旋转当前坐标轴。多次调用`rotate`，旋转的角度会叠加。
    *
    * **参数：**
    *
@@ -1093,7 +1093,7 @@ class CanvasContext {
    * -----------|-----------|-----------------------------------------------------
    *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
    *
-   * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=201838)
+   * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018323)
    *
    * **参数：**
    *
@@ -1139,7 +1139,7 @@ class CanvasContext {
    */
   translate(x: number, y: number): void
   /**
-   * > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1223,7 +1223,7 @@ class CanvasContext {
    */
   fillText(text: string, x: number, y: number): void
   /**
-   * > 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1267,7 +1267,7 @@ class CanvasContext {
    */
   setTextAlign(align: string): void
   /**
-   * > 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1542,7 +1542,7 @@ class CanvasContext {
    */
   draw(reserve?: boolean, callback?: CanvasContext.draw.Param1): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1573,7 +1573,7 @@ class CanvasContext {
    */
   measureText(width: number): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1585,7 +1585,12 @@ class CanvasContext {
    * ---------|-----------|---------------------
    *   type   |  String   |标识要使用哪种合成或混合模式操作
    *
-   * **`type` 支持的操作有：** | 平台 | 操作 | | \-\-\-\- | \-\-\-\- | | 安卓 | xor, source-over, source-atop, destination-out, lighter, overlay, darken, lighten, hard-light | | iOS |
+   * **type 支持的操作有：**
+   *
+   *   平台  |  操作                                                                                                                                                                                                            
+   * --------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   *   安卓  |  xor, source-over, source-atop, destination-out, lighter, overlay, darken, lighten, hard-light                                                                                                                   
+   *   iOS   |  xor, source-over, source-atop, destination-over, destination-out, lighter, multiply, overlay, darken, lighten, color-dodge, color-burn, hard-light, soft-light, difference, exclusion, saturation, luminosity   
    *
    * **语法：**
    *
@@ -1595,7 +1600,7 @@ class CanvasContext {
    */
   globalCompositeOperation(): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1619,7 +1624,7 @@ class CanvasContext {
    */
   arcTo(): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1642,7 +1647,7 @@ class CanvasContext {
    */
   strokeText(): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1662,7 +1667,7 @@ class CanvasContext {
    */
   lineDashOffset(): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1693,7 +1698,7 @@ class CanvasContext {
    */
   createPattern(): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *
@@ -1722,7 +1727,7 @@ class CanvasContext {
    */
   font(style: any, size: any, weight: any, family: any): void
   /**
-   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    *
    * **定义：**
    *

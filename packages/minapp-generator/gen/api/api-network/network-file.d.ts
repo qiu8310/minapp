@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/network-file.html
 
 export namespace wx {
   namespace uploadFile {
@@ -97,9 +97,9 @@ export namespace wx {
     type ReturnPropAbort = () => any
   }
   /**
-   * 将本地资源上传到开发者服务器，客户端发起一个 HTTPS POST 请求，其中 `content-type` 为 `multipart/form-data` 。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+   * 将本地资源上传到开发者服务器，客户端发起一个 HTTPS POST 请求，其中 `content-type` 为 `multipart/form-data` 。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
    *
-   * 如页面通过 [wx.chooseImage](https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxchooseimageobject) 等接口获取到一个本地资源的临时文件路径后，可通过此接口将本地资源上传到指定服务器。
+   * 如页面通过 [wx.chooseImage](https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxchooseimageobject) 等接口获取到一个本地资源的临时文件路径后，可通过此接口将本地资源上传到指定服务器。
    *
    * **返回值：**
    *
@@ -153,7 +153,7 @@ export namespace wx {
    *
    *     uploadTask.abort() // 取消上传任务
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxuploadfileobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-file.html#wxuploadfileobject
    */
   function uploadFile(OBJECT: uploadFile.Param): uploadFile.Return
 
@@ -241,7 +241,7 @@ export namespace wx {
     type ReturnPropAbort = () => any
   }
   /**
-   * 下载文件资源到本地，客户端直接发起一个 HTTP GET 请求，返回文件的本地临时路径。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+   * 下载文件资源到本地，客户端直接发起一个 HTTP GET 请求，返回文件的本地临时路径。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
    *
    * **返回值：**
    *
@@ -289,7 +289,7 @@ export namespace wx {
    *
    *     downloadTask.abort() // 取消下载任务
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxdownloadfileobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-file.html#wxdownloadfileobject
    */
   function downloadFile(OBJECT: downloadFile.Param): downloadFile.Return
 

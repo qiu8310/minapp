@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-pay.html
 
 export namespace wx {
   namespace requestPayment {
@@ -79,7 +79,7 @@ export namespace wx {
    *        }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html#wxrequestpaymentobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-pay.html#wxrequestpaymentobject
    */
   function requestPayment(OBJECT: requestPayment.Param): void
 

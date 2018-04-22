@@ -1,11 +1,11 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-player.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-live-player.html
 
 export namespace wx {
   /**
    * @since 1.7.0
    *
    * 操作对应的 `<live-player/>` 组件。 创建并返回 `live-player` 上下文 `LivePlayerContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<live-player/>` 组件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-player.html#wxcreateliveplayercontextdomid-this
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-live-player.html#wxcreateliveplayercontextdomid-this
    */
   function createLivePlayerContext(domId: any, instance?: any): LivePlayerContext
 
@@ -67,6 +67,62 @@ export namespace wx {
       type ParamPropComplete = () => any
     }
     namespace mute {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace pause {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace resume {
       type Param = {
         /**
          * 接口调用成功的回调函数
@@ -168,6 +224,18 @@ export namespace wx {
      * 静音
      */
     mute(OBJECT: LivePlayerContext.mute.Param): any
+    /**
+     * 暂停
+     *
+     * @since 1.9.90
+     */
+    pause(OBJECT: LivePlayerContext.pause.Param): any
+    /**
+     * 恢复
+     *
+     * @since 1.9.90
+     */
+    resume(OBJECT: LivePlayerContext.resume.Param): any
     /**
      * 进入全屏
      */

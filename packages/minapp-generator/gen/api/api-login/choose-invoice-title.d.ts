@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/chooseInvoiceTitle.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/chooseInvoiceTitle.html
 
 export namespace wx {
   namespace chooseInvoiceTitle {
@@ -68,7 +68,7 @@ export namespace wx {
    *
    * 选择用户的发票抬头。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.invoiceTitle
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.invoiceTitle
    *
    * **示例代码：**
    *
@@ -78,7 +78,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/chooseInvoiceTitle.html#wxchooseinvoicetitleobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/chooseInvoiceTitle.html#wxchooseinvoicetitleobject
    */
   function chooseInvoiceTitle(OBJECT: chooseInvoiceTitle.Param): void
 

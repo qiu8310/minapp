@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-video.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-video.html
 
 export namespace wx {
   /**
@@ -49,7 +49,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-video.html#wxcreatevideocontextvideoid-this
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-video.html#wxcreatevideocontextvideoid-this
    */
   function createVideoContext(videoId: any, instance?: any): VideoContext
 

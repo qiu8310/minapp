@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/we-run.html
 
 export namespace wx {
   namespace getWeRunData {
@@ -32,11 +32,11 @@ export namespace wx {
        */
       errMsg: string
       /**
-       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        *
        * **encryptedData：**
        *
-       * encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        *
        *   属性                       |  类型          |  说明             
        * -----------------------------|----------------|-------------------
@@ -46,7 +46,7 @@ export namespace wx {
        */
       encryptedData: string
       /**
-       * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        */
       iv: string
     }
@@ -62,9 +62,9 @@ export namespace wx {
   /**
    * @since 1.2.0
    *
-   * 获取用户过去三十天微信运动步数，需要先调用 [wx.login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject) 接口。
+   * 获取用户过去三十天微信运动步数，需要先调用 [wx.login](https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html#wxloginobject) 接口。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.werun
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.werun
    *
    * **示例代码：**
    *
@@ -75,7 +75,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html#wxgetwerundataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/we-run.html#wxgetwerundataobject
    */
   function getWeRunData(OBJECT: getWeRunData.Param): void
 

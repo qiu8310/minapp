@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/socket-task.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/socket-task.html
 
 export namespace wx {
   namespace SocketTask {
@@ -92,7 +92,7 @@ export namespace wx {
   /**
    * @since 1.7.0
    *
-   * WebSocket 任务，可通过 [wx.connectSocket()](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html) 接口创建返回。
+   * WebSocket 任务，可通过 [wx.connectSocket()](https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html) 接口创建返回。
    */
   class SocketTask {
     /**

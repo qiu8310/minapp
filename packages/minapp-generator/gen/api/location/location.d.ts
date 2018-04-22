@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/location.html
 
 export namespace wx {
   namespace getLocation {
@@ -91,7 +91,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxgetlocationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxgetlocationobject
    */
   function getLocation(OBJECT: getLocation.Param): void
 
@@ -144,8 +144,8 @@ export namespace wx {
   /**
    * 打开地图选择位置。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userLocation
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxchooselocationobject
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userLocation
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxchooselocationobject
    */
   function chooseLocation(OBJECT: chooseLocation.Param): void
 
@@ -200,7 +200,7 @@ export namespace wx {
   /**
    * ​使用微信内置地图查看位置。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userLocation
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userLocation
    *
    * **Bug & Tip：**
    *
@@ -222,7 +222,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxopenlocationobject
    */
   function openLocation(OBJECT: openLocation.Param): void
 

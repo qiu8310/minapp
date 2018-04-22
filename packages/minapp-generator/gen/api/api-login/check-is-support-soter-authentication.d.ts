@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSupportSoterAuthentication.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/checkIsSupportSoterAuthentication.html
 
 export namespace wx {
   namespace checkIsSupportSoterAuthentication {
@@ -63,7 +63,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSupportSoterAuthentication.html#wxcheckissupportsoterauthenticationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/checkIsSupportSoterAuthentication.html#wxcheckissupportsoterauthenticationobject
    */
   function checkIsSupportSoterAuthentication(OBJECT: checkIsSupportSoterAuthentication.Param): void
 

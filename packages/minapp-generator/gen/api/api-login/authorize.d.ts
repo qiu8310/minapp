@@ -1,10 +1,10 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/authorize.html
 
 export namespace wx {
   namespace authorize {
     type Param = {
       /**
-       * 需要获取权限的scope，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+       * 需要获取权限的scope，详见 [scope 列表](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html#scope-列表)
        */
       scope: string
       /**
@@ -62,7 +62,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize.html#wxauthorizeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/authorize.html#wxauthorizeobject
    */
   function authorize(OBJECT: authorize.Param): void
 

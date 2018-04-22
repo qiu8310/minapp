@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/file.html
 
 export namespace wx {
   namespace saveFile {
@@ -61,7 +61,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxsavefileobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxsavefileobject
    */
   function saveFile(OBJECT: saveFile.Param): void
 
@@ -133,7 +133,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxgetsavedfilelistobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxgetsavedfilelistobject
    */
   function getSavedFileList(OBJECT: getSavedFileList.Param): void
 
@@ -184,7 +184,7 @@ export namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 [wx.getFileInfo](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getFileInfo.html) 接口。
+   * 获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 [wx.getFileInfo](https://developers.weixin.qq.com/miniprogram/dev/api/getFileInfo.html) 接口。
    *
    * **示例代码：**
    *
@@ -197,7 +197,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxgetsavedfileinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxgetsavedfileinfoobject
    */
   function getSavedFileInfo(OBJECT: getSavedFileInfo.Param): void
 
@@ -252,7 +252,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxremovesavedfileobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxremovesavedfileobject
    */
   function removeSavedFile(OBJECT: removeSavedFile.Param): void
 
@@ -313,7 +313,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxopendocumentobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxopendocumentobject
    */
   function openDocument(OBJECT: openDocument.Param): void
 

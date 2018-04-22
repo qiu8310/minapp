@@ -1,8 +1,8 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-audio.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-audio.html
 
 export namespace wx {
   /**
-   * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html) 接口**
+   * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://developers.weixin.qq.com/miniprogram/dev/api/createInnerAudioContext.html) 接口**
    *
    * 创建并返回 audio 上下文 `audioContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<audio/>` 组件
    *
@@ -50,7 +50,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-audio.html#wxcreateaudiocontextaudioid-this
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-audio.html#wxcreateaudiocontextaudioid-this
    */
   function createAudioContext(audioId: any, instance?: any): AudioContext
 

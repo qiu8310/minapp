@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html
 
 export namespace wx {
   namespace openBluetoothAdapter {
@@ -36,7 +36,7 @@ export namespace wx {
    *
    * **Bug & Tip：**
    *
-   * 1.  `tip`: 基础库版本 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * 1.  `tip`: 基础库版本 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    * 2.  `tip`: 在没有调用`wx.openBluetoothAdapter`的情况下调用小程序其它蓝牙模块相关API，API会返回错误，错误码为`10000`
    * 3.  `bug`: 在用户蓝牙开关未开启或者手机不支持蓝牙功能的情况下，调用`wx.openBluetoothAdapter`会返回错误，错误码为`10001`，表示手机蓝牙功能不可用；此时小程序蓝牙模块已经初始化完成，可通过`wx.onBluetoothAdapterStateChange`监听手机蓝牙状态的改变，也可以调用蓝牙模块的所有API。
    *
@@ -49,7 +49,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxopenbluetoothadapterobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxopenbluetoothadapterobject
    */
   function openBluetoothAdapter(OBJECT: openBluetoothAdapter.Param): void
 
@@ -95,7 +95,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxclosebluetoothadapterobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxclosebluetoothadapterobject
    */
   function closeBluetoothAdapter(OBJECT: closeBluetoothAdapter.Param): void
 
@@ -155,7 +155,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbluetoothadapterstateobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetbluetoothadapterstateobject
    */
   function getBluetoothAdapterState(OBJECT: getBluetoothAdapterState.Param): void
 
@@ -184,7 +184,7 @@ export namespace wx {
    *       console.log(`adapterState changed, now is`, res)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbluetoothadapterstatechangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxonbluetoothadapterstatechangecallback
    */
   function onBluetoothAdapterStateChange(CALLBACK: onBluetoothAdapterStateChange.Param): void
 
@@ -250,7 +250,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxstartbluetoothdevicesdiscoveryobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxstartbluetoothdevicesdiscoveryobject
    */
   function startBluetoothDevicesDiscovery(OBJECT: startBluetoothDevicesDiscovery.Param): void
 
@@ -302,7 +302,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxstopbluetoothdevicesdiscoveryobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxstopbluetoothdevicesdiscoveryobject
    */
   function stopBluetoothDevicesDiscovery(OBJECT: stopBluetoothDevicesDiscovery.Param): void
 
@@ -412,7 +412,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbluetoothdevicesobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetbluetoothdevicesobject
    */
   function getBluetoothDevices(OBJECT: getBluetoothDevices.Param): void
 
@@ -489,7 +489,7 @@ export namespace wx {
    *       console.log(ab2hex(devices[0].advertisData))
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbluetoothdevicefoundcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxonbluetoothdevicefoundcallback
    */
   function onBluetoothDeviceFound(CALLBACK: onBluetoothDeviceFound.Param): void
 
@@ -567,7 +567,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetconnectedbluetoothdevicesobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetconnectedbluetoothdevicesobject
    */
   function getConnectedBluetoothDevices(OBJECT: getConnectedBluetoothDevices.Param): void
 
@@ -633,7 +633,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxcreatebleconnectionobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxcreatebleconnectionobject
    */
   function createBLEConnection(OBJECT: createBLEConnection.Param): void
 
@@ -690,7 +690,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxclosebleconnectionobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxclosebleconnectionobject
    */
   function closeBLEConnection(OBJECT: closeBLEConnection.Param): void
 
@@ -710,7 +710,7 @@ export namespace wx {
   /**
    * @since 1.1.1
    *
-   * 监听低功耗蓝牙连接的错误事件，包括设备丢失，连接异常断开等等。
+   * 监听低功耗蓝牙连接状态的改变事件，包括开发者主动连接或断开连接，设备丢失，连接异常断开等等
    *
    * **示例代码：**
    *
@@ -720,7 +720,7 @@ export namespace wx {
    *       console.log(`device ${res.deviceId} state has changed, connected: ${res.connected}`)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbleconnectionstatechangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxonbleconnectionstatechangecallback
    */
   function onBLEConnectionStateChange(CALLBACK: onBLEConnectionStateChange.Param): void
 
@@ -800,7 +800,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbledeviceservicesobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetbledeviceservicesobject
    */
   function getBLEDeviceServices(OBJECT: getBLEDeviceServices.Param): void
 
@@ -908,7 +908,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbledevicecharacteristicsobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetbledevicecharacteristicsobject
    */
   function getBLEDeviceCharacteristics(OBJECT: getBLEDeviceCharacteristics.Param): void
 
@@ -992,7 +992,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxreadblecharacteristicvalueobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxreadblecharacteristicvalueobject
    */
   function readBLECharacteristicValue(OBJECT: readBLECharacteristicValue.Param): void
 
@@ -1082,7 +1082,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxwriteblecharacteristicvalueobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxwriteblecharacteristicvalueobject
    */
   function writeBLECharacteristicValue(OBJECT: writeBLECharacteristicValue.Param): void
 
@@ -1164,7 +1164,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxnotifyblecharacteristicvaluechangeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxnotifyblecharacteristicvaluechangeobject
    */
   function notifyBLECharacteristicValueChange(OBJECT: notifyBLECharacteristicValueChange.Param): void
 
@@ -1212,7 +1212,7 @@ export namespace wx {
    *       console.log(ab2hext(res.value))
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonblecharacteristicvaluechangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxonblecharacteristicvaluechangecallback
    */
   function onBLECharacteristicValueChange(CALLBACK: onBLECharacteristicValueChange.Param): void
 

@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/setEnableDebug.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/setEnableDebug.html
 
 export namespace wx {
   namespace setEnableDebug {
@@ -57,7 +57,7 @@ export namespace wx {
    *         enableDebug: false
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setEnableDebug.html#wxsetenabledebugobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setEnableDebug.html#wxsetenabledebugobject
    */
   function setEnableDebug(OBJECT: setEnableDebug.Param): void
 

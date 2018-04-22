@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html
 
 export namespace wx {
   namespace onAccelerometerChange {
@@ -30,7 +30,7 @@ export namespace wx {
    *       console.log(res.z)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxonaccelerometerchangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html#wxonaccelerometerchangecallback
    */
   function onAccelerometerChange(CALLBACK: onAccelerometerChange.Param): void
 
@@ -72,7 +72,7 @@ export namespace wx {
    *     ```javascript
    *     wx.startAccelerometer()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstartaccelerometerobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html#wxstartaccelerometerobject
    */
   function startAccelerometer(OBJECT: startAccelerometer.Param): void
 
@@ -114,7 +114,7 @@ export namespace wx {
    *     ```javascript
    *     wx.stopAccelerometer()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstopaccelerometerobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html#wxstopaccelerometerobject
    */
   function stopAccelerometer(OBJECT: stopAccelerometer.Param): void
 

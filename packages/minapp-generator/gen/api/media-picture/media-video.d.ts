@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-video.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/media-video.html
 
 export namespace wx {
   namespace chooseVideo {
@@ -20,7 +20,7 @@ export namespace wx {
       /**
        * 接口调用成功，返回视频文件的临时文件路径，详见返回参数说明
        *
-       * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html)，在小程序下次启动时才能访问得到。**
+       * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://developers.weixin.qq.com/miniprogram/dev/api/file.html)，在小程序下次启动时才能访问得到。**
        */
       success?: ParamPropSuccess
       /**
@@ -35,7 +35,7 @@ export namespace wx {
     /**
      * 接口调用成功，返回视频文件的临时文件路径，详见返回参数说明
      *
-     * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html)，在小程序下次启动时才能访问得到。**
+     * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://developers.weixin.qq.com/miniprogram/dev/api/file.html)，在小程序下次启动时才能访问得到。**
      */
     type ParamPropSuccess = (res: ParamPropSuccessParam) => any
     type ParamPropSuccessParam = {
@@ -100,7 +100,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-video.html#wxchoosevideoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-video.html#wxchoosevideoobject
    */
   function chooseVideo(OBJECT: chooseVideo.Param): void
 
@@ -145,7 +145,7 @@ export namespace wx {
   /**
    * @since 1.2.0
    *
-   * 保存视频到系统相册。需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.writePhotosAlbum
+   * 保存视频到系统相册。需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.writePhotosAlbum
    *
    * **Bug & Tip：**
    *
@@ -159,7 +159,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-video.html#wxsavevideotophotosalbumobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-video.html#wxsavevideotophotosalbumobject
    */
   function saveVideoToPhotosAlbum(OBJECT: saveVideoToPhotosAlbum.Param): void
 

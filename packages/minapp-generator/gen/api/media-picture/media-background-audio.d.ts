@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html
 
 export namespace wx {
   namespace getBackgroundAudioPlayerState {
@@ -52,7 +52,7 @@ export namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * **注意：1.2.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getBackgroundAudioManager](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getBackgroundAudioManager.html) 接口**
+   * **注意：1.2.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getBackgroundAudioManager](https://developers.weixin.qq.com/miniprogram/dev/api/getBackgroundAudioManager.html) 接口**
    *
    * 获取后台音乐播放状态。
    *
@@ -69,7 +69,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxgetbackgroundaudioplayerstateobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxgetbackgroundaudioplayerstateobject
    */
   function getBackgroundAudioPlayerState(OBJECT: getBackgroundAudioPlayerState.Param): void
 
@@ -125,7 +125,7 @@ export namespace wx {
    *         coverImgUrl: ''
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxplaybackgroundaudioobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxplaybackgroundaudioobject
    */
   function playBackgroundAudio(OBJECT: playBackgroundAudio.Param): void
 
@@ -139,7 +139,7 @@ export namespace wx {
    *     ```javascript
    *     wx.pauseBackgroundAudio()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxpausebackgroundaudio
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxpausebackgroundaudio
    */
   function pauseBackgroundAudio(): void
 
@@ -185,7 +185,7 @@ export namespace wx {
    *         position: 30
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxseekbackgroundaudioobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxseekbackgroundaudioobject
    */
   function seekBackgroundAudio(OBJECT: seekBackgroundAudio.Param): void
 
@@ -199,19 +199,19 @@ export namespace wx {
    *     ```javascript
    *     wx.stopBackgroundAudio()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxstopbackgroundaudio
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxstopbackgroundaudio
    */
   function stopBackgroundAudio(): void
 
   /**
    * 监听音乐播放。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudioplaycallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxonbackgroundaudioplaycallback
    */
   function onBackgroundAudioPlay(CALLBACK: any): void
 
   /**
    * 监听音乐暂停。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudiopausecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxonbackgroundaudiopausecallback
    */
   function onBackgroundAudioPause(CALLBACK: any): void
 
@@ -221,7 +221,7 @@ export namespace wx {
    * **bug & tip：**
    *
    * 1.  `bug`: `iOS` `6.3.30` wx.seekBackgroundAudio 会有短暂延迟
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudiostopcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxonbackgroundaudiostopcallback
    */
   function onBackgroundAudioStop(CALLBACK: any): void
 

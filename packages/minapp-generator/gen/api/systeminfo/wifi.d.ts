@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html
 
 export namespace wx {
   namespace startWifi {
@@ -43,7 +43,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxstartwifiobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxstartwifiobject
    */
   function startWifi(OBJECT: startWifi.Param): void
 
@@ -89,7 +89,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxstopwifiobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxstopwifiobject
    */
   function stopWifi(OBJECT: stopWifi.Param): void
 
@@ -149,7 +149,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxconnectwifiobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxconnectwifiobject
    */
   function connectWifi(OBJECT: connectWifi.Param): void
 
@@ -185,7 +185,7 @@ export namespace wx {
    * @since 1.6.0
    *
    * 请求获取 Wi-Fi 列表，在 `onGetWifiList` 注册的回调中返回 wifiList 数据。iOS 将跳转到系统的 Wi-Fi 界面，Android 不会跳转。 **iOS 11.0 及 iOS 11.1 两个版本因系统问题，该方法失效。但在 iOS 11.2 中已修复。**
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxgetwifilistobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxgetwifilistobject
    */
   function getWifiList(OBJECT: getWifiList.Param): void
 
@@ -224,7 +224,7 @@ export namespace wx {
    * @since 1.6.0
    *
    * 监听在获取到 Wi-Fi 列表数据时的事件，在回调中将返回 wifiList。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxongetwifilistcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxongetwifilistcallback
    */
   function onGetWifiList(CALLBACK: onGetWifiList.Param): void
 
@@ -309,7 +309,7 @@ export namespace wx {
    *     })
    *     wx.getWifiList()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxsetwifilistobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxsetwifilistobject
    */
   function setWifiList(OBJECT: setWifiList.Param): void
 
@@ -347,7 +347,7 @@ export namespace wx {
    * @since 1.6.0
    *
    * 监听连接上 Wi-Fi 的事件。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxonwificonnectedcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxonwificonnectedcallback
    */
   function onWifiConnected(CALLBACK: onWifiConnected.Param): void
 
@@ -430,7 +430,7 @@ export namespace wx {
    *   12009   |  system config err       | 系统运营商配置拒绝连接 Wi-Fi 
    *   12010   |  system internal error   |系统其他错误，需要在errmsg打印具体的错误原因
    *   12011   |  weapp in background     |  应用在后台无法配置 Wi-Fi    
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxgetconnectedwifiobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxgetconnectedwifiobject
    */
   function getConnectedWifi(OBJECT: getConnectedWifi.Param): void
 

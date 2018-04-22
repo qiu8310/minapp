@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/data.html
 
 export namespace wx {
   namespace setStorage {
@@ -48,7 +48,7 @@ export namespace wx {
    *       data:"value"
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxsetstorageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxsetstorageobject
    */
   function setStorage(OBJECT: setStorage.Param): void
 
@@ -63,7 +63,7 @@ export namespace wx {
    *     } catch (e) {    
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxsetstoragesynckeydata
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxsetstoragesynckeydata
    */
   function setStorageSync(key: string, data: any | string): void
 
@@ -118,7 +118,7 @@ export namespace wx {
    *       } 
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxgetstorageobject
    */
   function getStorage(OBJECT: getStorage.Param): void
 
@@ -137,7 +137,7 @@ export namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstoragesynckey
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxgetstoragesynckey
    */
   function getStorageSync(key: string): any | undefined
 
@@ -197,7 +197,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxgetstorageinfoobject
    */
   function getStorageInfo(OBJECT: getStorageInfo.Param): void
 
@@ -232,7 +232,7 @@ export namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageinfosync
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxgetstorageinfosync
    */
   function getStorageInfoSync(): getStorageInfoSync.Return
 
@@ -281,7 +281,7 @@ export namespace wx {
    *       } 
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxremovestorageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxremovestorageobject
    */
   function removeStorage(OBJECT: removeStorage.Param): void
 
@@ -297,7 +297,7 @@ export namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxremovestoragesynckey
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxremovestoragesynckey
    */
   function removeStorageSync(key: string): void
 
@@ -309,7 +309,7 @@ export namespace wx {
    *     ```javascript
    *     wx.clearStorage()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxclearstorage
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxclearstorage
    */
   function clearStorage(): void
 
@@ -329,7 +329,7 @@ export namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxclearstoragesync
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxclearstoragesync
    */
   function clearStorageSync(): void
 

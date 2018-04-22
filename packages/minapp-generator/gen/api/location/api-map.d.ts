@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-map.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-map.html
 
 export namespace wx {
   /**
@@ -68,7 +68,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-map.html#wxcreatemapcontextmapid-this
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-map.html#wxcreatemapcontextmapid-this
    */
   function createMapContext(mapId: any, instance?: any): MapContext
 
@@ -212,7 +212,7 @@ export namespace wx {
   }
   class MapContext {
     /**
-     * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject)
+     * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxopenlocationobject)
      */
     getCenterLocation(OBJECT: MapContext.getCenterLocation.Param): any
     /**

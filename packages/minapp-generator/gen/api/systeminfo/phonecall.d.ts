@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/phonecall.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/phonecall.html
 
 export namespace wx {
   namespace makePhoneCall {
@@ -42,7 +42,7 @@ export namespace wx {
    *       phoneNumber: '1340000' //仅为示例，并非真实的电话号码
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/phonecall.html#wxmakephonecallobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/phonecall.html#wxmakephonecallobject
    */
   function makePhoneCall(OBJECT: makePhoneCall.Param): void
 

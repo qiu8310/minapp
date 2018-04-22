@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSoterEnrolledInDevice.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/checkIsSoterEnrolledInDevice.html
 
 export namespace wx {
   namespace checkIsSoterEnrolledInDevice {
@@ -66,7 +66,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSoterEnrolledInDevice.html#wxcheckissoterenrolledindeviceobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/checkIsSoterEnrolledInDevice.html#wxcheckissoterenrolledindeviceobject
    */
   function checkIsSoterEnrolledInDevice(OBJECT: checkIsSoterEnrolledInDevice.Param): void
 

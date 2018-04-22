@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-animation.html
 
 export namespace wx {
   namespace createAnimation {
@@ -42,7 +42,7 @@ export namespace wx {
     }
   }
   /**
-   * 创建一个动画实例[animation](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html#animation)。调用实例的方法来描述动画。最后通过动画实例的`export`方法导出动画数据传递给组件的`animation`属性。
+   * 创建一个动画实例[animation](https://developers.weixin.qq.com/miniprogram/dev/api/api-animation.html#animation)。调用实例的方法来描述动画。最后通过动画实例的`export`方法导出动画数据传递给组件的`animation`属性。
    *
    * **注意: `export` 方法每次调用后会清掉之前的动画操作**
    *
@@ -56,7 +56,7 @@ export namespace wx {
    *       delay: 0
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html#wxcreateanimationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-animation.html#wxcreateanimationobject
    */
   function createAnimation(OBJECT: createAnimation.Param): Animation
 

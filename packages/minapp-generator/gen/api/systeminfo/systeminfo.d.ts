@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/systeminfo.html
 
 export namespace wx {
   namespace getSystemInfo {
@@ -117,7 +117,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html#wxgetsysteminfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/systeminfo.html#wxgetsysteminfoobject
    */
   function getSystemInfo(OBJECT: getSystemInfo.Param): void
 
@@ -212,7 +212,7 @@ export namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html#wxgetsysteminfosync
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/systeminfo.html#wxgetsysteminfosync
    */
   function getSystemInfoSync(): getSystemInfoSync.Return
 

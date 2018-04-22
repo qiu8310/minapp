@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html
 
 export namespace wx {
   namespace startBeaconDiscovery {
@@ -52,7 +52,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxstartbeacondiscoveryobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxstartbeacondiscoveryobject
    */
   function startBeaconDiscovery(OBJECT: startBeaconDiscovery.Param): void
 
@@ -94,7 +94,7 @@ export namespace wx {
    * @since 1.2.0
    *
    * 停止搜索附近的`iBeacon`设备
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxstopbeacondiscoveryobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxstopbeacondiscoveryobject
    */
   function stopBeaconDiscovery(OBJECT: stopBeaconDiscovery.Param): void
 
@@ -170,7 +170,7 @@ export namespace wx {
    * @since 1.2.0
    *
    * 获取所有已搜索到的`iBeacon`设备
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxgetbeaconsobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxgetbeaconsobject
    */
   function getBeacons(OBJECT: getBeacons.Param): void
 
@@ -217,7 +217,7 @@ export namespace wx {
    * @since 1.2.0
    *
    * 监听 `iBeacon` 设备的更新事件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxonbeaconupdatecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxonbeaconupdatecallback
    */
   function onBeaconUpdate(CALLBACK: onBeaconUpdate.Param): void
 
@@ -238,7 +238,7 @@ export namespace wx {
    * @since 1.2.0
    *
    * 监听 `iBeacon` 服务的状态变化
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxonbeaconservicechangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxonbeaconservicechangecallback
    */
   function onBeaconServiceChange(CALLBACK: onBeaconServiceChange.Param): void
 

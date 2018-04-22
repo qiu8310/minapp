@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/phone-contact.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/phone-contact.html
 
 export namespace wx {
   namespace addPhoneContact {
@@ -169,7 +169,7 @@ export namespace wx {
    *   success   |  ok               |  添加成功             
    *   fail      |  fail cancel      |  用户取消操作         
    *   fail      |  fail ${detail}   |调用失败，detail 加上详细信息
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/phone-contact.html#wxaddphonecontactobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/phone-contact.html#wxaddphonecontactobject
    */
   function addPhoneContact(OBJECT: addPhoneContact.Param): void
 

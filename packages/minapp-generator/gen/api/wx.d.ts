@@ -1,4 +1,4 @@
-// Generated at 2018-3-9
+// Generated at 2018-4-22
 declare namespace wx {
   namespace request {
     type Param = {
@@ -96,7 +96,7 @@ declare namespace wx {
     type ReturnPropAbort = () => any
   }
   /**
-   * 发起网络请求。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+   * 发起网络请求。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
    *
    * **返回值：**
    *
@@ -147,7 +147,7 @@ declare namespace wx {
    *
    *     requestTask.abort() // 取消请求任务
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html#wxrequestobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-request.html#wxrequestobject
    */
   function request(OBJECT: request.Param): request.Return
 
@@ -247,9 +247,9 @@ declare namespace wx {
     type ReturnPropAbort = () => any
   }
   /**
-   * 将本地资源上传到开发者服务器，客户端发起一个 HTTPS POST 请求，其中 `content-type` 为 `multipart/form-data` 。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+   * 将本地资源上传到开发者服务器，客户端发起一个 HTTPS POST 请求，其中 `content-type` 为 `multipart/form-data` 。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
    *
-   * 如页面通过 [wx.chooseImage](https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxchooseimageobject) 等接口获取到一个本地资源的临时文件路径后，可通过此接口将本地资源上传到指定服务器。
+   * 如页面通过 [wx.chooseImage](https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxchooseimageobject) 等接口获取到一个本地资源的临时文件路径后，可通过此接口将本地资源上传到指定服务器。
    *
    * **返回值：**
    *
@@ -303,7 +303,7 @@ declare namespace wx {
    *
    *     uploadTask.abort() // 取消上传任务
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxuploadfileobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-file.html#wxuploadfileobject
    */
   function uploadFile(OBJECT: uploadFile.Param): uploadFile.Return
 
@@ -391,7 +391,7 @@ declare namespace wx {
     type ReturnPropAbort = () => any
   }
   /**
-   * 下载文件资源到本地，客户端直接发起一个 HTTP GET 请求，返回文件的本地临时路径。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+   * 下载文件资源到本地，客户端直接发起一个 HTTP GET 请求，返回文件的本地临时路径。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
    *
    * **返回值：**
    *
@@ -439,7 +439,7 @@ declare namespace wx {
    *
    *     downloadTask.abort() // 取消下载任务
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxdownloadfileobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-file.html#wxdownloadfileobject
    */
   function downloadFile(OBJECT: downloadFile.Param): downloadFile.Return
 
@@ -490,9 +490,9 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 创建一个 [WebSocket](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket) 连接。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+   * 创建一个 [WebSocket](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket) 连接。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
    *
-   * **基础库 1.7.0 之前，一个微信小程序同时只能有一个 WebSocket 连接，如果当前已存在一个 WebSocket 连接，会自动关闭该连接，并重新创建一个 WebSocket 连接。基础库版本 1.7.0 及以后，支持存在多个 WebSokcet 连接，每次成功调用 wx.connectSocket 会返回一个新的 [SocketTask](https://mp.weixin.qq.com/debug/wxadoc/dev/api/socket-task.html)。**
+   * **基础库 1.7.0 之前，一个微信小程序同时只能有一个 WebSocket 连接，如果当前已存在一个 WebSocket 连接，会自动关闭该连接，并重新创建一个 WebSocket 连接。基础库版本 1.7.0 及以后，支持存在多个 WebSokcet 连接，每次成功调用 wx.connectSocket 会返回一个新的 [SocketTask](https://developers.weixin.qq.com/miniprogram/dev/api/socket-task.html)。**
    *
    * **示例代码：**
    *
@@ -510,7 +510,7 @@ declare namespace wx {
    *       method:"GET"
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxconnectsocketobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxconnectsocketobject
    */
   function connectSocket(OBJECT: connectSocket.Param): SocketTask
 
@@ -527,7 +527,7 @@ declare namespace wx {
    *       console.log('WebSocket连接已打开！')
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketopencallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketopencallback
    */
   function onSocketOpen(CALLBACK: any): void
 
@@ -547,7 +547,7 @@ declare namespace wx {
    *       console.log('WebSocket连接打开失败，请检查！')
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketerrorcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketerrorcallback
    */
   function onSocketError(CALLBACK: any): void
 
@@ -584,7 +584,7 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 通过 WebSocket 连接发送数据，需要先 [wx.connectSocket](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxconnectsocketobject)，并在 [wx.onSocketOpen](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketopencallback) 回调之后才能发送。
+   * 通过 WebSocket 连接发送数据，需要先 [wx.connectSocket](https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxconnectsocketobject)，并在 [wx.onSocketOpen](https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketopencallback) 回调之后才能发送。
    *
    * **示例代码：**
    *
@@ -613,7 +613,7 @@ declare namespace wx {
    *       }
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxsendsocketmessageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxsendsocketmessageobject
    */
   function sendSocketMessage(OBJECT: sendSocketMessage.Param): void
 
@@ -640,7 +640,7 @@ declare namespace wx {
    *       console.log('收到服务器内容：' + res.data)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketmessagecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketmessagecallback
    */
   function onSocketMessage(CALLBACK: onSocketMessage.Param): void
 
@@ -686,7 +686,7 @@ declare namespace wx {
   }
   /**
    * 关闭 WebSocket 连接。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxclosesocketobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxclosesocketobject
    */
   function closeSocket(OBJECT: closeSocket.Param): void
 
@@ -697,7 +697,7 @@ declare namespace wx {
    *
    * @since 1.7.0
    *
-   * 返回一个 [SocketTask](https://mp.weixin.qq.com/debug/wxadoc/dev/api/socket-task.html)。
+   * 返回一个 [SocketTask](https://developers.weixin.qq.com/miniprogram/dev/api/socket-task.html)。
    *
    * **Bug & Tip：**
    *
@@ -721,7 +721,7 @@ declare namespace wx {
    *       console.log('WebSocket 已关闭！')
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketclosecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketclosecallback
    */
   function onSocketClose(CALLBACK: any): void
 
@@ -816,7 +816,7 @@ declare namespace wx {
   /**
    * @since 1.7.0
    *
-   * WebSocket 任务，可通过 [wx.connectSocket()](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html) 接口创建返回。
+   * WebSocket 任务，可通过 [wx.connectSocket()](https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html) 接口创建返回。
    */
   class SocketTask {
     /**
@@ -944,7 +944,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxchooseimageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxchooseimageobject
    */
   function chooseImage(OBJECT: chooseImage.Param): void
 
@@ -995,7 +995,7 @@ declare namespace wx {
    *       urls: [] // 需要预览的图片http链接列表
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxpreviewimageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxpreviewimageobject
    */
   function previewImage(OBJECT: previewImage.Param): void
 
@@ -1096,7 +1096,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxgetimageinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxgetimageinfoobject
    */
   function getImageInfo(OBJECT: getImageInfo.Param): void
 
@@ -1141,7 +1141,7 @@ declare namespace wx {
   /**
    * @since 1.2.0
    *
-   * 保存图片到系统相册。需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.writePhotosAlbum
+   * 保存图片到系统相册。需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.writePhotosAlbum
    *
    * **示例代码：**
    *
@@ -1151,7 +1151,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxsaveimagetophotosalbumobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxsaveimagetophotosalbumobject
    */
   function saveImageToPhotosAlbum(OBJECT: saveImageToPhotosAlbum.Param): void
 
@@ -1190,12 +1190,12 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getRecorderManager](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getRecorderManager.html) 接口**
+   * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getRecorderManager](https://developers.weixin.qq.com/miniprogram/dev/api/getRecorderManager.html) 接口**
    *
    * 开始录音。当主动调用`wx.stopRecord`，或者录音超过1分钟时自动结束录音，返回录音文件的临时文件路径。当用户离开小程序时，此接口无法调用。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.record
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-record.html#wxstartrecordobject
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.record
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-record.html#wxstartrecordobject
    */
   function startRecord(OBJECT: startRecord.Param): void
 
@@ -1218,7 +1218,7 @@ declare namespace wx {
    *       wx.stopRecord()
    *     }, 10000)
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-record.html#wxstoprecord
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-record.html#wxstoprecord
    */
   function stopRecord(): void
 
@@ -1275,7 +1275,7 @@ declare namespace wx {
    *
    *     recorderManager.start(options)
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getRecorderManager.html#wxgetrecordermanager
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/getRecorderManager.html#wxgetrecordermanager
    */
   function getRecorderManager(): RecorderManager
 
@@ -1417,7 +1417,7 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html) 接口**
+   * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://developers.weixin.qq.com/miniprogram/dev/api/createInnerAudioContext.html) 接口**
    *
    * 开始播放语音，同时只允许一个语音文件正在播放，如果前一个语音文件还没播放完，将中断前一个语音播放。
    *
@@ -1435,7 +1435,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxplayvoiceobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-voice.html#wxplayvoiceobject
    */
   function playVoice(OBJECT: playVoice.Param): void
 
@@ -1459,7 +1459,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxpausevoice
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-voice.html#wxpausevoice
    */
   function pauseVoice(): void
 
@@ -1482,7 +1482,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-voice.html#wxstopvoice
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-voice.html#wxstopvoice
    */
   function stopVoice(): void
 
@@ -1537,7 +1537,7 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * **注意：1.2.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getBackgroundAudioManager](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getBackgroundAudioManager.html) 接口**
+   * **注意：1.2.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.getBackgroundAudioManager](https://developers.weixin.qq.com/miniprogram/dev/api/getBackgroundAudioManager.html) 接口**
    *
    * 获取后台音乐播放状态。
    *
@@ -1554,7 +1554,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxgetbackgroundaudioplayerstateobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxgetbackgroundaudioplayerstateobject
    */
   function getBackgroundAudioPlayerState(OBJECT: getBackgroundAudioPlayerState.Param): void
 
@@ -1610,7 +1610,7 @@ declare namespace wx {
    *         coverImgUrl: ''
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxplaybackgroundaudioobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxplaybackgroundaudioobject
    */
   function playBackgroundAudio(OBJECT: playBackgroundAudio.Param): void
 
@@ -1624,7 +1624,7 @@ declare namespace wx {
    *     ```javascript
    *     wx.pauseBackgroundAudio()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxpausebackgroundaudio
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxpausebackgroundaudio
    */
   function pauseBackgroundAudio(): void
 
@@ -1670,7 +1670,7 @@ declare namespace wx {
    *         position: 30
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxseekbackgroundaudioobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxseekbackgroundaudioobject
    */
   function seekBackgroundAudio(OBJECT: seekBackgroundAudio.Param): void
 
@@ -1684,19 +1684,19 @@ declare namespace wx {
    *     ```javascript
    *     wx.stopBackgroundAudio()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxstopbackgroundaudio
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxstopbackgroundaudio
    */
   function stopBackgroundAudio(): void
 
   /**
    * 监听音乐播放。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudioplaycallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxonbackgroundaudioplaycallback
    */
   function onBackgroundAudioPlay(CALLBACK: any): void
 
   /**
    * 监听音乐暂停。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudiopausecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxonbackgroundaudiopausecallback
    */
   function onBackgroundAudioPause(CALLBACK: any): void
 
@@ -1706,7 +1706,7 @@ declare namespace wx {
    * **bug & tip：**
    *
    * 1.  `bug`: `iOS` `6.3.30` wx.seekBackgroundAudio 会有短暂延迟
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-background-audio.html#wxonbackgroundaudiostopcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-background-audio.html#wxonbackgroundaudiostopcallback
    */
   function onBackgroundAudioStop(CALLBACK: any): void
 
@@ -1732,11 +1732,11 @@ declare namespace wx {
    *
    *     backgroundAudioManager.title = '此时此刻'
    *     backgroundAudioManager.epname = '此时此刻'
-   *     backgroundAudioManager.singer = '汪峰'
+   *     backgroundAudioManager.singer = '许巍'
    *     backgroundAudioManager.coverImgUrl = 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
    *     backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46' // 设置了 src 之后会自动播放
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getBackgroundAudioManager.html#wxgetbackgroundaudiomanager
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/getBackgroundAudioManager.html#wxgetbackgroundaudiomanager
    */
   function getBackgroundAudioManager(): BackgroundAudioManager
 
@@ -1851,7 +1851,7 @@ declare namespace wx {
     onWaiting(callback: any): any
   }
   /**
-   * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html) 接口**
+   * **注意：1.6.0 版本开始，本接口不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://developers.weixin.qq.com/miniprogram/dev/api/createInnerAudioContext.html) 接口**
    *
    * 创建并返回 audio 上下文 `audioContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<audio/>` 组件
    *
@@ -1899,7 +1899,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-audio.html#wxcreateaudiocontextaudioid-this
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-audio.html#wxcreateaudiocontextaudioid-this
    */
   function createAudioContext(audioId: any, instance?: any): AudioContext
 
@@ -1950,7 +1950,7 @@ declare namespace wx {
    *         console.log(res.errCode)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/createInnerAudioContext.html#wxcreateinneraudiocontext
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/createInnerAudioContext.html#wxcreateinneraudiocontext
    */
   function createInnerAudioContext(): InnerAudioContext
 
@@ -2085,7 +2085,7 @@ declare namespace wx {
       /**
        * 接口调用成功，返回视频文件的临时文件路径，详见返回参数说明
        *
-       * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html)，在小程序下次启动时才能访问得到。**
+       * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://developers.weixin.qq.com/miniprogram/dev/api/file.html)，在小程序下次启动时才能访问得到。**
        */
       success?: ParamPropSuccess
       /**
@@ -2100,7 +2100,7 @@ declare namespace wx {
     /**
      * 接口调用成功，返回视频文件的临时文件路径，详见返回参数说明
      *
-     * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html)，在小程序下次启动时才能访问得到。**
+     * **注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://developers.weixin.qq.com/miniprogram/dev/api/file.html)，在小程序下次启动时才能访问得到。**
      */
     type ParamPropSuccess = (res: ParamPropSuccessParam) => any
     type ParamPropSuccessParam = {
@@ -2165,7 +2165,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-video.html#wxchoosevideoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-video.html#wxchoosevideoobject
    */
   function chooseVideo(OBJECT: chooseVideo.Param): void
 
@@ -2210,7 +2210,7 @@ declare namespace wx {
   /**
    * @since 1.2.0
    *
-   * 保存视频到系统相册。需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.writePhotosAlbum
+   * 保存视频到系统相册。需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.writePhotosAlbum
    *
    * **Bug & Tip：**
    *
@@ -2224,7 +2224,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-video.html#wxsavevideotophotosalbumobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-video.html#wxsavevideotophotosalbumobject
    */
   function saveVideoToPhotosAlbum(OBJECT: saveVideoToPhotosAlbum.Param): void
 
@@ -2276,7 +2276,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-video.html#wxcreatevideocontextvideoid-this
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-video.html#wxcreatevideocontextvideoid-this
    */
   function createVideoContext(videoId: any, instance?: any): VideoContext
 
@@ -2320,7 +2320,7 @@ declare namespace wx {
    * @since 1.6.0
    *
    * 创建并返回 camera 上下文 `cameraContext` 对象，`cameraContext` 与页面的 `camera` 组件绑定，一个页面只能有一个camera，通过它可以操作对应的 `<camera/>` 组件。 在自定义组件下，第一个参数传入组件实例this，以操作组件内 `<camera/>` 组件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-camera.html#wxcreatecameracontextthis
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-camera.html#wxcreatecameracontextthis
    */
   function createCameraContext(instance?: any): CameraContext
 
@@ -2440,7 +2440,7 @@ declare namespace wx {
    * @since 1.7.0
    *
    * 操作对应的 `<live-player/>` 组件。 创建并返回 `live-player` 上下文 `LivePlayerContext` 对象。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<live-player/>` 组件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-player.html#wxcreateliveplayercontextdomid-this
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-live-player.html#wxcreateliveplayercontextdomid-this
    */
   function createLivePlayerContext(domId: any, instance?: any): LivePlayerContext
 
@@ -2502,6 +2502,62 @@ declare namespace wx {
       type ParamPropComplete = () => any
     }
     namespace mute {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace pause {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
+    namespace resume {
       type Param = {
         /**
          * 接口调用成功的回调函数
@@ -2604,6 +2660,18 @@ declare namespace wx {
      */
     mute(OBJECT: LivePlayerContext.mute.Param): any
     /**
+     * 暂停
+     *
+     * @since 1.9.90
+     */
+    pause(OBJECT: LivePlayerContext.pause.Param): any
+    /**
+     * 恢复
+     *
+     * @since 1.9.90
+     */
+    resume(OBJECT: LivePlayerContext.resume.Param): any
+    /**
      * 进入全屏
      */
     requestFullScreen(OBJECT: LivePlayerContext.requestFullScreen.Param): any
@@ -2616,7 +2684,7 @@ declare namespace wx {
    * @since 1.7.0
    *
    * 创建并返回 `live-pusher` 上下文 `LivePusherContext` 对象，`LivePusherContext` 与页面的 `<live-pusher />` 组件绑定，一个页面只能有一个 `live-pusher`，通过它可以操作对应的 `<live-pusher/>` 组件。 在自定义组件下，第一个参数传入组件实例this，以操作组件内 `<live-pusher/>` 组件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-pusher.html#wxcreatelivepushercontext
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-live-pusher.html#wxcreatelivepushercontext
    */
   function createLivePusherContext(): LivePusherContext
 
@@ -2878,7 +2946,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxsavefileobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxsavefileobject
    */
   function saveFile(OBJECT: saveFile.Param): void
 
@@ -2950,7 +3018,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxgetsavedfilelistobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxgetsavedfilelistobject
    */
   function getSavedFileList(OBJECT: getSavedFileList.Param): void
 
@@ -3001,7 +3069,7 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 [wx.getFileInfo](https://mp.weixin.qq.com/debug/wxadoc/dev/api/getFileInfo.html) 接口。
+   * 获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 [wx.getFileInfo](https://developers.weixin.qq.com/miniprogram/dev/api/getFileInfo.html) 接口。
    *
    * **示例代码：**
    *
@@ -3014,7 +3082,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxgetsavedfileinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxgetsavedfileinfoobject
    */
   function getSavedFileInfo(OBJECT: getSavedFileInfo.Param): void
 
@@ -3069,7 +3137,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxremovesavedfileobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxremovesavedfileobject
    */
   function removeSavedFile(OBJECT: removeSavedFile.Param): void
 
@@ -3130,7 +3198,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/file.html#wxopendocumentobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/file.html#wxopendocumentobject
    */
   function openDocument(OBJECT: openDocument.Param): void
 
@@ -3199,7 +3267,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getFileInfo.html#wxgetfileinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/getFileInfo.html#wxgetfileinfoobject
    */
   function getFileInfo(OBJECT: getFileInfo.Param): void
 
@@ -3250,7 +3318,7 @@ declare namespace wx {
    *       data:"value"
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxsetstorageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxsetstorageobject
    */
   function setStorage(OBJECT: setStorage.Param): void
 
@@ -3265,7 +3333,7 @@ declare namespace wx {
    *     } catch (e) {    
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxsetstoragesynckeydata
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxsetstoragesynckeydata
    */
   function setStorageSync(key: string, data: any | string): void
 
@@ -3320,7 +3388,7 @@ declare namespace wx {
    *       } 
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxgetstorageobject
    */
   function getStorage(OBJECT: getStorage.Param): void
 
@@ -3339,7 +3407,7 @@ declare namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstoragesynckey
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxgetstoragesynckey
    */
   function getStorageSync(key: string): any | undefined
 
@@ -3399,7 +3467,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxgetstorageinfoobject
    */
   function getStorageInfo(OBJECT: getStorageInfo.Param): void
 
@@ -3434,7 +3502,7 @@ declare namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxgetstorageinfosync
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxgetstorageinfosync
    */
   function getStorageInfoSync(): getStorageInfoSync.Return
 
@@ -3483,7 +3551,7 @@ declare namespace wx {
    *       } 
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxremovestorageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxremovestorageobject
    */
   function removeStorage(OBJECT: removeStorage.Param): void
 
@@ -3499,7 +3567,7 @@ declare namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxremovestoragesynckey
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxremovestoragesynckey
    */
   function removeStorageSync(key: string): void
 
@@ -3511,7 +3579,7 @@ declare namespace wx {
    *     ```javascript
    *     wx.clearStorage()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxclearstorage
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxclearstorage
    */
   function clearStorage(): void
 
@@ -3531,7 +3599,7 @@ declare namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxclearstoragesync
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/data.html#wxclearstoragesync
    */
   function clearStorageSync(): void
 
@@ -3625,7 +3693,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxgetlocationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxgetlocationobject
    */
   function getLocation(OBJECT: getLocation.Param): void
 
@@ -3678,8 +3746,8 @@ declare namespace wx {
   /**
    * 打开地图选择位置。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userLocation
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxchooselocationobject
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userLocation
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxchooselocationobject
    */
   function chooseLocation(OBJECT: chooseLocation.Param): void
 
@@ -3734,7 +3802,7 @@ declare namespace wx {
   /**
    * ​使用微信内置地图查看位置。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userLocation
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userLocation
    *
    * **Bug & Tip：**
    *
@@ -3756,7 +3824,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxopenlocationobject
    */
   function openLocation(OBJECT: openLocation.Param): void
 
@@ -3827,7 +3895,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-map.html#wxcreatemapcontextmapid-this
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-map.html#wxcreatemapcontextmapid-this
    */
   function createMapContext(mapId: any, instance?: any): MapContext
 
@@ -3971,7 +4039,7 @@ declare namespace wx {
   }
   class MapContext {
     /**
-     * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxopenlocationobject)
+     * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 [`wx.openLocation`](https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxopenlocationobject)
      */
     getCenterLocation(OBJECT: MapContext.getCenterLocation.Param): any
     /**
@@ -4119,7 +4187,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html#wxgetsysteminfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/systeminfo.html#wxgetsysteminfoobject
    */
   function getSystemInfo(OBJECT: getSystemInfo.Param): void
 
@@ -4214,7 +4282,7 @@ declare namespace wx {
    *       // Do something when catch error
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/systeminfo.html#wxgetsysteminfosync
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/systeminfo.html#wxgetsysteminfosync
    */
   function getSystemInfoSync(): getSystemInfoSync.Return
 
@@ -4249,7 +4317,7 @@ declare namespace wx {
    *     wx.canIUse('text.selectable')
    *     wx.canIUse('button.open-type.contact')
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-caniuse.html#wxcaniusestring
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-caniuse.html#wxcaniusestring
    */
   function canIUse(String: any): boolean
 
@@ -4301,7 +4369,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxgetnetworktypeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxgetnetworktypeobject
    */
   function getNetworkType(OBJECT: getNetworkType.Param): void
 
@@ -4342,7 +4410,7 @@ declare namespace wx {
    *       console.log(res.networkType)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxonnetworkstatuschangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxonnetworkstatuschangecallback
    */
   function onNetworkStatusChange(CALLBACK: onNetworkStatusChange.Param): void
 
@@ -4382,7 +4450,7 @@ declare namespace wx {
    * @since 1.2.0
    *
    * 设置屏幕亮度。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxsetscreenbrightnessobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxsetscreenbrightnessobject
    */
   function setScreenBrightness(OBJECT: setScreenBrightness.Param): void
 
@@ -4424,7 +4492,7 @@ declare namespace wx {
    * @since 1.2.0
    *
    * 获取屏幕亮度。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxgetscreenbrightnessobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxgetscreenbrightnessobject
    */
   function getScreenBrightness(OBJECT: getScreenBrightness.Param): void
 
@@ -4460,7 +4528,7 @@ declare namespace wx {
    * @since 1.2.0
    *
    * 使手机发生较长时间的振动（400ms）
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxvibratelongobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxvibratelongobject
    */
   function vibrateLong(OBJECT: vibrateLong.Param): void
 
@@ -4501,7 +4569,7 @@ declare namespace wx {
    *
    * 1.  `tip`：`vibrateShort` 接口仅在 iPhone7/iPhone7Plus 及 Android 机型生效
    * 2.  `tip`: `getScreenBrightness` 接口若安卓系统设置中开启了自动调节亮度功能，则屏幕亮度会根据光线自动调整，该接口仅能获取自动调节亮度之前的值，而非实时的亮度值。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/device.html#wxvibrateshortobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/device.html#wxvibrateshortobject
    */
   function vibrateShort(OBJECT: vibrateShort.Param): void
 
@@ -4534,7 +4602,7 @@ declare namespace wx {
    *       console.log(res.z)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxonaccelerometerchangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html#wxonaccelerometerchangecallback
    */
   function onAccelerometerChange(CALLBACK: onAccelerometerChange.Param): void
 
@@ -4576,7 +4644,7 @@ declare namespace wx {
    *     ```javascript
    *     wx.startAccelerometer()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstartaccelerometerobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html#wxstartaccelerometerobject
    */
   function startAccelerometer(OBJECT: startAccelerometer.Param): void
 
@@ -4618,7 +4686,7 @@ declare namespace wx {
    *     ```javascript
    *     wx.stopAccelerometer()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/accelerometer.html#wxstopaccelerometerobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html#wxstopaccelerometerobject
    */
   function stopAccelerometer(OBJECT: stopAccelerometer.Param): void
 
@@ -4641,7 +4709,7 @@ declare namespace wx {
    *       console.log(res.direction)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxoncompasschangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/compass.html#wxoncompasschangecallback
    */
   function onCompassChange(CALLBACK: onCompassChange.Param): void
 
@@ -4683,7 +4751,7 @@ declare namespace wx {
    *     ```javascript
    *     wx.startCompass()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxstartcompassobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/compass.html#wxstartcompassobject
    */
   function startCompass(OBJECT: startCompass.Param): void
 
@@ -4725,7 +4793,7 @@ declare namespace wx {
    *     ```javascript
    *     wx.stopCompass()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxstopcompassobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/compass.html#wxstopcompassobject
    */
   function stopCompass(OBJECT: stopCompass.Param): void
 
@@ -4770,7 +4838,7 @@ declare namespace wx {
    *       phoneNumber: '1340000' //仅为示例，并非真实的电话号码
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/phonecall.html#wxmakephonecallobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/phonecall.html#wxmakephonecallobject
    */
   function makePhoneCall(OBJECT: makePhoneCall.Param): void
 
@@ -4853,7 +4921,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/scancode.html#wxscancodeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/scancode.html#wxscancodeobject
    */
   function scanCode(OBJECT: scanCode.Param): void
 
@@ -4908,7 +4976,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html#wxsetclipboarddataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/clipboard.html#wxsetclipboarddataobject
    */
   function setClipboardData(OBJECT: setClipboardData.Param): void
 
@@ -4960,7 +5028,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/clipboard.html#wxgetclipboarddataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/clipboard.html#wxgetclipboarddataobject
    */
   function getClipboardData(OBJECT: getClipboardData.Param): void
 
@@ -4999,7 +5067,7 @@ declare namespace wx {
    *
    * **Bug & Tip：**
    *
-   * 1.  `tip`: 基础库版本 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+   * 1.  `tip`: 基础库版本 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
    * 2.  `tip`: 在没有调用`wx.openBluetoothAdapter`的情况下调用小程序其它蓝牙模块相关API，API会返回错误，错误码为`10000`
    * 3.  `bug`: 在用户蓝牙开关未开启或者手机不支持蓝牙功能的情况下，调用`wx.openBluetoothAdapter`会返回错误，错误码为`10001`，表示手机蓝牙功能不可用；此时小程序蓝牙模块已经初始化完成，可通过`wx.onBluetoothAdapterStateChange`监听手机蓝牙状态的改变，也可以调用蓝牙模块的所有API。
    *
@@ -5012,7 +5080,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxopenbluetoothadapterobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxopenbluetoothadapterobject
    */
   function openBluetoothAdapter(OBJECT: openBluetoothAdapter.Param): void
 
@@ -5058,7 +5126,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxclosebluetoothadapterobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxclosebluetoothadapterobject
    */
   function closeBluetoothAdapter(OBJECT: closeBluetoothAdapter.Param): void
 
@@ -5118,7 +5186,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbluetoothadapterstateobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetbluetoothadapterstateobject
    */
   function getBluetoothAdapterState(OBJECT: getBluetoothAdapterState.Param): void
 
@@ -5147,7 +5215,7 @@ declare namespace wx {
    *       console.log(`adapterState changed, now is`, res)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbluetoothadapterstatechangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxonbluetoothadapterstatechangecallback
    */
   function onBluetoothAdapterStateChange(CALLBACK: onBluetoothAdapterStateChange.Param): void
 
@@ -5213,7 +5281,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxstartbluetoothdevicesdiscoveryobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxstartbluetoothdevicesdiscoveryobject
    */
   function startBluetoothDevicesDiscovery(OBJECT: startBluetoothDevicesDiscovery.Param): void
 
@@ -5265,7 +5333,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxstopbluetoothdevicesdiscoveryobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxstopbluetoothdevicesdiscoveryobject
    */
   function stopBluetoothDevicesDiscovery(OBJECT: stopBluetoothDevicesDiscovery.Param): void
 
@@ -5375,7 +5443,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbluetoothdevicesobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetbluetoothdevicesobject
    */
   function getBluetoothDevices(OBJECT: getBluetoothDevices.Param): void
 
@@ -5452,7 +5520,7 @@ declare namespace wx {
    *       console.log(ab2hex(devices[0].advertisData))
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbluetoothdevicefoundcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxonbluetoothdevicefoundcallback
    */
   function onBluetoothDeviceFound(CALLBACK: onBluetoothDeviceFound.Param): void
 
@@ -5530,7 +5598,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetconnectedbluetoothdevicesobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetconnectedbluetoothdevicesobject
    */
   function getConnectedBluetoothDevices(OBJECT: getConnectedBluetoothDevices.Param): void
 
@@ -5596,7 +5664,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxcreatebleconnectionobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxcreatebleconnectionobject
    */
   function createBLEConnection(OBJECT: createBLEConnection.Param): void
 
@@ -5653,7 +5721,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxclosebleconnectionobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxclosebleconnectionobject
    */
   function closeBLEConnection(OBJECT: closeBLEConnection.Param): void
 
@@ -5673,7 +5741,7 @@ declare namespace wx {
   /**
    * @since 1.1.1
    *
-   * 监听低功耗蓝牙连接的错误事件，包括设备丢失，连接异常断开等等。
+   * 监听低功耗蓝牙连接状态的改变事件，包括开发者主动连接或断开连接，设备丢失，连接异常断开等等
    *
    * **示例代码：**
    *
@@ -5683,7 +5751,7 @@ declare namespace wx {
    *       console.log(`device ${res.deviceId} state has changed, connected: ${res.connected}`)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonbleconnectionstatechangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxonbleconnectionstatechangecallback
    */
   function onBLEConnectionStateChange(CALLBACK: onBLEConnectionStateChange.Param): void
 
@@ -5763,7 +5831,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbledeviceservicesobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetbledeviceservicesobject
    */
   function getBLEDeviceServices(OBJECT: getBLEDeviceServices.Param): void
 
@@ -5871,7 +5939,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxgetbledevicecharacteristicsobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxgetbledevicecharacteristicsobject
    */
   function getBLEDeviceCharacteristics(OBJECT: getBLEDeviceCharacteristics.Param): void
 
@@ -5955,7 +6023,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxreadblecharacteristicvalueobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxreadblecharacteristicvalueobject
    */
   function readBLECharacteristicValue(OBJECT: readBLECharacteristicValue.Param): void
 
@@ -6045,7 +6113,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxwriteblecharacteristicvalueobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxwriteblecharacteristicvalueobject
    */
   function writeBLECharacteristicValue(OBJECT: writeBLECharacteristicValue.Param): void
 
@@ -6127,7 +6195,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxnotifyblecharacteristicvaluechangeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxnotifyblecharacteristicvaluechangeobject
    */
   function notifyBLECharacteristicValueChange(OBJECT: notifyBLECharacteristicValueChange.Param): void
 
@@ -6175,7 +6243,7 @@ declare namespace wx {
    *       console.log(ab2hext(res.value))
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/bluetooth.html#wxonblecharacteristicvaluechangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/bluetooth.html#wxonblecharacteristicvaluechangecallback
    */
   function onBLECharacteristicValueChange(CALLBACK: onBLECharacteristicValueChange.Param): void
 
@@ -6230,7 +6298,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxstartbeacondiscoveryobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxstartbeacondiscoveryobject
    */
   function startBeaconDiscovery(OBJECT: startBeaconDiscovery.Param): void
 
@@ -6272,7 +6340,7 @@ declare namespace wx {
    * @since 1.2.0
    *
    * 停止搜索附近的`iBeacon`设备
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxstopbeacondiscoveryobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxstopbeacondiscoveryobject
    */
   function stopBeaconDiscovery(OBJECT: stopBeaconDiscovery.Param): void
 
@@ -6348,7 +6416,7 @@ declare namespace wx {
    * @since 1.2.0
    *
    * 获取所有已搜索到的`iBeacon`设备
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxgetbeaconsobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxgetbeaconsobject
    */
   function getBeacons(OBJECT: getBeacons.Param): void
 
@@ -6395,7 +6463,7 @@ declare namespace wx {
    * @since 1.2.0
    *
    * 监听 `iBeacon` 设备的更新事件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxonbeaconupdatecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxonbeaconupdatecallback
    */
   function onBeaconUpdate(CALLBACK: onBeaconUpdate.Param): void
 
@@ -6416,7 +6484,7 @@ declare namespace wx {
    * @since 1.2.0
    *
    * 监听 `iBeacon` 服务的状态变化
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/iBeacon.html#wxonbeaconservicechangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/iBeacon.html#wxonbeaconservicechangecallback
    */
   function onBeaconServiceChange(CALLBACK: onBeaconServiceChange.Param): void
 
@@ -6471,7 +6539,7 @@ declare namespace wx {
    *         keepScreenOn: true
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setKeepScreenOn.html#wxsetkeepscreenonobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setKeepScreenOn.html#wxsetkeepscreenonobject
    */
   function setKeepScreenOn(OBJECT: setKeepScreenOn.Param): void
 
@@ -6487,7 +6555,7 @@ declare namespace wx {
    *         console.log('用户截屏了')
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/onUserCaptureScreen.html#wxonusercapturescreencallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/onUserCaptureScreen.html#wxonusercapturescreencallback
    */
   function onUserCaptureScreen(CALLBACK: any): void
 
@@ -6659,7 +6727,7 @@ declare namespace wx {
    *   success   |  ok               |  添加成功             
    *   fail      |  fail cancel      |  用户取消操作         
    *   fail      |  fail ${detail}   |调用失败，detail 加上详细信息
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/phone-contact.html#wxaddphonecontactobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/phone-contact.html#wxaddphonecontactobject
    */
   function addPhoneContact(OBJECT: addPhoneContact.Param): void
 
@@ -6715,7 +6783,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxgethcestateobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxgethcestateobject
    */
   function getHCEState(OBJECT: getHCEState.Param): void
 
@@ -6776,7 +6844,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxstarthceobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxstarthceobject
    */
   function startHCE(OBJECT: startHCE.Param): void
 
@@ -6832,7 +6900,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxstophceobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxstophceobject
    */
   function stopHCE(OBJECT: stopHCE.Param): void
 
@@ -6860,7 +6928,7 @@ declare namespace wx {
    *
    * *   1：消息为HCE Apdu Command类型，小程序需对此指令进行处理，并调用 `sendHCEMessage` 接口返回处理指令；
    * *   2：消息为设备离场事件
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxonhcemessagecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxonhcemessagecallback
    */
   function onHCEMessage(CALLBACK: onHCEMessage.Param): void
 
@@ -6943,7 +7011,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/nfc.html#wxsendhcemessageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/nfc.html#wxsendhcemessageobject
    */
   function sendHCEMessage(OBJECT: sendHCEMessage.Param): void
 
@@ -6989,7 +7057,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxstartwifiobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxstartwifiobject
    */
   function startWifi(OBJECT: startWifi.Param): void
 
@@ -7035,7 +7103,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxstopwifiobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxstopwifiobject
    */
   function stopWifi(OBJECT: stopWifi.Param): void
 
@@ -7095,7 +7163,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxconnectwifiobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxconnectwifiobject
    */
   function connectWifi(OBJECT: connectWifi.Param): void
 
@@ -7131,7 +7199,7 @@ declare namespace wx {
    * @since 1.6.0
    *
    * 请求获取 Wi-Fi 列表，在 `onGetWifiList` 注册的回调中返回 wifiList 数据。iOS 将跳转到系统的 Wi-Fi 界面，Android 不会跳转。 **iOS 11.0 及 iOS 11.1 两个版本因系统问题，该方法失效。但在 iOS 11.2 中已修复。**
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxgetwifilistobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxgetwifilistobject
    */
   function getWifiList(OBJECT: getWifiList.Param): void
 
@@ -7170,7 +7238,7 @@ declare namespace wx {
    * @since 1.6.0
    *
    * 监听在获取到 Wi-Fi 列表数据时的事件，在回调中将返回 wifiList。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxongetwifilistcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxongetwifilistcallback
    */
   function onGetWifiList(CALLBACK: onGetWifiList.Param): void
 
@@ -7255,7 +7323,7 @@ declare namespace wx {
    *     })
    *     wx.getWifiList()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxsetwifilistobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxsetwifilistobject
    */
   function setWifiList(OBJECT: setWifiList.Param): void
 
@@ -7293,7 +7361,7 @@ declare namespace wx {
    * @since 1.6.0
    *
    * 监听连接上 Wi-Fi 的事件。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxonwificonnectedcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxonwificonnectedcallback
    */
   function onWifiConnected(CALLBACK: onWifiConnected.Param): void
 
@@ -7376,7 +7444,7 @@ declare namespace wx {
    *   12009   |  system config err       | 系统运营商配置拒绝连接 Wi-Fi 
    *   12010   |  system internal error   |系统其他错误，需要在errmsg打印具体的错误原因
    *   12011   |  weapp in background     |  应用在后台无法配置 Wi-Fi    
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/wifi.html#wxgetconnectedwifiobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/wifi.html#wxgetconnectedwifiobject
    */
   function getConnectedWifi(OBJECT: getConnectedWifi.Param): void
 
@@ -7450,7 +7518,7 @@ declare namespace wx {
    *       duration: 2000
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowtoastobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxshowtoastobject
    */
   function showToast(OBJECT: showToast.Param): void
 
@@ -7493,14 +7561,14 @@ declare namespace wx {
   /**
    * @since 1.1.0
    *
-   * 显示 loading 提示框, 需主动调用 [wx.hideLoading](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhideloading) 才能关闭提示框
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowloadingobject
+   * 显示 loading 提示框, 需主动调用 [wx.hideLoading](https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxhideloading) 才能关闭提示框
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxshowloadingobject
    */
   function showLoading(OBJECT: showLoading.Param): void
 
   /**
    * 隐藏消息提示框
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhidetoast
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxhidetoast
    */
   function hideToast(): void
 
@@ -7520,7 +7588,7 @@ declare namespace wx {
    *       wx.hideLoading()
    *     },2000)
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhideloading
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxhideloading
    */
   function hideLoading(): void
 
@@ -7610,7 +7678,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowmodalobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxshowmodalobject
    */
   function showModal(OBJECT: showModal.Param): void
 
@@ -7679,7 +7747,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowactionsheetobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxshowactionsheetobject
    */
   function showActionSheet(OBJECT: showActionSheet.Param): void
 
@@ -7727,7 +7795,7 @@ declare namespace wx {
    *       text: 'hello, world!'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxsettopbartextobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui.html#wxsettopbartextobject
    */
   function setTopBarText(OBJECT: setTopBarText.Param): void
 
@@ -7773,19 +7841,19 @@ declare namespace wx {
    *       title: '当前页面'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxsetnavigationbartitleobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui.html#wxsetnavigationbartitleobject
    */
   function setNavigationBarTitle(OBJECT: setNavigationBarTitle.Param): void
 
   /**
    * 在当前页面显示导航条加载动画。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxshownavigationbarloading
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui.html#wxshownavigationbarloading
    */
   function showNavigationBarLoading(): void
 
   /**
    * 隐藏导航条加载动画。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxhidenavigationbarloading
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui.html#wxhidenavigationbarloading
    */
   function hideNavigationBarLoading(): void
 
@@ -7881,7 +7949,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setNavigationBarColor.html#wxsetnavigationbarcolorobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setNavigationBarColor.html#wxsetnavigationbarcolorobject
    */
   function setNavigationBarColor(OBJECT: setNavigationBarColor.Param): void
 
@@ -7934,7 +8002,7 @@ declare namespace wx {
    *       text: '1'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbarbadgeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxsettabbarbadgeobject
    */
   function setTabBarBadge(OBJECT: setTabBarBadge.Param): void
 
@@ -7974,7 +8042,7 @@ declare namespace wx {
    * @since 1.9.0
    *
    * 移除 tabBar 某一项右上角的文本
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxremovetabbarbadgeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxremovetabbarbadgeobject
    */
   function removeTabBarBadge(OBJECT: removeTabBarBadge.Param): void
 
@@ -8014,7 +8082,7 @@ declare namespace wx {
    * @since 1.9.0
    *
    * 显示 tabBar 某一项的右上角的红点
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxshowtabbarreddotobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxshowtabbarreddotobject
    */
   function showTabBarRedDot(OBJECT: showTabBarRedDot.Param): void
 
@@ -8054,7 +8122,7 @@ declare namespace wx {
    * @since 1.9.0
    *
    * 隐藏 tabBar 某一项的右上角的红点
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxhidetabbarreddotobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxhidetabbarreddotobject
    */
   function hideTabBarRedDot(OBJECT: hideTabBarRedDot.Param): void
 
@@ -8117,7 +8185,7 @@ declare namespace wx {
    *         borderStyle: 'white'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbarstyleobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxsettabbarstyleobject
    */
   function setTabBarStyle(OBJECT: setTabBarStyle.Param): void
 
@@ -8180,7 +8248,7 @@ declare namespace wx {
    *         selectedIconPath: '/path/to/selectedIconPath'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbaritemobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxsettabbaritemobject
    */
   function setTabBarItem(OBJECT: setTabBarItem.Param): void
 
@@ -8220,7 +8288,7 @@ declare namespace wx {
    * @since 1.9.0
    *
    * 显示 tabBar
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxshowtabbarobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxshowtabbarobject
    */
   function showTabBar(OBJECT: showTabBar.Param): void
 
@@ -8260,7 +8328,7 @@ declare namespace wx {
    * @since 1.9.0
    *
    * 隐藏 tabBar
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxhidetabbarobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxhidetabbarobject
    */
   function hideTabBar(OBJECT: hideTabBar.Param): void
 
@@ -8317,7 +8385,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxnavigatetoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxnavigatetoobject
    */
   function navigateTo(OBJECT: navigateTo.Param): void
 
@@ -8363,7 +8431,7 @@ declare namespace wx {
    *       url: 'test?id=1'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxredirecttoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxredirecttoobject
    */
   function redirectTo(OBJECT: redirectTo.Param): void
 
@@ -8422,14 +8490,14 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxrelaunchobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxrelaunchobject
    */
   function reLaunch(OBJECT: reLaunch.Param): void
 
   namespace switchTab {
     type Param = {
       /**
-       * 需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
+       * 需要跳转的 tabBar 页面的路径（需在 app.json 的 [tabBar](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#tabbar) 字段定义的页面），路径后不能带参数
        */
       url: string
       /**
@@ -8484,7 +8552,7 @@ declare namespace wx {
    *       url: '/index'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxswitchtabobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxswitchtabobject
    */
   function switchTab(OBJECT: switchTab.Param): void
 
@@ -8499,7 +8567,7 @@ declare namespace wx {
     }
   }
   /**
-   * 关闭当前页面，返回上一页面或多级页面。可通过 [`getCurrentPages()`](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html#getCurrentPages()) 获取当前的页面栈，决定需要返回几层。
+   * 关闭当前页面，返回上一页面或多级页面。可通过 [`getCurrentPages()`](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html#getCurrentPages()) 获取当前的页面栈，决定需要返回几层。
    *
    * **Tip：**
    *
@@ -8525,7 +8593,7 @@ declare namespace wx {
    *       delta: 2
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-navigate.html#wxnavigatebackobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-navigate.html#wxnavigatebackobject
    */
   function navigateBack(OBJECT: navigateBack.Param): void
 
@@ -8570,7 +8638,7 @@ declare namespace wx {
     }
   }
   /**
-   * 创建一个动画实例[animation](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html#animation)。调用实例的方法来描述动画。最后通过动画实例的`export`方法导出动画数据传递给组件的`animation`属性。
+   * 创建一个动画实例[animation](https://developers.weixin.qq.com/miniprogram/dev/api/api-animation.html#animation)。调用实例的方法来描述动画。最后通过动画实例的`export`方法导出动画数据传递给组件的`animation`属性。
    *
    * **注意: `export` 方法每次调用后会清掉之前的动画操作**
    *
@@ -8584,7 +8652,7 @@ declare namespace wx {
    *       delay: 0
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-animation.html#wxcreateanimationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-animation.html#wxcreateanimationobject
    */
   function createAnimation(OBJECT: createAnimation.Param): Animation
 
@@ -8727,9 +8795,357 @@ declare namespace wx {
    *       duration: 300
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/scroll.html#wxpagescrolltoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/scroll.html#wxpagescrolltoobject
    */
   function pageScrollTo(OBJECT: pageScrollTo.Param): void
+
+  /**
+   *
+   * **定义：**
+   *
+   * 创建 canvas 绘图上下文（指定 canvasId）。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<canvas/>` 组件
+   *
+   * **Tip**: 需要指定 canvasId，该绘图上下文只作用于对应的 `<canvas/>`
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/create-canvas-context.html#wxcreatecanvascontextcanvasid-this
+   */
+  function createCanvasContext(canvasId: string, componentInstance: any): CanvasContext
+
+  namespace canvasToTempFilePath {
+    type Param0 = {
+      /**
+       * 画布x轴起点（默认0）
+       *
+       * @since 1.2.0
+       */
+      x?: number
+      /**
+       * 画布y轴起点（默认0）
+       *
+       * @since 1.2.0
+       */
+      y?: number
+      /**
+       * 画布宽度（默认为canvas宽度-x）
+       *
+       * @since 1.2.0
+       */
+      width?: number
+      /**
+       * 画布高度（默认为canvas高度-y）
+       *
+       * @since 1.2.0
+       */
+      height?: number
+      /**
+       * 输出图片宽度（默认为width）
+       *
+       * @since 1.2.0
+       */
+      destWidth?: number
+      /**
+       * 输出图片高度（默认为height）
+       *
+       * @since 1.2.0
+       */
+      destHeight?: number
+      /**
+       * 画布标识，传入 [`<canvas/>`](https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html) 的 canvas-id
+       */
+      canvasId: string
+      /**
+       * 目标文件的类型，只支持 'jpg' 或 'png'。默认为 'png'
+       *
+       * @since 1.7.0
+       */
+      fileType?: string
+      /**
+       * 图片的质量，取值范围为 (0, 1]，不在范围内时当作1.0处理
+       *
+       * @since 1.7.0
+       */
+      quality?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: Param0PropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: Param0PropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: Param0PropComplete
+    }
+    /**
+     * 接口调用成功的回调函数
+     */
+    type Param0PropSuccess = (res: any) => any
+    /**
+     * 接口调用失败的回调函数
+     */
+    type Param0PropFail = (err: any) => any
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    type Param0PropComplete = () => any
+  }
+  /**
+   * 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。
+   *
+   * **Bug & Tip：**
+   *
+   * 1.  `tip`: 在 `draw` 回调里调用该方法才能保证图片导出成功。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.canvasToTempFilePath({
+   *       x: 100,
+   *       y: 200,
+   *       width: 50,
+   *       height: 50,
+   *       destWidth: 100,
+   *       destHeight: 100,
+   *       canvasId: 'myCanvas',
+   *       success: function(res) {
+   *         console.log(res.tempFilePath)
+   *       } 
+   *     })
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/temp-file.html#wxcanvastotempfilepathobject-this
+   */
+  function canvasToTempFilePath(OBJECT: canvasToTempFilePath.Param0, instance?: any): void
+
+  namespace canvasGetImageData {
+    type Param = {
+      /**
+       * 画布标识，传入 [`<canvas />`](https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html) 的 canvas-id
+       */
+      canvasId: string
+      /**
+       * 将要被提取的图像数据矩形区域的左上角 x 坐标
+       */
+      x: number
+      /**
+       * 将要被提取的图像数据矩形区域的左上角 y 坐标
+       */
+      y: number
+      /**
+       * 将要被提取的图像数据矩形区域的宽度
+       */
+      width: number
+      /**
+       * 将要被提取的图像数据矩形区域的高度
+       */
+      height: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
+    /**
+     * 接口调用成功的回调函数
+     */
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
+      /**
+       * errMsg
+       */
+      errMsg: string
+      /**
+       * 图像数据矩形的宽度
+       */
+      width: number
+      /**
+       * 图像数据矩形的高度
+       */
+      height: number
+      /**
+       * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
+       */
+      data: Uint8ClampedArray
+    }
+    /**
+     * 接口调用失败的回调函数
+     */
+    type ParamPropFail = (err: any) => any
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    type ParamPropComplete = () => any
+  }
+  /**
+   * @since 1.9.0
+   *
+   * 返回一个数组，用来描述 canvas 区域隐含的像素数据
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.canvasGetImageData({
+   *       canvasId: 'myCanvas',
+   *       x: 0,
+   *       y: 0,
+   *       width: 100,
+   *       height: 100,
+   *       success(res) {
+   *         console.log(res.width) // 100
+   *         console.log(res.height) // 100
+   *         console.log(res.data instanceof Uint8ClampedArray) // true
+   *         console.log(res.data.length) // 100 * 100 * 4
+   *       }
+   *     })
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject
+   */
+  function canvasGetImageData(OBJECT: canvasGetImageData.Param): void
+
+  namespace canvasPutImageData {
+    type Param = {
+      /**
+       * 画布标识，传入 [`<canvas />`](https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html) 的 canvas-id
+       */
+      canvasId: string
+      /**
+       * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
+       */
+      data: Uint8ClampedArray
+      /**
+       * 源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）
+       */
+      x: number
+      /**
+       * 源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）
+       */
+      y: number
+      /**
+       * 源图像数据矩形区域的宽度
+       */
+      width: number
+      /**
+       * 源图像数据矩形区域的高度
+       */
+      height?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
+    /**
+     * 接口调用成功的回调函数
+     */
+    type ParamPropSuccess = (res: any) => any
+    /**
+     * 接口调用失败的回调函数
+     */
+    type ParamPropFail = (err: any) => any
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    type ParamPropComplete = () => any
+  }
+  /**
+   * @since 1.9.0
+   *
+   * 将像素数据绘制到画布的方法
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     const data = new Uint8ClampedArray([255, 0, 0, 1])
+   *     wx.canvasPutImageData({
+   *       canvasId: 'myCanvas',
+   *       x: 0,
+   *       y: 0,
+   *       width: 1,
+   *       data: data,
+   *       success(res) {}
+   *     })
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/put-image-data.html#wxcanvasputimagedataobject
+   */
+  function canvasPutImageData(OBJECT: canvasPutImageData.Param): void
+
+  namespace startPullDownRefresh {
+    type Param = {
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: ParamPropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: ParamPropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: ParamPropComplete
+    }
+    /**
+     * 接口调用成功的回调函数
+     */
+    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
+    type ParamPropSuccessParam = {
+      /**
+       * 接口调用结果
+       */
+      errMsg: string
+    }
+    /**
+     * 接口调用失败的回调函数
+     */
+    type ParamPropFail = (err: any) => any
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    type ParamPropComplete = () => any
+  }
+  /**
+   * @since 1.5.0
+   *
+   * 开始下拉刷新，调用后触发下拉刷新动画，效果与用户手动下拉刷新一致
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.startPullDownRefresh()
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/pulldown.html#wxstartpulldownrefreshobject
+   */
+  function startPullDownRefresh(OBJECT: startPullDownRefresh.Param): void
+
+  /**
+   * 停止当前页面下拉刷新。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     Page({
+   *       onPullDownRefresh: function(){
+   *         wx.stopPullDownRefresh()
+   *       }
+   *     })
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/pulldown.html#wxstoppulldownrefresh
+   */
+  function stopPullDownRefresh(): void
 
   /**
    * @since 1.4.0
@@ -8903,354 +9319,6 @@ declare namespace wx {
      */
     exec(callback?: any): any
   }
-  /**
-   *
-   * **定义：**
-   *
-   * 创建 canvas 绘图上下文（指定 canvasId）。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<canvas/>` 组件
-   *
-   * **Tip**: 需要指定 canvasId，该绘图上下文只作用于对应的 `<canvas/>`
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/create-canvas-context.html#wxcreatecanvascontextcanvasid-this
-   */
-  function createCanvasContext(canvasId: string, componentInstance: any): CanvasContext
-
-  namespace canvasToTempFilePath {
-    type Param0 = {
-      /**
-       * 画布x轴起点（默认0）
-       *
-       * @since 1.2.0
-       */
-      x?: number
-      /**
-       * 画布y轴起点（默认0）
-       *
-       * @since 1.2.0
-       */
-      y?: number
-      /**
-       * 画布宽度（默认为canvas宽度-x）
-       *
-       * @since 1.2.0
-       */
-      width?: number
-      /**
-       * 画布高度（默认为canvas高度-y）
-       *
-       * @since 1.2.0
-       */
-      height?: number
-      /**
-       * 输出图片宽度（默认为width）
-       *
-       * @since 1.2.0
-       */
-      destWidth?: number
-      /**
-       * 输出图片高度（默认为height）
-       *
-       * @since 1.2.0
-       */
-      destHeight?: number
-      /**
-       * 画布标识，传入 [`<canvas/>`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
-       */
-      canvasId: string
-      /**
-       * 目标文件的类型，只支持 'jpg' 或 'png'。默认为 'png'
-       *
-       * @since 1.7.0
-       */
-      fileType?: string
-      /**
-       * 图片的质量，取值范围为 (0, 1]，不在范围内时当作1.0处理
-       *
-       * @since 1.7.0
-       */
-      quality?: number
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: Param0PropSuccess
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: Param0PropFail
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: Param0PropComplete
-    }
-    /**
-     * 接口调用成功的回调函数
-     */
-    type Param0PropSuccess = (res: any) => any
-    /**
-     * 接口调用失败的回调函数
-     */
-    type Param0PropFail = (err: any) => any
-    /**
-     * 接口调用结束的回调函数（调用成功、失败都会执行）
-     */
-    type Param0PropComplete = () => any
-  }
-  /**
-   * 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。
-   *
-   * **Bug & Tip：**
-   *
-   * 1.  `tip`: 在 `draw` 回调里调用该方法才能保证图片导出成功。
-   *
-   * **示例代码：**
-   *
-   *     ```javascript
-   *     wx.canvasToTempFilePath({
-   *       x: 100,
-   *       y: 200,
-   *       width: 50,
-   *       height: 50,
-   *       destWidth: 100,
-   *       destHeight: 100,
-   *       canvasId: 'myCanvas',
-   *       success: function(res) {
-   *         console.log(res.tempFilePath)
-   *       } 
-   *     })
-   *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/temp-file.html#wxcanvastotempfilepathobject-this
-   */
-  function canvasToTempFilePath(OBJECT: canvasToTempFilePath.Param0, instance?: any): void
-
-  namespace canvasGetImageData {
-    type Param = {
-      /**
-       * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
-       */
-      canvasId: string
-      /**
-       * 将要被提取的图像数据矩形区域的左上角 x 坐标
-       */
-      x: number
-      /**
-       * 将要被提取的图像数据矩形区域的左上角 y 坐标
-       */
-      y: number
-      /**
-       * 将要被提取的图像数据矩形区域的宽度
-       */
-      width: number
-      /**
-       * 将要被提取的图像数据矩形区域的高度
-       */
-      height: number
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: ParamPropSuccess
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: ParamPropFail
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: ParamPropComplete
-    }
-    /**
-     * 接口调用成功的回调函数
-     */
-    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
-    type ParamPropSuccessParam = {
-      /**
-       * errMsg
-       */
-      errMsg: string
-      /**
-       * 图像数据矩形的宽度
-       */
-      width: number
-      /**
-       * 图像数据矩形的高度
-       */
-      height: number
-      /**
-       * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
-       */
-      data: Uint8ClampedArray
-    }
-    /**
-     * 接口调用失败的回调函数
-     */
-    type ParamPropFail = (err: any) => any
-    /**
-     * 接口调用结束的回调函数（调用成功、失败都会执行）
-     */
-    type ParamPropComplete = () => any
-  }
-  /**
-   * @since 1.9.0
-   *
-   * 返回一个数组，用来描述 canvas 区域隐含的像素数据
-   *
-   * **示例代码：**
-   *
-   *     ```javascript
-   *     wx.canvasGetImageData({
-   *       canvasId: 'myCanvas',
-   *       x: 0,
-   *       y: 0,
-   *       width: 100,
-   *       height: 100,
-   *       success(res) {
-   *         console.log(res.width) // 100
-   *         console.log(res.height) // 100
-   *         console.log(res.data instanceof Uint8ClampedArray) // true
-   *         console.log(res.data.length) // 100 * 100 * 4
-   *       }
-   *     })
-   *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject
-   */
-  function canvasGetImageData(OBJECT: canvasGetImageData.Param): void
-
-  namespace canvasPutImageData {
-    type Param = {
-      /**
-       * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
-       */
-      canvasId: string
-      /**
-       * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
-       */
-      data: Uint8ClampedArray
-      /**
-       * 源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）
-       */
-      x: number
-      /**
-       * 源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）
-       */
-      y: number
-      /**
-       * 源图像数据矩形区域的宽度
-       */
-      width: number
-      /**
-       * 源图像数据矩形区域的高度
-       */
-      height?: number
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: ParamPropSuccess
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: ParamPropFail
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: ParamPropComplete
-    }
-    /**
-     * 接口调用成功的回调函数
-     */
-    type ParamPropSuccess = (res: any) => any
-    /**
-     * 接口调用失败的回调函数
-     */
-    type ParamPropFail = (err: any) => any
-    /**
-     * 接口调用结束的回调函数（调用成功、失败都会执行）
-     */
-    type ParamPropComplete = () => any
-  }
-  /**
-   * @since 1.9.0
-   *
-   * 将像素数据绘制到画布的方法
-   *
-   * **示例代码：**
-   *
-   *     ```javascript
-   *     const data = new Uint8ClampedArray([255, 0, 0, 1])
-   *     wx.canvasPutImageData({
-   *       canvasId: 'myCanvas'
-   *       x: 0,
-   *       y: 0,
-   *       width: 1,
-   *       data: data
-   *       success(res) {}
-   *     })
-   *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/put-image-data.html#wxcanvasputimagedataobject
-   */
-  function canvasPutImageData(OBJECT: canvasPutImageData.Param): void
-
-  namespace startPullDownRefresh {
-    type Param = {
-      /**
-       * 接口调用成功的回调函数
-       */
-      success?: ParamPropSuccess
-      /**
-       * 接口调用失败的回调函数
-       */
-      fail?: ParamPropFail
-      /**
-       * 接口调用结束的回调函数（调用成功、失败都会执行）
-       */
-      complete?: ParamPropComplete
-    }
-    /**
-     * 接口调用成功的回调函数
-     */
-    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
-    type ParamPropSuccessParam = {
-      /**
-       * 接口调用结果
-       */
-      errMsg: string
-    }
-    /**
-     * 接口调用失败的回调函数
-     */
-    type ParamPropFail = (err: any) => any
-    /**
-     * 接口调用结束的回调函数（调用成功、失败都会执行）
-     */
-    type ParamPropComplete = () => any
-  }
-  /**
-   * @since 1.5.0
-   *
-   * 开始下拉刷新，调用后触发下拉刷新动画，效果与用户手动下拉刷新一致
-   *
-   * **示例代码：**
-   *
-   *     ```javascript
-   *     wx.startPullDownRefresh()
-   *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html#wxstartpulldownrefreshobject
-   */
-  function startPullDownRefresh(OBJECT: startPullDownRefresh.Param): void
-
-  /**
-   * 停止当前页面下拉刷新。
-   *
-   * **示例代码：**
-   *
-   *     ```javascript
-   *     Page({
-   *       onPullDownRefresh: function(){
-   *         wx.stopPullDownRefresh()
-   *       }
-   *     })
-   *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html#wxstoppulldownrefresh
-   */
-  function stopPullDownRefresh(): void
-
   namespace getExtConfig {
     type Param = {
       /**
@@ -9309,7 +9377,7 @@ declare namespace wx {
    *       })
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ext-api.html#wxgetextconfigobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ext-api.html#wxgetextconfigobject
    */
   function getExtConfig(OBJECT: getExtConfig.Param): void
 
@@ -9336,7 +9404,7 @@ declare namespace wx {
    *     let extConfig = wx.getExtConfigSync? wx.getExtConfigSync(): {}
    *     console.log(extConfig)
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ext-api.html#wxgetextconfigsync
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ext-api.html#wxgetextconfigsync
    */
   function getExtConfigSync(): getExtConfigSync.Return
 
@@ -9385,9 +9453,7 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 调用接口获取**登录凭证（code）**进而换取用户登录态信息，包括用户的**唯一标识（openid）** 及本次登录的 **会话密钥（session_key）**等。**用户数据的加解密通讯**需要依赖会话密钥完成。
-   *
-   * **注：调用 `login` 会引起登录态的刷新，之前的 sessionKey 可能会失效。**
+   * 调用接口wx.login() 获取**临时登录凭证（code）**
    *
    * **示例代码：**
    *
@@ -9406,25 +9472,25 @@ declare namespace wx {
    *                 }
    *               })
    *             } else {
-   *               console.log('获取用户登录态失败！' + res.errMsg)
+   *               console.log('登录失败！' + res.errMsg)
    *             }
    *           }
    *         });
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html#wxloginobject
    */
   function login(OBJECT: login.Param): void
 
   namespace checkSession {
     type Param = {
       /**
-       * 接口调用成功的回调函数，登录态未过期
+       * 接口调用成功的回调函数，session_key未过期
        */
       success?: ParamPropSuccess
       /**
-       * 接口调用失败的回调函数，登录态已过期
+       * 接口调用失败的回调函数，session_key已过期
        */
       fail?: ParamPropFail
       /**
@@ -9433,11 +9499,11 @@ declare namespace wx {
       complete?: ParamPropComplete
     }
     /**
-     * 接口调用成功的回调函数，登录态未过期
+     * 接口调用成功的回调函数，session_key未过期
      */
     type ParamPropSuccess = (res: any) => any
     /**
-     * 接口调用失败的回调函数，登录态已过期
+     * 接口调用失败的回调函数，session_key已过期
      */
     type ParamPropFail = (err: any) => any
     /**
@@ -9446,38 +9512,30 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 通过上述接口获得的用户登录态拥有一定的时效性。用户越久未使用小程序，用户登录态越有可能失效。反之如果用户一直在使用小程序，则用户登录态一直保持有效。具体时效逻辑由微信维护，对开发者透明。开发者只需要调用wx.checkSession接口**检测当前用户登录态是否有效**。登录态过期后开发者可以再调用wx.login获取新的用户登录态。
-   *
-   * **登录态维护：**
-   *
-   * 通过 `wx.login` 获取到用户登录态之后，需要维护登录态。
-   *
-   * 开发者要注意**不应该直接把 session_key、openid 等字段作为用户的标识或者 session 的标识**，而应该自己派发一个 session 登录态（请参考登录时序图）。对于开发者自己生成的 session，应该保证其安全性且不应该设置较长的过期时间。session 派发到小程序客户端之后，可将其存储在 storage ，用于后续通信使用。
-   *
-   * 通过 `wx.checkSession` 可以检测用户登录态是否失效。并决定是否调用 `wx.login` 重新获取登录态
+   * 校验用户当前session_key是否有效。
    *
    * **示例代码：**
    *
    *     ```javascript
    *     wx.checkSession({
    *       success: function(){
-   *         //session 未过期，并且在本生命周期一直有效
+   *         //session_key 未过期，并且在本生命周期一直有效
    *       },
    *       fail: function(){
-   *         //登录态过期
+   *         // session_key 已经失效，需要重新执行登录流程
    *         wx.login() //重新登录
    *         ....
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxchecksessionobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#wxchecksessionobject
    */
   function checkSession(OBJECT: checkSession.Param): void
 
   namespace authorize {
     type Param = {
       /**
-       * 需要获取权限的scope，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+       * 需要获取权限的scope，详见 [scope 列表](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html#scope-列表)
        */
       scope: string
       /**
@@ -9535,7 +9593,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize.html#wxauthorizeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/authorize.html#wxauthorizeobject
    */
   function authorize(OBJECT: authorize.Param): void
 
@@ -9586,15 +9644,15 @@ declare namespace wx {
        */
       rawData: string
       /**
-       * 使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，参考文档 [signature](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html)。
+       * 使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，参考文档 [signature](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html)。
        */
       signature: string
       /**
-       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        */
       encryptedData: string
       /**
-       * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        */
       iv: string
     }
@@ -9641,9 +9699,9 @@ declare namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 获取用户信息，withCredentials 为 true 时需要先调用 [wx.login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject) 接口。
+   * 获取用户信息，withCredentials 为 true 时需要先调用 [wx.login](https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html#wxloginobject) 接口。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.userInfo
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userInfo
    *
    * **示例代码：**
    *
@@ -9680,7 +9738,7 @@ declare namespace wx {
    *         }
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/open.html#wxgetuserinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/open.html#wxgetuserinfoobject
    */
   function getUserInfo(OBJECT: getUserInfo.Param): void
 
@@ -9762,14 +9820,14 @@ declare namespace wx {
    *        }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html#wxrequestpaymentobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-pay.html#wxrequestpaymentobject
    */
   function requestPayment(OBJECT: requestPayment.Param): void
 
   namespace showShareMenu {
     type Param = {
       /**
-       * 是否使用带 shareTicket 的转发[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#获取更多转发信息)
+       * 是否使用带 shareTicket 的转发[详情](https://developers.weixin.qq.com/miniprogram/dev/api/share.html#获取更多转发信息)
        */
       withShareTicket?: boolean
       /**
@@ -9810,7 +9868,7 @@ declare namespace wx {
    *       withShareTicket: true
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxshowsharemenuobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxshowsharemenuobject
    */
   function showShareMenu(OBJECT: showShareMenu.Param): void
 
@@ -9852,14 +9910,14 @@ declare namespace wx {
    *     ```javascript
    *     wx.hideShareMenu()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxhidesharemenuobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxhidesharemenuobject
    */
   function hideShareMenu(OBJECT: hideShareMenu.Param): void
 
   namespace updateShareMenu {
     type Param = {
       /**
-       * 是否使用带 shareTicket 的转发[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#获取更多转发信息)
+       * 是否使用带 shareTicket 的转发[详情](https://developers.weixin.qq.com/miniprogram/dev/api/share.html#获取更多转发信息)
        */
       withShareTicket?: boolean
       /**
@@ -9902,7 +9960,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxupdatesharemenuobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxupdatesharemenuobject
    */
   function updateShareMenu(OBJECT: updateShareMenu.Param): void
 
@@ -9941,7 +9999,7 @@ declare namespace wx {
        */
       errMsg: string
       /**
-       * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        *
        * **encryptedData 解密后为一个 JSON 结构，包含字段如下：**
        *
@@ -9949,11 +10007,11 @@ declare namespace wx {
        * ------------|------------------
        *   openGId   |群对当前小程序的唯一 ID
        *
-       * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://mp.weixin.qq.com/debug/wxadoc/dev/component/open-data.html)
+       * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html)
        */
       encryptedData: string
       /**
-       * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        */
       iv: string
     }
@@ -9970,7 +10028,7 @@ declare namespace wx {
    * @since 1.1.0
    *
    * 获取转发详细信息
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxgetshareinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxgetshareinfoobject
    */
   function getShareInfo(OBJECT: getShareInfo.Param): void
 
@@ -10045,7 +10103,7 @@ declare namespace wx {
    *
    * 调起用户编辑收货地址原生界面，并在编辑完成后返回用户选择的地址。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.address
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.address
    *
    * **示例代码：**
    *
@@ -10063,14 +10121,14 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/address.html#wxchooseaddressobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/address.html#wxchooseaddressobject
    */
   function chooseAddress(OBJECT: chooseAddress.Param): void
 
   namespace addCard {
     type Param = {
       /**
-       * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
+       * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#请求对象说明)
        */
       cardList: ParamPropCardList
       /**
@@ -10087,7 +10145,7 @@ declare namespace wx {
       complete?: ParamPropComplete
     }
     /**
-     * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#请求对象说明)
+     * 需要添加的卡券列表，列表内对象说明请参见[请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#请求对象说明)
      */
     type ParamPropCardList = ParamPropCardListItem[]
     type ParamPropCardListItem = {
@@ -10120,12 +10178,12 @@ declare namespace wx {
     type ParamPropSuccess = (res: ParamPropSuccessParam) => any
     type ParamPropSuccessParam = {
       /**
-       * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
+       * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#返回对象说明)
        */
       cardList: ParamPropSuccessParamPropCardList
     }
     /**
-     * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#返回对象说明)
+     * 卡券添加结果列表，列表内对象说明请详见[返回对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#返回对象说明)
      */
     type ParamPropSuccessParamPropCardList = ParamPropSuccessParamPropCardListItem[]
     type ParamPropSuccessParamPropCardListItem = {
@@ -10186,14 +10244,14 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxaddcardobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/card.html#wxaddcardobject
    */
   function addCard(OBJECT: addCard.Param): void
 
   namespace openCard {
     type Param = {
       /**
-       * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
+       * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#opencard-请求对象说明)
        */
       cardList: ParamPropCardList
       /**
@@ -10210,7 +10268,7 @@ declare namespace wx {
       complete?: ParamPropComplete
     }
     /**
-     * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#opencard-请求对象说明)
+     * 需要打开的卡券列表，列表内参数详见[openCard 请求对象说明](https://developers.weixin.qq.com/miniprogram/dev/api/card.html#opencard-请求对象说明)
      */
     type ParamPropCardList = ParamPropCardListItem[]
     type ParamPropCardListItem = {
@@ -10243,7 +10301,7 @@ declare namespace wx {
    *
    * **Tip：**
    *
-   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=201838)进行认证。
+   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=2018323)进行认证。
    * 2.  `tip`: 了解更多信息，请查看[微信卡券接口文档](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1490190158&version=1&lang=zh_CN&platform=2)
    *
    * **示例代码：**
@@ -10263,7 +10321,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/card.html#wxopencardobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/card.html#wxopencardobject
    */
   function openCard(OBJECT: openCard.Param): void
 
@@ -10288,7 +10346,7 @@ declare namespace wx {
     type ParamPropSuccess = (res: ParamPropSuccessParam) => any
     type ParamPropSuccessParam = {
       /**
-       * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+       * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html#scope-列表)
        */
       authSetting: any
     }
@@ -10322,7 +10380,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html#wxopensettingobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setting.html#wxopensettingobject
    */
   function openSetting(OBJECT: openSetting.Param): void
 
@@ -10347,7 +10405,7 @@ declare namespace wx {
     type ParamPropSuccess = (res: ParamPropSuccessParam) => any
     type ParamPropSuccessParam = {
       /**
-       * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html#scope-列表)
+       * 用户授权结果，其中 key 为 scope 值，value 为 Bool 值，表示用户是否允许授权，详见 [scope 列表](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html#scope-列表)
        */
       authSetting: any
     }
@@ -10381,7 +10439,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html#wxgetsettingobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setting.html#wxgetsettingobject
    */
   function getSetting(OBJECT: getSetting.Param): void
 
@@ -10416,11 +10474,11 @@ declare namespace wx {
        */
       errMsg: string
       /**
-       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        *
        * **encryptedData：**
        *
-       * encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * encryptedData 解密后为以下 json 结构，详见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        *
        *   属性                       |  类型          |  说明             
        * -----------------------------|----------------|-------------------
@@ -10430,7 +10488,7 @@ declare namespace wx {
        */
       encryptedData: string
       /**
-       * 加密算法的初始向量，详细见[加密数据解密算法](https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html#加密数据解密算法)
+       * 加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
        */
       iv: string
     }
@@ -10446,9 +10504,9 @@ declare namespace wx {
   /**
    * @since 1.2.0
    *
-   * 获取用户过去三十天微信运动步数，需要先调用 [wx.login](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html#wxloginobject) 接口。
+   * 获取用户过去三十天微信运动步数，需要先调用 [wx.login](https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html#wxloginobject) 接口。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.werun
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.werun
    *
    * **示例代码：**
    *
@@ -10459,7 +10517,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/we-run.html#wxgetwerundataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/we-run.html#wxgetwerundataobject
    */
   function getWeRunData(OBJECT: getWeRunData.Param): void
 
@@ -10474,7 +10532,7 @@ declare namespace wx {
        */
       path?: string
       /**
-       * 需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch()`，`App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
+       * 需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch()`，`App.onShow()` 中获取到这份数据。[详情](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html)
        */
       extraData?: any
       /**
@@ -10522,9 +10580,9 @@ declare namespace wx {
    *
    * **Bug & Tip：**
    *
-   * 1.  `tip`: 在开发者工具上调用此 API 并不会真实的跳转到另外的小程序，但是开发者工具会校验本次调用跳转是否成功[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/different.html#小程序跳转的调试支持)
-   * 2.  `tip`: 开发者工具上支持被跳转的小程序处理接收参数的调试[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/different.html#小程序跳转的调试支持)
-   * 3.  `tip`: 只有同一公众号下的关联的小程序之间才可相互跳转 [详情](https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=201838#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%85%B3%E8%81%94%E5%B0%8F%E7%A8%8B%E5%BA%8F)
+   * 1.  `tip`: 在开发者工具上调用此 API 并不会真实的跳转到另外的小程序，但是开发者工具会校验本次调用跳转是否成功[详情](https://developers.weixin.qq.com/miniprogram/dev/devtools/different.html#小程序跳转的调试支持)
+   * 2.  `tip`: 开发者工具上支持被跳转的小程序处理接收参数的调试[详情](https://developers.weixin.qq.com/miniprogram/dev/devtools/different.html#小程序跳转的调试支持)
+   * 3.  `tip`: 只有同一公众号下的关联的小程序之间才可相互跳转 [详情](https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2018323#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%85%B3%E8%81%94%E5%B0%8F%E7%A8%8B%E5%BA%8F)
    *
    * **示例代码：**
    *
@@ -10541,14 +10599,14 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateToMiniProgram.html#wxnavigatetominiprogramobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/navigateToMiniProgram.html#wxnavigatetominiprogramobject
    */
   function navigateToMiniProgram(OBJECT: navigateToMiniProgram.Param): void
 
   namespace navigateBackMiniProgram {
     type Param = {
       /**
-       * 需要返回给上一个小程序的数据，上一个小程序可在 `App.onShow()` 中获取到这份数据。[详情](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/app.html)
+       * 需要返回给上一个小程序的数据，上一个小程序可在 `App.onShow()` 中获取到这份数据。[详情](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html)
        */
       extraData?: any
       /**
@@ -10602,7 +10660,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/navigateBackMiniProgram.html#wxnavigatebackminiprogramobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/navigateBackMiniProgram.html#wxnavigatebackminiprogramobject
    */
   function navigateBackMiniProgram(OBJECT: navigateBackMiniProgram.Param): void
 
@@ -10673,7 +10731,7 @@ declare namespace wx {
    *
    * 选择用户的发票抬头。
    *
-   * 需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.invoiceTitle
+   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.invoiceTitle
    *
    * **示例代码：**
    *
@@ -10683,7 +10741,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/chooseInvoiceTitle.html#wxchooseinvoicetitleobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/chooseInvoiceTitle.html#wxchooseinvoicetitleobject
    */
   function chooseInvoiceTitle(OBJECT: chooseInvoiceTitle.Param): void
 
@@ -10749,7 +10807,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSupportSoterAuthentication.html#wxcheckissupportsoterauthenticationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/checkIsSupportSoterAuthentication.html#wxcheckissupportsoterauthenticationobject
    */
   function checkIsSupportSoterAuthentication(OBJECT: checkIsSupportSoterAuthentication.Param): void
 
@@ -10760,7 +10818,7 @@ declare namespace wx {
        */
       requestAuthModes: string[]
       /**
-       * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键是别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
+       * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键识别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
        */
       challenge: string
       /**
@@ -10871,7 +10929,7 @@ declare namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/startSoterAuthentication.html#wxstartsoterauthenticationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/startSoterAuthentication.html#wxstartsoterauthenticationobject
    */
   function startSoterAuthentication(OBJECT: startSoterAuthentication.Param): void
 
@@ -10940,7 +10998,7 @@ declare namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/checkIsSoterEnrolledInDevice.html#wxcheckissoterenrolledindeviceobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/checkIsSoterEnrolledInDevice.html#wxcheckissoterenrolledindeviceobject
    */
   function checkIsSoterEnrolledInDevice(OBJECT: checkIsSoterEnrolledInDevice.Param): void
 
@@ -10955,14 +11013,87 @@ declare namespace wx {
    *       color: 'red'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/analysis-report.html#wxreportanalyticseventname-data
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/analysis-report.html#wxreportanalyticseventname-data
    */
   function reportAnalytics(eventName: string, data: any): void
 
   /**
    * @since 1.9.90
    *
-   * 在使用 createWorker 前，请查阅 [多线程](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/workers.html) 文档了解基础知识和配置方法。
+   * 获取**全局唯一**的版本更新管理器，用于管理小程序更新。
+   *
+   * 关于小程序的更新机制，可以查看 [运行机制](https://developers.weixin.qq.com/miniprogram/dev/framework/operating-mechanism.html) 文档。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     const updateManager = wx.getUpdateManager()
+   *
+   *     updateManager.onCheckForUpdate(function (res) {
+   *       // 请求完新版本信息的回调
+   *       console.log(res.hasUpdate)
+   *     })
+   *
+   *     updateManager.onUpdateReady(function () {
+   *       // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+   *       updateManager.applyUpdate()
+   *     })
+   *
+   *     updateManager.onUpdateFailed(function () {
+   *       // 新的版本下载失败
+   *     })
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/getUpdateManager.html#wxgetupdatemanager
+   */
+  function getUpdateManager(): UpdateManager
+
+  namespace UpdateManager {
+    namespace onCheckForUpdate {
+      type Param = (res: ParamParam) => any
+      type ParamParam = {
+        /**
+         * 是否有新的版本
+         */
+        hasUpdate: boolean
+      }
+    }
+  }
+  class UpdateManager {
+    /**
+     * 当向微信后台请求完新版本信息，会进行回调
+     *
+     * **注：** 检查更新操作由微信在小程序冷启动时自动触发，不需由开发者主动触发，开发者只需监听检查结果即可。
+     */
+    onCheckForUpdate(callback: UpdateManager.onCheckForUpdate.Param): any
+    /**
+     * 当新版本下载完成，会进行回调
+     *
+     * **onUpdateReady(callback) 回调结果说明：**
+     *
+     * 当微信检查到小程序有新版本，会主动触发下载操作（无需开发者触发），当下载完成后，会通过 `onUpdateReady` 告知开发者。
+     */
+    onUpdateReady(callback: any): any
+    /**
+     * 当新版本下载失败，会进行回调
+     *
+     * **onUpdateFailed(callback) 回调结果说明：**
+     *
+     * 当微信检查到小程序有新版本，会主动触发下载操作（无需开发者触发），如果下载失败（可能是网络原因等），会通过 `onUpdateFailed` 告知开发者。
+     */
+    onUpdateFailed(callback: any): any
+    /**
+     * 当新版本下载完成，调用该方法会强制当前小程序应用上新版本并重启
+     *
+     * **applyUpdate() 说明：**
+     *
+     * 当小程序新版本已经下载时（即收到 `onUpdateReady` 回调），可以通过这个方法强制重启小程序并应用上最新版本。
+     */
+    applyUpdate(): any
+  }
+  /**
+   * @since 1.9.90
+   *
+   * 在使用 createWorker 前，请查阅 [多线程](https://developers.weixin.qq.com/miniprogram/dev/framework/workers.html) 文档了解基础知识和配置方法。
    *
    * 创建一个 Worker 线程，并返回 Worker 实例，目前限制最多只能创建一个 Worker，创建下一个 Worker 前请调用 Worker.terminate。
    *
@@ -10983,7 +11114,7 @@ declare namespace wx {
    *
    *     worker.terminate()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/createWorker.html#wxcreateworkerscriptpath
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/createWorker.html#wxcreateworkerscriptpath
    */
   function createWorker(scriptPath: any): Worker
 
@@ -11076,7 +11207,7 @@ declare namespace wx {
    *         enableDebug: false
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setEnableDebug.html#wxsetenabledebugobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setEnableDebug.html#wxsetenabledebugobject
    */
   function setEnableDebug(OBJECT: setEnableDebug.Param): void
 
@@ -11096,9 +11227,9 @@ declare namespace wx {
      *
      * **参数：**
      *
-     *   参数    |  类型                                                                       |  定义              
-     * ----------|-----------------------------------------------------------------------------|--------------------
-     *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
+     *   参数    |  类型                                                                              |  定义              
+     * ----------|------------------------------------------------------------------------------------|--------------------
+     *   color   |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |  Gradient Object   
      *
      * **语法：**
      *
@@ -11127,9 +11258,9 @@ declare namespace wx {
      *
      * **参数：**
      *
-     *   参数    |  类型                                                                       |  定义              
-     * ----------|-----------------------------------------------------------------------------|--------------------
-     *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  Gradient Object   
+     *   参数    |  类型                                                                              |  定义              
+     * ----------|------------------------------------------------------------------------------------|--------------------
+     *   color   |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |  Gradient Object   
      *
      * **语法：**
      *
@@ -11158,12 +11289,12 @@ declare namespace wx {
      *
      * **参数：**
      *
-     *   参数      |  类型                                                                       |  范围    |  定义              
-     * ------------|-----------------------------------------------------------------------------|----------|--------------------
-     *   offsetX   |  Number                                                                     |          |阴影相对于形状在水平方向的偏移
-     *   offsetY   |  Number                                                                     |          |阴影相对于形状在竖直方向的偏移
-     *   blur      |  Number                                                                     |  0~100   |阴影的模糊级别，数值越大越模糊
-     *   color     |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |          |  阴影的颜色        
+     *   参数      |  类型                                                                              |  范围    |  定义              
+     * ------------|------------------------------------------------------------------------------------|----------|--------------------
+     *   offsetX   |  Number                                                                            |          |阴影相对于形状在水平方向的偏移
+     *   offsetY   |  Number                                                                            |          |阴影相对于形状在竖直方向的偏移
+     *   blur      |  Number                                                                            |  0~100   |阴影的模糊级别，数值越大越模糊
+     *   color     |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |          |  阴影的颜色        
      *
      * **例子：**
      *
@@ -11177,7 +11308,7 @@ declare namespace wx {
      */
     setShadow(offsetX: number, offsetY: number, blur: number, color: string): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -11191,7 +11322,7 @@ declare namespace wx {
      */
     shadowBlur(): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -11205,7 +11336,7 @@ declare namespace wx {
      */
     shadowColor(): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -11219,7 +11350,7 @@ declare namespace wx {
      */
     shadowOffsetX(): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -11313,10 +11444,10 @@ declare namespace wx {
      *
      * **参数：**
      *
-     *   参数    |  类型                                                                       |  定义              
-     * ----------|-----------------------------------------------------------------------------|--------------------
-     *   stop    |  Number(0-1)                                                                |表示渐变点在起点和终点中的位置
-     *   color   |  [Color](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/color.html)   |  渐变点的颜色      
+     *   参数    |  类型                                                                              |  定义              
+     * ----------|------------------------------------------------------------------------------------|--------------------
+     *   stop    |  Number(0-1)                                                                       |表示渐变点在起点和终点中的位置
+     *   color   |  [Color](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/color.html)   |  渐变点的颜色      
      *
      * **示例代码：**
      *
@@ -11501,7 +11632,7 @@ declare namespace wx {
      */
     setLineJoin(lineJoin: string): void
     /**
-     * > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12167,7 +12298,7 @@ declare namespace wx {
      *
      * **定义：**
      *
-     * 以原点为中心，原点可以用 [translate](https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/rotate.html#translate)方法修改。顺时针旋转当前坐标轴。多次调用`rotate`，旋转的角度会叠加。
+     * 以原点为中心，原点可以用 [translate](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/rotate.html#translate)方法修改。顺时针旋转当前坐标轴。多次调用`rotate`，旋转的角度会叠加。
      *
      * **参数：**
      *
@@ -12175,7 +12306,7 @@ declare namespace wx {
      * -----------|-----------|-----------------------------------------------------
      *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
      *
-     * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=201838)
+     * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018323)
      *
      * **参数：**
      *
@@ -12221,7 +12352,7 @@ declare namespace wx {
      */
     translate(x: number, y: number): void
     /**
-     * > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12305,7 +12436,7 @@ declare namespace wx {
      */
     fillText(text: string, x: number, y: number): void
     /**
-     * > 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12349,7 +12480,7 @@ declare namespace wx {
      */
     setTextAlign(align: string): void
     /**
-     * > 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12624,7 +12755,7 @@ declare namespace wx {
      */
     draw(reserve?: boolean, callback?: CanvasContext.draw.Param1): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12655,7 +12786,7 @@ declare namespace wx {
      */
     measureText(width: number): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12667,7 +12798,12 @@ declare namespace wx {
      * ---------|-----------|---------------------
      *   type   |  String   |标识要使用哪种合成或混合模式操作
      *
-     * **`type` 支持的操作有：** | 平台 | 操作 | | \-\-\-\- | \-\-\-\- | | 安卓 | xor, source-over, source-atop, destination-out, lighter, overlay, darken, lighten, hard-light | | iOS |
+     * **type 支持的操作有：**
+     *
+     *   平台  |  操作                                                                                                                                                                                                            
+     * --------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     *   安卓  |  xor, source-over, source-atop, destination-out, lighter, overlay, darken, lighten, hard-light                                                                                                                   
+     *   iOS   |  xor, source-over, source-atop, destination-over, destination-out, lighter, multiply, overlay, darken, lighten, color-dodge, color-burn, hard-light, soft-light, difference, exclusion, saturation, luminosity   
      *
      * **语法：**
      *
@@ -12677,7 +12813,7 @@ declare namespace wx {
      */
     globalCompositeOperation(): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12701,7 +12837,7 @@ declare namespace wx {
      */
     arcTo(): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12724,7 +12860,7 @@ declare namespace wx {
      */
     strokeText(): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12744,7 +12880,7 @@ declare namespace wx {
      */
     lineDashOffset(): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12775,7 +12911,7 @@ declare namespace wx {
      */
     createPattern(): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *
@@ -12804,7 +12940,7 @@ declare namespace wx {
      */
     font(style: any, size: any, weight: any, family: any): void
     /**
-     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+     * > 基础库 1.9.90 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
      *
      * **定义：**
      *

@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html
 
 export namespace wx {
   namespace connectSocket {
@@ -48,9 +48,9 @@ export namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 创建一个 [WebSocket](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket) 连接。**使用前请先阅读[说明](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-network.html)**。
+   * 创建一个 [WebSocket](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket) 连接。**使用前请先阅读[说明](https://developers.weixin.qq.com/miniprogram/dev/api/api-network.html)**。
    *
-   * **基础库 1.7.0 之前，一个微信小程序同时只能有一个 WebSocket 连接，如果当前已存在一个 WebSocket 连接，会自动关闭该连接，并重新创建一个 WebSocket 连接。基础库版本 1.7.0 及以后，支持存在多个 WebSokcet 连接，每次成功调用 wx.connectSocket 会返回一个新的 [SocketTask](https://mp.weixin.qq.com/debug/wxadoc/dev/api/socket-task.html)。**
+   * **基础库 1.7.0 之前，一个微信小程序同时只能有一个 WebSocket 连接，如果当前已存在一个 WebSocket 连接，会自动关闭该连接，并重新创建一个 WebSocket 连接。基础库版本 1.7.0 及以后，支持存在多个 WebSokcet 连接，每次成功调用 wx.connectSocket 会返回一个新的 [SocketTask](https://developers.weixin.qq.com/miniprogram/dev/api/socket-task.html)。**
    *
    * **示例代码：**
    *
@@ -68,7 +68,7 @@ export namespace wx {
    *       method:"GET"
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxconnectsocketobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxconnectsocketobject
    */
   function connectSocket(OBJECT: connectSocket.Param): SocketTask
 
@@ -85,7 +85,7 @@ export namespace wx {
    *       console.log('WebSocket连接已打开！')
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketopencallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketopencallback
    */
   function onSocketOpen(CALLBACK: any): void
 
@@ -105,7 +105,7 @@ export namespace wx {
    *       console.log('WebSocket连接打开失败，请检查！')
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketerrorcallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketerrorcallback
    */
   function onSocketError(CALLBACK: any): void
 
@@ -142,7 +142,7 @@ export namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 通过 WebSocket 连接发送数据，需要先 [wx.connectSocket](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxconnectsocketobject)，并在 [wx.onSocketOpen](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketopencallback) 回调之后才能发送。
+   * 通过 WebSocket 连接发送数据，需要先 [wx.connectSocket](https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxconnectsocketobject)，并在 [wx.onSocketOpen](https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketopencallback) 回调之后才能发送。
    *
    * **示例代码：**
    *
@@ -171,7 +171,7 @@ export namespace wx {
    *       }
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxsendsocketmessageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxsendsocketmessageobject
    */
   function sendSocketMessage(OBJECT: sendSocketMessage.Param): void
 
@@ -198,7 +198,7 @@ export namespace wx {
    *       console.log('收到服务器内容：' + res.data)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketmessagecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketmessagecallback
    */
   function onSocketMessage(CALLBACK: onSocketMessage.Param): void
 
@@ -244,7 +244,7 @@ export namespace wx {
   }
   /**
    * 关闭 WebSocket 连接。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxclosesocketobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxclosesocketobject
    */
   function closeSocket(OBJECT: closeSocket.Param): void
 
@@ -255,7 +255,7 @@ export namespace wx {
    *
    * @since 1.7.0
    *
-   * 返回一个 [SocketTask](https://mp.weixin.qq.com/debug/wxadoc/dev/api/socket-task.html)。
+   * 返回一个 [SocketTask](https://developers.weixin.qq.com/miniprogram/dev/api/socket-task.html)。
    *
    * **Bug & Tip：**
    *
@@ -279,7 +279,7 @@ export namespace wx {
    *       console.log('WebSocket 已关闭！')
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-socket.html#wxonsocketclosecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketclosecallback
    */
   function onSocketClose(CALLBACK: any): void
 

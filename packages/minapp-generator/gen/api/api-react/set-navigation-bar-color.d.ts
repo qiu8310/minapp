@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/setNavigationBarColor.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/setNavigationBarColor.html
 
 export namespace wx {
   namespace setNavigationBarColor {
@@ -93,7 +93,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setNavigationBarColor.html#wxsetnavigationbarcolorobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setNavigationBarColor.html#wxsetnavigationbarcolorobject
    */
   function setNavigationBarColor(OBJECT: setNavigationBarColor.Param): void
 

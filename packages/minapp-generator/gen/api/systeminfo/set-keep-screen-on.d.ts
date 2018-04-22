@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/setKeepScreenOn.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/setKeepScreenOn.html
 
 export namespace wx {
   namespace setKeepScreenOn {
@@ -52,7 +52,7 @@ export namespace wx {
    *         keepScreenOn: true
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/setKeepScreenOn.html#wxsetkeepscreenonobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/setKeepScreenOn.html#wxsetkeepscreenonobject
    */
   function setKeepScreenOn(OBJECT: setKeepScreenOn.Param): void
 

@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/getRecorderManager.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/getRecorderManager.html
 
 export namespace wx {
   /**
@@ -54,7 +54,7 @@ export namespace wx {
    *
    *     recorderManager.start(options)
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getRecorderManager.html#wxgetrecordermanager
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/getRecorderManager.html#wxgetrecordermanager
    */
   function getRecorderManager(): RecorderManager
 

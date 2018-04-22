@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html
 
 export namespace wx {
   namespace chooseImage {
@@ -83,7 +83,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxchooseimageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxchooseimageobject
    */
   function chooseImage(OBJECT: chooseImage.Param): void
 
@@ -134,7 +134,7 @@ export namespace wx {
    *       urls: [] // 需要预览的图片http链接列表
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxpreviewimageobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxpreviewimageobject
    */
   function previewImage(OBJECT: previewImage.Param): void
 
@@ -235,7 +235,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxgetimageinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxgetimageinfoobject
    */
   function getImageInfo(OBJECT: getImageInfo.Param): void
 
@@ -280,7 +280,7 @@ export namespace wx {
   /**
    * @since 1.2.0
    *
-   * 保存图片到系统相册。需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.writePhotosAlbum
+   * 保存图片到系统相册。需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.writePhotosAlbum
    *
    * **示例代码：**
    *
@@ -290,7 +290,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/media-picture.html#wxsaveimagetophotosalbumobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxsaveimagetophotosalbumobject
    */
   function saveImageToPhotosAlbum(OBJECT: saveImageToPhotosAlbum.Param): void
 

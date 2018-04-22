@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-caniuse.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-caniuse.html
 
 export namespace wx {
   /**
@@ -32,7 +32,7 @@ export namespace wx {
    *     wx.canIUse('text.selectable')
    *     wx.canIUse('button.open-type.contact')
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-caniuse.html#wxcaniusestring
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-caniuse.html#wxcaniusestring
    */
   function canIUse(String: any): boolean
 

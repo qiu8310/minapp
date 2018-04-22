@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/compass.html
 
 export namespace wx {
   namespace onCompassChange {
@@ -20,7 +20,7 @@ export namespace wx {
    *       console.log(res.direction)
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxoncompasschangecallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/compass.html#wxoncompasschangecallback
    */
   function onCompassChange(CALLBACK: onCompassChange.Param): void
 
@@ -62,7 +62,7 @@ export namespace wx {
    *     ```javascript
    *     wx.startCompass()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxstartcompassobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/compass.html#wxstartcompassobject
    */
   function startCompass(OBJECT: startCompass.Param): void
 
@@ -104,7 +104,7 @@ export namespace wx {
    *     ```javascript
    *     wx.stopCompass()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/compass.html#wxstopcompassobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/compass.html#wxstopcompassobject
    */
   function stopCompass(OBJECT: stopCompass.Param): void
 

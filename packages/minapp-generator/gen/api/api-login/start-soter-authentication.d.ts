@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/startSoterAuthentication.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/startSoterAuthentication.html
 
 export namespace wx {
   namespace startSoterAuthentication {
@@ -8,7 +8,7 @@ export namespace wx {
        */
       requestAuthModes: string[]
       /**
-       * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键是别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
+       * 挑战因子。挑战因子为调用者为此次生物鉴权准备的用于签名的字符串关键识别信息，将作为result_json的一部分，供调用者识别本次请求。例如：如果场景为请求用户对某订单进行授权确认，则可以将订单号填入此参数。
        */
       challenge: string
       /**
@@ -119,7 +119,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/startSoterAuthentication.html#wxstartsoterauthenticationobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/startSoterAuthentication.html#wxstartsoterauthenticationobject
    */
   function startSoterAuthentication(OBJECT: startSoterAuthentication.Param): void
 

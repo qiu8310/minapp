@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/scancode.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/scancode.html
 
 export namespace wx {
   namespace scanCode {
@@ -80,7 +80,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/scancode.html#wxscancodeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/scancode.html#wxscancodeobject
    */
   function scanCode(OBJECT: scanCode.Param): void
 

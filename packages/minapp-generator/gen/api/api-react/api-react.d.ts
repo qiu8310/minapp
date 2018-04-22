@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html
 
 export namespace wx {
   namespace showToast {
@@ -71,7 +71,7 @@ export namespace wx {
    *       duration: 2000
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowtoastobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxshowtoastobject
    */
   function showToast(OBJECT: showToast.Param): void
 
@@ -114,14 +114,14 @@ export namespace wx {
   /**
    * @since 1.1.0
    *
-   * 显示 loading 提示框, 需主动调用 [wx.hideLoading](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhideloading) 才能关闭提示框
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowloadingobject
+   * 显示 loading 提示框, 需主动调用 [wx.hideLoading](https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxhideloading) 才能关闭提示框
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxshowloadingobject
    */
   function showLoading(OBJECT: showLoading.Param): void
 
   /**
    * 隐藏消息提示框
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhidetoast
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxhidetoast
    */
   function hideToast(): void
 
@@ -141,7 +141,7 @@ export namespace wx {
    *       wx.hideLoading()
    *     },2000)
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxhideloading
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxhideloading
    */
   function hideLoading(): void
 
@@ -231,7 +231,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowmodalobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxshowmodalobject
    */
   function showModal(OBJECT: showModal.Param): void
 
@@ -300,7 +300,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html#wxshowactionsheetobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/api-react.html#wxshowactionsheetobject
    */
   function showActionSheet(OBJECT: showActionSheet.Param): void
 

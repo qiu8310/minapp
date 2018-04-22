@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/getFileInfo.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/getFileInfo.html
 
 export namespace wx {
   namespace getFileInfo {
@@ -66,7 +66,7 @@ export namespace wx {
    *         }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getFileInfo.html#wxgetfileinfoobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/getFileInfo.html#wxgetfileinfoobject
    */
   function getFileInfo(OBJECT: getFileInfo.Param): void
 

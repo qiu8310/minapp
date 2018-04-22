@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/onUserCaptureScreen.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/onUserCaptureScreen.html
 
 export namespace wx {
   /**
@@ -13,7 +13,7 @@ export namespace wx {
    *         console.log('用户截屏了')
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/onUserCaptureScreen.html#wxonusercapturescreencallback
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/onUserCaptureScreen.html#wxonusercapturescreencallback
    */
   function onUserCaptureScreen(CALLBACK: any): void
 

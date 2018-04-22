@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/ui.html
 
 export namespace wx {
   namespace setTopBarText {
@@ -45,7 +45,7 @@ export namespace wx {
    *       text: 'hello, world!'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxsettopbartextobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui.html#wxsettopbartextobject
    */
   function setTopBarText(OBJECT: setTopBarText.Param): void
 
@@ -91,19 +91,19 @@ export namespace wx {
    *       title: '当前页面'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxsetnavigationbartitleobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui.html#wxsetnavigationbartitleobject
    */
   function setNavigationBarTitle(OBJECT: setNavigationBarTitle.Param): void
 
   /**
    * 在当前页面显示导航条加载动画。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxshownavigationbarloading
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui.html#wxshownavigationbarloading
    */
   function showNavigationBarLoading(): void
 
   /**
    * 隐藏导航条加载动画。
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui.html#wxhidenavigationbarloading
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui.html#wxhidenavigationbarloading
    */
   function hideNavigationBarLoading(): void
 

@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/pulldown.html
 
 export namespace wx {
   namespace startPullDownRefresh {
@@ -45,7 +45,7 @@ export namespace wx {
    *     ```javascript
    *     wx.startPullDownRefresh()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html#wxstartpulldownrefreshobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/pulldown.html#wxstartpulldownrefreshobject
    */
   function startPullDownRefresh(OBJECT: startPullDownRefresh.Param): void
 
@@ -61,7 +61,7 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/pulldown.html#wxstoppulldownrefresh
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/pulldown.html#wxstoppulldownrefresh
    */
   function stopPullDownRefresh(): void
 

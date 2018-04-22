@@ -1,10 +1,10 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/createWorker.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/createWorker.html
 
 export namespace wx {
   /**
    * @since 1.9.90
    *
-   * 在使用 createWorker 前，请查阅 [多线程](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/workers.html) 文档了解基础知识和配置方法。
+   * 在使用 createWorker 前，请查阅 [多线程](https://developers.weixin.qq.com/miniprogram/dev/framework/workers.html) 文档了解基础知识和配置方法。
    *
    * 创建一个 Worker 线程，并返回 Worker 实例，目前限制最多只能创建一个 Worker，创建下一个 Worker 前请调用 Worker.terminate。
    *
@@ -25,7 +25,7 @@ export namespace wx {
    *
    *     worker.terminate()
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/createWorker.html#wxcreateworkerscriptpath
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/createWorker.html#wxcreateworkerscriptpath
    */
   function createWorker(scriptPath: any): Worker
 

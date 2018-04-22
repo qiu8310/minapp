@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/ext-api.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/ext-api.html
 
 export namespace wx {
   namespace getExtConfig {
@@ -59,7 +59,7 @@ export namespace wx {
    *       })
    *     }
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ext-api.html#wxgetextconfigobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ext-api.html#wxgetextconfigobject
    */
   function getExtConfig(OBJECT: getExtConfig.Param): void
 
@@ -86,7 +86,7 @@ export namespace wx {
    *     let extConfig = wx.getExtConfigSync? wx.getExtConfigSync(): {}
    *     console.log(extConfig)
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ext-api.html#wxgetextconfigsync
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ext-api.html#wxgetextconfigsync
    */
   function getExtConfigSync(): getExtConfigSync.Return
 

@@ -1,10 +1,10 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/put-image-data.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/canvas/put-image-data.html
 
 export namespace wx {
   namespace canvasPutImageData {
     type Param = {
       /**
-       * 画布标识，传入 [`<canvas />`](https://mp.weixin.qq.com/debug/wxadoc/dev/component/canvas.html) 的 canvas-id
+       * 画布标识，传入 [`<canvas />`](https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html) 的 canvas-id
        */
       canvasId: string
       /**
@@ -63,15 +63,15 @@ export namespace wx {
    *     ```javascript
    *     const data = new Uint8ClampedArray([255, 0, 0, 1])
    *     wx.canvasPutImageData({
-   *       canvasId: 'myCanvas'
+   *       canvasId: 'myCanvas',
    *       x: 0,
    *       y: 0,
    *       width: 1,
-   *       data: data
+   *       data: data,
    *       success(res) {}
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/put-image-data.html#wxcanvasputimagedataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/put-image-data.html#wxcanvasputimagedataobject
    */
   function canvasPutImageData(OBJECT: canvasPutImageData.Param): void
 

@@ -1,4 +1,4 @@
-// https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html
+// https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html
 
 export namespace wx {
   namespace setTabBarBadge {
@@ -50,7 +50,7 @@ export namespace wx {
    *       text: '1'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbarbadgeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxsettabbarbadgeobject
    */
   function setTabBarBadge(OBJECT: setTabBarBadge.Param): void
 
@@ -90,7 +90,7 @@ export namespace wx {
    * @since 1.9.0
    *
    * 移除 tabBar 某一项右上角的文本
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxremovetabbarbadgeobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxremovetabbarbadgeobject
    */
   function removeTabBarBadge(OBJECT: removeTabBarBadge.Param): void
 
@@ -130,7 +130,7 @@ export namespace wx {
    * @since 1.9.0
    *
    * 显示 tabBar 某一项的右上角的红点
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxshowtabbarreddotobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxshowtabbarreddotobject
    */
   function showTabBarRedDot(OBJECT: showTabBarRedDot.Param): void
 
@@ -170,7 +170,7 @@ export namespace wx {
    * @since 1.9.0
    *
    * 隐藏 tabBar 某一项的右上角的红点
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxhidetabbarreddotobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxhidetabbarreddotobject
    */
   function hideTabBarRedDot(OBJECT: hideTabBarRedDot.Param): void
 
@@ -233,7 +233,7 @@ export namespace wx {
    *         borderStyle: 'white'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbarstyleobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxsettabbarstyleobject
    */
   function setTabBarStyle(OBJECT: setTabBarStyle.Param): void
 
@@ -296,7 +296,7 @@ export namespace wx {
    *         selectedIconPath: '/path/to/selectedIconPath'
    *     })
    *     ```
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxsettabbaritemobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxsettabbaritemobject
    */
   function setTabBarItem(OBJECT: setTabBarItem.Param): void
 
@@ -336,7 +336,7 @@ export namespace wx {
    * @since 1.9.0
    *
    * 显示 tabBar
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxshowtabbarobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxshowtabbarobject
    */
   function showTabBar(OBJECT: showTabBar.Param): void
 
@@ -376,7 +376,7 @@ export namespace wx {
    * @since 1.9.0
    *
    * 隐藏 tabBar
-   * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/ui-tabbar.html#wxhidetabbarobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-tabbar.html#wxhidetabbarobject
    */
   function hideTabBar(OBJECT: hideTabBar.Param): void
 
