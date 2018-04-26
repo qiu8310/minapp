@@ -3,7 +3,7 @@
   "version": "1.0.12",
   "description": "微信小程序 api 的 typings，同时提供 promise 版",
   "main": "system.js",
-  "typings": "system.d.ts",
+  "types": "system.d.ts",
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
