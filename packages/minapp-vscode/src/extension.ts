@@ -5,6 +5,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 
 import {ExtensionContext, languages} from 'vscode'
 
+import LinkProvider from './plugin/LinkProvider'
 import HoverProvider from './plugin/HoverProvider'
 import WxmlFormatter from './plugin/WxmlFormatter'
 
@@ -19,12 +20,14 @@ export function activate(context: ExtensionContext) {
   let formatter = new WxmlFormatter()
   let autoCompletionWxml = new WxmlAutoCompletion(config)
   let hoverProvider = new HoverProvider(config)
+  let linkProvider = new LinkProvider(config)
   let autoCompletionPug = new PugAutoCompletion(config)
   let autoCompletionVue = new VueAutoCompletion(autoCompletionPug, autoCompletionWxml)
 
   // console.log('minapp-vscode is active!')
   context.subscriptions.push(
     languages.registerHoverProvider(['wxml', 'wxml-pug', 'vue'], hoverProvider),
+    languages.registerDocumentLinkProvider(['wxml', 'wxml-pug'], linkProvider),
 
     // 格式化
     languages.registerDocumentFormattingEditProvider('wxml', formatter),

@@ -1,5 +1,6 @@
 # minapp-vscode
 
+## 1.1.0 支持 link，[详情见下文](#link)
 ## 1.0.12 开始，支持 pug 语言的自动补全，[详情见下文](#vue)
 
 ![重要通知](https://n1image.hjfile.cn/res7/2018/03/23/0520246bc52ca0b726a3ca4097104ba0.png)
@@ -53,3 +54,15 @@
   - 自动获取组件中属性的描述
 
   ![示例图片](https://n1image.hjfile.cn/res7/2018/03/09/fce0b3e9496cae95c1c81523725a1fef.gif)
+
+
+<a id="link"></a>
+
+## 支持 link
+
+  - 默认只会 link src 标签，并且文件需要存在，不存在不会加 link
+  - 可以配置 `minapp-vscode.linkAttributeNames` 来扩展额外的支持 link 的标签，将此值配置成空数组，可以禁用 link 功能
+  - 可以配置 `minapp-vscode.resolveRoots` 来使用相对目录解析图片路径
+
+
+  ![示例图片](https://n1image.hjfile.cn/res7/2018/04/27/dd7f301dc1e1593209d7f7ac169fd047.gif)

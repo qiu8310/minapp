@@ -60,6 +60,14 @@
           "items": {
             "type": "string"
           }
+        },
+        "minapp-vscode.linkAttributeNames": {
+          "type": "array",
+          "description": "指定 link 功能作用的标签属性，默认有 src，即 src 后面的路径会当作一个文件路径来解析；设置为空数组可以禁用 link 功能",
+          "default": ["src"],
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

@@ -11,13 +11,15 @@ let listener: vscode.Disposable
 export interface Config {
   disableCustomComponentAutocomponent: boolean
   resolveRoots: string[]
+  linkAttributeNames: string[]
   getResolveRoots: (doc: vscode.TextDocument) => string[]
 }
 
 export const config: Config = {
   disableCustomComponentAutocomponent: false,
   resolveRoots: [],
-  getResolveRoots
+  getResolveRoots,
+  linkAttributeNames: [],
 }
 
 function getResolveRoots(doc: vscode.TextDocument) {
@@ -29,6 +31,7 @@ function getConfig() {
   const minapp = vscode.workspace.getConfiguration('minapp-vscode')
   config.disableCustomComponentAutocomponent = minapp.get('disableCustomComponentAutocomponent', false)
   config.resolveRoots = minapp.get('resolveRoots', ['src', 'node_modules'])
+  config.linkAttributeNames = minapp.get('linkAttributeNames', ['src'])
 }
 
 export function configActivate() {
