@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-mobx-ts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "minapp ts 示例项目",
   "scripts": {
     "test": "echo 0",
@@ -15,19 +15,19 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/component-demo": "^1.1.0",
-    "@minapp/component-toast": "^1.1.0",
-    "@minapp/core": "^1.1.0",
-    "@minapp/mobx": "^1.1.0",
+    "@minapp/component-demo": "^1.1.1",
+    "@minapp/component-toast": "^1.1.1",
+    "@minapp/core": "^1.1.1",
+    "@minapp/mobx": "^1.1.1",
     "mobx": "^3.5.1",
     "mora-scripts": "^1.6.21",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
     "@types/node": "^7.0.0",
+    "awesome-typescript-loader": "^3.5.0",
     "mora-common": "^1.0.11",
     "ts-lint": "^4.5.1",
-    "awesome-typescript-loader": "^3.5.0",
     "typescript": "^2.7.1"
   }
 }
