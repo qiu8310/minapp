@@ -2,6 +2,7 @@
 ==================
 
 * compiler: 自定义的 webpack.minapp.js 文件导出的函数的第二个参数会传入 webpack，见 https://qiu8310.github.io/minapp/docs/doc-custom-webpack.html
+* compiler: wxml 文件没有任何内容时，也会生成一个新的文件（1.1.0 之前版本不会给空的模板生成新文件）
 * core: 修复双向绑定中组件参数不支持中化线的问题 close #53
 * core: 支持微信插件，见 https://github.com/qiu8310/minapp/issues/50
 * core: 更新 wx.d.ts 和 wxp.d.ts （同步官方的 2018.04.12 版本）

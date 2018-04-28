@@ -45,13 +45,9 @@ export default class WxmlLoader extends Loader {
       : {eol: EOL, tabSize: 2}
     )
     // debug('ToContent: %o', content)
-    if (this.hasContent(xml.nodes)) this.extract('.wxml', content)
+    this.extract('.wxml', content)
 
     return this.toRequire(requires, 'webpack')
-  }
-
-  private hasContent(nodes: parser.Node[]) {
-    return nodes.length && !nodes.every(n => n.is(parser.Node.TYPE.COMMENT))
   }
 
   /**
