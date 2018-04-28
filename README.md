@@ -4,6 +4,12 @@
 
 **minapp 1.0.0 已经发布，更新详情请[查看此文](https://qiu8310.github.io/minapp/blog/2018/03/10/release-v1.html)**
 
+## 微信交流群
+
+![微信交流群](https://n1image.hjfile.cn/res7/2018/04/28/faff306313a5fd6d1137fcc470c36c56.jpg)
+
+如果二维码过期，可以添加我微信号：`qiu8310`
+
 ## 介绍
 
 **minapp 是为开发微信小程序而打造的一整套提升开发体验的工具：**
