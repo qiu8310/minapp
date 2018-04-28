@@ -8,10 +8,10 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
  */
 export class Document {
   nodes: Node[] = []
-  toXML(opts: {prefix?: string, preferSpaces?: boolean, tabSize?: number, eol?: string} = {}) {
-    let {prefix = '', preferSpaces = true, tabSize = 2, eol = '\n'} = opts
+  toXML(opts: {prefix?: string, preferSpaces?: boolean, tabSize?: number, eol?: string, maxLineCharacters?: number} = {}) {
+    let {prefix = '', preferSpaces = true, tabSize = 2, eol = '\n', maxLineCharacters = 100} = opts
     let step = (preferSpaces ? ' ' : '\t').repeat(tabSize)
-    return this.nodes.map(n => toXML(n, prefix, step, eol)).join(eol)
+    return this.nodes.map(n => toXML(n, prefix, step, eol, maxLineCharacters)).join(eol)
   }
 }
 
@@ -97,7 +97,7 @@ export class TagNodeAttr extends Location {
   }
 }
 
-function toXML(n: Node, prefix: string, step: string, eol: string): string {
+function toXML(n: Node, prefix: string, step: string, eol: string, maxLineCharacters: number): string {
   if (n.is(TYPE.COMMENT)) {
     return prefix + `<!-- ${n.comment} -->`
   } else if (n.is(TYPE.TEXT)) {
@@ -113,9 +113,9 @@ function toXML(n: Node, prefix: string, step: string, eol: string): string {
     if (!child) return prefixedStart + endTag
     if (n.children.length === 1 && child.is(TYPE.TEXT)) {
       let str = prefixedStart + child.content + endTag
-      if (str.length <= 100) return str
+      if (str.length <= maxLineCharacters) return str
     }
-    return [prefixedStart, ...n.children.map(_ => toXML(_, prefix + step, step, eol)), prefix + endTag].join(eol)
+    return [prefixedStart, ...n.children.map(_ => toXML(_, prefix + step, step, eol, maxLineCharacters)), prefix + endTag].join(eol)
   } else {
     return ''
   }
