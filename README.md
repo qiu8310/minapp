@@ -2,7 +2,7 @@
 
 **重新定义微信小程序的开发**
 
-**[更新日志](./CHANGELOG.md)**
+**[更新日志](./CHANGELOG.md)，注意：1.1.0 版的 ts 项目需要在本地安装 awesome-typescript-loader@3.5.0；新创建的项目会自动添加，老项目需要手动添加**
 
 **minapp 1.0.0 已经发布，更新详情请[查看此文](https://qiu8310.github.io/minapp/blog/2018/03/10/release-v1.html)**
 

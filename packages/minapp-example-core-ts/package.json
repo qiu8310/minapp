@@ -25,6 +25,7 @@
     "@types/node": "^7.0.0",
     "mora-common": "^1.0.11",
     "ts-lint": "^4.5.1",
+    "awesome-typescript-loader": "^3.5.0",
     "typescript": "^2.7.1"
   }
 }
