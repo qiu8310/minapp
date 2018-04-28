@@ -2,6 +2,8 @@
 
 **重新定义微信小程序的开发**
 
+**[更新日志](./CHANGELOG.md)**
+
 **minapp 1.0.0 已经发布，更新详情请[查看此文](https://qiu8310.github.io/minapp/blog/2018/03/10/release-v1.html)**
 
 ## 微信交流群
