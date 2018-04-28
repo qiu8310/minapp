@@ -8,8 +8,6 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
  */
 import * as fs from 'fs-extra'
 import * as info from 'mora-scripts/libs/sys/info'
-import * as isWin from 'mora-scripts/libs/sys/isWin'
-import * as DotProp from 'mora-scripts/libs/lang/DotProp'
 import * as path from 'path'
 import {walkDirectory} from './helper'
 import {Answers} from './questions'
@@ -125,11 +123,6 @@ function makeWalkCallback(fromDir: string, toDir: string, data: Answers) {
           if (data.hasOwnProperty(key)) return data[key]
           return raw
         })
-
-        // windows 用户需要安装 awesome-typescript-loader
-        if (name === 'package.json.dtpl' && isWin && data.language === 'TypeScript') {
-          content = reviseJSON(content, {'devDependencies.awesome-typescript-loader': '^3.4.1'})
-        }
       }
 
       if (data.type === 'Component' && /^test\.\w+\.dtpl$/.test(name)) {
@@ -143,10 +136,4 @@ function makeWalkCallback(fromDir: string, toDir: string, data: Answers) {
 
 function stringify(obj: any) {
   return JSON.stringify(obj, null, 2)
-}
-
-function reviseJSON(content: string, map: {[path: string]: any}): string {
-  let dp = new DotProp(JSON.parse(content))
-  Object.keys(map).forEach(k => dp.set(k, map[k]))
-  return stringify(dp.data)
 }

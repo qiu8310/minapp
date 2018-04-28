@@ -31,6 +31,7 @@
     "mora-scripts": "^1.6.21",
     "ts-lint": "^4.5.1",
     "tslib": "^1.9.0",
+    "awesome-typescript-loader": "^3.5.0",
     "typescript": "^2.7.1"
   }
 }

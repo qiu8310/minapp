@@ -32,6 +32,7 @@
     "@minapp/core": "^1.1.0",
     "mora-common": "^1.0.11",
     "mora-scripts": "^1.6.28",
+    "awesome-typescript-loader": "^3.5.0",
     "ts-lint": "^4.5.1",
     "typescript": "^2.7.1"
   }
