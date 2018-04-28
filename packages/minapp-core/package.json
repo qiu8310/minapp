@@ -1,6 +1,6 @@
 {
   "name": "@minapp/core",
-  "version": "1.0.12",
+  "version": "1.1.0",
   "description": "微信小程序 api 的 typings，同时提供 promise 版",
   "main": "system.js",
   "typings": "system.d.ts",

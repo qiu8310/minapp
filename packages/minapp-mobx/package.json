@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/mobx",
 	"description": "微信小程序框架",
-	"version": "1.0.12",
+	"version": "1.1.0",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
@@ -27,7 +27,7 @@
 		"mobx": "^3.5.1"
 	},
 	"dependencies": {
-		"@minapp/core": "^1.0.12",
+		"@minapp/core": "^1.1.0",
 		"tslib": "^1.9.0"
 	},
 	"devDependencies": {
