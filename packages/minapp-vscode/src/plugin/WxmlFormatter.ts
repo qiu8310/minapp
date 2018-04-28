@@ -10,10 +10,13 @@ import {
 
 import {EOL} from 'os'
 import {parse} from '@minapp/wxml-parser'
+import {Config} from './lib/config'
 
 export default class implements
   DocumentFormattingEditProvider,
   DocumentRangeFormattingEditProvider {
+
+    constructor(public config: Config) {}
 
   getEOL() {
     return workspace.getConfiguration('files', null as any).get('eol', EOL) || EOL
@@ -27,7 +30,8 @@ export default class implements
         prefix,
         eol: this.getEOL(),
         preferSpaces: options.insertSpaces,
-        tabSize: options.tabSize
+        tabSize: options.tabSize,
+        maxLineCharacters: this.config.formatMaxLineCharacters
       }))
     ]
   }

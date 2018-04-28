@@ -17,7 +17,7 @@ import {config, configActivate, configDeactivate} from './plugin/lib/config'
 
 export function activate(context: ExtensionContext) {
   configActivate()
-  let formatter = new WxmlFormatter()
+  let formatter = new WxmlFormatter(config)
   let autoCompletionWxml = new WxmlAutoCompletion(config)
   let hoverProvider = new HoverProvider(config)
   let linkProvider = new LinkProvider(config)

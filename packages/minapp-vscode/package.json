@@ -68,6 +68,11 @@
           "items": {
             "type": "string"
           }
+        },
+        "minapp-vscode.formatMaxLineCharacters": {
+          "type": "number",
+          "description": "格式化时，单行允许的最长的长度",
+          "default": 100
         }
       }
     },
