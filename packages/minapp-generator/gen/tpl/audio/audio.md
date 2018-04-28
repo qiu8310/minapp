@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/audio.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/audio.html -->
 
 #### audio
 
@@ -68,4 +68,4 @@
 
 ![audio](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/audio.png?t=201838)
 
-相关api：[wx.createAudioContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-audio.html)
+相关api：[wx.createAudioContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-audio.html)

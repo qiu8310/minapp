@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/radio.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/radio.html -->
 
 #### radio-group
 

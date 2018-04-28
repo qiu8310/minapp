@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/checkbox.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/checkbox.html -->
 
 #### checkbox-group
 

@@ -13,8 +13,9 @@ export default class extends TplModifier {
     $table.replaceWith(`<p>${this.g.tableToDesc($table)}</p>`)
 
     return [
-      {type: 'tableTitleUpdate', index: 1, from: '状态码', to: 'bindstatechange __描述__ code'},
-      {type: 'tableTitleUpdate', index: 2, from: '网络状态数据', to: 'bindnetstatus __描述__ info'},
+      {type: 'tableTitleUpdate', index: 1, from: '错误码（errCode）', to: 'binderror __描述__ errCode'},
+      {type: 'tableTitleUpdate', index: 2, from: '状态码（code）', to: 'bindstatechange __描述__ code'},
+      {type: 'tableTitleUpdate', index: 3, from: '网络状态数据（info）', to: 'bindnetstatus __描述__ info'},
     ]
   }
 }

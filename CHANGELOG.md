@@ -1,11 +1,11 @@
-1.1.0 / 2018-04-22
+1.1.0 / 2018-04-28
 ==================
 
 * compiler: 自定义的 webpack.minapp.js 文件导出的函数的第二个参数会传入 webpack，见 https://qiu8310.github.io/minapp/docs/doc-custom-webpack.html
 * core: 修复双向绑定中组件参数不支持中化线的问题 close #53
 * core: 支持微信插件，见 https://github.com/qiu8310/minapp/issues/50
 * core: 更新 wx.d.ts 和 wxp.d.ts （同步官方的 2018.04.12 版本）
-
+* vscode: 插件更新，[详情查看](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/CHANGELOG.md)
 
 1.0.15 / 2018-04-10
 ==================

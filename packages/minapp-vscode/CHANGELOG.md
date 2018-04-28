@@ -1,7 +1,9 @@
-1.1.0 / 2018-04-30
+1.1.0 / 2018-04-28
 ==================
 
 * wxml / pug 文件中的 src 标签支持 link 功能（另外可以通过配置 `minapp-vscode.linkAttributeNames` 来支持更多的标签）
+* 添加新配置 `minapp-vscode.formatMaxLineCharacters` 可以指定格式化时每行最长的字符数`, close [61](https://github.com/qiu8310/minapp/issues/61)
+* 更新官方组件数据
 
 1.0.14 / 2018-04-09
 ==================

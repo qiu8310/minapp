@@ -109,13 +109,13 @@ export class BaseComponent<D, A extends BaseApp> {
     if (Object.keys(mixedData).length) {
       this.setData(mixedData, done)
     } else {
-      count++
+      done()
     }
     if (Object.keys(parentData).length) {
       parentData.minappdone = done
       this.triggerEvent('minappsyncupdate', parentData, {})
     } else {
-      count++
+      done()
     }
   }
 

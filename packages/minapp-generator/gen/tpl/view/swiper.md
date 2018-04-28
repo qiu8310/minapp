@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/swiper.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/swiper.html -->
 
 #### swiper
 
@@ -23,7 +23,7 @@
   bindchange                |  EventHandle   |                      |current 改变时会触发 change 事件，event.detail = {current: current, source: source}|          
   bindanimationfinish       |  EventHandle   |                      |  动画结束时会触发 animationfinish 事件，event.detail 同上                     |  1.9.0   
 
-从 [1.4.0](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html "基础库 1.4.0 开始支持，低版本需做兼容处理。") 开始，`change`事件返回`detail`中包含一个`source`字段，表示导致变更的原因，可能值如下：
+从 [1.4.0](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html "基础库 1.4.0 开始支持，低版本需做兼容处理。") 开始，`change`事件返回`detail`中包含一个`source`字段，表示导致变更的原因，可能值如下：
 
 *   `autoplay` 自动播放导致swiper变化；
 *   `touch` 用户划动引起swiper变化；

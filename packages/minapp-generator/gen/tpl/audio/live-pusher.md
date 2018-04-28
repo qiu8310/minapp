@@ -1,12 +1,12 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/live-pusher.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/live-pusher.html -->
 
 #### live-pusher
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 实时音视频录制。
 
-需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.camera、scope.record
+需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.camera、scope.record
 
 暂只针对如下类目开放，需要先通过类目审核，再在小程序管理后台，“设置”-“接口设置”中自助开通该组件权限。
 
@@ -36,7 +36,7 @@
 
 *   `<live-player />` 默认宽度为100%、无默认高度，请通过wxss设置宽高。
 *   开发者工具上暂不支持。
-*   相关api：[wx.createLivePusherContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-pusher.html)
+*   相关api：[wx.createLivePusherContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-live-pusher.html)
 
 ##### bindstatechange __描述__ code
 

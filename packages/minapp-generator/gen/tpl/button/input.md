@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/input.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/input.html -->
 
 #### input
 

@@ -1,12 +1,12 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/camera.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/camera.html -->
 
 #### camera
 
-> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.6.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 系统相机。
 
-需要[用户授权](https://mp.weixin.qq.com/debug/wxadoc/dev/api/authorize-index.html) scope.camera
+需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.camera
 
   属性名            |  类型          |  默认值 |  说明                    
 --------------------|----------------|---------|--------------------------
@@ -15,7 +15,7 @@
   bindstop          |  EventHandle   |         |摄像头在非正常终止时触发，如退出后台等情况
   binderror         |  EventHandle   |         |用户不允许使用摄像头时触发
 
-相关api：[wx.createCameraContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-camera.html)
+相关api：[wx.createCameraContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-camera.html)
 
 ##### Bug & Tip
 

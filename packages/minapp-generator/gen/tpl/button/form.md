@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/form.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/form.html -->
 
 #### form
 
@@ -6,11 +6,11 @@
 
 当点击 `<form/>` 表单中 formType 为 submit 的 `<button/>` 组件时，会将表单组件中的 value 值进行提交，需要在表单组件中加上 name 来作为 key。
 
-  属性名          |  类型          |  说明                                                                                | 最低版本
-------------------|----------------|--------------------------------------------------------------------------------------|---------
-  report-submit   |  Boolean       |是否返回 formId 用于发送[模板消息](https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html)|         
-  bindsubmit      |  EventHandle   |携带 form 中的数据触发 submit 事件，event.detail = {value : {'name': 'value'} , formId: ''}|         
-  bindreset       |  EventHandle   |  表单重置时会触发 reset 事件                                                         |         
+  属性名          |  类型          |  说明                                                                                       | 最低版本
+------------------|----------------|---------------------------------------------------------------------------------------------|---------
+  report-submit   |  Boolean       |是否返回 formId 用于发送[模板消息](https://developers.weixin.qq.com/miniprogram/dev/api/notice.html)|         
+  bindsubmit      |  EventHandle   | 携带 form 中的数据触发 submit 事件，event.detail = {value : {'name': 'value'} , formId: ''} |         
+  bindreset       |  EventHandle   |  表单重置时会触发 reset 事件                                                                |         
 
 **示例代码：**
 

@@ -58,7 +58,7 @@ export class Modifier {
   get meta(): CodeMeta {
     return {
       componentNoAttrs: [
-        'movable-area',
+        // 'movable-area',
         'cover-view',
         'picker-view-column',
       ],

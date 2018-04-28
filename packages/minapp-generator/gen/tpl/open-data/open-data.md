@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/open-data.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html -->
 
 #### open-data
 
-> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 用于展示微信开放的数据。
 
@@ -32,4 +32,4 @@
     <open-data type="userGender" lang="zh_CN"></open-data>
     
 
-**Tips:** 关于open-gid的获取请查看 [转发](https://mp.weixin.qq.com/debug/wxadoc/dev/api/share.html#wxgetshareinfoobject)
+**Tips:** 关于open-gid的获取请查看 [转发](https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxgetshareinfoobject)

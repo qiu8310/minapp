@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/map.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/map.html -->
 
 #### map
 
@@ -176,7 +176,7 @@
     })
     
 
-相关api：[wx.createMapContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-map.html)
+相关api：[wx.createMapContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-map.html)
 
 ##### Bug & Tip
 

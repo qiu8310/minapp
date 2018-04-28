@@ -33,13 +33,12 @@ export class Section {
     // 如果是 "xxx 上的 yyy" 的形式，则优先取 yyy
     if (/^([\w\-]+)\s*上的.+?\b([\w\-]+)/.test(this.title)) this.key = RegExp.$2
     else if (/([\w\-]+)/.test(this.title)) this.key = RegExp.$1
-
     let $table = $section.find('table')
+
     if ($table.length > 1) {
       warn(`${this} 不应该含有多于两个 table`)
     } else if ($table.length === 1) {
       let {head, body} = g.getTableData($table)
-
       if (TABLE_FIRST_FILED_NAMES.indexOf(head[0]) >= 0) {
         this.table = new Table(g, this, $table, head, body)
       }

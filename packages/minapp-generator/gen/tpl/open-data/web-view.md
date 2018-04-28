@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/web-view.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html -->
 
 #### web-view
 
-> 基础库 1.6.4 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.6.4 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面。**个人类型与海外类型的小程序暂不支持使用。**
 

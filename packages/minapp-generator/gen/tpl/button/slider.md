@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/slider.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/slider.html -->
 
 #### slider
 

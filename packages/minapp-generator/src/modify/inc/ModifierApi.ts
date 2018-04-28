@@ -24,7 +24,8 @@ export class ApiModifier extends Modifier {
     for (let m of modifies) {
       if (m.type === 'merge') {
         let $fromTable = $(tables[m.fromIndex])
-        let $target = $(tables[m.toIndex]).find('tbody')
+        let $toTable = $(tables[m.toIndex])
+        let $target = $toTable.find('tbody')
 
         let {body} = this.g.getTableData($fromTable)
         let {prefixes, suffixes, splice} = m

@@ -1,8 +1,8 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/live-player.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/live-player.html -->
 
 #### live-player
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 实时音视频播放。
 
@@ -29,7 +29,7 @@
 
 *   `<live-player />` 默认宽度300px、高度225px，可通过wxss设置宽高。
 *   开发者工具上暂不支持。
-*   相关api：[wx.createLivePlayerContext](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-live-player.html)
+*   相关api：[wx.createLivePlayerContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-live-player.html)
 
 ##### bindstatechange __描述__ code
 

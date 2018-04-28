@@ -306,7 +306,7 @@ export class ComponentArea extends Area {
       if (nodes.every(n => {
         if (n.type === 'text') {
           text += n.data
-        } else if (n.type === 'tag' && n.tagName === 'a' && !link) {
+        } else if (n.type === 'tag' && n.tagName === 'a' && !link && nodes[1]) {
           link = new ComponentLink(nodes[1].firstChild.data || '', nodes[1].attribs.href)
           text += link.name
         } else {
@@ -319,7 +319,7 @@ export class ComponentArea extends Area {
           component.relateApis.push(link)
         } else if (nodes.length === 2 && /基础库 ([\d\.]+) 开始支持，低版本需做/.test(text)) {
           component.since = RegExp.$1
-        } else if (nodes.length === 3 && /需要用户授权\s*(scope.\w+)/.test(text)) {
+        } else if (nodes.length === 3 && /需要用户授权\s*(scope.[、 \.\w]+)/.test(text)) {
           component.authorize = new ComponentLink(RegExp.$1, link.link)
         } else {
           remove = false

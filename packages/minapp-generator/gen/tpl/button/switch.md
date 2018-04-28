@@ -1,4 +1,4 @@
-<!-- https://mp.weixin.qq.com/debug/wxadoc/dev/component/switch.html -->
+<!-- https://developers.weixin.qq.com/miniprogram/dev/component/switch.html -->
 
 #### switch
 
