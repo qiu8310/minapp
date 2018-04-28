@@ -12,7 +12,12 @@ const users = [
     image: 'https://avatars0.githubusercontent.com/u/1094697?s=460',
     infoLink: 'https://github.com/qiu8310',
     pinned: true,
-  },
+  },  {
+    caption: 'chemzqm',
+    image: 'https://avatars2.githubusercontent.com/u/251450',
+    infoLink: 'https://github.com/chemzqm',
+    pinned: true,
+  }
 ];
 
 const siteConfig = {
