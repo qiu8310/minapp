@@ -18,7 +18,7 @@
     "strictPropertyInitialization": true,
     "noLib": false,
     "lib": [
-      "es6"
+      "es6", "es2016.array.include"
     ],
     "outDir": "dist"
   },

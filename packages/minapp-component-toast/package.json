@@ -1,15 +1,14 @@
 {
   "name": "@minapp/component-toast",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "wechat toast component for minapp",
   "main": "dist/toast.js",
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
-    "postpublish": "sync-taobao",
-    "clear": "remove-all dist",
-    "build": "npm run clear && node ../minapp-cli/dist/index.js build --pretty",
-    "watch": "node ../minapp-cli/dist/index.js dev"
+    "clear": "node ../minapp-cli/dist/bin/minapp.js clear dist",
+    "build": "npm run clear && node ../minapp-cli/dist/bin/minapp.js build --pretty",
+    "dev": "node ../minapp-cli/dist/bin/minapp.js dev"
   },
   "files": [
     "dist/",
@@ -21,17 +20,9 @@
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
-  "dependencies": {
-    "tslib": "^1.9.0"
-  },
-  "peerDependencies": {
-    "@minapp/core": "^1.0.0"
-  },
   "devDependencies": {
     "@minapp/core": "^1.1.1",
-    "awesome-typescript-loader": "^3.5.0",
-    "mora-common": "^1.0.11",
-    "mora-scripts": "^1.6.28",
+    "ts-loader": "^4.0.0",
     "ts-lint": "^4.5.1",
     "typescript": "^2.7.1"
   }

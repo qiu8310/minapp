@@ -4,9 +4,9 @@
   "description": "minapp js 示例项目",
   "scripts": {
     "test": "echo 0",
-    "clear": "remove-all dist",
-    "dev": "node ../minapp-cli/dist/index.js dev",
-    "build": "node ../minapp-cli/dist/index.js build --publicPath http://your.static.server/"
+    "clear": "node ../minapp-cli/dist/bin/minapp.js clear dist",
+    "dev": "node ../minapp-cli/dist/bin/minapp.js dev",
+    "build": "node ../minapp-cli/dist/bin/minapp.js build --publicPath http://lcdn.static.lotlot.com/"
   },
   "publishConfig": {
     "access": "public"
@@ -16,12 +16,9 @@
   "dependencies": {
     "@minapp/component-demo": "^1.1.1",
     "@minapp/component-toast": "^1.1.1",
-    "@minapp/core": "^1.1.1",
-    "babel-runtime": "^6.24.0",
-    "mora-scripts": "^1.6.21"
+    "@minapp/core": "^1.1.1"
   },
   "devDependencies": {
-    "mora-common": "^1.0.11",
-    "tslib": "^1.9.0"
+    "babel-runtime": "^6.24.0"
   }
 }

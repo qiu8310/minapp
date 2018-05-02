@@ -9,8 +9,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 import * as fs from 'fs-extra'
 import * as info from 'mora-scripts/libs/sys/info'
 import * as path from 'path'
-import {walkDirectory} from './helper'
-import {Answers} from './questions'
+import {walkDirectory} from './base/helper'
 
 const ROOT_DIR = path.resolve(__dirname, '..')
 const PKGS_DIR = path.resolve(ROOT_DIR, '..')
@@ -66,21 +65,20 @@ function updatePackageJson(json: any, id: string): string {
   json.version = '${version}'
 
   delete json.publishConfig
-  delete json.devDependencies['mora-common']
   if (/-js$/.test(id)) {
     delete json.devDependencies.tslib
   }
-  if (/-core-/.test(id)) {
-    delete json.dependencies['@minapp/component-toast']
-  }
 
   json.scripts.dev = 'minapp dev'
+  json.scripts.clear = 'minapp clear dist'
+
   if (/-component-/.test(id)) {
     json.main = 'dist/${name}.js'
     json.scripts.build = 'minapp build --pretty' // 组件中图片会使用原路径
   } else {
     json.scripts.build = 'minapp build --publicPath http://your.static.server/'
   }
+
   return stringify(json)
 }
 
@@ -92,47 +90,6 @@ function updateProjectConfigJson(json: any): string {
 }
 
 if (!module.parent) internalMake()
-
-export function make(toDir: string, data: Answers) {
-  let language = data.language === 'TypeScript' ? 'ts' : 'js'
-  let id = data.type === 'Application'
-    ? `example-${data.state === 'Mobx' ? 'mobx' : 'core'}-${language}`
-    : `example-component-${language}`
-
-  let fromDirs = [
-    path.join(ROOT_DIR, 'common', data.type, 'base'),
-    path.join(ROOT_DIR, 'common', data.type, language),
-    path.join(TEMPLATE_DIR, id)
-  ]
-
-  fromDirs.forEach(fromDir => walkDirectory(fromDir, makeWalkCallback(fromDir, toDir, data)))
-}
-
-function makeWalkCallback(fromDir: string, toDir: string, data: Answers) {
-  return (dir: string, name: string, fromFile: string, stat: fs.Stats) => {
-    let relative = path.relative(fromDir, fromFile)
-    let toFile = path.join(toDir, relative)
-
-    if (stat.isDirectory()) {
-      fs.ensureDirSync(toFile)
-    } else if (stat.isFile()) {
-      let content: string | Buffer = fs.readFileSync(fromFile)
-
-      if (['package.json.dtpl', 'project.config.json.dtpl', 'dtpl.js.dtpl', 'minapp.json.dtpl'].indexOf(name) >= 0) {
-        content = content.toString().replace(/\$\{(\w+)\}/g, (raw, key) => {
-          if (data.hasOwnProperty(key)) return data[key]
-          return raw
-        })
-      }
-
-      if (data.type === 'Component' && /^test\.\w+\.dtpl$/.test(name)) {
-        toFile = toFile.replace(/test(\.\w+\.dtpl)$/, (r, suffix) => data.name + suffix)
-      }
-
-      fs.writeFileSync(toFile.replace(/\.dtpl$/, '').replace(/\.css$/, '.' + data.style), content)
-    }
-  }
-}
 
 function stringify(obj: any) {
   return JSON.stringify(obj, null, 2)

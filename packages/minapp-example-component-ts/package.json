@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
-    "clear": "remove-all dist",
-    "build": "node ../minapp-cli/dist/index.js build --pretty",
-    "dev": "node ../minapp-cli/dist/index.js dev"
+    "clear": "node ../minapp-cli/dist/bin/minapp.js clear dist",
+    "build": "node ../minapp-cli/dist/bin/minapp.js build --pretty",
+    "dev": "node ../minapp-cli/dist/bin/minapp.js dev"
   },
   "files": [
     "dist/",
@@ -20,16 +20,9 @@
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
-  "peerDependencies": {
-    "@minapp/core": "^1.0.0",
-    "tslib": "^1.9.0"
-  },
   "devDependencies": {
     "@minapp/core": "^1.1.1",
-    "@types/node": "^7.0.0",
-    "awesome-typescript-loader": "^3.5.0",
-    "mora-common": "^1.0.11",
-    "mora-scripts": "^1.6.21",
+    "ts-loader": "^4.2.0",
     "ts-lint": "^4.5.1",
     "tslib": "^1.9.0",
     "typescript": "^2.7.1"

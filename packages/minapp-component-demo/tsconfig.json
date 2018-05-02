@@ -6,7 +6,7 @@
     "removeComments": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
-    "importHelpers": true,
+    "importHelpers": false,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "noImplicitThis": true,

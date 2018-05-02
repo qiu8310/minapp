@@ -12,6 +12,16 @@
       "description": "编译相关的选项",
       "default": {},
       "properties": {
+        "srcDir": {
+          "type": "string",
+          "description": "指定源代码的目录",
+          "default": "src"
+        },
+        "distDir": {
+          "type": "string",
+          "description": "指定编译后的代码的目录",
+          "default": "dist"
+        },
         "unitTransformer": {
           "type": "object",
           "default": {},
@@ -21,15 +31,25 @@
           "type": "string",
           "description": "指定一个 json 文件的路径，此文件会转化成 sass，放在每个 sass 文件的开头"
         },
-        "px2rpx": {
-          "type": "boolean",
-          "default": true,
-          "description": "是否将样式的 px 单位转化成 rpx；默认为 true; \n\n建议使用 unitTransformer 选项"
+        "npmOutputFolder": {
+          "type": "string",
+          "description": "在 distDir 中存放 node_modules 中的文件的目录名称，默认是 `npm`（相对于 distDir）",
+          "default": "npm"
         },
-        "rpx2px": {
-          "type": "boolean",
-          "default": true,
-          "description": "是否将样式的 rpx 单位转化成 px；默认为 true; \n\n建议使用 unitTransformer 选项"
+        "staticFileExtensions": {
+          "type": "string",
+          "description": "静态资源文件的后缀列表，用于匹配项目中的静态资源，多个名字之间用 `|` 分隔",
+          "default": "gif|png|jpg|jpeg|svg|ico|woff|woff2|ttf|eot|otf|mp3|mp4"
+        },
+        "staticOutputName": {
+          "type": "string",
+          "description": "指定生成的静态资源的文件名的格式",
+          "default": "[name:0]-[hash:10].[ext]"
+        },
+        "staticOutputFolder": {
+          "type": "string",
+          "description": "指定存放生成的静态资源的文件的目录，默认是 `static`（相对于 distDir）",
+          "default": "static"
         },
         "urlLoaderLimit": {
           "type": "number",
@@ -45,8 +65,18 @@
         },
         "devServer": {
           "type": "object",
-          "description": "开发环境中，webpack-dev-server 的配置，参考 https://webpack.js.org/configuration/dev-server/",
+          "description": "webpack devServer 配置，注意：host 和 port 配置只能通过 `minapp dev --port 9000 --host localhost` 命令来配置",
           "default": {}
+        },
+        "px2rpx": {
+          "type": "boolean",
+          "default": true,
+          "description": "已经废弃，请使用 unitTransformer 选项"
+        },
+        "rpx2px": {
+          "type": "boolean",
+          "default": true,
+          "description": "已经废弃，请使用 unitTransformer 选项"
         }
       }
     }

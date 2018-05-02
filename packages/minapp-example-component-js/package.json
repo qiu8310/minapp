@@ -5,9 +5,9 @@
   "main": "dist/test.js",
   "scripts": {
     "test": "echo 0",
-    "clear": "remove-all dist",
-    "build": "node ../minapp-cli/dist/index.js build --pretty",
-    "dev": "node ../minapp-cli/dist/index.js dev"
+    "clear": "node ../minapp-cli/dist/bin/minapp.js clear dist",
+    "build": "node ../minapp-cli/dist/bin/minapp.js build --pretty",
+    "dev": "node ../minapp-cli/dist/bin/minapp.js dev"
   },
   "files": [
     "dist/",
@@ -19,15 +19,7 @@
   },
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
-  "peerDependencies": {
-    "@minapp/core": "^1.0.0",
-    "babel-runtime": "^6.24.0"
-  },
   "devDependencies": {
-    "@minapp/core": "^1.1.1",
-    "babel-runtime": "^6.24.0",
-    "mora-common": "^1.0.11",
-    "mora-scripts": "^1.6.21",
-    "tslib": "^1.9.0"
+    "@minapp/core": "^1.1.1"
   }
 }

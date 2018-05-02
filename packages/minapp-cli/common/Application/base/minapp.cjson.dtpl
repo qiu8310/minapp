@@ -14,7 +14,11 @@
       "px": "rpx",
       "rpx": "px"
     },
-    "devServer": { // webpack-dev-server 相关的配置，详情参考：https://webpack.js.org/configuration/dev-server/
+
+    // webpack-dev-server 相关的配置，详情参考：https://webpack.js.org/configuration/dev-server/
+    // 建议在 webpack.minapp.js 中配置
+    // 注意：host 和 port 配置只能通过命令行配置
+    "devServer": {
 
     }
   }

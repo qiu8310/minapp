@@ -8,7 +8,7 @@ import * as path from 'path'
 import * as inquirer from 'inquirer'
 import {getGitUser} from './helper'
 
-export interface Answers extends inquirer.Answers {
+export interface Answers {
   type: 'Application' | 'Component'
   language: 'TypeScript' | 'JavaScript'
   style: string
@@ -20,7 +20,7 @@ export interface Answers extends inquirer.Answers {
 }
 
 export function questions(absDir: string) {
-  return inquirer.prompt([
+  return inquirer.prompt<Answers>([
     {
       type: 'list',
       name: 'type',
