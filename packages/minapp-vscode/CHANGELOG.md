@@ -1,3 +1,8 @@
+1.1.1 / 2018-05-03
+==================
+
+* 更新小程序组件数据，主要添加了 [ad 组件](https://developers.weixin.qq.com/miniprogram/dev/component/ad.html)
+
 1.1.0 / 2018-04-28
 ==================
 
