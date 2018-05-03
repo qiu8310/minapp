@@ -6,6 +6,7 @@
 import {resolve, join} from 'path'
 import { Env } from '../config/env'
 export {ExtractMinappCode} from './plugin/ExtractMinappCode'
+export {WriteFile} from './plugin/WriteFile'
 
 // postcss plugins
 import {px2rpx} from './postcss/px2rpx'

@@ -8,7 +8,7 @@ import * as path from 'path'
 import * as fs from 'fs-extra'
 import {env} from './env'
 import {JSON_REGEXP} from '../base/helper'
-import {getLoader, ExtractMinappCode} from '../webpack/'
+import {getLoader, ExtractMinappCode, WriteFile} from '../webpack/'
 
 const {mode, entry, rootDir, srcDir, distDir, modulesDir} = env
 
@@ -62,8 +62,7 @@ const plugins: any[] = [
   new ExtractMinappCode(env),
 ]
 if (env.hasServer) {
-  const WriteFile = require('write-file-webpack-plugin')
-  plugins.push(new WriteFile())
+  plugins.push(new WriteFile(env))
 }
 // #endregion
 
