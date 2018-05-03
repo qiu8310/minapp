@@ -1,3 +1,2 @@
-export * from './dist/system/'
-import wxp from './dist/index'
-export {wxp}
+export * from './dist/'
+export {wxp} from '@minapp/wx/wxp'

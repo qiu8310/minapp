@@ -1,7 +1,7 @@
 {
   "name": "@minapp/core",
   "version": "1.1.1",
-  "description": "微信小程序 api 的 typings，同时提供 promise 版",
+  "description": "minapp 微信小程序的核心框架",
   "main": "system.js",
   "types": "system.d.ts",
   "scripts": {
@@ -10,8 +10,8 @@
     "postpublish": "sync-taobao",
     "bundle:pretty": "webpack --output-library-target commonjs  system.js system.bundle.js",
     "bundle:minify": "webpack -p --output-library-target commonjs  system.js system.bundle.min.js",
-    "build": "tsc && node scripts/init.js && npm run bundle:pretty && npm run bundle:minify",
-    "watch": "tsc -w -p tsconfig-system.json"
+    "build": "tsc && npm run bundle:pretty && npm run bundle:minify",
+    "watch": "tsc -w"
   },
   "publishConfig": {
     "access": "public"
@@ -24,7 +24,11 @@
     "type": "git",
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-core"
   },
+  "peerDependencies": {
+    "@minapp/wx": "*"
+  },
   "devDependencies": {
+    "@minapp/wx": "^1.1.1",
     "@types/fs-extra": "^5.0.0",
     "fs-extra": "^5.0.0",
     "mora-scripts": "^1.6.28",

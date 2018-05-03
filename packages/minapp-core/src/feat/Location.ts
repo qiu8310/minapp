@@ -3,6 +3,8 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
+import '@minapp/wx'
+
 export class Location {
   public pathname: string
   public query: {[key: string]: string}

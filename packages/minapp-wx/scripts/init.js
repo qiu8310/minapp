@@ -13,8 +13,8 @@ const PROMISABLE_FILE = path.resolve(GENERATOR_ROOT, data.promisable)
 const DIST_DIR = path.resolve(__dirname, '../dist')
 
 // 替换 index.js 中的 `var PROMISABLE = { FUNCS: [], KLASS: {} };`
-function replaceIndexJs() {
-  const DIST_INDEX_JS = path.join(DIST_DIR, 'index.js')
+function replaceDistWxpJs() {
+  const DIST_INDEX_JS = path.join(DIST_DIR, 'wxp.js')
   let indexContent = fs.readFileSync(DIST_INDEX_JS).toString()
   let regexp = /var\s+PROMISABLE\s+=\s+.*?;/
   if (regexp.test(indexContent)) {
@@ -36,30 +36,6 @@ function copyWxp() {
   info(`${WXP_FILE} 复制成功`)
 }
 
-// 替换 index.d.ts 文件中的内容
-function replaceIndexTs() {
-  const DIST_INDEX_TS = path.join(DIST_DIR, 'index.d.ts')
-  let content = fs.readFileSync(DIST_INDEX_TS).toString()
 
-  let replacer1 = '/// <reference path="../typing/wx.d.ts" />'
-  let replacer2 = 'declare const wxp: any;'
-
-  if (content.indexOf(replacer1) < 0 || content.indexOf(replacer2) < 0) {
-    warn(`${DIST_INDEX_TS} 文件替换失败`)
-  } else {
-    let typings = fs.readdirSync(path.resolve(DIST_DIR, '..', 'typing'))
-      .map(name => `/// <reference path="../typing/${name}" />`)
-
-    fs.writeFileSync(
-      DIST_INDEX_TS,
-      content
-        .replace(replacer1, typings.join('\n'))
-        .replace(replacer2, `import {wxp} from './wxp'`)
-    )
-    info(`${DIST_INDEX_TS} 文件替换成功`)
-  }
-}
-
-replaceIndexJs()
+replaceDistWxpJs()
 copyWxp()
-replaceIndexTs()

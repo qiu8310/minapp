@@ -17,6 +17,7 @@
   "dependencies": {
     "@minapp/component-demo": "^1.1.1",
     "@minapp/component-toast": "^1.1.1",
+    "@minapp/wx": "latest",
     "@minapp/core": "^1.1.1",
     "tslib": "^1.9.0"
   },

@@ -7,6 +7,9 @@
 			"path": "packages/minapp-generator"
 		},
 		{
+			"path": "packages/minapp-wx"
+		},
+		{
 			"path": "packages/minapp-core"
 		},
 		{

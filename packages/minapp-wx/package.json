@@ -1,0 +1,34 @@
+{
+  "name": "@minapp/wx",
+  "version": "1.1.1",
+  "description": "微信小程序 api 的 typings，同时提供 promise 版",
+  "main": "dist/wx.js",
+  "types": "dist/wx.d.ts",
+  "scripts": {
+    "test": "echo 0",
+    "lint": "tslint src/**/*.ts",
+    "postpublish": "sync-taobao",
+    "build": "tsc && node scripts/init.js",
+    "watch": "tsc -w"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
+  "bugs": "https://github.com/qiu8310/minapp/issues",
+  "homepage": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-wx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-wx"
+  },
+  "devDependencies": {
+    "fs-extra": "^6.0.0",
+    "mora-scripts": "^1.6.28",
+    "ts-lint": "^4.5.1",
+    "typescript": "^2.7.1"
+  },
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

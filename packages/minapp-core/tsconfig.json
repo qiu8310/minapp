@@ -23,8 +23,7 @@
     "outDir": "dist/"
   },
   "include": [
-    "src/",
-    "typing"
+    "src/"
   ],
   "exclude": [
   ]
