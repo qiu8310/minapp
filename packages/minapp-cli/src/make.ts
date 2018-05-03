@@ -65,7 +65,7 @@ function updatePackageJson(json: any, id: string): string {
   json.version = '${version}'
 
   delete json.publishConfig
-  if (/-js$/.test(id)) {
+  if (/-js$/.test(id) && json.devDependencies) {
     delete json.devDependencies.tslib
   }
 

@@ -39,12 +39,18 @@ export function initCommand(this: cli.Constructor, res: cli.Response) {
 
     make(absDir, answers)
 
+    let installs: string[] = []
+    if (answers.style === 'less') installs.push('less', 'less-loader')
+    else if (answers.style === 'scss') installs.push('node-sass', 'sass-loader')
+
+    let extraInstall = installs.length ? ` && npm install --save-dev ${installs.join(' ')}` : ''
+
     console.log(
       `${EOL}  ${answers.language} ${answers.type} ${answers.name} initialize successfully${EOL}`
       + `=====================================================================${EOL}${EOL}`
       + `  You can run next two commands to continue:${EOL}${EOL}`
       + `    ${code('cd ' + dir)}${EOL}`
-      + `    ${code('npm install')} or ${code('yarn install')}${EOL}${EOL}${EOL}`
+      + `    ${code('npm install' + extraInstall)}${EOL}${EOL}${EOL}`
       + `    ${sys.clog.format('%cHave a good time !', 'magenta')} ${EOL}`
     )
   })

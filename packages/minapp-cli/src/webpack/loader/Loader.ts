@@ -164,7 +164,7 @@ export abstract class Loader {
     let url = this.outputPublicPath + toUrlPath(file)
 
     if (this.env.mode === 'production' && !(/^(\w+?:)\/\//.test(url))) {
-      this.emitWarning(new Error(`file ${this.fromFile} is using local resource! \n\nPlease use "minapp dev" or use "minapp build --publicPath http://your.server"`))
+      this.emitWarning(new Error(`file ${this.fromFile} is using local resource! \nPlease use "minapp dev" or use "minapp build --publicPath http://your.static.server/"`))
     }
 
     return url

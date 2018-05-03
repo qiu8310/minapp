@@ -21,7 +21,7 @@
     "tslib": "^1.9.0"
   },
   "devDependencies": {
-    "@types/node": "^7.0.0",
+    "@types/node": "^8.0.0",
     "ts-lint": "^4.5.1",
     "ts-loader": "^4.2.0",
     "typescript": "^2.7.1"

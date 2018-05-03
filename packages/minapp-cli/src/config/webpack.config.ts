@@ -133,7 +133,7 @@ let wpConf: webpack.Configuration = {
 
 wpConf.devServer.stats = wpConf.stats
 if (!wpConf.output || wpConf.output.filename !== env.output) throw new Error('webpack output.filename can not be changed')
-if (!wpConf.entry || typeof wpConf.entry !== 'string') throw new Error('minapp webpack entry must be string')
+if (!wpConf.entry || typeof wpConf.entry !== 'string') throw new Error('minapp webpack entry must be string, but got ' + JSON.stringify(wpConf.entry))
 // #endregion
 
 
