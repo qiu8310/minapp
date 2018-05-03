@@ -6,6 +6,7 @@
 import * as webpack from 'webpack'
 import * as path from 'path'
 import * as fs from 'fs-extra'
+import {localConfig} from './local'
 import {env} from './env'
 import {JSON_REGEXP} from '../base/helper'
 import {getLoader, ExtractMinappCode, WriteFile} from '../webpack/'
@@ -13,6 +14,7 @@ import {getLoader, ExtractMinappCode, WriteFile} from '../webpack/'
 const {mode, entry, rootDir, srcDir, distDir, modulesDir} = env
 
 const sourceMap = false
+const local = localConfig(env)
 
 // #region 代码压缩
 let minimizer: any[] = []
@@ -27,7 +29,7 @@ if (mode === 'production') {
 // #endregion
 
 // #region loaders
-const loader = {
+let loader = {
   ts: {loader: 'ts-loader', options: {}},
   babel: {loader: require.resolve('babel-loader'), options: {
     presets: [
@@ -48,6 +50,7 @@ if (fs.existsSync(path.join(env.modulesDir, 'babel-runtime'))) {
   // @ts-ignore
   loader.babel.options.plugins.push([require.resolve('babel-plugin-transform-runtime'), {polyfill: false}])
 }
+loader = local.updateLoaders(loader)
 // #endregion
 
 // #region plugins
@@ -130,6 +133,7 @@ let wpConf: webpack.Configuration = {
   }
 }
 
+wpConf = local.webpack(wpConf, webpack)
 wpConf.devServer.stats = wpConf.stats
 if (!wpConf.output || wpConf.output.filename !== env.output) throw new Error('webpack output.filename can not be changed')
 if (!wpConf.entry || typeof wpConf.entry !== 'string') throw new Error('minapp webpack entry must be string, but got ' + JSON.stringify(wpConf.entry))
