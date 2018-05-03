@@ -144,11 +144,26 @@ export class Generator {
   }
 
   private normalize() {
+    let timeReg = /\?t=\d+/
+    let trimRandomTime = (str: string) => str.replace(timeReg, '')
+
     // 使用绝对路径
     this.$root.find('a[href]').toArray().forEach(a => {
       let $a = this.$(a)
       let href = $a.attr('href')
-      if (!(/^\w+\:/.test(href))) $a.attr('href', url.resolve(this.nodeUrl, href))
+      let newhref = href
+      if (!(/^\w+\:/.test(href))) newhref = url.resolve(this.nodeUrl, href)
+      newhref = trimRandomTime(newhref)
+
+      if (newhref !== href) $a.attr('href', newhref)
+    })
+
+    // 去除 ?t=20160203 这样的参数
+    this.$root.find('img[src]').toArray().forEach(img => {
+      let $img = this.$(img)
+      let src = $img.attr('src')
+      let newsrc = trimRandomTime(src)
+      if (newsrc !== src) $img.attr('src', newsrc)
     })
 
     try {

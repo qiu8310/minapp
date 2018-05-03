@@ -72,6 +72,17 @@ export namespace wx {
    */
   function connectSocket(OBJECT: connectSocket.Param): SocketTask
 
+  namespace onSocketOpen {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 连接成功的 HTTP 响应 Header
+       *
+       * @since 2.0.0
+       */
+      header?: any
+    }
+  }
   /**
    * 监听WebSocket连接打开事件。
    *
@@ -87,7 +98,7 @@ export namespace wx {
    *     ```
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketopencallback
    */
-  function onSocketOpen(CALLBACK: any): void
+  function onSocketOpen(callback?: onSocketOpen.Param): void
 
   /**
    * 监听WebSocket错误。

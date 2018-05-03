@@ -43,4 +43,4 @@ canvasContext.setTextAlign
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-text-align.png?t=2018413)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-text-align.png)

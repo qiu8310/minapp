@@ -24,4 +24,4 @@ canvasContext.rotate
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018413)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png)

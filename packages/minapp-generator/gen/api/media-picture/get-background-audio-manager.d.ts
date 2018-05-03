@@ -85,6 +85,12 @@ export namespace wx {
      */
     webUrl: string
     /**
+     * 音频协议。默认值为 'http'，设置 'hls' 可以支持播放 HLS 协议的直播音频
+     *
+     * @since 1.9.94
+     */
+    protocol: string
+    /**
      * 播放
      */
     play(): any

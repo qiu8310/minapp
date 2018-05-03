@@ -122,19 +122,35 @@ export class ApiArea extends Area {
       processedSections.push(argsSection)
       args = argsSection.definitions.map(d => new Arg(d.name, d.type))
     } else {
-      args = rawargs.map(arg => {
-        let newarg = arg.clone()
-        let argSection = body.sections.find(s => !!s.key && s.key.toLowerCase() === arg.name.toLowerCase() && !s.isEmpty)
-        if (argSection) {
-          if (argSection.hasDefinitions) {
-            processedSections.push(argSection)
-            newarg.type = new ObjectType(argSection.definitions)
-          } else {
-            warn(`${argSection} 应该是个 DefinitionTable`)
+      // callback 带参数的情况：https://developers.weixin.qq.com/miniprogram/dev/api/socket-task.html#sockettaskonopencallback
+      // SocketTask.onOpen(CALLBACK)
+      // 参数
+      // res
+      let resSection = body.sections.find(s => s.title.toLowerCase() === 'res' && s.hasDefinitions)
+      if (rawargs.length === 1 && rawargs[0].name.toLowerCase() === 'callback' && resSection) {
+        args = [
+          new Arg(
+            'callback',
+            new FunctionType([new Arg('res', new ObjectType(resSection.definitions))], new Type('any')),
+            true
+          )
+        ]
+        processedSections.push(resSection)
+      } else {
+        args = rawargs.map(arg => {
+          let newarg = arg.clone()
+          let argSection = body.sections.find(s => !!s.key && s.key.toLowerCase() === arg.name.toLowerCase() && !s.isEmpty)
+          if (argSection) {
+            if (argSection.hasDefinitions) {
+              processedSections.push(argSection)
+              newarg.type = new ObjectType(argSection.definitions)
+            } else {
+              warn(`${argSection} 应该是个 DefinitionTable`)
+            }
           }
-        }
-        return newarg
-      })
+          return newarg
+        })
+      }
     }
     this.appendDesc(processedSections, body)
     return args

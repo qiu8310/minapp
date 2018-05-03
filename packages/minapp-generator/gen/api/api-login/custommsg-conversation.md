@@ -89,19 +89,19 @@
 
 ##### 参数说明
 
-  参数             | 是否必须|  说明                                                                                                                                            
--------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------
-  access_token     |  是     |  调用接口凭证                                                                                                                                    
-  touser           |  是     |  普通用户(openid)                                                                                                                                
-  msgtype          |  是     |  消息类型，文本为text，图文链接为link                                                                                                            
-  content          |  是     |  文本消息内容                                                                                                                                    
-  media_id         |  是     |  发送的图片的媒体ID，通过[新增素材接口](https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/material.html?t=2018413)上传图片文件获得。       
-  title            |  是     |  消息标题                                                                                                                                        
-  description      |  是     |  图文链接消息                                                                                                                                    
-  url              |  是     |  图文链接消息被点击后跳转的链接                                                                                                                  
-  picurl           |  是     |  图文链接消息的图片链接，支持 JPG、PNG 格式，较好的效果为大图 640 X 320，小图 80 X 80                                                            
-  pagepath         |  是     |  小程序的页面路径，跟app.json对齐，支持参数，比如pages/index/index?foo=bar                                                                       
-  thumb_media_id   |  是     |小程序消息卡片的封面， image类型的media_id，通过[新增素材接口](https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/material.html?t=2018413)上传图片文件获得，建议大小为520*416
+  参数             | 是否必须|  说明                                                                                                                                  
+-------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------
+  access_token     |  是     |  调用接口凭证                                                                                                                          
+  touser           |  是     |  普通用户(openid)                                                                                                                      
+  msgtype          |  是     |  消息类型，文本为text，图文链接为link                                                                                                  
+  content          |  是     |  文本消息内容                                                                                                                          
+  media_id         |  是     |  发送的图片的媒体ID，通过[新增素材接口](https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/material.html)上传图片文件获得。       
+  title            |  是     |  消息标题                                                                                                                              
+  description      |  是     |  图文链接消息                                                                                                                          
+  url              |  是     |  图文链接消息被点击后跳转的链接                                                                                                        
+  picurl           |  是     |  图文链接消息的图片链接，支持 JPG、PNG 格式，较好的效果为大图 640 X 320，小图 80 X 80                                                  
+  pagepath         |  是     |  小程序的页面路径，跟app.json对齐，支持参数，比如pages/index/index?foo=bar                                                             
+  thumb_media_id   |  是     |小程序消息卡片的封面， image类型的media_id，通过[新增素材接口](https://mp.weixin.qq.com/debug/wxadoc/dev/api/custommsg/material.html)上传图片文件获得，建议大小为520*416
 
 ##### 返回码说明
 

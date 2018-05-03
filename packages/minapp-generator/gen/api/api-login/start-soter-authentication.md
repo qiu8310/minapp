@@ -77,7 +77,7 @@
 
 ### 调用流程
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/soter.png?t=2018413)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/soter.png)
 
 #### 流程步骤说明
 

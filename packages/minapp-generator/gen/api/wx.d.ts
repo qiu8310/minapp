@@ -1,4 +1,4 @@
-// Generated at 2018-4-22
+// Generated at 2018-5-3
 declare namespace wx {
   namespace request {
     type Param = {
@@ -514,6 +514,17 @@ declare namespace wx {
    */
   function connectSocket(OBJECT: connectSocket.Param): SocketTask
 
+  namespace onSocketOpen {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 连接成功的 HTTP 响应 Header
+       *
+       * @since 2.0.0
+       */
+      header?: any
+    }
+  }
   /**
    * 监听WebSocket连接打开事件。
    *
@@ -529,7 +540,7 @@ declare namespace wx {
    *     ```
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/network-socket.html#wxonsocketopencallback
    */
-  function onSocketOpen(CALLBACK: any): void
+  function onSocketOpen(callback?: onSocketOpen.Param): void
 
   /**
    * 监听WebSocket错误。
@@ -1249,9 +1260,6 @@ declare namespace wx {
    *     recorderManager.onStart(() => {
    *       console.log('recorder start')
    *     })
-   *     recorderManager.onResume(() => {
-   *       console.log('recorder resume')
-   *     })
    *     recorderManager.onPause(() => {
    *       console.log('recorder pause')
    *     })
@@ -1793,6 +1801,12 @@ declare namespace wx {
      * 页面链接，原生音频播放器中的分享功能，分享出去的卡片简介，也将使用该值。
      */
     webUrl: string
+    /**
+     * 音频协议。默认值为 'http'，设置 'hls' 可以支持播放 HLS 协议的直播音频
+     *
+     * @since 1.9.94
+     */
+    protocol: string
     /**
      * 播放
      */
@@ -9434,7 +9448,7 @@ declare namespace wx {
   /**
    * @since 1.1.0
    *
-   * 获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html?t=2018413)自定义的数据字段。
+   * 获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html)自定义的数据字段。
    *
    * **Bug & Tip：**
    *
@@ -9466,7 +9480,7 @@ declare namespace wx {
   /**
    * @since 1.1.0
    *
-   * 获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html?t=2018413)自定义的数据字段的同步接口。
+   * 获取[第三方平台](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/ext.html)自定义的数据字段的同步接口。
    *
    * **Bug & Tip：**
    *
@@ -10375,7 +10389,7 @@ declare namespace wx {
    *
    * **Tip：**
    *
-   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html?t=2018413)进行认证。
+   * 1.  `tip`: 目前只有认证小程序才能使用卡券接口，可参考[指引](https://mp.weixin.qq.com/debug/wxadoc/product/renzheng.html)进行认证。
    * 2.  `tip`: 了解更多信息，请查看[微信卡券接口文档](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1490190158&version=1&lang=zh_CN&platform=2)
    *
    * **示例代码：**
@@ -10656,7 +10670,7 @@ declare namespace wx {
    *
    * 1.  `tip`: 在开发者工具上调用此 API 并不会真实的跳转到另外的小程序，但是开发者工具会校验本次调用跳转是否成功[详情](https://developers.weixin.qq.com/miniprogram/dev/devtools/different.html#小程序跳转的调试支持)
    * 2.  `tip`: 开发者工具上支持被跳转的小程序处理接收参数的调试[详情](https://developers.weixin.qq.com/miniprogram/dev/devtools/different.html#小程序跳转的调试支持)
-   * 3.  `tip`: 只有同一公众号下的关联的小程序之间才可相互跳转 [详情](https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2018413#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%85%B3%E8%81%94%E5%B0%8F%E7%A8%8B%E5%BA%8F)
+   * 3.  `tip`: 只有同一公众号下的关联的小程序之间才可相互跳转 [详情](https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%85%B3%E8%81%94%E5%B0%8F%E7%A8%8B%E5%BA%8F)
    *
    * **示例代码：**
    *
@@ -12389,7 +12403,7 @@ declare namespace wx {
      * -----------|-----------|-----------------------------------------------------
      *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
      *
-     * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018413)
+     * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png)
      *
      * **参数：**
      *
@@ -12888,6 +12902,8 @@ declare namespace wx {
      * --------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      *   安卓  |  xor, source-over, source-atop, destination-out, lighter, overlay, darken, lighten, hard-light                                                                                                                   
      *   iOS   |  xor, source-over, source-atop, destination-over, destination-out, lighter, multiply, overlay, darken, lighten, color-dodge, color-burn, hard-light, soft-light, difference, exclusion, saturation, luminosity   
+     *
+     * **Bug**: 目前安卓版本只适用于 fill 填充块的合成，用于 stroke 线段的合成效果都是 source-over
      *
      * **语法：**
      *

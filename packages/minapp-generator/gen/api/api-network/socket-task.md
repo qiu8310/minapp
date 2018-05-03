@@ -39,6 +39,16 @@ WebSocket 任务，可通过 [wx.connectSocket()](https://developers.weixin.qq.c
 
 监听 WebSocket 连接打开事件。
 
+##### callback 回调函数
+
+##### 参数
+
+###### res
+
+  属性     |  类型     |  说明                   | 支持版本 
+-----------|-----------|-------------------------|----------
+  header   |  object   |连接成功的 HTTP 响应 Header|  2.0.0   
+
 ##### SocketTask.onClose(CALLBACK)
 
 监听 WebSocket 连接关闭事件。

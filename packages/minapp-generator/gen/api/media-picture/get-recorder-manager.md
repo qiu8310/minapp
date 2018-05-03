@@ -73,9 +73,6 @@
     recorderManager.onStart(() => {
       console.log('recorder start')
     })
-    recorderManager.onResume(() => {
-      console.log('recorder resume')
-    })
     recorderManager.onPause(() => {
       console.log('recorder pause')
     })

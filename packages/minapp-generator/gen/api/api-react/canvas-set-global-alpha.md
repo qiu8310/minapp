@@ -34,4 +34,4 @@ canvasContext.setGlobalAlpha
     ctx.draw()
     
 
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/global-alpha.png?t=2018413)
+![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/global-alpha.png)

@@ -1093,7 +1093,7 @@ class CanvasContext {
    * -----------|-----------|-----------------------------------------------------
    *   rotate   |  Number   |旋转角度，以弧度计(degrees * Math.PI/180；degrees范围为0~360)
    *
-   * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png?t=2018413)
+   * ![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/rotate.png)
    *
    * **参数：**
    *
@@ -1592,6 +1592,8 @@ class CanvasContext {
    * --------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    *   安卓  |  xor, source-over, source-atop, destination-out, lighter, overlay, darken, lighten, hard-light                                                                                                                   
    *   iOS   |  xor, source-over, source-atop, destination-over, destination-out, lighter, multiply, overlay, darken, lighten, color-dodge, color-burn, hard-light, soft-light, difference, exclusion, saturation, luminosity   
+   *
+   * **Bug**: 目前安卓版本只适用于 fill 填充块的合成，用于 stroke 线段的合成效果都是 source-over
    *
    * **语法：**
    *
