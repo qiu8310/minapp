@@ -14,6 +14,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/MUaz7cmy6AYq)
+
     <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="section section_gap">
         <view class="section__title">switch</view>
@@ -59,4 +61,4 @@
     })
     
 
-![form](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/form.png?t=201838)
+![form](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/form.png)

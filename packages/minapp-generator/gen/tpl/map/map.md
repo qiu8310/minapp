@@ -37,7 +37,7 @@
   title       |  标注点名             |  String   |  否   |                                                                       |          
   iconPath    |  显示的图标           |  String   |  是   |项目目录下的图片路径，支持相对路径写法，以'/'开头则表示相对小程序根目录；也支持临时路径|          
   rotate      |  旋转角度             |  Number   |  否   |  顺时针旋转的角度，范围 0 ~ 360，默认为 0                             |          
-  alpha       |  标注的透明度         |  Number   |  否   |  默认1，无透明                                                        |          
+  alpha       |  标注的透明度         |  Number   |  否   |  默认1，无透明，范围 0 ~ 1                                            |          
   width       |  标注图标宽度         |  Number   |  否   |  默认为图片实际宽度                                                   |          
   height      |  标注图标高度         |  Number   |  否   |  默认为图片实际高度                                                   |          
   callout     |自定义标记点上方的气泡窗口|  Object   |  否   |  支持的属性见下表，可识别换行符。                                     |  1.2.0   
@@ -124,6 +124,8 @@
 地图组件的经纬度必填, 如果不填经纬度则默认值是北京的经纬度。
 
 **示例：**
+
+[在开发者工具中预览效果](wechatide://minicode/3uVxpmmT6wY9)
 
     <!-- map.wxml -->
     <map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>

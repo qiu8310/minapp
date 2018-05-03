@@ -2,6 +2,8 @@
 
 #### audio
 
+**注意：1.6.0 版本开始，该组件不再维护。建议使用能力更强的 [wx.createInnerAudioContext](https://developers.weixin.qq.com/miniprogram/dev/api/createInnerAudioContext.html) 接口**
+
 音频。
 
   属性名           |  类型          |  默认值  |  说明                                                        
@@ -29,6 +31,8 @@
   4       |  不合适资源  
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/NycgqcmS6KYY)
 
     <!-- audio.wxml -->
     <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop></audio>
@@ -66,6 +70,6 @@
     })
     
 
-![audio](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/audio.png?t=201838)
+![audio](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/audio.png)
 
 相关api：[wx.createAudioContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-audio.html)

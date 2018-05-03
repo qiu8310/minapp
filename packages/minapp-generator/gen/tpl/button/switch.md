@@ -11,6 +11,10 @@
   bindchange   |  EventHandle   |           |checked 改变时触发 change 事件，event.detail={ value:checked}
   color        |  Color         |           |  switch 的颜色，同 css 的 color                          
 
+**示例：**
+
+[在开发者工具中预览效果](wechatide://minicode/6db9lcmu6VYt)
+
     <view class="body-view">
         <switch checked bindchange="switch1Change"/>
         <switch bindchange="switch2Change"/>
@@ -27,7 +31,7 @@
     })
     
 
-![switch](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/switch.png?t=201838)
+![switch](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/switch.png)
 
 ##### Tips
 

@@ -19,6 +19,10 @@
   disabled   |  Boolean   |  false   |  是否禁用                                                                         
   color      |  Color     |          |  radio的颜色，同css的color                                                        
 
+**示例：**
+
+[在开发者工具中预览效果](wechatide://minicode/tpbv9cmv6HYr)
+
     <radio-group class="radio-group" bindchange="radioChange">
       <label class="radio" wx:for="{{items}}">
         <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
@@ -43,4 +47,4 @@
     })
     
 
-![radio](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/radio.png?t=201838)
+![radio](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/radio.png)

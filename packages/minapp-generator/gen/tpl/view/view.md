@@ -33,7 +33,7 @@
     </view>
     
 
-![view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/view.png?t=2018424)
+![view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/view.png)
 
 ##### Bug & Tip
 

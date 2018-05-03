@@ -31,12 +31,20 @@
   background-mute     |  Boolean       |  false      |  进入后台时是否静音                   |          
   bindstatechange     |  EventHandle   |             |  状态变化事件，detail = {code}        |          
   bindnetstatus       |  EventHandle   |             |  网络状态通知，detail = {info}        |  1.9.0   
+  binderror           |  EventHandle   |             |渲染错误事件，detail = {errMsg, errCode}|  1.7.4   
 
 **注意：**
 
 *   `<live-player />` 默认宽度为100%、无默认高度，请通过wxss设置宽高。
 *   开发者工具上暂不支持。
 *   相关api：[wx.createLivePusherContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-live-pusher.html)
+
+##### binderror __描述__ errCode
+
+  代码   |  说明        
+---------|--------------
+  1001   |用户禁止使用摄像头
+  1002   |用户禁止使用录音
 
 ##### bindstatechange __描述__ code
 
@@ -88,6 +96,8 @@
   videoHeight    |  视频画面的高度                    
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/KvWD9mmA62Yk)
 
       <live-pusher url="https://domain/push_stream" mode="RTC" autopush bindstatechange="statechange" style="width: 300px; height: 225px;" />
     

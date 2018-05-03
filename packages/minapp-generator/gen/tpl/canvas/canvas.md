@@ -22,6 +22,8 @@
 
 **示例代码：[下载](https://developers.weixin.qq.com/miniprogram/dev/demo/api-canvas.zip)**
 
+[在开发者工具中预览效果](wechatide://minicode/oyVplmmG6xYt)
+
     <!-- canvas.wxml -->
     <canvas style="width: 300px; height: 200px;" canvas-id="firstCanvas"></canvas>
     <!-- 当使用绝对定位时，文档流后边的 canvas 的显示层级高于前边的 canvas -->

@@ -14,6 +14,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/alak1cmR6JYU)
+
     <view class="section section_gap">
     <view class="section__title">表单组件在label内</view>
     <checkbox-group class="group" bindchange="checkboxChange">
@@ -145,4 +147,4 @@
     }
     
 
-![label](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/label.png?t=201838)
+![label](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/label.png)

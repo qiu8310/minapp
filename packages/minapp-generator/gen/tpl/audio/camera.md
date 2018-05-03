@@ -25,6 +25,8 @@
 
 **示例：**
 
+[在开发者工具中预览效果](wechatide://minicode/VBZ3Jim26zYu)
+
     <!-- camera.wxml -->
     <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera>
     <button type="primary" bindtap="takePhoto">拍照</button>

@@ -74,6 +74,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/UzWEzmm763Y4)
+
     <live-player src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 300px; height: 225px;" />
     
 

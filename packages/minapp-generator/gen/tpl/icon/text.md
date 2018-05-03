@@ -27,6 +27,8 @@
 
 **示例：**
 
+[在开发者工具中预览效果](wechatide://minicode/Egao9cm46gY6)
+
     <view class="btn-area">
       <view class="body-view">
         <text>{{text}}</text>
@@ -59,4 +61,4 @@
     })
     
 
-![text](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/text.png?t=201838)
+![text](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/text.png)

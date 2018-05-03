@@ -84,6 +84,8 @@
 
 **示例：**
 
+[在开发者工具中预览效果](wechatide://minicode/zPVmpim46wYQ)
+
     <!-- rich-text.wxml -->
     <rich-text nodes="{{nodes}}" bindtap="tap"></rich-text>
     

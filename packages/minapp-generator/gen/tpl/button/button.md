@@ -18,7 +18,7 @@
   hover-stop-propagation   |  Boolean   |  false          |  指定是否阻止本节点的祖先节点出现点击态                                                                                                         |                               |  1.5.0   
   hover-start-time         |  Number    |  20             |  按住后多久出现点击态，单位毫秒                                                                                                                 |                               |          
   hover-stay-time          |  Number    |  70             |  手指松开后点击态保留时间，单位毫秒                                                                                                             |                               |          
-  bindgetuserinfo          |  Handler   |                 |用户点击该按钮时，会返回获取到的用户信息，从返回参数的detail中获取到的值同[wx.getUserInfo](https://developers.weixin.qq.com/miniprogram/dev/api/open.html#wxgetuserinfoobject)|  open-type="getUserInfo'      |  1.3.0   
+  bindgetuserinfo          |  Handler   |                 |用户点击该按钮时，会返回获取到的用户信息，从返回参数的detail中获取到的值同[wx.getUserInfo](https://developers.weixin.qq.com/miniprogram/dev/api/open.html#wxgetuserinfoobject)|  open-type="getUserInfo"      |  1.3.0   
   lang                     |  String    |  en             |  指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。                                                                              |  open-type="getUserInfo"      |  1.3.0   
   session-from             |  String    |                 |  会话来源                                                                                                                                       |  open-type="contact"          |  1.4.0   
   send-message-title       |  String    |  当前标题       |  会话内消息卡片标题                                                                                                                             |  open-type="contact"          |  1.5.0   
@@ -27,7 +27,7 @@
   show-message-card        |  Boolean   |  false          |  显示会话内消息卡片                                                                                                                             |  open-type="contact"          |  1.5.0   
   bindcontact              |  Handler   |                 |  客服消息回调                                                                                                                                   |  open-type="contact"          |  1.5.0   
   bindgetphonenumber       |  Handler   |                 |  获取用户手机号回调                                                                                                                             |  open-type="getphonenumber"   |  1.2.0   
-  binderrror               |  Handler   |                 |  当使用开放能力时，发生错误的回调                                                                                                               |  open-type="launchApp"        |  1.9.5   
+  binderror                |  Handler   |                 |  当使用开放能力时，发生错误的回调                                                                                                               |  open-type="launchApp"        |  1.9.5   
 
 *   **注1：`button-hover` 默认为`{background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}`**
 *   **注2：`bindgetphonenumber` 从1.2.0 开始支持，但是在1.5.3以下版本中无法使用`wx.canIUse`进行检测，建议使用基础库版本进行判断。**
@@ -66,6 +66,8 @@
   launchApp        |打开APP，可以通过app-parameter属性设定向APP传的参数[具体说明](https://developers.weixin.qq.com/miniprogram/dev/api/launchApp.html)|  1.9.5   
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/DJaYicms6lY5)
 
     /** wxss **/
     /** 修改button默认的点击态样式类**/
@@ -132,4 +134,4 @@
     Page(pageObject)
     
 
-![button](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/button.png?t=201838)
+![button](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/button.png)

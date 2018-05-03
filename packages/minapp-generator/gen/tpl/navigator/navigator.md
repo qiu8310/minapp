@@ -28,6 +28,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/2Ec11cmI6BY1)
+
     /** wxss **/
     /** 修改默认的navigator点击态 **/
     .navigator-hover {

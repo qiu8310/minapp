@@ -12,6 +12,8 @@
 
 **示例：**
 
+[在开发者工具中预览效果](wechatide://minicode/LK9tzcmM6QYj)
+
     <view class="group">
       <block wx:for="{{iconSize}}">
         <icon type="success" size="{{item}}"/>
@@ -45,4 +47,4 @@
     })
     
 
-![icon](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/icon.png?t=201838)
+![icon](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/icon.png)

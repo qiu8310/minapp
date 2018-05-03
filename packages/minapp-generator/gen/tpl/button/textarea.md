@@ -22,13 +22,15 @@
   selection-start     |  Number        |  -1                     |  光标起始位置，自动聚集时有效，需与selection-end搭配使用                                      |  1.9.0    
   selection-end       |  Number        |  -1                     |  光标结束位置，自动聚集时有效，需与selection-start搭配使用                                    |  1.9.0    
   adjust-position     |  Boolean       |  true                   |  键盘弹起时，是否自动上推页面                                                                 |  1.9.90   
-  bindfocus           |  EventHandle   |                         |  输入框聚焦时触发，event.detail = { value, height }，height 参数在基础库 1.9.90 起支持        |           
+  bindfocus           |  EventHandle   |                         | 输入框聚焦时触发，event.detail = { value, height }，height 为键盘高度，在基础库 1.9.90 起支持 |           
   bindblur            |  EventHandle   |                         |  输入框失去焦点时触发，event.detail = {value, cursor}                                         |           
   bindlinechange      |  EventHandle   |                         |  输入框行数变化时调用，event.detail = {height: 0, heightRpx: 0, lineCount: 0}                 |           
   bindinput           |  EventHandle   |                         |当键盘输入时，触发 input 事件，event.detail = {value, cursor}， **bindinput 处理函数的返回值并不会反映到 textarea 上**|           
   bindconfirm         |  EventHandle   |                         |  点击完成时， 触发 confirm 事件，event.detail = {value: value}                                |           
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/QAwRn6m86tYu)
 
     <!--textarea.wxml-->
     <view class="section">

@@ -34,6 +34,8 @@ web-view 组件是一个可以用来承载网页的容器，会自动铺满整�
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/aRVmcimz66Yb)
+
     <!-- html -->
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
     

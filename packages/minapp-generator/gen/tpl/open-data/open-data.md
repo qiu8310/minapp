@@ -27,6 +27,10 @@
 
 **Tips:** 只有当前用户在此群内才能拉取到群名称
 
+**示例：**
+
+[在开发者工具中预览效果](wechatide://minicode/vbdmRcmV67YB)
+
     <open-data type="groupName" open-gid="xxxxxx"></open-data>
     <open-data type="userAvatarUrl"></open-data>
     <open-data type="userGender" lang="zh_CN"></open-data>

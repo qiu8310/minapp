@@ -74,6 +74,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/pZb21cmH6qYX)
+
     <view class="section">
       <view class="section__title">普通选择器</view>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
@@ -284,4 +286,4 @@
     })
     
 
-![picker](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/picker.png?t=201838)
+![picker](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/picker.png)

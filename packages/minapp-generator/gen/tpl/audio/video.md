@@ -37,6 +37,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/X5V6Xmmk6xYB)
+
     <view class="section tc">
       <video src="{{src}}"   controls ></video>
       <view class="btn-area">
@@ -108,7 +110,7 @@
     })
     
 
-![video](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/video.png?t=201838)
+![video](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/video.png)
 
 相关api：[wx.createVideoContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-video.html)
 

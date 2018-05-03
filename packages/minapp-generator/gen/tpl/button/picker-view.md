@@ -6,7 +6,7 @@
 
   属性名            |  类型          |  说明                                                                                                                          | 最低版本 
 --------------------|----------------|--------------------------------------------------------------------------------------------------------------------------------|----------
-  value             |  NumberArray   |数组中的数字依次表示 picker-view 内的 picker-view-colume 选择的第几项（下标从 0 开始），数字大于 picker-view-column 可选项长度时，选择最后一项。|          
+  value             |  NumberArray   |数组中的数字依次表示 picker-view 内的 picker-view-column 选择的第几项（下标从 0 开始），数字大于 picker-view-column 可选项长度时，选择最后一项。|          
   indicator-style   |  String        |  设置选择器中间选中框的样式                                                                                                    |          
   indicator-class   |  String        |  设置选择器中间选中框的类名                                                                                                    |  1.1.0   
   mask-style        |  String        |  设置蒙层的样式                                                                                                                |  1.5.0   
@@ -20,6 +20,8 @@
 仅可放置于`<picker-view />`中，其孩子节点的高度会自动设置成与picker-view的选中框的高度一致
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/YfbJZcmG6zYM)
 
     <view>
       <view>{{year}}年{{month}}月{{day}}日</view>
@@ -62,7 +64,6 @@
         month: 2,
         days: days,
         day: 2,
-        year: date.getFullYear(),
         value: [9999, 1, 1],
       },
       bindChange: function(e) {
@@ -76,7 +77,7 @@
     })
     
 
-![picker_view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/picker_view.png?t=201838)
+![picker_view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/picker_view.png)
 
 ##### Tips：
 
