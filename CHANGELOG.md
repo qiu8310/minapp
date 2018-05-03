@@ -1,3 +1,18 @@
+2.0.0 / 2018-05-04
+==================
+
+* compiler 和 webpack-utils 模块删除，统一合并到 cli 模块
+* webpack 升级到 4.0
+* minapp.json 中废弃了 px2rpx、rpx2px 及 devServer 中的 host 和 port 选项
+* minapp.json 中添加新配置：srcDir, distDir, npmOutputFolder, staticFileExtensions, staticOutputName, staticOutputFolder
+* 不再自动将样式中的 px 单位转化成 rpx，同时将 rpx 单位转化成 px，需要手动配置
+* 使用 sass 的项目需要在本地安装 sass-loader 和 node-sass；而使用了 less 的项目需要在本地安装 less 和 less-loader
+* 使用了 ts 的项目需要在本地安装 ts-loader (以前是 awesome-typescript-loader)
+* @minapp/cli 新添加命令 `minapp clear`
+* webpack.minapp.js 支持新函数 `updateLoaders`
+* 如果将 @minapp/cli 安装在本地，则默认会使用[本地的命令行](https://github.com/qiu8310/minapp/issues/58)
+
+
 1.1.0 / 2018-04-28
 ==================
 

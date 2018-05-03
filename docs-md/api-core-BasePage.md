@@ -43,4 +43,4 @@ export default class extends BasePage {
 ```
 
 
-> 源代码： [BasePage.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/system/module/BasePage.ts)
+> 源代码： [BasePage.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/module/BasePage.ts)

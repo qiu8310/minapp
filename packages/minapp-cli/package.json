@@ -38,6 +38,7 @@
 		"clean-css": "^4.1.11",
 		"fs-extra": "^5.0.0",
 		"image-size": "^0.6.2",
+		"import-local": "^1.0.0",
 		"inquirer": "^5.2.0",
 		"json5": "^1.0.1",
 		"mime": "^2.3.1",

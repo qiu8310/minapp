@@ -41,4 +41,4 @@ export default class extends BaseComponent {
 ```
 
 
-> 源代码： [BaseComponent.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/system/module/BaseComponent.ts)
+> 源代码： [BaseComponent.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/module/BaseComponent.ts)

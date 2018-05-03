@@ -15,4 +15,4 @@ title: Location
 
   当前的 query 参数
 
-> 源代码： [Location.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/system/feat/Location.ts)
+> 源代码： [Location.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/feat/Location.ts)

@@ -2,9 +2,9 @@
 
 **重新定义微信小程序的开发**
 
-**[更新日志](./CHANGELOG.md)，注意：1.1.0 版的 ts 项目需要在本地安装 awesome-typescript-loader@3.5.0；新创建的项目会自动添加，老项目需要手动添加**
+**[更新日志](./CHANGELOG.md)**
 
-**minapp 1.0.0 已经发布，更新详情请[查看此文](https://qiu8310.github.io/minapp/blog/2018/03/10/release-v1.html)**
+**minapp 2.0.0 已经发布，新版本主要采用了 webpack 4，[v1.x升级到v2.x请查看](https://qiu8310.github.io/minapp/docs/doc-update-v1-to-v2.html)**
 
 ## 微信交流群
 
@@ -34,7 +34,6 @@
 * 集成 webpack 和 webpack-dev-server，编译有保障
 * 可以选择使用 mobx，方便管理全局数据
 * 所有语言在 minapp 的环境中都能自动补全，开发体验超级棒（见下面的`功能概览`）
-* 体积小，核心代码压缩后只有 16kb （安装 `@minapp/core` 后，对应目录下面会有一个 `system.bundle.min.js`）
 * 支持数据双向绑定
 * setData 性能优化
 
@@ -87,11 +86,10 @@
 这不是一个项目，是有好几个项目组合而成的，用的是 [lerna](https://github.com/lerna/lerna) 开发工具，其它项目在 [packages 目录下](./packages/)，这里对其中的几个主要项目做个简要概述
 
 * [minapp-generator][minapp-generator]: 此模块负责解析微信官方文档，生成结构化的数据，供其它模块使用
-* [minapp-core][minapp-core]: 微信所有原生 api 的 TypeScript 定义，另外提供一个 promise 版的 wx 接口
-* [minapp-mobx][minapp-mobx]: 开发框架，集成 mobx
-* [minapp-compiler][minapp-compiler]: 一个小程序的编译器，集成 webpack 和 webpack-dev-server
-* [minapp-webpack-utils][minapp-webpack-utils]: 编译器中需要使用的 webpack 相关的插件
-* [minapp-cli][minapp-cli]: 提供给用户的命令行工具，集成了 minapp-compiler，并可以快速创建一个新项目
+* [minapp-wx][minapp-wx]: 微信所有原生 api 的 TypeScript 定义，另外提供一个 promise 版的 wx 接口
+* [minapp-core][minapp-core]: 开发框架，需要依赖 minapp-wx
+* [minapp-mobx][minapp-mobx]: 集成 mobx 的开发框架，需要依赖 minapp-core
+* [minapp-cli][minapp-cli]: 提供给用户的命令行工具，并可以快速创建一个新项目
 * [minapp-vscode][minapp-vscode]: vscode 插件，为wxml提供语法高亮、标签与属性的自动补全
 
 ## TODO
@@ -106,11 +104,10 @@
 [vscode-minapp]: https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode
 [vscode-dot-template]: https://marketplace.visualstudio.com/items?itemName=qiu8310.dot-template-vscode
 [minapp-generator]: ./packages/minapp-generator
+[minapp-wx]: ./packages/minapp-wx
 [minapp-core]: ./packages/minapp-core
 [minapp-mobx]: ./packages/minapp-mobx
 [minapp-wxml-parser]: ./packages/minapp-wxml-parser
-[minapp-webpack-utils]: ./packages/minapp-webpack-utils
-[minapp-compiler]: ./packages/minapp-compiler
 [minapp-cli]: ./packages/minapp-cli
 [minapp-example-ts]: ./packages/minapp-example-ts
 [minapp-example-js]: ./packages/minapp-example-js

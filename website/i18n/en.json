@@ -32,6 +32,7 @@
     "doc-install": "安装",
     "doc-require-other-files-in-script": "在脚本中 require 其它文件",
     "doc-unit-in-style": "样式中的单位",
+    "doc-update-v1-to-v2": "v1.x -> v2.x 升级指南",
     "doc-use-setDataSmart-not-setData": "使用 setDataSmart 而不是 setData",
     "doc-warn": "重要提醒",
     "文档": "文档",

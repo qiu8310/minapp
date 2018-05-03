@@ -12,9 +12,12 @@ title: 关于样式
 只要交给小程序底层来换算即可，由于换算采用的浮点数运算，所以运算结果会和预期结果有一点点偏差
 ```
 
-而原生的 css 并不支持此单位，所以为了开发方便，minapp 会默认把所有 `px` 转化成 `rpx` 单位，而把所有的 `rpx` 单位转化成 `px`
+**v1.x 版本的 minapp 会默认把所有 `px` 转化成 `rpx` 单位，而把所有的 `rpx` 单位转化成 `px`**
 
-你可以在 `minapp.json` 中通过修改 `unitTransformer` 来修改对应的转化关系，如：
+**v2.x 版本的 minapp 默认不会转化任何单位，需要手动配置 `unitTransformer` 配置，配置方法如下：**
+
+
+在 `minapp.json` 中通过修改 `unitTransformer` 来修改对应的转化关系，如：
 
 ```js
 {
@@ -36,6 +39,8 @@ title: 关于样式
 在 `minapp.json` 中的 `compiler` 中可以设置此字段，类似于 [url-loader](https://github.com/webpack-contrib/url-loader) 中的 `limit` 选项，
 表示：如果图片大小小于此值，则会使用 base64 对图片进行编码，而不会生成一个新的文件
 
+**注意，不仅样式中的图片，wxml 和 js 中的图片满足条件的话也会进行 base64 编码**
+
 ## 图片相关的辅助方法
 
 * data("path/to/image/file")
@@ -43,13 +48,17 @@ title: 关于样式
   返回图片的 base64 编码的格式，同时会加上 `url()`，如
 
   ```css
-  background: data("path/to/image/file.png");
+  {
+    background: data("path/to/image/file.png");
+  }
   ```
 
   会生成类似下面的结构
 
   ```css
-  background: url(data:image/png;base64,iVB...CC);
+  {
+    background: url(data:image/png;base64,iVB...CC);
+  }
   ```
 
 * width("path/to/image/file", disableAutoRatio?)
@@ -57,11 +66,13 @@ title: 关于样式
   返回图片的宽度，并带上单位 `px`，如
 
   ```css
-  width: width("image-40x20.png");
+  {
+    width: width("image-40x20.png");
 
-  /* 会转化成 */
+    /* 会转化成 */
 
-  width: 40px;
+    width: 40px;
+  }
   ```
 
   另外，现在经常需要用到高分辨率的图片，会在图片后面加上如 `@2x` 或 `@3x` 的后缀，
@@ -69,21 +80,25 @@ title: 关于样式
   而它带了 `@2x` 的后缀，则返回的宽度会是 `20px`，如：
 
   ```css
-  width: width("image-40x20@2x.png");
+  {
+    width: width("image-40x20@2x.png");
 
-  /* 会转化成 */
+    /* 会转化成 */
 
-  width: 20px;
+    width: 20px;
+  }
   ```
 
   如果不想自动识别图片的 `@2x` 这样的后缀，可以指定第二个参数为 `true`，如：
 
   ```css
-  width: width("image-40x20@2x.png", true);
+  {
+    width: width("image-40x20@2x.png", true);
 
-  /* 会转化成 */
+    /* 会转化成 */
 
-  width: 40px;
+    width: 40px;
+  }
   ```
 
 
@@ -97,9 +112,11 @@ title: 关于样式
 
 
   ```css
-  background-size: size("image-40x20@2x.png");
+  {
+    background-size: size("image-40x20@2x.png");
 
-  /* 会转化成 */
+    /* 会转化成 */
 
-  background-size: 20px 10px;
+    background-size: 20px 10px;
+  }
   ```

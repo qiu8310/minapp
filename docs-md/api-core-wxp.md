@@ -12,16 +12,6 @@ title: wxp
 
 ### 调用方法
 
-* **如果没有使用 `@minapp/core` 提供的框架，只是想用 `wx` 可 `wxp` 接口的话，建议这样调用：**
-
-  ```js
-  import {wxp} from '@minapp/core/wxp'
-  ```
-
-  使用此方法，你可以在其它任何框架中使用 `wxp` 接口，这样调用的的话使用的代码只有百行不到，在其它框架（如 wxpy） 中使用非常方便
-
-* **如果使用了 `@minapp/core` 或 `@minapp/mobx` 提供的框架，则建议这样直接调用：**
-
   ```js
   import {wxp} from '@minapp/core'
   ```
@@ -72,4 +62,4 @@ title: wxp
     ```
 
 
-> 源代码： [wxp](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/index.ts)
+> 源代码： [wxp](https://github.com/qiu8310/minapp/blob/master/packages/minapp-wx/src/wxp.ts)

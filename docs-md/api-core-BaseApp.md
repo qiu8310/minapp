@@ -39,4 +39,4 @@ export default class extends BaseApp {
 ```
 
 
-> 源代码： [BaseApp.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/system/module/BaseApp.ts)
+> 源代码： [BaseApp.ts](https://github.com/qiu8310/minapp/blob/master/packages/minapp-core/src/module/BaseApp.ts)

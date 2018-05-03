@@ -4,7 +4,8 @@
       "doc-install",
       "doc-autocomplete",
       "doc-warn",
-      "doc-difference-with-wepy"
+      "doc-difference-with-wepy",
+      "doc-update-v1-to-v2"
     ],
     "基本功能": [
       "doc-about-style",

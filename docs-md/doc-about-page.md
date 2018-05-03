@@ -2,7 +2,7 @@
 title: 关于 Page
 ---
 
-* 默认情况下，所有的 page 都会自动监听全局 store 的变化，可以设置 observe 来禁用：
+* 默认情况下，mobx 项目的所有的 page 都会自动监听全局 store 的变化，可以设置 observe 来禁用：
 
   ```js
   import {MobxPage} from '@minapp/mobx'
