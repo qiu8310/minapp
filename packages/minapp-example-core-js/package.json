@@ -16,6 +16,7 @@
   "dependencies": {
     "@minapp/component-demo": "^2.0.0-alpha.1",
     "@minapp/component-toast": "^2.0.0-alpha.1",
+    "@minapp/wx": "latest",
     "@minapp/core": "^2.0.0-alpha.1"
   },
   "devDependencies": {

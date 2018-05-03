@@ -8,7 +8,7 @@
     "test": "echo 0",
     "lint": "tslint src/**/*.ts",
     "postpublish": "sync-taobao",
-    "build": "tsc && node scripts/init.js",
+    "build": "remove-all dist && tsc && node scripts/init.js",
     "watch": "tsc -w"
   },
   "publishConfig": {

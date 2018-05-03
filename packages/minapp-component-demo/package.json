@@ -24,6 +24,7 @@
     "@minapp/component-toast": "^2.0.0-alpha.1"
   },
   "devDependencies": {
+    "@minapp/wx": "latest",
     "@minapp/core": "^2.0.0-alpha.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",

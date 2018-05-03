@@ -21,6 +21,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
   "devDependencies": {
+    "@minapp/wx": "latest",
     "@minapp/core": "^2.0.0-alpha.1",
     "@types/node": "^8.0.0",
     "ts-lint": "^4.5.1",
