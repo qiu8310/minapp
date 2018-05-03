@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-core-ts",
-  "version": "1.1.1",
+  "version": "2.0.0-alpha.1",
   "description": "minapp ts 示例项目",
   "scripts": {
     "test": "echo 0",
@@ -15,10 +15,10 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/component-demo": "^1.1.1",
-    "@minapp/component-toast": "^1.1.1",
+    "@minapp/component-demo": "^2.0.0-alpha.1",
+    "@minapp/component-toast": "^2.0.0-alpha.1",
+    "@minapp/core": "^2.0.0-alpha.1",
     "@minapp/wx": "latest",
-    "@minapp/core": "^1.1.1",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
