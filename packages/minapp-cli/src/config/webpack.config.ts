@@ -9,7 +9,7 @@ import * as fs from 'fs-extra'
 import {localConfig} from './local'
 import {env} from './env'
 import {JSON_REGEXP} from '../base/helper'
-import {getLoader, ExtractMinappCode, WriteFile} from '../webpack/'
+import {getLoader, ExtractMinappCode, WriteFile, RemoveLessCache} from '../webpack/'
 
 const {mode, entry, rootDir, srcDir, distDir, modulesDir} = env
 
@@ -63,6 +63,7 @@ const plugins: any[] = [
   }),
   new webpack.EnvironmentPlugin(['NODE_ENV']),
   new ExtractMinappCode(env),
+  new RemoveLessCache(env),
 ]
 if (env.hasServer) {
   plugins.push(new WriteFile(env))
