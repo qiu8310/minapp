@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-core-js",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "minapp js 示例项目",
   "scripts": {
     "test": "echo 0",
@@ -14,9 +14,9 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://qiu8310.github.io/)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/component-demo": "^2.0.0-alpha.2",
-    "@minapp/component-toast": "^2.0.0-alpha.2",
-    "@minapp/core": "^2.0.0-alpha.2",
+    "@minapp/component-demo": "^2.0.0-alpha.3",
+    "@minapp/component-toast": "^2.0.0-alpha.3",
+    "@minapp/core": "^2.0.0-alpha.3",
     "@minapp/wx": "latest"
   },
   "devDependencies": {

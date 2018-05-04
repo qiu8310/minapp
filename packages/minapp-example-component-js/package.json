@@ -1,6 +1,6 @@
 {
   "name": "@minapp/example-component-js",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "wechat example component for minapp",
   "main": "dist/test.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
   "devDependencies": {
-    "@minapp/core": "^2.0.0-alpha.2",
+    "@minapp/core": "^2.0.0-alpha.3",
     "@minapp/wx": "latest"
   }
 }
