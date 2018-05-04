@@ -20,7 +20,7 @@ title: v1.x -> v2.x 升级指南
 
   **从 2.0.0 开始，@minapp/wx 以后会跟着官方 api 的版本号走，可能不会再和 @minapp/core 的版本保持一致，而要和小程序配置文件 project.config.json 中的 libVersion 版本号保持一致**
 
-**快速更新：**
+**快速更新 package.json：**
 
 - ts 项目
   - 使用了 sass：     `npm i --save @minapp/core@2 @minapp/wx@2 && npm i --save-dev ts-loader sass-loader sass`
@@ -34,6 +34,8 @@ title: v1.x -> v2.x 升级指南
 
 ## webpack.config.js 或 webpack.config.ts 更新指南
 
+完全兼容，可以不做修改；只是加了一个参数，和一个新的函数
+
 * **Added：** 修改 webpack 配置的函数添加第三个 `env` 参数，可以获取当前环境相关的数据，[详情参考此](https://qiu8310.github.io/minapp/docs/doc-custom-webpack.html)
 * **Added：** 新添加一个函数 `updateLoaders`，可以修改 loader 或 loader 的配置，[详情参考此](https://qiu8310.github.io/minapp/docs/doc-custom-webpack.html#minapp-v2-loader-loader)
 
@@ -41,3 +43,4 @@ title: v1.x -> v2.x 升级指南
 ## 其它
 
 * 新添加命令 `minapp clear`，可以快速清空 `dist` 目录
+* 可以将 `@minapp/cli` 安装在本地，即使全局安装了 `@minapp/cli`，也会优先使用本地的命令行

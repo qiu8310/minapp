@@ -12,6 +12,8 @@
 * webpack.minapp.js 支持新函数 `updateLoaders`
 * 如果将 @minapp/cli 安装在本地，则默认会使用[本地的命令行](https://github.com/qiu8310/minapp/issues/58)
 
+**升级指南请查看：https://qiu8310.github.io/minapp/docs/doc-update-v1-to-v2.html**
+
 
 1.1.0 / 2018-04-28
 ==================

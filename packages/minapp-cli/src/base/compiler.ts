@@ -40,13 +40,13 @@ export function compiler(watch: boolean, devServer?: Server.Configuration | null
     else console.log(stats.toString(wpConf.stats))
   }
 
-  let server: any | undefined
+  let server: Server
 
   if (devServer) {
     let opts = {...wpConf.devServer, ...devServer}
     debug('devServer: %j', opts)
     server = new Server(wp, opts)
-    server.listen(devServer.port, devServer.host)
+    server.listen(opts.port, opts.host)
   } else if (watch) {
     wp.watch({}, callback)
   } else {

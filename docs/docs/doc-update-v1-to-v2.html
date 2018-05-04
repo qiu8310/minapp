@@ -18,7 +18,7 @@
 <li><p><strong>Breaks：</strong> <code>@minapp/core</code> 中不再自带 <code>wx</code> 和 <code>wxp</code> 模块，这些模块单独移动到 <code>@minapp/wx</code> 中了，所以当更新 <code>@minapp/core</code> 到 2.x 后，还需要安装 <code>@minapp/wx</code></p>
 <p><strong>从 2.0.0 开始，@minapp/wx 以后会跟着官方 api 的版本号走，可能不会再和 @minapp/core 的版本保持一致，而要和小程序配置文件 project.config.json 中的 libVersion 版本号保持一致</strong></p></li>
 </ul>
-<p><strong>快速更新：</strong></p>
+<p><strong>快速更新 package.json：</strong></p>
 <ul>
 <li>ts 项目
 <ul>
@@ -34,6 +34,7 @@
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" name="webpackconfigjs-webpackconfigts"></a><a href="#webpackconfigjs-webpackconfigts" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>webpack.config.js 或 webpack.config.ts 更新指南</h2>
+<p>完全兼容，可以不做修改；只是加了一个参数，和一个新的函数</p>
 <ul>
 <li><strong>Added：</strong> 修改 webpack 配置的函数添加第三个 <code>env</code> 参数，可以获取当前环境相关的数据，<a href="https://qiu8310.github.io/minapp/docs/doc-custom-webpack.html">详情参考此</a></li>
 <li><strong>Added：</strong> 新添加一个函数 <code>updateLoaders</code>，可以修改 loader 或 loader 的配置，<a href="https://qiu8310.github.io/minapp/docs/doc-custom-webpack.html#minapp-v2-loader-loader">详情参考此</a></li>
@@ -41,5 +42,6 @@
 <h2><a class="anchor" aria-hidden="true" name=""></a><a href="#" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>其它</h2>
 <ul>
 <li>新添加命令 <code>minapp clear</code>，可以快速清空 <code>dist</code> 目录</li>
+<li>可以将 <code>@minapp/cli</code> 安装在本地，即使全局安装了 <code>@minapp/cli</code>，也会优先使用本地的命令行</li>
 </ul>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="doc-difference-with-wepy.html">← 和 wepy 的对比</a><a class="docs-next button" href="doc-about-style.html">关于样式 →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/minapp/" class="nav-home"><img src="/minapp/img/minapp-transparent.svg" alt="minapp" width="66" height="58"/></a><div><h5>文档</h5><a href="/minapp/docs/guide-install.html">快速开始</a><a href="/minapp/docs/basic-wepy.html">和 wepy 框架有什么异同</a><a href="/minapp/docs/api-app.html">API 文档</a></div><div style="display:none;"><h5>Community</h5><a href="/minapp/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank">Twitter</a></div><div><h5>更多</h5><a href="/minapp/blog">博客</a><a href="https://github.com/">GitHub</a><a class="github-button" href="https://github.com/qiu8310/minapp" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Mora &lt;qiuzhongleiabc@126.com&gt;</section></footer></div></body></html>
