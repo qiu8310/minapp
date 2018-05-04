@@ -1,6 +1,6 @@
 {
   "name": "@minapp/component-demo",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0",
   "description": "wechat demo component for minapp",
   "main": "dist/demo.js",
   "scripts": {
@@ -21,10 +21,10 @@
   "author": "Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)",
   "license": "MIT",
   "dependencies": {
-    "@minapp/component-toast": "^2.0.0-alpha.3"
+    "@minapp/component-toast": "^2.0.0"
   },
   "devDependencies": {
-    "@minapp/core": "^2.0.0-alpha.3",
+    "@minapp/core": "^2.0.0",
     "@minapp/wx": "latest",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
