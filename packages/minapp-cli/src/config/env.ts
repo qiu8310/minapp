@@ -3,6 +3,7 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 import * as findup from 'mora-scripts/libs/fs/findup'
+import * as warn from 'mora-scripts/libs/sys/warn'
 import * as path from 'path'
 import {getFileBaseName, getJsonFilePath} from '../base/helper'
 import {getMinappConfig} from './minapp'
@@ -34,6 +35,13 @@ export function getEnv() {
 
   // minapp.json 配置文件
   const minapp = getMinappConfig(rootDir)
+
+  if (minapp.compiler.devServer.port || minapp.compiler.devServer.host) {
+    warn('compiler.devServer.port and compiler.devServer.host in minapp.json already deprecated.\n')
+  }
+  if (minapp.compiler.hasOwnProperty('px2rpx') || minapp.compiler.hasOwnProperty('rpx2px')) {
+    warn('compiler.px2rpx and compiler.rpx2px in minapp.json already deprecated, please use compiler.unitTransformer replace.\n')
+  }
 
   // srcDir / distDir, 优先取环境变量中的，然后再取配置文件中的
   const srcDir = MINAPP.SRC_DIR ? path.resolve(MINAPP.SRC_DIR) : minapp.compiler.srcDir
