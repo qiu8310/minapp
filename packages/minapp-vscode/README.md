@@ -66,3 +66,9 @@
 
 
   ![示例图片](https://n1image.hjfile.cn/res7/2018/04/27/dd7f301dc1e1593209d7f7ac169fd047.gif)
+
+
+## TODO
+
+* [ ] 单独的 wxml 文件样式实现和 vue 中的 wxml 文件样式一样的风格
+* [ ] bind 或 catch 相关的属性可以点击，并跳转到对应的函数上
