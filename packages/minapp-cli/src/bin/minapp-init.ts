@@ -6,7 +6,7 @@
 import * as path from 'path'
 import * as fs from 'fs-extra'
 import {EOL} from 'os'
-import {sys, cli} from './base'
+import {sys, cli, shell} from './base'
 import {questions, Answers} from '../base/questions'
 import {code, walkDirectory} from '../base/helper'
 
@@ -43,16 +43,31 @@ export function initCommand(this: cli.Constructor, res: cli.Response) {
     if (answers.style === 'less') installs.push('less', 'less-loader')
     else if (answers.style === 'scss') installs.push('node-sass', 'sass-loader')
 
-    let extraInstall = installs.length ? ` && npm install --save-dev ${installs.join(' ')}` : ''
+    let npm = answers.npm
+    let install = `${npm} install ${installs.length ? `&& ${npm} ${npm === 'yarn' ? 'add' : 'install'} --save-dev ${installs.join(' ')}` : ''}`
 
-    console.log(
-      `${EOL}  ${answers.language} ${answers.type} ${answers.name} initialize successfully${EOL}`
-      + `=====================================================================${EOL}${EOL}`
-      + `  You can run next two commands to continue:${EOL}${EOL}`
-      + `    ${code('cd ' + dir)}${EOL}`
-      + `    ${code('npm install' + extraInstall)}${EOL}${EOL}${EOL}`
-      + `    ${sys.clog.format('%cHave a good time !', 'magenta')} ${EOL}`
-    )
+    console.log(`${EOL}  ${answers.language} ${answers.type} ${answers.name} initialize successfully${EOL}`)
+    console.log(`=====================================================================${EOL}`)
+    console.log('  Install packages...' + EOL)
+
+    process.chdir(dir)
+    shell.promise(install)
+      .then(() => {
+        console.log(`=====================================================================${EOL}${EOL}`
+          + `  You can run next two commands to continue:${EOL}${EOL}`
+          + `    ${code('cd ' + dir)}${EOL}`
+          + `    ${code(npm + ' run dev')}${EOL}${EOL}${EOL}`
+          + `    ${sys.clog.format('%cHave a good time !', 'magenta')} ${EOL}`
+        )
+      })
+      .catch(() => {
+        console.log(`=====================================================================${EOL}${EOL}`
+          + `  ${sys.clog.format('%cInstall failed, please run following commands yourself:', 'red')}${EOL}${EOL}`
+          + `    ${code('cd ' + dir)}${EOL}`
+          + `    ${code(install)}${EOL}${EOL}${EOL}`
+          + `    ${sys.clog.format('%cHave a good time !', 'magenta')} ${EOL}`
+        )
+      })
   })
 }
 

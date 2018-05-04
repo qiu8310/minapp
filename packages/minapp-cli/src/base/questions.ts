@@ -17,6 +17,7 @@ export interface Answers {
   description: string
   author: string
   appid?: string
+  npm: string
 }
 
 export function questions(absDir: string) {
@@ -85,6 +86,13 @@ export function questions(absDir: string) {
       name: 'appid',
       message: 'Wexin app id',
       when: (answers: Answers) => answers.type === 'Application'
+    },
+    {
+      type: 'list',
+      name: 'npm',
+      message: 'What npm client are you using',
+      choices: ['npm', 'cnpm', 'yarn'],
+      default: 0,
     }
   ] as any) as Promise<Answers>
 }
