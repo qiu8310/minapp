@@ -53,7 +53,7 @@ export default class WxssLoader extends Loader {
       }
       this.extract('.wxss', emitContent)
     }
-    return this.toRequire(requires, 'webpack')
+    return this.toRequire(requires)
   }
 
 }

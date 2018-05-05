@@ -49,7 +49,7 @@ export default class WxmlLoader extends Loader {
     // debug('ToContent: %o', content)
     this.extract('.wxml', content)
 
-    return this.toRequire(requires, 'webpack')
+    return this.toRequire(requires)
   }
 
   /**

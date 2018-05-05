@@ -227,16 +227,11 @@ export abstract class Loader {
     if (fileExt != null) file = replaceExt(file, fileExt)
     return toUrlPath(toRelative(file))
   }
-  getWebpackRequirePath(absFile: string) {
-    return toUrlPath(absFile) // require 都要使用 / 路径
-  }
-  toRequire(absfiles: string | string[], type: 'webpack' | 'extract', semicolon = ';', requireKey = 'require'): string {
-    let fn = type === 'webpack'
-      ? this.getWebpackRequirePath
-      : this.getExtractRequirePath
+
+  toRequire(absfiles: string | string[], semicolon = ';', requireKey = 'require'): string {
     return Array.isArray(absfiles)
-      ? absfiles.map(f => this.toRequire(f, type)).join('\n')
-      : `${requireKey}("${fn.call(this, absfiles)}")${semicolon}`
+      ? absfiles.map(f => this.toRequire(f, semicolon, requireKey)).join('\n')
+      : `${requireKey}("${toUrlPath(absfiles)}")${semicolon}`
   }
 
   /**

@@ -53,13 +53,13 @@ export default class JsLoader extends Loader {
 
       // 修改文件路径成相对引用的形式，同时去除文件后缀（可能是 .ts 的后缀）
       // 并使用 __minapp_require，而不是 require，避免被 webpack 解析
-      return this.toRequire(absFile.replace(/\.\w+$/, ''), 'extract', '', '__minapp_require')
+      return `__minapp_require("${this.getExtractRequirePath(absFile, '')}")`
     }, 0)
 
     return [
       `__minapp__(${JSON.stringify(emitFile)}, function() {\n${emitContent}\n});`,
       '__minapp_end__();',
-      `${this.toRequire(requires, 'webpack')}`
+      `${this.toRequire(requires)}`
     ].join('')
   }
 }

@@ -77,7 +77,7 @@ export default class JsonLoader extends Loader {
     if (Object.keys(json).length) {
       this.extract('.json', JSON.stringify(json, null, this.minimize ? 0 : 2))
     }
-    return this.toRequire(requires, 'webpack')
+    return this.toRequire(requires)
   }
 
   async resolveImage(request: string) {
