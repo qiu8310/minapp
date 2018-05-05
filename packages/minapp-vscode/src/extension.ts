@@ -13,6 +13,8 @@ import WxmlAutoCompletion from './plugin/WxmlAutoCompletion'
 import PugAutoCompletion from './plugin/PugAutoCompletion'
 import VueAutoCompletion from './plugin/VueAutoCompletion'
 
+import ActiveTextEditorListener from './plugin/ActiveTextEditorListener'
+
 import {config, configActivate, configDeactivate} from './plugin/lib/config'
 
 export function activate(context: ExtensionContext) {
@@ -24,9 +26,14 @@ export function activate(context: ExtensionContext) {
   let autoCompletionPug = new PugAutoCompletion(config)
   let autoCompletionVue = new VueAutoCompletion(autoCompletionPug, autoCompletionWxml)
 
-  // console.log('minapp-vscode is active!')
   context.subscriptions.push(
+    // 给模板中的 脚本 添加特殊颜色
+    new ActiveTextEditorListener(config),
+
+    // hover 效果
     languages.registerHoverProvider(['wxml', 'wxml-pug', 'vue'], hoverProvider),
+
+    // 添加 link
     languages.registerDocumentLinkProvider(['wxml', 'wxml-pug'], linkProvider),
 
     // 格式化

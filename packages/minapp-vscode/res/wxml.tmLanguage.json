@@ -151,7 +151,7 @@
     "wxml-directives": {
       "end": "(?<='|\")|(?=[\\s<>`])",
       "name": "meta.directive.wxml",
-      "begin": "((?:\\b(v-)|(:|@))([a-zA-Z\\-]+)(?:\\:([a-zA-Z\\-]+))?(?:\\.([a-zA-Z\\-]+))*)\\s*(=)",
+      "begin": "((?:\\b(v-|bind:|catch:)|(:|@))([a-zA-Z\\-]+)(?:\\:([a-zA-Z\\-]+))?(?:\\.([a-zA-Z\\-]+))*)\\s*(=)",
       "captures": {
         "1": {
           "name": "entity.other.attribute-name.html"
@@ -162,44 +162,24 @@
       },
       "patterns": [
         {
-          "end": "\"",
+          "name": "source.directive.wxml",
+          "begin": "([\"'])",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.start.html"
+            }
+          },
+          "end": "\\1",
+          "endCaptures": {
+            "0": {
+              "name": "string.quoted.end.html"
+            }
+          },
           "patterns": [
             {
               "include": "source.js"
             }
-          ],
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.string.begin.html"
-            }
-          },
-          "name": "source.directive.wxml",
-          "begin": "\"",
-          "endCaptures": {
-            "0": {
-              "name": "punctuation.definition.string.end.html"
-            }
-          }
-        },
-        {
-          "end": "'",
-          "patterns": [
-            {
-              "include": "source.js"
-            }
-          ],
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.string.begin.html"
-            }
-          },
-          "name": "source.directive.wxml",
-          "begin": "'",
-          "endCaptures": {
-            "0": {
-              "name": "punctuation.definition.string.end.html"
-            }
-          }
+          ]
         }
       ]
     },

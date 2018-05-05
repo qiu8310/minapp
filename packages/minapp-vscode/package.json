@@ -29,7 +29,7 @@
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-vscode"
   },
   "engines": {
-    "vscode": "^1.18.0"
+    "vscode": "^1.19.0"
   },
   "icon": "res/icon.png",
   "categories": [
@@ -75,9 +75,27 @@
           "type": "number",
           "description": "格式化时，单行允许的最长的长度",
           "default": 100
+        },
+        "minapp-vscode.disableDecorate": {
+          "type": "boolean",
+          "description": "禁用模板文件中 js 变量自定义样式的功能",
+          "default": false
+        },
+        "minapp-vscode.decorateComplexInterpolation": {
+          "type": "boolean",
+          "description": "如果设置为 true, 则如果 {{ }} 中是表达式，也添加指定的样式；否则只会匹配 {{ }} 中的为单个变量的情况",
+          "default": true
+        },
+        "minapp-vscode.decorateType": {
+          "type": "object",
+          "description": "指定模板文件中 js 变量装饰的样式。可配置的属性有 https://code.visualstudio.com/docs/extensionAPI/vscode-api#DecorationRenderOptions",
+          "default": {
+            "color": "#ba68c8"
+          }
         }
       }
     },
+    "themes": [],
     "languages": [
       {
         "id": "wxml",

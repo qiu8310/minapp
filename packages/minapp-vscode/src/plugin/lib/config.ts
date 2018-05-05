@@ -9,11 +9,14 @@ import * as path from 'path'
 let listener: vscode.Disposable
 
 export interface Config {
+  getResolveRoots: (doc: vscode.TextDocument) => string[]
   formatMaxLineCharacters: number,
   disableCustomComponentAutocomponent: boolean
   resolveRoots: string[]
   linkAttributeNames: string[]
-  getResolveRoots: (doc: vscode.TextDocument) => string[]
+  disableDecorate: boolean
+  decorateComplexInterpolation: boolean
+  decorateType: any
 }
 
 export const config: Config = {
@@ -22,11 +25,9 @@ export const config: Config = {
   resolveRoots: [],
   getResolveRoots,
   linkAttributeNames: [],
-}
-
-function getResolveRoots(doc: vscode.TextDocument) {
-  let root = vscode.workspace.getWorkspaceFolder(doc.uri) as vscode.WorkspaceFolder
-  return root ? config.resolveRoots.map(r => path.resolve(root.uri.fsPath, r)) : []
+  disableDecorate: false,
+  decorateComplexInterpolation: true,
+  decorateType: {},
 }
 
 function getConfig() {
@@ -35,6 +36,14 @@ function getConfig() {
   config.resolveRoots = minapp.get('resolveRoots', ['src', 'node_modules'])
   config.linkAttributeNames = minapp.get('linkAttributeNames', ['src'])
   config.formatMaxLineCharacters = minapp.get('formatMaxLineCharacters', 100)
+  config.disableDecorate = minapp.get('disableDecorate', true)
+  config.decorateComplexInterpolation = minapp.get('decorateComplexInterpolation', true)
+  config.decorateType = minapp.get('decorateType', {})
+}
+
+function getResolveRoots(doc: vscode.TextDocument) {
+  let root = vscode.workspace.getWorkspaceFolder(doc.uri) as vscode.WorkspaceFolder
+  return root ? config.resolveRoots.map(r => path.resolve(root.uri.fsPath, r)) : []
 }
 
 export function configActivate() {

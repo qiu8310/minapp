@@ -12,11 +12,8 @@ import {EOL} from 'os'
 import {parse} from '@minapp/wxml-parser'
 import {Config} from './lib/config'
 
-export default class implements
-  DocumentFormattingEditProvider,
-  DocumentRangeFormattingEditProvider {
-
-    constructor(public config: Config) {}
+export default class implements DocumentFormattingEditProvider, DocumentRangeFormattingEditProvider {
+  constructor(public config: Config) {}
 
   getEOL() {
     return workspace.getConfiguration('files', null as any).get('eol', EOL) || EOL
