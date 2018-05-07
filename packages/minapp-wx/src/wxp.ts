@@ -8,7 +8,6 @@
 /// <reference path="../typing/component.d.ts" />
 /// <reference path="../typing/page.d.ts" />
 /// <reference path="../typing/wx.d.ts" />
-/// <reference path="../typing/wxp.d.ts" />
 
 import './polyfill'
 

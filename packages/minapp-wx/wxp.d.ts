@@ -1,2 +1,2 @@
-import wxp from './dist/wxp'
-export {wxp}
+export {wxp} from './dist/wxp'
+

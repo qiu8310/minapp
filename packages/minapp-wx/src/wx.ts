@@ -8,3 +8,6 @@
 /// <reference path="../typing/component.d.ts" />
 /// <reference path="../typing/page.d.ts" />
 /// <reference path="../typing/wx.d.ts" />
+
+// 不导出点东西在 window 下可能报错，找不到 module
+exports.wx = wx

@@ -32,7 +32,8 @@ function replaceDistWxpJs() {
 function copyWxp() {
   fs.copyFileSync(WX_FILE, path.join(DIST_DIR, '../typing/wx.d.ts'))
   info(`${WX_FILE} 复制成功`)
-  fs.copyFileSync(WXP_FILE, path.join(DIST_DIR, '../typing/wxp.d.ts'))
+  // fs.copyFileSync(WXP_FILE, path.join(DIST_DIR, '../typing/wxp.d.ts'))
+  fs.copyFileSync(WXP_FILE, path.join(DIST_DIR, 'wxp.d.ts'))
   info(`${WXP_FILE} 复制成功`)
 }
 
