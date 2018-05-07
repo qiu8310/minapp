@@ -3,7 +3,7 @@
 wxml/pug/vue 语言中，微信小程序标签、属性的智能补全
 
 
-## 最近更新 [see more](./CHANGELOG.md)
+## 最近更新 【[see more](./CHANGELOG.md)】
 
 * 【2018-05-07】1.2.0 模板文件支持变量高亮，[详情见下文](#highlight)
 * 【2018-05-03】1.1.0 支持 link，[详情见下文](#link)
@@ -21,7 +21,7 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全
 * [在 vue 模板文件中也能自动补全，同时支持 pug 语言](#vue)
 * [支持 link（纯 wxml 或 pug 文件才支持，vue 文件不支持）](#link)
 * [自定义组件自动补全（纯 wxml 文件才支持，vue 文件不支持）](#custom-component)
-* [模板文件中 js 变量高亮（纯 wxml 文件才支持，vue 文件不支持）](#highlight)
+* [模板文件中 js 变量高亮（纯 wxml 或 pug 文件才支持，vue 文件不支持）](#highlight)
 
 > **所有自动补全的模板数据都来自于官方文档，通过[脚本](https://github.com/qiu8310/minapp/tree/master/packages/minapp-generator)自动获取的**
 
@@ -101,7 +101,7 @@ vue 中的 template 板支持两个属性：
 
 <a id="highlight"></a>
 
-## 模板文件中 js 变量高亮（纯 wxml 文件才支持，vue 文件不支持）
+## 模板文件中 js 变量高亮（纯 wxml 或 pug 文件才支持，vue 文件不支持）
 
 - 默认开启高亮，可以配置 `minapp-vscode.disableDecorate` 为 `true` 来关闭高亮
 - 默认高亮颜色使用紫色，可以配置 `minapp-vscode.decorateType` 来使用你喜欢的颜色，如 `{"color": "red"}`
@@ -109,6 +109,11 @@ vue 中的 template 板支持两个属性：
 
 ![示例图片](https://n1image.hjfile.cn/res7/2018/05/07/c6dd2e8613fbb02417029fb3dbd302ce.png)
 
+**为了加快解析速度，颜色高亮使用的是正则表达式匹配，所以可能会出现匹配错误的情况；如果不满意，可以配置 `minapp-vscode.disableDecorate` 来禁用颜色高亮功能**
+
+**已知问题：**
+
+- pug 语言中注释中的变量也会高亮 （pug 是基于缩进的，正则不太好处理）
 
 ## TODO
 
