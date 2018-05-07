@@ -1,6 +1,9 @@
 # minapp-vscode
 
-## 最近更新
+wxml/pug/vue 语言中，微信小程序标签、属性的智能补全
+
+
+## 最近更新 [see more](./CHANGELOG.md)
 
 * 【2018-05-07】1.2.0 模板文件支持变量高亮，[详情见下文](#highlight)
 * 【2018-05-03】1.1.0 支持 link，[详情见下文](#link)
@@ -9,8 +12,6 @@
   ![重要通知](https://n1image.hjfile.cn/res7/2018/03/23/0520246bc52ca0b726a3ca4097104ba0.png)
 
 <!-- <div style="color:red; font-size: 1.6em;">重要通知：由于旧版本不小心被我删除了，所以请 1.0.7 版本之前的用户删除旧版本再重新安装新版本；否则可能会无法成功安装新版本，并且也得不到新版本的推送！</div> -->
-
-**更多更新详情查看 [CHANGELOG.md](./CHANGELOG.md)**
 
 ## 主要功能
 
