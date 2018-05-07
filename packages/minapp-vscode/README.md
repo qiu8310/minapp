@@ -3,7 +3,7 @@
 wxml/pug/vue 语言中，微信小程序标签、属性的智能补全
 
 
-## 最近更新 【[see more](./CHANGELOG.md)】
+## 最近更新 【[see more](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/CHANGELOG.md)】
 
 * 【2018-05-07】1.2.0 模板文件支持变量高亮，[详情见下文](#highlight)
 * 【2018-05-03】1.1.0 支持 link，[详情见下文](#link)
