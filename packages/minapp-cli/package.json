@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/cli",
 	"description": "minapp 命令行工具，用于创建项目、开发项目、编译项目",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"bin": {
 		"minapp": "dist/bin/minapp.js"
 	},
