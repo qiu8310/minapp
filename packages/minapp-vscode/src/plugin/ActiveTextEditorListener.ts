@@ -3,7 +3,7 @@ import { TextEditor, window, Disposable, workspace, TextDocumentChangeEvent, Tex
 
 const COMMENT_REGEXP = /<!--([\s\S]*?)-->/g
 const DOUBLE_BIND_REGEXP = /\b(?:[\w-]+).sync\s*=\s*['"]([^'"]*)['"]/g
-const DIRECTIVE_REGEXP = /\s(?:v-bind:|catch:|wx:|:|@)[\w-]+(?:\.[\w-]+)?\s*=\s*['"]([^'"]*)['"]/g
+const DIRECTIVE_REGEXP = /\s(?:v-|bind:|catch:|wx:|:|@)[\w-]+(?:\.[\w-]+)?\s*=\s*['"]([^'"]*)['"]/g
 const INTERPOLATION_SIMPLE_REGEXP = /\{\{\s*([\w.-\[\]]*)\s*\}\}/g // 可以匹配 a、a.b、a[1].b 等
 const INTERPOLATION_COMPLEX_REGEXP = /\{\{\s*(.*?)\s*\}\}/g
 
