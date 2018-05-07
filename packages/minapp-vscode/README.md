@@ -120,3 +120,4 @@ vue 中的 template 板支持两个属性：
 * [x] 单独的 wxml 文件样式实现和 vue 中的 wxml 文件样式一样的风格
 * [ ] bind 或 catch 相关的属性可以点击，并跳转到对应的函数上
 * [ ] 自动创建文件关联（.cjson, .wxss）
+* [ ] 添加常用的 snippets
