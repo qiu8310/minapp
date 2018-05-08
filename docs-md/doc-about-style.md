@@ -22,7 +22,8 @@ title: 关于样式
 ```js
 {
   "unitTransformer": {
-    "px": "2rpx"  // 表示将 1px 转化成 2px (配置中第一个单位不能出现数字)
+    "px": "2rpx"  // 表示将 1px 转化成 2rpx (配置中第一个单位不能出现数字)
+    /* 也就是说如果在 css 中写 "margin: 20px;"，会被转化成 "margin: 40rpx;" */
   }
 }
 ```
