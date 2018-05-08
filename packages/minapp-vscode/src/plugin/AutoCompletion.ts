@@ -82,7 +82,7 @@ export default abstract class AutoCompletion {
   private setDefault(index: number, defaultValue: any) {
     if (!this.isDefaultValueValid(defaultValue)) return '${' + index + '}'
     if (typeof defaultValue === 'boolean' || defaultValue === 'true' || defaultValue === 'false') {
-      return `{{\${${index}:${defaultValue}}}}`
+      return `{{\${${index}|true,false|}}}`
     } else {
       return `\${${index}:${defaultValue.replace(/['"]/g, '')}}`
     }
