@@ -12,26 +12,26 @@
 
 {社交 => "直播"; 教育 => "在线教育"; 医疗 => "互联网医院，公立医院"; 政务民生 => "所有二级类目"; 金融 =\> "基金、信托、保险、银行、证券/期货、非金融机构自营小额贷款、征信业务、消费金融"}
 
-  属性名              |  类型          |  默认值     |  说明                                 | 最低版本 
-----------------------|----------------|-------------|---------------------------------------|----------
-  url                 |  String        |             |  推流地址。目前仅支持 flv, rtmp 格式  |          
-  mode                |  String        |  RTC        |SD（标清）, HD（高清）, FHD（超清）, RTC（实时通话）|          
-  autopush            |  Boolean       |  false      |  自动推流                             |          
-  muted               |  Boolean       |  false      |  是否静音                             |          
-  enable-camera       |  Boolean       |  true       |  开启摄像头                           |          
-  auto-focus          |  Boolean       |  true       |  自动聚集                             |          
-  orientation         |  String        |  vertical   |  vertical，horizontal                 |          
-  beauty              |  Number        |  0          |  美颜                                 |          
-  whiteness           |  Number        |  0          |  美白                                 |          
-  aspect              |  String        |  9:16       |  宽高比，可选值有 3:4, 9:16           |          
-  min-bitrate         |  Number        |  200        |  最小码率                             |          
-  max-bitrate         |  Number        |  1000       |  最大码率                             |          
-  waiting-image       |  String        |             |  进入后台时推流的等待画面             |          
-  waiting-image-md5   |  String        |             |  等待画面资源的MD5值                  |          
-  background-mute     |  Boolean       |  false      |  进入后台时是否静音                   |          
-  bindstatechange     |  EventHandle   |             |  状态变化事件，detail = {code}        |          
-  bindnetstatus       |  EventHandle   |             |  网络状态通知，detail = {info}        |  1.9.0   
-  binderror           |  EventHandle   |             |渲染错误事件，detail = {errMsg, errCode}|  1.7.4   
+  属性名               |  类型          |  默认值     |  说明                                 | 最低版本 
+-----------------------|----------------|-------------|---------------------------------------|----------
+  url                  |  String        |             |  推流地址。目前仅支持 flv, rtmp 格式  |          
+  mode                 |  String        |  RTC        |SD（标清）, HD（高清）, FHD（超清）, RTC（实时通话）|          
+  autopush             |  Boolean       |  false      |  自动推流                             |          
+  muted                |  Boolean       |  false      |  是否静音                             |          
+  enable-camera        |  Boolean       |  true       |  开启摄像头                           |          
+  auto-focus           |  Boolean       |  true       |  自动聚集                             |          
+  orientation          |  String        |  vertical   |  vertical，horizontal                 |          
+  beauty               |  Number        |  0          |  美颜                                 |          
+  whiteness            |  Number        |  0          |  美白                                 |          
+  aspect               |  String        |  9:16       |  宽高比，可选值有 3:4, 9:16           |          
+  min-bitrate          |  Number        |  200        |  最小码率                             |          
+  max-bitrate          |  Number        |  1000       |  最大码率                             |          
+  waiting-image        |  String        |             |  进入后台时推流的等待画面             |          
+  waiting-image-hash   |  String        |             |  等待画面资源的MD5值                  |          
+  background-mute      |  Boolean       |  false      |  进入后台时是否静音                   |          
+  bindstatechange      |  EventHandle   |             |  状态变化事件，detail = {code}        |          
+  bindnetstatus        |  EventHandle   |             |  网络状态通知，detail = {info}        |  1.9.0   
+  binderror            |  EventHandle   |             |渲染错误事件，detail = {errMsg, errCode}|  1.7.4   
 
 **注意：**
 

@@ -41,6 +41,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/SeizywmX6gY0)
+
     <swiper indicator-dots="{{indicatorDots}}"
       autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imgUrls}}">

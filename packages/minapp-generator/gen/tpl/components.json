@@ -1032,6 +1032,11 @@
             "value": "launchApp",
             "desc": "打开APP，可以通过app-parameter属性设定向APP传的参数[具体说明](https://developers.weixin.qq.com/miniprogram/dev/api/launchApp.html)",
             "since": "1.9.5"
+          },
+          {
+            "value": "openSetting",
+            "desc": "打开授权设置页",
+            "since": "2.0.7"
           }
         ],
         "extras": [
@@ -1047,22 +1052,6 @@
           "微信开放能力"
         ],
         "since": "1.1.0"
-      },
-      {
-        "extras": [
-          {
-            "key": "生效时机",
-            "value": "open-type=\"launchApp\""
-          }
-        ],
-        "name": "app-parameter",
-        "type": {
-          "name": "string"
-        },
-        "desc": [
-          "打开 APP 时，向 APP 传递的参数"
-        ],
-        "since": "1.9.5"
       },
       {
         "extras": [
@@ -1132,25 +1121,6 @@
             "value": "open-type=\"getUserInfo\""
           }
         ],
-        "name": "bindgetuserinfo",
-        "type": {
-          "name": "function",
-          "returns": {
-            "name": "any"
-          }
-        },
-        "desc": [
-          "用户点击该按钮时，会返回获取到的用户信息，从返回参数的detail中获取到的值同[wx.getUserInfo](https://developers.weixin.qq.com/miniprogram/dev/api/open.html#wxgetuserinfoobject)"
-        ],
-        "since": "1.3.0"
-      },
-      {
-        "extras": [
-          {
-            "key": "生效时机",
-            "value": "open-type=\"getUserInfo\""
-          }
-        ],
         "name": "lang",
         "type": {
           "name": "string"
@@ -1160,6 +1130,25 @@
         ],
         "since": "1.3.0",
         "defaultValue": "en"
+      },
+      {
+        "extras": [
+          {
+            "key": "生效时机",
+            "value": "open-type=\"getUserInfo\""
+          }
+        ],
+        "name": "bindgetuserinfo",
+        "type": {
+          "name": "function",
+          "returns": {
+            "name": "any"
+          }
+        },
+        "desc": [
+          "用户点击该按钮时，会返回获取到的用户信息，回调的detail数据与[wx.getUserInfo](https://developers.weixin.qq.com/miniprogram/dev/api/open.html#wxgetuserinfoobject)返回的一致"
+        ],
+        "since": "1.3.0"
       },
       {
         "extras": [
@@ -1290,6 +1279,22 @@
             "value": "open-type=\"launchApp\""
           }
         ],
+        "name": "app-parameter",
+        "type": {
+          "name": "string"
+        },
+        "desc": [
+          "打开 APP 时，向 APP 传递的参数"
+        ],
+        "since": "1.9.5"
+      },
+      {
+        "extras": [
+          {
+            "key": "生效时机",
+            "value": "open-type=\"launchApp\""
+          }
+        ],
         "name": "binderror",
         "type": {
           "name": "function",
@@ -1301,6 +1306,25 @@
           "当使用开放能力时，发生错误的回调"
         ],
         "since": "1.9.5"
+      },
+      {
+        "extras": [
+          {
+            "key": "生效时机",
+            "value": "open-type=\"openSetting\""
+          }
+        ],
+        "name": "bindopensetting",
+        "type": {
+          "name": "function",
+          "returns": {
+            "name": "any"
+          }
+        },
+        "desc": [
+          "在打开授权设置页后回调"
+        ],
+        "since": "2.0.7"
       }
     ],
     "notices": [
@@ -2737,19 +2761,29 @@
     ],
     "attrs": [
       {
+        "name": "target",
+        "type": {
+          "name": "string"
+        },
+        "desc": [
+          "在哪个目标上发生跳转，默认当前小程序"
+        ],
+        "since": "2.0.7"
+      },
+      {
         "name": "url",
         "type": {
           "name": "string"
         },
         "desc": [
-          "应用内的跳转链接"
+          "当前小程序内的跳转链接"
         ]
       },
       {
         "enum": [
           {
             "value": "navigate",
-            "desc": "对应 `wx.navigateTo` 的功能"
+            "desc": "对应 `wx.navigateTo` 或 `wx.navigateToMiniProgram` 的功能"
           },
           {
             "value": "redirect",
@@ -2787,6 +2821,47 @@
         "desc": [
           "当 open-type 为 'navigateBack' 时有效，表示回退的层数"
         ]
+      },
+      {
+        "name": "app-id",
+        "type": {
+          "name": "string"
+        },
+        "desc": [
+          "当target=\"miniProgram\"时有效，要打开的小程序 appId"
+        ],
+        "since": "2.0.7"
+      },
+      {
+        "name": "path",
+        "type": {
+          "name": "string"
+        },
+        "desc": [
+          "当target=\"miniProgram\"时有效，打开的页面路径，如果为空则打开首页"
+        ],
+        "since": "2.0.7"
+      },
+      {
+        "name": "extra-data",
+        "type": {
+          "name": "Object"
+        },
+        "desc": [
+          "当target=\"miniProgram\"时有效，需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch()`，`App.onShow()` 中获取到这份数据。[详情](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html)"
+        ],
+        "since": "2.0.7"
+      },
+      {
+        "name": "version",
+        "type": {
+          "name": "string"
+        },
+        "desc": [
+          "当target=\"miniProgram\"时有效，要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版），仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。"
+        ],
+        "since": "2.0.7",
+        "defaultValue": "release"
       },
       {
         "name": "hover-class",
@@ -3549,7 +3624,7 @@
           "name": "boolean"
         },
         "desc": [
-          "进入后台时是否静音"
+          "进入后台时是否静音（已废弃，默认退台静音）"
         ],
         "defaultValue": "false"
       },
@@ -3761,7 +3836,7 @@
         ]
       },
       {
-        "name": "waiting-image-md5",
+        "name": "waiting-image-hash",
         "type": {
           "name": "string"
         },

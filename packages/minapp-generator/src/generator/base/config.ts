@@ -41,6 +41,7 @@ export const TYPE_MAP: {[key: string]: string} = {
   handleevent: 'function',
   handler: 'function',
   string: 'string',
+  version: 'string',
   color: 'string',
   hexcolor: 'string',
   number: 'number',

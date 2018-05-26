@@ -18,7 +18,7 @@
   muted                  |  Boolean       |  false      |  是否静音                                  |          
   orientation            |  String        |  vertical   |  画面方向，可选值有 vertical，horizontal   |          
   object-fit             |  String        |  contain    |  填充模式，可选值有 contain，fillCrop      |          
-  background-mute        |  Boolean       |  false      |  进入后台时是否静音                        |          
+  background-mute        |  Boolean       |  false      | 进入后台时是否静音（已废弃，默认退台静音） |          
   min-cache              |  Number        |  1          |  最小缓冲区，单位s                         |          
   max-cache              |  Number        |  3          |  最大缓冲区，单位s                         |          
   bindstatechange        |  EventHandle   |             |  播放状态变化事件，detail = {code}         |          

@@ -36,7 +36,7 @@ mode 有 13 种模式，其中 4 种是缩放模式，9 种是裁剪模式。
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/8Mc01cmS6WY)
+[在开发者工具中预览效果](wechatide://minicode/8Mc01cmS6WYi)
 
     <view class="page">
       <view class="page__hd">
