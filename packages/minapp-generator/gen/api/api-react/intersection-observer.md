@@ -8,7 +8,7 @@ WXML节点布局相交状态
 这一组API涉及的主要概念如下。
 
 *   参照节点：监听的参照节点，取它的布局区域作为参照区域。如果有多个参照节点，则会取它们布局区域的 **交集** 作为参照区域。页面显示区域也可作为参照区域之一。
-*   目标节点：监听的目标，只能是一个节点。
+*   目标节点：监听的目标，默认只能是一个节点（使用 `selectAll` 选项时，可以同时监听多个节点）。
 *   相交区域：目标节点的布局区域与参照区域的相交区域。
 *   相交比例：相交区域占参照区域的比例。
 *   阈值：相交比例如果达到阈值，则会触发监听器的回调函数。阈值可以有多个。
@@ -20,6 +20,8 @@ WXML节点布局相交状态
     Page({
       onLoad: function(){
         wx.createIntersectionObserver().relativeToViewport().observe('.target-class', (res) => {
+          res.id // 目标节点 id
+          res.dataset // 目标节点 dataset
           res.intersectionRatio // 相交区域占目标节点的布局区域的比例
           res.intersectionRect // 相交区域
           res.intersectionRect.left // 相交区域的左边界坐标
@@ -37,7 +39,7 @@ WXML节点布局相交状态
 
     Page({
       onLoad: function(){
-        wx.createIntersectionObserver({
+        wx.createIntersectionObserver(this, {
           thresholds: [0.2, 0.5]
         }).relativeTo('.relative-class').relativeToViewport().observe('.target-class', (res) => {
           res.intersectionRatio // 相交区域占目标节点的布局区域的比例
@@ -64,7 +66,7 @@ wx.createIntersectionObserver(\[this\], \[options\])
 -----------------|------------|----------------------------------------------------------------------------------------------|----------
   thresholds     |  Array     |  一个数值数组，包含所有阈值。默认为 `[0]` 。                                                 |          
   initialRatio   |  Number    |初始的相交比例，如果调用时检测到的相交比例与这个值不相等且达到阈值，则会触发一次监听器的回调函数。默认为 `0` 。|          
-  selectAll      |  Boolean   |是否同时观测多个参照节点（而非一个），如果设为 `true` ， `observe` 的 `targetSelector` 将选中多个节点（注意：同时选中过多节点将影响渲染性能）|  2.0.0   
+  selectAll      |  Boolean   |是否同时观测多个目标节点（而非一个），如果设为 `true` ， `observe` 的 `targetSelector` 将选中多个节点（注意：同时选中过多节点将影响渲染性能）|  2.0.0   
 
 ### intersectionObserver.relativeTo(selector, \[margins\])
 
@@ -110,4 +112,4 @@ wx.createIntersectionObserver(\[this\], \[options\])
 
 **Tips:**
 
-*   与页面显示区域的相交区域并不准确代表用户可见的区域，因为参与计算的区域是“布局区域”，布局区域可能会在绘制时被其他节点裁剪隐藏（如祖先节点中 overflow 样式为 hidden 的节点）或遮盖（如 fixed 定位的节点）。
+*   与页面显示区域的相交区域并不准确代表用户可见的区域，因为参与计算的区域是“布局区域”，布局区域可能会在绘制时被其他节点裁剪隐藏（如遇祖先节点中 overflow 样式为 hidden 的节点）或遮盖（如遇 fixed 定位的节点）。

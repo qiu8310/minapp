@@ -16,7 +16,7 @@ export namespace wx {
        */
       extraData?: any
       /**
-       * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。默认值 release
+       * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是正式版，则打开的小程序必定是正式版。默认值 release
        */
       envVersion?: string
       /**
@@ -54,7 +54,7 @@ export namespace wx {
   /**
    * @since 1.3.0
    * > 
-   * > iOS 微信客户端 6.5.9 版本开始支持，Android 客户端即将在 6.5.10 版本开始支持，请先使用 iOS 客户端进行调试
+   * > 此接口即将废弃，请使用 [<navigator>](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) 组件来使用此功能
    *
    * 打开同一公众号下关联的另一个小程序。**（注：必须是同一公众号下，而非同个 open 账号下）**
    *

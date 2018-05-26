@@ -143,7 +143,7 @@ export namespace wx {
    *           res.scrollLeft // 节点的水平滚动位置
    *           res.scrollTop  // 节点的竖直滚动位置
    *           res.scrollX    // 节点 scroll-x 属性的当前值
-   *           res.scrollY    // 节点 scroll-x 属性的当前值
+   *           res.scrollY    // 节点 scroll-y 属性的当前值
    *         }).exec()
    *       }
    *     })

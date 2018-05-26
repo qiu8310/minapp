@@ -37,6 +37,8 @@ export namespace wx {
   }
   /**
    * @since 1.1.0
+   * > 
+   * > 此接口即将废弃，请使用 [<button>](https://developers.weixin.qq.com/miniprogram/dev/component/button.html) 组件来使用此功能
    *
    * 调起客户端小程序设置界面，返回用户设置的操作结果。
    *

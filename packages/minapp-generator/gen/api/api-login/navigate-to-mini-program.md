@@ -4,7 +4,7 @@
 
 > 基础库 1.3.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 > 
-> iOS 微信客户端 6.5.9 版本开始支持，Android 客户端即将在 6.5.10 版本开始支持，请先使用 iOS 客户端进行调试
+> 此接口即将废弃，请使用 [<navigator>](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) 组件来使用此功能
 
 打开同一公众号下关联的另一个小程序。**（注：必须是同一公众号下，而非同个 open 账号下）**
 
@@ -15,7 +15,7 @@
   appId        |  String     |  是   |  要打开的小程序 appId                                                                                                                                   
   path         |  String     |  否   |  打开的页面路径，如果为空则打开首页                                                                                                                     
   extraData    |  Object     |  否   |需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch()`，`App.onShow()` 中获取到这份数据。[详情](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html)
-  envVersion   |  String     |  否   |要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。默认值 release
+  envVersion   |  String     |  否   |要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是正式版，则打开的小程序必定是正式版。默认值 release
   success      |  Function   |  否   |  接口调用成功的回调函数                                                                                                                                 
   fail         |  Function   |  否   |  接口调用失败的回调函数                                                                                                                                 
   complete     |  Function   |  否   |  接口调用结束的回调函数（调用成功、失败都会执行）                                                                                                       

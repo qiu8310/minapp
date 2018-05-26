@@ -1,4 +1,4 @@
-// Generated at 2018-5-3
+// Generated at 2018-5-27
 export namespace wxp {
   namespace request {
     type Promised = {
@@ -6599,13 +6599,13 @@ export namespace wxp {
        */
       height?: number
       /**
-       * 输出图片宽度（默认为width）
+       * 输出图片宽度（默认为 width * 屏幕像素密度）
        *
        * @since 1.2.0
        */
       destWidth?: number
       /**
-       * 输出图片高度（默认为height）
+       * 输出图片高度（默认为 height * 屏幕像素密度）
        *
        * @since 1.2.0
        */
@@ -6653,7 +6653,7 @@ export namespace wxp {
     type Param0PropComplete = () => any
   }
   /**
-   * 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。
+   * 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<canvas/>` 组件
    *
    * **Bug & Tip：**
    *
@@ -6680,25 +6680,7 @@ export namespace wxp {
   function canvasToTempFilePath(OBJECT: canvasToTempFilePath.Param0, instance?: any): void
 
   namespace canvasGetImageData {
-    type Promised = {
-      /**
-       * errMsg
-       */
-      errMsg: string
-      /**
-       * 图像数据矩形的宽度
-       */
-      width: number
-      /**
-       * 图像数据矩形的高度
-       */
-      height: number
-      /**
-       * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
-       */
-      data: Uint8ClampedArray
-    }
-    type Param = {
+    type Param0 = {
       /**
        * 画布标识，传入 [`<canvas />`](https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html) 的 canvas-id
        */
@@ -6719,12 +6701,54 @@ export namespace wxp {
        * 将要被提取的图像数据矩形区域的高度
        */
       height: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: Param0PropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: Param0PropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: Param0PropComplete
     }
+    /**
+     * 接口调用成功的回调函数
+     */
+    type Param0PropSuccess = (res: Param0PropSuccessParam) => any
+    type Param0PropSuccessParam = {
+      /**
+       * errMsg
+       */
+      errMsg: string
+      /**
+       * 图像数据矩形的宽度
+       */
+      width: number
+      /**
+       * 图像数据矩形的高度
+       */
+      height: number
+      /**
+       * 图像像素点数据，一维数组，每四项表示一个像素点的rgba
+       */
+      data: Uint8ClampedArray
+    }
+    /**
+     * 接口调用失败的回调函数
+     */
+    type Param0PropFail = (err: any) => any
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    type Param0PropComplete = () => any
   }
   /**
    * @since 1.9.0
    *
-   * 返回一个数组，用来描述 canvas 区域隐含的像素数据
+   * 返回一个数组，用来描述 canvas 区域隐含的像素数据。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<canvas/>` 组件
    *
    * **示例代码：**
    *
@@ -6743,12 +6767,12 @@ export namespace wxp {
    *       }
    *     })
    *     ```
-   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject-this
    */
-  function canvasGetImageData(OBJECT: canvasGetImageData.Param): Promise<canvasGetImageData.Promised>
+  function canvasGetImageData(OBJECT: canvasGetImageData.Param0, instance?: any): void
 
   namespace canvasPutImageData {
-    type Param = {
+    type Param0 = {
       /**
        * 画布标识，传入 [`<canvas />`](https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html) 的 canvas-id
        */
@@ -6773,12 +6797,36 @@ export namespace wxp {
        * 源图像数据矩形区域的高度
        */
       height?: number
+      /**
+       * 接口调用成功的回调函数
+       */
+      success?: Param0PropSuccess
+      /**
+       * 接口调用失败的回调函数
+       */
+      fail?: Param0PropFail
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      complete?: Param0PropComplete
     }
+    /**
+     * 接口调用成功的回调函数
+     */
+    type Param0PropSuccess = (res: any) => any
+    /**
+     * 接口调用失败的回调函数
+     */
+    type Param0PropFail = (err: any) => any
+    /**
+     * 接口调用结束的回调函数（调用成功、失败都会执行）
+     */
+    type Param0PropComplete = () => any
   }
   /**
    * @since 1.9.0
    *
-   * 将像素数据绘制到画布的方法
+   * 将像素数据绘制到画布的方法。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<canvas/>` 组件
    *
    * **示例代码：**
    *
@@ -6793,9 +6841,9 @@ export namespace wxp {
    *       success(res) {}
    *     })
    *     ```
-   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/put-image-data.html#wxcanvasputimagedataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/put-image-data.html#wxcanvasputimagedataobject-this
    */
-  function canvasPutImageData(OBJECT: canvasPutImageData.Param): Promise<any>
+  function canvasPutImageData(OBJECT: canvasPutImageData.Param0, instance?: any): void
 
   namespace startPullDownRefresh {
     type Promised = {
@@ -6978,7 +7026,7 @@ export namespace wxp {
    *           res.scrollLeft // 节点的水平滚动位置
    *           res.scrollTop  // 节点的竖直滚动位置
    *           res.scrollX    // 节点 scroll-x 属性的当前值
-   *           res.scrollY    // 节点 scroll-x 属性的当前值
+   *           res.scrollY    // 节点 scroll-y 属性的当前值
    *         }).exec()
    *       }
    *     })
@@ -7266,22 +7314,48 @@ export namespace wxp {
     }
   }
   /**
-   * 获取用户信息，withCredentials 为 true 时需要先调用 [wx.login](https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html#wxloginobject) 接口。
+   * **注意：此接口有调整，使用该接口将不再出现授权弹窗，请使用 [<button open-type="getUserInfo"></button>](https://developers.weixin.qq.com/miniprogram/dev/component/button.html) 引导用户主动进行授权操作**
    *
-   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userInfo
+   * 1.  当用户未授权过，调用该接口将直接报错
+   * 2.  当用户授权过，可以使用该接口获取用户信息
+   *
+   * **示例代码：**
+   *
+   *     ```html
+   *     <!--wxml-->
+   *     <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
+   *     <open-data type="userAvatarUrl"></open-data>
+   *     <open-data type="userNickName"></open-data>
+   *     <!-- 需要使用 button 来授权登录 -->
+   *     <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+   *     <view wx:else>请升级微信版本</view>
+   *     ```
    *
    * **示例代码：**
    *
    *     ```javascript
-   *     wx.getUserInfo({
-   *       success: function(res) {
-   *         var userInfo = res.userInfo
-   *         var nickName = userInfo.nickName
-   *         var avatarUrl = userInfo.avatarUrl
-   *         var gender = userInfo.gender //性别 0：未知、1：男、2：女
-   *         var province = userInfo.province
-   *         var city = userInfo.city
-   *         var country = userInfo.country
+   *     //js
+   *     Page({
+   *       data: {
+   *         canIUse: wx.canIUse('button.open-type.getUserInfo')
+   *       },
+   *       onLoad: function() {
+   *         // 查看是否授权
+   *         wx.getSetting({
+   *           success: function(res){
+   *             if (res.authSetting['scope.userInfo']) {
+   *               // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+   *               wx.getUserInfo({
+   *                 success: function(res) {
+   *                   console(res.userInfo)
+   *                 }
+   *               })
+   *             }
+   *           }
+   *         })
+   *       },
+   *       bindGetUserInfo: function(e) {
+   *         console.log(e.detail.userInfo)
    *       }
    *     })
    *     ```
@@ -7435,28 +7509,6 @@ export namespace wxp {
   function updateShareMenu(OBJECT?: updateShareMenu.Param): Promise<any>
 
   namespace getShareInfo {
-    type Promised = {
-      /**
-       * 错误信息
-       */
-      errMsg: string
-      /**
-       * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
-       *
-       * **encryptedData 解密后为一个 JSON 结构，包含字段如下：**
-       *
-       *   字段      |  说明            
-       * ------------|------------------
-       *   openGId   |群对当前小程序的唯一 ID
-       *
-       * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html)
-       */
-      encryptedData: string
-      /**
-       * 加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
-       */
-      iv: string
-    }
     type Param = {
       /**
        * shareTicket
@@ -7476,7 +7528,7 @@ export namespace wxp {
    * 获取转发详细信息
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxgetshareinfoobject
    */
-  function getShareInfo(OBJECT: getShareInfo.Param): Promise<getShareInfo.Promised>
+  function getShareInfo(OBJECT: getShareInfo.Param): Promise<any>
 
   namespace chooseAddress {
     type Promised = {
@@ -7709,6 +7761,8 @@ export namespace wxp {
   }
   /**
    * @since 1.1.0
+   * > 
+   * > 此接口即将废弃，请使用 [<button>](https://developers.weixin.qq.com/miniprogram/dev/component/button.html) 组件来使用此功能
    *
    * 调起客户端小程序设置界面，返回用户设置的操作结果。
    *
@@ -7841,7 +7895,7 @@ export namespace wxp {
        */
       extraData?: any
       /**
-       * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。默认值 release
+       * 要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版） ，仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是正式版，则打开的小程序必定是正式版。默认值 release
        */
       envVersion?: string
     }
@@ -7849,7 +7903,7 @@ export namespace wxp {
   /**
    * @since 1.3.0
    * > 
-   * > iOS 微信客户端 6.5.9 版本开始支持，Android 客户端即将在 6.5.10 版本开始支持，请先使用 iOS 客户端进行调试
+   * > 此接口即将废弃，请使用 [<navigator>](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) 组件来使用此功能
    *
    * 打开同一公众号下关联的另一个小程序。**（注：必须是同一公众号下，而非同个 open 账号下）**
    *
@@ -8313,6 +8367,20 @@ export namespace wxp {
      */
     terminate(): any
   }
+  /**
+   * @since 2.0.1
+   *
+   * 自定义业务数据监控上报接口。使用前，需要在小程序管理后台-运维中心-性能监控-业务数据监控中新建监控事件，配置监控描述与告警类型。每一个监控事件对应唯一的监控ID，开发者最多可以创建128个监控事件。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.reportMonitor('1', 1)
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/monitor-report.html#wxreportmonitorname-value
+   */
+  function reportMonitor(name: string, value: number): void
+
   namespace setEnableDebug {
     type Promised = {
       /**

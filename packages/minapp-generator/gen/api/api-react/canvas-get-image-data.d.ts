@@ -2,7 +2,7 @@
 
 export namespace wx {
   namespace canvasGetImageData {
-    type Param = {
+    type Param0 = {
       /**
        * 画布标识，传入 [`<canvas />`](https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html) 的 canvas-id
        */
@@ -26,21 +26,21 @@ export namespace wx {
       /**
        * 接口调用成功的回调函数
        */
-      success?: ParamPropSuccess
+      success?: Param0PropSuccess
       /**
        * 接口调用失败的回调函数
        */
-      fail?: ParamPropFail
+      fail?: Param0PropFail
       /**
        * 接口调用结束的回调函数（调用成功、失败都会执行）
        */
-      complete?: ParamPropComplete
+      complete?: Param0PropComplete
     }
     /**
      * 接口调用成功的回调函数
      */
-    type ParamPropSuccess = (res: ParamPropSuccessParam) => any
-    type ParamPropSuccessParam = {
+    type Param0PropSuccess = (res: Param0PropSuccessParam) => any
+    type Param0PropSuccessParam = {
       /**
        * errMsg
        */
@@ -61,16 +61,16 @@ export namespace wx {
     /**
      * 接口调用失败的回调函数
      */
-    type ParamPropFail = (err: any) => any
+    type Param0PropFail = (err: any) => any
     /**
      * 接口调用结束的回调函数（调用成功、失败都会执行）
      */
-    type ParamPropComplete = () => any
+    type Param0PropComplete = () => any
   }
   /**
    * @since 1.9.0
    *
-   * 返回一个数组，用来描述 canvas 区域隐含的像素数据
+   * 返回一个数组，用来描述 canvas 区域隐含的像素数据。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<canvas/>` 组件
    *
    * **示例代码：**
    *
@@ -89,8 +89,8 @@ export namespace wx {
    *       }
    *     })
    *     ```
-   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-image-data.html#wxcanvasgetimagedataobject-this
    */
-  function canvasGetImageData(OBJECT: canvasGetImageData.Param): void
+  function canvasGetImageData(OBJECT: canvasGetImageData.Param0, instance?: any): void
 
 }

@@ -25,6 +25,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
+
     wx.openBluetoothAdapter({
       success: function (res) {
         console.log(res)
@@ -53,6 +55,8 @@
   complete   |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     wx.closeBluetoothAdapter({
       success: function (res) {
@@ -85,6 +89,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
+
     wx.getBluetoothAdapterState({
       success: function (res) {
         console.log(res)
@@ -106,6 +112,8 @@
   discovering   |  Boolean   |蓝牙适配器是否处于搜索状态
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     wx.onBluetoothAdapterStateChange(function(res) {
       console.log(`adapterState changed, now is`, res)
@@ -139,6 +147,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
+
     // 以微信硬件平台的蓝牙智能灯为例，主服务的 UUID 是 FEE7。传入这个参数，只搜索主服务 UUID 为 FEE7 的设备
     wx.startBluetoothDevicesDiscovery({
       services: ['FEE7'],
@@ -169,6 +179,8 @@
   errMsg   |  String   |成功：ok，错误：详细信息
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     wx.stopBluetoothDevicesDiscovery({
       success: function (res) {
@@ -206,6 +218,8 @@
   devices[].serviceData            |  ArrayBuffer   |  当前蓝牙设备的广播数据段中的ServiceData数据段                                
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     // ArrayBuffer转16进度字符串示例
     function ab2hex(buffer) {
@@ -254,6 +268,8 @@
   devices[].serviceData            |  ArrayBuffer   |  当前蓝牙设备的广播数据段中的ServiceData数据段                                
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     // ArrayBuffer转16进度字符串示例
     function ab2hex(buffer) {
@@ -304,6 +320,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
+
     wx.getConnectedBluetoothDevices({
       success: function (res) {
         console.log(res)
@@ -343,6 +361,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
+
     wx.createBLEConnection({
       // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接 
       deviceId: deviceId,
@@ -381,6 +401,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
+
     wx.closeBLEConnection({
       deviceId:deviceId
       success: function (res) {
@@ -403,6 +425,8 @@
   connected   |  Boolean   |  连接目前的状态         
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     wx.onBLEConnectionStateChange(function(res) {
       // 该方法回调中可以用于处理连接意外断开等异常情况
@@ -435,6 +459,8 @@
   services[].isPrimary   |  Boolean   |该服务是否为主服务
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     wx.getBLEDeviceServices({
       // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接 
@@ -480,6 +506,8 @@
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
+
     wx.getBLEDeviceCharacteristics({
       // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
       deviceId: deviceId,
@@ -521,6 +549,8 @@
   errMsg    |  String   |成功：ok，错误：详细信息
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     // 必须在这里的回调才能获取
     wx.onBLECharacteristicValueChange(function(characteristic) {
@@ -572,6 +602,8 @@ _tips: 并行调用多次读写接口存在读写失败的可能性_
   errMsg   |  String   |成功：ok，错误：详细信息
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     // 向蓝牙设备发送一个0x00的16进制数据
     let buffer = new ArrayBuffer(1)
@@ -628,6 +660,8 @@ _tips: 并行调用多次读写接口存在读写失败的可能性_
 
 **示例代码：**
 
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
+
     wx.notifyBLECharacteristicValueChange({
       state: true, // 启用 notify 功能
       // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接  
@@ -663,6 +697,8 @@ _tips: 并行调用多次读写接口存在读写失败的可能性_
   value              |  ArrayBuffer   |特征值最新的值 **（注意：vConsole 无法打印出 ArrayBuffer 类型数据）**
 
 **示例代码：**
+
+[在开发者工具中预览效果](wechatide://minicode/OF4Y9Gme6rZ4)
 
     // ArrayBuffer转16进度字符串示例
     function ab2hex(buffer) {

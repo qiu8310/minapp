@@ -37,3 +37,6 @@
             }
         }
     })
+    
+
+**注意：scope 为 "scope.userInfo" 时，无法弹出授权窗口，请使用 [&ltbutton open-type="getUserInfo"&gt&lt/button&gt](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)**

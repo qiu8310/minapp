@@ -108,7 +108,7 @@
   fail       |  Function   |  否   |  接口调用失败的回调函数                                        
   complete   |  Function   |  否   |  接口调用结束的回调函数（调用成功、失败都会执行）              
 
-**注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://developers.weixin.qq.com/miniprogram/dev/api/file.html)，才能在小程序下次启动时访问得到。**
+**注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 [wx.saveFile](https://developers.weixin.qq.com/miniprogram/dev/api/file.html)，才能在小程序下次启动时访问得到。** **注：请在 header 中指定合理的 Content-Type 字段，以保证客户端正确处理文件类型**
 
 **success返回参数说明：**
 

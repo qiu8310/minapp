@@ -28,13 +28,13 @@ export namespace wx {
        */
       height?: number
       /**
-       * 输出图片宽度（默认为width）
+       * 输出图片宽度（默认为 width * 屏幕像素密度）
        *
        * @since 1.2.0
        */
       destWidth?: number
       /**
-       * 输出图片高度（默认为height）
+       * 输出图片高度（默认为 height * 屏幕像素密度）
        *
        * @since 1.2.0
        */
@@ -82,7 +82,7 @@ export namespace wx {
     type Param0PropComplete = () => any
   }
   /**
-   * 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。
+   * 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<canvas/>` 组件
    *
    * **Bug & Tip：**
    *

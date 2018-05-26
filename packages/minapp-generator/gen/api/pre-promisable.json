@@ -92,8 +92,6 @@
     "redirectTo",
     "reLaunch",
     "switchTab",
-    "canvasGetImageData",
-    "canvasPutImageData",
     "startPullDownRefresh",
     "getExtConfig",
     "login",

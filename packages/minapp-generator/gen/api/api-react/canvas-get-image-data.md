@@ -1,11 +1,11 @@
 <!-- https://developers.weixin.qq.com/miniprogram/dev/api/canvas/get-image-data.html -->
 
-wx.canvasGetImageData(OBJECT)
-=============================
+wx.canvasGetImageData(OBJECT, this)
+===================================
 
 > 基础库 1.9.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
-返回一个数组，用来描述 canvas 区域隐含的像素数据
+返回一个数组，用来描述 canvas 区域隐含的像素数据。在自定义组件下，第二个参数传入组件实例this，以操作组件内 `<canvas/>` 组件
 
 **OBJECT参数说明：**
 

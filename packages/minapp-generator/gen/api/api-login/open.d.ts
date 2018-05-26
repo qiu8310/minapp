@@ -103,22 +103,48 @@ export namespace wx {
     type ParamPropComplete = () => any
   }
   /**
-   * 获取用户信息，withCredentials 为 true 时需要先调用 [wx.login](https://developers.weixin.qq.com/miniprogram/dev/api/api-login.html#wxloginobject) 接口。
+   * **注意：此接口有调整，使用该接口将不再出现授权弹窗，请使用 [<button open-type="getUserInfo"></button>](https://developers.weixin.qq.com/miniprogram/dev/component/button.html) 引导用户主动进行授权操作**
    *
-   * 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.userInfo
+   * 1.  当用户未授权过，调用该接口将直接报错
+   * 2.  当用户授权过，可以使用该接口获取用户信息
+   *
+   * **示例代码：**
+   *
+   *     ```html
+   *     <!--wxml-->
+   *     <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
+   *     <open-data type="userAvatarUrl"></open-data>
+   *     <open-data type="userNickName"></open-data>
+   *     <!-- 需要使用 button 来授权登录 -->
+   *     <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+   *     <view wx:else>请升级微信版本</view>
+   *     ```
    *
    * **示例代码：**
    *
    *     ```javascript
-   *     wx.getUserInfo({
-   *       success: function(res) {
-   *         var userInfo = res.userInfo
-   *         var nickName = userInfo.nickName
-   *         var avatarUrl = userInfo.avatarUrl
-   *         var gender = userInfo.gender //性别 0：未知、1：男、2：女
-   *         var province = userInfo.province
-   *         var city = userInfo.city
-   *         var country = userInfo.country
+   *     //js
+   *     Page({
+   *       data: {
+   *         canIUse: wx.canIUse('button.open-type.getUserInfo')
+   *       },
+   *       onLoad: function() {
+   *         // 查看是否授权
+   *         wx.getSetting({
+   *           success: function(res){
+   *             if (res.authSetting['scope.userInfo']) {
+   *               // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+   *               wx.getUserInfo({
+   *                 success: function(res) {
+   *                   console(res.userInfo)
+   *                 }
+   *               })
+   *             }
+   *           }
+   *         })
+   *       },
+   *       bindGetUserInfo: function(e) {
+   *         console.log(e.detail.userInfo)
    *       }
    *     })
    *     ```

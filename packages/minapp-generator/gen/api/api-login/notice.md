@@ -173,8 +173,8 @@
 ##### 示例：
 
     {
-    "id":"AT0002", 
-    "keyword_id_list":[3,4,5] 
+    "id":"AT0002",
+    "keyword_id_list":[3,4,5]
     }
     
 
@@ -364,35 +364,31 @@ access\_token 是全局唯一接口调用凭据，开发者调用各接口时都
   page               |  否   |  点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例index?foo=bar）。该字段不填则模板无跳转。                                                                                          
   form_id            |  是   |表单提交场景下，为 submit 事件带上的 [formId](https://developers.weixin.qq.com/miniprogram/dev/component/form.html)；支付场景下，为本次支付的 [prepay_id](https://developers.weixin.qq.com/miniprogram/dev/api/api-pay.html)
   data               |  是   |  模板内容，不填则下发空模板                                                                                                                                                                          
-  color              |  否   |  模板内容字体的颜色，不填默认黑色                                                                                                                                                                    
+  color              |  否   |  模板内容字体的颜色，不填默认黑色 【废弃】                                                                                                                                                           
   emphasis_keyword   |  否   |  模板需要放大的关键词，不填则默认无放大                                                                                                                                                              
 
 ##### 示例：
 
     {
-      "touser": "OPENID",  
-      "template_id": "TEMPLATE_ID", 
-      "page": "index",          
-      "form_id": "FORMID",         
+      "touser": "OPENID",
+      "template_id": "TEMPLATE_ID",
+      "page": "index",
+      "form_id": "FORMID",
       "data": {
           "keyword1": {
-              "value": "339208499", 
-              "color": "#173177"
-          }, 
+              "value": "339208499"
+          },
           "keyword2": {
-              "value": "2015年01月05日 12:30", 
-              "color": "#173177"
-          }, 
+              "value": "2015年01月05日 12:30"
+          },
           "keyword3": {
-              "value": "粤海喜来登酒店", 
-              "color": "#173177"
-          } , 
+              "value": "粤海喜来登酒店"
+          } ,
           "keyword4": {
-              "value": "广州市天河区天河路208号", 
-              "color": "#173177"
-          } 
+              "value": "广州市天河区天河路208号"
+          }
       },
-      "emphasis_keyword": "keyword1.DATA" 
+      "emphasis_keyword": "keyword1.DATA"
     }
     
 

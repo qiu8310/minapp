@@ -33,6 +33,7 @@
   width        |  Int      |  430                         |  二维码的宽度                                                                  
   auto_color   |  Bool     |  false                       |  自动配置线条颜色，如果颜色依然是黑色，则说明不建议配置主色调                  
   line_color   |  Object   |  {"r":"0","g":"0","b":"0"}   |auth_color 为 false 时生效，使用 rgb 设置颜色 例如 {"r":"xxx","g":"xxx","b":"xxx"},十进制表示
+  is_hyaline   |  Bool     |  false                       |  是否需要透明底色， is_hyaline 为true时，生成透明底色的小程序码                
 
 **注意：通过该接口生成的小程序码，永久有效，数量限制见文末说明，请谨慎使用。用户扫描该码进入小程序后，将直接进入 path 对应的页面。**
 
@@ -54,6 +55,7 @@
   width        |  Int      |  430                         |  二维码的宽度                                                                                             
   auto_color   |  Bool     |  false                       |  自动配置线条颜色，如果颜色依然是黑色，则说明不建议配置主色调                                             
   line_color   |  Object   |  {"r":"0","g":"0","b":"0"}   |  auto_color 为 false 时生效，使用 rgb 设置颜色 例如 {"r":"xxx","g":"xxx","b":"xxx"} 十进制表示            
+  is_hyaline   |  Bool     |  false                       |  是否需要透明底色， is_hyaline 为true时，生成透明底色的小程序码                                           
 
 **注意：通过该接口生成的小程序码，永久有效，数量暂无限制。用户扫描该码进入小程序后，开发者需在对应页面获取的码中 scene 字段的值，再做处理逻辑。使用如下代码可以获取到二维码中的 scene 字段的值。调试阶段可以使用开发工具的条件编译自定义参数 scene=xxxx 进行模拟，开发工具模拟时的 scene 的参数值需要进行 urlencode**
 
