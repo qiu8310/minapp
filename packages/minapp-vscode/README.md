@@ -1,6 +1,6 @@
 # minapp-vscode
 
-wxml/pug/vue 语言中，微信小程序标签、属性的智能补全
+wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时提供 snippets）
 
 
 ## 最近更新 【[see more](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/CHANGELOG.md)】
@@ -8,7 +8,8 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全
 * 【2018-05-07】1.2.0 模板文件支持变量高亮，[详情见下文](#highlight)
 * 【2018-05-03】1.1.0 支持 link，[详情见下文](#link)
 * 【2018-04-05】1.0.12 开始，支持 pug 语言的自动补全，[详情见下文](#vue)
-* 【2018-03-28】1.0.8 之前用户注意：
+* 【2018-03-28】1.0.7 之前用户注意：
+
   ![重要通知](https://n1image.hjfile.cn/res7/2018/03/23/0520246bc52ca0b726a3ca4097104ba0.png)
 
 <!-- <div style="color:red; font-size: 1.6em;">重要通知：由于旧版本不小心被我删除了，所以请 1.0.7 版本之前的用户删除旧版本再重新安装新版本；否则可能会无法成功安装新版本，并且也得不到新版本的推送！</div> -->
@@ -20,7 +21,7 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全
 * [属性值自动补全](#attr-value)
 * [在 vue 模板文件中也能自动补全，同时支持 pug 语言](#vue)
 * [支持 link（纯 wxml 或 pug 文件才支持，vue 文件不支持）](#link)
-* [自定义组件自动补全（纯 wxml 文件才支持，vue 文件不支持）](#custom-component)
+* [自定义组件自动补全（纯 wxml 文件才支持，vue 或 pug 文件不支持）](#custom-component)
 * [模板文件中 js 变量高亮（纯 wxml 或 pug 文件才支持，vue 文件不支持）](#highlight)
 
 > **所有自动补全的模板数据都来自于官方文档，通过[脚本](https://github.com/qiu8310/minapp/tree/master/packages/minapp-generator)自动获取的**
@@ -90,7 +91,7 @@ vue 中的 template 板支持两个属性：
 
 <a id="custom-component"></a>
 
-## 自定义组件自动补全（纯 wxml 文件才支持，vue 文件不支持）
+## 自定义组件自动补全（纯 wxml 文件才支持，vue 或 pug 文件不支持）
 
 - 自动获取对应 json 文件中的组件信息
 - 优先提示自定义组件
@@ -120,4 +121,5 @@ vue 中的 template 板支持两个属性：
 * [x] 单独的 wxml 文件样式实现和 vue 中的 wxml 文件样式一样的风格
 * [ ] bind 或 catch 相关的属性可以点击，并跳转到对应的函数上
 * [ ] 自动创建文件关联（.cjson, .wxss）
-* [ ] 添加常用的 snippets
+* [x] 添加常用的 snippets
+* [ ] 支持识别 self close tag

@@ -5,18 +5,28 @@
 
 import * as vscode from 'vscode'
 import * as path from 'path'
+import {Snippets} from '../res/snippets'
 
 let listener: vscode.Disposable
 
 export interface Config {
   getResolveRoots: (doc: vscode.TextDocument) => string[]
+  /** wxml 格式化时一行中允许的最长的字符串长度 */
   formatMaxLineCharacters: number,
+  /** 是否禁用自定义的组件补全 */
   disableCustomComponentAutocomponent: boolean
+  /** 解析自定义组件的根目录 */
   resolveRoots: string[]
+  /** 使用 LinkProvider 处理的标签属性 */
   linkAttributeNames: string[]
+  /** 是否禁用颜色高亮 */
   disableDecorate: boolean
+  /** 是否高亮复杂的语句 */
   decorateComplexInterpolation: boolean
+  /** 自定义高亮样式 */
   decorateType: any
+  /** 用户自定义的 snippets */
+  snippets: {wxml?: Snippets, pug?: Snippets}
 }
 
 export const config: Config = {
@@ -28,6 +38,7 @@ export const config: Config = {
   disableDecorate: false,
   decorateComplexInterpolation: true,
   decorateType: {},
+  snippets: {},
 }
 
 function getConfig() {
@@ -39,6 +50,7 @@ function getConfig() {
   config.disableDecorate = minapp.get('disableDecorate', true)
   config.decorateComplexInterpolation = minapp.get('decorateComplexInterpolation', true)
   config.decorateType = minapp.get('decorateType', {})
+  config.snippets = minapp.get('snippets', {})
 }
 
 function getResolveRoots(doc: vscode.TextDocument) {

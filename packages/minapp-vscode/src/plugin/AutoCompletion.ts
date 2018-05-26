@@ -5,7 +5,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 
 import {
   CompletionItem, CompletionItemKind, SnippetString,
-  MarkdownString, TextDocument, Position, Range
+  MarkdownString, TextDocument, Position, Range, workspace
 } from 'vscode'
 
 import {
@@ -13,10 +13,13 @@ import {
   autocompleteTagAttr, autocompleteTagAttrValue, autocompleteTagName
 } from '@minapp/common'
 
+import {EOL} from 'os'
+
 import {Config} from './lib/config'
 import {getCustomOptions, getTextAtPosition} from './lib/helper'
 import {LanguageConfig} from './lib/language'
 import {getTagAtPosition} from './lib/getTagAtPosition'
+import * as s from './res/snippets'
 
 export default abstract class AutoCompletion {
   abstract id: string
@@ -79,6 +82,18 @@ export default abstract class AutoCompletion {
     return item
   }
 
+  renderSnippet(doc: TextDocument, name: string, snippet: s.Snippet, sortText: string) {
+    let item = new CompletionItem(name + ' snippet', CompletionItemKind.Snippet)
+
+    let eol = workspace.getConfiguration('files', doc.uri).get('eol', EOL)
+    let body = Array.isArray(snippet.body) ? snippet.body.join(eol) : snippet.body
+    if (!this.isPug && body[0] === '<') body = body.substr(1) // 去除触发符号
+    item.insertText = new SnippetString(body)
+    item.documentation = new MarkdownString(snippet.markdown || snippet.description)
+    item.sortText = sortText
+    return item
+  }
+
   private setDefault(index: number, defaultValue: any) {
     if (!this.isDefaultValueValid(defaultValue)) return '${' + index + '}'
     if (typeof defaultValue === 'boolean' || defaultValue === 'true' || defaultValue === 'false') {
@@ -97,11 +112,29 @@ export default abstract class AutoCompletion {
    */
   async createComponentSnippetItems(lc: LanguageConfig, doc: TextDocument, pos: Position, prefix?: string) {
     let res = await autocompleteTagName(lc, this.getCustomOptions(doc))
-    let filter = (t: TagItem) => !prefix || prefix.split('').every(c => t.component.name.includes(c))
+    let filter = (key: string) => key && (!prefix || prefix.split('').every(c => key.includes(c)))
+    let fileterComponent = (t: TagItem) => filter(t.component.name)
+
     let items = [
-      ...res.customs.filter(filter).map(t => this.renderTag(t, 'a')), // 自定义的组件放在前面
-      ...res.natives.filter(filter).map(t => this.renderTag(t, 'b'))
+      ...res.customs.filter(fileterComponent).map(t => this.renderTag(t, 'a')), // 自定义的组件放在前面
+      ...res.natives.filter(fileterComponent).map(t => this.renderTag(t, 'c'))
     ]
+
+    // 添加 Snippet
+    let userSnippets = this.config.snippets
+    let allSnippets: s.Snippets = (this.isPug ? {...s.PugSnippets, ...userSnippets.pug} : {...s.WxmlSnippets, ...userSnippets.wxml})
+    items.push(...Object.keys(allSnippets)
+      .filter(k => filter(k))
+      .map(k => {
+        let snippet = allSnippets[k]
+        if (!snippet.description) {
+          let ck = k.split(' ')[0] // 取出名称中的第一段即可
+          let found = res.natives.find(it => it.component.name === (ck || k))
+          if (found) snippet.markdown = found.markdown
+        }
+        return this.renderSnippet(doc, k, allSnippets[k], 'b')
+      })
+    )
 
     if (prefix) {
       items.forEach(it => {

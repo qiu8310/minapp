@@ -1,7 +1,7 @@
 {
   "name": "minapp-vscode",
   "displayName": "minapp",
-  "description": "wxml 语法高亮，并提供标签、属性名、属性值的智能补全（同时支持在 vue 模板和 pug 语言的补全）",
+  "description": "wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时提供 snippets）",
   "version": "1.2.0",
   "publisher": "qiu8310",
   "scripts": {
@@ -91,6 +91,22 @@
           "description": "指定模板文件中 js 变量装饰的样式。可配置的属性有 https://code.visualstudio.com/docs/extensionAPI/vscode-api#DecorationRenderOptions",
           "default": {
             "color": "#ba68c8"
+          }
+        },
+        "minapp-vscode.snippets": {
+          "type": "object",
+          "description": "自定义 snippets，与系统 snippets 配置类似（注意：如果 key 和默认提供的 snippet 重复，会覆盖掉默认的）",
+          "default": {
+            "wxml": {
+              "open-data": {
+                "body": "<open-data type=\"${1|groupName,userNickName,userAvatarUrl,userGender,userCity,userProvince,userCountry,userLanguage|}\" lang=\"${2|en,zh_CN,zh_TW|}\" />$0"
+              }
+            },
+            "pug": {
+              "open-data": {
+                "body": "open-data(type=\"${1|groupName,userNickName,userAvatarUrl,userGender,userCity,userProvince,userCountry,userLanguage|}\" lang=\"${2|en,zh_CN,zh_TW|}\")$0"
+              }
+            }
           }
         }
       }
