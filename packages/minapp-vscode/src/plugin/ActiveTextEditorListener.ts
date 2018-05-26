@@ -1,5 +1,5 @@
 import { Config } from './lib/config'
-import { TextEditor, window, Disposable, workspace, TextDocumentChangeEvent, TextDocument, Range, TextEditorDecorationType } from 'vscode'
+import { TextEditor, window, Disposable, workspace, TextDocument, Range, TextEditorDecorationType } from 'vscode'
 
 const COMMENT_REGEXP = /<!--([\s\S]*?)-->/g
 const DOUBLE_BIND_REGEXP = /\b(?:[\w-]+).sync\s*=\s*['"]([^'"]*)['"]/g
@@ -9,36 +9,49 @@ const INTERPOLATION_SIMPLE_REGEXP = /\{\{\s*([\w.-\[\]]*)\s*\}\}/g // 可以匹�
 const INTERPOLATION_COMPLEX_REGEXP = /\{\{\s*(.*?)\s*\}\}/g
 
 export default class ActiveTextEditorListener {
+  private decorationCache: {[key: string]: {ranges: Range[], style: TextEditorDecorationType}} = {}
   disposables: Disposable[] = []
-  decorationType?: TextEditorDecorationType
+
   constructor(public config: Config) {
     // 首次立即更新，文件变化延迟更新
     if (window.activeTextEditor) this.onChange(window.activeTextEditor)
 
     let tid: NodeJS.Timer
-    let update = (editor: TextEditor) => {
+    let update = (editor: TextEditor, resetCache?: boolean) => {
+      if (!editor) return
       if (tid) clearTimeout(tid)
-      tid = setTimeout(() => this.onChange(editor), 500)
-    }
-
-    let handle = (e?: TextEditor | TextDocumentChangeEvent) => {
-      if (e && window.activeTextEditor && e.document === window.activeTextEditor.document) {
-        update(window.activeTextEditor)
-      }
+      tid = setTimeout(() => this.onChange(editor, resetCache), 500)
     }
 
     this.disposables.push(
-      window.onDidChangeActiveTextEditor(handle),
-      workspace.onDidChangeTextDocument(handle)
+      window.onDidChangeVisibleTextEditors(editors => {
+        editors.forEach(e => this.onChange(e))
+        this.updateDecorationCache()
+      }),
+      // window.onDidChangeActiveTextEditor(editor => {
+      //   this.onChange(editor, true)
+      // }),
+      workspace.onDidChangeTextDocument(e => {
+        if (e && window.activeTextEditor && e.document === window.activeTextEditor.document) {
+          update(window.activeTextEditor, true)
+        }
+      })
     )
   }
 
-  onChange(editor: TextEditor) {
+  onChange(editor: TextEditor | undefined, resetCache?: boolean) {
+    if (!editor) return
+
     let doc = editor.document
     if (this.config.disableDecorate) return
 
     if (doc.languageId === 'wxml' || doc.languageId === 'wxml-pug') {
-      this.decorateWxml(editor)
+      let cache = this.decorationCache[doc.fileName]
+      if (cache && !resetCache) {
+        editor.setDecorations(cache.style, cache.ranges)
+      } else {
+        this.decorateWxml(editor)
+      }
     }
   }
 
@@ -54,19 +67,36 @@ export default class ActiveTextEditorListener {
       ...getRanges(text, interpolation, doc, comments)
     ]
 
-    this.disposeDecorationType()
-    this.decorationType = window.createTextEditorDecorationType(Object.assign({
+    let decorationType = window.createTextEditorDecorationType(Object.assign({
       // 设置默认样式
     }, this.config.decorateType))
 
-    editor.setDecorations(this.decorationType, ranges)
+    if (this.decorationCache[doc.fileName]) this.decorationCache[doc.fileName].style.dispose()
+    editor.setDecorations(decorationType, ranges)
+    this.decorationCache[doc.fileName] = {style: decorationType, ranges}
   }
 
-  disposeDecorationType() {
-    if (this.decorationType) this.decorationType.dispose()
+  updateDecorationCache() {
+    let cache = this.decorationCache
+    let oldKeys = Object.keys(cache)
+
+    // 当前打开过的所有文件
+    let existKeys = workspace.textDocuments.map(doc => doc.fileName)
+
+    // 这个是同时打开的多个文件
+    // let existKeys = window.visibleTextEditors.map(editor => editor.document.fileName)
+
+    oldKeys.forEach(k => {
+      if (existKeys.indexOf(k) < 0 && cache[k]) {
+        cache[k].style.dispose()
+        delete cache[k]
+      }
+    })
   }
+
   dispose() {
-    this.disposeDecorationType()
+    Object.keys(this.decorationCache).forEach(k => this.decorationCache[k].style.dispose())
+    this.decorationCache = {}
     this.disposables.forEach(d => d.dispose())
   }
 }

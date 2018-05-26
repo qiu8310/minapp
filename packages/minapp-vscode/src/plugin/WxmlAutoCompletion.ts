@@ -14,7 +14,7 @@ import {getTagAtPosition} from './lib/getTagAtPositionForWxml'
 import {getLanguage} from './lib/helper'
 
 export default class extends AutoCompletion implements CompletionItemProvider {
-  id = 'wxml'
+  id = 'wxml' as 'wxml'
   getTagAtPosition = getTagAtPosition
 
   provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): Promise<CompletionItem[]> {

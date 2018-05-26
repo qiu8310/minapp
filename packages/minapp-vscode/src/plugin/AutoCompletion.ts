@@ -22,11 +22,11 @@ import {getTagAtPosition} from './lib/getTagAtPosition'
 import * as s from './res/snippets'
 
 export default abstract class AutoCompletion {
-  abstract id: string
+  abstract id: 'wxml' | 'wxml-pug'
   abstract getTagAtPosition: getTagAtPosition
 
   get isPug() {
-    return this.id === 'pug'
+    return this.id === 'wxml-pug'
   }
   get attrQuote() {
     return this.isPug ? '\'' : '"'
