@@ -17,7 +17,7 @@ module.exports = function (source) {
 
           return [
             { file: appJson, data: { page: "\"" + page + "\"," }, tags: 'loose', append: true },
-            { file: MyAppTs, data: { pagesMap: rawModuleName + ": Url" }, tags: 'loose', append: true },
+            { file: MyAppTs, data: { pagesMap: camelCase(rawModuleName) + ": Url" }, tags: 'loose', append: true },
           ]
         }
       },
@@ -33,3 +33,6 @@ module.exports = function (source) {
     }
   }
 }
+
+function camelCase(str) { return str.replace(/[-_](\w)/g, camelCaseReplacer) }
+function camelCaseReplacer(r, k) { return k.toUpperCase() }
