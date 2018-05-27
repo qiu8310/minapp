@@ -16,6 +16,22 @@ module.exports.updateLoaders = function(loaders, env) {
   // loaders.babel.options.plugins.push(/* your plugin */)
 
 
+  Object.assign(loaders.wxml.options, {
+    // 更多 format 配置查看：https://github.com/qiu8310/minapp/blob/master/packages/minapp-wxml-parser/src/structs.ts#L7-L28
+    format: {
+      /** 是否删除注释，默认在 build 的时候会删除，dev 时候会保留 */
+      // removeComment: true,
+
+      /**
+       * 开启此项可以使的 text 标签内的文本不会做任何的修改；
+       *
+       * 默认如果标签内的文本内容比较少，会将它前后的空格去除，
+       * 而如果标签内的文本内容很多时，会在它前后加上换行字符
+       */
+      // reserveTags: ['text']
+    }
+  })
+
   /** 查看 loaders 结构 **/
   // console.log(loaders)
 }

@@ -42,9 +42,11 @@ export default class WxmlLoader extends Loader {
     }
 
     this.updateNode(xml.nodes)
+
+    let userOpts = this.options.format || {}
     content = xml.toXML(this.minimize
-      ? {eol: '', tabSize: 0}
-      : {eol: EOL, tabSize: 2}
+      ? {eol: '', tabSize: 0, removeComment: true, ...userOpts}
+      : {eol: EOL, tabSize: 2, ...userOpts}
     )
     // debug('ToContent: %o', content)
     this.extract('.wxml', content)

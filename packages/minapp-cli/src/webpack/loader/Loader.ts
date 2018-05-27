@@ -29,6 +29,9 @@ export abstract class Loader {
 
   env: Env
 
+
+  options: {[key: string]: any}
+
   /**
    * 入口文件（只会有一个）
    */
@@ -80,6 +83,9 @@ export abstract class Loader {
     this.projectDir = env.rootDir
     this.outputPublicPath = env.publicPath
     this.fromFile = lc.resourcePath
+
+    // loader-utils getOptions
+    this.options = typeof lc.query === 'object' ? lc.query : {}
   }
 
   abstract run(content: string, sourceMap?: string | Buffer): string | Promise<string>
