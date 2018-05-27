@@ -1,3 +1,18 @@
+2.0.4 / 2018-05-27
+==================
+
+* cli: 可以在 webpack.minapp.js 中配置 wxml 格式化的选项
+  - 新创建的项目会自动生成 Example
+  - 老项目可以参考文件： https://github.com/qiu8310/minapp/blob/v2.0.4/packages/minapp-cli/common/Application/base/webpack.minapp.js.dtpl#L19-L33
+
+  **注意：小程序的 text 标签的开头和结尾的换行符可能会影响到页面的布局，而格式化时开头和结尾是否会有换行符是自动根据内容的长短来自适应的。如果需要保留原格式，可以配置 `reserveTags` 选项**
+
+* 修复 wxss 和 css 文件在 build 模式时，不会生成 import 的文件
+* 修复 ts 项目使用了 dot-template 用户在新建 page 文件夹时，自动注入到 base/MyApp.ts 没有采用驼峰形式
+  - 新创建的项目无需任何修改
+  - 老项目如果没有修改过 `.dtpl/dtpl.js` 文件，可以参考[此文件](https://github.com/qiu8310/minapp/blob/v2.0.4/packages/minapp-cli/common/Application/ts/.dtpl/dtpl.js.dtpl)来修改（如果没有修改过这个文件，则直接复制粘贴即可）
+
+
 2.0.2 / 2018-05-07
 ==================
 

@@ -43,9 +43,12 @@
 
 ![wx接口示例](https://n1image.hjfile.cn/res7/2018/03/01/428c4297bb1f6b6cf335317f89bab237.gif)
 
+  **非 minapp 用户也可以安装 `@minapp/wx` 来获取此功能，参见[这里](https://qiu8310.github.io/minapp/docs/doc-how-to-use-wxp-in-other-project.html)**
+
 ### 提供一个 promise 版的 wx 接口 wxp，和 wx 一样，只是它会将 wx 中所有需要 success/fail/complete 三个参数的函数 promise 化
   - wxp 中也支持使用 success 回调
   - wxp 给 Promise 添加了一个 finally 方法；如，你可以这样用 `wxp.getUserInfo().finally(() => { /* do something */ })`
+
 
 ![wxp示例](https://n1image.hjfile.cn/res7/2018/03/01/a8ccc97ac7146b81e080daf8eb778b4d.gif)
 
