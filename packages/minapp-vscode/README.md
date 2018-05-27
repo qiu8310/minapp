@@ -120,7 +120,7 @@ vue 中的 template 板支持两个属性：
 
 ## 内置 snippets
 
-  - 自带 swiper/icon/button/picker time/picker date/picker region/checkbox-group/radio-group，见[文件](https://github.com/qiu8310/minapp/tree/master/packages/minapp-vscode/src/res/snippets.ts)
+  - 自带 swiper/icon/button/picker time/picker date/picker region/checkbox-group/radio-group，见[文件](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/src/plugin/res/snippets.ts)
   - 可以通过配置项 `minapp-snippets` 来定义你自己的 snippets
 
   _和官方的 Snippets 的区别时，这里的 Snippets 只需要指定 key 和 body 即可，组件描述自动会根据 key 来获取（另外后期可以让配置和内置的数据结合起来）_

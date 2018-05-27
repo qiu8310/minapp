@@ -4,7 +4,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
 import {Loader} from './Loader'
-import {replace, STYLE_RESOURCE_REGEXP, CSS_IMPORT_REGEXP} from '../util'
+import {replace, STYLE_RESOURCE_REGEXP, CSS_IMPORT_REGEXP, CSS_COMMENT_IMPORT_REGEXP} from '../util'
 const debug = require('debug')('minapp:cli:wxss-loader')
 
 @Loader.decorate
@@ -33,12 +33,13 @@ export default class WxssLoader extends Loader {
 
     let requires: string[] = []
     emitContent = await replace(emitContent, CSS_IMPORT_REGEXP, async (mat) => {
-      let [raw, request] = mat
+      let [raw, request, suffix] = mat
       let absFile = await this.resolve(request)
       if (this.shouleMakeRequireFile(absFile)) {
         this.addDependency(absFile)
         requires.push(absFile)
-        return `@import "${this.getExtractRequirePath(absFile, '.wxss')}"`
+        // wxss 中的 import 在压缩之前需要注释掉，否则 CleanCSS 会报错，在 CleanCSS 处理完再打开
+        return addSpecialComment(`@import "${this.getExtractRequirePath(absFile, '.wxss')}"${suffix}`, this.minimize)
       }
       return raw
     }, 0)
@@ -49,11 +50,21 @@ export default class WxssLoader extends Loader {
         let res = new CleanCSS().minify(emitContent)
         if (res.errors.length) this.emitError(new Error(JSON.stringify(res.errors)))
         if (res.warnings.length) this.emitWarning(new Error(JSON.stringify(res.warnings)))
-        emitContent = res.styles
+        emitContent = await replace(res.styles, CSS_COMMENT_IMPORT_REGEXP, async (mat) => {
+          let [, ipt] = mat
+          return ipt
+        }, 0)
       }
+
+      // TODO: 入口样式不会有问题，但在 import 中引用的文件如果是空的，不会被 extract，但是引用还是存在；
       this.extract('.wxss', emitContent)
     }
+
     return this.toRequire(requires)
   }
 
+}
+
+function addSpecialComment(key: string, condition: boolean) {
+  return condition ? `/*! ${key} */` : key
 }

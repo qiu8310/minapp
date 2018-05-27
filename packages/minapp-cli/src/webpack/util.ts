@@ -21,7 +21,8 @@ export {map, replace} from 'mora-common/util/async'
 export const STYLE_RESOURCE_REGEXP = /(?:src=|url\(\s*)['"]?([^'"\)\(#\?]+)[#\?]?[^'"\)\(]*['"]?\s*\)?/gm
 
 /** css 或 wxss 中支持使用 @import，@import 的文件需要 emit */
-export const CSS_IMPORT_REGEXP = /@import\s*["']([^'"]*)["']/g
+export const CSS_IMPORT_REGEXP = /(?:\/\*\!\s*)?@import\s*["']([^'"]*)["'](\s*;)(?:\s*\*\/)?/g
+export const CSS_COMMENT_IMPORT_REGEXP = /(?:\/\*\!\s*)(@import\s*["'][^'"]*["']\s*;)(?:\s*\*\/)/g
 
 export {JSON_REGEXP} from '../base/helper'
 
