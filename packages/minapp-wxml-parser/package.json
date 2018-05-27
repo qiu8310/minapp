@@ -58,6 +58,6 @@
 		"jest": "^22.1.4",
 		"ts-jest": "^22.0.2",
 		"ts-lint": "^4.5.1",
-		"typescript": "^2.7.0"
+		"typescript": "^2.8.3"
 	}
 }
