@@ -26,7 +26,7 @@ describe('single root', () => {
     expect(p(' abc')).toEqual([{content: 'abc', start: 1, end: 4}])
   })
   test('root tag', () => {
-    expect(p('<div > </div>')).toEqual([{attrs: [], children: [], name: 'div', start: 0, end: 13}])
+    expect(p('<div > </div>')).toEqual([{attrs: [], children: [], name: 'div', contentStart: 6, contentEnd: 7, start: 0, end: 13}])
   })
   test('root self close tag', () => {
     expect(p('<div />')).toEqual([{attrs: [], children: [], name: 'div', selfClose: true, start: 0, end: 7}])
@@ -37,12 +37,12 @@ describe('multiple root', () => {
   test('tag and comment', () => {
     expect(p('<!----><div></div>')).toEqual([
       {comment: '', start: 0, end: 7},
-      {attrs: [], children: [], name: 'div', start: 7, end: 18}
+      {attrs: [], children: [], name: 'div', start: 7, end: 18, contentStart: 12, contentEnd: 12}
     ])
   })
   test('tag and comment and text', () => {
     expect(p('<i></i>abc<!--a-->')).toEqual([
-      {attrs: [], children: [], name: 'i', start: 0, end: 7},
+      {attrs: [], children: [], name: 'i', start: 0, end: 7, contentStart: 3, contentEnd: 3},
       {content: 'abc', start: 7, end: 10},
       {comment: 'a', start: 10, end: 18}
     ])

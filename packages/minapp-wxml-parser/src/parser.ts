@@ -26,7 +26,7 @@ export function parse(xml: string) {
   return document()
 
   function document() {
-    let doc = new Document()
+    let doc = new Document(xml)
     whitespace()
     let n: Node
     while (!eos() && (n = node())) {
@@ -110,7 +110,7 @@ export function parse(xml: string) {
       // 文档结束了
       throw new ParserError(location, `expect ">", bug got nothing`)
     }
-
+    n.contentStart = location
     whitespace()
     let closeTag = /^<\/([\w-:.]+)>/
     let child
@@ -122,6 +122,7 @@ export function parse(xml: string) {
     let m = match(closeTag)
     if (m) {
       if (m[1] === n.name) {
+        n.contentEnd = lastLocation
         n.end = location
         return n
       } else {

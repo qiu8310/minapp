@@ -3,16 +3,65 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
+export namespace Document {
+  export interface ToXMLOptions {
+    /** 自定义输出的每行的前缀，默认 "" */
+    prefix?: string
+    /** tab 使用 space 而不是 \t，默认 true */
+    preferSpaces?: boolean
+    /** 单个 tab 缩进的数量，默认 2 */
+    tabSize?: number
+    /** 指定换行符，默认 "\n" */
+    eol?: string
+    /** 单行长度如果超过此限制，则换成多行的写法 */
+    maxLineCharacters?: number
+
+    /** 是否删除注释；注意：开启此选项处理后，原结构中的 CommentNode 都会被移除 */
+    removeComment?: boolean
+
+    /**
+     * 这里指定的 tag 中的内容不会格式化，会和原内容一致
+     *
+     * 比如在微信小程序中 text 标签中开始的换行和结束的换行都会占用布局，所以这一部分不能被格式化了
+     */
+    reserveTags?: string[]
+  }
+
+  export type RequiredToXMLOptions = Required<ToXMLOptions> & {source: string}
+}
+
+const DefaultToXMLOptions: Document.RequiredToXMLOptions = {
+  source: '',
+  prefix: '',
+  preferSpaces: true,
+  tabSize: 2,
+  eol: '\n',
+  maxLineCharacters: 100,
+  removeComment: false,
+  reserveTags: []
+}
+
 /**
  * wxml 可以是由多个节点组成一个文档
  */
 export class Document {
+  constructor(public source: string) {}
+
   nodes: Node[] = []
-  toXML(opts: {prefix?: string, preferSpaces?: boolean, tabSize?: number, eol?: string, maxLineCharacters?: number} = {}) {
-    let {prefix = '', preferSpaces = true, tabSize = 2, eol = '\n', maxLineCharacters = 100} = opts
-    let step = (preferSpaces ? ' ' : '\t').repeat(tabSize)
-    return this.nodes.map(n => toXML(n, prefix, step, eol, maxLineCharacters)).join(eol)
+
+  toXML(opts: Document.ToXMLOptions = {}) {
+    let _: Document.RequiredToXMLOptions = {...DefaultToXMLOptions, ...opts, source: this.source}
+    let step = (_.preferSpaces ? ' ' : '\t').repeat(_.tabSize)
+
+    let nodes = opts.removeComment ? this.nodes.filter(removeComentNode) : this.nodes
+    return nodes.map(n => toXML(n, _.prefix, step, _)).join(_.eol)
   }
+}
+
+function removeComentNode(n: Node) {
+  if (n.is(TYPE.COMMENT)) return false
+  if (n.is(TYPE.TAG)) n.children = n.children.filter(removeComentNode)
+  return true
 }
 
 export enum TYPE {
@@ -72,7 +121,14 @@ export class TextNode extends Node {
 export class TagNode extends Node {
   attrs: TagNodeAttr[] = []
   children: Node[] = []
+
+  /** 是否是自动闭合的标签 */
   selfClose?: boolean
+
+  /** 标签内容开始的位置（selfClose = false 是此字段才有值） */
+  contentStart?: number
+  /** 标签内容结束的位置（selfClose = false 是此字段才有值） */
+  contentEnd?: number
 
   constructor(public name: string, start?: number, end?: number) {
     super(start, end)
@@ -97,7 +153,7 @@ export class TagNodeAttr extends Location {
   }
 }
 
-function toXML(n: Node, prefix: string, step: string, eol: string, maxLineCharacters: number): string {
+function toXML(n: Node, prefix: string, step: string, opts: Document.RequiredToXMLOptions): string {
   if (n.is(TYPE.COMMENT)) {
     return prefix + `<!-- ${n.comment} -->`
   } else if (n.is(TYPE.TEXT)) {
@@ -105,17 +161,24 @@ function toXML(n: Node, prefix: string, step: string, eol: string, maxLineCharac
   } else if (n.is(TYPE.TAG)) {
     let prefixedStart = `${prefix}<${n.name}${n.attrs.map(a => ' ' + a.toXML()).join('')}`
     if (n.selfClose) return prefixedStart + ' />'
-
     prefixedStart += '>'
     let endTag = `</${n.name}>`
-    let child = n.children[0]
 
+    if (opts.reserveTags.indexOf(n.name) >= 0 && n.contentEnd && n.contentStart) {
+      return prefixedStart + opts.source.substring(n.contentStart, n.contentEnd) + endTag
+    }
+
+    let child = n.children[0]
     if (!child) return prefixedStart + endTag
     if (n.children.length === 1 && child.is(TYPE.TEXT)) {
       let str = prefixedStart + child.content + endTag
-      if (str.length <= maxLineCharacters) return str
+      if (str.length <= opts.maxLineCharacters) return str
     }
-    return [prefixedStart, ...n.children.map(_ => toXML(_, prefix + step, step, eol, maxLineCharacters)), prefix + endTag].join(eol)
+    return [
+      prefixedStart,
+      ...n.children.map(_ => toXML(_, prefix + step, step, opts)),
+      prefix + endTag
+    ].join(opts.eol)
   } else {
     return ''
   }
