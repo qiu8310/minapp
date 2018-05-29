@@ -46,13 +46,12 @@ declare namespace App {
 
 declare function requirePlugin(plugin: string): any
 
-declare function getApp(): App
+declare function getApp(): App.Options
 
-interface App {
-}
+interface App {}
 
 interface AppConstructor {
-  new(): App
+  new (): App
   (options: App.Options): App
 }
 declare var App: AppConstructor
