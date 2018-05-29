@@ -25,18 +25,39 @@ declare namespace Page {
     /**
      * 转发成功的回调函数
      * @since 1.1.0
+     *
+     * 2018.7.5 后新提交的版本，开发者将无法获知用户是否分享完成，也无法在分享后立即获得群ID。
+     * @see [分享功能调整](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&announce_id=11526372695t90Dn&version=&lang=zh_CN)
      */
-    success?: string
+    success?: (
+      res?: {
+        errMsg: string
+      }
+    ) => void
     /**
      * 转发失败的回调函数
      * @since 1.1.0
+     *
+     * 2018.7.5 后新提交的版本，开发者将无法获知用户是否分享完成，也无法在分享后立即获得群ID。
+     * @see [分享功能调整](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&announce_id=11526372695t90Dn&version=&lang=zh_CN)
      */
-    fail?: string
+    fail?: (
+      res?: {
+        errMsg: string
+      }
+    ) => void
     /**
      * 转发结束的回调函数（转发成功、失败都会执行
      * @since 1.1.0
+     *
+     * 2018.7.5 后新提交的版本，开发者将无法获知用户是否分享完成，也无法在分享后立即获得群ID。
+     * @see [分享功能调整](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&announce_id=11526372695t90Dn&version=&lang=zh_CN)
      */
-    complete?: string
+    complete?: (
+      res?: {
+        errMsg: string
+      }
+    ) => void
   }
 
   interface BaseOptions {
@@ -88,7 +109,7 @@ declare namespace Page {
     /**
      * 页面滚动触发事件的处理函数
      */
-    onPageScroll?(event: {scrollTop: number, [key: string]: any}): any
+    onPageScroll?(event: { scrollTop: number; [key: string]: any }): any
 
     /**
      * 用户点击右上角分享
@@ -111,7 +132,7 @@ declare namespace Page {
      *
      * @see https://mp.weixin.qq.com/debug/wxadoc/dev/api/getPhoneNumber.html
      */
-    getPhoneNumber?(err: {detail: any}): any
+    getPhoneNumber?(err: { detail: any }): any
 
     /**
      * 当前是 tab 页时，点击 tab 时触发
@@ -127,8 +148,7 @@ declare namespace Page {
     /**
      * 页面的初始数据
      */
-    data?: {[key: string]: any}
-
+    data?: { [key: string]: any }
 
     /**
      * 其它函数或属性
@@ -142,7 +162,7 @@ interface Page extends Component {
 }
 
 interface PageConstructor {
-  new(): Page
+  new (): Page
   (options: Page.Options): Page
 }
 declare var Page: PageConstructor
