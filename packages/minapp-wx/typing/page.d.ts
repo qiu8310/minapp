@@ -22,21 +22,6 @@ declare namespace Page {
      * @since 1.5.0
      */
     imageUrl?: string
-    /**
-     * 转发成功的回调函数
-     * @since 1.1.0
-     */
-    success?: string
-    /**
-     * 转发失败的回调函数
-     * @since 1.1.0
-     */
-    fail?: string
-    /**
-     * 转发结束的回调函数（转发成功、失败都会执行
-     * @since 1.1.0
-     */
-    complete?: string
   }
 
   interface BaseOptions {
