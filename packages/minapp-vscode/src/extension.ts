@@ -12,6 +12,7 @@ import WxmlFormatter from './plugin/WxmlFormatter'
 import WxmlAutoCompletion from './plugin/WxmlAutoCompletion'
 import PugAutoCompletion from './plugin/PugAutoCompletion'
 import VueAutoCompletion from './plugin/VueAutoCompletion'
+import WxmlDocumentHighlight from './plugin/WxmlDocumentHighlight'
 
 import ActiveTextEditorListener from './plugin/ActiveTextEditorListener'
 
@@ -25,6 +26,7 @@ export function activate(context: ExtensionContext) {
   let linkProvider = new LinkProvider(config)
   let autoCompletionPug = new PugAutoCompletion(config)
   let autoCompletionVue = new VueAutoCompletion(autoCompletionPug, autoCompletionWxml)
+  let documentHighlight  = new WxmlDocumentHighlight(config)
 
   context.subscriptions.push(
     // 给模板中的 脚本 添加特殊颜色
@@ -35,6 +37,9 @@ export function activate(context: ExtensionContext) {
 
     // 添加 link
     languages.registerDocumentLinkProvider(['wxml', 'wxml-pug'], linkProvider),
+
+    // 高亮匹配的标签
+    languages.registerDocumentHighlightProvider('wxml', documentHighlight),
 
     // 格式化
     languages.registerDocumentFormattingEditProvider('wxml', formatter),
