@@ -108,6 +108,20 @@
               }
             }
           }
+        },
+        "minapp-vscode.selfCloseTags": {
+          "type": "array",
+          "description": "指定自我闭合的标签，用于自动补全时生成代码",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "icon", "progress",
+            "checkbox", "input", "radio", "slider", "switch",
+            "audio", "image", "video", "camera",
+            "live-player", "live-pusher",
+            "map", "canvas", "web-view", "open-data"
+          ]
         }
       }
     },

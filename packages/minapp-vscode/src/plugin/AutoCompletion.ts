@@ -48,11 +48,17 @@ export default abstract class AutoCompletion {
       .map((a, i) => (isPug ? '' : ' ') + `${a.name}=${attrQuote}${this.setDefault(i + 1, a.defaultValue)}${attrQuote}`)
 
     let len = attrs.length + 1
+    let snippet: string
     if (isPug) {
-      item.insertText = new SnippetString(`${c.name}(${attrs.join(' ')}\${${len}})\${0}`)
+      snippet = `${c.name}(${attrs.join(' ')}\${${len}})\${0}`
     } else {
-      item.insertText = new SnippetString(`${c.name}${attrs.join('')}\${${len}}>\${0}</${c.name}>`)
+      if (this.config.selfCloseTags.indexOf(c.name) >= 0) {
+        snippet = `${c.name}${attrs.join('')}\${${len}} />\${0}`
+      } else {
+        snippet = `${c.name}${attrs.join('')}\${${len}}>\${0}</${c.name}>`
+      }
     }
+    item.insertText = new SnippetString(snippet)
     item.documentation = new MarkdownString(tag.markdown)
     item.sortText = sortText
     return item

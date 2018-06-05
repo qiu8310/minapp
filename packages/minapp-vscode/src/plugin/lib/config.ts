@@ -27,6 +27,9 @@ export interface Config {
   decorateType: any
   /** 用户自定义的 snippets */
   snippets: {wxml?: Snippets, pug?: Snippets}
+
+  /** 自我闭合的标签 */
+  selfCloseTags: string[]
 }
 
 export const config: Config = {
@@ -39,6 +42,7 @@ export const config: Config = {
   decorateComplexInterpolation: true,
   decorateType: {},
   snippets: {},
+  selfCloseTags: [],
 }
 
 function getConfig() {
@@ -51,6 +55,7 @@ function getConfig() {
   config.decorateComplexInterpolation = minapp.get('decorateComplexInterpolation', true)
   config.decorateType = minapp.get('decorateType', {})
   config.snippets = minapp.get('snippets', {})
+  config.selfCloseTags = minapp.get('selfCloseTags', [])
 }
 
 function getResolveRoots(doc: vscode.TextDocument) {

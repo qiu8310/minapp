@@ -5,6 +5,7 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时�
 
 ## 最近更新 【[see more](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/CHANGELOG.md)】
 
+* 【2018-06-05】1.4.0 自动补全支持生成 self close tag。 可以在配置项 `minapp-vscode.selfCloseTags` 中配置这些 tag
 * 【2018-06-03】1.3.1 wxml 语言中高亮匹配的标签 [#72](https://github.com/qiu8310/minapp/issues/72)
 * 【2018-05-26】1.3.0 支持 snippets，并内置了一些常用的 snippets [详情见下文](#snippets)
 * 【2018-05-07】1.2.0 模板文件支持变量高亮，[详情见下文](#highlight)
@@ -25,6 +26,7 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时�
 * [内置 snippets](#snippets)
 
 > **所有自动补全的模板数据都来自于官方文档，通过[脚本](https://github.com/qiu8310/minapp/tree/master/packages/minapp-generator)自动获取的**
+
 
 <a id="tag-and-attr"></a>
 
@@ -122,11 +124,21 @@ vue 中的 template 板支持两个属性：
 ## 内置 snippets
 
   - 自带 swiper/icon/button/picker time/picker date/picker region/checkbox-group/radio-group，见[文件](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/src/plugin/res/snippets.ts)
-  - 可以通过配置项 `minapp-snippets` 来定义你自己的 snippets
+  - 可以通过配置项 `minapp-vscode.snippets` 来定义你自己的 snippets
 
   _和官方的 Snippets 的区别时，这里的 Snippets 只需要指定 key 和 body 即可，组件描述自动会根据 key 来获取（另外后期可以让配置和内置的数据结合起来）_
 
   ![示例图片](https://n1image.hjfile.cn/res7/2018/05/26/4a25927085e96e6bd9f05bf735621a8b.gif)
+
+
+## 常见问题
+
+### 安装插件后没有出现自动补全
+
+1. 确保安装后有重启过 vscode
+2. 确保当前文件的格式是 wxml 或 wxml-pug 或 vue (不能看文件后缀名，因为可能在配置文件中把它们关联的其它文件格式；需要看 vscode 右下解显示的文件类型)
+3. wxml 需要输入 `<` 才会触发标签补全，而 pug 中只需要输入标签名就会出来自动补全
+
 
 ## TODO
 
@@ -134,4 +146,4 @@ vue 中的 template 板支持两个属性：
 * [ ] bind 或 catch 相关的属性可以点击，并跳转到对应的函数上
 * [ ] 自动创建文件关联（.cjson, .wxss）
 * [x] 添加常用的 snippets
-* [ ] 支持识别 self close tag
+* [x] 支持识别 self close tag

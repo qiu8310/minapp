@@ -1,3 +1,15 @@
+1.4.0 / 2018-06-05
+==================
+
+* 在自动补全中支持生成 self close tag
+
+  可以在配置项 `minapp-vscode.selfCloseTags` 中配置这些 self close tag
+
+* 格式化选项 `minapp-vscode.formatMaxLineCharacters` 支持设置成 0 来表示无限大
+
+  如果为 0 时，在格式化时所有的直接含有文本的标签都会格式在一行中
+
+
 1.3.1 / 2018-06-03
 ==================
 
