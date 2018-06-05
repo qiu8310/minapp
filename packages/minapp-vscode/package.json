@@ -2,7 +2,7 @@
   "name": "minapp-vscode",
   "displayName": "minapp",
   "description": "wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时提供 snippets）",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "publisher": "qiu8310",
   "scripts": {
     "lint": "tslint src/**/*.ts",
@@ -116,11 +116,23 @@
             "type": "string"
           },
           "default": [
-            "icon", "progress",
-            "checkbox", "input", "radio", "slider", "switch",
-            "audio", "image", "video", "camera",
-            "live-player", "live-pusher",
-            "map", "canvas", "web-view", "open-data"
+            "icon",
+            "progress",
+            "checkbox",
+            "input",
+            "radio",
+            "slider",
+            "switch",
+            "audio",
+            "image",
+            "video",
+            "camera",
+            "live-player",
+            "live-pusher",
+            "map",
+            "canvas",
+            "web-view",
+            "open-data"
           ]
         }
       }
@@ -166,7 +178,7 @@
   },
   "dependencies": {
     "@minapp/common": "^2.0.0",
-    "@minapp/wxml-parser": "^2.0.4",
+    "@minapp/wxml-parser": "^2.0.5",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
