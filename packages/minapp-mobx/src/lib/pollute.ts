@@ -30,12 +30,17 @@ function observe(obj: Page.Options, init: string, destroy: string, mapStoreToDat
   let mixin: any = {}
   mixin[init] = function() {
     dispose = autorun(() => {
-      let data = toJS(obj.store) as any
-      if (data.__MOBX__) {
-        delete data.constructor
-        delete data.__MOBX__
+      let data: any
+      if (typeof mapStoreToData === 'function') {
+        data = mapStoreToData(obj.store)
+      } else {
+        data = toJS(obj.store) as any
+        if (data.__MOBX__) {
+          delete data.constructor
+          delete data.__MOBX__
+        }
       }
-      if (typeof mapStoreToData === 'function') data = mapStoreToData(data)
+
       this.setDataSmart(data)
     })
     dispose.onError(e => console.error(e))
