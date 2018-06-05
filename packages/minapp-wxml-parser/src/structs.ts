@@ -13,7 +13,8 @@ export namespace Document {
     tabSize?: number
     /** 指定换行符，默认 "\n" */
     eol?: string
-    /** 单行长度如果超过此限制，则换成多行的写法 */
+
+    /** 单行带文本的标签的长度如果超过此限制，则换成多行的写法；如果指定为 0，则表示无限大 */
     maxLineCharacters?: number
 
     /** 是否删除注释；注意：开启此选项处理后，原结构中的 CommentNode 都会被移除 */
@@ -125,9 +126,9 @@ export class TagNode extends Node {
   /** 是否是自动闭合的标签 */
   selfClose?: boolean
 
-  /** 标签内容开始的位置（selfClose = false 是此字段才有值） */
+  /** 标签内容开始的位置（selfClose = false 时此字段才有值） */
   contentStart?: number
-  /** 标签内容结束的位置（selfClose = false 是此字段才有值） */
+  /** 标签内容结束的位置（selfClose = false 时此字段才有值） */
   contentEnd?: number
 
   constructor(public name: string, start?: number, end?: number) {
@@ -172,7 +173,7 @@ function toXML(n: Node, prefix: string, step: string, opts: Document.RequiredToX
     if (!child) return prefixedStart + endTag
     if (n.children.length === 1 && child.is(TYPE.TEXT)) {
       let str = prefixedStart + child.content + endTag
-      if (str.length <= opts.maxLineCharacters) return str
+      if (opts.maxLineCharacters === 0 || str.length <= opts.maxLineCharacters) return str
     }
     return [
       prefixedStart,
