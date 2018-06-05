@@ -15,8 +15,8 @@ import {Config} from './lib/config'
 export default class implements DocumentFormattingEditProvider, DocumentRangeFormattingEditProvider {
   constructor(public config: Config) {}
 
-  getEOL() {
-    return workspace.getConfiguration('files', null as any).get('eol', EOL) || EOL
+  getEOL(doc: TextDocument) {
+    return workspace.getConfiguration('files', doc.uri).get('eol', EOL)
   }
 
   format(doc: TextDocument, range: Range, options: FormattingOptions, prefix = '') {
@@ -25,10 +25,11 @@ export default class implements DocumentFormattingEditProvider, DocumentRangeFor
     return [
       new TextEdit(range, xml.toXML({
         prefix,
-        eol: this.getEOL(),
+        eol: this.getEOL(doc),
         preferSpaces: options.insertSpaces,
         tabSize: options.tabSize,
-        maxLineCharacters: this.config.formatMaxLineCharacters
+        maxLineCharacters: this.config.formatMaxLineCharacters,
+        removeComment: false
       }))
     ]
   }
