@@ -15,7 +15,7 @@ title: v1.x -> v2.x 升级指南
 ## package.json 更新指南
 
 * **Breaks：** v2 不再使用 `awesome-typescript-loader`，改用了 `ts-loader`，所以 ts 项目需要在本地安装 `ts-loader`
-* **Breaks：** 使用 `less` 的项目需要额外安装 `less` 和 `less-loader`；而使用了 `sass` 的项目需要额外安装 `sass` 和 `sass-loader`
+* **Breaks：** 使用 `less` 的项目需要额外安装 `less` 和 `less-loader`；而使用了 `sass` 的项目需要额外安装 `node-sass` 和 `sass-loader`
 * **Breaks：** `@minapp/core` 中不再自带 `wx` 和 `wxp` 模块，这些模块单独移动到 `@minapp/wx` 中了，所以当更新 `@minapp/core` 到 2.x 后，还需要安装 `@minapp/wx`
 
   **从 2.0.0 开始，@minapp/wx 以后会跟着官方 api 的版本号走，可能不会再和 @minapp/core 的版本保持一致，而要和小程序配置文件 project.config.json 中的 libVersion 版本号保持一致**
@@ -23,11 +23,11 @@ title: v1.x -> v2.x 升级指南
 **快速更新 package.json：**
 
 - ts 项目
-  - 使用了 sass：     `npm i --save @minapp/core@2 @minapp/wx@2 && npm i --save-dev ts-loader sass-loader sass`
+  - 使用了 sass：     `npm i --save @minapp/core@2 @minapp/wx@2 && npm i --save-dev ts-loader sass-loader node-sass`
   - 使用了 less：     `npm i --save @minapp/core@2 @minapp/wx@2 && npm i --save-dev ts-loader less-loader less`
   - 使用了 css/wxss： `npm i --save @minapp/core@2 @minapp/wx@2 && npm i --save-dev ts-loader`
 - js 项目
-  - 使用了 sass：     `npm i --save @minapp/core@2 @minapp/wx@2 && npm i --save-dev sass-loader sass`
+  - 使用了 sass：     `npm i --save @minapp/core@2 @minapp/wx@2 && npm i --save-dev sass-loader node-sass`
   - 使用了 less：     `npm i --save @minapp/core@2 @minapp/wx@2 && npm i --save-dev less-loader less`
   - 使用了 css/wxss： `npm i --save @minapp/core@2 @minapp/wx@2`
 

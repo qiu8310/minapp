@@ -15,7 +15,8 @@
 <p>在 <code>minapp.json</code> 中通过修改 <code>unitTransformer</code> 来修改对应的转化关系，如：</p>
 <pre><code class="hljs css js">{
   <span class="hljs-string">"unitTransformer"</span>: {
-    <span class="hljs-string">"px"</span>: <span class="hljs-string">"2rpx"</span>  <span class="hljs-comment">// 表示将 1px 转化成 2px (配置中第一个单位不能出现数字)</span>
+    <span class="hljs-string">"px"</span>: <span class="hljs-string">"2rpx"</span>  <span class="hljs-comment">// 表示将 1px 转化成 2rpx (配置中第一个单位不能出现数字)</span>
+    <span class="hljs-comment">/* 也就是说如果在 css 中写 "margin: 20px;"，会被转化成 "margin: 40rpx;" */</span>
   }
 }
 </code></pre>
