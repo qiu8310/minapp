@@ -6,6 +6,8 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 import { Node, TagNodeAttr, Document, TextNode, CommentNode, TagNode } from './structs'
 const debug = require('debug')('minapp:wxml-parser')
 
+const SourceTags = ['wxs']
+
 export class ParserError extends Error {
   /**
    * 解析失败时的错误
@@ -108,9 +110,22 @@ export function parse(xml: string) {
       return n
     } else if (!match(/^>/)) {
       // 文档结束了
-      throw new ParserError(location, `expect ">", bug got nothing`)
+      throw new ParserError(location, `expect ">", but got nothing`)
     }
     n.contentStart = location
+
+    if (SourceTags.indexOf(n.name) >= 0) {
+      let source = match(new RegExp(`([\\s\\S]*?)(<\\/${n.name}>)`))
+      if (source) {
+        n.contentEnd = location - source[2].length
+        n.end = location
+        n.children = [new TextNode(source[1], n.contentStart, n.contentEnd)]
+        return n
+      } else {
+        throw new ParserError(location, `expect "</${n.name}>", but got nothing`)
+      }
+    }
+
     whitespace()
     let closeTag = /^<\/([\w-:.]+)>/
     let child

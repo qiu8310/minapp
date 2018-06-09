@@ -49,6 +49,20 @@ describe('multiple root', () => {
   })
 })
 
+describe('source tag', () => {
+  test('should not parse', () => {
+    expect(p('<wxs> abc </wxs>')).toEqual([
+      {attrs: [], children: [
+        {start: 5, end: 10, content: ' abc '}
+      ], name: 'wxs', start: 0, end: 16, contentStart: 5, contentEnd: 10}
+    ])
+  })
+
+  test('should throws when tag not end', () => {
+    expect(() => p('<wxs> abc')).toThrow('expect "</wxs>", but got nothing')
+  })
+})
+
 describe('simple error', () => {
   test('comment not end', () => {
     expect(() => {
@@ -67,7 +81,7 @@ describe('simple error', () => {
   test('tag not close', () => {
     expect(() => {
       p('<div  ab tes="a"')
-    }).toThrow('expect ">", bug got nothing')
+    }).toThrow('expect ">", but got nothing')
   })
   test('tag not end', () => {
     expect(() => {

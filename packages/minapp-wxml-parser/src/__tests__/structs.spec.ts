@@ -22,6 +22,12 @@ describe('basic', () => {
     expect(parse(xml).toXML({maxLineCharacters: 5, reserveTags: ['text']})).toEqual('<text foo="bar">   long text  </text>')
   })
 
+  test('should not format source tag', () => {
+    const xml = `<wxs> this can be anything<abc> </wxs>`
+    expect(parse(xml).toXML()).toEqual(xml)
+    expect(parse('<i></i>' + xml).toXML()).toEqual('<i></i>\n' + xml)
+  })
+
   test('comment', () => {
     expect(parse('<!-- comment -->').toXML()).toEqual('<!-- comment -->')
     expect(parse('<!-- comment -->').toXML({removeComment: true})).toEqual('')
