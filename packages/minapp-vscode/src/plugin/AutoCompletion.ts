@@ -184,17 +184,20 @@ export default abstract class AutoCompletion {
       let triggers: CompletionItem[] = []
 
       let {natives, basics} = res
+      let noBasics = lc.noBasicAttrsComponents || []
 
-      triggers = [...Object.keys(lc.custom), ...lc.event.prefixes]
-        .filter(k => k.length > 1)
-        .map(k => {
-          let str = k.substr(0, k.length - 1)
-          let trigger = k[k.length - 1]
-          let item = new CompletionItem(str, CompletionItemKind.Constant)
-          item.sortText = 'z'
-          item.documentation = new MarkdownString(`输入此字段再输入 "**${trigger}**" 字符可以再次触发自动补全`)
-          return item
-        })
+      if (noBasics.indexOf(tag.name) < 0) {
+        triggers = [...Object.keys(lc.custom), ...lc.event.prefixes]
+          .filter(k => k.length > 1)
+          .map(k => {
+            let str = k.substr(0, k.length - 1)
+            let trigger = k[k.length - 1]
+            let item = new CompletionItem(str, CompletionItemKind.Constant)
+            item.sortText = 'z'
+            item.documentation = new MarkdownString(`输入此字段再输入 "**${trigger}**" 字符可以再次触发自动补全`)
+            return item
+          })
+      }
 
       return [
         ...natives.map(a => this.renderTagAttr(a, 'a')),

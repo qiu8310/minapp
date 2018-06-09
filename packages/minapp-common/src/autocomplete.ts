@@ -51,8 +51,10 @@ export async function autocompleteTagAttr(tagName: string, tagAttrs: {[key: stri
 
   // 属性不能是已经存在的，也不能是事件
   let filter = createComponentFilter(tagAttrs, false)
+
+  let noBasics = lc.noBasicAttrsComponents && lc.noBasicAttrsComponents.indexOf(tagName) >= 0
   return {
-    basics: lc.baseAttrs.filter(filter).map(mapComponentAttr) as TagAttrItem[],
+    basics: noBasics ? [] : lc.baseAttrs.filter(filter).map(mapComponentAttr) as TagAttrItem[],
     natives: attrs.filter(filter).map(mapComponentAttr) as TagAttrItem[]
   }
 }

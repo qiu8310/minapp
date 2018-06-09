@@ -371,6 +371,50 @@
         }
       }
     },
+
+    {
+      "end": "(</)(wxs)(>)",
+      "begin": "(<)(wxs)",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.tag.begin.html"
+        },
+        "2": {
+          "name": "entity.name.tag.style.html"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.end.html"
+        }
+      },
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.tag.begin.html"
+        },
+        "2": {
+          "name": "entity.name.tag.style.html"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#tag-stuff"
+        },
+        {
+          "end": "(?=</wxs>)",
+          "begin": "(>)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.html"
+            }
+          },
+          "patterns": [
+            {
+              "include": "source.js"
+            }
+          ]
+        }
+      ]
+    },
+
     {
       "end": "(</)(template)(>)",
       "begin": "(<)(template)",

@@ -50,7 +50,18 @@ export const Languages: Languages = {
         ]
       }
     },
-    components: [],
+    components: [
+      {
+        name: 'wxs',
+        desc: ['模板中的 wxs 模块'],
+        docLink: 'https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/01wxs-module.html',
+        attrs: [
+          {name: 'src'},
+          {name: 'module'},
+        ]
+      }
+    ],
+    noBasicAttrsComponents: ['wxs', 'template']
   },
   wepy: {
     id: 'wepy',
@@ -93,6 +104,7 @@ export const Languages: Languages = {
         ]
       }
     ],
+    noBasicAttrsComponents: ['repeat']
   },
   mpvue: {
     id: 'mpvue',
@@ -130,5 +142,6 @@ export const Languages: Languages = {
       }
     },
     components: [],
+    noBasicAttrsComponents: []
   }
 }

@@ -31,5 +31,8 @@ export interface LanguageConfig {
   },
   /** 自定义的组件 */
   components: Component[]
+
+  /** 在自动补全时，不需要 baseAttrs 和 event 的组件名称 */
+  noBasicAttrsComponents?: string[]
 }
 
