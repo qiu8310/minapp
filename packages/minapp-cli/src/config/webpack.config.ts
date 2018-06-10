@@ -104,6 +104,8 @@ let wpConf: webpack.Configuration = {
       {test: /\.js$/i, include: srcDir, use: [loader.js, loader.babel]},
       {test: /.js$/i, exclude: srcDir, use: [loader.js]},
 
+      {test: /\.wxs$/i, use: [loader.wxs, loader.babel]},
+
       // 模板
       {test: /\.wxml$/i, use: loader.wxml},
       {test: /\.(pug|wpug)$/i, use: [loader.wxml, loader.pug]},

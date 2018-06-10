@@ -1,9 +1,12 @@
+<wxs module="foo" src="./module1.wxs"></wxs>
+
 <view class="container">
   <view class="usermotto">
     <text class="user-motto" bind:tap="gotoLogsPage">{{motto}}</text>
   </view>
 
   <include src="./inc.wxml" />
+  <view>{{foo.msg}}</view>
 
   <button size="mini" bind:tap="increase">在 Page 中增加 Count：{{count}}</button>
   单向绑定：<counter number="{{count}}" />

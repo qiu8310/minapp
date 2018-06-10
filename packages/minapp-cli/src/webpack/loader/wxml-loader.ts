@@ -131,6 +131,10 @@ export default class WxmlLoader extends Loader {
           } else if (node.name === 'import' || node.name === 'include') {
             attr.value = this.getExtractRequirePath(absFile, '.wxml')
             requires.push(absFile)
+          } else {
+            // 可能是 .wxs 文件
+            attr.value = this.getExtractRequirePath(absFile)
+            requires.push(absFile)
           }
         }
       }

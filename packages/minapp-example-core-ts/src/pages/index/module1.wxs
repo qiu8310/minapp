@@ -1,0 +1,11 @@
+/**
+ * wxs 模块默认使用 babel 编译，但要注意：
+ *
+ * 小程序 wxs 中并没有 exports 变量，只有 module 变量，
+ * 所以在写代码时需要避免直接使用 exports
+ */
+
+const exp = module.exports
+
+exp.msg = 'module1 ' + require('./module2.wxs').msg
+

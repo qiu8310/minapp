@@ -39,6 +39,7 @@ export function getLoader(env: Env) {
     json: toLoader('json-loader', {}),
     json2sass: toLoader('json2sass-loader', {path: json2sassPath}),
     js: toLoader('js-loader', {}),
+    wxs: toLoader('wxs-loader', {}),
     wxml: toLoader('wxml-loader', {}),
     pug: toLoader('pug-loader', {}),
     wxss: toLoader('wxss-loader', {}),
