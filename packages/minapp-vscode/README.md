@@ -5,12 +5,11 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时�
 
 ## 最近更新 【[see more](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/CHANGELOG.md)】
 
+* 【2018-06-10】1.5.0 纯 wxml 文件中支持 [wxs 标签](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/01wxs-module.html)
 * 【2018-06-05】1.4.0 自动补全支持生成 self close tag。 可以在配置项 `minapp-vscode.selfCloseTags` 中配置这些 tag
-* 【2018-06-03】1.3.1 wxml 语言中高亮匹配的标签 [#72](https://github.com/qiu8310/minapp/issues/72)
 * 【2018-05-26】1.3.0 支持 snippets，并内置了一些常用的 snippets [详情见下文](#snippets)
 * 【2018-05-07】1.2.0 模板文件支持变量高亮，[详情见下文](#highlight)
 * 【2018-05-03】1.1.0 支持 link，[详情见下文](#link)
-* 【2018-04-05】1.0.12 开始，支持 pug 语言的自动补全，[详情见下文](#vue)
 
 <!-- <div style="color:red; font-size: 1.6em;">重要通知：由于旧版本不小心被我删除了，所以请 1.0.7 版本之前的用户删除旧版本再重新安装新版本；否则可能会无法成功安装新版本，并且也得不到新版本的推送！</div> -->
 
