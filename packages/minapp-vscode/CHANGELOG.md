@@ -1,4 +1,4 @@
-1.4.0 / 2018-06-10
+1.5.0 / 2018-06-10
 ==================
 
 * 纯 wxml 文件中支持 [wxs 标签](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/01wxs-module.html)

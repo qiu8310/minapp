@@ -14,10 +14,10 @@
     "test": "npm run build && node ./node_modules/vscode/bin/test"
   },
   "keywords": [
-    "minapp",
+    "小程序",
     "wxml",
     "微信",
-    "pug",
+    "wechat",
     "wexin"
   ],
   "license": "MIT",
