@@ -8,7 +8,7 @@
 
 ## 微信交流群
 
-![微信交流群](https://n1other.hjfile.cn/res7/2018/06/05/d008cd02e58abbe0b5f5b866a8c0d045.JPG?imageView2/0/w/360)
+![微信交流群](https://n1other.hjfile.cn/res7/2018/06/12/4a5d7e2fca7103c6a2a6e052938f6549.JPG?imageView2/0/w/360)
 
 如果二维码过期，可以添加我微信号：`qiu8310`
 
