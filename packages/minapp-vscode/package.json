@@ -14,8 +14,8 @@
     "test": "npm run build && node ./node_modules/vscode/bin/test"
   },
   "keywords": [
-    "小程序",
     "wxml",
+    "小程序",
     "微信",
     "wechat",
     "wexin"
