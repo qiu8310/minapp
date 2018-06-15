@@ -8,12 +8,15 @@
 
 需要[用户授权](https://developers.weixin.qq.com/miniprogram/dev/api/authorize-index.html) scope.camera
 
-  属性名            |  类型          |  默认值 |  说明                    
---------------------|----------------|---------|--------------------------
-  device-position   |  String        |  back   |前置或后置，值为front, back
-  flash             |  String        |  auto   | 闪光灯，值为auto, on, off
-  bindstop          |  EventHandle   |         |摄像头在非正常终止时触发，如退出后台等情况
-  binderror         |  EventHandle   |         |用户不允许使用摄像头时触发
+  属性名            |  类型          |  默认值   |  说明                                                            | 最低版本 
+--------------------|----------------|-----------|------------------------------------------------------------------|----------
+  mode              |  String        |  normal   |  有效值为 normal, scanCode                                       |  2.1.0   
+  device-position   |  String        |  back     |  前置或后置，值为front, back                                     |          
+  flash             |  String        |  auto     |  闪光灯，值为auto, on, off                                       |          
+  scan-area         |  Array         |           |扫码识别区域，格式为[x, y, w, h]，相对camera显示区域左上角，仅在 mode="scanCode" 时生效|  2.1.0   
+  bindstop          |  EventHandle   |           |  摄像头在非正常终止时触发，如退出后台等情况                      |          
+  binderror         |  EventHandle   |           |  用户不允许使用摄像头时触发                                      |          
+  bindscancode      |  EventHandle   |           |  在成功识别到一维码时触发，仅在 mode="scanCode" 时生效           |  2.1.0   
 
 相关api：[wx.createCameraContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-camera.html)
 

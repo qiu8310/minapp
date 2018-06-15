@@ -25,7 +25,7 @@
   send-message-img         |  String    |  截图           |  会话内消息卡片图片                                                                                                                           |  open-type="contact"          |  1.5.0   
   show-message-card        |  Boolean   |  false          |  显示会话内消息卡片                                                                                                                           |  open-type="contact"          |  1.5.0   
   bindcontact              |  Handler   |                 |  客服消息回调                                                                                                                                 |  open-type="contact"          |  1.5.0   
-  bindgetphonenumber       |  Handler   |                 |  获取用户手机号回调                                                                                                                           |  open-type="getphonenumber"   |  1.2.0   
+  bindgetphonenumber       |  Handler   |                 |  获取用户手机号回调                                                                                                                           |  open-type="getPhoneNumber"   |  1.2.0   
   app-parameter            |  String    |                 |  打开 APP 时，向 APP 传递的参数                                                                                                               |  open-type="launchApp"        |  1.9.5   
   binderror                |  Handler   |                 |  当使用开放能力时，发生错误的回调                                                                                                             |  open-type="launchApp"        |  1.9.5   
   bindopensetting          |  Handler   |                 |  在打开授权设置页后回调                                                                                                                       |  open-type="openSetting"      |  2.0.7   
@@ -36,18 +36,18 @@
 
 **size 有效值：**
 
-  值        |  说明 
-------------|-------
-  default   |       
-  mini      |       
+  值        |  说明   
+------------|---------
+  default   | 默认大小
+  mini      |  小尺寸 
 
 **type 有效值：**
 
   值        |  说明 
 ------------|-------
-  primary   |       
-  default   |       
-  warn      |       
+  primary   |  绿色 
+  default   |  白色 
+  warn      |  红色 
 
 **form-type 有效值：**
 
@@ -58,14 +58,15 @@
 
 **open-type 有效值：**
 
-  值               |  说明                                                                                                                       | 最低版本 
--------------------|-----------------------------------------------------------------------------------------------------------------------------|----------
-  contact          |  打开客服会话                                                                                                               |  1.1.0   
-  share            |  触发用户转发，使用前建议先阅读[使用指引](https://developers.weixin.qq.com/miniprogram/dev/api/share.html#使用指引)         |  1.2.0   
-  getUserInfo      |  获取用户信息，可以从bindgetuserinfo回调中获取到用户信息                                                                    |  1.3.0   
-  getPhoneNumber   |获取用户手机号，可以从bindgetphonenumber回调中获取到用户信息，[具体说明](https://developers.weixin.qq.com/miniprogram/dev/api/getPhoneNumber.html)|  1.2.0   
-  launchApp        |打开APP，可以通过app-parameter属性设定向APP传的参数[具体说明](https://developers.weixin.qq.com/miniprogram/dev/api/launchApp.html)|  1.9.5   
-  openSetting      |  打开授权设置页                                                                                                             |  2.0.7   
+  值               |  说明                                                                                                                                                                     | 最低版本 
+-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------
+  contact          |  打开客服会话                                                                                                                                                             |  1.1.0   
+  share            |  触发用户转发，使用前建议先阅读[使用指引](https://developers.weixin.qq.com/miniprogram/dev/api/share.html#使用指引)                                                       |  1.2.0   
+  getUserInfo      |  获取用户信息，可以从bindgetuserinfo回调中获取到用户信息                                                                                                                  |  1.3.0   
+  getPhoneNumber   |  获取用户手机号，可以从bindgetphonenumber回调中获取到用户信息，[具体说明](https://developers.weixin.qq.com/miniprogram/dev/api/getPhoneNumber.html)                       |  1.2.0   
+  launchApp        |  打开APP，可以通过app-parameter属性设定向APP传的参数[具体说明](https://developers.weixin.qq.com/miniprogram/dev/api/launchApp.html)                                       |  1.9.5   
+  openSetting      |  打开授权设置页                                                                                                                                                           |  2.0.7   
+  feedback         |打开“意见反馈”页面，用户可提交反馈内容并上传[日志](https://developers.weixin.qq.com/miniprogram/dev/api/getLogManager.html)，开发者可以登录[小程序管理后台](https://mp.weixin.qq.com/)后进入左侧菜单“客服反馈”页面获取到反馈内容|  2.1.0   
 
 **示例代码：**
 

@@ -28,6 +28,7 @@
   max-bitrate          |  Number        |  1000       |  最大码率                             |          
   waiting-image        |  String        |             |  进入后台时推流的等待画面             |          
   waiting-image-hash   |  String        |             |  等待画面资源的MD5值                  |          
+  zoom                 |  Boolean       |  false      |  调整焦距                             |  2.1.0   
   background-mute      |  Boolean       |  false      |  进入后台时是否静音                   |          
   bindstatechange      |  EventHandle   |             |  状态变化事件，detail = {code}        |          
   bindnetstatus        |  EventHandle   |             |  网络状态通知，detail = {info}        |  1.9.0   

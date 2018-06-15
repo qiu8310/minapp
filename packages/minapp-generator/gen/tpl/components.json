@@ -554,6 +554,17 @@
         "defaultValue": "1"
       },
       {
+        "name": "animation",
+        "type": {
+          "name": "boolean"
+        },
+        "desc": [
+          "是否使用动画"
+        ],
+        "since": "2.1.0",
+        "defaultValue": "true"
+      },
+      {
         "name": "bindchange",
         "type": {
           "name": "function",
@@ -575,7 +586,7 @@
           }
         },
         "desc": [
-          "缩放过程中触发的事件，event.detail = {scale: scale}"
+          "缩放过程中触发的事件，event.detail = {x: x, y: y, scale: scale}，其中x和y字段在[2.1.0](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html \"基础库 2.1.0 开始支持，低版本需做兼容处理。\")之后开始支持返回"
         ],
         "since": "1.9.90"
       },
@@ -618,7 +629,19 @@
   },
   {
     "desc": [
-      "覆盖在原生组件之上的文本视图，可覆盖的原生组件包括`map`、`video`、`canvas`、`camera`，只支持嵌套`cover-view`、`cover-image`。"
+      "覆盖在原生组件之上的文本视图，可覆盖的原生组件包括`map`、`video`、`canvas`、`camera`、`live-player`、`live-pusher`，只支持嵌套`cover-view`、`cover-image`。"
+    ],
+    "attrs": [
+      {
+        "name": "scroll-top",
+        "type": {
+          "name": "number"
+        },
+        "desc": [
+          "设置顶部滚动偏移量，仅在设置了 overflow-y: scroll 成为滚动元素后生效"
+        ],
+        "since": "2.1.0"
+      }
     ],
     "name": "cover-view",
     "docLink": "https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html",
@@ -637,9 +660,36 @@
         "desc": [
           "图标路径，支持临时路径、网络地址（1.6.0起支持）。暂不支持base64格式。"
         ]
+      },
+      {
+        "name": "bindload",
+        "type": {
+          "name": "function",
+          "returns": {
+            "name": "any"
+          }
+        },
+        "desc": [
+          "图片加载成功时触发"
+        ],
+        "since": "2.1.0"
+      },
+      {
+        "name": "binderror",
+        "type": {
+          "name": "function",
+          "returns": {
+            "name": "any"
+          }
+        },
+        "desc": [
+          "图片加载失败时触发"
+        ],
+        "since": "2.1.0"
       }
     ],
     "tips": [
+      "基础库 2.1.0 起支持设置 `scale` `rotate` 的css样式，包括transition动画",
       "基础库 1.9.90 起 `cover-view` 支持 `overflow: scroll`，但不支持动态更新 `overflow`",
       "基础库 1.9.90 起最外层 `cover-view` 支持 `position: fixed`",
       "基础库 1.9.0 起支持插在 `view` 等标签下。在此之前只可嵌套在原生组件`map`、`video`、`canvas`、`camera`内，避免嵌套在其他组件内。",
@@ -753,6 +803,9 @@
       "各个操作系统的空格标准并不一致。",
       "`<text/>` 组件内只支持 `<text/>` 嵌套。",
       "除了文本节点以外的其他节点都无法长按选中。"
+    ],
+    "bugs": [
+      "基础库版本低于 `2.1.0` 时， `<text/>` 组件内嵌的 `<text/>` style 设置可能不会生效。"
     ],
     "demoImages": [
       "https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/text.png"
@@ -891,10 +944,12 @@
       {
         "enum": [
           {
-            "value": "default"
+            "value": "default",
+            "desc": "默认大小"
           },
           {
-            "value": "mini"
+            "value": "mini",
+            "desc": "小尺寸"
           }
         ],
         "extras": [
@@ -914,13 +969,16 @@
       {
         "enum": [
           {
-            "value": "primary"
+            "value": "primary",
+            "desc": "绿色"
           },
           {
-            "value": "default"
+            "value": "default",
+            "desc": "白色"
           },
           {
-            "value": "warn"
+            "value": "warn",
+            "desc": "红色"
           }
         ],
         "extras": [
@@ -1037,6 +1095,11 @@
             "value": "openSetting",
             "desc": "打开授权设置页",
             "since": "2.0.7"
+          },
+          {
+            "value": "feedback",
+            "desc": "打开“意见反馈”页面，用户可提交反馈内容并上传[日志](https://developers.weixin.qq.com/miniprogram/dev/api/getLogManager.html)，开发者可以登录[小程序管理后台](https://mp.weixin.qq.com/)后进入左侧菜单“客服反馈”页面获取到反馈内容",
+            "since": "2.1.0"
           }
         ],
         "extras": [
@@ -1257,7 +1320,7 @@
         "extras": [
           {
             "key": "生效时机",
-            "value": "open-type=\"getphonenumber\""
+            "value": "open-type=\"getPhoneNumber\""
           }
         ],
         "name": "bindgetphonenumber",
@@ -1680,7 +1743,7 @@
           }
         },
         "desc": [
-          "当键盘输入时，触发input事件，event.detail = {value, cursor}，处理函数可以直接 return 一个字符串，将替换输入框的内容。"
+          "键盘输入时触发，event.detail = {value, cursor, keyCode}，keyCode 为键值，2.1.0 起支持，处理函数可以直接 return 一个字符串，将替换输入框的内容。"
         ]
       },
       {
@@ -2858,7 +2921,7 @@
           "name": "string"
         },
         "desc": [
-          "当target=\"miniProgram\"时有效，要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版），仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是体验版或正式版，则打开的小程序必定是正式版。"
+          "当target=\"miniProgram\"时有效，要打开的小程序版本，有效值 develop（开发版），trial（体验版），release（正式版），仅在当前小程序为开发版或体验版时此参数有效；如果当前小程序是正式版，则打开的小程序必定是正式版。"
         ],
         "since": "2.0.7",
         "defaultValue": "release"
@@ -3437,7 +3500,7 @@
           }
         },
         "desc": [
-          "当视频进入和退出全屏是触发，event.detail = {fullScreen, direction}，direction取为 vertical 或 horizontal"
+          "视频进入和退出全屏时触发，event.detail = {fullScreen, direction}，direction取为 vertical 或 horizontal"
         ],
         "since": "1.4.0"
       },
@@ -3491,6 +3554,17 @@
     ],
     "attrs": [
       {
+        "name": "mode",
+        "type": {
+          "name": "string"
+        },
+        "desc": [
+          "有效值为 normal, scanCode"
+        ],
+        "since": "2.1.0",
+        "defaultValue": "normal"
+      },
+      {
         "name": "device-position",
         "type": {
           "name": "string"
@@ -3509,6 +3583,16 @@
           "闪光灯，值为auto, on, off"
         ],
         "defaultValue": "auto"
+      },
+      {
+        "name": "scan-area",
+        "type": {
+          "name": "any[]"
+        },
+        "desc": [
+          "扫码识别区域，格式为[x, y, w, h]，相对camera显示区域左上角，仅在 mode=\"scanCode\" 时生效"
+        ],
+        "since": "2.1.0"
       },
       {
         "name": "bindstop",
@@ -3533,6 +3617,19 @@
         "desc": [
           "用户不允许使用摄像头时触发"
         ]
+      },
+      {
+        "name": "bindscancode",
+        "type": {
+          "name": "function",
+          "returns": {
+            "name": "any"
+          }
+        },
+        "desc": [
+          "在成功识别到一维码时触发，仅在 mode=\"scanCode\" 时生效"
+        ],
+        "since": "2.1.0"
       }
     ],
     "relateApis": [
@@ -3843,6 +3940,17 @@
         "desc": [
           "等待画面资源的MD5值"
         ]
+      },
+      {
+        "name": "zoom",
+        "type": {
+          "name": "boolean"
+        },
+        "desc": [
+          "调整焦距"
+        ],
+        "since": "2.1.0",
+        "defaultValue": "false"
       },
       {
         "name": "background-mute",
@@ -4185,7 +4293,7 @@
                       "name": "number"
                     },
                     "desc": [
-                      "label的坐标，原点是 marker 对应的经纬度"
+                      "label的坐标（废弃）"
                     ],
                     "since": "1.2.0"
                   },
@@ -4195,9 +4303,29 @@
                       "name": "number"
                     },
                     "desc": [
-                      "label的坐标，原点是 marker 对应的经纬度"
+                      "label的坐标（废弃）"
                     ],
                     "since": "1.2.0"
+                  },
+                  {
+                    "name": "anchorX",
+                    "type": {
+                      "name": "number"
+                    },
+                    "desc": [
+                      "label的坐标，原点是 marker 对应的经纬度"
+                    ],
+                    "since": "2.1.0"
+                  },
+                  {
+                    "name": "anchorY",
+                    "type": {
+                      "name": "number"
+                    },
+                    "desc": [
+                      "label的坐标，原点是 marker 对应的经纬度"
+                    ],
+                    "since": "2.1.0"
                   },
                   {
                     "name": "borderWidth",
@@ -4598,7 +4726,7 @@
           }
         },
         "desc": [
-          "点击标记点时触发"
+          "点击标记点时触发，会返回marker的id"
         ]
       },
       {
@@ -4610,7 +4738,7 @@
           }
         },
         "desc": [
-          "点击标记点对应的气泡时触发"
+          "点击标记点对应的气泡时触发，会返回marker的id"
         ],
         "since": "1.2.0"
       },
@@ -4623,7 +4751,7 @@
           }
         },
         "desc": [
-          "点击控件时触发"
+          "点击控件时触发，会返回control的id"
         ]
       },
       {
@@ -4890,7 +5018,7 @@
           "name": "string"
         },
         "desc": [
-          "webview 指向网页的链接。需登录[小程序管理后台](https://mp.weixin.qq.com/)配置域名白名单。"
+          "webview 指向网页的链接。可打开关联的公众号的文章，其它网页需登录[小程序管理后台](https://mp.weixin.qq.com/)配置业务域名。"
         ]
       },
       {

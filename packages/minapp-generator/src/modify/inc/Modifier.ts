@@ -59,7 +59,7 @@ export class Modifier {
     return {
       componentNoAttrs: [
         // 'movable-area',
-        'cover-view',
+        // 'cover-view',
         'picker-view-column',
       ],
       func: {

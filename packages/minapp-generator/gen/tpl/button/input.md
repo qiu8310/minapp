@@ -4,29 +4,29 @@
 
 输入框。
 
-  属性名              |  类型          |  默认值                |  说明                                                                               |  最低版本 
-----------------------|----------------|------------------------|-------------------------------------------------------------------------------------|-----------
-  value               |  String        |                        |  输入框的初始内容                                                                   |           
-  type                |  String        |  "text"                |  input 的类型                                                                       |           
-  password            |  Boolean       |  false                 |  是否是密码类型                                                                     |           
-  placeholder         |  String        |                        |  输入框为空时占位符                                                                 |           
-  placeholder-style   |  String        |                        |  指定 placeholder 的样式                                                            |           
-  placeholder-class   |  String        |  "input-placeholder"   |  指定 placeholder 的样式类                                                          |           
-  disabled            |  Boolean       |  false                 |  是否禁用                                                                           |           
-  maxlength           |  Number        |  140                   |  最大输入长度，设置为 -1 的时候不限制最大长度                                       |           
+  属性名              |  类型          |  默认值                |  说明                                                                                                     |  最低版本 
+----------------------|----------------|------------------------|-----------------------------------------------------------------------------------------------------------|-----------
+  value               |  String        |                        |  输入框的初始内容                                                                                         |           
+  type                |  String        |  "text"                |  input 的类型                                                                                             |           
+  password            |  Boolean       |  false                 |  是否是密码类型                                                                                           |           
+  placeholder         |  String        |                        |  输入框为空时占位符                                                                                       |           
+  placeholder-style   |  String        |                        |  指定 placeholder 的样式                                                                                  |           
+  placeholder-class   |  String        |  "input-placeholder"   |  指定 placeholder 的样式类                                                                                |           
+  disabled            |  Boolean       |  false                 |  是否禁用                                                                                                 |           
+  maxlength           |  Number        |  140                   |  最大输入长度，设置为 -1 的时候不限制最大长度                                                             |           
   cursor-spacing      |  Number        |  0                     |指定光标与键盘的距离，单位 px 。取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离|           
-  auto-focus          |  Boolean       |  false                 |  (即将废弃，请直接使用 focus )自动聚焦，拉起键盘                                    |           
-  focus               |  Boolean       |  false                 |  获取焦点                                                                           |           
-  confirm-type        |  String        |  "done"                |  设置键盘右下角按钮的文字                                                           |  1.1.0    
-  confirm-hold        |  Boolean       |  false                 |  点击键盘右下角按钮时是否保持键盘不收起                                             |  1.1.0    
-  cursor              |  Number        |                        |  指定focus时的光标位置                                                              |  1.5.0    
-  selection-start     |  Number        |  -1                    |  光标起始位置，自动聚集时有效，需与selection-end搭配使用                            |  1.9.0    
-  selection-end       |  Number        |  -1                    |  光标结束位置，自动聚集时有效，需与selection-start搭配使用                          |  1.9.0    
-  adjust-position     |  Boolean       |  true                  |  键盘弹起时，是否自动上推页面                                                       |  1.9.90   
-  bindinput           |  EventHandle   |                        |当键盘输入时，触发input事件，event.detail = {value, cursor}，处理函数可以直接 return 一个字符串，将替换输入框的内容。|           
-  bindfocus           |  EventHandle   |                        |输入框聚焦时触发，event.detail = { value, height }，height 为键盘高度，在基础库 1.9.90 起支持|           
-  bindblur            |  EventHandle   |                        |  输入框失去焦点时触发，event.detail = {value: value}                                |           
-  bindconfirm         |  EventHandle   |                        |  点击完成按钮时触发，event.detail = {value: value}                                  |           
+  auto-focus          |  Boolean       |  false                 |  (即将废弃，请直接使用 focus )自动聚焦，拉起键盘                                                          |           
+  focus               |  Boolean       |  false                 |  获取焦点                                                                                                 |           
+  confirm-type        |  String        |  "done"                |  设置键盘右下角按钮的文字                                                                                 |  1.1.0    
+  confirm-hold        |  Boolean       |  false                 |  点击键盘右下角按钮时是否保持键盘不收起                                                                   |  1.1.0    
+  cursor              |  Number        |                        |  指定focus时的光标位置                                                                                    |  1.5.0    
+  selection-start     |  Number        |  -1                    |  光标起始位置，自动聚集时有效，需与selection-end搭配使用                                                  |  1.9.0    
+  selection-end       |  Number        |  -1                    |  光标结束位置，自动聚集时有效，需与selection-start搭配使用                                                |  1.9.0    
+  adjust-position     |  Boolean       |  true                  |  键盘弹起时，是否自动上推页面                                                                             |  1.9.90   
+  bindinput           |  EventHandle   |                        |键盘输入时触发，event.detail = {value, cursor, keyCode}，keyCode 为键值，2.1.0 起支持，处理函数可以直接 return 一个字符串，将替换输入框的内容。|           
+  bindfocus           |  EventHandle   |                        |  输入框聚焦时触发，event.detail = { value, height }，height 为键盘高度，在基础库 1.9.90 起支持            |           
+  bindblur            |  EventHandle   |                        |  输入框失去焦点时触发，event.detail = {value: value}                                                      |           
+  bindconfirm         |  EventHandle   |                        |  点击完成按钮时触发，event.detail = {value: value}                                                        |           
 
 **type 有效值：**
 

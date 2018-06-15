@@ -62,3 +62,7 @@
     
 
 ![text](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/text.png)
+
+#### Bug & Tip
+
+1.  `bug` : 基础库版本低于 `2.1.0` 时， `<text/>` 组件内嵌的 `<text/>` style 设置可能不会生效。

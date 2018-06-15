@@ -18,24 +18,25 @@
 
 可移动的视图容器，在页面中可以拖拽滑动
 
-  属性名          |  类型              |  默认值  |  说明                                                                                                                                                                     |  最低版本 
-------------------|--------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------
-  direction       |  String            |  none    |  movable-view的移动方向，属性值有all、vertical、horizontal、none                                                                                                          |           
-  inertia         |  Boolean           |  false   |  movable-view是否带有惯性                                                                                                                                                 |           
-  out-of-bounds   |  Boolean           |  false   |  超过可移动区域后，movable-view是否还可以移动                                                                                                                             |           
-  x               |  Number / String   |          |  定义x轴方向的偏移，如果x的值不在可移动范围内，会自动移动到可移动范围；改变x的值会触发动画                                                                                |           
-  y               |  Number / String   |          |  定义y轴方向的偏移，如果y的值不在可移动范围内，会自动移动到可移动范围；改变y的值会触发动画                                                                                |           
-  damping         |  Number            |  20      |  阻尼系数，用于控制x或y改变时的动画和过界回弹的动画，值越大移动越快                                                                                                       |           
-  friction        |  Number            |  2       |  摩擦系数，用于控制惯性滑动的动画，值越大摩擦力越大，滑动越快停止；必须大于0，否则会被设置成默认值                                                                        |           
-  disabled        |  Boolean           |  false   |  是否禁用                                                                                                                                                                 |  1.9.90   
-  scale           |  Boolean           |  false   |  是否支持双指缩放，默认缩放手势生效区域是在movable-view内                                                                                                                 |  1.9.90   
-  scale-min       |  Number            |  0.5     |  定义缩放倍数最小值                                                                                                                                                       |  1.9.90   
-  scale-max       |  Number            |  10      |  定义缩放倍数最大值                                                                                                                                                       |  1.9.90   
-  scale-value     |  Number            |  1       |  定义缩放倍数，取值范围为 0.5 - 10                                                                                                                                        |  1.9.90   
+  属性名          |  类型              |  默认值  |  说明                                                                                                                                                                                      |  最低版本 
+------------------|--------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------
+  direction       |  String            |  none    |  movable-view的移动方向，属性值有all、vertical、horizontal、none                                                                                                                           |           
+  inertia         |  Boolean           |  false   |  movable-view是否带有惯性                                                                                                                                                                  |           
+  out-of-bounds   |  Boolean           |  false   |  超过可移动区域后，movable-view是否还可以移动                                                                                                                                              |           
+  x               |  Number / String   |          |  定义x轴方向的偏移，如果x的值不在可移动范围内，会自动移动到可移动范围；改变x的值会触发动画                                                                                                 |           
+  y               |  Number / String   |          |  定义y轴方向的偏移，如果y的值不在可移动范围内，会自动移动到可移动范围；改变y的值会触发动画                                                                                                 |           
+  damping         |  Number            |  20      |  阻尼系数，用于控制x或y改变时的动画和过界回弹的动画，值越大移动越快                                                                                                                        |           
+  friction        |  Number            |  2       |  摩擦系数，用于控制惯性滑动的动画，值越大摩擦力越大，滑动越快停止；必须大于0，否则会被设置成默认值                                                                                         |           
+  disabled        |  Boolean           |  false   |  是否禁用                                                                                                                                                                                  |  1.9.90   
+  scale           |  Boolean           |  false   |  是否支持双指缩放，默认缩放手势生效区域是在movable-view内                                                                                                                                  |  1.9.90   
+  scale-min       |  Number            |  0.5     |  定义缩放倍数最小值                                                                                                                                                                        |  1.9.90   
+  scale-max       |  Number            |  10      |  定义缩放倍数最大值                                                                                                                                                                        |  1.9.90   
+  scale-value     |  Number            |  1       |  定义缩放倍数，取值范围为 0.5 - 10                                                                                                                                                         |  1.9.90   
+  animation       |  Boolean           |  true    |  是否使用动画                                                                                                                                                                              |  2.1.0    
   bindchange      |  EventHandle       |          |拖动过程中触发的事件，event.detail = {x: x, y: y, source: source}，其中source表示产生移动的原因，值可为touch（拖动）、touch-out-of-bounds（超出移动范围）、out-of-bounds（超出移动范围后的回弹）、friction（惯性）和空字符串（setData）|  1.9.90   
-  bindscale       |  EventHandle       |          |  缩放过程中触发的事件，event.detail = {scale: scale}                                                                                                                      |  1.9.90   
-  htouchmove      |  EventHandle       |          |  初次手指触摸后移动为横向的移动，如果catch此事件，则意味着touchmove事件也被catch                                                                                          |  1.9.90   
-  vtouchmove      |  EventHandle       |          |  初次手指触摸后移动为纵向的移动，如果catch此事件，则意味着touchmove事件也被catch                                                                                          |  1.9.90   
+  bindscale       |  EventHandle       |          |缩放过程中触发的事件，event.detail = {x: x, y: y, scale: scale}，其中x和y字段在[2.1.0](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html "基础库 2.1.0 开始支持，低版本需做兼容处理。")之后开始支持返回|  1.9.90   
+  htouchmove      |  EventHandle       |          |  初次手指触摸后移动为横向的移动，如果catch此事件，则意味着touchmove事件也被catch                                                                                                           |  1.9.90   
+  vtouchmove      |  EventHandle       |          |  初次手指触摸后移动为纵向的移动，如果catch此事件，则意味着touchmove事件也被catch                                                                                                           |  1.9.90   
 
 > movable-view 必须设置width和height属性，不设置默认为10px
 > 
