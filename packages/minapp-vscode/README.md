@@ -5,6 +5,7 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时�
 
 ## 最近更新 【[see more](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/CHANGELOG.md)】
 
+* 【2018-06-15】1.5.1 同步微信官方发布的 [2.1.0](https://developers.weixin.qq.com/miniprogram/dev/devtools/uplog.html#20180614-%E5%9F%BA%E7%A1%80%E5%BA%93%E6%9B%B4%E6%96%B0%EF%BC%88210%EF%BC%89) 的组件数据
 * 【2018-06-10】1.5.0 纯 wxml 文件中支持 [wxs 标签](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/01wxs-module.html)
 * 【2018-06-05】1.4.0 自动补全支持生成 self close tag。 可以在配置项 `minapp-vscode.selfCloseTags` 中配置这些 tag
 * 【2018-05-26】1.3.0 支持 snippets，并内置了一些常用的 snippets [详情见下文](#snippets)

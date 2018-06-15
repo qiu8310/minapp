@@ -1,3 +1,9 @@
+1.5.1 / 2018-06-15
+==================
+
+* 同步微信官方发布的 [2.1.0](https://developers.weixin.qq.com/miniprogram/dev/devtools/uplog.html#20180614-%E5%9F%BA%E7%A1%80%E5%BA%93%E6%9B%B4%E6%96%B0%EF%BC%88210%EF%BC%89) 的组件数据
+
+
 1.5.0 / 2018-06-10
 ==================
 
