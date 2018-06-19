@@ -33,7 +33,7 @@ export class Klass extends Struct {
       } else if (canTypeExtract(d.type)) {
         let name = klassCase(d.name)
         let refName = this.name + '.' + name
-        rows.push(...extractNS(name, d.desc, d.type))
+        rows.push(...extractNS(name, d.desc, d.type).types)
         d = new Definition(d.name, new Type(refName), d)
       }
       return d.toTSString(tabCount + 1, true)
