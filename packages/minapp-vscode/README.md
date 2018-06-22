@@ -5,12 +5,11 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时�
 
 ## 最近更新 【[see more](https://github.com/qiu8310/minapp/blob/master/packages/minapp-vscode/CHANGELOG.md)】
 
+* 【2018-06-23】1.6.0 wxml 中支持 [emmet 语法](https://docs.emmet.io/cheat-sheet/)，[详情见下文](#emmet)
 * 【2018-06-15】1.5.1 同步微信官方发布的 [2.1.0](https://developers.weixin.qq.com/miniprogram/dev/devtools/uplog.html#20180614-%E5%9F%BA%E7%A1%80%E5%BA%93%E6%9B%B4%E6%96%B0%EF%BC%88210%EF%BC%89) 的组件数据
 * 【2018-06-10】1.5.0 纯 wxml 文件中支持 [wxs 标签](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/01wxs-module.html)
 * 【2018-06-05】1.4.0 自动补全支持生成 self close tag。 可以在配置项 `minapp-vscode.selfCloseTags` 中配置这些 tag
-* 【2018-05-26】1.3.0 支持 snippets，并内置了一些常用的 snippets [详情见下文](#snippets)
-* 【2018-05-07】1.2.0 模板文件支持变量高亮，[详情见下文](#highlight)
-* 【2018-05-03】1.1.0 支持 link，[详情见下文](#link)
+
 
 <!-- <div style="color:red; font-size: 1.6em;">重要通知：由于旧版本不小心被我删除了，所以请 1.0.7 版本之前的用户删除旧版本再重新安装新版本；否则可能会无法成功安装新版本，并且也得不到新版本的推送！</div> -->
 
@@ -24,6 +23,7 @@ wxml/pug/vue 语言中，微信小程序标签、属性的智能补全（同时�
 * [自定义组件自动补全（纯 wxml 文件才支持，vue 或 pug 文件不支持）](#custom-component)
 * [模板文件中 js 变量高亮（纯 wxml 或 pug 文件才支持，vue 文件不支持）](#highlight)
 * [内置 snippets](#snippets)
+* [支持 emmet 写法](#emmet)
 
 > **所有自动补全的模板数据都来自于官方文档，通过[脚本](https://github.com/qiu8310/minapp/tree/master/packages/minapp-generator)自动获取的**
 
@@ -131,6 +131,14 @@ vue 中的 template 板支持两个属性：
 
   ![示例图片](https://n1image.hjfile.cn/res7/2018/05/26/4a25927085e96e6bd9f05bf735621a8b.gif)
 
+
+<a id="emmet"></a>
+
+## 支持 emmet 写法
+
+![示例图片](https://n1image.hjfile.cn/res7/2018/06/22/2f692e4cf499d712d34f593a3e813522.gif)
+
+[emmet cheat sheet](https://docs.emmet.io/cheat-sheet/)
 
 ## 常见问题
 
