@@ -77,8 +77,8 @@ export default class WxmlLoader extends Loader {
 
       if (minappsync.length) {
         node.attrs.push(
-          new parser.TagNodeAttr('minappsync', minappsync.join('&')),
-          new parser.TagNodeAttr('bindminappsyncupdate', 'minappsyncupdate')
+          new parser.TagNodeAttr('minappsync', minappsync.join('&'), '"'),
+          new parser.TagNodeAttr('bindminappsyncupdate', 'minappsyncupdate', '"')
         )
       }
 
