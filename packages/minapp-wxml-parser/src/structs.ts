@@ -143,14 +143,15 @@ export class TagNode extends Node {
  * 标签节点的属性
  */
 export class TagNodeAttr extends Location {
-  constructor(public name: string, public value: string | true, start?: number, end?: number) {
+  constructor(public name: string, public value: string | true, public quote: string, start?: number, end?: number) {
     super(start, end)
   }
 
   toXML() {
-    return this.value !== true
-      ? `${this.name}="${this.value}"`
-      : `${this.name}`
+    let {value, name, quote} = this
+    return value !== true
+      ? `${name}=${quote}${value}${quote}`
+      : `${name}`
   }
 }
 

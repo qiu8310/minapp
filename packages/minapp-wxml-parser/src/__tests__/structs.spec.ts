@@ -22,6 +22,11 @@ describe('basic', () => {
     expect(parse(xml).toXML({maxLineCharacters: 5, reserveTags: ['text']})).toEqual('<text foo="bar">   long text  </text>')
   })
 
+  test('format attr quote', () => {
+    const xml = `<text f1="b1" f2='b2' />`
+    expect(parse(xml).toXML()).toEqual(xml)
+  })
+
   test('should not format source tag', () => {
     const xml = `<wxs> this can be anything<abc> </wxs>`
     expect(parse(xml).toXML()).toEqual(xml)
