@@ -30,6 +30,9 @@ export interface Config {
 
   /** 自我闭合的标签 */
   selfCloseTags: string[]
+
+  /** 默认在启动时会自动相关文件关联的配置项，配置成功后会将此配置自动设置成 true，避免下次启动再重新配置 */
+  disableAutoConfig: boolean
 }
 
 export const config: Config = {
@@ -43,6 +46,7 @@ export const config: Config = {
   decorateType: {},
   snippets: {},
   selfCloseTags: [],
+  disableAutoConfig: false,
 }
 
 function getConfig() {
@@ -56,6 +60,7 @@ function getConfig() {
   config.decorateType = minapp.get('decorateType', {})
   config.snippets = minapp.get('snippets', {})
   config.selfCloseTags = minapp.get('selfCloseTags', [])
+  config.disableAutoConfig = minapp.get('disableAutoConfig', false)
 }
 
 function getResolveRoots(doc: vscode.TextDocument) {

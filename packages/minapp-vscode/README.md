@@ -152,7 +152,7 @@ minapp 插件会自动将 .pug 文件关联到 `wxml-pug` 文件类型。所以�
 
 * [x] 单独的 wxml 文件样式实现和 vue 中的 wxml 文件样式一样的风格
 * [ ] bind 或 catch 相关的属性可以点击，并跳转到对应的函数上
-* [ ] 自动创建文件关联（.cjson, .wxss, .wxs）
+* [x] 自动创建文件关联（.cjson, .wxss, .wxs）
 * [ ] wxml 文件中路径自动补全
 * [ ] 支持在开发者工具中预览效果
 * [x] 添加常用的 snippets

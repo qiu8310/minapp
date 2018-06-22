@@ -36,6 +36,7 @@
     "Languages"
   ],
   "activationEvents": [
+    "workspaceContains:minapp.cjson",
     "onLanguage:wxml-pug",
     "onLanguage:wxml",
     "onLanguage:vue"
@@ -108,6 +109,11 @@
               }
             }
           }
+        },
+        "minapp-vscode.disableAutoConfig": {
+          "type": "boolean",
+          "description": "默认在启动时会自动相关文件关联的配置项，配置成功后会将此配置自动设置成 true，避免下次启动再重新配置",
+          "default": false
         },
         "minapp-vscode.selfCloseTags": {
           "type": "array",
