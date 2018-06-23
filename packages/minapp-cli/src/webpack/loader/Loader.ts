@@ -190,6 +190,14 @@ export abstract class Loader {
   }
 
   async resolve(request: string): Promise<string> {
+    // 原生小程序路径可以以 / 开头
+    if (request[0] === '/') {
+      try {
+        return await this.resolve(request.replace(/^\/+/, ''))
+      } catch (e) {}
+      // 解析不成功继续下面的逻辑
+    }
+
     if (request[0] === '~') request = toUrlPath(this.modulesDir) + request.substr(1)
     return new Promise<string>((resolve, reject) => {
       this.lc.resolve(this.lc.context, request, (e, res) => {

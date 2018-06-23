@@ -32,4 +32,3 @@ export default class extends MyApp {
     }
   }
 }
-
