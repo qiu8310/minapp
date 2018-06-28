@@ -96,6 +96,10 @@ describe('simple error', () => {
     expect(() => {
       p('</i>')
     }).toThrow('unexpect character')
+
+    expect(() => {
+      p('<i></i><i/>')
+    }).not.toThrow()
   })
   test('tag wrong end', () => {
     expect(() => {
