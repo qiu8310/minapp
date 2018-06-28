@@ -3,7 +3,7 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-import {parse} from '../'
+import {parse} from '..'
 
 describe('basic', () => {
   test('simple xml', () => {

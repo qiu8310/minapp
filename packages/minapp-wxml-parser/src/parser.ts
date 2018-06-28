@@ -47,6 +47,9 @@ export function parse(xml: string) {
         n = tag(m[1])
       } else {
         n = text()
+        if (n.start === n.end) {
+          throw new ParserError(n.start, `unexpect character`)
+        }
       }
     }
     whitespace()

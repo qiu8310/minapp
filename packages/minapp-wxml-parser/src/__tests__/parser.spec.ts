@@ -88,6 +88,15 @@ describe('simple error', () => {
       p('<div>   askjfka kjkas gjd')
     }).toThrow('expect end tag "</div>", bug got nothing')
   })
+  test('tag unexpect close', () => {
+    expect(() => {
+      p('xasf </i>')
+    }).toThrow('unexpect character')
+
+    expect(() => {
+      p('</i>')
+    }).toThrow('unexpect character')
+  })
   test('tag wrong end', () => {
     expect(() => {
       p('<div></tgf>')
