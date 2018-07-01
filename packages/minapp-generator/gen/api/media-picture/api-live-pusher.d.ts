@@ -182,6 +182,34 @@ export namespace wx {
        */
       type ParamPropComplete = () => any
     }
+    namespace toggleTorch {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
   }
   class LivePusherContext {
     /**
@@ -210,5 +238,11 @@ export namespace wx {
      * @since 1.9.90
      */
     snapshot(OBJECT: LivePusherContext.snapshot.Param): any
+    /**
+     * 切换闪光灯
+     *
+     * @since 2.1.0
+     */
+    toggleTorch(OBJECT: LivePusherContext.toggleTorch.Param): any
   }
 }

@@ -24,6 +24,9 @@ export default class extends ApiModifier {
     let $td = $root.find('table').eq(0).find('tbody tr').eq(0).find('td').eq(1)
     this.assert($td.text().trim() === 'object Component')
     $td.text('component')
+
+    $root.find('table').eq(1).remove()
+
     return []
   }
 }

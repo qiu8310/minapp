@@ -88,5 +88,17 @@ export namespace wx {
      * @since 1.4.0
      */
     exitFullScreen(): any
+    /**
+     * 显示状态栏，仅在iOS全屏下有效
+     *
+     * @since 2.1.0
+     */
+    showStatusBar(): any
+    /**
+     * 隐藏状态栏，仅在iOS全屏下有效
+     *
+     * @since 2.1.0
+     */
+    hideStatusBar(): any
   }
 }

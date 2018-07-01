@@ -6,12 +6,9 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 import {ApiModifier} from '../..'
 
 export default class extends ApiModifier {
-  modify($root: Cheerio) {
-    $root.find('h2').each((i, el) => {
-      let $el = this.$(el)
-      $el.replaceWith(`<h3 id=${$el.attr('id')}>${$el.text()}</h3>`)
-    })
-
-    $root.find('table').eq(6).prev().html('<strong>success 参数说明</strong>')
-  }
+    normalize($root: Cheerio) {
+        super.normalize($root)
+        // 处理有两个table的情况
+        $root.find('table').eq(2).remove()
+      }
 }
