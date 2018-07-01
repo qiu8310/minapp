@@ -1,4 +1,4 @@
-// Generated at 2018-5-27
+// Generated at 7/1/2018
 export namespace wxp {
   namespace request {
     type Promised = {
@@ -71,8 +71,7 @@ export namespace wxp {
    * **Bug & Tip：**
    *
    * 1.  `tip`: content-type 默认为 'application/json';
-   * 2.  `tip`: url 中不能有端口；
-   * 3.  `bug`: 开发者工具 `0.10.102800` 版本，`header` 的 `content-type` 设置异常；
+   * 2.  `bug`: 开发者工具 `0.10.102800` 版本，`header` 的 `content-type` 设置异常；
    *
    * **示例代码：**
    *
@@ -575,6 +574,17 @@ export namespace wxp {
        */
       type ParamPropComplete = () => any
     }
+    namespace onOpen {
+      type Param = (res: ParamParam) => any
+      type ParamParam = {
+        /**
+         * 连接成功的 HTTP 响应 Header
+         *
+         * @since 2.0.0
+         */
+        header: any
+      }
+    }
     namespace onError {
       type Param = (res: ParamParam) => any
       type ParamParam = {
@@ -620,7 +630,7 @@ export namespace wxp {
      *
      * 监听 WebSocket 连接打开事件。
      */
-    onOpen(CALLBACK: any): void
+    onOpen(CALLBACK: SocketTask.onOpen.Param): void
     /**
      *
      * **SocketTask.onClose(CALLBACK)：**
@@ -901,6 +911,8 @@ export namespace wxp {
    *   44100   |  64000 ~ 320000   
    *   48000   |  64000 ~ 320000   
    *
+   * audioSource 有效值：
+   *
    * **示例代码：**
    *
    *     ```javascript
@@ -941,28 +953,46 @@ export namespace wxp {
       type Param = {
         /**
          * 指定录音的时长，单位 ms ，如果传入了合法的 duration ，在到达指定的 duration 后会自动停止录音，最大值 600000（10 分钟）,默认值 60000（1 分钟）
+         *
+         * @since 1.6.0
          */
         duration?: number
         /**
          * 采样率，有效值 8000/16000/44100
+         *
+         * @since 1.6.0
          */
         sampleRate?: number
         /**
          * 录音通道数，有效值 1/2
+         *
+         * @since 1.6.0
          */
         numberOfChannels?: number
         /**
          * 编码码率，有效值见下表格
+         *
+         * @since 1.6.0
          */
         encodeBitRate?: number
         /**
          * 音频格式，有效值 aac/mp3
+         *
+         * @since 1.6.0
          */
         format?: string
         /**
          * 指定帧大小，单位 KB。传入 frameSize 后，每录制指定帧大小的内容后，会回调录制的文件内容，不指定则不会回调。暂仅支持 mp3 格式。
+         *
+         * @since 1.6.0
          */
         frameSize?: number
+        /**
+         * 指定音频输入源，默认值为 'auto'
+         *
+         * @since 2.1.0
+         */
+        audioSource?: string
       }
     }
     namespace onStop {
@@ -1372,7 +1402,7 @@ export namespace wxp {
      */
     stop(): any
     /**
-     * 跳转到指定位置，单位 s
+     * 跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度
      */
     seek(position: any): any
     /**
@@ -1584,7 +1614,7 @@ export namespace wxp {
      */
     stop(): any
     /**
-     * 跳转到指定位置，单位 s
+     * 跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度
      */
     seek(position: any): any
     /**
@@ -1692,6 +1722,31 @@ export namespace wxp {
      */
     offSeeked(callback: any): any
   }
+  namespace getAvailableAudioSources {
+    type Promised = {
+      /**
+       * 音频输入源，每一项对应一种音频输入源
+       */
+      audioSources: string[]
+    }
+    type Param = {}
+  }
+  /**
+   * @since 2.1.0
+   *
+   * **audioSource 有效值：：**
+   *
+   *   值           |  说明                              |  支持平台               
+   * ---------------|------------------------------------|-------------------------
+   *   auto         |自动设置，默认使用手机麦克风，插上耳麦后自动切换使用耳机麦克风|  iOS/Android/devtools   
+   *   buildInMic   |  手机麦克风                        |  iOS                    
+   *   headsetMic   |  耳机麦克风                        |  iOS                    
+   *   mic          |麦克风（没插耳麦时是手机麦克风，插耳麦时是耳机麦克风|  Android                
+   *   camcorder    |  摄像头的麦克风                    |  Android                
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/getAvailableAudioSources.html#wxgetavailableaudiosourcesobject
+   */
+  function getAvailableAudioSources(OBJECT?: getAvailableAudioSources.Param): Promise<getAvailableAudioSources.Promised>
+
   namespace chooseVideo {
     type Promised = {
       /**
@@ -1891,6 +1946,18 @@ export namespace wxp {
      * @since 1.4.0
      */
     exitFullScreen(): any
+    /**
+     * 显示状态栏，仅在iOS全屏下有效
+     *
+     * @since 2.1.0
+     */
+    showStatusBar(): any
+    /**
+     * 隐藏状态栏，仅在iOS全屏下有效
+     *
+     * @since 2.1.0
+     */
+    hideStatusBar(): any
   }
   /**
    * @since 1.6.0
@@ -2445,6 +2512,34 @@ export namespace wxp {
        */
       type ParamPropComplete = () => any
     }
+    namespace toggleTorch {
+      type Param = {
+        /**
+         * 接口调用成功的回调函数
+         */
+        success?: ParamPropSuccess
+        /**
+         * 接口调用失败的回调函数
+         */
+        fail?: ParamPropFail
+        /**
+         * 接口调用结束的回调函数（调用成功、失败都会执行）
+         */
+        complete?: ParamPropComplete
+      }
+      /**
+       * 接口调用成功的回调函数
+       */
+      type ParamPropSuccess = (res: any) => any
+      /**
+       * 接口调用失败的回调函数
+       */
+      type ParamPropFail = (err: any) => any
+      /**
+       * 接口调用结束的回调函数（调用成功、失败都会执行）
+       */
+      type ParamPropComplete = () => any
+    }
   }
   class LivePusherContext {
     /**
@@ -2473,7 +2568,76 @@ export namespace wxp {
      * @since 1.9.90
      */
     snapshot(OBJECT: LivePusherContext.snapshot.Param): any
+    /**
+     * 切换闪光灯
+     *
+     * @since 2.1.0
+     */
+    toggleTorch(OBJECT: LivePusherContext.toggleTorch.Param): any
   }
+  namespace loadFontFace {
+    type Param = {
+      /**
+       * 定义的字体名称
+       */
+      family: string
+      /**
+       * 字体资源的地址
+       */
+      source: string
+      /**
+       * 可选的字体描述符
+       */
+      desc?: ParamPropDesc
+    }
+    /**
+     * 可选的字体描述符
+     */
+    type ParamPropDesc = {
+      /**
+       * normal / italic / oblique
+       */
+      style?: string
+      /**
+       * normal / bold / 100 / 200../ 900
+       */
+      weight?: string
+      /**
+       * normal / small-caps / inherit
+       */
+      variant?: string
+    }
+  }
+  /**
+   * @since 2.1.0
+   *
+   * 动态加载网络字体
+   *
+   * **Tip：**
+   *
+   * 1.  引入的外部字体资源，建议格式为TTF和WOFF，WOFF2在低版本的IOS上会不兼容。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.loadFontFace({
+   *       family: 'Bitstream Vera Serif Bold',
+   *       source: 'url("http://developer.mozilla.org/@api/deki/files/2934/=VeraSeBd.ttf")',
+   *       success: function(res) {
+   *         console.log(res.status) //  loaded
+   *       },
+   *       fail: function(res) {
+   *         console.log(res.status) //  error
+   *       },
+   *       complete: function(res) {
+   *         console.log(res.status);
+   *       }
+   *     });
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/media-fontFace.html#wxloadfontfaceobject
+   */
+  function loadFontFace(OBJECT: loadFontFace.Param): Promise<any>
+
   namespace saveFile {
     type Promised = {
       /**
@@ -3569,6 +3733,39 @@ export namespace wxp {
    */
   function canIUse(String: any): boolean
 
+  namespace onMemoryWarning {
+    type Param = (res: ParamParam) => any
+    type ParamParam = {
+      /**
+       * 仅Android有该字段，对应系统内存告警等级宏定义
+       */
+      level: number
+    }
+  }
+  /**
+   * @since 2.0.2
+   *
+   * 监听内存不足的告警事件，Android下有告警等级划分，只有LOW和CRITICAL会回调开发者；iOS无等级划分。
+   *
+   * **CALLBACK返回参数：**
+   *
+   *     ```
+   *     TRIM_MEMORY_RUNNING_MODERATE = 5
+   *     TRIM_MEMORY_RUNNING_LOW = 10
+   *     TRIM_MEMORY_RUNNING_CRITICAL = 15
+   *     ```
+   *
+   * **示例代码：**
+   *
+   *     ```
+   *     wx.onMemoryWarning(function () {
+   *       console.log('onMemoryWarningReceive')
+   *     })
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/memory.html#wxonmemorywarningcallback
+   */
+  function onMemoryWarning(callback: onMemoryWarning.Param): void
+
   namespace getNetworkType {
     type Promised = {
       /**
@@ -3731,7 +3928,14 @@ export namespace wxp {
   function onAccelerometerChange(CALLBACK: onAccelerometerChange.Param): void
 
   namespace startAccelerometer {
-    type Param = {}
+    type Param = {
+      /**
+       * 监听加速度数据回调函数的执行频率
+       *
+       * @since 2.1.0
+       */
+      interval?: string
+    }
   }
   /**
    * @since 1.1.0
@@ -3741,7 +3945,9 @@ export namespace wxp {
    * **示例代码：**
    *
    *     ```javascript
-   *     wx.startAccelerometer()
+   *     wx.startAccelerometer({
+   *         interval: 'game'
+   *     })
    *     ```
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html#wxstartaccelerometerobject
    */
@@ -3860,6 +4066,10 @@ export namespace wxp {
        * 当所扫的码为当前小程序的合法二维码时，会返回此字段，内容为二维码携带的 path
        */
       path: any
+      /**
+       * 原始数据，base64编码
+       */
+      rawData: any
     }
     type Param = {
       /**
@@ -4368,6 +4578,10 @@ export namespace wxp {
        * 蓝牙设备 id，参考 getDevices 接口
        */
       deviceId: string
+      /**
+       * 超时时间，单位ms，不填表示不会超时
+       */
+      timeout?: number
     }
   }
   /**
@@ -6190,6 +6404,67 @@ export namespace wxp {
    */
   function hideTabBar(OBJECT?: hideTabBar.Param): Promise<any>
 
+  namespace setBackgroundColor {
+    type Param = {
+      /**
+       * 窗口的背景色
+       */
+      backgroundColor?: string
+      /**
+       * 顶部窗口的背景色，仅 iOS 支持
+       */
+      backgroundColorTop?: string
+      /**
+       * 底部窗口的背景色，仅 iOS 支持
+       */
+      backgroundColorBottom?: string
+    }
+  }
+  /**
+   * @since 2.1.0
+   *
+   * 动态设置窗口的背景色
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.setBackgroundColor({
+   *         backgroundColor: '#ffffff', // 窗口的背景色为白色
+   *     })
+   *
+   *     wx.setBackgroundColor({
+   *         backgroundColorTop: '#ffffff', // 顶部窗口的背景色为白色
+   *         backgroundColorBottom: '#ffffff', // 底部窗口的背景色为白色
+   *     })
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-background.html#wxsetbackgroundcolorobject
+   */
+  function setBackgroundColor(OBJECT: setBackgroundColor.Param): void
+
+  namespace setBackgroundTextStyle {
+    type Param = {
+      /**
+       * 下拉背景字体、loading 图的样式，仅支持 'dark', 'light'
+       */
+      textStyle?: string
+    }
+  }
+  /**
+   * @since 2.1.0
+   *
+   * 动态设置下拉背景字体、loading 图的样式
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     wx.setBackgroundTextStyle({
+   *         textStyle: 'dark', // 下拉背景字体、loading 图的样式为dark
+   *     })
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/ui-background.html#wxsetbackgroundtextstyleobject
+   */
+  function setBackgroundTextStyle(OBJECT: setBackgroundTextStyle.Param): void
+
   namespace navigateTo {
     type Param = {
       /**
@@ -6928,6 +7203,12 @@ export namespace wxp {
    *
    * 返回的节点信息中，每个节点的滚动位置用`scrollLeft`、`scrollTop`字段描述。如果提供了callback回调函数，在执行selectQuery的exec方法后，节点信息会在callback中返回。
    *
+   * **nodesRef.fields(fields, [callback])：**
+   *
+   * 获取节点的相关信息，需要获取的字段在`fields`中指定。返回值是nodesRef对应的selectorQuery。可指定获取的字段包括：
+   *
+   * > 注意： computedStyle 的优先级高于 size，当同时在 computedStyle 里指定了 width/height 和传入了 size: true，则优先返回 computedStyle 获取到的 width/height。
+   *
    * **selectorQuery.exec([callback])：**
    *
    * 执行所有的请求，请求结果按请求次序构成数组，在callback的第一个参数中返回。
@@ -7018,7 +7299,8 @@ export namespace wxp {
    *           dataset: true,
    *           size: true,
    *           scrollOffset: true,
-   *           properties: ['scrollX', 'scrollY']
+   *           properties: ['scrollX', 'scrollY'],
+   *           computedStyle: ['margin', 'backgroundColor']
    *         }, function(res){
    *           res.dataset    // 节点的dataset
    *           res.width      // 节点的宽度
@@ -7027,6 +7309,9 @@ export namespace wxp {
    *           res.scrollTop  // 节点的竖直滚动位置
    *           res.scrollX    // 节点 scroll-x 属性的当前值
    *           res.scrollY    // 节点 scroll-y 属性的当前值
+   *           // 此处返回指定要返回的样式名
+   *           res.margin
+   *           res.backgroundColor
    *         }).exec()
    *       }
    *     })
@@ -7268,7 +7553,7 @@ export namespace wxp {
        */
       nickName: string
       /**
-       * 用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
+       * 用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表132*132正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
        */
       avatarUrl: string
       /**
@@ -7509,6 +7794,28 @@ export namespace wxp {
   function updateShareMenu(OBJECT?: updateShareMenu.Param): Promise<any>
 
   namespace getShareInfo {
+    type Promised = {
+      /**
+       * 错误信息
+       */
+      errMsg: string
+      /**
+       * 包括敏感数据在内的完整转发信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
+       *
+       * **encryptedData 解密后为一个 JSON 结构，包含字段如下：**
+       *
+       *   字段      |  说明            
+       * ------------|------------------
+       *   openGId   |群对当前小程序的唯一 ID
+       *
+       * **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html)
+       */
+      encryptedData: string
+      /**
+       * 加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
+       */
+      iv: string
+    }
     type Param = {
       /**
        * shareTicket
@@ -7528,7 +7835,7 @@ export namespace wxp {
    * 获取转发详细信息
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxgetshareinfoobject
    */
-  function getShareInfo(OBJECT: getShareInfo.Param): Promise<any>
+  function getShareInfo(OBJECT: getShareInfo.Param): Promise<getShareInfo.Promised>
 
   namespace chooseAddress {
     type Promised = {
@@ -8231,6 +8538,11 @@ export namespace wxp {
    *
    * 关于小程序的更新机制，可以查看 [运行机制](https://developers.weixin.qq.com/miniprogram/dev/framework/operating-mechanism.html) 文档。
    *
+   * **Tips：**
+   *
+   * 1.  微信开发者工具上可以通过「编译模式」下的「下次编译模拟更新」开关来调试
+   * 2.  小程序开发版/体验版没有「版本」概念，所以无法在开发版/体验版上测试更版本更新情况
+   *
    * **示例代码：**
    *
    *     ```javascript
@@ -8400,6 +8712,10 @@ export namespace wxp {
    *
    * 设置是否打开调试开关，此开关对正式版也能生效。
    *
+   * **Tips：**
+   *
+   * 1.  `tip`: 在正式版打开调试还有一种方法，就是先在开发版或体验版打开调试，再切到正式版就能看到vConsole。
+   *
    * **示例代码：**
    *
    *     ```javascript
@@ -8417,6 +8733,44 @@ export namespace wxp {
    */
   function setEnableDebug(OBJECT: setEnableDebug.Param): Promise<setEnableDebug.Promised>
 
+  /**
+   * @since 2.1.0
+   *
+   * 获取日志管理器 `logManager` 对象。logManager提供log、info、warn、debug四个方法写日志到文件，这四个方法接受任意个类型为Object/Array/Number/String的参数，每次调用的参数的总大小不超过100Kb。最多保存5M的日志内容，超过5M后，旧的日志内容会被删除。用户可以通过设置[Button组件](https://developers.weixin.qq.com/miniprogram/dev/component/button.html) 的`open-type`为`feedback`来上传打印的日志。用户上传的日志可以通过登录[小程序管理后台](https://mp.weixin.qq.com/)后进入左侧菜单“客服反馈”页面获取到。
+   *
+   * 基础库默认会把App、Page的生命周期函数和wx命名空间下的函数调用写入日志。
+   *
+   * **示例代码：**
+   *
+   *     ```javascript
+   *     const logger = wx.getLogManager()
+   *     logger.log({str: 'hello world'}, 'basic log', 100, [1, 2, 3])
+   *     logger.info({str: 'hello world'}, 'info log', 100, [1, 2, 3])
+   *     logger.debug({str: 'hello world'}, 'debug log', 100, [1, 2, 3])
+   *     logger.warn({str: 'hello world'}, 'warn log', 100, [1, 2, 3])
+   *     ```
+   * @see https://developers.weixin.qq.com/miniprogram/dev/api/getLogManager.html#wxgetlogmanager
+   */
+  function getLogManager(): LogManager
+
+  class LogManager {
+    /**
+     * 写log日志，可以提供任意个参数，每个参数的类型为Object/Array/Number/String，参数p1到pN的内容会写入日志
+     */
+    log(p1 [: any, p2: any, ...: any, pN]: any): any
+    /**
+     * 写info日志，参数同log方法
+     */
+    info(p1 [: any, p2: any, ...: any, pN]: any): any
+    /**
+     * 写warn日志，参数同log方法
+     */
+    warn(p1 [: any, p2: any, ...: any, pN]: any): any
+    /**
+     * 写debug日志，参数同log方法
+     */
+    debug(p1 [: any, p2: any, ...: any, pN]: any): any
+  }
   namespace CanvasContext {
     namespace draw {
       type Param1 = () => any
@@ -9279,7 +9633,7 @@ export namespace wxp {
      *
      * 画一条弧线。
      *
-     * **Tip**: 创建一个圆可以用 `arc()` 方法指定其实弧度为0，终止弧度为 `2 * Math.PI`。
+     * **Tip**: 创建一个圆可以用 `arc()` 方法指定起始弧度为0，终止弧度为 `2 * Math.PI`。
      *
      * **Tip**: 用 `stroke()` 或者 `fill()` 方法来在 canvas 中画弧线。
      *

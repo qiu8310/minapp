@@ -70,6 +70,17 @@ export namespace wx {
        */
       type ParamPropComplete = () => any
     }
+    namespace onOpen {
+      type Param = (res: ParamParam) => any
+      type ParamParam = {
+        /**
+         * 连接成功的 HTTP 响应 Header
+         *
+         * @since 2.0.0
+         */
+        header: any
+      }
+    }
     namespace onError {
       type Param = (res: ParamParam) => any
       type ParamParam = {
@@ -115,7 +126,7 @@ export namespace wx {
      *
      * 监听 WebSocket 连接打开事件。
      */
-    onOpen(CALLBACK: any): void
+    onOpen(CALLBACK: SocketTask.onOpen.Param): void
     /**
      *
      * **SocketTask.onClose(CALLBACK)：**

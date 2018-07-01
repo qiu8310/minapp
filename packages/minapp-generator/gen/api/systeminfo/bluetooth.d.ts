@@ -578,6 +578,10 @@ export namespace wx {
        */
       deviceId: string
       /**
+       * 超时时间，单位ms，不填表示不会超时
+       */
+      timeout?: number
+      /**
        * 成功则返回本机蓝牙适配器状态
        */
       success: ParamPropSuccess

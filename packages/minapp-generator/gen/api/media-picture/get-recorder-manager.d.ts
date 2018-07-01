@@ -20,6 +20,8 @@ export namespace wx {
    *   44100   |  64000 ~ 320000   
    *   48000   |  64000 ~ 320000   
    *
+   * audioSource 有效值：
+   *
    * **示例代码：**
    *
    *     ```javascript
@@ -60,28 +62,46 @@ export namespace wx {
       type Param = {
         /**
          * 指定录音的时长，单位 ms ，如果传入了合法的 duration ，在到达指定的 duration 后会自动停止录音，最大值 600000（10 分钟）,默认值 60000（1 分钟）
+         *
+         * @since 1.6.0
          */
         duration?: number
         /**
          * 采样率，有效值 8000/16000/44100
+         *
+         * @since 1.6.0
          */
         sampleRate?: number
         /**
          * 录音通道数，有效值 1/2
+         *
+         * @since 1.6.0
          */
         numberOfChannels?: number
         /**
          * 编码码率，有效值见下表格
+         *
+         * @since 1.6.0
          */
         encodeBitRate?: number
         /**
          * 音频格式，有效值 aac/mp3
+         *
+         * @since 1.6.0
          */
         format?: string
         /**
          * 指定帧大小，单位 KB。传入 frameSize 后，每录制指定帧大小的内容后，会回调录制的文件内容，不指定则不会回调。暂仅支持 mp3 格式。
+         *
+         * @since 1.6.0
          */
         frameSize?: number
+        /**
+         * 指定音频输入源，默认值为 'auto'
+         *
+         * @since 2.1.0
+         */
+        audioSource?: string
       }
     }
     namespace onStop {

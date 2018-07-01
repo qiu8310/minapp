@@ -49,6 +49,10 @@ export namespace wx {
        * 当所扫的码为当前小程序的合法二维码时，会返回此字段，内容为二维码携带的 path
        */
       path: any
+      /**
+       * 原始数据，base64编码
+       */
+      rawData: any
     }
     /**
      * 接口调用失败的回调函数

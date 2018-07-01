@@ -98,7 +98,7 @@ export namespace wx {
      */
     stop(): any
     /**
-     * 跳转到指定位置，单位 s
+     * 跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度
      */
     seek(position: any): any
     /**

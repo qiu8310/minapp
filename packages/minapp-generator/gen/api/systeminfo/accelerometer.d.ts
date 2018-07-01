@@ -37,6 +37,12 @@ export namespace wx {
   namespace startAccelerometer {
     type Param = {
       /**
+       * 监听加速度数据回调函数的执行频率
+       *
+       * @since 2.1.0
+       */
+      interval?: string
+      /**
        * 接口调用成功的回调函数
        */
       success?: ParamPropSuccess
@@ -70,7 +76,9 @@ export namespace wx {
    * **示例代码：**
    *
    *     ```javascript
-   *     wx.startAccelerometer()
+   *     wx.startAccelerometer({
+   *         interval: 'game'
+   *     })
    *     ```
    * @see https://developers.weixin.qq.com/miniprogram/dev/api/accelerometer.html#wxstartaccelerometerobject
    */

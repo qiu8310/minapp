@@ -8,6 +8,11 @@ export namespace wx {
    *
    * 关于小程序的更新机制，可以查看 [运行机制](https://developers.weixin.qq.com/miniprogram/dev/framework/operating-mechanism.html) 文档。
    *
+   * **Tips：**
+   *
+   * 1.  微信开发者工具上可以通过「编译模式」下的「下次编译模拟更新」开关来调试
+   * 2.  小程序开发版/体验版没有「版本」概念，所以无法在开发版/体验版上测试更版本更新情况
+   *
    * **示例代码：**
    *
    *     ```javascript

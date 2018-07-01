@@ -45,6 +45,12 @@ export namespace wx {
    *
    * 返回的节点信息中，每个节点的滚动位置用`scrollLeft`、`scrollTop`字段描述。如果提供了callback回调函数，在执行selectQuery的exec方法后，节点信息会在callback中返回。
    *
+   * **nodesRef.fields(fields, [callback])：**
+   *
+   * 获取节点的相关信息，需要获取的字段在`fields`中指定。返回值是nodesRef对应的selectorQuery。可指定获取的字段包括：
+   *
+   * > 注意： computedStyle 的优先级高于 size，当同时在 computedStyle 里指定了 width/height 和传入了 size: true，则优先返回 computedStyle 获取到的 width/height。
+   *
    * **selectorQuery.exec([callback])：**
    *
    * 执行所有的请求，请求结果按请求次序构成数组，在callback的第一个参数中返回。
@@ -135,7 +141,8 @@ export namespace wx {
    *           dataset: true,
    *           size: true,
    *           scrollOffset: true,
-   *           properties: ['scrollX', 'scrollY']
+   *           properties: ['scrollX', 'scrollY'],
+   *           computedStyle: ['margin', 'backgroundColor']
    *         }, function(res){
    *           res.dataset    // 节点的dataset
    *           res.width      // 节点的宽度
@@ -144,6 +151,9 @@ export namespace wx {
    *           res.scrollTop  // 节点的竖直滚动位置
    *           res.scrollX    // 节点 scroll-x 属性的当前值
    *           res.scrollY    // 节点 scroll-y 属性的当前值
+   *           // 此处返回指定要返回的样式名
+   *           res.margin
+   *           res.backgroundColor
    *         }).exec()
    *       }
    *     })
