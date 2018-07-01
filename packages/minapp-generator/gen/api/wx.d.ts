@@ -1,4 +1,4 @@
-// Generated at 7/1/2018
+// Generated at 2018-7-1
 declare namespace wx {
   namespace request {
     type Param = {

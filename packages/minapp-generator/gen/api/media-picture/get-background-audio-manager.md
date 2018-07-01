@@ -27,21 +27,21 @@
 
 **backgroundAudioManager 对象的方法列表：**
 
-  方法           |  参数       |  说明                            
------------------|-------------|----------------------------------
-  play           |             |  播放                            
-  pause          |             |  暂停                            
-  stop           |             |  停止                            
-  seek           |  position   |  跳转到指定位置，单位 s          
+  方法           |  参数       |  说明                                    
+-----------------|-------------|------------------------------------------
+  play           |             |  播放                                    
+  pause          |             |  暂停                                    
+  stop           |             |  停止                                    
+  seek           |  position   |跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度
   onCanplay      |  callback   |背景音频进入可以播放状态，但不保证后面可以流畅播放
-  onPlay         |  callback   |  背景音频播放事件                
-  onPause        |  callback   |  背景音频暂停事件                
-  onStop         |  callback   |  背景音频停止事件                
-  onEnded        |  callback   |  背景音频自然播放结束事件        
-  onTimeUpdate   |  callback   |  背景音频播放进度更新事件        
+  onPlay         |  callback   |  背景音频播放事件                        
+  onPause        |  callback   |  背景音频暂停事件                        
+  onStop         |  callback   |  背景音频停止事件                        
+  onEnded        |  callback   |  背景音频自然播放结束事件                
+  onTimeUpdate   |  callback   |  背景音频播放进度更新事件                
   onPrev         |  callback   |用户在系统音乐播放面板点击上一曲事件（iOS only）
   onNext         |  callback   |用户在系统音乐播放面板点击下一曲事件（iOS only）
-  onError        |  callback   |  背景音频播放错误事件            
+  onError        |  callback   |  背景音频播放错误事件                    
   onWaiting      |  callback   |音频加载中事件，当音频因为数据不足，需要停下来加载时会触发
 
 #### errcode 说明

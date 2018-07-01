@@ -25,33 +25,33 @@
 
 **innerAudioContext 对象的方法列表：**
 
-  方法            |  参数       |  说明                            | 最低版本 
-------------------|-------------|----------------------------------|----------
-  play            |  无         |  播放                            |          
-  pause           |  无         |  暂停                            |          
-  stop            |  无         |  停止                            |          
-  seek            |  position   |  跳转到指定位置，单位 s          |          
-  destroy         |  无         |  销毁当前实例                    |          
+  方法            |  参数       |  说明                                    | 最低版本 
+------------------|-------------|------------------------------------------|----------
+  play            |  无         |  播放                                    |          
+  pause           |  无         |  暂停                                    |          
+  stop            |  无         |  停止                                    |          
+  seek            |  position   |跳转到指定位置，单位 s。精确到小数点后 3 位，即支持 ms 级别精确度|          
+  destroy         |  无         |  销毁当前实例                            |          
   onCanplay       |  callback   |音频进入可以播放状态，但不保证后面可以流畅播放|          
-  onPlay          |  callback   |  音频播放事件                    |          
-  onPause         |  callback   |  音频暂停事件                    |          
-  onStop          |  callback   |  音频停止事件                    |          
-  onEnded         |  callback   |  音频自然播放结束事件            |          
-  onTimeUpdate    |  callback   |  音频播放进度更新事件            |          
-  onError         |  callback   |  音频播放错误事件                |          
+  onPlay          |  callback   |  音频播放事件                            |          
+  onPause         |  callback   |  音频暂停事件                            |          
+  onStop          |  callback   |  音频停止事件                            |          
+  onEnded         |  callback   |  音频自然播放结束事件                    |          
+  onTimeUpdate    |  callback   |  音频播放进度更新事件                    |          
+  onError         |  callback   |  音频播放错误事件                        |          
   onWaiting       |  callback   |音频加载中事件，当音频因为数据不足，需要停下来加载时会触发|          
-  onSeeking       |  callback   |  音频进行 seek 操作事件          |          
-  onSeeked        |  callback   |  音频完成 seek 操作事件          |          
-  offCanplay      |  callback   |  取消监听 onCanplay 事件         |  1.9.0   
-  offPlay         |  callback   |  取消监听 onPlay 事件            |  1.9.0   
-  offPause        |  callback   |  取消监听 onPause 事件           |  1.9.0   
-  offStop         |  callback   |  取消监听 onStop 事件            |  1.9.0   
-  offEnded        |  callback   |  取消监听 onEnded 事件           |  1.9.0   
-  offTimeUpdate   |  callback   |  取消监听 onTimeUpdate 事件      |  1.9.0   
-  offError        |  callback   |  取消监听 onError 事件           |  1.9.0   
-  offWaiting      |  callback   |  取消监听 onWaiting 事件         |  1.9.0   
-  offSeeking      |  callback   |  取消监听 onSeeking 事件         |  1.9.0   
-  offSeeked       |  callback   |  取消监听 onSeeked 事件          |  1.9.0   
+  onSeeking       |  callback   |  音频进行 seek 操作事件                  |          
+  onSeeked        |  callback   |  音频完成 seek 操作事件                  |          
+  offCanplay      |  callback   |  取消监听 onCanplay 事件                 |  1.9.0   
+  offPlay         |  callback   |  取消监听 onPlay 事件                    |  1.9.0   
+  offPause        |  callback   |  取消监听 onPause 事件                   |  1.9.0   
+  offStop         |  callback   |  取消监听 onStop 事件                    |  1.9.0   
+  offEnded        |  callback   |  取消监听 onEnded 事件                   |  1.9.0   
+  offTimeUpdate   |  callback   |  取消监听 onTimeUpdate 事件              |  1.9.0   
+  offError        |  callback   |  取消监听 onError 事件                   |  1.9.0   
+  offWaiting      |  callback   |  取消监听 onWaiting 事件                 |  1.9.0   
+  offSeeking      |  callback   |  取消监听 onSeeking 事件                 |  1.9.0   
+  offSeeked       |  callback   |  取消监听 onSeeked 事件                  |  1.9.0   
 
 #### errCode 说明
 

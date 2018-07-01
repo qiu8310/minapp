@@ -19,6 +19,8 @@
   playbackRate        |  rate       | 设置倍速播放，支持的倍率有 0.5/0.8/1.0/1.25/1.5|  1.4.0   
   requestFullScreen   |  无         |进入全屏，可传入{direction}参数（1.7.0起支持），详见video组件文档|  1.4.0   
   exitFullScreen      |  无         |  退出全屏                                      |  1.4.0   
+  showStatusBar       |  无         |  显示状态栏，仅在iOS全屏下有效                 |  2.1.0   
+  hideStatusBar       |  无         |  隐藏状态栏，仅在iOS全屏下有效                 |  2.1.0   
 
 **示例代码：**
 

@@ -20,17 +20,17 @@
   onMessage     |  callback   |  监听 Worker 线程向当前线程发送的消息  
   terminate     |             |结束当前 Worker 线程，仅限在主线程 Worker 实例上调用。
 
-**postMessage(message) 说明：**
+##### postMessage(message) 说明：
 
 向 Worker 线程发送消息，`message` 参数为需要发送的消息，必须是一个可序列化的 JavaScript 对象。
 
-**onMessage(callback) 回调结果说明：**
+##### onMessage(callback) 回调结果说明：
 
   属性      |  类型     |  说明                  
 ------------|-----------|------------------------
   message   |  Object   |Worker 线程向当前线程发送的消息
 
-**terminate() 说明：**
+##### terminate() 说明：
 
 结束当前 worker 线程，仅限在主线程 Worker 对象上调用。
 

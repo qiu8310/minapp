@@ -13,7 +13,7 @@ import {COLLECT} from './collect'
 import {rootNode, warn, EOL} from '../generator'
 
 export default async function(res: any, nodeIterator: any) {
-  const EXPECT = 145
+  const EXPECT = 151
   const DATA = COLLECT.API
   if (rootNode.leafNodes.length !== EXPECT) warn(`API 文档数量更新了 ${rootNode.leafNodes.length - EXPECT} 页！`)
 

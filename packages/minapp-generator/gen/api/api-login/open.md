@@ -30,7 +30,7 @@
   encryptedData        |  String   |包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)
   iv                   |  String   |  加密算法的初始向量，详细见[加密数据解密算法](https://developers.weixin.qq.com/miniprogram/dev/api/signature.html#加密数据解密算法)      
   userInfo.nickName    |  String   |  用户昵称                                                                                                                                
-  userInfo.avatarUrl   |  String   |用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
+  userInfo.avatarUrl   |  String   |用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表132*132正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
   userInfo.gender      |  String   |  用户的性别，值为1时是男性，值为2时是女性，值为0时是未知                                                                                 
   userInfo.city        |  String   |  用户所在城市                                                                                                                            
   userInfo.province    |  String   |  用户所在省份                                                                                                                            

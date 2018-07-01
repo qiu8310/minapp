@@ -18,6 +18,7 @@
   resume         |  OBJECT   |  恢复推流  |           
   switchCamera   |  OBJECT   |切换前后摄像头|           
   snapshot       |  OBJECT   |  快照      |  1.9.90   
+  toggleTorch    |  OBJECT   | 切换闪光灯 |  2.1.0    
 
 **所有方法的 OBJECT 参数列表：**
 

@@ -32,3 +32,8 @@
     wx.setEnableDebug({
         enableDebug: false
     })
+    
+
+##### Tips
+
+1.  `tip`: 在正式版打开调试还有一种方法，就是先在开发版或体验版打开调试，再切到正式版就能看到vConsole。

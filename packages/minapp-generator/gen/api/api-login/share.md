@@ -1,7 +1,6 @@
 <!-- https://developers.weixin.qq.com/miniprogram/dev/api/share.html -->
 
-onShareAppMessage(options)
---------------------------
+### onShareAppMessage(options)
 
 在 Page 中定义 onShareAppMessage 函数，设置该页面的转发信息。
 
@@ -40,8 +39,7 @@ onShareAppMessage(options)
     })
     
 
-wx.showShareMenu(OBJECT)
-------------------------
+### wx.showShareMenu(OBJECT)
 
 > 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
@@ -63,8 +61,7 @@ wx.showShareMenu(OBJECT)
     })
     
 
-wx.hideShareMenu(OBJECT)
-------------------------
+### wx.hideShareMenu(OBJECT)
 
 > 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
@@ -83,8 +80,7 @@ wx.hideShareMenu(OBJECT)
     wx.hideShareMenu()
     
 
-wx.updateShareMenu(OBJECT)
---------------------------
+### wx.updateShareMenu(OBJECT)
 
 > 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
@@ -108,8 +104,7 @@ wx.updateShareMenu(OBJECT)
     })
     
 
-wx.getShareInfo(OBJECT)
------------------------
+### wx.getShareInfo(OBJECT)
 
 > 基础库 1.1.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
@@ -125,7 +120,7 @@ wx.getShareInfo(OBJECT)
   fail          |  Function   |  否   |  接口调用失败的回调函数     |           
   complete      |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）|           
 
-**CALLBACK 参数说明：**
+**success 参数说明**
 
   参数            |  类型     |  说明                                                                                                               
 ------------------|-----------|---------------------------------------------------------------------------------------------------------------------
@@ -141,20 +136,17 @@ wx.getShareInfo(OBJECT)
 
 **Tip:** 如需要展示群名称，可以使用[开放数据组件](https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html)
 
-获取更多转发信息
---------
+### 获取更多转发信息
 
 通常开发者希望转发出去的小程序被二次打开的时候能够获取到一些信息，例如群的标识。现在通过调用 `wx.showShareMenu` 并且设置 `withShareTicket` 为 `true` ，当用户将小程序转发到任一群聊之后，此转发卡片在群聊中被其他用户打开时，可以在 [App.onLaunch()](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html) 或 [App.onShow](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html) 获取到一个 `shareTicket`。通过调用 [wx.getShareInfo()](https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxgetshareinfoobject) 接口传入此 `shareTicket` 可以获取到转发信息。
 
-页面内发起转发
--------
+### 页面内发起转发
 
 > 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
 
 通过给 `button` 组件设置属性 `open-type="share"`，可以在用户点击按钮后触发 `Page.onShareAppMessage()` 事件，如果当前页面没有定义此事件，则点击后无效果。相关组件：[button](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)
 
-使用指引
-----
+### 使用指引
 
 转发按钮，旨在帮助用户更流畅地与好友分享内容和服务。转发，应是用户自发的行为，且在需要时触手可及。开发者在使用时若遵从以下指引，会得到更佳的用户体验。
 

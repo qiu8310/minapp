@@ -39,11 +39,7 @@ WebSocket 任务，可通过 [wx.connectSocket()](https://developers.weixin.qq.c
 
 监听 WebSocket 连接打开事件。
 
-##### callback 回调函数
-
-##### 参数
-
-###### res
+**CALLBACK返回参数：**
 
   属性     |  类型     |  说明                   | 支持版本 
 -----------|-----------|-------------------------|----------

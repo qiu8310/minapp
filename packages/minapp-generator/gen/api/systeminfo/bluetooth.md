@@ -349,6 +349,7 @@
   参数       |  类型       |  必填 |  说明                       
 -------------|-------------|-------|-----------------------------
   deviceId   |  String     |  是   |蓝牙设备 id，参考 getDevices 接口
+  timeout    |  Number     |  否   |超时时间，单位ms，不填表示不会超时
   success    |  Function   |  是   | 成功则返回本机蓝牙适配器状态
   fail       |  Function   |  否   |  接口调用失败的回调函数     
   complete   |  Function   |  否   |接口调用结束的回调函数（调用成功、失败都会执行）

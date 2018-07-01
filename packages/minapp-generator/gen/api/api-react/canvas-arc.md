@@ -7,7 +7,7 @@ canvasContext.arc
 
 画一条弧线。
 
-**Tip**: 创建一个圆可以用 `arc()` 方法指定其实弧度为0，终止弧度为 `2 * Math.PI`。
+**Tip**: 创建一个圆可以用 `arc()` 方法指定起始弧度为0，终止弧度为 `2 * Math.PI`。
 
 **Tip**: 用 `stroke()` 或者 `fill()` 方法来在 canvas 中画弧线。
 
