@@ -11,7 +11,7 @@ export default class extends ApiModifier {
     super.normalize($root)
 
     let $target1 = this.$root.find('table').eq(0).prev()
-    $target1.replaceWith(this.sectionTitle("OBJECT参数说明"))
+    $target1.replaceWith(this.sectionTitle('OBJECT参数说明'))
 
     let $target = this.$root.find('table').eq(2).prev()
     let title = $target.text()
@@ -23,6 +23,4 @@ export default class extends ApiModifier {
       {type: 'update', index: 1, body: {row: 0, col: 1, from: 'ArrayString', to: 'StringArray'}}
     ]
   }
-
-  
 }
