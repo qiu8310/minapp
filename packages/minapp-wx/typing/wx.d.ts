@@ -9069,6 +9069,10 @@ declare namespace wx {
 
   class Animation {
     /**
+     * 导出动画数据传递给组件的animation属性
+     */
+    export(): any
+    /**
      * 透明度，参数范围 0~1
      */
     opacity(value: any): any
