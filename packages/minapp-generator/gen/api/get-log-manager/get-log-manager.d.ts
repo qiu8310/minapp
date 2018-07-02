@@ -25,18 +25,18 @@ export namespace wx {
     /**
      * 写log日志，可以提供任意个参数，每个参数的类型为Object/Array/Number/String，参数p1到pN的内容会写入日志
      */
-    log(p1 [: any, p2: any, ...: any, pN]: any): any
+    log(...args: any[]): any
     /**
      * 写info日志，参数同log方法
      */
-    info(p1 [: any, p2: any, ...: any, pN]: any): any
+    info(...args: any[]): any
     /**
      * 写warn日志，参数同log方法
      */
-    warn(p1 [: any, p2: any, ...: any, pN]: any): any
+    warn(...args: any[]): any
     /**
      * 写debug日志，参数同log方法
      */
-    debug(p1 [: any, p2: any, ...: any, pN]: any): any
+    debug(...args: any[]): any
   }
 }
