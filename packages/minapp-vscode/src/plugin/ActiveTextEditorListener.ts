@@ -142,7 +142,7 @@ function shouldCreateRange(word: string) {
   let lastChar = key[key.length - 1]
   // 不是 boolean，不是字符串，也不是以数字开头，也不是以 {{ 开头的
   return ['true', 'false'].indexOf(key) < 0
-    && !(['"', '\''].indexOf(firstChar) >= 0 && firstChar === lastChar) // 前后两个是引号，则为字符串
+    && !(['"', '\''].indexOf(firstChar) >= 0 && firstChar === lastChar && !key.substr(1, key.length - 2).includes(firstChar)) // 前后两个是引号，则为字符串
     && !key.startsWith('{{')
     && !/\d/.test(firstChar) // 数字开头的肯定不是变量
 }
