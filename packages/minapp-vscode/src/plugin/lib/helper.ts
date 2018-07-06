@@ -2,7 +2,7 @@
  MIT License http://www.opensource.org/licenses/mit-license.php
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
-import { TextDocument, Position } from 'vscode'
+import { TextDocument, Position, Range } from 'vscode'
 import { Config } from './config'
 import {Languages, LanguageConfig} from './language'
 
@@ -63,4 +63,8 @@ export function getTextAtPosition(doc: TextDocument, pos: Position, charRegExp: 
     else break
   }
   return str
+}
+
+export function getLastChar(doc: TextDocument, pos: Position) {
+  return doc.getText(new Range(new Position(pos.line, pos.character - 1), pos))
 }

@@ -11,7 +11,7 @@ import {
 import AutoCompletion from './AutoCompletion'
 
 import {getTagAtPosition} from './lib/getTagAtPositionForWxml'
-import {getLanguage} from './lib/helper'
+import {getLanguage, getLastChar} from './lib/helper'
 
 export default class extends AutoCompletion implements CompletionItemProvider {
   id = 'wxml' as 'wxml'
@@ -21,7 +21,9 @@ export default class extends AutoCompletion implements CompletionItemProvider {
     let language = getLanguage(document, position)
     if (!language) return [] as any
 
-    switch (context.triggerCharacter) {
+    let char = context.triggerCharacter || getLastChar(document, position)
+
+    switch (char) {
       case '<': return this.createComponentSnippetItems(language, document, position)
       case ' ': return this.createComponentAttributeSnippetItems(language, document, position)
       case ':': // 绑定变量 （也可以是原生小程序的控制语句或事件，如 wx:for, bind:tap）
@@ -29,7 +31,8 @@ export default class extends AutoCompletion implements CompletionItemProvider {
       case '-': // v-if
       case '.': // 变量或事件的修饰符
         return this.createSpecialAttributeSnippetItems(language, document, position)
-      default: return [] as any
+      default:
+        return [] as any
     }
   }
 }

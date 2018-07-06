@@ -4,7 +4,7 @@ Author Mora <qiuzhongleiabc^126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
 import {TextDocument, Position} from 'vscode'
-import {Tag, getAttrs, getAttrName, getAttrs2} from './getTagAtPosition'
+import {Tag, getAttrs, getAttrs2} from './getTagAtPosition'
 
 const SINGLE_LINE_TAG_REGEXP = /^(\s*)([\w-:.]+)((?:[\.#][\w-])*)(\s*\()(.*)\)/
 const MULTIPLE_LINE_TAG_REGEXP = /^(\s*)([\w-:.]+)((?:[\.#][\w-])*)(\s*\()/
@@ -77,7 +77,7 @@ function parseLine(line: string, doc: TextDocument, pos: Position) {
   line = line.replace(/\{\{[^\}]*?\}\}/g, replacer('^'))
               .replace(/\{[^\}]*?\}/g, replacer('^'))  // a(style={color: 'red', background: 'green'}) => a(style=^^^^^^^^)
 
-  let attrFlagLine = line.replace(/("[^"]*"|'[^']')/g, replacer('%')) // 将引号中的内容也替换了
+  let attrFlagLine = line.replace(/("[^"]*"|'[^']*')/g, replacer('%')) // 将引号中的内容也替换了
 
   let range = doc.getWordRangeAtPosition(pos, /\b[\w-:.]+\b/)
   let posWord = ''
@@ -124,4 +124,12 @@ function searchDown(doc: TextDocument, lineNum: number, attrs: {[key: string]: a
     lineNum++
   }
   return false
+}
+
+function getAttrName(str: string) {
+  // 左边可以是括号（pug）或空格
+  if (/(?:\(|\s)([\w-:.]+)=%*$/.test(str)) {
+    return RegExp.$1
+  }
+  return ''
 }

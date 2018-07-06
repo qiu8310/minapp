@@ -53,7 +53,7 @@ export function activate(context: ExtensionContext) {
 
     // 自动补全
     languages.registerCompletionItemProvider('wxml', autoCompletionWxml, '<', ' ', ':', '@', '.', '-'),
-    languages.registerCompletionItemProvider('wxml-pug', autoCompletionPug, '\n', ' ', ':', '@', '.', '-'),
+    languages.registerCompletionItemProvider('wxml-pug', autoCompletionPug, '\n', ' ', '(', ':', '@', '.', '-'),
     languages.registerCompletionItemProvider('vue', autoCompletionVue, '<', ' ', ':', '@', '.', '-', '\n')
   )
 }

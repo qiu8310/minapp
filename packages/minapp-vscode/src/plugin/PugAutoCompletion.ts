@@ -10,7 +10,7 @@ import {
 
 import AutoCompletion from './AutoCompletion'
 
-import {getLanguage} from './lib/helper'
+import {getLanguage, getLastChar} from './lib/helper'
 import {getTagAtPosition} from './lib/getTagAtPositionForPug'
 import {LanguageConfig} from './lib/language'
 
@@ -40,7 +40,10 @@ export default class extends AutoCompletion implements CompletionItemProvider {
         return this.createComponentSnippetItems(language, document, position, prefix)
       }
     }
-    switch (context.triggerCharacter) {
+
+    let char = context.triggerCharacter || getLastChar(document, position)
+    switch (char) {
+      case '(':
       case ' ': return this.createComponentAttributeSnippetItems(language, document, position)
       case ':': // 绑定变量 （也可以是原生小程序的控制语句或事件，如 wx:for, bind:tap）
       case '@': // 绑定事件
@@ -85,4 +88,3 @@ export default class extends AutoCompletion implements CompletionItemProvider {
     return
   }
 }
-

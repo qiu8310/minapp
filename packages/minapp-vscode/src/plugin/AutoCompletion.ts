@@ -80,11 +80,16 @@ export default abstract class AutoCompletion {
       let value = a.addBrace
         ? '{{\${1}}}'
         : this.setDefault(1, defaultValue)
+      // let value = '\${1}'
       item.insertText = new SnippetString(`${a.name}=${attrQuote}${value}${attrQuote}$0`)
     }
 
     item.documentation = new MarkdownString(tagAttr.markdown)
     item.sortText = sortText
+    // item.command = {
+    //   command: 'editor.action.triggerSuggest',
+    //   title: 'triggerSuggest'
+    // }
     return item
   }
 
@@ -190,11 +195,13 @@ export default abstract class AutoCompletion {
         triggers = [...Object.keys(lc.custom), ...lc.event.prefixes]
           .filter(k => k.length > 1)
           .map(k => {
-            let str = k.substr(0, k.length - 1)
-            let trigger = k[k.length - 1]
-            let item = new CompletionItem(str, CompletionItemKind.Constant)
+            // let str = k.substr(0, k.length - 1)
+            // let trigger = k[k.length - 1]
+            // let item = new CompletionItem(str, CompletionItemKind.Constant)
+            let item = new CompletionItem(k, CompletionItemKind.Constant)
             item.sortText = 'z'
-            item.documentation = new MarkdownString(`输入此字段再输入 "**${trigger}**" 字符可以再次触发自动补全`)
+            item.command = autoSuggestCommand()
+            // item.documentation = new MarkdownString(`输入此字段再输入 "**${trigger}**" 字符可以再次触发自动补全`)
             return item
           })
       }
@@ -250,5 +257,12 @@ export default abstract class AutoCompletion {
       ...res.customs.map(c => this.renderTagAttr(c, 'a', kind)),
       ...res.natives.map(c => this.renderTagAttr(c, 'b', kind))
     ]
+  }
+}
+
+function autoSuggestCommand() {
+  return {
+    command: 'editor.action.triggerSuggest',
+    title: 'triggerSuggest'
   }
 }
