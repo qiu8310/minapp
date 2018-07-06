@@ -25,6 +25,8 @@ export default class extends AutoCompletion implements CompletionItemProvider {
 
     switch (char) {
       case '<': return this.createComponentSnippetItems(language, document, position)
+      case '"':
+      case '\'':
       case ' ': return this.createComponentAttributeSnippetItems(language, document, position)
       case ':': // 绑定变量 （也可以是原生小程序的控制语句或事件，如 wx:for, bind:tap）
       case '@': // 绑定事件

@@ -43,9 +43,17 @@ export default abstract class AutoCompletion {
     let item = new CompletionItem(c.name, CompletionItemKind.Module)
 
     let {attrQuote, isPug} = this
-    let attrs = (c.attrs || [])
+    let allAttrs = c.attrs || []
+    let attrs = allAttrs
       .filter(a => a.required || a.subAttrs)
       .map((a, i) => (isPug ? '' : ' ') + `${a.name}=${attrQuote}${this.setDefault(i + 1, a.defaultValue)}${attrQuote}`)
+
+    let extraSpace = ''
+    // 如果自动补全中没有属性，并且此组件有额外属性，则触发自动属性补全
+    if (!attrs.length && allAttrs.length) {
+      item.command = autoSuggestCommand()
+      extraSpace = ' '
+    }
 
     let len = attrs.length + 1
     let snippet: string
@@ -53,9 +61,9 @@ export default abstract class AutoCompletion {
       snippet = `${c.name}(${attrs.join(' ')}\${${len}})\${0}`
     } else {
       if (this.config.selfCloseTags.indexOf(c.name) >= 0) {
-        snippet = `${c.name}${attrs.join('')}\${${len}} />\${0}`
+        snippet = `${c.name}${attrs.join('')}${extraSpace}\${${len}} />\${0}`
       } else {
-        snippet = `${c.name}${attrs.join('')}\${${len}}>\${0}</${c.name}>`
+        snippet = `${c.name}${attrs.join('')}${extraSpace}\${${len}}>\${0}</${c.name}>`
       }
     }
     item.insertText = new SnippetString(snippet)
@@ -80,16 +88,19 @@ export default abstract class AutoCompletion {
       let value = a.addBrace
         ? '{{\${1}}}'
         : this.setDefault(1, defaultValue)
-      // let value = '\${1}'
+
+      // 是否有可选值，如果有可选值则触发命令的自动补全
+      let values = a.enum ? a.enum : a.subAttrs ? a.subAttrs.map(sa => ({value: sa.equal})) : []
+      if (values.length) {
+        value = '\${1}'
+        item.command = autoSuggestCommand()
+      }
+
       item.insertText = new SnippetString(`${a.name}=${attrQuote}${value}${attrQuote}$0`)
     }
 
     item.documentation = new MarkdownString(tagAttr.markdown)
     item.sortText = sortText
-    // item.command = {
-    //   command: 'editor.action.triggerSuggest',
-    //   title: 'triggerSuggest'
-    // }
     return item
   }
 

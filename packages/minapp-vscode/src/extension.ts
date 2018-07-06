@@ -52,9 +52,10 @@ export function activate(context: ExtensionContext) {
     languages.registerDocumentRangeFormattingEditProvider('wxml', formatter),
 
     // 自动补全
-    languages.registerCompletionItemProvider('wxml', autoCompletionWxml, '<', ' ', ':', '@', '.', '-'),
-    languages.registerCompletionItemProvider('wxml-pug', autoCompletionPug, '\n', ' ', '(', ':', '@', '.', '-'),
-    languages.registerCompletionItemProvider('vue', autoCompletionVue, '<', ' ', ':', '@', '.', '-', '\n')
+    languages.registerCompletionItemProvider('wxml', autoCompletionWxml, '<', ' ', ':', '@', '.', '-', '"', '\''),
+    languages.registerCompletionItemProvider('wxml-pug', autoCompletionPug, '\n', ' ', '(', ':', '@', '.', '-', '"', '\''),
+    // trigger 需要是上两者的和
+    languages.registerCompletionItemProvider('vue', autoCompletionVue, '<', ' ', ':', '@', '.', '-', '\n', '(', '"', '\'')
   )
 }
 
