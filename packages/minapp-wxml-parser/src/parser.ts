@@ -4,9 +4,8 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
 import { Node, TagNodeAttr, Document, TextNode, CommentNode, TagNode } from './structs'
+import {SourceTags} from './config'
 const debug = require('debug')('minapp:wxml-parser')
-
-const SourceTags = ['wxs']
 
 export class ParserError extends Error {
   /**

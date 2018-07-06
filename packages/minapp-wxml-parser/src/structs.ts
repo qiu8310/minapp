@@ -3,6 +3,8 @@ MIT License http://www.opensource.org/licenses/mit-license.php
 Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
+import {SourceTags} from './config'
+
 export namespace Document {
   export interface ToXMLOptions {
     /** 自定义输出的每行的前缀，默认 "" */
@@ -172,9 +174,15 @@ function toXML(n: Node, prefix: string, step: string, opts: Document.RequiredToX
 
     let child = n.children[0]
     if (!child) return prefixedStart + endTag
+
+
     if (n.children.length === 1 && child.is(TYPE.TEXT)) {
       let str = prefixedStart + child.content + endTag
-      if (opts.maxLineCharacters === 0 || str.length <= opts.maxLineCharacters) return str
+      if (
+        SourceTags.indexOf(n.name) >= 0 ||
+        opts.maxLineCharacters === 0 ||
+        str.length <= opts.maxLineCharacters
+      ) return str
     }
     return [
       prefixedStart,
