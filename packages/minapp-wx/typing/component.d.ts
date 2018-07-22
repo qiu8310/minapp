@@ -46,7 +46,7 @@ declare namespace Component {
         /** 属性初始值 */
         value?: any
         /** 属性值被更改时的响应函数 */
-        observer?: (this: Component) => any
+        observer?: (this: Component, newVal: any, oldVal: any, changedPath: string[]) => any
       }
     }
 
