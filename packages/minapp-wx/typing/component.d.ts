@@ -46,7 +46,7 @@ declare namespace Component {
         /** 属性初始值 */
         value?: any
         /** 属性值被更改时的响应函数 */
-        observer?: (this: Component) => any
+        observer?: (this: Component, newVal: any, oldVal: any, changedPath: string[]) => any
       }
     }
 
@@ -114,7 +114,7 @@ declare interface Component {
   /** 节点id */
   id: string
   /** 节点dataset */
-  dataset: string
+  dataset: { [key:string]: any }
 
   /** 设置data并执行视图层渲染 */
   setData(newData: any, callback?: any): void
