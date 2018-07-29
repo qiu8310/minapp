@@ -47,9 +47,6 @@
 		},
 		{
 			"path": "packages/minapp-component-demo"
-		},
-		{
-			"path": "packages/minapp-vscode"
 		}
 	],
 	"settings": {
