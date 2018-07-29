@@ -24,7 +24,7 @@
 		"url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-mobx"
 	},
 	"peerDependencies": {
-		"mobx": "^3.5.1"
+		"mobx": ">= 3.0.0 < 4.0.0"
 	},
 	"dependencies": {
 		"@minapp/core": "^2.0.0",

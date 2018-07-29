@@ -134,10 +134,11 @@ export abstract class Loader {
   /**
    * @param {string} absFile
    * @param {string} request
+   * @param {boolean} complain
    * @param {boolean} [local] 不需要网络图片（如 app.json 中配置的 tabBar 图标）
    * @memberof Loader
    */
-  async loadStaticFile(absFile: string, request: string, local?: boolean): Promise<string> {
+  async loadStaticFile(absFile: string, request: string, complain: boolean, local?: boolean): Promise<string> {
     // let absFile = await this.resolve(request)
     this.lc.addDependency(absFile)
 
@@ -169,7 +170,7 @@ export abstract class Loader {
     this.emit(file, content)
     let url = this.outputPublicPath + toUrlPath(file)
 
-    if (this.env.mode === 'production' && !(/^(\w+?:)\/\//.test(url))) {
+    if (complain && this.env.mode === 'production' && !(/^(\w+?:)\/\//.test(url))) {
       this.emitWarning(new Error(`file ${this.fromFile} is using local resource! \nPlease use "minapp dev" or use "minapp build --publicPath http://your.static.server/"`))
     }
 

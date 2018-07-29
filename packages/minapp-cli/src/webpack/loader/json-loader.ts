@@ -83,7 +83,7 @@ export default class JsonLoader extends Loader {
   async resolveImage(request: string) {
     if (!this.shouleMakeResolveRequest(request)) return request
     let absFile = await this.resolve(request)
-    return await this.loadStaticFile(absFile, request, true)
+    return await this.loadStaticFile(absFile, request, false, true)
   }
 
   async resolvePages(pages: string[], requires: string[], relativeDir: string) {

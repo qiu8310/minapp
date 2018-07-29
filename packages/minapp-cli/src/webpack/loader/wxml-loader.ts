@@ -127,7 +127,7 @@ export default class WxmlLoader extends Loader {
       } else {
         if (this.shouleMakeRequireFile(absFile)) {
           if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
-            attr.value = attr.value.replace(src, await this.loadStaticFile(absFile, src))
+            attr.value = attr.value.replace(src, await this.loadStaticFile(absFile, src, false))
           } else if (node.name === 'import' || node.name === 'include') {
             attr.value = this.getExtractRequirePath(absFile, '.wxml')
             requires.push(absFile)

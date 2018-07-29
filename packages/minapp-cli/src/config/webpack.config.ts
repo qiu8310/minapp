@@ -96,10 +96,6 @@ let wpConf: webpack.Configuration = {
   plugins,
   module: {
     rules: [
-      // {parser: {
-      //   system: false,
-      //   amd: false
-      // }},
       // JSON
       {test: JSON_REGEXP, use: loader.json, type: 'javascript/auto'}, // https://stackoverflow.com/questions/49052935/override-built-in-json-loader-in-webpack-4
 

@@ -40,10 +40,10 @@ function observe(obj: Page.Options, init: string, destroy: string, mapStoreToDat
           delete data.__MOBX__
         }
       }
-
       this.setDataSmart(data)
     })
-    dispose.onError(e => console.error(e))
+    // @ts-ignore mobx 4 没有 onError 了，放在 autorun 配置中，但 4 之前 autorun 有个 scope 配置
+    if (dispose.onError) dispose.onError(e => console.error(e))
   }
   mixin[destroy] = function() {
     if (dispose) dispose()

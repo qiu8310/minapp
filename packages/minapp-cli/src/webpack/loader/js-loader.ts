@@ -38,7 +38,7 @@ export async function parse(loader: Loader, debug: any, content: string, extensi
     let absFile = await loader.resolve(request)
 
     if (loader.isStaticFile(absFile)) {
-      let url = await loader.loadStaticFile(absFile, request)
+      let url = await loader.loadStaticFile(absFile, request, true)
       if (!loader.shouleMakeResolveRequest(url) || loader.projectType === 'application') {
         return JSON.stringify(url)
       }

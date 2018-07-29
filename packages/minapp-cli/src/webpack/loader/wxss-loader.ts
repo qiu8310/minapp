@@ -22,7 +22,7 @@ export default class WxssLoader extends Loader {
 
       let absFile = await this.resolve(request)
       if (this.shouleMakeRequireFile(absFile)) {
-        let url = await this.loadStaticFile(absFile, request)
+        let url = await this.loadStaticFile(absFile, request, true)
 
         debug(`replace ${request} => ${url}`)
         return raw.replace(request, url)
