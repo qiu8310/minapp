@@ -96,6 +96,10 @@ let wpConf: webpack.Configuration = {
   plugins,
   module: {
     rules: [
+      // {parser: {
+      //   system: false,
+      //   amd: false
+      // }},
       // JSON
       {test: JSON_REGEXP, use: loader.json, type: 'javascript/auto'}, // https://stackoverflow.com/questions/49052935/override-built-in-json-loader-in-webpack-4
 
@@ -118,6 +122,7 @@ let wpConf: webpack.Configuration = {
     ]
   },
   stats: { // https://webpack.js.org/configuration/stats/#stats
+    // @ts-ignore
     ['all' as '']: false,
     modules: true,
     maxModules: 6,
@@ -135,6 +140,11 @@ let wpConf: webpack.Configuration = {
     ...env.minapp.compiler.devServer
   }
 }
+
+// @ts-ignore disable system and amd module
+// https://webpack.js.org/configuration/module/#rule-parser
+// https://github.com/qiu8310/minapp/issues/87
+wpConf.module.rules.push({parser: { system: false, amd: false }})
 
 wpConf = local.webpack(wpConf, webpack)
 wpConf.devServer.stats = wpConf.stats
