@@ -9,7 +9,7 @@
     "newFeature": true
   },
   "compileType": "miniprogram",
-  "libVersion": "1.9.1",
+  "libVersion": "2.1.0",
   "appid": "${appid}",
   "projectname": "${name}",
   "isGameTourist": false,

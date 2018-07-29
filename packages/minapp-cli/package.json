@@ -5,6 +5,9 @@
 	"bin": {
 		"minapp": "dist/bin/minapp.js"
 	},
+	"engines": {
+		"node": ">= 6.0.0"
+	},
 	"scripts": {
 		"test": "echo 0",
 		"lint": "tslint src/**/*.ts",
