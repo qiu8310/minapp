@@ -51,6 +51,13 @@ export default class JsonLoader extends Loader {
 
       // 搜索主目录下的同名文件
       searchDir(requires, this.fromFile, 'project.config.json', true)
+
+      // 将 package.json 中的 name 和 dependencies 提取出来
+      let {minapp, pkg} = this.env
+      if (minapp.compiler.noEmitNpmModules) {
+        let {name, dependencies} = pkg
+        this.emit('package.json', JSON.stringify({name, dependencies}))
+      }
     } else {
       if (this.fromFile === this.entryFile && projectType === 'component') {
         searchDir(requires, this.entryFile, null, true)

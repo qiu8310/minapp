@@ -25,6 +25,9 @@ export namespace minapp {
     /** 指定生成的静态资源的文件名的格式 */
     staticOutputName: string
 
+    /** 不提取 npm 中的模块 */
+    noEmitNpmModules: boolean
+
     /** 指定存放生成的静态资源的文件的目录，默认是 `static`（相对于 distDir） */
     staticOutputFolder: string
 
@@ -82,6 +85,7 @@ export function getMinappConfig(rootDir: string) {
     distDir: 'dist',
     urlLoaderLimit: 0,
     npmOutputFolder: 'npm',
+    noEmitNpmModules: false,
     staticFileExtensions: 'gif|png|jpg|jpeg|svg|ico|woff|woff2|ttf|eot|otf|mp3|mp4',
     staticOutputName: '[name:0]-[hash:10].[ext]',
     staticOutputFolder: 'static',
@@ -97,4 +101,3 @@ export function getMinappConfig(rootDir: string) {
 
   return minapp
 }
-

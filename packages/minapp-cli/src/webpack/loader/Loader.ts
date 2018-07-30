@@ -230,7 +230,7 @@ export abstract class Loader {
    * 在组件开发中，无需解析 node_modules 中的文件
    */
   shouleMakeRequireFile(absFile: string) {
-    return this.isFileInSrcDir(absFile) || this.projectType === 'application'
+    return this.isFileInSrcDir(absFile) || (this.projectType === 'application' && !this.env.minapp.compiler.noEmitNpmModules)
   }
 
   /**

@@ -36,6 +36,10 @@
           "description": "在 distDir 中存放 node_modules 中的文件的目录名称，默认是 `npm`（相对于 distDir）",
           "default": "npm"
         },
+        "noEmitNpmModules": {
+          "type": "boolean",
+          "description": "[@minapp/cli@2.2.0] 不提取 npm 中的模块，以方便使用微信开发者自带的 npm 构建工具（但注意，这样可能无法构建 npm 中的 minapp 支持的组件），详情：https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html"
+        },
         "staticFileExtensions": {
           "type": "string",
           "description": "静态资源文件的后缀列表，用于匹配项目中的静态资源，多个名字之间用 `|` 分隔",
