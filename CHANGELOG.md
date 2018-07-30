@@ -1,3 +1,17 @@
+2.2.0 / 2018-07-30
+==================
+
+* cli: 支持不生成 npm 模块（兼容微信开发者工具的npm构建功能）
+  在 minapp.json 中配置 `compiler.noEmitNpmModules` ，
+  然后就不会在 dist 目录生成 npm 文件夹，但会生成一个 package.json 文件，
+  需要你再手动在 dist 目录下运行 `npm install --production`
+
+  - **使用了微信自带的构建可能会影响 npm 中的 minapp 组件**
+  - **暂时没有很好的方案，等微信发布正式版后再考虑优化**
+
+* cli: 禁用 webpack 的 amd 和 system 的解析 close [#87](https://github.com/qiu8310/minapp/issues/87)
+
+
 2.1.4 / 2018-06-28
 ==================
 

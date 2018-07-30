@@ -8,9 +8,9 @@
 
 ## 微信交流群
 
-![微信交流群](https://n1other.hjfile.cn/res7/2018/07/21/e0a76585fe393a4abab1059616b38888.JPG?imageView2/0/w/360)
+当前群聊人数过多，只能通过邀请加入，可以扫码或手动添加我微信号：`qiu8310`（请备注 "minapp"），我拉你进群
 
-如果二维码过期，可以添加我微信号：`qiu8310`（备注 "minapp"）
+![微信](https://n1other.hjfile.cn/res7/2018/07/30/072dfc7f0abd29f97fcca4470c8793c6.JPG?imageView2/0/w/360)
 
 ## 介绍
 
