@@ -116,6 +116,12 @@ declare interface Component {
   /** 节点dataset */
   dataset: { [key:string]: any }
 
+  /** 组件数据，包括内部数据和属性值 */
+  data: {[key: string]: any},
+
+  /** 组件数据，包括内部数据和属性值（与 data 一致） */
+  properties: {[key: string]: any},
+
   /** 设置data并执行视图层渲染 */
   setData(newData: any, callback?: any): void
 
