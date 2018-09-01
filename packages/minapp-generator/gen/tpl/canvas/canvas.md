@@ -2,7 +2,7 @@
 
 #### canvas
 
-画布。
+画布。该组件是[原生组件](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)，使用时请注意相关限制。
 
   属性名            |  类型          |  默认值  |  说明                                                     
 --------------------|----------------|----------|-----------------------------------------------------------
@@ -22,7 +22,7 @@
 
 **示例代码：[下载](https://developers.weixin.qq.com/miniprogram/dev/demo/api-canvas.zip)**
 
-[在开发者工具中预览效果](wechatide://minicode/oyVplmmG6xYt)
+[在开发者工具中预览效果](wechatide://minicode/oyVplmmG6xYt "在开发者工具中预览效果")
 
     <!-- canvas.wxml -->
     <canvas style="width: 300px; height: 200px;" canvas-id="firstCanvas"></canvas>
@@ -40,7 +40,7 @@
       onReady: function (e) {
         // 使用 wx.createContext 获取绘图上下文 context
         var context = wx.createCanvasContext('firstCanvas')
-    
+        
         context.setStrokeStyle("#00ff00")
         context.setLineWidth(5)
         context.rect(0, 0, 200, 200)
@@ -65,7 +65,5 @@
 
 ##### Bug & Tip
 
-1.  `tip`: `canvas` 组件是由客户端创建的原生组件，它的层级是最高的，不能通过 z-index 控制层级。
-2.  `tip`: 请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `canvas` 组件。
-3.  `tip`: `css` 动画对 `canvas` 组件无效。
-4.  `bug`: 避免设置过大的宽高，在安卓下会有crash的问题
+1.  请注意[原生组件使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html#原生组件的使用限制)。
+2.  `bug`: 避免设置过大的宽高，在安卓下会有crash的问题

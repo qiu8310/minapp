@@ -14,7 +14,7 @@
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/MUaz7cmy6AYq)
+[在开发者工具中预览效果](wechatide://minicode/MUaz7cmy6AYq "在开发者工具中预览效果")
 
     <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="section section_gap">
@@ -61,4 +61,4 @@
     })
     
 
-![form](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/form.png)
+![form](https://developers.weixin.qq.com/miniprogram/dev/image/pic/form.png)

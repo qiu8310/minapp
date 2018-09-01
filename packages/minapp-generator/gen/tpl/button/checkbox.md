@@ -21,7 +21,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/hGa3DcmW6qYw)
+[在开发者工具中预览效果](wechatide://minicode/hGa3DcmW6qYw "在开发者工具中预览效果")
 
     <checkbox-group bindchange="checkboxChange">
       <label class="checkbox" wx:for="{{items}}">
@@ -47,4 +47,4 @@
     })
     
 
-![checkbox](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/checkbox.png)
+![checkbox](https://developers.weixin.qq.com/miniprogram/dev/image/pic/checkbox.png)

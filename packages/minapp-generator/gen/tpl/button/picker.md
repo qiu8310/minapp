@@ -64,17 +64,17 @@
 
 ##### 省市区选择器：mode = region（最低版本：1.4.0）
 
-  属性名        |  类型          |  默认值  |  说明                                                  |  最低版本 
-----------------|----------------|----------|--------------------------------------------------------|-----------
-  value         |  Array         |  []      |  表示选中的省市区，默认选中每一列的第一个值            |           
-  custom-item   |  String        |          |  可为每一列的顶部添加一个自定义的项                    |  1.5.0    
-  bindchange    |  EventHandle   |          |value 改变时触发 change 事件，event.detail = {value: value}|           
-  bindcancel    |  EventHandle   |          |  取消选择时触发                                        |  1.9.90   
-  disabled      |  Boolean       |  false   |  是否禁用                                              |           
+  属性名        |  类型          |  默认值  |  说明                                                                                                                 |  最低版本 
+----------------|----------------|----------|-----------------------------------------------------------------------------------------------------------------------|-----------
+  value         |  Array         |  []      |  表示选中的省市区，默认选中每一列的第一个值                                                                           |           
+  custom-item   |  String        |          |  可为每一列的顶部添加一个自定义的项                                                                                   |  1.5.0    
+  bindchange    |  EventHandle   |          |value 改变时触发 change 事件，event.detail = {value: value, code: code, postcode: postcode}，其中字段code是统计用区划代码，postcode是邮政编码|           
+  bindcancel    |  EventHandle   |          |  取消选择时触发                                                                                                       |  1.9.90   
+  disabled      |  Boolean       |  false   |  是否禁用                                                                                                             |           
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/pZb21cmH6qYX)
+[在开发者工具中预览效果](wechatide://minicode/pZb21cmH6qYX "在开发者工具中预览效果")
 
     <view class="section">
       <view class="section__title">普通选择器</view>
@@ -286,4 +286,4 @@
     })
     
 
-![picker](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/picker.png)
+![picker](https://developers.weixin.qq.com/miniprogram/dev/image/pic/picker.png)

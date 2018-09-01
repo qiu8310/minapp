@@ -23,7 +23,7 @@
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/3NbqVcm56OYS)
+[在开发者工具中预览效果](wechatide://minicode/3NbqVcm56OYS "在开发者工具中预览效果")
 
     <view class="section section_gap">
       <text class="section__title">设置step</text>
@@ -58,4 +58,4 @@
     Page(pageData)
     
 
-![slider](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/slider.png)
+![slider](https://developers.weixin.qq.com/miniprogram/dev/image/pic/slider.png)

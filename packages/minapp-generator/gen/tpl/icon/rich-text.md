@@ -2,7 +2,7 @@
 
 #### rich-text
 
-> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
+> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)。
 
 富文本。
 
@@ -84,7 +84,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/zPVmpim46wYQ)
+[在开发者工具中预览效果](wechatide://minicode/zPVmpim46wYQ "在开发者工具中预览效果")
 
     <!-- rich-text.wxml -->
     <rich-text nodes="{{nodes}}" bindtap="tap"></rich-text>

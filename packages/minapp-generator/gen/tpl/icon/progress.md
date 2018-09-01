@@ -17,7 +17,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/Oga4Hcmj6cYS)
+[在开发者工具中预览效果](wechatide://minicode/Oga4Hcmj6cYS "在开发者工具中预览效果")
 
     <progress percent="20" show-info />
     <progress percent="40" stroke-width="12" />
@@ -25,4 +25,4 @@
     <progress percent="80" active />
     
 
-![progress](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/progress.png)
+![progress](https://developers.weixin.qq.com/miniprogram/dev/image/pic/progress.png)

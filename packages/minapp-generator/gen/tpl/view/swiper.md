@@ -41,7 +41,7 @@
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/SeizywmX6gY0)
+[在开发者工具中预览效果](wechatide://minicode/SeizywmX6gY0 "在开发者工具中预览效果")
 
     <swiper indicator-dots="{{indicatorDots}}"
       autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">

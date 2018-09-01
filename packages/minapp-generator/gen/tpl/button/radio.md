@@ -21,7 +21,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/tpbv9cmv6HYr)
+[在开发者工具中预览效果](wechatide://minicode/tpbv9cmv6HYr "在开发者工具中预览效果")
 
     <radio-group class="radio-group" bindchange="radioChange">
       <label class="radio" wx:for="{{items}}">
@@ -47,4 +47,4 @@
     })
     
 
-![radio](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/radio.png)
+![radio](https://developers.weixin.qq.com/miniprogram/dev/image/pic/radio.png)

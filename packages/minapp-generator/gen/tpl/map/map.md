@@ -2,26 +2,26 @@
 
 #### map
 
-地图。
+地图。该组件是[原生组件](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)，使用时请注意相关限制。
 
-  属性名             |  类型          | 默认值 |  说明                         | 最低版本 
----------------------|----------------|--------|-------------------------------|----------
-  longitude          |  Number        |        |  中心经度                     |          
-  latitude           |  Number        |        |  中心纬度                     |          
-  scale              |  Number        |  16    |  缩放级别，取值范围为5-18     |          
-  markers            |  Array         |        |  标记点                       |          
-  covers             |  Array         |        |  **即将移除，请使用 markers** |          
-  polyline           |  Array         |        |  路线                         |          
-  circles            |  Array         |        |  圆                           |          
-  controls           |  Array         |        |  控件                         |          
-  include-points     |  Array         |        | 缩放视野以包含所有给定的坐标点|          
-  show-location      |  Boolean       |        |  显示带有方向的当前定位点     |          
-  bindmarkertap      |  EventHandle   |        |点击标记点时触发，会返回marker的id|          
-  bindcallouttap     |  EventHandle   |        |点击标记点对应的气泡时触发，会返回marker的id|  1.2.0   
-  bindcontroltap     |  EventHandle   |        |点击控件时触发，会返回control的id|          
-  bindregionchange   |  EventHandle   |        |  视野发生变化时触发           |          
-  bindtap            |  EventHandle   |        |  点击地图时触发               |          
-  bindupdated        |  EventHandle   |        |  在地图渲染更新完成时触发     |  1.6.0   
+  属性名             |  类型          | 默认值 |  说明                                                                                                        | 最低版本 
+---------------------|----------------|--------|--------------------------------------------------------------------------------------------------------------|----------
+  longitude          |  Number        |        |  中心经度                                                                                                    |          
+  latitude           |  Number        |        |  中心纬度                                                                                                    |          
+  scale              |  Number        |  16    |  缩放级别，取值范围为5-18                                                                                    |          
+  markers            |  Array         |        |  标记点                                                                                                      |          
+  covers             |  Array         |        |  **即将移除，请使用 markers**                                                                                |          
+  polyline           |  Array         |        |  路线                                                                                                        |          
+  circles            |  Array         |        |  圆                                                                                                          |          
+  controls           |  Array         |        |控件（即将废弃，建议使用 [cover-view](https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html) 代替）|          
+  include-points     |  Array         |        |  缩放视野以包含所有给定的坐标点                                                                              |          
+  show-location      |  Boolean       |        |  显示带有方向的当前定位点                                                                                    |          
+  bindmarkertap      |  EventHandle   |        |  点击标记点时触发，会返回marker的id                                                                          |          
+  bindcallouttap     |  EventHandle   |        |  点击标记点对应的气泡时触发，会返回marker的id                                                                |  1.2.0   
+  bindcontroltap     |  EventHandle   |        |  点击控件时触发，会返回control的id                                                                           |          
+  bindregionchange   |  EventHandle   |        |  视野发生变化时触发                                                                                          |          
+  bindtap            |  EventHandle   |        |  点击地图时触发                                                                                              |          
+  bindupdated        |  EventHandle   |        |  在地图渲染更新完成时触发                                                                                    |  1.6.0   
 
 **注意: covers 属性即将移除，请使用 markers 替代**
 
@@ -127,7 +127,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/3uVxpmmT6wY9)
+[在开发者工具中预览效果](wechatide://minicode/3uVxpmmT6wY9 "在开发者工具中预览效果")
 
     <!-- map.wxml -->
     <map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
@@ -184,7 +184,5 @@
 
 ##### Bug & Tip
 
-1.  `tip`: `map` 组件是由客户端创建的原生组件，它的层级是最高的，不能通过 z-index 控制层级。
-2.  `tip`: 请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `map` 组件。
-3.  `tip`: `css` 动画对 `map` 组件无效。
-4.  `tip`: `map` 组件使用的经纬度是火星坐标系，调用 `wx.getLocation` 接口需要指定 `type` 为 `gcj02`
+1.  请注意[原生组件使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html#原生组件的使用限制)。
+2.  `tip`: `map` 组件使用的经纬度是火星坐标系，调用 `wx.getLocation` 接口需要指定 `type` 为 `gcj02`

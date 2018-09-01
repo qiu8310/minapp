@@ -2,11 +2,11 @@
 
 #### live-player
 
-> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
+> 基础库 1.7.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)。
 
-实时音视频播放。
+实时音视频播放。该组件是[原生组件](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)，使用时请注意相关限制。
 
-暂只针对如下类目开放，需要先通过类目审核，再在小程序管理后台，“设置”-“接口设置”中自助开通该组件权限。
+暂只针对国内主体如下类目的小程序开放，需要先通过类目审核，再在小程序管理后台，“设置”-“接口设置”中自助开通该组件权限。
 
 {社交 => "直播"; 教育 => "在线教育"; 医疗 => "互联网医院，公立医院"; 政务民生 => "所有二级类目"; 金融 =\> "基金、信托、保险、银行、证券/期货、非金融机构自营小额贷款、征信业务、消费金融"}
 
@@ -74,7 +74,7 @@
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/UzWEzmm763Y4)
+[在开发者工具中预览效果](wechatide://minicode/UzWEzmm763Y4 "在开发者工具中预览效果")
 
     <live-player src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 300px; height: 225px;" />
     
@@ -84,13 +84,11 @@
         console.log('live-player code:', e.detail.code)
       },
       error(e) {
-          console.error('live-player error:', e.detail.errMsg)
+      	console.error('live-player error:', e.detail.errMsg)
       }
     })
     
 
 ##### Bug & Tip
 
-1.  `tip`: `live-player` 组件是由客户端创建的原生组件，它的层级是最高的，不能通过 z-index 控制层级。可使用 `cover-view` `cover-image`覆盖在上面。
-2.  `tip`: 请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `live-player` 组件。
-3.  `tip`: `css` 动画对 `live-player` 组件无效。
+1.  请注意[原生组件使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html#原生组件的使用限制)。

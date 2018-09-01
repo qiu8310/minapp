@@ -14,7 +14,7 @@
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/alak1cmR6JYU)
+[在开发者工具中预览效果](wechatide://minicode/alak1cmR6JYU "在开发者工具中预览效果")
 
     <view class="section section_gap">
     <view class="section__title">表单组件在label内</view>
@@ -91,6 +91,7 @@
       }
     })
     
+    
 
     .label-1, .label-2{
         margin-bottom: 15px;
@@ -147,4 +148,4 @@
     }
     
 
-![label](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/label.png)
+![label](https://developers.weixin.qq.com/miniprogram/dev/image/pic/label.png)

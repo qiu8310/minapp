@@ -21,7 +21,7 @@
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/YfbJZcmG6zYM)
+[在开发者工具中预览效果](wechatide://minicode/YfbJZcmG6zYM "在开发者工具中预览效果")
 
     <view>
       <view>{{year}}年{{month}}月{{day}}日</view>
@@ -77,7 +77,7 @@
     })
     
 
-![picker_view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/picker_view.png)
+![picker_view](https://developers.weixin.qq.com/miniprogram/dev/image/picker_view.png)
 
 ##### Tips：
 

@@ -29,6 +29,7 @@ export const TABLE_REST_FIELD_MAP: {[key: string]: string} = {
   '返回': 'desc',
   '备注': 'notice',
   '最低版本': 'since',
+  '版本': 'since',
   '支持版本': 'since',
 }
 

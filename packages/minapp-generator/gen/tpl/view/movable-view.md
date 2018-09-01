@@ -2,7 +2,7 @@
 
 #### movable-area
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)。
 
 `movable-view` 的可移动区域
 
@@ -14,7 +14,7 @@
 
 #### movable-view
 
-> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
+> 基础库 1.2.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)。
 
 可移动的视图容器，在页面中可以拖拽滑动
 
@@ -48,7 +48,7 @@
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/7QWXwimf6PYG)
+[在开发者工具中预览效果](wechatide://minicode/7QWXwimf6PYG "在开发者工具中预览效果")
 
     <view class="section">
       <view class="section__title">movable-view区域小于movable-area</view>

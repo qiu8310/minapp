@@ -56,6 +56,8 @@ export class Node {
       this.parent = node
       node.children.push(this)
     }
+
+    this.file = file.replace(/^\.\//, '')
     Node.prevNode = this
   }
 

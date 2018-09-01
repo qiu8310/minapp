@@ -13,7 +13,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/eJwL4bmd6mY3)
+[在开发者工具中预览效果](wechatide://minicode/eJwL4bmd6mY3 "在开发者工具中预览效果")
 
     <view class="section">
       <view class="section__title">flex-direction: row</view>
@@ -33,7 +33,7 @@
     </view>
     
 
-![view](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/view.png)
+![view](https://developers.weixin.qq.com/miniprogram/dev/image/pic/view.png)
 
 ##### Bug & Tip
 

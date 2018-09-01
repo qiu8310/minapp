@@ -18,7 +18,7 @@ const custom = [
 ]
 
 export default async function(res: any, nodeIterator: any) {
-  const EXPECT = 32
+  const EXPECT = 34
   if (rootNode.leafNodes.length !== EXPECT) warn(`组件文档数量更新了 ${rootNode.leafNodes.length - EXPECT} 页！`)
 
   let nodes = rootNode.leafNodes

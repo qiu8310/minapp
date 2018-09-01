@@ -2,9 +2,11 @@
 
 #### web-view
 
-> 基础库 1.6.4 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
+> 基础库 1.6.4 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)。
 
 web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面。**个人类型与海外类型的小程序暂不支持使用。**
+
+> 客户端 6.7.2 版本开始，[`navigationStyle: custom`](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#window) 对 `<web-view>` 组件无效
 
   属性名        |  类型           | 默认值 |  说明                                                                              
 ----------------|-----------------|--------|------------------------------------------------------------------------------------
@@ -34,7 +36,7 @@ web-view 组件是一个可以用来承载网页的容器，会自动铺满整�
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/aRVmcimz66Yb)
+[在开发者工具中预览效果](wechatide://minicode/aRVmcimz66Yb "在开发者工具中预览效果")
 
     <!-- html -->
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
@@ -113,6 +115,7 @@ web-view 组件是一个可以用来承载网页的容器，会自动铺满整�
     wx.miniProgram.getEnv(function(res) {
       console.log(res.miniprogram) // true
     })
+    
     
 
 ##### Bug & Tip

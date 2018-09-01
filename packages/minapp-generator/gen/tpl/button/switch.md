@@ -13,7 +13,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/6db9lcmu6VYt)
+[在开发者工具中预览效果](wechatide://minicode/6db9lcmu6VYt "在开发者工具中预览效果")
 
     <view class="body-view">
         <switch checked bindchange="switch1Change"/>
@@ -31,7 +31,7 @@
     })
     
 
-![switch](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/switch.png)
+![switch](https://developers.weixin.qq.com/miniprogram/dev/image/pic/switch.png)
 
 ##### Tips
 

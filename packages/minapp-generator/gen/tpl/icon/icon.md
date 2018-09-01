@@ -12,7 +12,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/LK9tzcmM6QYj)
+[在开发者工具中预览效果](wechatide://minicode/LK9tzcmM6QYj "在开发者工具中预览效果")
 
     <view class="group">
       <block wx:for="{{iconSize}}">
@@ -47,4 +47,4 @@
     })
     
 
-![icon](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/icon.png)
+![icon](https://developers.weixin.qq.com/miniprogram/dev/image/pic/icon.png)

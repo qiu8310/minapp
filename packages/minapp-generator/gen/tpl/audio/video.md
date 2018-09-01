@@ -2,11 +2,11 @@
 
 #### video
 
-视频。
+视频。该组件是[原生组件](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)，使用时请注意相关限制。
 
   属性名                    |  类型           |  默认值    |  说明                                                                                    | 最低版本 
 ----------------------------|-----------------|------------|------------------------------------------------------------------------------------------|----------
-  src                       |  String         |            |  要播放视频的资源地址                                                                    |          
+  src                       |  String         |            |  要播放视频的资源地址，支持云文件ID（2.2.3起）                                           |          
   initial-time              |  Number         |            |  指定视频初始播放位置                                                                    |  1.6.0   
   duration                  |  Number         |            |  指定视频时长                                                                            |  1.1.0   
   controls                  |  Boolean        |  true      |  是否显示默认播放控件（播放/暂停按钮、播放进度、时间）                                   |          
@@ -24,7 +24,7 @@
   show-center-play-btn      |  Boolean        |  true      |  是否显示视频中间的播放按钮                                                              |  1.9.0   
   enable-progress-gesture   |  Boolean        |  true      |  是否开启控制进度的手势                                                                  |  1.9.0   
   objectFit                 |  String         |  contain   |当视频大小与 video 容器大小不一致时，视频的表现形式。contain：包含，fill：填充，cover：覆盖|          
-  poster                    |  String         |            |  视频封面的图片网络资源地址，如果 controls 属性值为 false 则设置 poster 无效             |          
+  poster                    |  String         |            |视频封面的图片网络资源地址或云文件ID（2.2.3起支持）如果 controls 属性值为 false 则设置 poster 无效|          
   bindplay                  |  EventHandle    |            |  当开始/继续播放时触发play事件                                                           |          
   bindpause                 |  EventHandle    |            |  当暂停播放时触发 pause 事件                                                             |          
   bindended                 |  EventHandle    |            |  当播放到末尾时触发 ended 事件                                                           |          
@@ -37,7 +37,7 @@
 
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/X5V6Xmmk6xYB)
+[在开发者工具中预览效果](wechatide://minicode/X5V6Xmmk6xYB "在开发者工具中预览效果")
 
     <view class="section tc">
       <video src="{{src}}"   controls ></video>
@@ -71,8 +71,8 @@
         this.videoContext = wx.createVideoContext('myVideo')
       },
       inputValue: '',
-        data: {
-            src: '',
+    	data: {
+    		src: '',
         danmuList: [
           {
             text: '第 1s 出现的弹幕',
@@ -84,7 +84,7 @@
             color: '#ff00ff',
             time: 3
         }]
-        },
+    	},
       bindInputBlur: function(e) {
         this.inputValue = e.detail.value
       },
@@ -110,12 +110,10 @@
     })
     
 
-![video](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/video.png)
+![video](https://developers.weixin.qq.com/miniprogram/dev/image/pic/video.png)
 
 相关api：[wx.createVideoContext](https://developers.weixin.qq.com/miniprogram/dev/api/api-video.html)
 
 ##### Bug & Tip
 
-1.  `tip`: `video` 组件是由客户端创建的原生组件，它的层级是最高的，不能通过 z-index 控制层级。
-2.  `tip`: 请勿在 `scroll-view`、`swiper`、`picker-view`、`movable-view` 中使用 `video` 组件。
-3.  `tip`: `css` 动画对 `video` 组件无效。
+1.  请注意[原生组件使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html#原生组件的使用限制)。

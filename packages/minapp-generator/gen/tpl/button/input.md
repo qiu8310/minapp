@@ -2,7 +2,7 @@
 
 #### input
 
-输入框。
+输入框。该组件是[原生组件](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)，使用时请注意相关限制。
 
   属性名              |  类型          |  默认值                |  说明                                                                                                     |  最低版本 
 ----------------------|----------------|------------------------|-----------------------------------------------------------------------------------------------------------|-----------
@@ -17,7 +17,7 @@
   cursor-spacing      |  Number        |  0                     |指定光标与键盘的距离，单位 px 。取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离|           
   auto-focus          |  Boolean       |  false                 |  (即将废弃，请直接使用 focus )自动聚焦，拉起键盘                                                          |           
   focus               |  Boolean       |  false                 |  获取焦点                                                                                                 |           
-  confirm-type        |  String        |  "done"                |  设置键盘右下角按钮的文字                                                                                 |  1.1.0    
+  confirm-type        |  String        |  "done"                |  设置键盘右下角按钮的文字，仅在type='text'时生效                                                          |  1.1.0    
   confirm-hold        |  Boolean       |  false                 |  点击键盘右下角按钮时是否保持键盘不收起                                                                   |  1.1.0    
   cursor              |  Number        |                        |  指定focus时的光标位置                                                                                    |  1.5.0    
   selection-start     |  Number        |  -1                    |  光标起始位置，自动聚集时有效，需与selection-end搭配使用                                                  |  1.9.0    
@@ -47,9 +47,11 @@
   go       |右下角按钮为“前往”
   done     |右下角按钮为“完成”
 
+*   注：confirm-type的最终表现与手机输入法本身的实现有关，部分安卓系统输入法和第三方输入法可能不支持或不完全支持。
+
 **示例代码：**
 
-[在开发者工具中预览效果](wechatide://minicode/JYwgZ6ml6rYP)
+[在开发者工具中预览效果](wechatide://minicode/JYwgZ6ml6rYP "在开发者工具中预览效果")
 
     <!--input.wxml-->
     <view class="section">
@@ -126,11 +128,13 @@
     })
     
 
-![input](https://mp.weixin.qq.com/debug/wxadoc/dev/image/pic/input.png)
+![input](https://developers.weixin.qq.com/miniprogram/dev/image/pic/input.png)
 
 ##### Bug & Tip：
 
-1.  `bug` : 微信版本 `6.3.30`, focus 属性设置无效；
-2.  `bug` : 微信版本 `6.3.30`, placeholder 在聚焦时出现重影问题；
-3.  `tip` : input 组件是一个 native 组件，字体是系统字体，所以无法设置 font-family；
-4.  `tip` : 在 input 聚焦期间，避免使用 css 动画；
+1.  请注意[原生组件使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html#原生组件的使用限制)。
+2.  `bug` : 微信版本 `6.3.30`, focus 属性设置无效；
+3.  `bug` : 微信版本 `6.3.30`, placeholder 在聚焦时出现重影问题；
+4.  `tip` : input 组件是一个原生组件，字体是系统字体，所以无法设置 font-family；
+5.  `tip` : 在 input 聚焦期间，避免使用 css 动画；
+6.  `tip` : 对于将 `input` 封装在自定义组件中、而 `from` 在自定义组件外的情况， `form` 将不能获得这个自定义组件中 `input` 的值。此时需要使用自定义组件的 [内置 behaviors](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/behaviors.html) `wx://form-field`。

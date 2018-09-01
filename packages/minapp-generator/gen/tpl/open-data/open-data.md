@@ -2,7 +2,7 @@
 
 #### open-data
 
-> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
+> 基础库 1.4.0 开始支持，低版本需做[兼容处理](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)。
 
 用于展示微信开放的数据。
 
@@ -29,7 +29,7 @@
 
 **示例：**
 
-[在开发者工具中预览效果](wechatide://minicode/vbdmRcmV67YB)
+[在开发者工具中预览效果](wechatide://minicode/vbdmRcmV67YB "在开发者工具中预览效果")
 
     <open-data type="groupName" open-gid="xxxxxx"></open-data>
     <open-data type="userAvatarUrl"></open-data>
