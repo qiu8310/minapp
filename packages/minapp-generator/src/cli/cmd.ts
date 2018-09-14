@@ -73,7 +73,7 @@ function makeNodeReduceIterator(res: any, key: string) {
   let genDir = key === 'api' ? C.DIR.GEN_API : C.DIR.GEN_TPL
 
   return async (allResult: undefined | string[], node: Node, done: any) => {
-    let nodeUrl = baseUrl + node.file
+    let nodeUrl = baseUrl + path.normalize(node.file)
 
     let cacheFile = path.join(genDir, '.cache', node.topNode.normilizedFile, node.normilizedFile + '.html')
     fs.ensureDirSync(path.dirname(cacheFile))
