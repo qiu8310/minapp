@@ -9,7 +9,7 @@
     "lint": "tslint src/**/*.ts",
     "postpublish": "sync-taobao",
     "clear": "remove-all dist",
-    "build": "npm run clear && tsc && node src/dev/script.js copy",
+    "build": "npm run clear && tsc && wget https://raw.githubusercontent.com/wx-minapp/minapp-generator/master/gen/tpl/components.json -o res/components.json",
     "watch": "tsc -w"
   },
   "publishConfig": {
@@ -49,7 +49,6 @@
     "url": "https://github.com/qiu8310/minapp/tree/master/packages/minapp-common"
   },
   "devDependencies": {
-    "@minapp/generator": "^1.1.0",
     "@types/fs-extra": "^5.0.1",
     "@types/jest": "^22.1.1",
     "@types/json5": "^0.0.29",

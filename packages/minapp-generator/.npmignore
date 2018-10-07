@@ -1,7 +1,0 @@
-tsconfig.json
-tslint.json
-src
-gen
-vendor
-coverage
-__tests__

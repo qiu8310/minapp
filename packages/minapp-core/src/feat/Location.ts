@@ -16,4 +16,3 @@ export class Location {
     this.query = page.options || {}
   }
 }
-

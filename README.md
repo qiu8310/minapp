@@ -106,12 +106,12 @@
 
 [vscode-minapp]: https://marketplace.visualstudio.com/items?itemName=qiu8310.minapp-vscode
 [vscode-dot-template]: https://marketplace.visualstudio.com/items?itemName=qiu8310.dot-template-vscode
-[minapp-generator]: ./packages/minapp-generator
-[minapp-wx]: ./packages/minapp-wx
+[minapp-generator]: https://github.com/wx-minapp/minapp-generator
+[minapp-wx]: https://github.com/wx-minapp/minapp-wx
 [minapp-core]: ./packages/minapp-core
 [minapp-mobx]: ./packages/minapp-mobx
 [minapp-wxml-parser]: ./packages/minapp-wxml-parser
 [minapp-cli]: ./packages/minapp-cli
 [minapp-example-ts]: ./packages/minapp-example-ts
 [minapp-example-js]: ./packages/minapp-example-js
-[minapp-vscode]: ./packages/minapp-vscode
+[minapp-vscode]: https://github.com/wx-minapp/minapp-vscode
