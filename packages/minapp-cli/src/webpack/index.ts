@@ -41,8 +41,10 @@ export function getLoader(env: Env) {
     js: toLoader('js-loader', {}),
     wxs: toLoader('wxs-loader', {}),
     wxml: toLoader('wxml-loader', {}),
+    axml: toLoader('axml-loader', {}),
     pug: toLoader('pug-loader', {}),
     wxss: toLoader('wxss-loader', {}),
+    acss: toLoader('acss-loader', {}),
     postcss: toLoader('postcss-loader', {plugins}),
   }
 }
