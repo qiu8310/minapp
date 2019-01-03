@@ -36,7 +36,7 @@ export default class AxmlLoader extends Loader {
       debug('no static assets')
     }
 
-    this.updateNode(xml.nodes)
+    // this.updateNode(xml.nodes)
 
     let userOpts = this.options.format || {}
     content = xml.toXML(this.minimize
