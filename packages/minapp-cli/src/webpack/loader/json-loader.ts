@@ -84,7 +84,6 @@ export default class JsonLoader extends Loader {
     if (Object.keys(json).length) {
       this.extract('.json', JSON.stringify(json, null, this.minimize ? 0 : 2))
     }
-    debug(requires);
     return this.toRequire(requires)
   }
 
