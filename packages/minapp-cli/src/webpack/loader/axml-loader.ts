@@ -1,6 +1,6 @@
 import * as parser from '@minapp/wxml-parser'
 import {EOL} from 'os'
-const debug = require('debug')('minapp:cli:wxml-loader')
+const debug = require('debug')('minapp:cli:axml-loader')
 
 import {Loader} from './Loader'
 import {map, STYLE_RESOURCE_REGEXP} from '../util'
