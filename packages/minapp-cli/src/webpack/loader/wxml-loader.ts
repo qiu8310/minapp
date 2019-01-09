@@ -10,7 +10,7 @@ const debug = require('debug')('minapp:cli:wxml-loader')
 import {Loader} from './Loader'
 import {map, STYLE_RESOURCE_REGEXP} from '../util'
 
-const PATH_REGEXP = /^\.\.?\/\w[\w-\/\.\$!@]*$/ // 匹配是否是文件路径（需要以 / 或 ./ 或 ../ 开头）
+const PATH_REGEXP = /^\.?\.?\/[\w-\/\.\$!@]*$/ // 匹配是否是文件路径（需要以 / 或 ./ 或 ../ 开头）
 
 @Loader.decorate
 export default class WxmlLoader extends Loader {
