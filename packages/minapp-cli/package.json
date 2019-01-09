@@ -69,7 +69,35 @@
 		"@types/webpack": "^4.4.22",
 		"@types/webpack-dev-server": "^2.9.6",
 		"@types/webpack-sources": "^0.1.5",
+		"@types/jest": "^22.1.1",
+		"jest": "^22.1.4",
+		"ts-jest": "^22.0.2",
 		"ts-lint": "^4.5.1",
 		"typescript": "^2.9.2"
+	},
+	"jest": {
+		"roots": [
+			"src"
+		],
+		"collectCoverage": true,
+		"coverageReporters": [
+			"text",
+			"html"
+		],
+		"coveragePathIgnorePatterns": [
+			"/node_modules/",
+			"/__tests__/helper/"
+		],
+		"coverageDirectory": "./coverage",
+		"transform": {
+			"^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+		},
+		"testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx)$",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"json"
+		]
 	}
 }
