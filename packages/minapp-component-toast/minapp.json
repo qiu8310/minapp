@@ -1,6 +1,0 @@
-{
-  "$schema": "../../schema/minapp.json",
-  "component": "src/toast",
-  "compiler": {
-  }
-}

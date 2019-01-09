@@ -1,1 +1,0 @@
-  <view class="toast" hidden="{{!visible}}">{{ message }}；{{count}}s 后关闭</view>
