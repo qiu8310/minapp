@@ -102,19 +102,25 @@ let wpConf: webpack.Configuration = {
       // 脚本
       {test: /\.ts$/i, use: [loader.js, loader.ts]},
       {test: /\.js$/i, include: srcDir, use: [loader.js, loader.babel]},
-      {test: /.js$/i, exclude: srcDir, use: [loader.js]},
+      {test: /\.js$/i, exclude: srcDir, use: [loader.js]},
 
       {test: /\.wxs$/i, use: [loader.wxs, loader.babel]},
 
       // 模板
       {test: /\.wxml$/i, use: loader.wxml},
+      {test: /\.axml$/i, use: loader.axml},
       {test: /\.(pug|wpug)$/i, use: [loader.wxml, loader.pug]},
 
       // 样式
+
+      {test: /\.acss$/i, include: srcDir, use: [loader.acss, loader.postcss]},
+      {test: /\.acss$/i, exclude: srcDir, use: [loader.acss]},
+
       {test: /\.s(c|a)ss$/i, use: [loader.wxss, loader.postcss, loader.sass, loader.json2sass]},
       {test: /\.less$/i, use: [loader.wxss, loader.postcss, loader.less]},
       {test: /\.(css|wxss)$/i, include: srcDir, use: [loader.wxss, loader.postcss]},
       {test: /\.(css|wxss)$/i, exclude: srcDir, use: [loader.wxss]},
+
     ]
   },
   stats: { // https://webpack.js.org/configuration/stats/#stats

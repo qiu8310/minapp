@@ -20,6 +20,8 @@
     "roots": [
       "src"
     ],
+    "verbose": true,
+    "testURL": "http://localhost/",
     "collectCoverage": true,
     "coverageReporters": [
       "text",
