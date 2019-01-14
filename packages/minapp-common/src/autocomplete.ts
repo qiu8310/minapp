@@ -50,7 +50,7 @@ export async function autocompleteTagAttr(tagName: string, tagAttrs: {[key: stri
   let attrs = await getAvailableAttrs(tagName, tagAttrs, lc, co)
 
   // 属性不能是已经存在的，也不能是事件
-  let filter = createComponentFilter(tagAttrs, false)
+  let filter = createComponentFilter(tagAttrs, lc, false)
 
   let noBasics = lc.noBasicAttrsComponents && lc.noBasicAttrsComponents.indexOf(tagName) >= 0
   return {
@@ -86,7 +86,7 @@ export async function autocompleteSpecialTagAttr(prefix: string, tagName: string
                   .filter(attr => tagAttrs[prefix + attr.name] == null)
                   .map(mapComponentAttr)
   } else if (lc.event.prefixes.indexOf(prefix) >= 0) {
-    let filter = createComponentFilter(tagAttrs, true)
+    let filter = createComponentFilter(tagAttrs, lc, true)
     customs = (await getAvailableAttrs(tagName, tagAttrs, lc, co))
                   .filter(filter)
                   .map(a => ({...a, name: a.name.replace(/^(bind|catch)/, '')} as ComponentAttr)) // 去除 bind/catch 前缀
@@ -104,9 +104,16 @@ function mapComponentAttr(attr: ComponentAttr) {
   return {attr, markdown: getComponentAttrMarkdown(attr)} as TagAttrItem
 }
 
-function createComponentFilter(existsTagAttrs: {[key: string]: string | boolean}, event?: boolean) {
+function createComponentFilter(existsTagAttrs: {[key: string]: string | boolean}, lc: LanguageConfig, event?: boolean) {
   return (attr: ComponentAttr) => {
     let isEvent = attr.name.startsWith('bind') || attr.name.startsWith('catch')
+
+    // 组件内的事件不支持 bind: 写法，如 input 组件的 bindinput 事件
+    if (lc.event.prefixes.indexOf('bind:') >= 0) {
+      let attrName = attr.name.replace(/^(bind|catch)/, '')
+      isEvent = lc.event.attrs.length > 0 && lc.event.attrs.some(a => a.name === attrName)
+    }
+
     return existsTagAttrs[attr.name] == null && (event == null || (event ? isEvent : !isEvent))
   }
 }
@@ -147,4 +154,3 @@ function getAvailableAttrsFromComponent(comp: Component, tagAttrs: {[key: string
 
   return results
 }
-

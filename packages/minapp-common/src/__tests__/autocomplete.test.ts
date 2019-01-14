@@ -10,7 +10,6 @@ import {components, Component, ComponentAttr} from '../dev'
 
 const root = path.resolve(__dirname, 'fixtures', 'custom')
 const fixture = (key: string) => path.resolve(root, key)
-const notEvent = (attr: ComponentAttr) => !attr.name.startsWith('bind') && !attr.name.startsWith('catch')
 
 const WxmlConfig = {
   id: 'wxml',
@@ -86,11 +85,11 @@ describe('autocompleteTagAttr', () => {
   test('should list all custom attrs', async () => {
     let attr = await autocompleteTagAttr('attr', {}, WxmlConfig, {filename: fixture('attr-page.json')})
     expect(attr.basics.length).toEqual(WxmlConfig.baseAttrs.length)
-    expect(attr.natives.length).toEqual(1)
+    expect(attr.natives.length).toEqual(2)
   })
 
   test('should list all custom exclude already exists', async () => {
-    let attr = await autocompleteTagAttr('attr', {foo: '1'}, WxmlConfig, {filename: fixture('attr-page.json')})
+    let attr = await autocompleteTagAttr('attr', {foo: '1', bindclick: ''}, WxmlConfig, {filename: fixture('attr-page.json')})
     expect(attr.natives.length).toEqual(0)
   })
 
@@ -104,7 +103,7 @@ describe('autocompleteTagAttr', () => {
     let mode = (c.attrs as ComponentAttr[]).find(a => a.name === 'mode') as ComponentAttr
     if (mode.subAttrs) {
       // @ts-ignore
-      let sub = mode.subAttrs.find(s => s.equal === 'region').attrs.filter(notEvent)
+      let sub = mode.subAttrs.find(s => s.equal === 'region').attrs
       let attr1 = await autocompleteTagAttr('picker', {mode: 'region'}, WxmlConfig)
       expect(attr1.natives.length).toEqual(sub.length)
 
@@ -139,16 +138,17 @@ describe('autocompleteSpecialTagAttr', () => {
 
   test('should autocomplete bind/catch include native event', async () => {
     let attr1 = await autocompleteSpecialTagAttr('bind:', 'slider', {}, WxmlConfig)
-    let names = attr1.customs.map(c => c.attr.name)
-    expect(names.length).toBeGreaterThan(1)
+    expect(attr1.customs.length === 0)
 
-    let attr2 = await autocompleteSpecialTagAttr('bind:', 'slider', {['bind' + names[0]]: true}, WxmlConfig)
-    expect(attr2.customs.length).toEqual(names.length - 1)
+    let attr2 = await autocompleteTagAttr('slider', {}, WxmlConfig)
+    let bindAttr2 = attr2.natives.filter(n => n.attr.name.startsWith('bind')).map(n => n.attr)
+    let names = bindAttr2.map(c => c.name)
+    expect(names.length).toBeGreaterThan(1)
   })
 
   test('should autocomplete bind/catch include custom native event', async () => {
     let attr1 = await autocompleteSpecialTagAttr('bind:', 'attr', {}, WxmlConfig, {filename: fixture('attr-page.json')})
-    expect(attr1.customs.length).toEqual(1)
+    expect(attr1.customs.length).toEqual(0)
 
     let attr2 = await autocompleteSpecialTagAttr('bind:', 'attr', {bindclick: true}, WxmlConfig, {filename: fixture('attr-page.json')})
     expect(attr2.customs.length).toEqual(0)
