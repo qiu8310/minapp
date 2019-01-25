@@ -7,9 +7,6 @@
 			"path": "packages/minapp-core"
 		},
 		{
-			"path": "packages/minapp-wxml-parser"
-		},
-		{
 			"path": "packages/minapp-common"
 		},
 		{

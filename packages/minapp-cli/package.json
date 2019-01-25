@@ -1,7 +1,7 @@
 {
 	"name": "@minapp/cli",
 	"description": "minapp 命令行工具，用于创建项目、开发项目、编译项目",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"bin": {
 		"minapp": "dist/bin/minapp.js"
 	},
@@ -42,6 +42,7 @@
 		"clean-css": "^4.1.11",
 		"debug": "^3.1.0",
 		"fs-extra": "^5.0.0",
+		"htmlparser2": "^3.10.0",
 		"image-size": "^0.6.2",
 		"import-local": "^1.0.0",
 		"inquirer": "^5.2.0",
@@ -62,6 +63,7 @@
 	"devDependencies": {
 		"@types/autoprefixer": "^6.7.3",
 		"@types/fs-extra": "^5.0.2",
+		"@types/htmlparser2": "^3.7.31",
 		"@types/inquirer": "0.0.41",
 		"@types/json5": "^0.0.29",
 		"@types/portscanner": "^2.1.0",
