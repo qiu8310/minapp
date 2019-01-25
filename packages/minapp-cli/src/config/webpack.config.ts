@@ -63,7 +63,7 @@ const plugins: any[] = [
   }),
   new webpack.EnvironmentPlugin(['NODE_ENV']),
   new ExtractMinappCode(env),
-  new RemoveLessCache(env)
+  new RemoveLessCache(env),
 ]
 if (env.hasServer) {
   plugins.push(new WriteFile(env))
