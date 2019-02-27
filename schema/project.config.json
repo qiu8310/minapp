@@ -1,3 +1,265 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ignore": {
+      "$id": "#/definitions/ignore",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "路径或取值"
+          },
+          "type": {
+            "type": "string",
+            "description": "类型",
+            "enum": ["folder", "file", "suffix", "prefix", "regexp", "glob"]
+          }
+        },
+        "required": ["value", "type"]
+      }
+    },
+    "condition": {
+      "$id": "#/definitions/condition",
+      "type": "object",
+      "required": ["current", "list"],
+      "properties": {
+        "current": {
+          "$id": "#/definitions/condition/properties/current",
+          "type": "integer",
+          "title": "The Current Schema",
+          "default": 0,
+          "examples": [0]
+        },
+        "list": {
+          "$id": "#/definitions/condition/properties/list",
+          "type": "array",
+          "title": "The List Schema",
+          "items": {
+            "$id": "#/definitions/condition/properties/list/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": ["id", "name", "pathName"],
+            "properties": {
+              "id": {
+                "$id": "#/definitions/condition/properties/list/items/properties/id",
+                "type": "integer",
+                "title": "The Id Schema",
+                "default": 0,
+                "examples": [0]
+              },
+              "name": {
+                "$id": "#/definitions/condition/properties/list/items/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": ["首页"]
+              },
+              "pathName": {
+                "$id": "#/definitions/condition/properties/list/items/properties/pathName",
+                "type": "string",
+                "title": "The Pathname Schema",
+                "default": "",
+                "examples": ["pages/index/index"]
+              },
+              "query": {
+                "$id": "#/definitions/condition/properties/list/items/properties/query",
+                "type": "string",
+                "title": "The Query Schema",
+                "default": "",
+                "examples": ["id=2"]
+              },
+              "scene": {
+                "$id": "#/definitions/condition/properties/list/items/properties/scene",
+                "type": ["string", "number", "null"],
+                "title": "The Scene Schema",
+                "default": "",
+                "examples": ["1008"]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "title": "The Root Schema",
+  "required": ["compileType", "appid", "projectname", "condition"],
+  "properties": {
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "The Description Schema"
+    },
+    "miniprogramRoot": {
+      "type": "string",
+      "description": "指定小程序源码的目录(需为相对路径)"
+    },
+    "qcloudRoot": {
+      "type": "string",
+      "description": "指定腾讯云项目的目录(需为相对路径)"
+    },
+    "pluginRoot": {
+      "type": "string",
+      "description": "指定插件项目的目录(需为相对路径)"
+    },
+    "compileType": {
+      "$id": "#/properties/compileType",
+      "type": "string",
+      "title": "The Compiletype Schema",
+      "default": "miniprogram",
+      "examples": ["miniprogram"],
+      "description": "编译类型",
+      "enum": ["miniprogram", "plugin"]
+    },
+    "setting": {
+      "$id": "#/properties/setting",
+      "type": "object",
+      "title": "The Setting Schema",
+      "required": [],
+      "properties": {
+        "urlCheck": {
+          "$id": "#/properties/setting/properties/urlCheck",
+          "type": "boolean",
+          "title": "The Urlcheck Schema",
+          "default": false,
+          "examples": [true],
+          "description": "是否检查安全域名和 TLS 版本"
+        },
+        "es6": {
+          "$id": "#/properties/setting/properties/es6",
+          "type": "boolean",
+          "title": "The Es6 Schema",
+          "default": false,
+          "examples": [true],
+          "description": "是否启用 es6 转 es5"
+        },
+        "postcss": {
+          "$id": "#/properties/setting/properties/postcss",
+          "type": "boolean",
+          "title": "The Postcss Schema",
+          "default": false,
+          "examples": [true],
+          "description": "上传代码时样式是否自动补全"
+        },
+        "minified": {
+          "$id": "#/properties/setting/properties/minified",
+          "type": "boolean",
+          "title": "The Minified Schema",
+          "default": false,
+          "examples": [true],
+          "description": "上传代码时是否自动压缩"
+        },
+        "newFeature": {
+          "$id": "#/properties/setting/properties/newFeature",
+          "type": "boolean",
+          "title": "The Newfeature Schema",
+          "default": false,
+          "examples": [true]
+        },
+        "nodeModules": {
+          "$id": "#/properties/setting/properties/nodeModules",
+          "type": "boolean",
+          "title": "The Nodemodules Schema",
+          "default": false,
+          "examples": [true]
+        },
+        "autoAudits": {
+          "$id": "#/properties/setting/properties/autoAudits",
+          "type": "boolean",
+          "title": "The Autoaudits Schema",
+          "default": false,
+          "examples": [false]
+        },
+        "uglifyFileName": {
+          "$id": "#/properties/setting/properties/uglifyFileName",
+          "type": "boolean",
+          "title": "The Uglifyfilename Schema",
+          "default": false,
+          "examples": [false],
+          "description": "是否进行代码保护"
+        }
+      },
+      "description": "项目设置"
+    },
+    "libVersion": {
+      "$id": "#/properties/libVersion",
+      "type": "string",
+      "title": "The Libversion Schema",
+      "default": "",
+      "examples": ["2.2.3"],
+      "description": "基础库版本"
+    },
+    "appid": {
+      "$id": "#/properties/appid",
+      "type": "string",
+      "title": "The Appid Schema",
+      "default": "",
+      "examples": ["wxxxxxxxxxxxx"],
+      "description": "项目的 appid"
+    },
+    "projectname": {
+      "$id": "#/properties/projectname",
+      "type": "string",
+      "title": "The Projectname Schema",
+      "default": "",
+      "examples": ["miniprogram-template"],
+      "description": "项目名字"
+    },
+    "packOptions": {
+      "type": "object",
+      "properties": {
+        "ignore": {
+          "$ref": "#/definitions/ignore",
+          "description": "配置打包时对符合指定规则的文件或文件夹进行忽略"
+        }
+      },
+      "description": "打包配置选项",
+      "required": []
+    },
+    "debugOptions": {
+      "type": "object",
+      "properties": {
+        "hidedInDevtools ": {
+          "$ref": "#/definitions/ignore",
+          "description": "Sources 面板隐藏源代码的文件"
+        }
+      },
+      "required": [],
+      "description": "项目代码进行调试时的选项"
+    },
+    "condition": {
+      "$id": "#/properties/condition",
+      "type": "object",
+      "title": "The Condition Schema",
+      "description": "编译条件",
+      "properties": {
+        "search": {
+          "$id": "#/properties/condition/properties/search",
+          "title": "The Search Schema",
+          "$ref": "#/definitions/condition"
+        },
+        "conversation": {
+          "$id": "#/properties/condition/properties/conversation",
+          "title": "The Conversation Schema",
+          "$ref": "#/definitions/condition"
+        },
+        "plugin": {
+          "$id": "#/properties/condition/properties/plugin",
+          "title": "The Plugin Schema",
+          "$ref": "#/definitions/condition"
+        },
+        "game": {
+          "$id": "#/properties/condition/properties/game",
+          "title": "The Game Schema",
+          "$ref": "#/definitions/condition"
+        },
+        "miniprogram": {
+          "title": "The Miniprogram Schema",
+          "$ref": "#/definitions/condition"
+        }
+      }
+    }
+  }
 }
