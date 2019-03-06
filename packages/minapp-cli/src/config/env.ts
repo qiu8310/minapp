@@ -68,7 +68,7 @@ export function getEnv() {
 
   // 是否美化代码（即，不使用代码压缩工具）
   const pretty = !!MINAPP.PRETTY
-
+  const useLocalAssetsFile = !!MINAPP.USE_LOCAL_ASSETS_FILE
 
   // 入口文件
   const entry = (minapp.component
@@ -93,6 +93,7 @@ export function getEnv() {
     modulesDir,
     // sourceMap,
     pretty,
+    useLocalAssetsFile
   }
   debug(r)
   return r

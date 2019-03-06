@@ -12,6 +12,7 @@ export const buildOptions: cli.Options = {
   'p | publicPath': '<string> static file\'s publicPath, just like `output.publicPath` in webpack',
   'w | watch':      '<boolean> watch mode, without webpack-dev-server',
   'e | empty':      '<boolean> empty distDir before compile',
+  'l | useLocalAssetsFile': '<boolean> use Local assets path instead of publicPath'
 }
 
 /**
@@ -24,6 +25,7 @@ export function buildCommand(res: cli.Response) {
   if (res.distDir) process.env.MINAPP_DIST_DIR = res.distDir
   if (res.pretty)  process.env.MINAPP_PRETTY = 'true'
   if (res.publicPath)  process.env.MINAPP_PUBLIC_PATH = res.publicPath
+  if (res.useLocalAssetsFile) process.env.MINAPP_USE_LOCAL_ASSETS_FILE = 'true'
 
   compiler(res.watch, null, {empty: res.empty})
 }

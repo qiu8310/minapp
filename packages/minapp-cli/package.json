@@ -61,6 +61,7 @@
 	},
 	"devDependencies": {
 		"@types/autoprefixer": "^6.7.3",
+		"@types/copy-webpack-plugin": "^4.4.2",
 		"@types/fs-extra": "^5.0.2",
 		"@types/inquirer": "0.0.41",
 		"@types/json5": "^0.0.29",
@@ -69,6 +70,7 @@
 		"@types/webpack": "^4.1.4",
 		"@types/webpack-dev-server": "^2.9.4",
 		"@types/webpack-sources": "^0.1.4",
+		"copy-webpack-plugin": "^4.6.0",
 		"ts-lint": "^4.5.1",
 		"typescript": "^2.8.0"
 	}

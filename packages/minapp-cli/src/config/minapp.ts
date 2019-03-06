@@ -13,6 +13,8 @@ export namespace minapp {
     srcDir: string
     distDir: string
 
+    localAssetsFileDir: string
+
     /** url-loader limit, 单位：B */
     urlLoaderLimit: number
 
@@ -92,6 +94,7 @@ export function getMinappConfig(rootDir: string) {
     browsers: ['last 7 android version', 'last 5 chrome version', 'last 5 safari version'],
     unitTransformer: {},
     devServer: {},
+    localAssetsFileDir: ''
   }, minapp.compiler || {})
 
   if (minapp.component) minapp.component = path.resolve(rootDir, minapp.component)
