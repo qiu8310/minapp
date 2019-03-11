@@ -6,7 +6,7 @@ Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 import * as parser from '@minapp/wxml-parser'
 import {EOL} from 'os'
 const debug = require('debug')('minapp:cli:wxml-loader')
-
+import {env} from '../../config/env'
 import {Loader} from './Loader'
 import {map, STYLE_RESOURCE_REGEXP} from '../util'
 
@@ -127,7 +127,8 @@ export default class WxmlLoader extends Loader {
       } else {
         if (this.shouleMakeRequireFile(absFile)) {
           if (this.isStaticFile(absFile) && typeof attr.value === 'string') {
-            attr.value = attr.value.replace(src, await this.loadStaticFile(absFile, src, false))
+            const file = await this.loadStaticFile(absFile, src, false, env.useLocalAssetsFile)
+            attr.value = attr.value.replace(src, file)
           } else if (node.name === 'import' || node.name === 'include') {
             attr.value = this.getExtractRequirePath(absFile, '.wxml')
             requires.push(absFile)
