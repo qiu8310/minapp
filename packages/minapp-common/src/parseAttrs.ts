@@ -41,7 +41,7 @@ export function parseAttrs(content: string): ComponentAttr[] {
     content.split(/\r?\n/).forEach(l => {
       if (flag === 2) return
       if (flag === 1) {
-        if (l.trimRight() === spaces + '}') flag = 2
+        if (l.trimRight() === spaces + '}' || l.trimRight() === spaces + '},') flag = 2
         else objstr += '\n' + l
       } else if (MULTIPLE_LINE_START_REGEXP.test(l)) {
         flag = 1
@@ -135,4 +135,3 @@ function parseDocStr(docstr: string) {
   if (desc.length) obj.desc = desc
   return obj
 }
-
