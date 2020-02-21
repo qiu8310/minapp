@@ -6,11 +6,6 @@
 
 **minapp 2.0.0 已经发布，新版本主要采用了 webpack 4，[v1.x升级到v2.x请查看](https://qiu8310.github.io/minapp/docs/doc-update-v1-to-v2.html)**
 
-## 微信交流群
-
-当前群聊人数过多，只能通过邀请加入，可以扫码或手动添加我微信号：`qiu8310`（请备注 "minapp"），我拉你进群
-
-![微信](https://n1other.hjfile.cn/res7/2018/07/30/072dfc7f0abd29f97fcca4470c8793c6.JPG?imageView2/0/w/360)
 
 ## 介绍
 

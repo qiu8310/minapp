@@ -890,12 +890,12 @@
           "name": "string"
         },
         "desc": [
-          "进度条颜色 （请使用 activeColor）"
+          "进度条颜色 （请使用 active-color）"
         ],
         "defaultValue": "#09BB07"
       },
       {
-        "name": "activeColor",
+        "name": "active-color",
         "type": {
           "name": "string"
         },
@@ -904,7 +904,7 @@
         ]
       },
       {
-        "name": "backgroundColor",
+        "name": "background-color",
         "type": {
           "name": "string"
         },
@@ -2452,7 +2452,7 @@
         "defaultValue": "#1aad19"
       },
       {
-        "name": "activeColor",
+        "name": "active-color",
         "type": {
           "name": "string"
         },
@@ -2462,7 +2462,7 @@
         "defaultValue": "#1aad19"
       },
       {
-        "name": "backgroundColor",
+        "name": "background-color",
         "type": {
           "name": "string"
         },
@@ -3555,7 +3555,7 @@
         "defaultValue": "true"
       },
       {
-        "name": "objectFit",
+        "name": "object-fit",
         "type": {
           "name": "string"
         },
@@ -4229,7 +4229,7 @@
               "required": false
             },
             {
-              "name": "zIndex",
+              "name": "z-index",
               "type": {
                 "name": "number"
               },
@@ -4240,7 +4240,7 @@
               "since": "2.3.0"
             },
             {
-              "name": "iconPath",
+              "name": "icon-path",
               "type": {
                 "name": "string"
               },
@@ -4320,7 +4320,7 @@
                     "since": "1.2.0"
                   },
                   {
-                    "name": "fontSize",
+                    "name": "font-size",
                     "type": {
                       "name": "number"
                     },
@@ -4330,7 +4330,7 @@
                     "since": "1.2.0"
                   },
                   {
-                    "name": "borderRadius",
+                    "name": "border-radius",
                     "type": {
                       "name": "number"
                     },
@@ -4340,7 +4340,7 @@
                     "since": "1.2.0"
                   },
                   {
-                    "name": "borderWidth",
+                    "name": "border-midth",
                     "type": {
                       "name": "number"
                     },
@@ -4350,7 +4350,7 @@
                     "since": "2.3.0"
                   },
                   {
-                    "name": "borderColor",
+                    "name": "border-color",
                     "type": {
                       "name": "string"
                     },
@@ -4360,7 +4360,7 @@
                     "since": "2.3.0"
                   },
                   {
-                    "name": "bgColor",
+                    "name": "bg-color",
                     "type": {
                       "name": "string"
                     },
@@ -4390,7 +4390,7 @@
                     "since": "1.2.0"
                   },
                   {
-                    "name": "textAlign",
+                    "name": "text-align",
                     "type": {
                       "name": "string"
                     },
@@ -4434,7 +4434,7 @@
                     "since": "1.2.0"
                   },
                   {
-                    "name": "fontSize",
+                    "name": "font-size",
                     "type": {
                       "name": "number"
                     },
@@ -4464,7 +4464,7 @@
                     "since": "1.2.0"
                   },
                   {
-                    "name": "anchorX",
+                    "name": "anchor-x",
                     "type": {
                       "name": "number"
                     },
@@ -4474,7 +4474,7 @@
                     "since": "2.1.0"
                   },
                   {
-                    "name": "anchorY",
+                    "name": "anchor-y",
                     "type": {
                       "name": "number"
                     },
@@ -4484,7 +4484,7 @@
                     "since": "2.1.0"
                   },
                   {
-                    "name": "borderWidth",
+                    "name": "border-width",
                     "type": {
                       "name": "number"
                     },
@@ -4494,7 +4494,7 @@
                     "since": "1.6.0"
                   },
                   {
-                    "name": "borderColor",
+                    "name": "border-color",
                     "type": {
                       "name": "string"
                     },
@@ -4504,7 +4504,7 @@
                     "since": "1.6.0"
                   },
                   {
-                    "name": "borderRadius",
+                    "name": "border-radius",
                     "type": {
                       "name": "number"
                     },
@@ -4514,7 +4514,7 @@
                     "since": "1.6.0"
                   },
                   {
-                    "name": "bgColor",
+                    "name": "bg-rolor",
                     "type": {
                       "name": "string"
                     },
@@ -4534,7 +4534,7 @@
                     "since": "1.6.0"
                   },
                   {
-                    "name": "textAlign",
+                    "name": "text-align",
                     "type": {
                       "name": "string"
                     },
@@ -4617,7 +4617,7 @@
               "required": false
             },
             {
-              "name": "dottedLine",
+              "name": "dotted-line",
               "type": {
                 "name": "boolean"
               },
@@ -4628,7 +4628,7 @@
               "notice": "默认false"
             },
             {
-              "name": "arrowLine",
+              "name": "arrow-line",
               "type": {
                 "name": "boolean"
               },
@@ -4640,7 +4640,7 @@
               "since": "1.2.0"
             },
             {
-              "name": "arrowIconPath",
+              "name": "arrow-icon-path",
               "type": {
                 "name": "string"
               },
@@ -4652,7 +4652,7 @@
               "since": "1.6.0"
             },
             {
-              "name": "borderColor",
+              "name": "border-color",
               "type": {
                 "name": "string"
               },
@@ -4663,7 +4663,7 @@
               "since": "1.2.0"
             },
             {
-              "name": "borderWidth",
+              "name": "border-width",
               "type": {
                 "name": "number"
               },
@@ -4696,7 +4696,7 @@
               "notice": "[{latitude: 0, longitude: 0}]"
             },
             {
-              "name": "strokeWidth",
+              "name": "stroke-width",
               "type": {
                 "name": "number"
               },
@@ -4706,7 +4706,7 @@
               "required": false
             },
             {
-              "name": "strokeColor",
+              "name": "stroke-color",
               "type": {
                 "name": "string"
               },
@@ -4717,7 +4717,7 @@
               "notice": "8位十六进制表示，后两位表示alpha值，如：#000000AA"
             },
             {
-              "name": "fillColor",
+              "name": "fill-color",
               "type": {
                 "name": "string"
               },
@@ -4728,7 +4728,7 @@
               "notice": "8位十六进制表示，后两位表示alpha值，如：#000000AA"
             },
             {
-              "name": "zIndex",
+              "name": "z-index",
               "type": {
                 "name": "number"
               },
@@ -4783,7 +4783,7 @@
               "notice": "8位十六进制表示，后两位表示alpha值，如：#000000AA"
             },
             {
-              "name": "fillColor",
+              "name": "fill-color",
               "type": {
                 "name": "string"
               },
@@ -4804,7 +4804,7 @@
               "required": true
             },
             {
-              "name": "strokeWidth",
+              "name": "stroke-width",
               "type": {
                 "name": "number"
               },
@@ -4893,7 +4893,7 @@
               "notice": "控件相对地图位置"
             },
             {
-              "name": "iconPath",
+              "name": "icon-path",
               "type": {
                 "name": "string"
               },

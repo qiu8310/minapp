@@ -56,6 +56,10 @@ const siteConfig = {
   scripts: ['https://buttons.github.io/buttons.js'],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://github.com/qiu8310/minapp',
+  algolia: {
+    apiKey: 'ad598e670d42575d2c914e7cdc1e6711',
+    indexName: 'minapp',
+  },
 };
 
 module.exports = siteConfig;
